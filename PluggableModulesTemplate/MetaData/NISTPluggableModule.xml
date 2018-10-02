@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="Windows-1252" standalone="yes"?>
+<MetaData>
+  <ProjectTemplate>
+    <Title>NISTPluggableModules</Title>
+    <Description>Cloneable, pluggable module template based on the Labview Queued Message Handler.</Description>
+    <Filters>NIST</Filters>
+    <LocationPath>NIST/NISTPluggableModuleTemplate</LocationPath>
+    <ProjectPath>MyPluggableModules.lvproj</ProjectPath>&gt;
+    <ListboxImagePath>images/NIST.png</ListboxImagePath>
+  </ProjectTemplate>
+</MetaData>

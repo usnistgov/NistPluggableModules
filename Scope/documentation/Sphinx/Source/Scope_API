@@ -1,0 +1,36 @@
+.. _`OScope`:
+
+##########################
+Scope Module API
+##########################
+
+Properties - Base Class
+=======================
+
+Acquisition
+-----------
+
+Channels
+--------
+
+Channel
++++++++
+
+Trigger
+-------
+
+Properties - Infiniium Class
+============================
+
+Acquisition
+-----------
+
+Methods - Base Class
+====================
+
+Initialize
+
+Close
+
+
+ConfigureAcquisition: 

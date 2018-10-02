@@ -1,0 +1,497 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Appendix A Pluggable Module Reference &mdash; NistPluggableModules 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="NistPluggableModules 0.1 documentation" href="../../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="appendix-a-pluggable-module-reference">
+<h1>Appendix A Pluggable Module Reference<a class="headerlink" href="#appendix-a-pluggable-module-reference" title="Permalink to this headline">¶</a></h1>
+<p>A pluggable module is a stand-alone module that can be launched by a
+framework or other application then runs independent of the launching
+application. Multiple clones of the same module type may be launched and
+will coexist independent of each other. Module clones receive requests
+from the launching framework or another application and broadcast
+responses to any application that has registered to receive the modules
+broadcasts.</p>
+<p>Pluggability means that the module is able to support a wide range of
+user-defined functionality by loading one of a class of plug-ins. this
+allows modules to be, for example hardware abstracted versions of
+different test instruments with (for example) ISI compliant APIs.
+another example is creating a range of Matlab-based plug-ins where the
+module can perform many different types of operations. Plug-ins can be
+changed on-the-fly during runtime without needing to stop and restart
+the module clone.</p>
+<ol class="arabic simple">
+<li>Quick Start</li>
+</ol>
+<p>To get a quick overview of how pluggable modules work, use the
+TestCloneAPI.vi application:</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image1.png"><img alt="image0" src="images\AppendixA\images/AppendixA/image1.png" style="width: 1.42222in; height: 2.11111in;" /></a></p>
+<p>Figure : LabVIEW Project showing TestCloneAPI.vi</p>
+<p>TestCloneAPI.vi is an application that can be used to test the modules
+application programming interface (API) as it is being developed. It
+provides example controls for launching multiple clones, loading plugins
+and requesting a plugin’s .ini file path. This is a good application for
+a programmer to add controls to test module functions as they are being
+added. It is not a good example of a test framework which should be
+based on a producer consumer pattern.</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image2.png"><img alt="image1" src="images\AppendixA\images/AppendixA/image2.png" style="width: 3.79861in; height: 1.96505in;" /></a></p>
+<p>Figure : TestCloneAPI.vi front panel</p>
+<p>Using TestCloneAPI you can see how a clone is launched and removed, how
+plugins are loaded or changed, and how a simple requests such as showing
+or hiding the clone’s front panel or requesting the path to the current
+plugin’s .ini file is sent to one or all clones. When multiple clones
+are launched, the “Select Module to send request listbox will allow
+requests to be sent to one or all modules.</p>
+<ol class="arabic simple">
+<li>Launching a Module Clone</li>
+</ol>
+<p>A framework application launches a clone of a module by passing a
+reference to the module Main.vi to the StartClone.vi which launches the
+clone. StartClone.vi outputs a cluster of the clone’s broadcast events
+so they can be registered to allow the framework to receive broadcasts
+from the clone. To be sure that the clone is ready to accept requests
+from the framework, the ModuleAdmin class method WaitOnEventSync.vi
+waits for a semaphore from the new clone indicating that the clone is
+ready to accept requests. Following that, the semaphore reference must
+be destroyed by ModuleAdmin:DestroySyncRefnums.vi</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image3.png"><img alt="image2" src="images\AppendixA\images/AppendixA/image3.png" style="width: 4.01389in; height: 1.42030in;" /></a></p>
+<ol class="arabic simple">
+<li>Module Top Level: Main.vi</li>
+</ol>
+<p>The Main.vi is the top level of the pluggable module. The path to
+Main.vi is used by a framework which launches clones of the module to
+load and run the module clone. Main.vi is organized as a queued message
+handler (QMH) pattern which can also be considered a producer consumer
+pattern. After creation of a new ModuleAdmin class instance (see the
+documentation for the ModuleAdmin library), initialization of request
+events and user events, and initialization of the queue to be used for
+the QMH, two while loops are started. The upper loop is the event
+handler loop (the producer) and the bottom loop is the queued message
+handler (the consumer).</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image4.png"><img alt="image3" src="images\AppendixA\images/AppendixA/image4.png" style="width: 6.50000in; height: 2.78264in;" /></a></p>
+<p>Figure : Top Level: Main.vi</p>
+<ol class="arabic simple">
+<li>Start-up and initialization</li>
+</ol>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image5.png"><img alt="image4" src="images\AppendixA\images/AppendixA/image5.png" style="width: 2.99249in; height: 3.86111in;" /></a></p>
+<p>Figure : Module start up</p>
+<p>The launching application passes in a new ModuleAdmin reference and the
+new clone is added to the ModuleAdmin CloneRegistry. For more
+information on the ModuleAdmin class see the ModuleAdmin documentation.
+The next thing that happens is a set of request events and broadcast
+events are initialized. the events are registered with the module.
+Finally a queue is initialized and the Event Handler Loop and QMH loop
+are started. When the Queue was initialized, an “Initialize” message was
+placed in the Queue, so the Initialize state of the QMH will run
+immediately.</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image6.png"><img alt="image5" src="images\AppendixA\images/AppendixA/image6.png" style="width: 4.53472in; height: 1.95536in;" /></a></p>
+<p>Figure : QMH &#8220;Initialize&#8221; state</p>
+<p>Normally, a module will only be launched by a framework or application,
+but they can be launched manuallyy as well. If launched manually,
+ModuleAdmin:External Launch will be FALSE and the frontpanel will be
+visible. If launched by an application, External Launch is TRUE and if
+ShowPanel_ is FALSE, the module frontpanel will be hidden (this is the
+typical condition when using modules because they will not usually have
+front panel controls. The fornt panel is set up then the module
+synchronizes with the launching application using the
+ModuleAdmin:WaitOnModuleSync and WaitOnEventSync methods. Finally the
+module broadcasts a status message indicating to all applications
+registered to receive broadcasts that it has initialized.</p>
+<ol class="arabic simple">
+<li>Requests</li>
+<li>Handling Requests</li>
+</ol>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image7.png"><img alt="image6" src="images\AppendixA\images/AppendixA/image7.png" style="width: 4.79108in; height: 3.47917in;" /></a></p>
+<p>Figure : Responding to the ShowPanel Request</p>
+<p>Requests are user events generated by a framework or application and
+received by the module’s event handler loop. In Figure 6 a ShowPanel
+event is shown in the event structure. The event carries the ModuleID
+and a variant that can handle any type of data. The
+ModuleAdmin:AddressedToThisModule method determines if the requests
+ModuleID is -1 (all modules) or matches the ModuleID of this module. If
+either of these are true, the “ShowPanel” command is enqueued into the
+QMH’s ques along with the data variant.</p>
+<p>In the QMH loop, when a command is found in the queue, it is input to
+the QMH’s case statement. In Figure 6, the ShowPanel case is called and
+the varient data is cast to a boolean value. Each command state should
+know what datatype to expect so, for those commands with data, the first
+thing that normally happens is the data variant is cast into the
+appropriate datatype.</p>
+<ol class="arabic simple">
+<li>Creating New Request Types</li>
+</ol>
+<p>To create a new request type, begin by editing the clRequestEvents.ctl
+typedef:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="images\AppendixA\images/AppendixA/image8.png"><img alt="image7" src="images\AppendixA\images/AppendixA/image8.png" style="width: 1.71528in; height: 3.21079in;" /></a></td>
+<td><a class="reference internal" href="images\AppendixA\images/AppendixA/image9.png"><img alt="image8" src="images\AppendixA\images/AppendixA/image9.png" style="width: 1.84677in; height: 3.18750in;" /></a></td>
+</tr>
+</tbody>
+</table>
+<p>Figure : clRequestEvents Typedef</p>
+<p>Copy one of the existing event references and rename it to the name of
+your new request. Save or apply changes to the typedef.</p>
+<p>If the data type is a cluster, or something other than a LabVIEW
+primitive representation (string, double, etc) or array of primitives,
+you will probably want to create a Typedef for the data type. The
+typedef will need to have public access so a good place to put it would
+be in PublicAPI/Arguments/Requests:</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image10.png"><img alt="image9" src="images\AppendixA\images/AppendixA/image10.png" style="width: 1.65715in; height: 2.82639in;" /></a></p>
+<p>Figure : PublicAPI/Arguments/Requests</p>
+<p>Next, add an event case to the event handler loop. For many of the new
+events, you can duplicate and modify another event such as the
+“ShowPanel” event. Because you have saved a new request reference to the
+clRequestEvents typedef, that event will now appear as one of the
+choices for the new event.</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image11.png"><img alt="image10" src="images\AppendixA\images/AppendixA/image11.png" style="width: 5.97758in; height: 2.53472in;" /></a></p>
+<p>Figure : Adding an event case to the Event Handler Loop</p>
+<p>When an event is generated by a framework or other application, the data
+to be sent is flattened to a Variant type and sent to the event “Data”
+pipe. The ModuleID is also sent along with the data. The ModuleID is
+wired into a ModuleAdmin:AddressedToThisModule method and that in turn
+to the selector of a case statement. Sometimes, a simple handler can be
+written into the case statement, and sometimes a QMH command should be
+created. The data variant type is wired into the Enqueue method and
+outputs from the Dequeue method in the QMH loop. It will need to be
+unflattened from the variant type to the data type using the typedef you
+created earlier (or the LabVIEW primitive or array of primitives if you
+did not need to make a typedef.)</p>
+<p>Next, a Request method will need to be created to be used by a framework
+or other app to generate the new request. Typically, you can start from
+an existing request method such as the ShowPanelRequest shown below:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="images\AppendixA\images/AppendixA/image12.png"><img alt="image11" src="images\AppendixA\images/AppendixA/image12.png" style="width: 1.27872in; height: 2.29861in;" /></a></td>
+<td><a class="reference internal" href="images\AppendixA\images/AppendixA/image13.png"><img alt="image12" src="images\AppendixA\images/AppendixA/image13.png" style="width: 4.11103in; height: 2.29708in;" /></a></td>
+</tr>
+</tbody>
+</table>
+<p>Figure : ShowPanelRequest example</p>
+<p>Change the cluster unbundle on the output of ObtainRequestEvents method
+the to your new request name, then replace the data input with a control
+for your data type and save the request with a new name in
+Protected\Requests. When you use the request in a framework or other
+app, the framework library will need to be a “friend” of the
+PluggableModule library.</p>
+<p>An example of how to make a request to a module is shown in the
+TestCloneAPI application. note again that it is recommended that a
+framework be constructed as a Queued Message Handler and the
+TestCloneAPI is a very simple test app:</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image14.png"><img alt="image13" src="images\AppendixA\images/AppendixA/image14.png" style="width: 4.06250in; height: 2.19575in;" /></a></p>
+<p>Figure : Simple example of making a module request</p>
+<p>A boolean toggle on the fron panel of the TestCloneAPI application
+triggers an event, the active module number is placed into the
+ShowPanelRequest ModuleID input and the new value of the toggle is
+placed into the data input. the request event is generated and the
+pluggable module responds by showing or hiding its frontpanel.</p>
+<ol class="arabic simple">
+<li>Broadcasts</li>
+</ol>
+<p>Similar to Requests, Broadcasts are user events. Broadcasts are
+generated inside the pluggable module and may be received by the
+framework or any application that registers to receive them. Multiple
+applications can receive the broadcasts at the same time. When a
+broadcast is generated, the broadcast data is placed into a separate
+queue for each application that is registered to receive the broadcast.</p>
+<ol class="arabic simple">
+<li>Creating new broadcast types</li>
+</ol>
+<p>To create a new broadcast type, begin by editing the
+clBroadcastEvents.ctl typedef:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="images\AppendixA\images/AppendixA/image15.png"><img alt="image14" src="images\AppendixA\images/AppendixA/image15.png" style="width: 1.52083in; height: 2.73382in;" /></a></td>
+<td><a class="reference internal" href="images\AppendixA\images/AppendixA/image16.png"><img alt="image15" src="images\AppendixA\images/AppendixA/image16.png" style="width: 1.49158in; height: 2.68750in;" /></a></td>
+</tr>
+</tbody>
+</table>
+<p>Figure : clBroadcastEvents.ctl typedef</p>
+<p>Copy one of the existing event references and rename it to the name of
+your new broadcast. Save or apply changes to the typedef.</p>
+<p>If the data type is a cluster, or something other than a LabVIEW
+primitive representation (string, double, etc) or array of primitives,
+you will probably want to create a Typedef for the data type. The
+typedef will need to have public access so a good place to put it would
+be in PublicAPI/Arguments/Broadcasts.</p>
+<p>Next, create a new broadcast method. The best thing to do is to make a
+copy of an existing broadcast method:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="images\AppendixA\images/AppendixA/image17.png"><img alt="image16" src="images\AppendixA\images/AppendixA/image17.png" style="width: 1.51052in; height: 2.71528in;" /></a></td>
+<td><a class="reference internal" href="images\AppendixA\images/AppendixA/image18.png"><img alt="image17" src="images\AppendixA\images/AppendixA/image18.png" style="width: 3.72917in; height: 1.70126in;" /></a></td>
+</tr>
+</tbody>
+</table>
+<p>Figure : Broadcast Method</p>
+<p>Change the cluster unbundle on the output of ObtainBrodcastEvents method
+the to your new request name, then replace the data input with a control
+for your data type and save the broadcast with a new name in
+Protected\Broadcasts. Quite often, a broadcast will be generated in
+response to a request. An example of the PathToPlugin broadcast in
+response to a PathToIni request is shown below:</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image19.png"><img alt="image18" src="images\AppendixA\images/AppendixA/image19.png" style="width: 4.56250in; height: 3.30148in;" /></a></p>
+<p>Figure : Example of a broadcast in response to a request.</p>
+<ol class="arabic simple">
+<li>Plugin Classes</li>
+</ol>
+<p>Plugins are abstracted classes that do the core work of any module.
+Abstracted means that plugins can be created to perform similar
+operations for which an application programming interface (API) has been
+created using different hardware, computer languages, or procedures.
+Here are some examples of how plugins can be used:</p>
+<ul class="simple">
+<li>Modules can be created supporting IVI<sup>TM</sup>
+(<a class="reference external" href="http://www.ivifoundation.org/">http://www.ivifoundation.org/</a>) compliant APIs with plugins
+supporting a variety of hardware. New hardware can later be added to
+support the same instrument functionality.</li>
+<li>Generic modules can be created with a common API for various system
+models and plugins for each system can be created. An example is an
+event on the electrical power system. plugins can be created to model
+different kinds of events on different power system topologies, for
+example a phase step transient in an IEEE Bus model may be one
+plugin, while a Line to line fault on an existing model of a section
+of an actual power system may be another plugin.</li>
+<li>Measurement algorithms can be created as plugins. For example a
+Phasor Measurement Unit module can support different plugins for
+algorithms such as frequency tracking or non-frequency tracking.</li>
+</ul>
+<p>Plugins can be created to support computer languages such as Matlab,
+Python, any of the C variants, etc. Users can then create new plugins
+without needing to know anything about Labview programming.</p>
+<p>A new plugin consists of:</p>
+<ul class="simple">
+<li>A child class of the PluginsBase Class</li>
+<li>A .ini file providing a relative path to the plugin child class and a
+name for the Plugin Type. The init file can also contain other
+information such as default configuration and parameter values. The
+path to the .ini file is available to the framework or any
+application via a module request/broadcast.</li>
+<li>Any plugin method overrides created by the plugin designer.</li>
+</ul>
+<ol class="arabic simple">
+<li>Plugin Methods</li>
+</ol>
+<p>The work of the plugin is done by plugin methods. You will create a set
+of plugin methods in the base class that throw an error because base
+class plugins methods should always be overridden by child class
+methods. LabVIEW requires that overridable methods have Public Access.
+You will likely create public methods to write and read plugin
+parameters and/or configuration information and to get plugin output. A
+variant datatype property has been added to the BasePlugin properties as
+an example. This can later be changed to another typedef for your
+BasePlugin. You will likely add other parameter and configuration
+properties to the BasePlugin based on the typedefs you create for those
+data types.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="images\AppendixA\images/AppendixA/image20.png"><img alt="image19" src="images\AppendixA\images/AppendixA/image20.png" style="width: 1.70833in; height: 2.27778in;" /></a></td>
+<td><a class="reference internal" href="images\AppendixA\images/AppendixA/image21.png"><img alt="image20" src="images\AppendixA\images/AppendixA/image21.png" style="width: 1.72351in; height: 2.20139in;" /></a></td>
+</tr>
+</tbody>
+</table>
+<p>Figure : Sample “PluginOutput” variant datatype added to BasePlugin
+properties</p>
+<ol class="arabic simple">
+<li>Creating an new base plugin method</li>
+</ol>
+<p>Most plugin methods will be “must override” methods in the Base Plugin.
+The entire collection of base plugin methods can be considered as the
+“API of the plugin. New plugins will override these methods to provide
+the abstracted functionality of the module. As an example, here are the
+steps that go into creating the sample “PluginMethod” Generally plugin
+methods will be evoked by a request and will generate a broadcast, so
+begin by creating new requests and broadcasts per sections 4.2.2 and
+4.3.1:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="images\AppendixA\images/AppendixA/image22.png"><img alt="image21" src="images\AppendixA\images/AppendixA/image22.png" style="width: 1.62232in; height: 2.85417in;" /></a></td>
+<td><a class="reference internal" href="images\AppendixA\images/AppendixA/image23.png"><img alt="image22" src="images\AppendixA\images/AppendixA/image23.png" style="width: 1.61559in; height: 2.81250in;" /></a></td>
+</tr>
+</tbody>
+</table>
+<p>Figure : PluginOutput request and broadcast have been added to the
+typedefs</p>
+<p>Create the Request and Broadcast vis:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="images\AppendixA\images/AppendixA/image24.png"><img alt="image23" src="images\AppendixA\images/AppendixA/image24.png" style="width: 2.90972in; height: 1.34736in;" /></a></td>
+<td><a class="reference internal" href="images\AppendixA\images/AppendixA/image25.png"><img alt="image24" src="images\AppendixA\images/AppendixA/image25.png" style="width: 2.69444in; height: 1.30930in;" /></a></td>
+</tr>
+</tbody>
+</table>
+<p>Figure : Request and Broadcast VIs</p>
+<p>Create a plugin base class method that throws an error if it is not
+overridden. The base object class provides a good error module to use:</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image26.png"><img alt="image25" src="images\AppendixA\images/AppendixA/image26.png" style="width: 1.95833in; height: 1.34794in;" /></a></p>
+<p>Figure : Example Base Plugin Method throws an error if called</p>
+<p>This method must have public assess. The class input and output
+terminals must be dynamic.</p>
+<p>Next, add an event handler and QMH loop case to the modules “Main.vi to
+handle the request event and run the base plugin method:</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image27.png"><img alt="image26" src="images\AppendixA\images/AppendixA/image27.png" style="width: 4.13826in; height: 3.03472in;" /></a></p>
+<p>Figure : Event Handler and QMH case for the new method</p>
+<p>The QMH handler calls the GetOutput method which will put the output
+into the PluginOutput method. If the method does not throw an error (for
+example by calling the Base Class method) PluginOutput property is input
+to the PluginOutput broadcast vi along with the ModuleAdmin:ModuleID
+property. Optionally, the handler broadcasts a status message that the
+output has been transmitted. This status broadcast is useful for logging
+or debugging the framework or other applications.</p>
+<p>You will want to test each method you add to the modules API so add a
+button that sends the request to the TestCloneAPI application:</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image28.png"><img alt="image27" src="images\AppendixA\images/AppendixA/image28.png" style="width: 3.81250in; height: 2.08911in;" /></a></p>
+<p>If you run the TestCloneAPI, add a clone and press the GetPluginOutput
+button, you will get the following expected error:</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image29.png"><img alt="image28" src="images\AppendixA\images/AppendixA/image29.png" style="width: 1.75694in; height: 1.53480in;" /></a></p>
+<p>Figure : the error you will get if you call a BasePluginClass method
+that has not been overrridden</p>
+<p>Next you will create a child plugin class and override the method.</p>
+<ol class="arabic simple">
+<li>Creating a new Plugin Child Class</li>
+</ol>
+<p>Begin by creating a new class and setting it to inherit from the
+BasePlugin class:</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image30.png"><img alt="image29" src="images\AppendixA\images/AppendixA/image30.png" style="width: 1.95478in; height: 2.61111in;" /></a></p>
+<p>Figure : Creating a new Plugin child class</p>
+<p>Under the properties for the new class, change the inheritance to the
+BasePluginClass:</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image31.png"><img alt="image30" src="images\AppendixA\images/AppendixA/image31.png" style="width: 4.30556in; height: 3.04578in;" /></a></p>
+<p>Figure : Setting the inheritance of the child plugin class</p>
+<p>Create new overrides for all plugin methods you may have created in the
+base plugin class:</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image32.png"><img alt="image31" src="images\AppendixA\images/AppendixA/image32.png" style="width: 2.23097in; height: 2.74306in;" /></a></p>
+<p>Edit the override vis for the special functionality of the plugin. for
+the example Module Output method, we will simply broadcast a string:</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image33.png"><img alt="image32" src="images\AppendixA\images/AppendixA/image33.png" style="width: 4.18056in; height: 1.65635in;" /></a></p>
+<p>Figure : Override for the GetOutput method</p>
+<p>We chose to make the PluginOutput property into a variant to we are
+putting a string into the variant. We could have chosen to make the
+property a string type (or any other typedef or primative).</p>
+<p>Next create a plugin .ini file that contains a relative path to the
+plugin “lvclass” file and a name for the plugin type:</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image34.png"><img alt="image33" src="images\AppendixA\images/AppendixA/image34.png" style="width: 2.59722in; height: 0.85821in;" /></a></p>
+<p>Figure : Sample Plugin .ini file</p>
+<p>The SamplePlugin child class only has an empty property control. A .ini
+file, and overrides for the base plugin methods:</p>
+<p><a class="reference internal" href="images\AppendixA\images/AppendixA/image35.png"><img alt="image34" src="images\AppendixA\images/AppendixA/image35.png" style="width: 2.41667in; height: 2.40984in;" /></a></p>
+<p>Now when you run the TestCloneAPI, Add a Clone, select the Sample
+Plugin, load the Plugin, then Get the Plugin Output, the ModuleOutput
+indicator will show the string that came from the Sample Plugin method.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/images/AppendixA/moduleAppendix.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Allen Goldstein.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../../_sources/images/AppendixA/moduleAppendix.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
