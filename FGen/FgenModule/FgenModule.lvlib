@@ -10,6 +10,7 @@
 </Property>
 	<Item Name="Friends List" Type="Friends List">
 		<Item Name="FgenPlugins.lvlib:FgenPluginsBase.lvclass" Type="Friended Library" URL="../../FgenPlugins/FgenPluginBaseClass/FgenPluginsBase.lvclass"/>
+		<Item Name="BusEvents.vi" Type="Friended VI" URL="../../../../Framework/BusEvents.vi"/>
 	</Item>
 	<Item Name="Protected" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">4</Property>

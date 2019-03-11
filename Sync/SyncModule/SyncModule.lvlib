@@ -13,8 +13,9 @@
 		<Item Name="HilTest.lvclass" Type="Friended Library" URL="../../../../HILCalibration/TestClass/HilTest.lvclass"/>
 		<Item Name="TestBase.lvclass" Type="Friended Library" URL="../../../Framework/TestBaseClass/TestBase.lvclass"/>
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
-		<Item Name="Main.vi" Type="Friended VI" URL="../../../../Framework/Main.vi"/>
+		<Item Name="Main.vi" Type="Friended VI" URL="../../../../Main.vi"/>
 		<Item Name="RegisterEventArray.vi" Type="Friended VI" URL="../../../../Framework/RegisterEventArray.vi"/>
+		<Item Name="BusEvents.vi" Type="Friended VI" URL="../../../../Framework/BusEvents.vi"/>
 	</Item>
 	<Item Name="Private" Type="Folder">
 		<Item Name="Stop.vi" Type="VI" URL="../Private/Stop.vi"/>

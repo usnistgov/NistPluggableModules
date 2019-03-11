@@ -12,6 +12,7 @@
 		<Item Name="DigitizerPlugins.lvlib:DigitizerBase.lvclass" Type="Friended Library" URL="../../DigitizerPlugins/DigitizerBaseClass/DigitizerBase.lvclass"/>
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 		<Item Name="RegisterEventArray.vi" Type="Friended VI" URL="../../../../Framework/RegisterEventArray.vi"/>
+		<Item Name="BusEvents.vi" Type="Friended VI" URL="../../../../Framework/BusEvents.vi"/>
 	</Item>
 	<Item Name="Protected" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
