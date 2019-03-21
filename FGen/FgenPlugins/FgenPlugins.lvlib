@@ -10,6 +10,7 @@
 </Property>
 	<Item Name="Friends List" Type="Friends List">
 		<Item Name="FgenModule.lvlib" Type="Friended Library" URL="../../FgenModule/FgenModule.lvlib"/>
+		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 	</Item>
 	<Item Name="TypeDefs" Type="Folder">
 		<Item Name="Channel.ctl" Type="VI" URL="../TypeDefs/Channel.ctl"/>
