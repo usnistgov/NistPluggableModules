@@ -144,7 +144,6 @@
 				<Item Name="Write To Spreadsheet File (string).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write To Spreadsheet File (string).vi"/>
 				<Item Name="Write To Spreadsheet File.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write To Spreadsheet File.vi"/>
 			</Item>
-			<Item Name="matscript.dll" Type="Document"/>
 			<Item Name="SensorModule.lvlib" Type="Library" URL="../../Sensor/SensorModule/SensorModule.lvlib"/>
 			<Item Name="SensorPlugins.lvlib" Type="Library" URL="../../Sensor/SensorPlugins/SensorPlugins.lvlib"/>
 		</Item>

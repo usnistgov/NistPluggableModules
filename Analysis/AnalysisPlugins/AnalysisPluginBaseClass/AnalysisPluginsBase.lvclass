@@ -365,6 +365,15 @@
 	</Item>
 	<Item Name="PublicAPI" Type="Folder">
 		<Item Name="Requests" Type="Folder">
+			<Item Name="ConfigDlgRequest.vi" Type="VI" URL="../PublicAPI/Requests/ConfigDlgRequest.vi">
+				<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">&amp;!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!$-!!!!#!!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"!!!!#"!5!!$!!!!!1!#%W6S=G^S)'FO)#BO&lt;S"F=H*P=CE!$U!$!!B.&lt;W2V&lt;'6*2!!!6!$Q!!Q!!Q!%!!1!"!!%!!1!"!!%!!5!"!!%!!9$!!"Y!!!.#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!I!!!!!!!!!!!!!!!A!!!!!!1!(!!!!!!</Property>
+				<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
+				<Property Name="NI.ClassItem.Flags" Type="Int">4194306</Property>
+				<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
+				<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
+				<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
+				<Property Name="NI.ClassItem.State" Type="Int">1074541072</Property>
+			</Item>
 			<Item Name="LoadPluginRequest.vi" Type="VI" URL="../PublicAPI/Requests/LoadPluginRequest.vi">
 				<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">&amp;!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!$E!!!!#1!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"!!!!#"!5!!$!!!!!1!#%W6S=G^S)'FO)#BO&lt;S"F=H*P=CE!'%!S`````Q^1982I6'^1&lt;(6H;7Z*4EE!$U!$!!B.&lt;W2V&lt;'6*2!!!6!$Q!!Q!!Q!%!!1!"!!%!!1!"!!%!!5!"!!'!!=$!!"Y!!!.#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!I!!!!!!!!!#A!!!!A!!!!!!1!)!!!!!!</Property>
 				<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
@@ -505,6 +514,15 @@
 		</Item>
 	</Item>
 	<Item Name="PublicMethods" Type="Folder">
+		<Item Name="ConfigDlg.vi" Type="VI" URL="../PublicMethods/ConfigDlg.vi">
+			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">&amp;!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!&amp;_!!!!#A!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"!!!!!R!)1&gt;$;'&amp;O:W6E!&amp;2!=!!?!!!T&amp;5&amp;O97RZ=WFT5'RV:WFO=SZM&gt;GRJ9BN"&lt;G&amp;M?8.J=V"M&gt;7&gt;J&lt;H.#98.F,GRW9WRB=X-!&amp;U&amp;O97RZ=WFT5'RV:WFO=U*B=W5A&lt;X6U!#"!5!!$!!!!!1!#%W6S=G^S)'FO)#BO&lt;S"F=H*P=CE!6%"Q!"Y!!$-617ZB&lt;(FT;8.1&lt;(6H;7ZT,GRW&lt;'FC'U&amp;O97RZ=WFT5'RV:WFO=U*B=W5O&lt;(:D&lt;'&amp;T=Q!717ZB&lt;(FT;8.1&lt;(6H;7ZT1G&amp;T:3"J&lt;A!!91$Q!!Q!!Q!%!!5!"A!%!!1!"!!%!!=!"!!%!!A$!!"Y!!!.#!!!!!!!!!E!!!!.#Q!!!!!!!!!!!!!!!!!!!!!!!!A!!!!!!!!!!!!!!"!!!!U!!!!-!!!!!!!!!!!!!!%!#1!!!!!</Property>
+			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
+			<Property Name="NI.ClassItem.Flags" Type="Int">33088</Property>
+			<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
+			<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
+			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
+			<Property Name="NI.ClassItem.State" Type="Int">1342710288</Property>
+		</Item>
 		<Item Name="Fitter.vi" Type="VI" URL="../PublicMethods/Fitter.vi">
 			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">&amp;!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!&amp;F!!!!#1!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"!!!!&amp;2!=!!?!!!T&amp;5&amp;O97RZ=WFT5'RV:WFO=SZM&gt;GRJ9BN"&lt;G&amp;M?8.J=V"M&gt;7&gt;J&lt;H.#98.F,GRW9WRB=X-!&amp;U&amp;O97RZ=WFT5'RV:WFO=U*B=W5A&lt;X6U!#"!5!!$!!!!!1!#%W6S=G^S)'FO)#BO&lt;S"F=H*P=CE!6%"Q!"Y!!$-617ZB&lt;(FT;8.1&lt;(6H;7ZT,GRW&lt;'FC'U&amp;O97RZ=WFT5'RV:WFO=U*B=W5O&lt;(:D&lt;'&amp;T=Q!717ZB&lt;(FT;8.1&lt;(6H;7ZT1G&amp;T:3"J&lt;A!!6!$Q!!Q!!Q!%!!1!"1!%!!1!"!!%!!9!"!!%!!=#!!"Y!!!.#!!!!!!!!!!!!!#.#Q!!!!!!!!!!!!!!!!!!!!!!!!A!!!!!!!!!!!!!!*!!!!!!!1!)!!!!!!</Property>
 			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
