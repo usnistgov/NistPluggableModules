@@ -17,4 +17,5 @@
 	</Item>
 	<Item Name="AnalysisPluginsBase.lvclass" Type="LVClass" URL="../AnalysisPluginBaseClass/AnalysisPluginsBase.lvclass"/>
 	<Item Name="PmuAnalysis.lvclass" Type="LVClass" URL="../PmuAnalysisClass/PmuAnalysis.lvclass"/>
+	<Item Name="SaveWaveforms.lvclass" Type="LVClass" URL="../SaveWaveformsClass/SaveWaveforms.lvclass"/>
 </Library>
