@@ -118,6 +118,7 @@
 			<Property Name="NI.ClassItem.State" Type="Int">1074278912</Property>
 		</Item>
 	</Item>
+	<Item Name="2Phase_SineCos_50f0.ini" Type="Document" URL="../2Phase_SineCos_50f0.ini"/>
 	<Item Name="3Phase_Sine_60f0.ini" Type="Document" URL="../3Phase_Sine_60f0.ini"/>
 	<Item Name="test.ini" Type="Document" URL="../test.ini"/>
 </LVClass>
