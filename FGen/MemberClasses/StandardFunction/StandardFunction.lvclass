@@ -120,5 +120,6 @@
 	</Item>
 	<Item Name="2Phase_SineCos_50f0.ini" Type="Document" URL="../2Phase_SineCos_50f0.ini"/>
 	<Item Name="3Phase_Sine_60f0.ini" Type="Document" URL="../3Phase_Sine_60f0.ini"/>
+	<Item Name="6Phase_Sine_50f0.ini" Type="Document" URL="../6Phase_Sine_50f0.ini"/>
 	<Item Name="test.ini" Type="Document" URL="../test.ini"/>
 </LVClass>

@@ -377,6 +377,7 @@
 		</Item>
 	</Item>
 	<Item Name="Dyn3_Digitizer.ini" Type="Document" URL="../Dyn3_Digitizer.ini"/>
+	<Item Name="Dyn3_PMUCal.ini" Type="Document" URL="../Dyn3_PMUCal.ini"/>
 	<Item Name="HIL_Sync.ini" Type="Document" URL="../HIL_Sync.ini"/>
 	<Item Name="PXI_Multi.ini" Type="Document" URL="../PXI_Multi.ini"/>
 </LVClass>
