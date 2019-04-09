@@ -4,8 +4,15 @@
 	<Property Name="NI.Lib.SourceVersion" Type="Int">335577088</Property>
 	<Property Name="NI.Lib.Version" Type="Str">1.0.0.0</Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">false</Property>
+	<Item Name="Matlab" Type="Folder">
+		<Item Name="CalcStateMatrix.m" Type="Document" URL="../Matlab/CalcStateMatrix.m"/>
+		<Item Name="Chirp.mlx" Type="Document" URL="../Matlab/Chirp.mlx"/>
+		<Item Name="PmuTestSignals.m" Type="Document" URL="../Matlab/PmuTestSignals.m"/>
+		<Item Name="StateAmPm.mlx" Type="Document" URL="../Matlab/StateAmPm.mlx"/>
+	</Item>
 	<Item Name="ArbitraryFunction.lvclass" Type="LVClass" URL="../ArbitraryFunction/ArbitraryFunction.lvclass"/>
 	<Item Name="FunctionBase.lvclass" Type="LVClass" URL="../FunctionBaseClass/FunctionBase.lvclass"/>
 	<Item Name="MultiBandState.lvclass" Type="LVClass" URL="../MultiBandState/MultiBandState.lvclass"/>
+	<Item Name="PmuTestFunctions.lvclass" Type="LVClass" URL="../PmuTestFunctions/PmuTestFunctions.lvclass"/>
 	<Item Name="StandardFunction.lvclass" Type="LVClass" URL="../StandardFunction/StandardFunction.lvclass"/>
 </Library>
