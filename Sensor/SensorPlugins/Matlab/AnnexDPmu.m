@@ -94,8 +94,8 @@ else
         ROCOF = Freq;
         Timestamp = Freq;
         
-        kStart = SettlingTime*FSamp+1;
-        kEnd = ((Duration-SettlingTime)*FSamp)+1;
+        kStart = floor(SettlingTime*FSamp+1);
+        kEnd = floor(((Duration-SettlingTime)*FSamp)+1);
         
         for j = 1:Nphases  % decimation loop per phase
             i = 1;
@@ -155,9 +155,9 @@ else
     end % error check
 end % error check
 %hold off
-%Timestamp = Timestamp.';   % Transpose when using Matlab script node, do not transpose when using Labview MathScript
+Timestamp = Timestamp.';   % Transpose when using Matlab script node, do not transpose when using Labview MathScript
 %Synx = Synx.';             % Transpose when using Matlab script node, do not transpose when using Labview MathScript
-%Freq = Freq.';             % Transpose when using Matlab script node, do not transpose when using Labview MathScript
-%ROCOF = ROCOF.';           % Transpose when using Matlab script node, do not transpose when using Labview MathScript
+Freq = Freq.';             % Transpose when using Matlab script node, do not transpose when using Labview MathScript
+ROCOF = ROCOF.';           % Transpose when using Matlab script node, do not transpose when using Labview MathScript
 end %function
 

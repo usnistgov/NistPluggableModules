@@ -1,18 +1,19 @@
 % Test bed for genC37Signal and AnnexDPmu
 
-F0 = 60;
-Fs = 60;
-FSamp = 960;
-SettlingTime = 7;
+F0 = 50;
+Fs = 50;
+FSamp = 800;
+SettlingTime = 14/Fs;
 bPosSeq = true(1);
 WindowType = 'Hamming';
-FilterParams = [8.19,164];
+FilterParams = [7.75,142];
 
 T0 = 0;
 Duration = 10.0;
+size = FSamp*Duration;
 
 signalParams(1,:) =  [70,70,70,5,5,5];          % phase amplitude (given by the user in RMS
-signalParams(2,:) = [60.1,60.1,60.1,60.1,60.1,60.1];        % frequency (must be the same for all 6 channels or an error will be thrown
+signalParams(2,:) = [50,50,50,50,50,50];        % frequency (must be the same for all 6 channels or an error will be thrown
 signalParams(3,:) = [0,-120,120,0,-120,120];    % phase
 signalParams(4,:) = [0,0,0,0,0,0];              % Frequency of the interfering signal
 signalParams(5,:) = [0,0,0,0,0,0];              % Phase of the interfering signal
@@ -25,20 +26,30 @@ signalParams(11,:) = [0,0,0,0,0,0];             % ROCOF
 signalParams(12,:) = [0,0,0,0,0,0];             % phase (angle) step index
 signalParams(13,:) = [0,0,0,0,0,0];             % magnitude step index
 
-tStart = -SettlingTime;
-tEnd = Duration + SettlingTime;
-t = (tStart:1/FSamp:tEnd);
-EndTime = Duration;
+% tStart = -SettlingTime;
+% tEnd = Duration + SettlingTime;
+% t = (tStart:1/FSamp:tEnd);
+% EndTime = Duration;
+% 
+% [Signal] = genC37Signal( ...
+%     t, ...
+%     FSamp, ...
+%     signalParams, ...
+%     EndTime ...
+%     );
 
-[Signal] = genC37Signal( ...
-    t, ...
+
+[Signal] = PmuTestSignals( ...
+    T0, ...
+    SettlingTime/50, ...
+    size, ...
     FSamp, ...
-    signalParams, ...
-    EndTime ...
+    signalParams ...
     );
 
-%plot (t,Signal(1,:));
+
 Signal = Signal.';
+%plot (Signal(:,1));
 
 [Timestamp,...
           Synx,...

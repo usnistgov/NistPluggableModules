@@ -1,8 +1,9 @@
 function [Signal] = PmuTestSignals( ...
-    t, ...
+    t0, ...
+    SettlingTime, ...
+    size, ...
     FSamp, ...
-    signalparams, ...
-    EndTime ...
+    signalparams ...
     )
 
 % This is the .m file for the C37.118.1 power system signal for the
@@ -39,6 +40,9 @@ Wa = 2*pi*Fa;   % phase (angle) modulation frequency
 Wx = 2*pi*Fx;   % amplitude modulation frequency
 Wh = 2*pi*Fh;
 
+% create the time array
+t = t0-SettlingTime:1/FSamp:((size-1)/FSamp)+t0+SettlingTime;
+
 % Amplitude, AM and magnitude step
 Ain = zeros(length(Xm),length(t));
 for i = 1:length(Xm)
@@ -64,12 +68,12 @@ end
 
 % frequency ramp
 for i = 1:length(Rf)
-    Theta(i,t>=0 & t<EndTime) = Theta(i,t>=0 & t<EndTime) + (Rf(i) * 2 *pi * t(t>=0 & t<EndTime).^2);
+    Theta(i,t>=0 & t<SettlingTime) = Theta(i,t>=0 & t<SettlingTime) + (Rf(i) * 2 *pi * t(t>=0 & t<SettlingTime).^2);
 end
 
 % last frequency
 for i = 1:length(Rf)
-    Theta(i,t>=EndTime) = Theta(i,t>=EndTime) + (2*pi*Rf(i)*EndTime*t(t>=EndTime));
+    Theta(i,t>=SettlingTime) = Theta(i,t>=SettlingTime) + (2*pi*Rf(i)*SettlingTime*t(t>=SettlingTime));
 end
 
 % Complex signals
