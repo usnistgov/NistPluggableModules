@@ -13,7 +13,7 @@
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 		<Item Name="SensorPlugins.lvlib:C37.118 Sim.lvclass" Type="Friended Library" URL="../../SensorPlugins/C37.118_SimClass/C37.118 Sim.lvclass"/>
 		<Item Name="Main.vi" Type="Friended VI" URL="../../../../Main.vi"/>
-		<Item Name="BusEvents.vi" Type="Friended VI" URL="../../../../Framework/BusEvents.vi"/>
+		<Item Name="Bus.lvclass:BusEvents.vi" Type="Friended VI" URL="../../../BusClass/Public/BusEvents.vi"/>
 	</Item>
 	<Item Name="Private" Type="Folder">
 		<Item Name="SetGetClass.vi" Type="VI" URL="../Private/SetGetClass.vi"/>

@@ -27,11 +27,12 @@ Error Codes
 
 	"22001", "Clock Name: %s Not Found","Configure Clock command passed a clock name that was not found in the array of module clock properties"
 	"22002", "Unsupported Clock Type %s","The Named Clock has a clock type that is not handled by the configure clocks method"
-	"22003", "Unable to Synchronize Timing System to Clock Reference.  Be sure a cable is connected from the clock reference output to the ClkIn of the timing card"."The timing card uses a PLL to synchronize to an external timing reference (GPS, 1588, ETc.) Generally this is a 10 MHz clock input.
+	"22003", "Unable to Synchronize Timing System to Clock Reference.  Be sure a cable is connected from the clock reference output to the ClkIn of the timing card","The timing card uses a PLL to synchronize to an external timing reference (GPS, 1588, ETc.) Generally this is a 10 MHz clock input."
 	"22004", "Trigger Name: %s Not Found","Configure Trigger command passed a trigger name that was not found in the array of module trigger properties"
 	"22005", "Unsupported Trigger Type %s","The Named Trigger has a trigger type that is not handled by the configure triggers method"
 	"22006", "Trigger Name %s is not a %s trigger type.  Check the INI file","The Named Trigger has a trigger type that does not match the trigger type being handled."
 	"22007", "Trigger Name %s Timestamping has not been Enabled", " An attempt to read a trigger timestamp was made to a trigger which has not had timestamping enabled"
+	"22008", "Warning: Windows clock synchronization can only occur is LabView is being run as administrator. Either:1) Ensure Labview was started with Run As Administrator OR 2) Open Sync Module Settings and disable SyncWinClk.",""
 	
      .. csv-table:: Digitizer Module Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
