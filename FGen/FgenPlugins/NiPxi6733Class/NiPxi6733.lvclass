@@ -178,6 +178,7 @@
 		</Item>
 	</Item>
 	<Item Name="AM.ini" Type="Document" URL="../AM.ini"/>
+	<Item Name="DebugFGen.ini" Type="Document" URL="../DebugFGen.ini"/>
 	<Item Name="NiPxi6733_sine.ini" Type="Document" URL="../NiPxi6733_sine.ini"/>
 	<Item Name="NiPxi6733_sine_standalone.ini" Type="Document" URL="../NiPxi6733_sine_standalone.ini"/>
 	<Item Name="PMU_Cal.ini" Type="Document" URL="../PMU_Cal.ini"/>
