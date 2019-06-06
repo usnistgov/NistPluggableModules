@@ -13,4 +13,5 @@
 	</Item>
 	<Item Name="DigitizerBase.lvclass" Type="LVClass" URL="../DigitizerBaseClass/DigitizerBase.lvclass"/>
 	<Item Name="NiDaqMx.lvclass" Type="LVClass" URL="../NiDaqMxClass/NiDaqMx.lvclass"/>
+	<Item Name="Simulation.lvclass" Type="LVClass" URL="../SimulationClass/Simulation.lvclass"/>
 </Library>

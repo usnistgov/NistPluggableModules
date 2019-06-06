@@ -15,7 +15,7 @@
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 		<Item Name="Main.vi" Type="Friended VI" URL="../../../../Main.vi"/>
 		<Item Name="RegisterEventArray.vi" Type="Friended VI" URL="../../../../Framework/RegisterEventArray.vi"/>
-		<Item Name="BusEvents.vi" Type="Friended VI" URL="../../../../Framework/BusEvents.vi"/>
+		<Item Name="Bus.lvclass:BusEvents.vi" Type="Friended VI" URL="../../../BusClass/Public/BusEvents.vi"/>
 	</Item>
 	<Item Name="Private" Type="Folder">
 		<Item Name="Stop.vi" Type="VI" URL="../Private/Stop.vi"/>

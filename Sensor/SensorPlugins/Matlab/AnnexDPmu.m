@@ -10,8 +10,7 @@ function [Timestamp,...
                         F0, ...
                         Fs, ...
                         FSamp, ...
-                        SettlingTime ...
-                      )  
+                        SettlingTime)  
                      
 % Overview this implements a PMU model in the style of the C37.118.1 Annex
 % Signal Processing model in that it uses a quadrature demodulator to
@@ -42,9 +41,6 @@ else
         error(errMsg)
 
     else
-        % number of phases      
-        Nphases = length(Signal(1,:));
-        
         % From Duration and T0 minus the settling time,
         % calculate time vector, add (negative) time at the beginning for the
         % settling time
@@ -53,6 +49,16 @@ else
         tEnd = Duration - SettlingTime;
         t = (tStart:1/FSamp:tEnd);
         t = (t(1:end-1)).';
+        
+        % number of phases              
+        Nphases = length(Signal(1,:));
+        Nsynx = floor(length(t)/(FSamp/Fs))- (2*(SettlingTime*Fs))+1 ; % number of synchrophasor reports
+        
+        Synx = zeros(Nsynx,Nphases);
+        ImpPosSeq = zeros(Nsynx,floor(Nphases/3));
+        Freq = zeros(Nsynx,1);
+        ROCOF = Freq;
+        Timestamp = Freq;
         
                
         % DFT
@@ -85,17 +91,9 @@ else
         
      
         % decimate  
-        %filterDelay = (2*N)+(N/2);  % The center of the next window after the start        
-        Nsynx = floor(length(t)/(FSamp/Fs))- (2*(SettlingTime*Fs))+1 ; % number of synchrophasor reports
         
-        Synx = zeros(Nsynx,Nphases);
-        ImpPosSeq = zeros(Nsynx,floor(Nphases/3));
-        Freq = zeros(Nsynx,1);
-        ROCOF = Freq;
-        Timestamp = Freq;
-        
-        kStart = SettlingTime*FSamp+1;
-        kEnd = ((Duration-SettlingTime)*FSamp)+1;
+        kStart = floor(SettlingTime*FSamp+1);
+        kEnd = floor(((Duration-SettlingTime)*FSamp)+1);
         
         for j = 1:Nphases  % decimation loop per phase
             i = 1;
@@ -154,10 +152,8 @@ else
         end    
     end % error check
 end % error check
-%hold off
-%Timestamp = Timestamp.';   % Transpose when using Matlab script node, do not transpose when using Labview MathScript
-%Synx = Synx.';             % Transpose when using Matlab script node, do not transpose when using Labview MathScript
-%Freq = Freq.';             % Transpose when using Matlab script node, do not transpose when using Labview MathScript
-%ROCOF = ROCOF.';           % Transpose when using Matlab script node, do not transpose when using Labview MathScript
+% Timestamp = Timestamp.';   % Transpose when using Matlab script node, do not transpose when using Labview MathScript
+% Freq = Freq.';             % Transpose when using Matlab script node, do not transpose when using Labview MathScript
+% ROCOF = ROCOF.';           % Transpose when using Matlab script node, do not transpose when using Labview MathScript
 end %function
 

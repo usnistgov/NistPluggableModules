@@ -10,8 +10,9 @@
 </Property>
 	<Item Name="Friends List" Type="Friends List">
 		<Item Name="AnalysisPlugins.lvlib:AnalysisPluginsBase.lvclass" Type="Friended Library" URL="../../AnalysisPlugins/AnalysisPluginBaseClass/AnalysisPluginsBase.lvclass"/>
-		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../../Test_class/Test.lvclass"/>
+		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 		<Item Name="Main.vi" Type="Friended VI" URL="../../../../Main.vi"/>
+		<Item Name="Bus.lvclass:BusEvents.vi" Type="Friended VI" URL="../../../BusClass/Public/BusEvents.vi"/>
 	</Item>
 	<Item Name="Private" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>

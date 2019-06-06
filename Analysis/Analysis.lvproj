@@ -17,8 +17,6 @@
 		</Item>
 		<Item Name="AnalysisModule.lvlib" Type="Library" URL="../AnalysisModule/AnalysisModule.lvlib"/>
 		<Item Name="AnalysisPlugins.lvlib" Type="Library" URL="../AnalysisPlugins/AnalysisPlugins.lvlib"/>
-		<Item Name="SensorModule.lvlib" Type="Library" URL="../../Sensor/SensorModule/SensorModule.lvlib"/>
-		<Item Name="SensorPlugins.lvlib" Type="Library" URL="../../Sensor/SensorPlugins/SensorPlugins.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="user.lib" Type="Folder">
 				<Item Name="Array of VData to VArray__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array of VData to VArray__ogtk.vi"/>
@@ -146,6 +144,8 @@
 				<Item Name="Write To Spreadsheet File (string).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write To Spreadsheet File (string).vi"/>
 				<Item Name="Write To Spreadsheet File.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write To Spreadsheet File.vi"/>
 			</Item>
+			<Item Name="SensorModule.lvlib" Type="Library" URL="../../Sensor/SensorModule/SensorModule.lvlib"/>
+			<Item Name="SensorPlugins.lvlib" Type="Library" URL="../../Sensor/SensorPlugins/SensorPlugins.lvlib"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>

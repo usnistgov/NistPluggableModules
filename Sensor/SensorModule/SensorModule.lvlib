@@ -10,9 +10,10 @@
 </Property>
 	<Item Name="Friends List" Type="Friends List">
 		<Item Name="SensorPlugins.lvlib:SensorBase.lvclass" Type="Friended Library" URL="../../SensorPlugins/SensorBaseClass/SensorBase.lvclass"/>
-		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../../HILCalibration/TestClass/Test.lvclass"/>
+		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 		<Item Name="SensorPlugins.lvlib:C37.118 Sim.lvclass" Type="Friended Library" URL="../../SensorPlugins/C37.118_SimClass/C37.118 Sim.lvclass"/>
 		<Item Name="Main.vi" Type="Friended VI" URL="../../../../Main.vi"/>
+		<Item Name="Bus.lvclass:BusEvents.vi" Type="Friended VI" URL="../../../BusClass/Public/BusEvents.vi"/>
 	</Item>
 	<Item Name="Private" Type="Folder">
 		<Item Name="SetGetClass.vi" Type="VI" URL="../Private/SetGetClass.vi"/>

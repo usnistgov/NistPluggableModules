@@ -14,7 +14,10 @@
 	<Item Name="Matlab" Type="Folder">
 		<Item Name="ModulationFit.m" Type="Document" URL="../Matlab/ModulationFit.m"/>
 		<Item Name="SteadyStateFit.m" Type="Document" URL="../Matlab/SteadyStateFit.m"/>
+		<Item Name="WindowBuild.m" Type="Document" URL="../Matlab/WindowBuild.m"/>
+		<Item Name="WindowSave.m" Type="Document" URL="../Matlab/WindowSave.m"/>
 	</Item>
 	<Item Name="AnalysisPluginsBase.lvclass" Type="LVClass" URL="../AnalysisPluginBaseClass/AnalysisPluginsBase.lvclass"/>
 	<Item Name="PmuAnalysis.lvclass" Type="LVClass" URL="../PmuAnalysisClass/PmuAnalysis.lvclass"/>
+	<Item Name="SaveWaveforms.lvclass" Type="LVClass" URL="../SaveWaveformsClass/SaveWaveforms.lvclass"/>
 </Library>

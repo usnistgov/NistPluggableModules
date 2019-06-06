@@ -31,3 +31,4 @@
 /BusClass/*.aliases
 /BusClass/*.lvlps
 
+/Analysis/AnalysisPlugins/Matlab/bar.mat

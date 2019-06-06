@@ -94,9 +94,6 @@
 			</Item>
 		</Item>
 	</Item>
-	<Item Name="Matlab" Type="Folder">
-		<Item Name="CalcStateMatrix.m" Type="Document" URL="../../Matlab/CalcStateMatrix.m"/>
-	</Item>
 	<Item Name="Private" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 		<Item Name="CalcMat.vi" Type="VI" URL="../Private/CalcMat.vi">
