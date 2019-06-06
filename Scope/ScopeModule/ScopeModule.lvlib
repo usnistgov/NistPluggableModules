@@ -12,6 +12,8 @@
 		<Item Name="ScopePlugins.lvlib" Type="Friended Library" URL="../../ScopePlugins/ScopePlugins.lvlib"/>
 		<Item Name="ScopePlugins.lvlib:ScopePluginsBase.lvclass" Type="Friended Library" URL="../../ScopePlugins/ScopePluginBaseClass/ScopePluginsBase.lvclass"/>
 		<Item Name="ScopePlugins.lvlib:Infiniium.lvclass" Type="Friended Library" URL="../../ScopePlugins/InfiniiumClass/Infiniium.lvclass"/>
+		<Item Name="Bus.lvclass" Type="Friended Library" URL="../../../BusClass/Bus.lvclass"/>
+		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 	</Item>
 	<Item Name="Private" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
