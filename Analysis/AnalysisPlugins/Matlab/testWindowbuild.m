@@ -23,8 +23,9 @@ clear all;
 % msg = sprintf('t0 = %s',datestr(datenum(t0/spd),'HH:MM:SS.FFF'));
 % disp(msg)
 
-cd('C:\Users\PowerLabNI3\Documents\PMUCAL\Output')
+path = 'C:\Users\PowerLabNI3\Documents\PMUCAL\Output\';
 name = 'SavedWindow.mat';
+name = strcat(path,name);
 
 A = open(name);
 P = A.P;
@@ -61,9 +62,9 @@ for i = 1:length(Sensor)
     
     
     
-    msgA = sprintf ('A_DateTime: %s',char(A_DateTime));
-    msgW = sprintf ('W_DateTime: %s',char(W_DateTime));
-    msgT = sprintf ('t0_DateTime: %s',char(t0_DateTime));
+    msgA = sprintf ('tA: %s',char(A_DateTime));
+    msgW = sprintf ('tW: %s',char(W_DateTime));
+    msgT = sprintf ('t0: %s',char(t0_DateTime));
     disp(msgA)
     disp(msgW)
     disp(msgT)
