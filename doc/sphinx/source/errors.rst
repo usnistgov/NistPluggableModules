@@ -66,4 +66,5 @@ Error Codes
 	
 	"31001", "Bus Number not found %d", "While searching the bus class for a particular bus number, the bus was not found in the class"
 	"31002", "Bus number %d already exists", "While trying to add a bus, the bus number was found to already exist"
+	"31003", "Invalid Module type %s", "While configuring modules, an unrecognized module type was found"
 		
