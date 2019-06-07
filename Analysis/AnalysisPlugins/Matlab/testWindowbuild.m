@@ -92,9 +92,8 @@ for i = 1:length(Sensor)
     WindowIn = WindowOut;
     WindowTime = TimeStamp;
     
-    if isempty(RemainingSamples);
-        j=j+1;
-    else
+    j=j+1;
+    if ~isempty(RemainingSamples);
         Samples(j).Y = RemainingSamples;
         Samples(j).t0 = RemainingTime;
     end

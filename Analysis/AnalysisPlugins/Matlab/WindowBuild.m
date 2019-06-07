@@ -58,6 +58,12 @@ if nSamplesNeeded > nWindow; nSamplesNeeded = nWindow; end
 % determine the timestamp that we need
 timeStampNeeded = (nWindow/2-nSamplesNeeded)*dt(1)+AnalysisTime;
 
+% DEBUG display the timestamp
+tN = datetime(timeStampNeeded, 'ConvertFrom', 'epochtime', 'Epoch', '1904-01-01'); tN.Format='dd-MMM-uuuu HH:mm:ss.SSS';
+msg = sprintf('tN: %s ',char(tN));
+disp (msg);
+% DEBUG
+
 % find the index of the first needed sample of Y
 %   This assumes that t0(1) is the time of the first sample of Y
 nY = length(Y);
