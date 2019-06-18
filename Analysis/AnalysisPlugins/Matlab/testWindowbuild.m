@@ -57,7 +57,7 @@ for i = 1:length(Sensor)
     A_DateTime.Format = format;
     W_DateTime = datetime(WindowTime, 'ConvertFrom', 'epochtime', 'Epoch', '1904-01-01');
     W_DateTime.Format = format;
-    t0_DateTime = datetime(t0, 'ConvertFrom', 'epochtime', 'Epoch', '1904-01-01');
+    t0_DateTime = datetime(t0(1), 'ConvertFrom', 'epochtime', 'Epoch', '1904-01-01');
     t0_DateTime.Format = format;
     
     
@@ -88,7 +88,7 @@ for i = 1:length(Sensor)
         dt, ...
         t0);
     
-    plot(WindowOut)
+    plot(WindowOut')
     WindowIn = WindowOut;
     WindowTime = TimeStamp;
     
