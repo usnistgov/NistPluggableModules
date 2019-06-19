@@ -32,3 +32,5 @@
 /BusClass/*.lvlps
 
 /Analysis/AnalysisPlugins/Matlab/bar.mat
+/AcPwr/*.aliases
+/AcPwr/*.lvlps
