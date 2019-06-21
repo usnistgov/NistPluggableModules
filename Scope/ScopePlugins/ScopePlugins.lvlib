@@ -21,5 +21,6 @@
 	</Item>
 	<Item Name="Infiniium.lvclass" Type="LVClass" URL="../InfiniiumClass/Infiniium.lvclass"/>
 	<Item Name="IVI_Class.lvclass" Type="LVClass" URL="../IVI_Class/IVI_Class.lvclass"/>
+	<Item Name="NIScope.lvclass" Type="LVClass" URL="../NIScopeClass/NIScope.lvclass"/>
 	<Item Name="ScopePluginsBase.lvclass" Type="LVClass" URL="../ScopePluginBaseClass/ScopePluginsBase.lvclass"/>
 </Library>
