@@ -34,3 +34,5 @@
 /Analysis/AnalysisPlugins/Matlab/bar.mat
 /AcPwr/*.aliases
 /AcPwr/*.lvlps
+/FGen/*.aliases
+/FGen/*.lvlps
