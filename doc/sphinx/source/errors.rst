@@ -50,6 +50,13 @@ Error Codes
 	"24001", "Trigger type %s is not supported by this hardware", "attempted to configure a trigger type that is not handled by the hardware being used."
 	"24501", "Multiband function class, handle %s does not have equal number of frequency, Damping, Index and phase elements",  "The confuration elements for multiband oscillators must have the same number of elements for each channel"
 	
+    .. csv-table:: Analysis Class Error Codes
+	:header: "CODE", "ERROR", "COMMENT"
+	:widths: 10,45,45
+	
+	"25001", "Warning: Cannot Change Configuration while Analysis is running", User attempted to access the Analysis Configuration while an analysis was in progress"
+
+
 
      .. csv-table:: Test Class Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
