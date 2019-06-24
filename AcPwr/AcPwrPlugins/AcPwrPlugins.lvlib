@@ -12,4 +12,5 @@
 		<Item Name="AcPwrModule.lvlib" Type="Friended Library" URL="../../AcPwrModule/AcPwrModule.lvlib"/>
 	</Item>
 	<Item Name="AcPwrBase.lvclass" Type="LVClass" URL="../AcPwrBaseClass/AcPwrBase.lvclass"/>
+	<Item Name="ChromaAcLoad.lvclass" Type="LVClass" URL="../ChromaAcLoad/ChromaAcLoad.lvclass"/>
 </Library>
