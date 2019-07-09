@@ -13,6 +13,7 @@
 	</Item>
 	<Item Name="Local.lvclass" Type="LVClass" URL="../Local/Local.lvclass"/>
 	<Item Name="NiPxi6682.lvclass" Type="LVClass" URL="../NiPxi6682/NiPxi6682.lvclass"/>
+	<Item Name="NiPxi6683H.lvclass" Type="LVClass" URL="../NiPxi6683H/NiPxi6683H.lvclass"/>
 	<Item Name="PXI_MultiTrig.lvclass" Type="LVClass" URL="../PXI_MultiTrig/PXI_MultiTrig.lvclass"/>
 	<Item Name="SyncPluginBase.lvclass" Type="LVClass" URL="../SyncPluginBase/SyncPluginBase.lvclass"/>
 </Library>
