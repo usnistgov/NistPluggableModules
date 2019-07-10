@@ -18,7 +18,7 @@
 		<Item Name="Bus.lvclass:BusEvents.vi" Type="Friended VI" URL="../../../BusClass/Public/BusEvents.vi"/>
 	</Item>
 	<Item Name="Private" Type="Folder">
-		<Item Name="Stop.vi" Type="VI" URL="../Private/Stop.vi"/>
+		<Item Name="State.vi" Type="VI" URL="../Private/State.vi"/>
 	</Item>
 	<Item Name="Protected" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
