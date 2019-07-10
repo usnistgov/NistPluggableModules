@@ -15,6 +15,7 @@
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 		<Item Name="AcPwrClass.vi" Type="VI" URL="../Private/AcPwrClass.vi"/>
 		<Item Name="AcPwrState.vi" Type="VI" URL="../Private/AcPwrState.vi"/>
+		<Item Name="StopAndWaitForIdle.vi" Type="VI" URL="../Private/StopAndWaitForIdle.vi"/>
 	</Item>
 	<Item Name="Protected" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
@@ -23,6 +24,7 @@
 			<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../Protected/Broadcasts/DestroyBroadcastEvents.vi"/>
 			<Item Name="DidInit.vi" Type="VI" URL="../Protected/Broadcasts/DidInit.vi"/>
 			<Item Name="DidStop.vi" Type="VI" URL="../Protected/Broadcasts/DidStop.vi"/>
+			<Item Name="Measurements.vi" Type="VI" URL="../Protected/Broadcasts/Measurements.vi"/>
 			<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../Protected/Broadcasts/ObtainBroadcastEvents.vi"/>
 			<Item Name="ReportError.vi" Type="VI" URL="../Protected/Broadcasts/ReportError.vi"/>
 			<Item Name="StatusUpdate.vi" Type="VI" URL="../Protected/Broadcasts/StatusUpdate.vi"/>
@@ -34,6 +36,7 @@
 		</Item>
 		<Item Name="Requests" Type="Folder">
 			<Item Name="clRequestEvents.ctl" Type="VI" URL="../Protected/Requests/clRequestEvents.ctl"/>
+			<Item Name="ConfigDeviceRequest.vi" Type="VI" URL="../Protected/Requests/ConfigDeviceRequest.vi"/>
 			<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../Protected/Requests/DestroyRequestEvents.vi"/>
 			<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../Protected/Requests/ObtainRequestEvents.vi"/>
 			<Item Name="ShowPanelRequest.vi" Type="VI" URL="../Protected/Requests/ShowPanelRequest.vi"/>

@@ -22,7 +22,20 @@
 				<Item Name="C63800 Close.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Close.vi"/>
 				<Item Name="C63800 Initialize.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Initialize.vi"/>
 				<Item Name="C63800 IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 IVI Error Converter.vi"/>
+				<Item Name="C63800 M/F Apparent Power.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 M/F Apparent Power.vi"/>
+				<Item Name="C63800 M/F Power Factor.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 M/F Power Factor.vi"/>
+				<Item Name="C63800 Measure Or Fetch CF of Current.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch CF of Current.vi"/>
+				<Item Name="C63800 Measure Or Fetch Current.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Current.vi"/>
+				<Item Name="C63800 Measure Or Fetch Frequency.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Frequency.vi"/>
+				<Item Name="C63800 Measure Or Fetch Peak Current.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Peak Current.vi"/>
+				<Item Name="C63800 Measure Or Fetch Power.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Power.vi"/>
+				<Item Name="C63800 Measure Or Fetch Voltage THD.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Voltage THD.vi"/>
+				<Item Name="C63800 Measure Or Fetch Voltage.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Voltage.vi"/>
 				<Item Name="C63800 Reset.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Reset.vi"/>
+				<Item Name="C63800 Set DC Voltage of CV.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set DC Voltage of CV.vi"/>
+				<Item Name="C63800 Set Irms(max) In AC CR.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Irms(max) In AC CR.vi"/>
+				<Item Name="C63800 Set Load State.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Load State.vi"/>
+				<Item Name="C63800 Set Maximum RMS Current.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Maximum RMS Current.vi"/>
 				<Item Name="C63800.dll" Type="Document" URL="/&lt;instrlib&gt;/C63800/C63800.dll"/>
 			</Item>
 			<Item Name="user.lib" Type="Folder">
@@ -107,6 +120,9 @@
 				<Item Name="GetNamedRendezvousPrefix.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/rendezvs.llb/GetNamedRendezvousPrefix.vi"/>
 				<Item Name="GetRTHostConnectedProp.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/GetRTHostConnectedProp.vi"/>
 				<Item Name="IVI Error Message Builder.vi" Type="VI" URL="/&lt;vilib&gt;/errclust.llb/IVI Error Message Builder.vi"/>
+				<Item Name="IviACPwr Fetch Measurement [MSR].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviacpwr/_IviACPwr.llb/IviACPwr Fetch Measurement [MSR].vi"/>
+				<Item Name="IviACPwr Initiate Measurement [MSR].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviacpwr/_IviACPwr.llb/IviACPwr Initiate Measurement [MSR].vi"/>
+				<Item Name="IviACPwr IVI Error Converter.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviacpwr/_IviACPwr.llb/IviACPwr IVI Error Converter.vi"/>
 				<Item Name="Longest Line Length in Pixels.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Longest Line Length in Pixels.vi"/>
 				<Item Name="LVBoundsTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVBoundsTypeDef.ctl"/>
 				<Item Name="LVRectTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVRectTypeDef.ctl"/>
@@ -139,8 +155,10 @@
 				<Item Name="whitespace.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/whitespace.ctl"/>
 			</Item>
 			<Item Name="Functions.lvlib" Type="Library" URL="../../FGen/MemberClasses/Functions.lvlib"/>
+			<Item Name="IviACPwr_ni.dll" Type="Document" URL="IviACPwr_ni.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
-			<Item Name="matscript.dll" Type="Document"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
