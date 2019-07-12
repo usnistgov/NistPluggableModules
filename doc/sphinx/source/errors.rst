@@ -16,10 +16,10 @@ Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
 	:widths: 10,45,45
 	
-	"21001", "Improper channel name %s.  Must be "Channel 1" through "Channel 4", "The O'Scope channel names must be specific to the scope class"
+	"21001", "Improper channel name %s.  Must be Channel 1 through Channel 4", "The OScope channel names must be specific to the scope class"
 	"21002", "Trigger Type %s is not yet supported", "This Trigger type will require the addition of an IVI extended class to the module"
-	"21003", "The scope module is not connected to the oscilloscope.  Call "Initialize" to connect to the o'scope", ""
-	"21004", "Acquisition type "%s" is not supported by this oscilloscope",""
+	"21003", "The scope module is not connected to the oscilloscope.  Call Initialize to connect to the Oscope", ""
+	"21004", "Acquisition type %s is not supported by this oscilloscope",""
 
      .. csv-table:: Sync Module Error Codes
 	:header: "CODE", "ERROR", "COMMENT"

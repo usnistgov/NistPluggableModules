@@ -37,3 +37,5 @@
 /FGen/*.aliases
 /FGen/*.lvlps
 /Sync/Doc/Source/images/*.db
+/Analysis/AnalysisPlugins/Matlab/Fourier/ArtificialTS.m
+/Analysis/AnalysisPlugins/Matlab/Fourier/Fourier.mlx

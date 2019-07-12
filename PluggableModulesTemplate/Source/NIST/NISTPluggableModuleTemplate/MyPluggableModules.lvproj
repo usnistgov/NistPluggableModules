@@ -11,11 +11,13 @@
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="Documentation" Type="Folder">
-			<Item Name="errors.docx" Type="Document" URL="../../documentation/errors.docx"/>
-			<Item Name="moduleAppendix.rst" Type="Document" URL="../../documentation/moduleAppendix.rst"/>
+			<Item Name="errors.rst" Type="Document" URL="../../../../../doc/sphinx/source/errors.rst"/>
+			<Item Name="moduleAppendix.rst" Type="Document" URL="../../../../../doc/sphinx/source/moduleAppendix.rst"/>
 		</Item>
+		<Item Name="Check Error.vi" Type="VI" URL="/C/Users/gra1/Desktop/Check Error.vi"/>
 		<Item Name="MyPluggableModule.lvlib" Type="Library" URL="../MyPluggableModule/MyPluggableModule.lvlib"/>
 		<Item Name="MyPlugins.lvlib" Type="Library" URL="../MyPlugins/MyPlugins.lvlib"/>
+		<Item Name="PI Base.vi" Type="VI" URL="/C/Users/gra1/Desktop/PI Base.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="user.lib" Type="Folder">
 				<Item Name="Array Size(s)__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array Size(s)__ogtk.vi"/>
