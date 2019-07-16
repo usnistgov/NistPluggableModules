@@ -15,7 +15,7 @@
 		<Item Name="TestBase.lvclass" Type="Friended Library" URL="../../../Framework/TestBaseClass/TestBase.lvclass"/>
 		<Item Name="WfrmPlugins.lvlib:BaseWfrmPlugin.lvclass" Type="Friended Library" URL="../../WfrmPlugins/EventPluginBaseClass/BaseWfrmPlugin.lvclass"/>
 		<Item Name="Visualization.lvlib:VisualizeStatus.lvclass" Type="Friended Library" URL="../../../Visualization/VisualizeStatus/VisualizeStatus.lvclass"/>
-		<Item Name="Main.vi" Type="Friended VI" URL="../../../../Framework/Main.vi"/>
+		<Item Name="main.vi" Type="Friended VI" URL="../../../../SgInterop/main.vi"/>
 	</Item>
 	<Item Name="Private" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
