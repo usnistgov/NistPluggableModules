@@ -20,6 +20,7 @@
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="C63800 Close.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Close.vi"/>
+				<Item Name="C63800 Get RL Programmable Range.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get RL Programmable Range.vi"/>
 				<Item Name="C63800 Initialize.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Initialize.vi"/>
 				<Item Name="C63800 IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 IVI Error Converter.vi"/>
 				<Item Name="C63800 M/F Apparent Power.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 M/F Apparent Power.vi"/>
@@ -32,13 +33,49 @@
 				<Item Name="C63800 Measure Or Fetch Voltage THD.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Voltage THD.vi"/>
 				<Item Name="C63800 Measure Or Fetch Voltage.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Voltage.vi"/>
 				<Item Name="C63800 Reset.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Reset.vi"/>
+				<Item Name="C63800 Set AC or DC Mode.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set AC or DC Mode.vi"/>
+				<Item Name="C63800 Set AC Power Loading.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set AC Power Loading.vi"/>
+				<Item Name="C63800 Set C of AC Inrush.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set C of AC Inrush.vi"/>
+				<Item Name="C63800 Set C of AC RLC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set C of AC RLC.vi"/>
+				<Item Name="C63800 Set CF of AC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set CF of AC.vi"/>
+				<Item Name="C63800 Set CF of DC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set CF of DC.vi"/>
+				<Item Name="C63800 Set CF PF Mode.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set CF PF Mode.vi"/>
+				<Item Name="C63800 Set CF PF Priority.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set CF PF Priority.vi"/>
+				<Item Name="C63800 Set DC Current.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set DC Current.vi"/>
+				<Item Name="C63800 Set DC Power Loading.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set DC Power Loading.vi"/>
+				<Item Name="C63800 Set DC Resistance Loading.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set DC Resistance Loading.vi"/>
 				<Item Name="C63800 Set DC Voltage of CV.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set DC Voltage of CV.vi"/>
+				<Item Name="C63800 Set Fall Slew Rate of CC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Fall Slew Rate of CC.vi"/>
+				<Item Name="C63800 Set Fall Slew Rate of CR.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Fall Slew Rate of CR.vi"/>
+				<Item Name="C63800 Set Frequency of DC Rectified.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Frequency of DC Rectified.vi"/>
+				<Item Name="C63800 Set Ip(max) of AC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Ip(max) of AC.vi"/>
+				<Item Name="C63800 Set Ip(max) of DC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Ip(max) of DC.vi"/>
 				<Item Name="C63800 Set Irms(max) In AC CR.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Irms(max) In AC CR.vi"/>
+				<Item Name="C63800 Set Load Mode.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Load Mode.vi"/>
+				<Item Name="C63800 Set Load Short Circuited.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Load Short Circuited.vi"/>
 				<Item Name="C63800 Set Load State.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Load State.vi"/>
+				<Item Name="C63800 Set LS of AC Inrush.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set LS of AC Inrush.vi"/>
+				<Item Name="C63800 Set Ls of AC RLC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Ls of AC RLC.vi"/>
+				<Item Name="C63800 Set Maximum AC Power Loading.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Maximum AC Power Loading.vi"/>
 				<Item Name="C63800 Set Maximum RMS Current.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Maximum RMS Current.vi"/>
+				<Item Name="C63800 Set Peak Current Meas Hold.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Peak Current Meas Hold.vi"/>
+				<Item Name="C63800 Set PF of AC RLC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set PF of AC RLC.vi"/>
+				<Item Name="C63800 Set PF of AC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set PF of AC.vi"/>
+				<Item Name="C63800 Set Phase of AC Inrush.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Phase of AC Inrush.vi"/>
+				<Item Name="C63800 Set Power of AC RLC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Power of AC RLC.vi"/>
+				<Item Name="C63800 Set Resistance Loading.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Resistance Loading.vi"/>
+				<Item Name="C63800 Set Rise Slew Rate of CC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Rise Slew Rate of CC.vi"/>
+				<Item Name="C63800 Set Rise Slew Rate of CR.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Rise Slew Rate of CR.vi"/>
+				<Item Name="C63800 Set RL of AC Inrush.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set RL of AC Inrush.vi"/>
+				<Item Name="C63800 Set RL of AC RLC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set RL of AC RLC.vi"/>
+				<Item Name="C63800 Set RMS Current.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set RMS Current.vi"/>
+				<Item Name="C63800 Set RS of AC Inrush.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set RS of AC Inrush.vi"/>
+				<Item Name="C63800 Set RS of AC RLC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set RS of AC RLC.vi"/>
+				<Item Name="C63800 Set SYNC State of DC Rectified.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set SYNC State of DC Rectified.vi"/>
 				<Item Name="C63800.dll" Type="Document" URL="/&lt;instrlib&gt;/C63800/C63800.dll"/>
 			</Item>
 			<Item Name="user.lib" Type="Folder">
+				<Item Name="1D Array to String__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/string/string.llb/1D Array to String__ogtk.vi"/>
 				<Item Name="Array of VData to VArray__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array of VData to VArray__ogtk.vi"/>
 				<Item Name="Array of VData to VCluster__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array of VData to VCluster__ogtk.vi"/>
 				<Item Name="Array Size(s)__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array Size(s)__ogtk.vi"/>
@@ -120,6 +157,7 @@
 				<Item Name="GetNamedRendezvousPrefix.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/rendezvs.llb/GetNamedRendezvousPrefix.vi"/>
 				<Item Name="GetRTHostConnectedProp.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/GetRTHostConnectedProp.vi"/>
 				<Item Name="IVI Error Message Builder.vi" Type="VI" URL="/&lt;vilib&gt;/errclust.llb/IVI Error Message Builder.vi"/>
+				<Item Name="IviACPwr Configure Output Enabled.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviacpwr/_IviACPwr.llb/IviACPwr Configure Output Enabled.vi"/>
 				<Item Name="IviACPwr Fetch Measurement [MSR].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviacpwr/_IviACPwr.llb/IviACPwr Fetch Measurement [MSR].vi"/>
 				<Item Name="IviACPwr Initiate Measurement [MSR].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviacpwr/_IviACPwr.llb/IviACPwr Initiate Measurement [MSR].vi"/>
 				<Item Name="IviACPwr IVI Error Converter.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviacpwr/_IviACPwr.llb/IviACPwr IVI Error Converter.vi"/>

@@ -38,6 +38,8 @@
 			<Item Name="clRequestEvents.ctl" Type="VI" URL="../Protected/Requests/clRequestEvents.ctl"/>
 			<Item Name="ConfigDeviceRequest.vi" Type="VI" URL="../Protected/Requests/ConfigDeviceRequest.vi"/>
 			<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../Protected/Requests/DestroyRequestEvents.vi"/>
+			<Item Name="DeviceOffRequest.vi" Type="VI" URL="../Protected/Requests/DeviceOffRequest.vi"/>
+			<Item Name="DeviceOnRequest.vi" Type="VI" URL="../Protected/Requests/DeviceOnRequest.vi"/>
 			<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../Protected/Requests/ObtainRequestEvents.vi"/>
 			<Item Name="ShowPanelRequest.vi" Type="VI" URL="../Protected/Requests/ShowPanelRequest.vi"/>
 			<Item Name="StartMeasRequest.vi" Type="VI" URL="../Protected/Requests/StartMeasRequest.vi"/>
