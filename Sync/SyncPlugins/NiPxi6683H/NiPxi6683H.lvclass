@@ -195,5 +195,14 @@
 			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 			<Property Name="NI.ClassItem.State" Type="Int">1342972432</Property>
 		</Item>
+		<Item Name="TimedTrigger.vi" Type="VI" URL="../PublicMethods/TimedTrigger.vi">
+			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">&amp;!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!(X!!!!$1!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"!!!!%"!=!!?!!!G%6.Z&lt;G.1&lt;(6H;7ZT,GRW&lt;'FC%EZJ5(BJ.D9Y-UAO&lt;(:D&lt;'&amp;T=Q!!$EZJ5(BJ.D9Y-UAA&lt;X6U!!!A1&amp;!!!Q!!!!%!!B.F=H*P=C"J&lt;C!I&lt;G]A:8*S&lt;X)J!"2!-0````],6(*J:W&gt;F=EZB&lt;75!)5!+!"J5;7VF)'&amp;G&gt;'6S)'ZF?(1A662$)&amp;.F9W^O:!!!&amp;U!+!""5=GFH:W6S)%2V=G&amp;U;7^O!!"Q!0%!!!!!!!!!!R&amp;4?7ZD5'RV:WFO=SZM&gt;GRJ9B:4?7ZD5'RV:WFO1G&amp;T:3ZM&gt;G.M98.T%G.M6'FN:725=GFH:W6S,G.U&lt;!!M1&amp;!!!Q!(!!A!#2J5;7VF)'&amp;G&gt;'6S)'ZF?(1A662$)&amp;.F9W^O:!!!0E"Q!"Y!!#925XFO9V"M&gt;7&gt;J&lt;H-O&lt;(:M;7)34GF1?'EW.DAT3#ZM&gt;G.M98.T!!!.4GF1?'EW.DAT3#"J&lt;A"5!0!!$!!$!!1!"!!&amp;!!1!"!!%!!1!"A!%!!I!#Q-!!(A!!!U)!!!!!!!!!!!!!)U,!!!!!!!!!!!!!!!!!!!!!!!!#A!!!!!!!!!)!!!!EA!!!!!"!!Q!!!!!</Property>
+			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
+			<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
+			<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">false</Property>
+			<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
+			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
+			<Property Name="NI.ClassItem.State" Type="Int">1342972432</Property>
+		</Item>
 	</Item>
 </LVClass>
