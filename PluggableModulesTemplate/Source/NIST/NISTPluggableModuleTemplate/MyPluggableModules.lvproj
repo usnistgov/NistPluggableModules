@@ -14,10 +14,8 @@
 			<Item Name="errors.rst" Type="Document" URL="../../../../../doc/sphinx/source/errors.rst"/>
 			<Item Name="moduleAppendix.rst" Type="Document" URL="../../../../../doc/sphinx/source/moduleAppendix.rst"/>
 		</Item>
-		<Item Name="Check Error.vi" Type="VI" URL="/C/Users/gra1/Desktop/Check Error.vi"/>
 		<Item Name="MyPluggableModule.lvlib" Type="Library" URL="../MyPluggableModule/MyPluggableModule.lvlib"/>
 		<Item Name="MyPlugins.lvlib" Type="Library" URL="../MyPlugins/MyPlugins.lvlib"/>
-		<Item Name="PI Base.vi" Type="VI" URL="/C/Users/gra1/Desktop/PI Base.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="user.lib" Type="Folder">
 				<Item Name="Array Size(s)__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array Size(s)__ogtk.vi"/>
@@ -118,6 +116,7 @@
 				<Item Name="Wait at Rendezvous.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/rendezvs.llb/Wait at Rendezvous.vi"/>
 				<Item Name="whitespace.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/whitespace.ctl"/>
 			</Item>
+			<Item Name="anCLASS.vi" Type="VI" URL="../MyPluggableModule/PublicAPI/anCLASS.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
