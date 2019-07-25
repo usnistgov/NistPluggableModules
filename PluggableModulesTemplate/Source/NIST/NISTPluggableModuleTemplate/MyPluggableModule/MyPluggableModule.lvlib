@@ -64,6 +64,7 @@
 	</Item>
 	<Item Name="Test" Type="Folder">
 		<Item Name="IniFiles.vi" Type="VI" URL="../Test/IniFiles.vi"/>
+		<Item Name="InitControls.vi" Type="VI" URL="../Test/InitControls.vi"/>
 		<Item Name="InitSelectRing.vi" Type="VI" URL="../Test/InitSelectRing.vi"/>
 		<Item Name="TestInfo.ctl" Type="VI" URL="../Test/TestInfo.ctl"/>
 		<Item Name="TestInfo.vi" Type="VI" URL="../Test/TestInfo.vi"/>
