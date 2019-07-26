@@ -26,6 +26,7 @@
 			<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../Protected/Broadcasts/DestroyBroadcastEvents.vi"/>
 			<Item Name="DidInit.vi" Type="VI" URL="../Protected/Broadcasts/DidInit.vi"/>
 			<Item Name="DidStop.vi" Type="VI" URL="../Protected/Broadcasts/DidStop.vi"/>
+			<Item Name="Info.vi" Type="VI" URL="../Protected/Broadcasts/Info.vi"/>
 			<Item Name="LockStatus.vi" Type="VI" URL="../Protected/Broadcasts/LockStatus.vi"/>
 			<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../Protected/Broadcasts/ObtainBroadcastEvents.vi"/>
 			<Item Name="ReportError.vi" Type="VI" URL="../Protected/Broadcasts/ReportError.vi"/>

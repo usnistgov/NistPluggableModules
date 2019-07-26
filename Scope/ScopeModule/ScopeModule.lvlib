@@ -14,6 +14,7 @@
 		<Item Name="ScopePlugins.lvlib:Infiniium.lvclass" Type="Friended Library" URL="../../ScopePlugins/InfiniiumClass/Infiniium.lvclass"/>
 		<Item Name="Bus.lvclass" Type="Friended Library" URL="../../../BusClass/Bus.lvclass"/>
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
+		<Item Name="ScopePlugins.lvlib:NIScope.lvclass" Type="Friended Library" URL="../../ScopePlugins/NIScopeClass/NIScope.lvclass"/>
 	</Item>
 	<Item Name="Private" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
@@ -44,6 +45,7 @@
 			<Item Name="StopRequest.vi" Type="VI" URL="../Protected/Requests/StopRequest.vi"/>
 		</Item>
 		<Item Name="clEventType.ctl" Type="VI" URL="../Protected/clEventType.ctl"/>
+		<Item Name="Counter.vi" Type="VI" URL="../Private/Counter.vi"/>
 		<Item Name="DestroyClone.vi" Type="VI" URL="../Protected/DestroyClone.vi"/>
 		<Item Name="ErrorHandler.vi" Type="VI" URL="../Protected/ErrorHandler.vi"/>
 		<Item Name="HandleExit.vi" Type="VI" URL="../Protected/HandleExit.vi"/>

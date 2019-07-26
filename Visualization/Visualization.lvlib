@@ -15,4 +15,5 @@
 	<Item Name="VisualizeSamp.lvclass" Type="LVClass" URL="../VisualizeSamp/VisualizeSamp.lvclass"/>
 	<Item Name="VisualizeDigitizer.lvclass" Type="LVClass" URL="../VisualizeDigitizer/VisualizeDigitizer.lvclass"/>
 	<Item Name="VisualizeAnalysis.lvclass" Type="LVClass" URL="../VisualizeAnalysis/VisualizeAnalysis.lvclass"/>
+	<Item Name="VisualizeScope.lvclass" Type="LVClass" URL="../VisualizeScope/VisualizeScope.lvclass"/>
 </Library>

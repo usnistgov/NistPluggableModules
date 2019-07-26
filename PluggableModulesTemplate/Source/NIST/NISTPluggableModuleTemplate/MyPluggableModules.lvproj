@@ -11,8 +11,8 @@
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="Documentation" Type="Folder">
-			<Item Name="errors.docx" Type="Document" URL="../../documentation/errors.docx"/>
-			<Item Name="moduleAppendix.rst" Type="Document" URL="../../documentation/moduleAppendix.rst"/>
+			<Item Name="errors.rst" Type="Document" URL="../../../../../doc/sphinx/source/errors.rst"/>
+			<Item Name="moduleAppendix.rst" Type="Document" URL="../../../../../doc/sphinx/source/moduleAppendix.rst"/>
 		</Item>
 		<Item Name="MyPluggableModule.lvlib" Type="Library" URL="../MyPluggableModule/MyPluggableModule.lvlib"/>
 		<Item Name="MyPlugins.lvlib" Type="Library" URL="../MyPlugins/MyPlugins.lvlib"/>
