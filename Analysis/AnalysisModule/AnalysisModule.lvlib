@@ -11,7 +11,6 @@
 	<Item Name="Friends List" Type="Friends List">
 		<Item Name="AnalysisPlugins.lvlib:AnalysisPluginsBase.lvclass" Type="Friended Library" URL="../../AnalysisPlugins/AnalysisPluginBaseClass/AnalysisPluginsBase.lvclass"/>
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
-		<Item Name="main.vi" Type="Friended VI" URL="../../../../SgInterop/main.vi"/>
 		<Item Name="Bus.lvclass:BusEvents.vi" Type="Friended VI" URL="../../../BusClass/Public/BusEvents.vi"/>
 	</Item>
 	<Item Name="Private" Type="Folder">
