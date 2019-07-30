@@ -32,21 +32,25 @@ function [Synx,Freq,ROCOF] = SteadyStateFit ( ...
 %HarmFreq ?
 %FundCycles: number of cycles of fundamental frequency
 
-FundFrequency = SignalParams(1);
-HarmFrequency = SignalParams(2);
-InterHarmFrequency = SignalParams(3);
-HarmIndex = SignalParams(7);
-InterHarmIndex = SignalParams(8);
-fh = max(HarmFrequency,InterHarmFrequency);
+FundFrequency = SignalParams(1);  % fundamental frequency
+
+%HarmFrequency = SignalParams(2);
+% InterHarmFrequency = SignalParams(3);
+% HarmIndex = SignalParams(7);
+% InterHarmIndex = SignalParams(8);
+% fh = max(HarmFrequency,InterHarmFrequency);
+fh = SignalParams(2);           % harmonic frequency
+NHarm = 1;
+if SignalParams(3) == 0; NHarm = 2; end
 
 NSamples = size(Samples,2);
 NPhases = size(Samples,1);
 
-if (HarmIndex == 0) && (InterHarmIndex == 0) 
-    NHarm = 1;  %Only the fundamental frequency
-else
-    NHarm = 2;  %Fund frequency + one harm/inter harmonic
-end
+% if (HarmIndex == 0) && (InterHarmIndex == 0) 
+%     NHarm = 1;  %Only the fundamental frequency
+% else
+%     NHarm = 2;  %Fund frequency + one harm/inter harmonic
+% end
 
 %algorithms based on the IEEE Std 1057 - Annex A
 Freqs(1:NPhases) = FundFrequency;
@@ -63,6 +67,9 @@ dFreq(NPhases,MaxIter) = 0;
 erms(1:NPhases) = 1;
 
 for p = 1:NPhases
+    
+    
+    
     %Pre-fit: generate the model using first estimated frequency
 
     H = [ones(1,NSamples)' cos(2*pi*FundFrequency*tn)' sin(2*pi*FundFrequency*tn)' ];

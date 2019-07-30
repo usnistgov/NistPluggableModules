@@ -55,6 +55,7 @@ Error Codes
 	:widths: 10,45,45
 	
 	"25001", "Warning: Cannot Change Configuration while Analysis is running", "User attempted to access the Analysis Configuration while an analysis was in progress"
+	"25002", "Unsupported Test Type: %s", "Support for this test type has not beed created yet"
 
     .. csv-table:: AC Pwr Error Codes
 	:header: "CODE", "ERROR", "COMMENT"

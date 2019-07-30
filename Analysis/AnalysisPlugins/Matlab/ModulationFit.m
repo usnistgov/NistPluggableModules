@@ -124,8 +124,8 @@ end
 %Calculating simmetrical components
 alfa = exp(2*pi*1i/3);
 Ai = (1/3)*[1 1 1; 1 alfa alfa^2; 1 alfa^2 alfa];
-Vabc = Synx(1:3,:)
-Iabc = Synx(4:6,:)
+Vabc = Synx(1:3,:);
+Iabc = Synx(4:6,:);
 Vzpn = Ai*Vabc; %voltage: zero, positive and negative
 Izpn = Ai*Iabc;
 
