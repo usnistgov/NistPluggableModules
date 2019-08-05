@@ -41,7 +41,7 @@ FundFrequency = SignalParams(1);  % fundamental frequency
 % fh = max(HarmFrequency,InterHarmFrequency);
 fh = SignalParams(2);           % harmonic frequency
 NHarm = 1;
-if SignalParams(3) == 0; NHarm = 2; end
+if SignalParams(3) ~= 0; NHarm = 2; end
 
 NSamples = size(Samples,2);
 NPhases = size(Samples,1);
