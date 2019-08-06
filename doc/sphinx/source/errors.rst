@@ -16,10 +16,10 @@ Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
 	:widths: 10,45,45
 	
-	"21001", "Improper channel name %s.  Must be "Channel 1" through "Channel 4", "The O'Scope channel names must be specific to the scope class"
+	"21001", "Improper channel name %s.  Must be Channel 1 through Channel 4", "The OScope channel names must be specific to the scope class"
 	"21002", "Trigger Type %s is not yet supported", "This Trigger type will require the addition of an IVI extended class to the module"
-	"21003", "The scope module is not connected to the oscilloscope.  Call "Initialize" to connect to the o'scope", ""
-	"21004", "Acquisition type "%s" is not supported by this oscilloscope",""
+	"21003", "The scope module is not connected to the oscilloscope.  Call Initialize to connect to the Oscope", ""
+	"21004", "Acquisition type %s is not supported by this oscilloscope",""
 
      .. csv-table:: Sync Module Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
@@ -54,9 +54,18 @@ Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
 	:widths: 10,45,45
 	
-	"25001", "Warning: Cannot Change Configuration while Analysis is running", User attempted to access the Analysis Configuration while an analysis was in progress"
+	"25001", "Warning: Cannot Change Configuration while Analysis is running", "User attempted to access the Analysis Configuration while an analysis was in progress"
 
+    .. csv-table:: AC Pwr Error Codes
+	:header: "CODE", "ERROR", "COMMENT"
+	:widths: 10,45,45
 
+	"26001": "Operation mode %s is only compatible with AC","The user selected an AC-only operation mode, but attempted to treat the device as a DC system. The configuration was cancelled."
+	"26002": "Operation mode %s is only compatible with DC","The user selected a DC-only operation mode, but attempted to treat the device as an AC system. The configuration was cancelled."
+	"26003": "Maximum AC Power Load %d is not above 0.","The user attempted to set the maximum AC Power Load to 0 or a negative value, making it impossible for the load to dissipate power."
+	"26004": "Slew Rates can only be controlled when load is in CR and CC operation modes.","A function call was made to alter the slew rates of the function while the load was set to an operating mode in which the slew rates cannot be managed."
+	"26005": "Operation mode % is not compatible with RLC operations.","A function call was made to configure the RLC values of the device, though the device is in a non-RLC operation mode."
+	"26006": "Error. The %s of %d was outside of the parameter's range of %d-%d.","A parameter was selected that fell outside of its appropriate range; please set the parameter to fall within the range."
 
      .. csv-table:: Test Class Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
@@ -74,4 +83,7 @@ Error Codes
 	"31001", "Bus Number not found %d", "While searching the bus class for a particular bus number, the bus was not found in the class"
 	"31002", "Bus number %d already exists", "While trying to add a bus, the bus number was found to already exist"
 	"31003", "Invalid Module type %s", "While configuring modules, an unrecognized module type was found"
+
+	
+
 		
