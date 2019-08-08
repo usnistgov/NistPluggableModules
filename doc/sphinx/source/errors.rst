@@ -67,7 +67,17 @@ Error Codes
 	"26005": "Operation mode % is not compatible with RLC operations.","A function call was made to configure the RLC values of the device, though the device is in a non-RLC operation mode."
 	"26006": "Error. The %s of %d was outside of the parameter's range of %d-%d.","A parameter was selected that fell outside of its appropriate range; please set the parameter to fall within the range."
 
-     .. csv-table:: Test Class Error Codes
+    .. csv-table:: SpecAn Error Codes
+	:header: "CODE", "ERROR", "COMMENT"
+	:widths: 10,45,45
+
+	"27001": "The  module %s acquisiton mode cannot be changed while acquiring data. Abort the acquisiton then change the acquisition mode."
+	"27002": "The module %s received an initialization command but had been previously been initialized. Abort the acquistion and close the reference in order to initialize again." 
+	"27003": "The module %s received an initiate acquisition command but is currently acquiring data. Abort the acquistion in order to initiate another acquisition."  
+	
+     
+
+    .. csv-table:: Test Class Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
 	:widths: 10,45,45
 	
