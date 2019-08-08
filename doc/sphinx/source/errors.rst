@@ -65,7 +65,9 @@ Error Codes
 	"26003": "Maximum AC Power Load %d is not above 0.","The user attempted to set the maximum AC Power Load to 0 or a negative value, making it impossible for the load to dissipate power."
 	"26004": "Slew Rates can only be controlled when load is in CR and CC operation modes.","A function call was made to alter the slew rates of the function while the load was set to an operating mode in which the slew rates cannot be managed."
 	"26005": "Operation mode % is not compatible with RLC operations.","A function call was made to configure the RLC values of the device, though the device is in a non-RLC operation mode."
-	"26006": "Error. The %s of %d was outside of the parameter's range of %d-%d.","A parameter was selected that fell outside of its appropriate range; please set the parameter to fall within the range."
+	"26006": "The %s of %#g was outside of the parameter's range of %#g-%#g..","A parameter was selected that fell outside of its appropriate range; please set the parameter to fall within the range."
+	"26007": "The module attempted to range check an invalid parameter %s.","RangeCheck.vi attempted to run a check that didn't exist. Check the string calling the variable and adjust it so it fits an appropriate value."
+
 
      .. csv-table:: Test Class Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
