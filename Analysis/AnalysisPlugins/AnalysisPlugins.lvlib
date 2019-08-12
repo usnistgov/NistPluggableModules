@@ -13,6 +13,7 @@
 	</Item>
 	<Item Name="Matlab" Type="Folder">
 		<Item Name="ModulationFit.m" Type="Document" URL="../Matlab/ModulationFit.m"/>
+		<Item Name="PmuFitSave.m" Type="Document" URL="../Matlab/PmuFitSave.m"/>
 		<Item Name="SteadyStateFit.m" Type="Document" URL="../Matlab/SteadyStateFit.m"/>
 		<Item Name="WindowBuild.m" Type="Document" URL="../Matlab/WindowBuild.m"/>
 		<Item Name="WindowSave.m" Type="Document" URL="../Matlab/WindowSave.m"/>

@@ -154,6 +154,15 @@
 		</Item>
 	</Item>
 	<Item Name="Typedefs" Type="Folder">
+		<Item Name="eParamIdx.ctl" Type="VI" URL="../Typedefs/eParamIdx.ctl">
+			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">&amp;!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!#'!!!!!1"_!0%!!!!!!!!!!Q^'&gt;7ZD&gt;'FP&lt;H-O&lt;(:M;7)95'VV6'6T&gt;%:V&lt;G.U;7^O=SZM&gt;G.M98.T$76198*B&lt;5FE?#ZD&gt;'Q!0U!7!!U#7'U$2GFO!F"T!E:I!F"I!ENI!E:B!ENB!E:Y!ENY!F*G!UNB5Q.,?&amp;-!#76198*B&lt;5FE?!!"!!!!!!!!</Property>
+			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
+			<Property Name="NI.ClassItem.Flags" Type="Int">1048576</Property>
+			<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
+			<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
+			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
+			<Property Name="NI.ClassItem.State" Type="Int">1082130944</Property>
+		</Item>
 		<Item Name="PmuTestConfig.ctl" Type="VI" URL="../PmuTestConfig.ctl">
 			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">&amp;!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!!-!!!!!1!%!!!!!1!!!!!!!!</Property>
 			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
