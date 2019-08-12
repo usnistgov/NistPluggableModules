@@ -1,7 +1,7 @@
-<VI_Package_Builder_Settings Version="0.6" Created_Date="2016-10-12 14:35:06" Modified_Date="2019-07-30 11:02:04" Creator="zjt" Comments="" ID="97f0a86406d851e96e71951b29ba2454">
+<VI_Package_Builder_Settings Version="0.6" Created_Date="2016-10-12 14:35:06" Modified_Date="2019-08-12 14:42:38" Creator="zjt" Comments="" ID="1aea0d3be713312b81cc3484acbecc34">
   <Library_General_Settings>
     <Package_File_Name>NIST_lib_NISTPluggableModule</Package_File_Name>
-    <Library_Version>2.2.0.5</Library_Version>
+    <Library_Version>2.2.1.6</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>.</Library_Source_Folder>
     <Library_Output_Folder>.</Library_Output_Folder>
@@ -38,7 +38,8 @@
       <Release_Notes>2.0: Migrated from NISTModuleAdmin and NISTBaseObject to ModuleAdmin and BaseObject.  Added ShowPanel
 2.1: Added Preferences Dialog
 2.1.1: Named the Message Queue
-2.2.0: Changed file and folder locations to prevent confusion and remove the need of "friends" to the Plugin or Module, disabled several controls on the TestCloneAPI.vi to enforce a specific pattern of use, added a clear boolean to clear the status log, and added code to make the status log scroll bar scroll to the last line. </Release_Notes>
+2.2.0: Changed file and folder locations to prevent confusion and remove the need of "friends" to the Plugin or Module, disabled several controls on the TestCloneAPI.vi to enforce a specific pattern of use, added a clear boolean to clear the status log, and added code to make the status log scroll bar scroll to the last line. 
+2.2.1: Updated the documentation properties of several VIs. Modified the PrefDialog.vi to include the option of saving to a different INI file. </Release_Notes>
     </Description>
     <Destinations>
       <Toolkit_VIs>
@@ -116,10 +117,10 @@
         <Path>Source/NIST/images</Path>
       </Exclusions>
       <Exclusions>
-        <Path>nist_lib_nistpluggablemodule-2.1.0.2.vip</Path>
+        <Path>nist_lib_nistpluggablemodule-2.1.1.3.vip</Path>
       </Exclusions>
       <Exclusions>
-        <Path>nist_lib_nistpluggablemodule-2.1.1.3.vip</Path>
+        <Path>nist_lib_nistpluggablemodule-2.2.0.4.vip</Path>
       </Exclusions>
     </Source_Files>
     <License_Agreement_Filepath>Source\NIST\documentation\LICENSE.txt</License_Agreement_Filepath>
@@ -220,7 +221,7 @@
         <Path>Source</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>B24A25DC8F6E0DBD9055FF70F039DCBD</GUID>
+      <GUID>95357420C7F15AEBEF3CD86D9192146E</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -255,7 +256,7 @@
         <Path>Source\NIST</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>3E035B4EEE38ADB84C167AB1E620199D</GUID>
+      <GUID>6F1265E2F2BA26F60D1934C9CC5E0409</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>1</Parent_Palette_Index>
@@ -290,7 +291,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>FF68ADFF23CEEAC9ACFC6112B9C64D48</GUID>
+      <GUID>F660FA0093C346484E4D34DC8D58459C</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>2</Parent_Palette_Index>
@@ -339,7 +340,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPlugins</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>91B0B1250A2398D739C85ECD9DE14153</GUID>
+      <GUID>CF911C23781B12EB1F6845FC770D345A</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>3</Parent_Palette_Index>
@@ -416,7 +417,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPluggableModule\Main.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>1531CF6F8411D74188EE1A6B2B202F2F</GUID>
+      <GUID>6DDF87E2CC4AF5EE0FF74DA92B57B6D8</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>3</Parent_Palette_Index>
@@ -451,7 +452,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPlugins\MyPluginBaseClass</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>A224EC34F2BBFB391CB4FF7174F99EA9</GUID>
+      <GUID>C52325C90D095C9FCF3E9A83ED3DF083</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>4</Parent_Palette_Index>
@@ -556,7 +557,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPluggableModule\Private\HandleExit.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>B10E30166057EA977DFFC2D466113A80</GUID>
+      <GUID>8F31F2A4DC11C5DAEB02D2E74B4F839D</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>4</Parent_Palette_Index>
@@ -619,7 +620,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPluggableModule\PublicAPI\StopClone.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>57FDA8AAB5A320F8EE04DCD4E76F0BA3</GUID>
+      <GUID>999F71CE87ECF233A1B8BD5248E31524</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>4</Parent_Palette_Index>
@@ -710,7 +711,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPluggableModule\Test\UpdateSelectRing.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>8097FABC3606F0BAF1C6F1CB90F11AFA</GUID>
+      <GUID>E7F4E7D813C25AD5AF8138083ADEAE9A</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>6</Parent_Palette_Index>
@@ -815,7 +816,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPluggableModule\PublicAPI\Broadcasts\StatusUpdate.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>BC9C82937263B3F4B94EAA9585DC7E50</GUID>
+      <GUID>949DFC6D1F3F3F5AC5C88963FA04911E</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>6</Parent_Palette_Index>
@@ -878,7 +879,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPluggableModule\Private\Queue\ObtainQueue.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>6D7634B33F8BCBDCA0FB94C5C5F3E9D7</GUID>
+      <GUID>C1758B86A636D93D8DAFBAE679BCF4B4</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>6</Parent_Palette_Index>
@@ -955,7 +956,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPluggableModule\PublicAPI\Requests\StopRequest.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>49CD6156817041C83679D97689A36734</GUID>
+      <GUID>489BD6C046774211D373572826CA7625</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>7</Parent_Palette_Index>
@@ -990,7 +991,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPluggableModule\PublicAPI\Broadcasts\ObtainBroadcastForRegistration.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>6BE75C9208A7A2667627B0B5D3CB9A5E</GUID>
+      <GUID>79208FA8D930C817765689FF810E27DF</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>5</Parent_Palette_Index>
@@ -1053,7 +1054,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPlugins\MyPluginBaseClass\PublicAPI</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>B8F3E0E3BE1939103E0D27B917071130</GUID>
+      <GUID>BFA39D5DB758B9C2F6A0FFAA5909E5B9</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>13</Parent_Palette_Index>
@@ -1102,7 +1103,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPlugins\MyPluginBaseClass\Accessors\Write PluginINIFilePath.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>01B9E25127F0CA2876339708C3B10389</GUID>
+      <GUID>CEE16769C4E11CBB5B1CA17B691EF2F3</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>13</Parent_Palette_Index>
@@ -1137,7 +1138,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPlugins\MyPluginBaseClass\PublicAPI\Broadcast\PathToINIBroadcast.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>77D8FFF4F099B0ADDF1113F1EF5EE90A</GUID>
+      <GUID>D4DD7D68C41FB78E32AAB4B7F531F605</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>13</Parent_Palette_Index>
@@ -1172,7 +1173,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPlugins\MyPluginBaseClass\PublicAPI\Requests</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>696C9321A02FF2AAF574BDB9B0B1808F</GUID>
+      <GUID>4B813415A6D6E957E033A2056948EACA</GUID>
     </Functions_Palette_Data>
     <Functions_Palette_Data>
       <Parent_Palette_Index>16</Parent_Palette_Index>
@@ -1221,7 +1222,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPlugins\MyPluginBaseClass\PublicAPI\Requests\PathToINIRequest.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>AF582C29DA2282DB7E3EBC449A6F8FC6</GUID>
+      <GUID>B7E17EE4D3D800AB9588842AF22CA4BE</GUID>
     </Functions_Palette_Data>
     <Controls_Palette_Data>
       <Parent_Palette_Index>-1</Parent_Palette_Index>
@@ -1256,7 +1257,7 @@
         <Path>..\NISTCloneableModulesTemplate\Source</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>C50D7F05E52A1C76DC4293791C645143</GUID>
+      <GUID>0E567D4C1D3F404B8C54D9FFBBA0FBB2</GUID>
     </Controls_Palette_Data>
     <Controls_Palette_Data>
       <Parent_Palette_Index>0</Parent_Palette_Index>
@@ -1291,7 +1292,7 @@
         <Path>..\NISTCloneableModulesTemplate\Source\MyCloneableModule</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>9663A72CB7E76DBE0358AF79A3D8E193</GUID>
+      <GUID>DA58F8703D612F3F59210C3C9839C0CE</GUID>
     </Controls_Palette_Data>
     <Controls_Palette_Data>
       <Parent_Palette_Index>1</Parent_Palette_Index>
@@ -1340,7 +1341,7 @@
         <Path>..\NISTCloneableModulesTemplate\Source\MyCloneableModule\PublicAPI</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>A2F93B56AD14ECFF4AC203BFBDA6807A</GUID>
+      <GUID>C6759A399898220215B7E081F8094AC0</GUID>
     </Controls_Palette_Data>
     <Controls_Palette_Data>
       <Parent_Palette_Index>2</Parent_Palette_Index>
@@ -1403,7 +1404,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPluggableModule\PublicAPI\Requests\clEventType.ctl</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>6434EF7E2CD6FC0B0B86DD970B69967D</GUID>
+      <GUID>9F01DAF874B8A07B58F46ED553DCDCDD</GUID>
     </Controls_Palette_Data>
     <Controls_Palette_Data>
       <Parent_Palette_Index>2</Parent_Palette_Index>
@@ -1438,7 +1439,7 @@
         <Path>..\NISTCloneableModulesTemplate\Source\MyCloneableModule\PublicAPI\Arguments</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>9D9286D455C6F0E43CB8D5C18FDF9054</GUID>
+      <GUID>C6B4A2D250990559D82F5DAAEFA26A8D</GUID>
     </Controls_Palette_Data>
     <Controls_Palette_Data>
       <Parent_Palette_Index>3</Parent_Palette_Index>
@@ -1473,7 +1474,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPluggableModule\PublicAPI\Broadcasts\clBroadcastEvents.ctl</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>70A4E02DE0ED36047D9CAEBA75000985</GUID>
+      <GUID>203B7D372552038EF74743B367686AA1</GUID>
     </Controls_Palette_Data>
     <Controls_Palette_Data>
       <Parent_Palette_Index>3</Parent_Palette_Index>
@@ -1508,7 +1509,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPluggableModule\PublicAPI\Requests\clRequestEvents.ctl</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>2F21C26FAF16810CB47EA95297E7CEBA</GUID>
+      <GUID>B12BFC7BAD9A5B8340812D05737B4D94</GUID>
     </Controls_Palette_Data>
     <Controls_Palette_Data>
       <Parent_Palette_Index>4</Parent_Palette_Index>
@@ -1571,7 +1572,7 @@
         <Path>..\NISTCloneableModulesTemplate\Source\MyCloneableModule\PublicAPI\Arguments\Requests</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>4F20EB7D21D5D39F527242A98031958F</GUID>
+      <GUID>CB499B237A3AE18BE08871AE68883810</GUID>
     </Controls_Palette_Data>
     <Controls_Palette_Data>
       <Parent_Palette_Index>7</Parent_Palette_Index>
@@ -1606,7 +1607,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPluggableModule\PublicAPI\Arguments\Broadcasts\clDidInit.ctl</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>8246DE9E0A1EC0A04746FFAE4C299D27</GUID>
+      <GUID>306256BF102711464D2608D8C9CD5822</GUID>
     </Controls_Palette_Data>
     <Controls_Palette_Data>
       <Parent_Palette_Index>7</Parent_Palette_Index>
@@ -1641,7 +1642,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPluggableModule\PublicAPI\Arguments\Messages\clMessage.ctl</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>A6FBD2CCD1BB20059BD355435D5E42B5</GUID>
+      <GUID>D37D891A9410EE2282592A25DB58B917</GUID>
     </Controls_Palette_Data>
     <Controls_Palette_Data>
       <Parent_Palette_Index>7</Parent_Palette_Index>
@@ -1676,7 +1677,7 @@
         <Path>Source\NIST\NISTPluggableModuleTemplate\MyPluggableModule\PublicAPI\Arguments\Requests\clStopArgument.ctl</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>DD29500C7D412F81F04AC5F890843571</GUID>
+      <GUID>6A3A1727E975A5BFAB41126220390844</GUID>
     </Controls_Palette_Data>
   </Library_Palette_Definition>
 </VI_Package_Builder_Settings>
