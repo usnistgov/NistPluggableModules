@@ -70,7 +70,17 @@ Error Codes
 	"26007": "The module attempted to range check an invalid parameter %s.","RangeCheck.vi attempted to run a check that didn't exist. Check the string calling the variable and adjust it so it fits an appropriate value."
 
 
-     .. csv-table:: Test Class Error Codes
+    .. csv-table:: SpecAn Error Codes
+	:header: "CODE", "ERROR", "COMMENT"
+	:widths: 10,45,45
+
+	"27001": "The  module %s acquisiton mode cannot be changed while acquiring data. Abort the acquisiton then change the acquisition mode."
+	"27002": "The module %s received an initialization command but had been previously been initialized. Abort the acquistion and close the reference in order to initialize again." 
+	"27003": "The module %s received an initiate acquisition command but is currently acquiring data. Abort the acquistion in order to initiate another acquisition."  
+	
+     
+
+    .. csv-table:: Test Class Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
 	:widths: 10,45,45
 	
