@@ -75,6 +75,7 @@
 		<Item Name="InitSelectRing.vi" Type="VI" URL="../Test/InitSelectRing.vi"/>
 		<Item Name="TestInfo.ctl" Type="VI" URL="../Test/TestInfo.ctl"/>
 		<Item Name="TestInfo.vi" Type="VI" URL="../Test/TestInfo.vi"/>
+		<Item Name="TestTriggerTimestamp.vi" Type="VI" URL="../Test/TestTriggerTimestamp.vi"/>
 		<Item Name="UpdateSelectRing.vi" Type="VI" URL="../Test/UpdateSelectRing.vi"/>
 	</Item>
 	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
