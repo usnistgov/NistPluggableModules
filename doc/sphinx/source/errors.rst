@@ -33,6 +33,7 @@ Error Codes
 	"22006", "Trigger Name %s is not a %s trigger type.  Check the INI file","The Named Trigger has a trigger type that does not match the trigger type being handled."
 	"22007", "Trigger Name %s Timestamping has not been Enabled", " An attempt to read a trigger timestamp was made to a trigger which has not had timestamping enabled"
 	"22008", "Warning: Windows clock synchronization can only occur is LabView is being run as administrator. Either:1) Ensure Labview was started with Run As Administrator OR 2) Open Sync Module Settings and disable SyncWinClk.",""
+	"22009", "Reference Clock Not Present: Status = %s", "The Reference Clock is not operating"
 	
      .. csv-table:: Digitizer Module Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
