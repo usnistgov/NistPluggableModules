@@ -68,7 +68,7 @@ Error Codes
 	"26005": "Operation mode % is not compatible with RLC operations.","A function call was made to configure the RLC values of the device, though the device is in a non-RLC operation mode."
 	"26006": "The %s of %#g was outside of the parameter's range of %#g-%#g..","A parameter was selected that fell outside of its appropriate range; please set the parameter to fall within the range."
 	"26007": "The module attempted to range check an invalid parameter %s.","RangeCheck.vi attempted to run a check that didn't exist. Check the string calling the variable and adjust it so it fits an appropriate value."
-
+	"26008": "The number of phases %d must be equal to the number of phases %d."
 
     .. csv-table:: SpecAn Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
