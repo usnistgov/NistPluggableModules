@@ -127,6 +127,21 @@
 				<Item Name="usereventprio.ctl" Type="VI" URL="/&lt;vilib&gt;/event_ctls.llb/usereventprio.ctl"/>
 				<Item Name="Wait at Rendezvous.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/rendezvs.llb/Wait at Rendezvous.vi"/>
 				<Item Name="whitespace.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/whitespace.ctl"/>
+				<Item Name="IVI Error Message Builder.vi" Type="VI" URL="/&lt;vilib&gt;/errclust.llb/IVI Error Message Builder.vi"/>
+			</Item>
+			<Item Name="instr.lib" Type="Folder">
+				<Item Name="agesani Initialize With Options.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Initialize With Options.vi"/>
+				<Item Name="agesani IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani IVI Error Converter.vi"/>
+				<Item Name="agesani Configure Frequency Center Span.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure Frequency Center Span.vi"/>
+				<Item Name="agesani Configure Frequency Offset.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure Frequency Offset.vi"/>
+				<Item Name="agesani Configure Sweep Coupling.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure Sweep Coupling.vi"/>
+				<Item Name="agesani Configure Level.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure Level.vi"/>
+			</Item>
+			<Item Name="ivi.dll" Type="Document" URL="ivi.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="agesani_32.dll" Type="Document" URL="agesani_32.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
