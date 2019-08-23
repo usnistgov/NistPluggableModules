@@ -2,7 +2,7 @@
 SpecAn Module
 ###############
 
-The SpecAn Module is an IVI compliant module.  The properties and meythods used for this instrument may be generalized a bit more at a later date.
+The SpecAn Module is an IVI compliant module.  The properties and methods used for this instrument may be generalized at a later date.
 
 Class Specification
 ====================
@@ -216,6 +216,17 @@ ConfigureTrigger ()
 SendSoftwareTrigger ()
 	This function sends a software trigger to the Spectrum Analyzer in order to begin acquisition. 
 
+Keysight44xxClass
++++++++++++++++++
+
+The Keysight44xx inherited its properties and methods from the SpecAnBase class.  
+
+|image3|
+
+Figure \: Keysight44xxClass Properties UML Specification
+
+No new properties or methods were added to this plugin at this time. 
+
 
 .. |image0| image:: images/SpecAn/image0.png
    :width: 3in
@@ -224,4 +235,7 @@ SendSoftwareTrigger ()
    :width: 3in
    
 .. |image2| image:: images/SpecAn/image2.png
+   :width: 3in
+   
+.. |image3| image:: images/SpecAn/image3.png
    :width: 3in
