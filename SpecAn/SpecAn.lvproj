@@ -143,6 +143,14 @@
 				<Item Name="agesani Configure RF Burst Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure RF Burst Trigger.vi"/>
 				<Item Name="agesani Configure Video Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure Video Trigger.vi"/>
 				<Item Name="agesani Configure External Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure External Trigger.vi"/>
+				<Item Name="agesani Close.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Close.vi"/>
+				<Item Name="agesani Abort.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Abort.vi"/>
+				<Item Name="agesani Read Y Trace.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Read Y Trace.vi"/>
+				<Item Name="agesani Fetch Y Trace.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Fetch Y Trace.vi"/>
+				<Item Name="agesani Get Trace Name.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Get Trace Name.vi"/>
+				<Item Name="agesani Query Trace Size.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Query Trace Size.vi"/>
+				<Item Name="agesani Send Software Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Send Software Trigger.vi"/>
+				<Item Name="agesani Initiate.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Initiate.vi"/>
 			</Item>
 			<Item Name="ivi.dll" Type="Document" URL="ivi.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
