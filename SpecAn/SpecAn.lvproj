@@ -136,6 +136,13 @@
 				<Item Name="agesani Configure Frequency Offset.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure Frequency Offset.vi"/>
 				<Item Name="agesani Configure Sweep Coupling.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure Sweep Coupling.vi"/>
 				<Item Name="agesani Configure Level.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure Level.vi"/>
+				<Item Name="agesani Configure Acquisition.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure Acquisition.vi"/>
+				<Item Name="agesani Configure Trigger Source.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure Trigger Source.vi"/>
+				<Item Name="agesani Configure Trace Type.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure Trace Type.vi"/>
+				<Item Name="agesani Configure TV Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure TV Trigger.vi"/>
+				<Item Name="agesani Configure RF Burst Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure RF Burst Trigger.vi"/>
+				<Item Name="agesani Configure Video Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure Video Trigger.vi"/>
+				<Item Name="agesani Configure External Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure External Trigger.vi"/>
 			</Item>
 			<Item Name="ivi.dll" Type="Document" URL="ivi.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
