@@ -151,6 +151,8 @@
 				<Item Name="agesani Query Trace Size.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Query Trace Size.vi"/>
 				<Item Name="agesani Send Software Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Send Software Trigger.vi"/>
 				<Item Name="agesani Initiate.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Initiate.vi"/>
+				<Item Name="agesani Disable All Markers.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Disable All Markers.vi"/>
+				<Item Name="agesani Acquisition Status.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Acquisition Status.vi"/>
 			</Item>
 			<Item Name="ivi.dll" Type="Document" URL="ivi.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
