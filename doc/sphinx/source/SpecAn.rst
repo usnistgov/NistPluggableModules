@@ -195,6 +195,8 @@ Trigger Extension Group
 
 |image2|
 
+Figure \: SpecAnBaseClass Trigger Properties UML Specification
+
 Properties
 ~~~~~~~~~~
 
@@ -224,6 +226,8 @@ Utility Extension Group
 
 |image4|
 
+Figure \: SpecAnBaseClass Utility Methods UML Specification
+
 Methods
 ~~~~~~~
 Reset ()
@@ -239,6 +243,8 @@ Marker Extension Group
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 |image5|
+
+Figure \: SpecAnBaseClass Properties and Methods UML Specification
 
 Properties
 ~~~~~~~~~~
@@ -273,13 +279,30 @@ QueryMarker ()
 Keysight44xxClass
 +++++++++++++++++
 
-The Keysight44xx inherited its properties and methods from the SpecAnBase class.  
+The Keysight44xx inherits the all the properties and methods from the SpecAnBase class and includes additional trigger properties.  
+
+Properties
+~~~~~~~~~~
+
+Marker \: [Struct]
+ A structure containing the properties of each module's markers.  
+	
+	
+	MarkerPosition \: String
+	Specifies the frequency in Hertz or time position in seconds of the active marker (depending on the mode in which the analyzer is operating, frequency or time-domain). This attribute returns the Marker Not Enabled error if the active marker is not enabled.  
+  
+	MarkerAmplitude \: Double
+	Returns the amplitude of the active marker. The units are specified by the Amplitude Units attribute, except when the Marker Type attribute is set to Delta. Then the units are dB. If the Marker Enabled attribute is set to False, any attempt to read this attribute returns the Marker Not Enabled error.
+  	  
+	MarkerEnabled \: Boolean
+	If set to True , the active marker is enabled. When False, the active marker is disabled.   
+	 
 
 |image3|
 
 Figure \: Keysight44xxClass Properties UML Specification
 
-No new properties or methods were added to this plugin at this time. 
+No new methods were added to this plugin at this time. 
 
 
 .. |image0| image:: images/SpecAn/image0.png
