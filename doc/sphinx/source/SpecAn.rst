@@ -185,6 +185,9 @@ ReadYTrace()
    This function initiates a signal acquisition based on the present instrument configuration. It then waits for the acquisition to complete, and returns the trace as an array of amplitude values. The amplitude array returns data that represent the amplitude of the signals obtained by sweeping from the start frequency to the stop frequency (in frequency domain, in time domain the amplitude array is ordered from beginning of sweep to end). The Amplitude Units attribute determines the units of the points in the amplitude array. This function resets the sweep count.
 
    If the spectrum analyzer did not complete the acquisition within the time period the user specified with the MaxTime parameter, the function returns the Max Time Exceeded error.
+
+SelfTest()
+   This VI runs the instrument's self test routine and returns the test result(s). 
    
 
 Trigger Extension Group    
@@ -216,6 +219,57 @@ ConfigureTrigger ()
 SendSoftwareTrigger ()
 	This function sends a software trigger to the Spectrum Analyzer in order to begin acquisition. 
 
+Utility Extension Group    
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|image4|
+
+Methods
+~~~~~~~
+Reset ()
+	This VI resets the instrument to a known state and sends initialization commands to the instrument.  The initialization commands set instrument settings such as Headers Off, Short Command form, and Data Transfer Binary to the state necessary for the operation of the instrument driver.
+	
+Disable ()
+	This VI places the instrument in a quiescent state where it has minimal or no impact on the system to which it is connected.
+
+Selftest ()
+	This VI runs the instrument's self test routine and returns the test result(s). 
+
+Marker Extension Group    
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|image5|
+
+Properties
+~~~~~~~~~~
+
+Marker \: [Struct]
+ A structure containing the properties of each module's markers.  
+	
+	
+	MarkerPosition \: String
+	Specifies the frequency in Hertz or time position in seconds of the active marker (depending on the mode in which the analyzer is operating, frequency or time-domain). This attribute returns the Marker Not Enabled error if the active marker is not enabled.  
+  
+	MarkerAmplitude \: Double
+	Returns the amplitude of the active marker. The units are specified by the Amplitude Units attribute, except when the Marker Type attribute is set to Delta. Then the units are dB. If the Marker Enabled attribute is set to False, any attempt to read this attribute returns the Marker Not Enabled error.
+  	  
+	MarkerEnabled \: Boolean
+	If set to True , the active marker is enabled. When False, the active marker is disabled.   
+	 
+
+Methods
+~~~~~~~
+ConfigureMarkerEnabled ()
+	This function enables the active marker on the specified Trace. 
+	
+DisableAllMarkers ()
+	This function turns off all markers.
+
+QueryMarker ()
+	Returns the amplitude of the active marker. The units are specified by the Amplitude Units attribute, except when the Marker Type attribute is set to Delta. Then the units are dB. If the Marker Enabled attribute is set to False, any attempt to read this attribute returns the Marker Not Enabled error. 
+
+
+
 Keysight44xxClass
 +++++++++++++++++
 
@@ -238,4 +292,10 @@ No new properties or methods were added to this plugin at this time.
    :width: 3in
    
 .. |image3| image:: images/SpecAn/image3.png
+   :width: 3in
+   
+.. |image4| image:: images/SpecAn/image4.png
+   :width: 3in
+   
+.. |image5| image:: images/SpecAn/image5.png
    :width: 3in
