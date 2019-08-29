@@ -156,6 +156,17 @@
 				<Item Name="agesani Reset.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Reset.vi"/>
 				<Item Name="agesani Self-Test.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Self-Test.vi"/>
 				<Item Name="agesani Configure TV Trig Line Num.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure TV Trig Line Num.vi"/>
+				<Item Name="agesani Disable All Markers.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Disable All Markers.vi"/>
+				<Item Name="agesani Query Marker.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Query Marker.vi"/>
+				<Item Name="agesani Move Marker.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Move Marker.vi"/>
+				<Item Name="agesani Configure Signal Track Enabled.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure Signal Track Enabled.vi"/>
+				<Item Name="agesani Configure Marker Frequency Counter.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure Marker Frequency Counter.vi"/>
+				<Item Name="agesani Configure Marker Search.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure Marker Search.vi"/>
+				<Item Name="agesani Set Instrument From Marker.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Set Instrument From Marker.vi"/>
+				<Item Name="agesani Configure Marker Enabled.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Configure Marker Enabled.vi"/>
+				<Item Name="agesani Marker Search.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Marker Search.vi"/>
+				<Item Name="agesani Set Active Marker.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Set Active Marker.vi"/>
+				<Item Name="agesani Get Marker Name.vi" Type="VI" URL="/&lt;instrlib&gt;/agesani/agesani.llb/agesani Get Marker Name.vi"/>
 			</Item>
 			<Item Name="ivi.dll" Type="Document" URL="ivi.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>

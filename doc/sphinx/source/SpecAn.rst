@@ -249,31 +249,72 @@ Figure \: SpecAnBaseClass Properties and Methods UML Specification
 Properties
 ~~~~~~~~~~
 
-Marker \: [Struct]
+Marker \: Struct
  A structure containing the properties of each module's markers.  
 	
-	
-	MarkerPosition \: String
-	Specifies the frequency in Hertz or time position in seconds of the active marker (depending on the mode in which the analyzer is operating, frequency or time-domain). This attribute returns the Marker Not Enabled error if the active marker is not enabled.  
-  
-	MarkerAmplitude \: Double
-	Returns the amplitude of the active marker. The units are specified by the Amplitude Units attribute, except when the Marker Type attribute is set to Delta. Then the units are dB. If the Marker Enabled attribute is set to False, any attempt to read this attribute returns the Marker Not Enabled error.
-  	  
+	ActiveMarker \: [String]
+	Specifies the marker which is currently active. The values for this attribute correspond to the Marker repeated capability. If the driver defines a qualified Marker name, this attribute returns the qualified name.
+ 
 	MarkerEnabled \: Boolean
 	If set to True , the active marker is enabled. When False, the active marker is disabled.   
-	 
+
+	MarkerFrequencyCounterEnabled \: Boolean
+	Enables/disables the marker frequency counter for greater marker measurement accuracy. If set to True, the marker frequency counter is enabled. If set to False, the marker frequency counter is disabled. This attribute returns the Marker Not Enabled error if the Marker Enabled attribute is set to False.  
+	
+	MarkerFrequencyCounterResolution \: Double
+	Specifies the resolution of the frequency counter in Hertz. The measurement gate time is the reciprocal of the specified resolution.	
+	
+	MarkerPosition \: Double
+	Specifies the frequency in Hertz or time position in seconds of the active marker (depending on the mode in which the analyzer is operating, frequency or time-domain). This attribute returns the Marker Not Enabled error if the active marker is not enabled.  
+  
+	MarkerThreshold \: Double
+	Specifies the lower limit of the search domain vertical range for the Marker Search function.
+	
+	MarkerTrace \: String
+	Specifies the Trace for the active marker.
+	
+	PeakExcursion \: Double
+	Specifies the minimum amplitude variation of the signal in dB that the Marker Search function can identify as a peak.
+	
+	SignalTrackEnabled \: Double
+	Specifies the lower limit of the search domain vertical range for the Marker Search function.
+
 
 Methods
 ~~~~~~~
+
 ConfigureMarkerEnabled ()
-	This function enables the active marker on the specified Trace. 
-	
+	This function enables the active marker on the specified Trace.
+
+ConfigureMarkerFrequencyCounter ()
+	This function sets the marker frequency counter resolution and enables or disables the marker frequency counter.
+
+ConfigureMarkerSearch ()
+	This function configures the Peak Excursion and Marker Threshold attribute values
+
+ConfigureSignalTrackEnabled ()
+	If set to True , the active marker is enabled. When False, the active marker is disabled. For additional information about signal-tracking, see Section 1.4, Definition of Terms and Acronyms, and Section 6.2.12, Signal Track Enabled.
+
 DisableAllMarkers ()
 	This function turns off all markers.
 
-QueryMarker ()
-	Returns the amplitude of the active marker. The units are specified by the Amplitude Units attribute, except when the Marker Type attribute is set to Delta. Then the units are dB. If the Marker Enabled attribute is set to False, any attempt to read this attribute returns the Marker Not Enabled error. 
+GetMarkerName ()
+	This function returns the specific driver defined marker name that corresponds to the index that the user specifies. If the driver defines a qualified marker name, this function returns the qualified name. If the value that the user passes for the Index parameter is less then one or greater than the value of the Marker Count attribute, the function returns an empty string in the Name parameter and returns the Invalid Value error
 
+MarkerSearch ()
+	This function specifies the type of marker search and performs the search. This function returns the Marker Not Enabled error if the Marker Enabled attribute is set to False.
+
+MoveMarker ()
+	This function specifies the frequency in Hertz or time position in seconds of the specified horizontal position.
+
+QueryMarker ()
+	This function returns the horizontal position and the amplitude level of the active marker.
+	
+SetActiveMarker ()
+	This function selects one of the available markers, and makes it the active marker.
+
+SetInstrumentFromMarker()
+	This function uses the Marker Position or Marker Amplitude attributes to configure the spectrum analyzer setting specified by the InstrumentSetting parameter. This function may set the Frequency Start, Frequency Stop, or Reference Level attributes. If the Marker Enabled attribute is set to False, this function returns the Marker Not Enabled error. If the Marker Type attribute is not Delta and the InstrumentSetting parameter is Frequency Span, the function returns the Delta Marker Not Enabled error.
 
 
 Keysight44xxClass
@@ -281,26 +322,46 @@ Keysight44xxClass
 
 The Keysight44xx inherits the all the properties and methods from the SpecAnBase class and includes additional trigger properties.  
 
-Properties
-~~~~~~~~~~
-
-Marker \: [Struct]
- A structure containing the properties of each module's markers.  
-	
-	
-	MarkerPosition \: String
-	Specifies the frequency in Hertz or time position in seconds of the active marker (depending on the mode in which the analyzer is operating, frequency or time-domain). This attribute returns the Marker Not Enabled error if the active marker is not enabled.  
-  
-	MarkerAmplitude \: Double
-	Returns the amplitude of the active marker. The units are specified by the Amplitude Units attribute, except when the Marker Type attribute is set to Delta. Then the units are dB. If the Marker Enabled attribute is set to False, any attempt to read this attribute returns the Marker Not Enabled error.
-  	  
-	MarkerEnabled \: Boolean
-	If set to True , the active marker is enabled. When False, the active marker is disabled.   
-	 
-
 |image3|
 
 Figure \: Keysight44xxClass Properties UML Specification
+
+Properties
+~~~~~~~~~~
+
+RFBurst \: Struct
+ A structure containing the properties of an RFBurst Trigger.  
+	
+	
+	TriggerLevelType \: Enum
+	Specifies the frequency in Hertz or time position in seconds of the active marker (depending on the mode in which the analyzer is operating, frequency or time-domain). This attribute returns the Marker Not Enabled error if the active marker is not enabled.  
+  
+	FrequencySelect \: Boolean
+	Returns the amplitude of the active marker. The units are specified by the Amplitude Units attribute, except when the Marker Type attribute is set to Delta. Then the units are dB. If the Marker Enabled attribute is set to False, any attempt to read this attribute returns the Marker Not Enabled error.
+  	  
+	NarrowPulseDiscriminator \: Boolean
+	If set to True , the active marker is enabled. When False, the active marker is disabled. 
+
+TV \: Struct
+ A structure containing the properties of a TV Trigger.  
+	
+	MonitorEnabled \: Boolean
+	Specifies the frequency in Hertz or time position in seconds of the active marker (depending on the mode in which the analyzer is operating, frequency or time-domain). This attribute returns the Marker Not Enabled error if the active marker is not enabled.  
+  
+	TVField \: Enum
+	Returns the amplitude of the active marker. The units are specified by the Amplitude Units attribute, except when the Marker Type attribute is set to Delta. Then the units are dB. If the Marker Enabled attribute is set to False, any attempt to read this attribute returns the Marker Not Enabled error.
+  	  
+	TriggerSource \: Enum
+	If set to True , the active marker is enabled. When False, the active marker is disabled.   
+	
+	TVSignalFormat \: Enum
+	Specifies the frequency in Hertz or time position in seconds of the active marker (depending on the mode in which the analyzer is operating, frequency or time-domain). This attribute returns the Marker Not Enabled error if the active marker is not enabled.  
+  
+	SynchronizeSweep \: Boolean
+	Returns the amplitude of the active marker. The units are specified by the Amplitude Units attribute, except when the Marker Type attribute is set to Delta. Then the units are dB. If the Marker Enabled attribute is set to False, any attempt to read this attribute returns the Marker Not Enabled error.
+  	  
+	SynchronizationLineNumber \: Int32
+	If set to True , the active marker is enabled. When False, the active marker is disabled. 	 
 
 No new methods were added to this plugin at this time. 
 
