@@ -69,15 +69,16 @@ Error Codes
 	"26006": "The %s of %#g was outside of the parameter's range of %#g-%#g..","A parameter was selected that fell outside of its appropriate range; please set the parameter to fall within the range."
 	"26007": "The module attempted to range check an invalid parameter %s.","RangeCheck.vi attempted to run a check that didn't exist. Check the string calling the variable and adjust it so it fits an appropriate value."
 	"26008": "The number of phases %d must be equal to the number of phases %d."
+	"26009": "The module received a command to initialize the device but is currently acquiring data. Abort the acquistion and close the reference in order to initialize a session to the device."
 
     .. csv-table:: SpecAn Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
 	:widths: 10,45,45
 
-	"27001": "The  module %s acquisiton mode cannot be changed while acquiring data. Abort the acquisiton then change the acquisition mode."
-	"27002": "The module %s received an initialization command but had been previously been initialized. Abort the acquistion and close the reference in order to initialize again." 
-	"27003": "The module %s received an initiate acquisition command but is currently acquiring data. Abort the acquistion in order to initiate another acquisition."  
-	
+	"27001": "The plugin's acquisiton mode cannot be changed while acquiring data. Abort the acquisiton then change the acquisition mode."
+	"27002": "The module received a command to initialize the device but is currently acquiring data. Abort the acquistion and close the reference in order to initialize a session to the device." 
+	"27003": "The module received a command to initiate acquisition but is currently acquiring data. Abort the acquistion in order to initiate another acquisition."  
+	"27004": "The  module exceeded the amount of time specified waiting for the acquisition loop to enter the idle state. Increase the amount of time needed for the acquisition to complete or reduce the amount of data requested." 
      
 
     .. csv-table:: Test Class Error Codes
