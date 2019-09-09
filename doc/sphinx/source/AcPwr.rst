@@ -262,7 +262,7 @@ ConfigFrequency()
   Configure the frequency of all phases to the single frequency property value.
   
 Disable()
-   Cause all phases to apply the minimum ampout of power possible.  The devise remains connected after disablew.
+   Cause all phases to apply the minimum ampout of power possible.  The devise remains connected after disabled.
    
 ResetCurrentProtection()
    If the phases have tripped on over current, this method resets the overcurrent protection if the user has manually reset the Enabled property to true.  Note that during a protection event, the enabled property must be automatically cleared.
