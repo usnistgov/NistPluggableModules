@@ -14,4 +14,5 @@
 	<Item Name="AcPwrBase.lvclass" Type="LVClass" URL="../AcPwrBaseClass/AcPwrBase.lvclass"/>
 	<Item Name="ChromaAcLoad.lvclass" Type="LVClass" URL="../ChromaAcLoad/ChromaAcLoad.lvclass"/>
 	<Item Name="NhRegenGridSim.lvclass" Type="LVClass" URL="../NhRegenGridSim/NhRegenGridSim.lvclass"/>
+	<Item Name="PacificPowerSource.lvclass" Type="LVClass" URL="../PacificPowerSource/PacificPowerSource.lvclass"/>
 </Library>
