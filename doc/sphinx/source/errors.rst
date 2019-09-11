@@ -73,6 +73,7 @@ Error Codes
 	"26009": "The module received a command to initialize the device but is currently acquiring data. Abort the acquistion and close the reference in order to initialize a session to the device."
 	"26010": "The number of phases required by the mode %d does not match the number of configured modes %d."
 	"26011": "The number of phases configured %d must be less than or equal to 3."
+	"26012": "Measurement Type %s is not currently supported."
 	
     .. csv-table:: SpecAn Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
