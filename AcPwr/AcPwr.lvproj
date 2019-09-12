@@ -18,6 +18,7 @@
 		</Item>
 		<Item Name="AcPwrModule.lvlib" Type="Library" URL="../AcPwrModule/AcPwrModule.lvlib"/>
 		<Item Name="AcPwrPlugins.lvlib" Type="Library" URL="../AcPwrPlugins/AcPwrPlugins.lvlib"/>
+		<Item Name="ConfigDevicesModeSelection.ctl" Type="VI" URL="../AcPwrPlugins/PacificPowerSource/TypeDefs/ConfigDevicesModeSelection.ctl"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="C63800 Close.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Close.vi"/>
@@ -76,8 +77,12 @@
 				<Item Name="Fetch Extended Background Measurements.vi" Type="VI" URL="/&lt;instrlib&gt;/NH Research 9400 Series/Public/Data/Fetch Extended Background Measurements.vi"/>
 				<Item Name="NH Research 9400 Series.lvlib" Type="Library" URL="/&lt;instrlib&gt;/NH Research 9400 Series/NH Research 9400 Series.lvlib"/>
 				<Item Name="PPS_UPC Close.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC Close.vi"/>
+				<Item Name="PPS_UPC Config Output FREQuency Parameters.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC Config Output FREQuency Parameters.vi"/>
+				<Item Name="PPS_UPC Config Output IMPEDance Parameters.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC Config Output IMPEDance Parameters.vi"/>
 				<Item Name="PPS_UPC Initialize.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC Initialize.vi"/>
 				<Item Name="PPS_UPC MEASure (all data values).vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC MEASure (all data values).vi"/>
+				<Item Name="PPS_UPC PROGram Steady State Ouput.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC PROGram Steady State Ouput.vi"/>
+				<Item Name="PPS_UPC PROGram Transient Seg Parameters.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC PROGram Transient Seg Parameters.vi"/>
 				<Item Name="PPS_UPC Reset.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC Reset.vi"/>
 				<Item Name="PPS_UPC Send and query UPC Output.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC Send and query UPC Output.vi"/>
 				<Item Name="PPS_UPC Utility Clean Up Initialize.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC Utility Clean Up Initialize.vi"/>

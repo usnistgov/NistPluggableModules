@@ -74,6 +74,7 @@ Error Codes
 	"26010": "The number of phases required by the mode %d does not match the number of configured modes %d."
 	"26011": "The number of phases configured %d must be less than or equal to 3."
 	"26012": "Measurement Type %s is not currently supported."
+	"26013": "Measurement Handle %s does not match Output Handle."
 	
     .. csv-table:: SpecAn Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
