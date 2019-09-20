@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
-<Project Type="Project" LVVersion="14008000">
+<Project Type="Project" LVVersion="18008000">
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Property Name="NI.Project.Description" Type="Str"></Property>
 	<Item Name="My Computer" Type="My Computer">
@@ -35,9 +35,12 @@
 				<Item Name="niScope Configure Trigger (poly).vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger (poly).vi"/>
 				<Item Name="niScope Configure Trigger Digital.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Digital.vi"/>
 				<Item Name="niScope Configure Trigger Edge.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Edge.vi"/>
+				<Item Name="niScope Configure Trigger Glitch.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Glitch.vi"/>
 				<Item Name="niScope Configure Trigger Hysteresis.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Hysteresis.vi"/>
 				<Item Name="niScope Configure Trigger Immediate.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Immediate.vi"/>
+				<Item Name="niScope Configure Trigger Runt.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Runt.vi"/>
 				<Item Name="niScope Configure Trigger Software.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Software.vi"/>
+				<Item Name="niScope Configure Trigger Width.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Width.vi"/>
 				<Item Name="niScope Configure Trigger Window.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Window.vi"/>
 				<Item Name="niScope Configure Vertical.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Vertical/niScope Configure Vertical.vi"/>
 				<Item Name="niScope Configure Video Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Video Trigger.vi"/>
@@ -53,6 +56,7 @@
 				<Item Name="niScope Fetch WDT.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Fetch WDT.vi"/>
 				<Item Name="niScope Fetch.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Fetch.vi"/>
 				<Item Name="niScope Get Session Reference.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Utility/niScope Get Session Reference.vi"/>
+				<Item Name="niScope glitch condition.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope glitch condition.ctl"/>
 				<Item Name="niScope Initialize With Options.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/niScope Initialize With Options.vi"/>
 				<Item Name="niScope LabVIEW Error.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Utility/niScope LabVIEW Error.vi"/>
 				<Item Name="niScope Multi Fetch Binary 8.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Multi Fetch Binary 8.vi"/>
@@ -73,6 +77,7 @@
 				<Item Name="niScope signal format.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope signal format.ctl"/>
 				<Item Name="niScope timestamp type.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope timestamp type.ctl"/>
 				<Item Name="niScope trigger coupling.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope trigger coupling.ctl"/>
+				<Item Name="niScope trigger polarity.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope trigger polarity.ctl"/>
 				<Item Name="niScope trigger slope.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope trigger slope.ctl"/>
 				<Item Name="niScope trigger source digital.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope trigger source digital.ctl"/>
 				<Item Name="niScope trigger source.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope trigger source.ctl"/>
@@ -98,6 +103,7 @@
 				<Item Name="niSync Disconnect Trigger Terminals.vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Disconnect Trigger Terminals.vi"/>
 				<Item Name="niSync Enable Time Stamp Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Enable Time Stamp Trigger.vi"/>
 				<Item Name="niSync Get Time.vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Get Time.vi"/>
+				<Item Name="niSync Initialize (Default).vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Initialize (Default).vi"/>
 				<Item Name="niSync Initialize (IVI).vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Initialize (IVI).vi"/>
 				<Item Name="niSync Initialize (String).vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Initialize (String).vi"/>
 				<Item Name="niSync Initialize.vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Initialize.vi"/>
@@ -106,6 +112,7 @@
 				<Item Name="niSync Read Trigger Time Stamp (Single).vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Read Trigger Time Stamp (Single).vi"/>
 				<Item Name="niSync Read Trigger Time Stamp.vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Read Trigger Time Stamp.vi"/>
 				<Item Name="niSync Send Software Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Send Software Trigger.vi"/>
+				<Item Name="niSync Set Time Reference (802.1AS).vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Set Time Reference (802.1AS).vi"/>
 				<Item Name="niSync Set Time Reference (1588 Ordinary Clock).vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Set Time Reference (1588 Ordinary Clock).vi"/>
 				<Item Name="niSync Set Time Reference (Free Running).vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Set Time Reference (Free Running).vi"/>
 				<Item Name="niSync Set Time Reference (GPS).vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Set Time Reference (GPS).vi"/>
@@ -118,130 +125,6 @@
 				<Item Name="niTClk Synchronize.vi" Type="VI" URL="/&lt;instrlib&gt;/niTClk/niTClk.llb/niTClk Synchronize.vi"/>
 			</Item>
 			<Item Name="user.lib" Type="Folder">
-				<Item Name="_clkDisc_fixedFifo.ctl" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_fixedFifo.ctl"/>
-				<Item Name="_clkDisc_fixedFifo_create.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_fixedFifo_create.vi"/>
-				<Item Name="_clkDisc_fixedFifo_getSize.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_fixedFifo_getSize.vi"/>
-				<Item Name="_clkDisc_fixedFifo_peek.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_fixedFifo_peek.vi"/>
-				<Item Name="_clkDisc_fixedFifo_push.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_fixedFifo_push.vi"/>
-				<Item Name="_clkDisc_fixedFifo_pushArray.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_fixedFifo_pushArray.vi"/>
-				<Item Name="_clkDisc_fixedFifo_pushElement.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_fixedFifo_pushElement.vi"/>
-				<Item Name="_clkDisc_fixedFifo_resize.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_fixedFifo_resize.vi"/>
-				<Item Name="_clkDisc_niSync_advancedAttribute_get.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_niSync_advancedAttribute_get.vi"/>
-				<Item Name="_clkDisc_niSync_advancedAttribute_get_i32.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_niSync_advancedAttribute_get_i32.vi"/>
-				<Item Name="_clkDisc_niSync_advancedAttribute_set.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_niSync_advancedAttribute_set.vi"/>
-				<Item Name="_clkDisc_niSync_advancedAttribute_set_bool.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_niSync_advancedAttribute_set_bool.vi"/>
-				<Item Name="_clkDisc_niSync_advancedAttribute_set_f64.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_niSync_advancedAttribute_set_f64.vi"/>
-				<Item Name="_clkDisc_niSync_advancedAttribute_set_i32.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_niSync_advancedAttribute_set_i32.vi"/>
-				<Item Name="_clkDisc_niSync_advancedAttributes.ctl" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_niSync_advancedAttributes.ctl"/>
-				<Item Name="_clkDisc_servo_adjustOscVoltage.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_adjustOscVoltage.vi"/>
-				<Item Name="_clkDisc_servo_adjustPhase.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_adjustPhase.vi"/>
-				<Item Name="_clkDisc_servo_adjustTime.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_adjustTime.vi"/>
-				<Item Name="_clkDisc_servo_alignToClk10.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_alignToClk10.vi"/>
-				<Item Name="_clkDisc_servo_applyTimeRefCorrection.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_applyTimeRefCorrection.vi"/>
-				<Item Name="_clkDisc_servo_calcOscVoltage.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_calcOscVoltage.vi"/>
-				<Item Name="_clkDisc_servo_enableClk10Disciplining.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_enableClk10Disciplining.vi"/>
-				<Item Name="_clkDisc_servo_filter_holdover_getOscVoltage.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_filter_holdover_getOscVoltage.vi"/>
-				<Item Name="_clkDisc_servo_filter_holdoverState.ctl" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_filter_holdoverState.ctl"/>
-				<Item Name="_clkDisc_servo_filter_holdoverUpdate.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_filter_holdoverUpdate.vi"/>
-				<Item Name="_clkDisc_servo_filter_IIR.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_filter_IIR.vi"/>
-				<Item Name="_clkDisc_servo_filter_IIRState.ctl" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_filter_IIRState.ctl"/>
-				<Item Name="_clkDisc_servo_filter_linReg.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_filter_linReg.vi"/>
-				<Item Name="_clkDisc_servo_gainController.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_gainController.vi"/>
-				<Item Name="_clkDisc_servo_getOffsetFromTR.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_getOffsetFromTR.vi"/>
-				<Item Name="_clkDisc_servo_parameters.ctl" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_parameters.ctl"/>
-				<Item Name="_clkDisc_servo_state.ctl" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_state.ctl"/>
-				<Item Name="_clkDisc_servo_stateFinished.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_stateFinished.vi"/>
-				<Item Name="_clkDisc_servo_stateMachineController.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_stateMachineController.vi"/>
-				<Item Name="_clkDisc_servo_waitForSecondsBoundary.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_waitForSecondsBoundary.vi"/>
-				<Item Name="_clkDisc_servo_waitForSyncEvent.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_servo_waitForSyncEvent.vi"/>
-				<Item Name="_clkDisc_session.ctl" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session.ctl"/>
-				<Item Name="_clkDisc_session_attribute_get.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_attributes.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_attributes.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_bool.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_bool.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_dev.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_dev.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_error.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_error.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_f64.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_f64.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_fixedFifo.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_fixedFifo.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_holdoverFilterState.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_holdoverFilterState.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_i32.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_i32.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_IIRFilterState.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_IIRFilterState.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_queue.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_queue.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_servoParms.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_servoParms.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_servoState.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_servoState.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_status.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_status.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_string.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_string.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_variant.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_variant.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_variants.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_variants.vi"/>
-				<Item Name="_clkDisc_session_attribute_get_viRef.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_get_viRef.vi"/>
-				<Item Name="_clkDisc_session_attribute_set.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_set.vi"/>
-				<Item Name="_clkDisc_session_attribute_set_attributes.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_set_attributes.vi"/>
-				<Item Name="_clkDisc_session_attribute_set_bool.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_set_bool.vi"/>
-				<Item Name="_clkDisc_session_attribute_set_dev.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_set_dev.vi"/>
-				<Item Name="_clkDisc_session_attribute_set_error.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_set_error.vi"/>
-				<Item Name="_clkDisc_session_attribute_set_f64.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_set_f64.vi"/>
-				<Item Name="_clkDisc_session_attribute_set_fixedFifo.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_set_fixedFifo.vi"/>
-				<Item Name="_clkDisc_session_attribute_set_holdoverFilterState.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_set_holdoverFilterState.vi"/>
-				<Item Name="_clkDisc_session_attribute_set_i32.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_set_i32.vi"/>
-				<Item Name="_clkDisc_session_attribute_set_IIRFilterState.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_set_IIRFilterState.vi"/>
-				<Item Name="_clkDisc_session_attribute_set_queue.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_set_queue.vi"/>
-				<Item Name="_clkDisc_session_attribute_set_servoParms.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_set_servoParms.vi"/>
-				<Item Name="_clkDisc_session_attribute_set_servoState.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_set_servoState.vi"/>
-				<Item Name="_clkDisc_session_attribute_set_status.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_set_status.vi"/>
-				<Item Name="_clkDisc_session_attribute_set_string.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_set_string.vi"/>
-				<Item Name="_clkDisc_session_attribute_set_variant.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_set_variant.vi"/>
-				<Item Name="_clkDisc_session_attribute_toString.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attribute_toString.vi"/>
-				<Item Name="_clkDisc_session_attributes.ctl" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_attributes.ctl"/>
-				<Item Name="_clkDisc_session_closeDevices.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_closeDevices.vi"/>
-				<Item Name="_clkDisc_session_command_clearStatus.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_clearStatus.vi"/>
-				<Item Name="_clkDisc_session_command_create.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_create.vi"/>
-				<Item Name="_clkDisc_session_command_exit.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_exit.vi"/>
-				<Item Name="_clkDisc_session_command_packet.ctl" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_packet.ctl"/>
-				<Item Name="_clkDisc_session_command_parameters.ctl" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_parameters.ctl"/>
-				<Item Name="_clkDisc_session_command_parm_get.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_parm_get.vi"/>
-				<Item Name="_clkDisc_session_command_parm_get_bool.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_parm_get_bool.vi"/>
-				<Item Name="_clkDisc_session_command_parm_get_dev.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_parm_get_dev.vi"/>
-				<Item Name="_clkDisc_session_command_parm_get_f64.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_parm_get_f64.vi"/>
-				<Item Name="_clkDisc_session_command_parm_get_servoParms.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_parm_get_servoParms.vi"/>
-				<Item Name="_clkDisc_session_command_parm_get_type.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_parm_get_type.vi"/>
-				<Item Name="_clkDisc_session_command_parm_get_u32.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_parm_get_u32.vi"/>
-				<Item Name="_clkDisc_session_command_parm_set.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_parm_set.vi"/>
-				<Item Name="_clkDisc_session_command_parm_set_bool.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_parm_set_bool.vi"/>
-				<Item Name="_clkDisc_session_command_parm_set_dev.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_parm_set_dev.vi"/>
-				<Item Name="_clkDisc_session_command_parm_set_f64.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_parm_set_f64.vi"/>
-				<Item Name="_clkDisc_session_command_parm_set_servoParms.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_parm_set_servoParms.vi"/>
-				<Item Name="_clkDisc_session_command_parm_set_u32.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_parm_set_u32.vi"/>
-				<Item Name="_clkDisc_session_command_parm_toString.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_parm_toString.vi"/>
-				<Item Name="_clkDisc_session_command_recv.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_recv.vi"/>
-				<Item Name="_clkDisc_session_command_resetServo.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_resetServo.vi"/>
-				<Item Name="_clkDisc_session_command_send.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_send.vi"/>
-				<Item Name="_clkDisc_session_command_server.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_server.vi"/>
-				<Item Name="_clkDisc_session_command_setDevices.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_setDevices.vi"/>
-				<Item Name="_clkDisc_session_command_setTimeRefCorrection.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_setTimeRefCorrection.vi"/>
-				<Item Name="_clkDisc_session_command_start.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_start.vi"/>
-				<Item Name="_clkDisc_session_command_stop.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_command_stop.vi"/>
-				<Item Name="_clkDisc_session_commands.ctl" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_commands.ctl"/>
-				<Item Name="_clkDisc_session_create.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_create.vi"/>
-				<Item Name="_clkDisc_session_createName.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_createName.vi"/>
-				<Item Name="_clkDisc_session_createProxy.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_createProxy.vi"/>
-				<Item Name="_clkDisc_session_delete.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_delete.vi"/>
-				<Item Name="_clkDisc_session_deleteProxy.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_deleteProxy.vi"/>
-				<Item Name="_clkDisc_session_namedQueues.ctl" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_namedQueues.ctl"/>
-				<Item Name="_clkDisc_session_openDevices.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_openDevices.vi"/>
-				<Item Name="_clkDisc_session_resetHoldoverFilter.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_resetHoldoverFilter.vi"/>
-				<Item Name="_clkDisc_session_resetServoParms.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_resetServoParms.vi"/>
-				<Item Name="_clkDisc_session_servo.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_servo.vi"/>
-				<Item Name="_clkDisc_session_setServoParms.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_setServoParms.vi"/>
-				<Item Name="_clkDisc_session_status.ctl" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_status.ctl"/>
-				<Item Name="_clkDisc_session_status_build.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_status_build.vi"/>
-				<Item Name="_clkDisc_session_status_merge.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_status_merge.vi"/>
-				<Item Name="_clkDisc_session_status_recv.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_status_recv.vi"/>
-				<Item Name="_clkDisc_session_status_send.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_status_send.vi"/>
-				<Item Name="_clkDisc_session_status_timekeeper.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_status_timekeeper.vi"/>
-				<Item Name="_clkDisc_session_statusEx_build.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_statusEx_build.vi"/>
-				<Item Name="_clkDisc_session_statusEx_calculateCrc.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_statusEx_calculateCrc.vi"/>
-				<Item Name="_clkDisc_session_timeReferenceDeglitcher.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_timeReferenceDeglitcher.vi"/>
-				<Item Name="_clkDisc_session_updateCalculatedOffset.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_updateCalculatedOffset.vi"/>
-				<Item Name="_clkDisc_session_updateTimestamp.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/_clkDisc_session_updateTimestamp.vi"/>
 				<Item Name="Array of VData to VArray__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array of VData to VArray__ogtk.vi"/>
 				<Item Name="Array of VData to VCluster__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array of VData to VCluster__ogtk.vi"/>
 				<Item Name="Array Size(s)__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array Size(s)__ogtk.vi"/>
@@ -254,7 +137,6 @@
 				<Item Name="Format Variant Into String__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/string/string.llb/Format Variant Into String__ogtk.vi"/>
 				<Item Name="Get Array Element TD__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Get Array Element TD__ogtk.vi"/>
 				<Item Name="Get Array Element TDEnum__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Get Array Element TDEnum__ogtk.vi"/>
-				<Item Name="Get Clock Servo Status.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/Get Clock Servo Status.vi"/>
 				<Item Name="Get Data Name from TD__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Get Data Name from TD__ogtk.vi"/>
 				<Item Name="Get Data Name__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Get Data Name__ogtk.vi"/>
 				<Item Name="Get Default Data from TD__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Get Default Data from TD__ogtk.vi"/>
@@ -283,8 +165,6 @@
 				<Item Name="Set Enum String Value__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Set Enum String Value__ogtk.vi"/>
 				<Item Name="Socket.lvlib" Type="Library" URL="/&lt;userlib&gt;/NIST/Socket Class/Classes/Socket.lvlib"/>
 				<Item Name="Split Cluster TD__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Split Cluster TD__ogtk.vi"/>
-				<Item Name="Start Clock Servo.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/Start Clock Servo.vi"/>
-				<Item Name="Stop Clock Servo.vi" Type="VI" URL="/&lt;userlib&gt;/mdevClkDisc/mdevClkDisc.llb/Stop Clock Servo.vi"/>
 				<Item Name="Strip Units__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Strip Units__ogtk.vi"/>
 				<Item Name="Trim Whitespace (String Array)__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/string/string.llb/Trim Whitespace (String Array)__ogtk.vi"/>
 				<Item Name="Trim Whitespace (String)__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/string/string.llb/Trim Whitespace (String)__ogtk.vi"/>
@@ -313,11 +193,11 @@
 				<Item Name="DAQmx Advance Trigger (None).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/trigger.llb/DAQmx Advance Trigger (None).vi"/>
 				<Item Name="DAQmx Clear Task.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/task.llb/DAQmx Clear Task.vi"/>
 				<Item Name="DAQmx Connect Terminals.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/routing.llb/DAQmx Connect Terminals.vi"/>
-				<Item Name="DAQmx Create AI Channel (sub).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create AI Channel (sub).vi"/>
-				<Item Name="DAQmx Create AI Channel TEDS(sub).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create AI Channel TEDS(sub).vi"/>
-				<Item Name="DAQmx Create AO Channel (sub).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create AO Channel (sub).vi"/>
+				<Item Name="DAQmx Create Channel (AI-Acceleration-4 Wire DC Voltage).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (AI-Acceleration-4 Wire DC Voltage).vi"/>
 				<Item Name="DAQmx Create Channel (AI-Acceleration-Accelerometer).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (AI-Acceleration-Accelerometer).vi"/>
+				<Item Name="DAQmx Create Channel (AI-Acceleration-Charge).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (AI-Acceleration-Charge).vi"/>
 				<Item Name="DAQmx Create Channel (AI-Bridge).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (AI-Bridge).vi"/>
+				<Item Name="DAQmx Create Channel (AI-Charge).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (AI-Charge).vi"/>
 				<Item Name="DAQmx Create Channel (AI-Current-Basic).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (AI-Current-Basic).vi"/>
 				<Item Name="DAQmx Create Channel (AI-Current-RMS).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (AI-Current-RMS).vi"/>
 				<Item Name="DAQmx Create Channel (AI-Force-Bridge-Polynomial).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (AI-Force-Bridge-Polynomial).vi"/>
@@ -351,6 +231,7 @@
 				<Item Name="DAQmx Create Channel (AO-FuncGen).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (AO-FuncGen).vi"/>
 				<Item Name="DAQmx Create Channel (AO-Voltage-Basic).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (AO-Voltage-Basic).vi"/>
 				<Item Name="DAQmx Create Channel (CI-Count Edges).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (CI-Count Edges).vi"/>
+				<Item Name="DAQmx Create Channel (CI-Duty Cycle).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (CI-Duty Cycle).vi"/>
 				<Item Name="DAQmx Create Channel (CI-Frequency).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (CI-Frequency).vi"/>
 				<Item Name="DAQmx Create Channel (CI-GPS Timestamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (CI-GPS Timestamp).vi"/>
 				<Item Name="DAQmx Create Channel (CI-Period).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (CI-Period).vi"/>
@@ -362,6 +243,8 @@
 				<Item Name="DAQmx Create Channel (CI-Pulse Width).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (CI-Pulse Width).vi"/>
 				<Item Name="DAQmx Create Channel (CI-Semi Period).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (CI-Semi Period).vi"/>
 				<Item Name="DAQmx Create Channel (CI-Two Edge Separation).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (CI-Two Edge Separation).vi"/>
+				<Item Name="DAQmx Create Channel (CI-Velocity-Angular).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (CI-Velocity-Angular).vi"/>
+				<Item Name="DAQmx Create Channel (CI-Velocity-Linear).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (CI-Velocity-Linear).vi"/>
 				<Item Name="DAQmx Create Channel (CO-Pulse Generation-Frequency).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (CO-Pulse Generation-Frequency).vi"/>
 				<Item Name="DAQmx Create Channel (CO-Pulse Generation-Ticks).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (CO-Pulse Generation-Ticks).vi"/>
 				<Item Name="DAQmx Create Channel (CO-Pulse Generation-Time).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (CO-Pulse Generation-Time).vi"/>
@@ -385,29 +268,21 @@
 				<Item Name="DAQmx Create Channel (TEDS-AI-Torque-Bridge).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (TEDS-AI-Torque-Bridge).vi"/>
 				<Item Name="DAQmx Create Channel (TEDS-AI-Voltage-Basic).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (TEDS-AI-Voltage-Basic).vi"/>
 				<Item Name="DAQmx Create Channel (TEDS-AI-Voltage-Custom with Excitation).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Channel (TEDS-AI-Voltage-Custom with Excitation).vi"/>
-				<Item Name="DAQmx Create CI Channel (sub).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create CI Channel (sub).vi"/>
-				<Item Name="DAQmx Create CO Channel (sub).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create CO Channel (sub).vi"/>
-				<Item Name="DAQmx Create DI Channel (sub).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create DI Channel (sub).vi"/>
-				<Item Name="DAQmx Create DO Channel (sub).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create DO Channel (sub).vi"/>
-				<Item Name="DAQmx Create Strain Rosette AI Channels (sub).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Strain Rosette AI Channels (sub).vi"/>
 				<Item Name="DAQmx Create Task.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/task.llb/DAQmx Create Task.vi"/>
 				<Item Name="DAQmx Create Timing Source (Control Loop From Task).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/timing.llb/DAQmx Create Timing Source (Control Loop From Task).vi"/>
 				<Item Name="DAQmx Create Timing Source (Digital Change Detection).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/timing.llb/DAQmx Create Timing Source (Digital Change Detection).vi"/>
-				<Item Name="DAQmx Create Timing Source (Digital Change Detection_sub).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/timing.llb/DAQmx Create Timing Source (Digital Change Detection_sub).vi"/>
 				<Item Name="DAQmx Create Timing Source (Digital Edge using Counter).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/timing.llb/DAQmx Create Timing Source (Digital Edge using Counter).vi"/>
-				<Item Name="DAQmx Create Timing Source (Digital Edge using Counter_sub).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/timing.llb/DAQmx Create Timing Source (Digital Edge using Counter_sub).vi"/>
 				<Item Name="DAQmx Create Timing Source (Frequency).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/timing.llb/DAQmx Create Timing Source (Frequency).vi"/>
-				<Item Name="DAQmx Create Timing Source (Frequency_sub).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/timing.llb/DAQmx Create Timing Source (Frequency_sub).vi"/>
 				<Item Name="DAQmx Create Timing Source (Signal From Task).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/timing.llb/DAQmx Create Timing Source (Signal From Task).vi"/>
-				<Item Name="DAQmx Create Timing Source (SignalFromTask_sub).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/timing.llb/DAQmx Create Timing Source (SignalFromTask_sub).vi"/>
-				<Item Name="DAQmx Create Timing Source (sub).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/timing.llb/DAQmx Create Timing Source (sub).vi"/>
-				<Item Name="DAQmx Create Timing Source (sub2).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/timing.llb/DAQmx Create Timing Source (sub2).vi"/>
 				<Item Name="DAQmx Create Timing Source.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/timing.llb/DAQmx Create Timing Source.vi"/>
 				<Item Name="DAQmx Create Virtual Channel.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Create Virtual Channel.vi"/>
+				<Item Name="DAQmx Export Signal (Most Signals).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/events/hardwareSignals.llb/DAQmx Export Signal (Most Signals).vi"/>
+				<Item Name="DAQmx Export Signal.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/events/hardwareSignals.llb/DAQmx Export Signal.vi"/>
 				<Item Name="DAQmx Fill In Error Info.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/miscellaneous.llb/DAQmx Fill In Error Info.vi"/>
 				<Item Name="DAQmx Read (Analog 1D DBL 1Chan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Analog 1D DBL 1Chan NSamp).vi"/>
 				<Item Name="DAQmx Read (Analog 1D DBL NChan 1Samp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Analog 1D DBL NChan 1Samp).vi"/>
 				<Item Name="DAQmx Read (Analog 1D Wfm NChan 1Samp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Analog 1D Wfm NChan 1Samp).vi"/>
+				<Item Name="DAQmx Read (Analog 1D Wfm NChan NSamp Duration).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Analog 1D Wfm NChan NSamp Duration).vi"/>
 				<Item Name="DAQmx Read (Analog 1D Wfm NChan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Analog 1D Wfm NChan NSamp).vi"/>
 				<Item Name="DAQmx Read (Analog 2D DBL NChan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Analog 2D DBL NChan NSamp).vi"/>
 				<Item Name="DAQmx Read (Analog 2D I16 NChan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Analog 2D I16 NChan NSamp).vi"/>
@@ -416,12 +291,17 @@
 				<Item Name="DAQmx Read (Analog 2D U32 NChan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Analog 2D U32 NChan NSamp).vi"/>
 				<Item Name="DAQmx Read (Analog DBL 1Chan 1Samp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Analog DBL 1Chan 1Samp).vi"/>
 				<Item Name="DAQmx Read (Analog Wfm 1Chan 1Samp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Analog Wfm 1Chan 1Samp).vi"/>
+				<Item Name="DAQmx Read (Analog Wfm 1Chan NSamp Duration).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Analog Wfm 1Chan NSamp Duration).vi"/>
 				<Item Name="DAQmx Read (Analog Wfm 1Chan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Analog Wfm 1Chan NSamp).vi"/>
 				<Item Name="DAQmx Read (Counter 1D DBL 1Chan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Counter 1D DBL 1Chan NSamp).vi"/>
+				<Item Name="DAQmx Read (Counter 1D DBL NChan 1Samp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Counter 1D DBL NChan 1Samp).vi"/>
 				<Item Name="DAQmx Read (Counter 1D Pulse Freq 1 Chan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Counter 1D Pulse Freq 1 Chan NSamp).vi"/>
 				<Item Name="DAQmx Read (Counter 1D Pulse Ticks 1Chan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Counter 1D Pulse Ticks 1Chan NSamp).vi"/>
 				<Item Name="DAQmx Read (Counter 1D Pulse Time 1Chan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Counter 1D Pulse Time 1Chan NSamp).vi"/>
 				<Item Name="DAQmx Read (Counter 1D U32 1Chan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Counter 1D U32 1Chan NSamp).vi"/>
+				<Item Name="DAQmx Read (Counter 1D U32 NChan 1Samp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Counter 1D U32 NChan 1Samp).vi"/>
+				<Item Name="DAQmx Read (Counter 2D DBL NChan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Counter 2D DBL NChan NSamp).vi"/>
+				<Item Name="DAQmx Read (Counter 2D U32 NChan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Counter 2D U32 NChan NSamp).vi"/>
 				<Item Name="DAQmx Read (Counter DBL 1Chan 1Samp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Counter DBL 1Chan 1Samp).vi"/>
 				<Item Name="DAQmx Read (Counter Pulse Freq 1 Chan 1 Samp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Counter Pulse Freq 1 Chan 1 Samp).vi"/>
 				<Item Name="DAQmx Read (Counter Pulse Ticks 1Chan 1Samp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Counter Pulse Ticks 1Chan 1Samp).vi"/>
@@ -436,6 +316,7 @@
 				<Item Name="DAQmx Read (Digital 1D U32 1Chan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Digital 1D U32 1Chan NSamp).vi"/>
 				<Item Name="DAQmx Read (Digital 1D U32 NChan 1Samp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Digital 1D U32 NChan 1Samp).vi"/>
 				<Item Name="DAQmx Read (Digital 1D Wfm NChan 1Samp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Digital 1D Wfm NChan 1Samp).vi"/>
+				<Item Name="DAQmx Read (Digital 1D Wfm NChan NSamp Duration).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Digital 1D Wfm NChan NSamp Duration).vi"/>
 				<Item Name="DAQmx Read (Digital 1D Wfm NChan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Digital 1D Wfm NChan NSamp).vi"/>
 				<Item Name="DAQmx Read (Digital 2D Bool NChan 1Samp NLine).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Digital 2D Bool NChan 1Samp NLine).vi"/>
 				<Item Name="DAQmx Read (Digital 2D U8 NChan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Digital 2D U8 NChan NSamp).vi"/>
@@ -446,6 +327,7 @@
 				<Item Name="DAQmx Read (Digital U16 1Chan 1Samp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Digital U16 1Chan 1Samp).vi"/>
 				<Item Name="DAQmx Read (Digital U32 1Chan 1Samp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Digital U32 1Chan 1Samp).vi"/>
 				<Item Name="DAQmx Read (Digital Wfm 1Chan 1Samp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Digital Wfm 1Chan 1Samp).vi"/>
+				<Item Name="DAQmx Read (Digital Wfm 1Chan NSamp Duration).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Digital Wfm 1Chan NSamp Duration).vi"/>
 				<Item Name="DAQmx Read (Digital Wfm 1Chan NSamp).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Digital Wfm 1Chan NSamp).vi"/>
 				<Item Name="DAQmx Read (Raw 1D I8).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Raw 1D I8).vi"/>
 				<Item Name="DAQmx Read (Raw 1D I16).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Raw 1D I16).vi"/>
@@ -455,19 +337,20 @@
 				<Item Name="DAQmx Read (Raw 1D U32).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read (Raw 1D U32).vi"/>
 				<Item Name="DAQmx Read.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/read.llb/DAQmx Read.vi"/>
 				<Item Name="DAQmx Reference Trigger (Analog Edge).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/trigger.llb/DAQmx Reference Trigger (Analog Edge).vi"/>
+				<Item Name="DAQmx Reference Trigger (Analog Multi Edge).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/trigger.llb/DAQmx Reference Trigger (Analog Multi Edge).vi"/>
 				<Item Name="DAQmx Reference Trigger (Analog Window).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/trigger.llb/DAQmx Reference Trigger (Analog Window).vi"/>
 				<Item Name="DAQmx Reference Trigger (Digital Edge).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/trigger.llb/DAQmx Reference Trigger (Digital Edge).vi"/>
 				<Item Name="DAQmx Reference Trigger (Digital Pattern).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/trigger.llb/DAQmx Reference Trigger (Digital Pattern).vi"/>
 				<Item Name="DAQmx Reference Trigger (None).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/trigger.llb/DAQmx Reference Trigger (None).vi"/>
 				<Item Name="DAQmx Reset Device.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/system.llb/DAQmx Reset Device.vi"/>
-				<Item Name="DAQmx Rollback Channel If Error.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Rollback Channel If Error.vi"/>
-				<Item Name="DAQmx Set CJC Parameters (sub).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/create/channels.llb/DAQmx Set CJC Parameters (sub).vi"/>
 				<Item Name="DAQmx Start Task.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/task.llb/DAQmx Start Task.vi"/>
 				<Item Name="DAQmx Start Trigger (Analog Edge).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/trigger.llb/DAQmx Start Trigger (Analog Edge).vi"/>
+				<Item Name="DAQmx Start Trigger (Analog Multi Edge).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/trigger.llb/DAQmx Start Trigger (Analog Multi Edge).vi"/>
 				<Item Name="DAQmx Start Trigger (Analog Window).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/trigger.llb/DAQmx Start Trigger (Analog Window).vi"/>
 				<Item Name="DAQmx Start Trigger (Digital Edge).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/trigger.llb/DAQmx Start Trigger (Digital Edge).vi"/>
 				<Item Name="DAQmx Start Trigger (Digital Pattern).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/trigger.llb/DAQmx Start Trigger (Digital Pattern).vi"/>
 				<Item Name="DAQmx Start Trigger (None).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/trigger.llb/DAQmx Start Trigger (None).vi"/>
+				<Item Name="DAQmx Start Trigger (Time).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/trigger.llb/DAQmx Start Trigger (Time).vi"/>
 				<Item Name="DAQmx Stop Task.vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/task.llb/DAQmx Stop Task.vi"/>
 				<Item Name="DAQmx Timing (Burst Export Clock).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/timing.llb/DAQmx Timing (Burst Export Clock).vi"/>
 				<Item Name="DAQmx Timing (Burst Import Clock).vi" Type="VI" URL="/&lt;vilib&gt;/DAQmx/configure/timing.llb/DAQmx Timing (Burst Import Clock).vi"/>
@@ -619,7 +502,6 @@
 				<Item Name="NI_MAPro.lvlib" Type="Library" URL="/&lt;vilib&gt;/measure/NI_MAPro.lvlib"/>
 				<Item Name="NI_Matrix.lvlib" Type="Library" URL="/&lt;vilib&gt;/Analysis/Matrix/NI_Matrix.lvlib"/>
 				<Item Name="NI_PackedLibraryUtility.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/LVLibp/NI_PackedLibraryUtility.lvlib"/>
-				<Item Name="NI_PtbyPt.lvlib" Type="Library" URL="/&lt;vilib&gt;/ptbypt/NI_PtbyPt.lvlib"/>
 				<Item Name="nisyscfg.lvlib" Type="Library" URL="/&lt;vilib&gt;/nisyscfg/nisyscfg.lvlib"/>
 				<Item Name="Not A Rendezvous.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/rendezvs.llb/Not A Rendezvous.vi"/>
 				<Item Name="Not Found Dialog.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Not Found Dialog.vi"/>
@@ -635,7 +517,6 @@
 				<Item Name="Simple Error Handler.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Simple Error Handler.vi"/>
 				<Item Name="Space Constant.vi" Type="VI" URL="/&lt;vilib&gt;/dlg_ctls.llb/Space Constant.vi"/>
 				<Item Name="subFile Dialog.vi" Type="VI" URL="/&lt;vilib&gt;/express/express input/FileDialogBlock.llb/subFile Dialog.vi"/>
-				<Item Name="subTimeDelay.vi" Type="VI" URL="/&lt;vilib&gt;/express/express execution control/TimeDelayBlock.llb/subTimeDelay.vi"/>
 				<Item Name="TagReturnType.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/TagReturnType.ctl"/>
 				<Item Name="TCP Listen Internal List.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/tcp.llb/TCP Listen Internal List.vi"/>
 				<Item Name="TCP Listen List Operations.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/tcp.llb/TCP Listen List Operations.ctl"/>
@@ -686,9 +567,6 @@
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="niSync.dll" Type="Document" URL="niSync.dll">
-				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
-			</Item>
-			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="niTClk.dll" Type="Document" URL="niTClk.dll">
