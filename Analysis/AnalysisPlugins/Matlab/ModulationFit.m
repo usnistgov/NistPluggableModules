@@ -7,11 +7,13 @@ function [Synx,Freq,ROCOF, iterations] = ModulationFit ( ...
 	SampleRate, ...
 	Samples ...
 )
+% dummy
 %Ain = [70,70,70,5,5,5];
 %Theta = [0, -(2/3)*pi, (2/3)*pi, 0, -(2/3)*pi, (2/3)*pi,];
 %Synx = (Ain.*exp(-1i.*Theta)).';
 % Freq = 60;
 % ROCOF = 0;
+% iterations = 0;
 
 %SignalParams: array of doubles
 % For Modulated Signals:
@@ -32,19 +34,31 @@ Freqs(1:NPhases) = Freq;
 ROCOFs(1:NPhases) = 0;
 
 dt = 1/SampleRate;
-tn = (-NSamples/2:NSamples/2-1)*dt;
+%tn = (-NSamples/2:NSamples/2-1)*dt;
+tn = (-(NSamples/2-(1/2)):NSamples/2-(1/2))*dt;
 MaxIter = 40;
 FitCrit = 1e-7;   %dFm min
 
+% pre-allocate results
+Ain = zeros(1,NPhases);
+Theta = zeros(1,NPhases);
+iterations = zeros(1,NPhases);
+
 if fm<1
     %Taylor model
+    
+    % pre-allocate arrays for speed
+    A = zeros(MaxIter,1); B = zeros(MaxIter,1);
+    dFreq = zeros(NPhases,MaxIter);
+    
     for p = 1:NPhases
         %Pre-fit: generate the model using first estimated frequency
         H = [ones(1,NSamples)' cos(2*pi*Freq*tn)' sin(2*pi*Freq*tn)' ];
         S = (H'*H)\(H'*Samples(p,:)');
-        Vdc(1) = S(1); A(1) = S(2); B(1) = S(3);
-        Ain(p) = sqrt(A(1)^2 + B(1)^2)*MagCorr(p);
-        Theta(p) = atan2(B(1),A(1)) + DelayCorr(p)*1e-9*2*pi*Freq;
+        %Vdc(1) = S(1); 
+        A(1) = S(2); B(1) = S(3);
+        %Ain(p) = sqrt(A(1)^2 + B(1)^2)*MagCorr(p);
+        %Theta(p) = atan2(B(1),A(1)) + DelayCorr(p)*1e-9*2*pi*Freq;
         for k = 1:MaxIter
             %Four parameter iterative fit
             % update model -- adding frequency variation model
@@ -52,8 +66,8 @@ if fm<1
             G = [H (-A(k)*tn.*sin(2*pi*Freqs(p)*tn) + B(k)*tn.*cos(2*pi*Freqs(p)*tn))'];
             S = (G'*G)\(G'*Samples(p,:)');
             A(k+1) = S(2); B(k+1) = S(3); 
-            Ain(p) = sqrt(A(k+1)^2 + B(k+1)^2)*MagCorr(p);
-            Theta(p) = atan2(B(k+1),A(k+1)) + DelayCorr(p)*1e-9*2*pi*Freq; 
+            %Ain(p) = sqrt(A(k+1)^2 + B(k+1)^2)*MagCorr(p);
+            %Theta(p) = atan2(B(k+1),A(k+1)) + DelayCorr(p)*1e-9*2*pi*Freq; 
             dFreq(p,k) = S(size(S,1))/(2*pi);
             Freqs(p) = Freqs(p) + dFreq(p,k);
             ROCOFs(p) = dFreq(p,k);
@@ -61,7 +75,9 @@ if fm<1
                 break
             end
         end
-	iterations(p) = k;
+        Ain(p) = sqrt(A(k+1)^2 + B(k+1)^2)*MagCorr(p);
+        Theta(p) = atan2(B(k+1),A(k+1)) + DelayCorr(p)*1e-9*2*pi*Freq;
+        iterations(p) = k;
     end
     Synx = (Ain/sqrt(2).*exp(-1i.*Theta)).';	    
 else
@@ -133,5 +149,5 @@ Izpn = Ai*Iabc;
 Synx = [ Vabc.' Vzpn(2) Iabc.' Izpn(2)];
 
 %Freq and ROCOF outputs:
-Freq = mean(Freqs);
-ROCOF = mean(ROCOFs);
+Freq = mean(Freqs(1:3));
+ROCOF = mean(ROCOFs(1:3));
