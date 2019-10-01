@@ -13,6 +13,7 @@
 	</Item>
 	<Item Name="AcPwrBase.lvclass" Type="LVClass" URL="../AcPwrBaseClass/AcPwrBase.lvclass"/>
 	<Item Name="ChromaAcLoad.lvclass" Type="LVClass" URL="../ChromaAcLoad/ChromaAcLoad.lvclass"/>
-	<Item Name="NhRegenGridSim.lvclass" Type="LVClass" URL="../NhRegenGridSim/NhRegenGridSim.lvclass"/>
+	<Item Name="NHRDCPower.lvclass" Type="LVClass" URL="../NHRDCPower/NHRDCPower.lvclass"/>
+	<Item Name="NHRGridSim.lvclass" Type="LVClass" URL="../NhRegenGridSim/NHRGridSim.lvclass"/>
 	<Item Name="PacificPowerSource.lvclass" Type="LVClass" URL="../PacificPowerSource/PacificPowerSource.lvclass"/>
 </Library>
