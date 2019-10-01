@@ -40,7 +40,7 @@ Wa = 2*pi*Fa;   % phase (angle) modulation frequency
 Wx = 2*pi*Fx;   % amplitude modulation frequency
 Wh = 2*pi*Fh;
 
-% create the time array
+% create the time array.  Add the settling time to both ends of the size
 t = t0-SettlingTime:1/FSamp:((size-1)/FSamp)+t0+SettlingTime;
 
 % Amplitude, AM and magnitude step
@@ -66,15 +66,25 @@ for i = 1:length(KaS)
     Theta(i,t >= 0) = Theta(i,t >= 0) + (KaS(i) * pi/180);
 end
 
+% % frequency ramp
+% for i = 1:length(Rf)
+%     Theta(i,t>=0 & t<SettlingTime) = Theta(i,t>=0 & t<SettlingTime) + (Rf(i) * 2 *pi * t(t>=0 & t<SettlingTime).^2);
+% end
+% 
+% % last frequency
+% for i = 1:length(Rf)
+%     Theta(i,t>=SettlingTime) = Theta(i,t>=SettlingTime) + (2*pi*Rf(i)*SettlingTime*t(t>=SettlingTime));
+% end
+
 % frequency ramp
 for i = 1:length(Rf)
-    Theta(i,t>=0 & t<SettlingTime) = Theta(i,t>=0 & t<SettlingTime) + (Rf(i) * 2 *pi * t(t>=0 & t<SettlingTime).^2);
+    if Rf(i)~=0
+        endRamp = (length(t)/FSamp)+t0-SettlingTime;
+        Theta(i,t>=0 & t<endRamp) = Theta(i,t>=0 & t<endRamp) + (2*pi*Rf(i)*t(t>=0 & t<endRamp).^2);
+        Theta(i,t>=endRamp) = Theta(i,(t>=endRamp)) + (2*pi*Rf(i)*endRamp*t(t>=endRamp));
+    end
 end
 
-% last frequency
-for i = 1:length(Rf)
-    Theta(i,t>=SettlingTime) = Theta(i,t>=SettlingTime) + (2*pi*Rf(i)*SettlingTime*t(t>=SettlingTime));
-end
 
 % Complex signals
 cSignal = (Ain.*exp(-1i.*Theta));
