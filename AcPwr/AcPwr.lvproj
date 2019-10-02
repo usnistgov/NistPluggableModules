@@ -73,7 +73,6 @@
 				<Item Name="C63800 Set Peak Current Meas Hold.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Peak Current Meas Hold.vi"/>
 				<Item Name="C63800 Set PF of AC RLC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set PF of AC RLC.vi"/>
 				<Item Name="C63800 Set PF of AC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set PF of AC.vi"/>
-				<Item Name="C63800 Set Phase of AC Inrush.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Phase of AC Inrush.vi"/>
 				<Item Name="C63800 Set Power of AC RLC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Power of AC RLC.vi"/>
 				<Item Name="C63800 Set Resistance Loading.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Resistance Loading.vi"/>
 				<Item Name="C63800 Set Rise Slew Rate of CC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Rise Slew Rate of CC.vi"/>

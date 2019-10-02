@@ -81,5 +81,6 @@
 		<Item Name="UpdateSelectRing.vi" Type="VI" URL="../Test/UpdateSelectRing.vi"/>
 	</Item>
 	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
+	<Item Name="OutputChromaError.vi" Type="VI" URL="../Test/OutputChromaError.vi"/>
 	<Item Name="TestCloneAPI.vi" Type="VI" URL="../Test/TestCloneAPI.vi"/>
 </Library>
