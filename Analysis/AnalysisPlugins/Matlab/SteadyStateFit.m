@@ -123,7 +123,7 @@ for p = 1:NPhases
         end
     end
     Ain(p) = sqrt(A(k+1)^2 + B(k+1)^2)*MagCorr(p);
-    Theta(p) = atan2(B(k+1),A(k+1)) + DelayCorr(p)*1e-9*2*pi*Freq;
+    Theta(p) = atan2(B(k+1),A(k+1)) + DelayCorr(p)*1e-9*2*pi*Freqs(p);
     if NHarm > 1
         AinH(p) = sqrt(C(1)^2 + D(1)^2)*MagCorr(p);
         ThetaH(p) = atan2(D(1),C(1)) + DelayCorr(p)*1e-9*2*pi*fh;        
