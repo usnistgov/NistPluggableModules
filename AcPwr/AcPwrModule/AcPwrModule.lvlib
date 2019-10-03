@@ -71,6 +71,9 @@
 		<Item Name="StopClone.vi" Type="VI" URL="../PublicAPI/StopClone.vi"/>
 	</Item>
 	<Item Name="Test" Type="Folder">
+		<Item Name="DatatoGraphChroma.vi" Type="VI" URL="../Test/DatatoGraphChroma.vi"/>
+		<Item Name="DatatoGraphNHR.vi" Type="VI" URL="../Test/DatatoGraphNHR.vi"/>
+		<Item Name="DatatoGraphPP.vi" Type="VI" URL="../Test/DatatoGraphPP.vi"/>
 		<Item Name="IniFiles.vi" Type="VI" URL="../Test/IniFiles.vi"/>
 		<Item Name="InitSelectRing.vi" Type="VI" URL="../Test/InitSelectRing.vi"/>
 		<Item Name="TestInfo.ctl" Type="VI" URL="../Test/TestInfo.ctl"/>
