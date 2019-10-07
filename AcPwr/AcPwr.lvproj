@@ -22,9 +22,7 @@
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="C63800 Close.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Close.vi"/>
 				<Item Name="C63800 Get CF Programmable Range.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get CF Programmable Range.vi"/>
-				<Item Name="C63800 Get Current Programmable Range.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get Current Programmable Range.vi"/>
 				<Item Name="C63800 Get PF Programmable Range.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get PF Programmable Range.vi"/>
-				<Item Name="C63800 Get Power Programmable Range.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get Power Programmable Range.vi"/>
 				<Item Name="C63800 Get Protect Status.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get Protect Status.vi"/>
 				<Item Name="C63800 Get RL Programmable Range.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get RL Programmable Range.vi"/>
 				<Item Name="C63800 Initialize With Options.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Initialize With Options.vi"/>
@@ -213,6 +211,7 @@
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
+			<Item Name="NumberofPhases.vi" Type="VI" URL="../AcPwrPlugins/ChromaAcLoad/PublicMethods/NumberofPhases.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
