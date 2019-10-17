@@ -32,7 +32,7 @@ Error Codes
 	"22005", "Unsupported Trigger Type %s","The Named Trigger has a trigger type that is not handled by the configure triggers method"
 	"22006", "Trigger Name %s is not a %s trigger type.  Check the INI file","The Named Trigger has a trigger type that does not match the trigger type being handled."
 	"22007", "Trigger Name %s Timestamping has not been Enabled", " An attempt to read a trigger timestamp was made to a trigger which has not had timestamping enabled"
-	"22008", "Warning: Windows clock synchronization can only occur is LabView is being run as administrator. Either:1) Ensure Labview was started with Run As Administrator OR 2) Open Sync Module Settings and disable SyncWinClk.",""
+	"22008", "Warning: Windows clock synchronization can only occur is LabVIEW is being run as administrator. Either:1) Ensure LabVIEW was started with Run As Administrator OR 2) Open Sync Module Settings and disable SyncWinClk.",""
 	"22009", "Reference Clock Not Present: Status = %s", "The Reference Clock is not operating"
 	
      .. csv-table:: Digitizer Module Error Codes
@@ -75,6 +75,9 @@ Error Codes
 	"26011": "The number of phases configured %d must be less than or equal to 3."
 	"26012": "Measurement Type %s is not currently supported."
 	"26013": "Measurement Handle %s does not match Output Handle."
+	"26014": "The %s cannot be zero."
+	"26015": "The %s cannot be zero."
+	"26016": "The configured fetch time %#g seconds must be greater than the set aperture time of %#g seconds."
 	
     .. csv-table:: SpecAn Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
