@@ -16,6 +16,7 @@
 		<Item Name="AcPwrClass.vi" Type="VI" URL="../Private/AcPwrClass.vi"/>
 		<Item Name="AcPwrState.vi" Type="VI" URL="../Private/AcPwrState.vi"/>
 		<Item Name="CheckonIdle.vi" Type="VI" URL="../Private/CheckonIdle.vi"/>
+		<Item Name="CheckOnIdleEnum.ctl" Type="VI" URL="../Protected/CheckOnIdleEnum.ctl"/>
 		<Item Name="StopAndWaitForIdle.vi" Type="VI" URL="../Private/StopAndWaitForIdle.vi"/>
 	</Item>
 	<Item Name="Protected" Type="Folder">
