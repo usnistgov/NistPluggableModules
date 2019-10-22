@@ -23,6 +23,7 @@
 		<Item Name="AcPwrPlugins.lvlib" Type="Library" URL="../AcPwrPlugins/AcPwrPlugins.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
+				<Item Name="Agilent 90000 Series.lvlib" Type="Library" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Agilent 90000 Series.lvlib"/>
 				<Item Name="C63800 Close.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Close.vi"/>
 				<Item Name="C63800 Get CF Programmable Range.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get CF Programmable Range.vi"/>
 				<Item Name="C63800 Get PF Programmable Range.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get PF Programmable Range.vi"/>
@@ -87,16 +88,7 @@
 				<Item Name="C63800 Set RS of AC RLC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set RS of AC RLC.vi"/>
 				<Item Name="C63800 Set SYNC State of DC Rectified.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set SYNC State of DC Rectified.vi"/>
 				<Item Name="C63800.dll" Type="Document" URL="/&lt;instrlib&gt;/C63800/C63800.dll"/>
-				<Item Name="Close.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Close.vi"/>
-				<Item Name="Configure Acquisition.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Configure/Configure Acquisition.vi"/>
-				<Item Name="Configure Channel.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Configure/Configure Channel.vi"/>
-				<Item Name="Configure Trigger (Edge).vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Configure/Trigger/Configure Trigger (Edge).vi"/>
-				<Item Name="Configure Trigger (TV).vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Configure/Trigger/Configure Trigger (TV).vi"/>
-				<Item Name="Configure Trigger Characteristics.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Configure/Trigger/Configure Trigger Characteristics.vi"/>
-				<Item Name="Configure Trigger Mode.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Configure/Trigger/Configure Trigger Mode.vi"/>
-				<Item Name="Configure Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Configure/Trigger/Configure Trigger.vi"/>
 				<Item Name="Fetch Extended Background Measurements.vi" Type="VI" URL="/&lt;instrlib&gt;/NH Research 9400 Series/Public/Data/Fetch Extended Background Measurements.vi"/>
-				<Item Name="Initialize.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Initialize.vi"/>
 				<Item Name="NH Research 9400 Series.lvlib" Type="Library" URL="/&lt;instrlib&gt;/NH Research 9400 Series/NH Research 9400 Series.lvlib"/>
 				<Item Name="NHRDCPowerModule.lvlib" Type="Library" URL="/&lt;instrlib&gt;/NHRDCPowerModule/NHRDCPowerModule/NHRDCPowerModule.lvlib"/>
 				<Item Name="niScope Abort.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Abort.vi"/>
@@ -267,6 +259,7 @@
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="8.6CompatibleGlobalVar.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/config.llb/8.6CompatibleGlobalVar.vi"/>
 				<Item Name="AddNamedRendezvousPrefix.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/rendezvs.llb/AddNamedRendezvousPrefix.vi"/>
+				<Item Name="Binary to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDT.llb/Binary to Digital.vi"/>
 				<Item Name="BuildHelpPath.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/BuildHelpPath.vi"/>
 				<Item Name="Check if File or Folder Exists.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Check if File or Folder Exists.vi"/>
 				<Item Name="Check Special Tags.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Check Special Tags.vi"/>
@@ -274,6 +267,7 @@
 				<Item Name="Close File+.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Close File+.vi"/>
 				<Item Name="Compare Two Paths.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Compare Two Paths.vi"/>
 				<Item Name="compatReadText.vi" Type="VI" URL="/&lt;vilib&gt;/_oldvers/_oldvers.llb/compatReadText.vi"/>
+				<Item Name="Compress Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDT.llb/Compress Digital.vi"/>
 				<Item Name="Convert property node font to graphics font.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Convert property node font to graphics font.vi"/>
 				<Item Name="Create New Rendezvous.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/rendezvs.llb/Create New Rendezvous.vi"/>
 				<Item Name="Create Rendezvous.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/rendezvs.llb/Create Rendezvous.vi"/>
@@ -503,9 +497,17 @@
 				<Item Name="Details Display Dialog.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Details Display Dialog.vi"/>
 				<Item Name="DialogType.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/DialogType.ctl"/>
 				<Item Name="DialogTypeEnum.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/DialogTypeEnum.ctl"/>
+				<Item Name="DTbl Binary U8 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Binary U8 to Digital.vi"/>
+				<Item Name="DTbl Binary U16 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Binary U16 to Digital.vi"/>
+				<Item Name="DTbl Binary U32 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Binary U32 to Digital.vi"/>
+				<Item Name="DTbl Compress Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Compress Digital.vi"/>
 				<Item Name="DTbl Digital Size.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Digital Size.vi"/>
 				<Item Name="DTbl Uncompress Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Uncompress Digital.vi"/>
 				<Item Name="DU64_U32SubtractWithBorrow.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/TSOps.llb/DU64_U32SubtractWithBorrow.vi"/>
+				<Item Name="DWDT Binary U8 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Binary U8 to Digital.vi"/>
+				<Item Name="DWDT Binary U16 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Binary U16 to Digital.vi"/>
+				<Item Name="DWDT Binary U32 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Binary U32 to Digital.vi"/>
+				<Item Name="DWDT Compress Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Compress Digital.vi"/>
 				<Item Name="DWDT Digital Size.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Digital Size.vi"/>
 				<Item Name="DWDT Get Final Time Value.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Get Final Time Value.vi"/>
 				<Item Name="DWDT Uncompress Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Uncompress Digital.vi"/>
@@ -683,7 +685,6 @@
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
-			<Item Name="matscript.dll" Type="Document"/>
 			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="NHRDCPowerModule.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
