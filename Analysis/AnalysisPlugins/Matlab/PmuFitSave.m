@@ -9,7 +9,7 @@ function [Synx,Freq,ROCOF,iterations] = PmuFitSave(...
 )
 % Set up the save file
 cd('C:\Users\PowerLabNI3\Documents\PMUCAL\Output')
-name = 'SavedFit.mat';
+name = 'Saved4PFit.mat';
 if exist(name,'file')
     A = open(name);
     P = A.P;
