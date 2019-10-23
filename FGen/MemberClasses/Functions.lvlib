@@ -7,6 +7,7 @@
 	<Item Name="Matlab" Type="Folder">
 		<Item Name="CalcStateMatrix.m" Type="Document" URL="../Matlab/CalcStateMatrix.m"/>
 		<Item Name="Chirp.mlx" Type="Document" URL="../Matlab/Chirp.mlx"/>
+		<Item Name="IntCycles.m" Type="Document" URL="../Matlab/IntCycles.m"/>
 		<Item Name="PmuTestSignals.m" Type="Document" URL="../Matlab/PmuTestSignals.m"/>
 		<Item Name="StateAmPm.mlx" Type="Document" URL="../Matlab/StateAmPm.mlx"/>
 	</Item>

@@ -8,6 +8,29 @@ function [Synx,Freq,ROCOF] = SteadyStateFit ( ...
 	Samples ...
 )
 
+%*********************DEBUGGING*****************************************
+% cd('C:\Users\PowerLabNI3\Documents\PMUCAL\Output')
+% name = 'SavedSSFit.mat';
+% if exist(name,'file')
+%     A = open(name);
+%     P = A.P;
+%     clear A;
+% else
+%     P = struct('SignalParams', {}, 'DelayCorr', {}, 'MagCorr', {}, 'F0', {}, 'AnalysisCycles', {}, 'SampleRate', {}, 'Samples', {});
+% end
+% 
+% n = length(P)+1;
+% P(n).SignalParams = SignalParams;
+% P(n).DelayCorr = DelayCorr;
+% P(n).MagCorr = MagCorr;
+% P(n).F0 = F0;
+% P(n).AnalysisCycles = AnalysisCycles;
+% P(n).SampleRate = SampleRate;
+% P(n).Samples = Samples;
+% 
+% save(name,'P')
+%*********************DEBUGGING*****************************************
+
 %SignalParams: array of doubles
 % For Steady State signals:
 % LV:Mat
@@ -36,7 +59,7 @@ fh = SignalParams(2);           % harmonic frequency
 NHarm = 1;
 if SignalParams(3) ~= 0; NHarm = 2; end
 
-NSamples = size(Samples,2);
+N = size(Samples,2);
 NPhases = size(Samples,1);
 
 % if (HarmIndex == 0) && (InterHarmIndex == 0) 
@@ -47,29 +70,25 @@ NPhases = size(Samples,1);
 
 %algorithms based on the IEEE Std 1057 - Annex A
 Freqs(1:NPhases) = FundFrequency;
-Freq = FundFrequency;
 ROCOFs(1:NPhases) = 0;
+Ain(1:NPhases) = 0;
+Theta(1:NPhases) = 0;
+AinH(1:NPhases) = 0;
+ThetaH(1:NPhases)=0;
+
 %time-base
-dt = 1/SampleRate;
-%tn = (0:NSamples-1)*dt;
-%tn = (-NSamples/2:NSamples/2-1)*dt;
-tn = (-((NSamples/2)-(1/2)):((NSamples/2)-(1/2)))*dt;
-FitCrit = 1e-5;   
-MaxIter = 50;
-% pre-allocate variables for speed
-dFreq = zeros(NPhases,MaxIter);
-A = zeros(MaxIter,1);
-B = zeros(MaxIter,1);
-%Ain = zeros(NPhases,1);
-%Theta = zeros(NPhases,1);
-AinH = zeros(NPhases,1);
-ThetaH = zeros(NPhases,1);
+tn = linspace(-(N/2),(N/2)-1,N)*(1/SampleRate);
+FitCrit = 1e-8;   
+MaxIter = 10;
+
 
 for p = 1:NPhases    
     %Pre-fit: generate the model using first estimated frequency
-    H = [cos(2*pi*FundFrequency*tn)' sin(2*pi*FundFrequency*tn)' ones(1,NSamples)'];
+    w = 2*pi*FundFrequency;
+    wh = 2*pi*fh;
+    H = [cos(w*tn)' sin(w*tn)' ones(1,N)'];
     if NHarm>1
-        H = [H cos(2*pi*fh*tn)' sin(2*pi*fh*tn)'];
+        H = [H cos(wh*tn)' sin(wh*tn)'];
     end
 
     %traditional least squares linear fit  - LV uses SVD
@@ -77,53 +96,46 @@ for p = 1:NPhases
     %                              + C*cos(2*pi*fh*tn) + D*sin(2*pi*fh*tn)
     %S = inv(H'*H)*(H'*Samples(p,:)');  %Matlab warns that inv(A)*b is less accurate and efficient than A\b
     S = (H'*H)\(H'*Samples(p,:)');
-    A(1) = S(1); B(1) = S(2);
-    %Ain(p) = sqrt(A(1)^2 + B(1)^2)*MagCorr(p);
-    %Theta(p) = atan2(B(1),A(1)) + DelayCorr(p)*1e-9*2*pi*Freq; 
-
-    if NHarm>1
-        C(1) = S(4); D(1) = S(5);
-        %AinH(p) = sqrt(C(1)^2 + D(1)^2)*MagCorr(p);
-        %ThetaH(p) = atan2(D(1),C(1)) + DelayCorr(p)*1e-9*2*pi*fh;
-    %else
-        %AinH(p) = 0;
-        %ThetaH(p) = 0;
-    end
+    A = S(1); B = S(2); DC = S(3);
+    if NHarm>1;C = S(4); D = S(5);end   
     
-    for k = 1:MaxIter
-        %Four parameter iterative fit
+    %Four parameter iterative fit
+    for k = 1:MaxIter    
         % update model -- adding frequency variation model
-        H = [cos(2*pi*Freqs(p)*tn)' sin(2*pi*Freqs(p)*tn)' ones(1,NSamples)'];
+        H = [cos(w*tn)' sin(w*tn)' ones(1,N)'];
         if NHarm>1
-            H = [H cos(2*pi*fh*tn)' sin(2*pi*fh*tn)'];
+            H = [H cos(wh*tn)' sin(wh*tn)'];
         end
-        G = [H (-A(k)*tn.*sin(2*pi*Freqs(p)*tn) + B(k)*tn.*cos(2*pi*Freqs(p)*tn))'];
-        %S = inv(G'*G)*(G'*Samples(p,:)'); %Matlab warns that inv(A)*b is less accurate and efficient than A\b
+        G = [H (-A*tn.*sin(w*tn) + B*tn.*cos(w*tn))'];
         S = (G'*G)\(G'*Samples(p,:)');
-        A(k+1) = S(1); B(k+1) = S(2); 
-        %Ain(p) = sqrt(A(k+1)^2 + B(k+1)^2)*MagCorr(p);
-        %Theta(p) = atan2(B(k+1),A(k+1)) + DelayCorr(p)*1e-9*2*pi*Freq; 
+        A = S(1); B = S(2); 
         if NHarm>1
-            C(1) = S(4); D(1) = S(5);
-            %AinH(p) = sqrt(C(1)^2 + D(1)^2)*MagCorr(p);
-            %ThetaH(p) = atan2(D(1),C(1)) + DelayCorr(p)*1e-9*2*pi*fh;
-        else
-            %AinH(p) = 0;
-            %ThetaH(p) = 0;
+            C = S(4); D = S(5);
         end
-        dFreq(p,k) = S(size(S,1))/(2*pi);
-        Freqs(p) = Freqs(p) + dFreq(p,k);
-        ROCOFs(p) = dFreq(p,k);
+        dw = S(size(S,1));
+        w = w + dw;
         
-        %residuals
-%         r = Samples(p,:) - S'*G';
-%         erms(p) = sqrt((1/NSamples)*sum(r.^2));
-        if dFreq(p,k)<FitCrit
+        if dw < FitCrit
             break
         end
     end
-    Ain(p) = sqrt(A(k+1)^2 + B(k+1)^2)*MagCorr(p);
-    Theta(p) = atan2(B(k+1),A(k+1)) + DelayCorr(p)*1e-9*2*pi*Freqs(p);
+    
+%**********************DEBUGGING*******************************************        
+%residuals
+%     bestFit = S'*G';
+%     r = Samples(p,:) - bestFit;
+%     figure(p)
+%     plot(tn,Samples(p,:),'-b',tn,bestFit,'-g',tn,r*100,'-r')
+%        erms(p) = sqrt((1/N)*sum(r.^2));
+%**********************DEBUGGING*******************************************        
+    
+    
+    
+    Freqs(p)=w/(2*pi);
+    ROCOFs(p)=dw/(2*pi);
+
+    Ain(p) = sqrt(A^2 + B^2)*MagCorr(p);
+    Theta(p) = atan2(B,A) + DelayCorr(p)*1e-9*2*pi*Freqs(p);
     if NHarm > 1
         AinH(p) = sqrt(C(1)^2 + D(1)^2)*MagCorr(p);
         ThetaH(p) = atan2(D(1),C(1)) + DelayCorr(p)*1e-9*2*pi*fh;        
