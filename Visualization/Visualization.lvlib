@@ -6,9 +6,6 @@
 	<Property Name="NI.Lib.Version" Type="Str">1.0.0.0</Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Property Name="NI.SortType" Type="Int">3</Property>
-	<Item Name="Friends List" Type="Friends List">
-		<Item Name="AcPwrModule.lvlib" Type="Friended Library" URL="../../AcPwr/AcPwrModule/AcPwrModule.lvlib"/>
-	</Item>
 	<Item Name="QMH" Type="Folder">
 		<Item Name="Typedefs" Type="Folder"/>
 	</Item>
