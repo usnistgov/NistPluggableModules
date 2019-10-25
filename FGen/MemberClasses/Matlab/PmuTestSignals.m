@@ -80,8 +80,8 @@ end
 for i = 1:length(Rf)
     if Rf(i)~=0
         endRamp = (length(t)/FSamp)+t0-SettlingTime;
-        Theta(i,t>=0 & t<endRamp) = Theta(i,t>=0 & t<endRamp) + (2*pi*Rf(i)*t(t>=0 & t<endRamp).^2);
-        Theta(i,t>=endRamp) = Theta(i,(t>=endRamp)) + (2*pi*Rf(i)*endRamp*t(t>=endRamp));
+        Theta(i,t>=0 & t<endRamp) = Theta(i,t>=0 & t<endRamp) + (pi*Rf(i)*t(t>=0 & t<endRamp).^2);
+        Theta(i,t>=endRamp) = Theta(i,(t>=endRamp)) + (pi*Rf(i)*endRamp*t(t>=endRamp));
     end
 end
 

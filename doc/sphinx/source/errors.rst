@@ -34,6 +34,7 @@ Error Codes
 	"22007", "Trigger Name %s Timestamping has not been Enabled", " An attempt to read a trigger timestamp was made to a trigger which has not had timestamping enabled"
 	"22008", "Warning: Windows clock synchronization can only occur is LabVIEW is being run as administrator. Either:1) Ensure LabVIEW was started with Run As Administrator OR 2) Open Sync Module Settings and disable SyncWinClk.",""
 	"22009", "Reference Clock Not Present: Status = %s", "The Reference Clock is not operating"
+	"22010", "Time out < %d ms while waiting for Sync Loop to stop", " The Sync look was requested to stop in the indicated time but for some reason did not.
 	
      .. csv-table:: Digitizer Module Error Codes
 	:header: "CODE", "ERROR", "COMMENT"

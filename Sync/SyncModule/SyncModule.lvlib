@@ -18,6 +18,7 @@
 	</Item>
 	<Item Name="Private" Type="Folder">
 		<Item Name="State.vi" Type="VI" URL="../Private/State.vi"/>
+		<Item Name="StopAndWaitForIdle.vi" Type="VI" URL="../Private/StopAndWaitForIdle.vi"/>
 	</Item>
 	<Item Name="Protected" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">4</Property>

@@ -11,6 +11,7 @@
 	<Item Name="Friends List" Type="Friends List">
 		<Item Name="DigitizerModule.lvlib" Type="Friended Library" URL="../../DigitizerModule/DigitizerModule.lvlib"/>
 	</Item>
+	<Item Name="Agilent_3458A.lvclass" Type="LVClass" URL="../Agilent_3458/Agilent_3458A.lvclass"/>
 	<Item Name="DigitizerBase.lvclass" Type="LVClass" URL="../DigitizerBaseClass/DigitizerBase.lvclass"/>
 	<Item Name="NiDaqMx.lvclass" Type="LVClass" URL="../NiDaqMxClass/NiDaqMx.lvclass"/>
 	<Item Name="Simulation.lvclass" Type="LVClass" URL="../SimulationClass/Simulation.lvclass"/>
