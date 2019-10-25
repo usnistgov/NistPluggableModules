@@ -10,6 +10,7 @@
 </Property>
 	<Item Name="Friends List" Type="Friends List">
 		<Item Name="AcPwrPlugins.lvlib:AcPwrBase.lvclass" Type="Friended Library" URL="../../AcPwrPlugins/AcPwrBaseClass/AcPwrBase.lvclass"/>
+		<Item Name="Visualization.lvlib" Type="Friended Library" URL="../../../Visualization/Visualization.lvlib"/>
 	</Item>
 	<Item Name="Private" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
