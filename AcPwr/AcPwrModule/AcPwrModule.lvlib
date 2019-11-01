@@ -31,6 +31,7 @@
 			<Item Name="Measurements.vi" Type="VI" URL="../Protected/Broadcasts/Measurements.vi"/>
 			<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../Protected/Broadcasts/ObtainBroadcastEvents.vi"/>
 			<Item Name="ReportError.vi" Type="VI" URL="../Protected/Broadcasts/ReportError.vi"/>
+			<Item Name="Settings.vi" Type="VI" URL="../Protected/Broadcasts/Settings.vi"/>
 			<Item Name="StatusUpdate.vi" Type="VI" URL="../Protected/Broadcasts/StatusUpdate.vi"/>
 		</Item>
 		<Item Name="Queue" Type="Folder">
@@ -44,7 +45,9 @@
 			<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../Protected/Requests/DestroyRequestEvents.vi"/>
 			<Item Name="DeviceOffRequest.vi" Type="VI" URL="../Protected/Requests/DeviceOffRequest.vi"/>
 			<Item Name="DeviceOnRequest.vi" Type="VI" URL="../Protected/Requests/DeviceOnRequest.vi"/>
+			<Item Name="GetSettingsRequest.vi" Type="VI" URL="../Protected/Requests/GetSettingsRequest.vi"/>
 			<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../Protected/Requests/ObtainRequestEvents.vi"/>
+			<Item Name="SetSettingsRequest.vi" Type="VI" URL="../Protected/Requests/SetSettingsRequest.vi"/>
 			<Item Name="ShowPanelRequest.vi" Type="VI" URL="../Protected/Requests/ShowPanelRequest.vi"/>
 			<Item Name="StartMeasRequest.vi" Type="VI" URL="../Protected/Requests/StartMeasRequest.vi"/>
 			<Item Name="StopMeasRequest.vi" Type="VI" URL="../Protected/Requests/StopMeasRequest.vi"/>
@@ -86,4 +89,5 @@
 	</Item>
 	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 	<Item Name="TestCloneAPI.vi" Type="VI" URL="../Test/TestCloneAPI.vi"/>
+	<Item Name="TestCloneAPI1.vi" Type="VI" URL="../Test/TestCloneAPI1.vi"/>
 </Library>
