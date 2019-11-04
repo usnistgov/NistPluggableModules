@@ -1,4 +1,4 @@
-classdef ArtificialTS
+classdef ArtificialChirp
     % Class for synthesizing a time series
     properties (Access = public)
         Name            % string name of the time series

@@ -47,6 +47,7 @@ classdef TestChirpFit < matlab.unittest.TestCase
         %-------------------------------
         % One of the series of tests
         function testOnce(testCase)
+            disp(testCase.TS.Name)
             testCase.TS = testCase.TS.makeTS;
             chirpEst = ChirpEst();          % object constructor
             figure(1)
@@ -58,7 +59,7 @@ classdef TestChirpFit < matlab.unittest.TestCase
                 testCase.TS.df);
             act = [Ain f df phi];
             
-            disp(testCase.TS.Name)            
+             
             msg = sprintf('actual: %f %f %f %f',act);
             disp(msg);
             msg = sprintf('expected: %f %f %f %f',testCase.exp);
@@ -81,27 +82,38 @@ classdef TestChirpFit < matlab.unittest.TestCase
 %             testCase.TS.phi0 = 0;
 %             testOnce (testCase);
 
+%             testCase.TS.Name = 'Test 50Hz, 0 Hz/sec t0=0';
+%             testCase.TS.N = 96*3;
+%             testCase.TS.t0 = 0;
+%             testCase.TS.dt = 1/4800;
+%             testCase.TS.f0 = 50;
+%             testCase.TS.df = 0;
+%             testCase.TS.phi0 = 0;
+%             testCase.exp = [1, 50, 0, 0];
+%             testOnce (testCase);
+
+
             testCase.TS.Name = 'Test 50Hz, 1 Hz/sec t0=0';
-            testCase.TS.N = 96*3;
+            testCase.TS.N = 96*3000;
             testCase.TS.t0 = 0;
             testCase.TS.dt = 1/4800;
             testCase.TS.f0 = 50;
-            testCase.TS.df = 1;
+            testCase.TS.df = .1;
             testCase.TS.phi0 = 0;
-            testCase.exp = [2, 50, 1, 0];
+            testCase.exp = [testCase.TS.A, testCase.TS.f0, testCase.TS.df, testCase.TS.phi0];
             testOnce (testCase);
             
-            testCase.TS.Name = 'Test 55 Hz, 1Hz/sec t0 = 5';
-            %testCase.TS.phi0 = .25*pi;
-            testCase.TS.t0 = 5;
-            testCase.exp = [2, 55, 1, 3.1410];
-            testOnce (testCase);
-            
-            testCase.TS.Name = 'Test 45 Hz, 1Hz/sec t0 = -5';
-            testCase.TS.phi0 = -.25*pi;
-            testCase.TS.t0 = -5;
-            testCase.exp = [2, 45, 1, 0];
-            testOnce (testCase);  
+%             testCase.TS.Name = 'Test 55 Hz, 1Hz/sec t0 = 5';
+%             %testCase.TS.phi0 = .25*pi;
+%             testCase.TS.t0 = 5;
+%             testCase.exp = [1, 55, 1, 3.1410];
+%             testOnce (testCase);
+%             
+%             testCase.TS.Name = 'Test 45 Hz, 1Hz/sec t0 = -5';
+%             testCase.TS.phi0 = -.25*pi;
+%             testCase.TS.t0 = -5;
+%             testCase.exp = [1, 45, 1, 0];
+%             testOnce (testCase);  
         end
         %-------------------------------
         function fftOfTs (testCase)
