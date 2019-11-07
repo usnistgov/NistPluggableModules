@@ -90,5 +90,4 @@
 	</Item>
 	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 	<Item Name="TestCloneAPI.vi" Type="VI" URL="../Test/TestCloneAPI.vi"/>
-	<Item Name="TestCloneAPI1.vi" Type="VI" URL="../Test/TestCloneAPI1.vi"/>
 </Library>
