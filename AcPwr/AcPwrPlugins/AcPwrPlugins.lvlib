@@ -10,6 +10,7 @@
 </Property>
 	<Item Name="Friends List" Type="Friends List">
 		<Item Name="AcPwrModule.lvlib" Type="Friended Library" URL="../../AcPwrModule/AcPwrModule.lvlib"/>
+		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 	</Item>
 	<Item Name="AcPwrBase.lvclass" Type="LVClass" URL="../AcPwrBaseClass/AcPwrBase.lvclass"/>
 	<Item Name="ChromaAcLoad.lvclass" Type="LVClass" URL="../ChromaAcLoad/ChromaAcLoad.lvclass"/>
