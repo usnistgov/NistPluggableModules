@@ -22,8 +22,8 @@
 			<Item Name="SyncModule.lvlib" Type="Library" URL="../../Sync/SyncModule/SyncModule.lvlib"/>
 			<Item Name="SyncPlugins.lvlib" Type="Library" URL="../../Sync/SyncPlugins/SyncPlugins.lvlib"/>
 			<Item Name="AnalysisModule.lvlib" Type="Library" URL="../../Analysis/AnalysisModule/AnalysisModule.lvlib"/>
-			<Item Name="FgenModule.lvlib" Type="Library" URL="../../FGen/FgenModule/FgenModule.lvlib"/>
 			<Item Name="AnalysisPlugins.lvlib" Type="Library" URL="../../Analysis/AnalysisPlugins/AnalysisPlugins.lvlib"/>
+			<Item Name="FgenModule.lvlib" Type="Library" URL="../../FGen/FgenModule/FgenModule.lvlib"/>
 			<Item Name="FgenPlugins.lvlib" Type="Library" URL="../../FGen/FgenPlugins/FgenPlugins.lvlib"/>
 			<Item Name="Functions.lvlib" Type="Library" URL="../../FGen/MemberClasses/Functions.lvlib"/>
 			<Item Name="AcPwrPlugins.lvlib" Type="Library" URL="../../AcPwr/AcPwrPlugins/AcPwrPlugins.lvlib"/>
