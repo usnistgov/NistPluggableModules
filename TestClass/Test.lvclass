@@ -422,6 +422,15 @@
 			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 			<Property Name="NI.ClassItem.State" Type="Int">1107821072</Property>
 		</Item>
+		<Item Name="ParseCommands.vi" Type="VI" URL="../PublicMethods/ParseCommands.vi">
+			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!&amp;R!!!!$A!11$$`````"F.U=GFO:Q!!(E"!!!(`````!!!25X"S:7&amp;E5WBF:824&gt;(*J&lt;G=!"!!!!":!1!!"`````Q!!#5&amp;S=G&amp;Z6(FQ:1!91$$`````$U2F&lt;'FN;82F=C!I6'&amp;C+1!71$$`````$5:P=GVB&gt;#"T&gt;(*J&lt;G=!$%!B"H.U982V=Q!!#U!$!!2D&lt;W2F!!!11$$`````"H.P&gt;8*D:1!!&amp;E"1!!-!"A!(!!A)28*S&lt;X)A37Y!!"J!1!!"`````Q!*$%6S=G^S18*S98F*&lt;A!!&amp;E"1!!-!"A!(!!A*28*S&lt;X)A4X6U!"J!1!!"`````Q!,$56S=G^S18*S98F0&gt;81!&lt;!$Q!"!!!1!#!!)!!A!#!!-!!A!%!!)!"1!#!!I!!A!#!!)!$!-!!1A!!AA!!!!!!!!!!!!!!!!!!!!!!!!!#!!!!!!!!!%+!!!!!!!!!1I!!!!!!!!"#A!!!!!!!!!!!!!!!!!!!!U,!!!!!1!.!!!!!!</Property>
+			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
+			<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
+			<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
+			<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
+			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
+			<Property Name="NI.ClassItem.State" Type="Int">1107821072</Property>
+		</Item>
 		<Item Name="ScriptedStateMachine.vi" Type="VI" URL="../PublicMethods/ScriptedStateMachine.vi">
 			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!%A!!!!#Q!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!A1&amp;!!!Q!!!!%!!B.F=H*P=C"J&lt;C!I&lt;G]A:8*S&lt;X)J!"B!1!!"`````Q!$#E6S=G^S18*S98E!!!1!!!!+1&amp;-%2'&amp;U91!!*E"Q!"Y!!!Y-6'6T&gt;#ZM&gt;G.M98.T!!!-6'6T&gt;#ZM&gt;G.M98.T!!!11$$`````"F.U=GFO:Q!!&amp;%"!!!(`````!!A'=W.S;8"U!!"B!0!!$!!%!!5!"A!(!!5!"1!&amp;!!5!"!!&amp;!!E!"Q-!!(A!!!U)!!!!!!!!#1!!!!U,!!!!!!!!!!!!!!!!!!!!!!!"#A!!!!!!!!!+!!!!#A!!$1!!!!Q!!!!!!!!!!!!!!1!+!!!!!!</Property>
 			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
