@@ -53,7 +53,7 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1342710288</Property>
 	</Item>
-	<Item Name="VisualizePPS.vi" Type="VI" URL="../VisualizePPS.vi">
+	<Item Name="VisualizePPS2.vi" Type="VI" URL="../VisualizePPS2.vi">
 		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!!?!!!!!A!%!!!!%A$Q!!%!!!-!!!!!!!!!!!!!!1!"!!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">262400</Property>
