@@ -14,6 +14,10 @@
 		<Item Name="Bus.lvclass" Type="Friended Library" URL="../../../BusClass/Bus.lvclass"/>
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 		<Item Name="AcPwrPlugins.lvlib" Type="Friended Library" URL="../../AcPwrPlugins/AcPwrPlugins.lvlib"/>
+		<Item Name="AcPwrPlugins.lvlib:ChromaAcLoad.lvclass" Type="Friended Library" URL="../../AcPwrPlugins/ChromaAcLoad/ChromaAcLoad.lvclass"/>
+		<Item Name="AcPwrPlugins.lvlib:NHRDCPower.lvclass" Type="Friended Library" URL="../../AcPwrPlugins/NHRDCPower/NHRDCPower.lvclass"/>
+		<Item Name="AcPwrPlugins.lvlib:NHRGridSim.lvclass" Type="Friended Library" URL="../../AcPwrPlugins/NhRegenGridSim/NHRGridSim.lvclass"/>
+		<Item Name="AcPwrPlugins.lvlib:PacificPowerSource.lvclass" Type="Friended Library" URL="../../AcPwrPlugins/PacificPowerSource/PacificPowerSource.lvclass"/>
 	</Item>
 	<Item Name="Private" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
