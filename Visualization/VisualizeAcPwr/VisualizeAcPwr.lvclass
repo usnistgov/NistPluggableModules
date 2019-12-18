@@ -62,13 +62,4 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1342710288</Property>
 	</Item>
-	<Item Name="XY Graph as an XY Chart.vi" Type="VI" URL="../XY Graph as an XY Chart.vi">
-		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!$6!!!!#1!%!!!!$5!+!!&gt;9)&amp;:B&lt;(6F!!Q!1!!"`````Q!"!!V!#A!(73"797RV:1!-!%!!!@````]!!Q!51&amp;!!!A!#!!1)7&amp;EA2X*B='A!!"*!)1R$&lt;'6B=C"(=G&amp;Q;$]!!"V!!Q!71WBB=H1A3'FT&gt;'^S?3!I-4!M-$!Q+1!!6!$Q!!Q!!!!!!!!!"1!!!!!!!!!'!!!!"Q!$!!%$!!"Y!!!!!!!!!!!!!!!!!!!*!!!!!!!!!!!!!!!!!!!!#!!!!!!!!!!)!!!!#!!!!!A!!!!!!1!)!!!!!!</Property>
-		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
-		<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
-		<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
-		<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
-		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
-		<Property Name="NI.ClassItem.State" Type="Int">1082143248</Property>
-	</Item>
 </LVClass>
