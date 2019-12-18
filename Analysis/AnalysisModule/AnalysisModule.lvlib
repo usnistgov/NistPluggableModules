@@ -29,6 +29,7 @@
 			<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../Protected/Broadcasts/ObtainBroadcastEvents.vi"/>
 			<Item Name="ReportError.vi" Type="VI" URL="../Protected/Broadcasts/ReportError.vi"/>
 			<Item Name="ReportResults.vi" Type="VI" URL="../Protected/Broadcasts/ReportResults.vi"/>
+			<Item Name="ReportState.vi" Type="VI" URL="../Protected/Broadcasts/ReportState.vi"/>
 			<Item Name="StatusUpdate.vi" Type="VI" URL="../Protected/Broadcasts/StatusUpdate.vi"/>
 		</Item>
 		<Item Name="Queue" Type="Folder">
