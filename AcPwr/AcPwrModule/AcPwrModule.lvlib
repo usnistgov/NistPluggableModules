@@ -13,6 +13,11 @@
 		<Item Name="Visualization.lvlib" Type="Friended Library" URL="../../../Visualization/Visualization.lvlib"/>
 		<Item Name="Bus.lvclass" Type="Friended Library" URL="../../../BusClass/Bus.lvclass"/>
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
+		<Item Name="AcPwrPlugins.lvlib" Type="Friended Library" URL="../../AcPwrPlugins/AcPwrPlugins.lvlib"/>
+		<Item Name="AcPwrPlugins.lvlib:ChromaAcLoad.lvclass" Type="Friended Library" URL="../../AcPwrPlugins/ChromaAcLoad/ChromaAcLoad.lvclass"/>
+		<Item Name="AcPwrPlugins.lvlib:NHRDCPower.lvclass" Type="Friended Library" URL="../../AcPwrPlugins/NHRDCPower/NHRDCPower.lvclass"/>
+		<Item Name="AcPwrPlugins.lvlib:NHRGridSim.lvclass" Type="Friended Library" URL="../../AcPwrPlugins/NhRegenGridSim/NHRGridSim.lvclass"/>
+		<Item Name="AcPwrPlugins.lvlib:PacificPowerSource.lvclass" Type="Friended Library" URL="../../AcPwrPlugins/PacificPowerSource/PacificPowerSource.lvclass"/>
 	</Item>
 	<Item Name="Private" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
@@ -20,7 +25,6 @@
 		<Item Name="AcPwrState.vi" Type="VI" URL="../Private/AcPwrState.vi"/>
 		<Item Name="CheckonIdle.vi" Type="VI" URL="../Private/CheckonIdle.vi"/>
 		<Item Name="CheckOnIdleEnum.ctl" Type="VI" URL="../Protected/CheckOnIdleEnum.ctl"/>
-		<Item Name="StopAndWaitForIdle.vi" Type="VI" URL="../Private/StopAndWaitForIdle.vi"/>
 	</Item>
 	<Item Name="Protected" Type="Folder">
 		<Item Name="Broadcast" Type="Folder">

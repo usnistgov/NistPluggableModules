@@ -3,6 +3,7 @@
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Property Name="NI.Project.Description" Type="Str"></Property>
 	<Item Name="My Computer" Type="My Computer">
+		<Property Name="NI.SortType" Type="Int">3</Property>
 		<Property Name="server.app.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="server.control.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="server.tcp.enabled" Type="Bool">false</Property>
@@ -657,9 +658,11 @@
 				<Item Name="Write To Spreadsheet File (string).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write To Spreadsheet File (string).vi"/>
 				<Item Name="Write To Spreadsheet File.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write To Spreadsheet File.vi"/>
 			</Item>
+			<Item Name="AcPwrRemovedotInstrument.vi" Type="VI" URL="../../../sbtbcntl/Framework/AcPwrRemovedotInstrument.vi"/>
 			<Item Name="AnalysisModule.lvlib" Type="Library" URL="../../Analysis/AnalysisModule/AnalysisModule.lvlib"/>
 			<Item Name="AnalysisPlugins.lvlib" Type="Library" URL="../../Analysis/AnalysisPlugins/AnalysisPlugins.lvlib"/>
 			<Item Name="Bus.lvclass" Type="LVClass" URL="../../BusClass/Bus.lvclass"/>
+			<Item Name="Comms.lvlib" Type="Library" URL="../../../LV_TestAutomation/Comms_lib/Comms.lvlib"/>
 			<Item Name="Config_class.lvlib" Type="Library" URL="../../../LV_Config_class/Config_class.lvlib"/>
 			<Item Name="DigitizerModule.lvlib" Type="Library" URL="../../Digitizer/DigitizerModule/DigitizerModule.lvlib"/>
 			<Item Name="DigitizerPlugins.lvlib" Type="Library" URL="../../Digitizer/DigitizerPlugins/DigitizerPlugins.lvlib"/>
@@ -686,7 +689,6 @@
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
-			<Item Name="matscript.dll" Type="Document"/>
 			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="NHRDCPowerModule.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
@@ -700,9 +702,6 @@
 			<Item Name="nisync.dll" Type="Document" URL="nisync.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
-				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
-			</Item>
 			<Item Name="niTClk.dll" Type="Document" URL="niTClk.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
@@ -713,6 +712,9 @@
 			<Item Name="SyncModule.lvlib" Type="Library" URL="../../Sync/SyncModule/SyncModule.lvlib"/>
 			<Item Name="SyncPlugins.lvlib" Type="Library" URL="../../Sync/SyncPlugins/SyncPlugins.lvlib"/>
 			<Item Name="Test.lvclass" Type="LVClass" URL="../../TestClass/Test.lvclass"/>
+			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
