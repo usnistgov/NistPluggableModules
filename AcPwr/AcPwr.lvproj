@@ -658,7 +658,6 @@
 				<Item Name="Write To Spreadsheet File (string).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write To Spreadsheet File (string).vi"/>
 				<Item Name="Write To Spreadsheet File.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write To Spreadsheet File.vi"/>
 			</Item>
-			<Item Name="AcPwrRemovedotInstrument.vi" Type="VI" URL="../../../sbtbcntl/Framework/AcPwrRemovedotInstrument.vi"/>
 			<Item Name="AnalysisModule.lvlib" Type="Library" URL="../../Analysis/AnalysisModule/AnalysisModule.lvlib"/>
 			<Item Name="AnalysisPlugins.lvlib" Type="Library" URL="../../Analysis/AnalysisPlugins/AnalysisPlugins.lvlib"/>
 			<Item Name="Bus.lvclass" Type="LVClass" URL="../../BusClass/Bus.lvclass"/>
