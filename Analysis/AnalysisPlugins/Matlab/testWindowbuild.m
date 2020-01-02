@@ -35,12 +35,15 @@ clear A;
 for i = 1:length(P)
     Samples(i).Y = P(i).Y;
     Samples(i).dt = P(i).dt;
-    Samples(i).t0 = P(i).t0;
+    Samples(i).SampleT0 = P(i).SampleT0;
     Sensor(i).AnalysisTime = P(i).AnalysisTime;
 end
+WinT0 = 0;
 WindowIn = P(1).WindowIn;
 WindowTime = P(1).WindowTime;
 F0 = P(1).F0;
+% SettlingTime = 0/F0;
+SettlingTime = P(1).SettlingTime;
 AnalysisCycles = P(1).AnalysisCycles;
 clear P;
 
@@ -49,7 +52,7 @@ for i = 1:length(Sensor)
    AnalysisTime = Sensor(i).AnalysisTime;
    Y = Samples(j).Y;
    dt = Samples(j).dt;
-   t0 = Samples(j).t0;
+   SampleT0 = Samples(j).SampleT0;
    
  % display the WindowTime, t0, and the AnalysisTime
     format = 'dd-MMM-uuuu HH:mm:ss.SSS';
@@ -57,10 +60,8 @@ for i = 1:length(Sensor)
     A_DateTime.Format = format;
     W_DateTime = datetime(WindowTime, 'ConvertFrom', 'epochtime', 'Epoch', '1904-01-01');
     W_DateTime.Format = format;
-    t0_DateTime = datetime(t0(1), 'ConvertFrom', 'epochtime', 'Epoch', '1904-01-01');
-    t0_DateTime.Format = format;
-    
-    
+    t0_DateTime = datetime(SampleT0(1), 'ConvertFrom', 'epochtime', 'Epoch', '1904-01-01');
+    t0_DateTime.Format = format;        
     
     msgA = sprintf ('tA: %s',char(A_DateTime));
     msgW = sprintf ('tW: %s',char(W_DateTime));
@@ -72,25 +73,31 @@ for i = 1:length(Sensor)
 
 
     
-    [WindowOut, ...
+    [
+        WinT0, ...
+        WindowOut, ...
         TimeStamp, ...
         RemainingSamples, ...
         RemainingTime, ...
         Valid, ...
         Continue] = ...
         WindowBuild (...
+        WinT0, ...
         WindowIn, ...
         WindowTime, ...
+        SettlingTime, ...
         F0, ...
         AnalysisCycles, ...
         AnalysisTime, ...
         Y, ...
         dt, ...
-        t0);
+        SampleT0);
     
     plot(WindowOut')
     WindowIn = WindowOut;
     WindowTime = TimeStamp;
+    msgV = sprintf('Valid: %s',Valid);
+    disp(msgV)
     
     j=j+1;
     if ~isempty(RemainingSamples);

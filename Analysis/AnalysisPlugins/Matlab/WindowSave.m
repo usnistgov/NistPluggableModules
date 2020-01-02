@@ -1,4 +1,5 @@
 function [ ...
+        WinT0, ...
         WindowOut, ...
         TimeStamp, ...
         RemainingSamples, ...
@@ -6,14 +7,16 @@ function [ ...
         Valid, ...
         Continue] = ...
     WindowSave (...
+        WinT0, ...
         WindowIn, ...             % Window Sample Data
         WindowTime, ...         % The time at the CENTER of the window    
+        SettlingTime, ...
         F0, ...                 % Nominal Frequency
         AnalysisCycles, ...     % Number of Cycles to Analyse             
         AnalysisTime, ...       % Time to Analyse (will be at the center of the Window)
         Y, ...                  % Incoming Samples
         dt, ...                 % Sample Period
-        t0)                     % Time of the first sample in Y
+        SampleT0)                     % Time of the first sample in Y
 
 % Display the timestamps
 % format = 'dd-MMM-uuuu HH:mm:ss.SSS';
@@ -32,24 +35,26 @@ function [ ...
 
 cd('C:\Users\PowerLabNI3\Documents\PMUCAL\Output')
 name = 'SavedWindow.mat';
-if exist(name,'file')
-    A = open(name);
-    P = A.P;
-    clear A;
-else
-    P = struct('WindowIn',{},'WindowTime',{},'F0',{},'AnalysisCycles',{},'AnalysisTime',{},'Y',{},'dt',{},'t0',{});
-end
-    n = length(P);
-    P(n+1).WindowIn = WindowIn;
-    P(n+1).WindowTime = WindowTime;
-    P(n+1).F0 = F0;
-    P(n+1).AnalysisCycles = AnalysisCycles;
-    P(n+1).AnalysisTime = AnalysisTime;
-    P(n+1).Y = Y;
-    P(n+1).dt = dt;
-    P(n+1).t0 = t0;
+% if exist(name,'file')
+%     A = open(name);
+%     P = A.P;
+%     clear A;
+% else
+    P = struct('WinT0',{},'WindowIn',{},'WindowTime',{},'SettlingTime',{},'F0',{},'AnalysisCycles',{},'AnalysisTime',{},'Y',{},'dt',{},'SampleT0',{});
+% end
+    P(1).WinT0 = WinT0;
+    P(1).WindowIn = WindowIn;
+    P(1).WindowTime = WindowTime;
+    P(1).SettlingTime = SettlingTime;
+    P(1).F0 = F0;
+    P(1).AnalysisCycles = AnalysisCycles;
+    P(1).AnalysisTime = AnalysisTime;
+    P(1).Y = Y;
+    P(1).dt = dt;
+    P(1).SampleT0 = SampleT0;
     
     [ ...
+        WinT0, ...
         WindowOut, ...
         TimeStamp, ...
         RemainingSamples, ...
@@ -57,23 +62,30 @@ end
         Valid, ...
         Continue] = ...
     WindowBuild (...
+        WinT0, ...
         WindowIn, ...             % Window Sample Data
         WindowTime, ...         % The time at the CENTER of the window    
+        SettlingTime, ...
         F0, ...                 % Nominal Frequency
         AnalysisCycles, ...     % Number of Cycles to Analyse             
         AnalysisTime, ...       % Time to Analyse (will be at the center of the Window)
         Y, ...                  % Incoming Samples
         dt, ...                 % Sample Period
-        t0);                    % Time of the first sample in Y
+        SampleT0);                    % Time of the first sample in Y
     
-    P(n+1).WindowOut = WindowOut;
-    P(n+1).TimeStamp = TimeStamp;
-    P(n+1).RemainingSamples = RemainingSamples;
-    P(n+1).RemainingTime = RemainingTime;
-    P(n+1).Valid = Valid;
-    P(n+1).Continue = Continue;
+    P(1).WindowOut = WindowOut;
+    P(1).TimeStamp = TimeStamp;
+    P(1).RemainingSamples = RemainingSamples;
+    P(1).RemainingTime = RemainingTime;
+    P(1).Valid = Valid;
+    P(1).Continue = Continue;
     
-    save(name,'P')
-    
+    if exist(name,'file')
+        matObj = matfile(name,'Writable',true);
+        matObj.P(end+1,1) = P;
+     else        
+       save(name,'P')
+   end
+        
 end
 
