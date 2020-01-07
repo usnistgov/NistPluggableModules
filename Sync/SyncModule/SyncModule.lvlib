@@ -50,6 +50,7 @@
 		<Item Name="DestroyClone.vi" Type="VI" URL="../Protected/DestroyClone.vi"/>
 		<Item Name="ErrorHandler.vi" Type="VI" URL="../Protected/ErrorHandler.vi"/>
 		<Item Name="HandleExit.vi" Type="VI" URL="../Protected/HandleExit.vi"/>
+		<Item Name="monitor.vi" Type="VI" URL="../Protected/monitor.vi"/>
 	</Item>
 	<Item Name="PublicAPI" Type="Folder">
 		<Item Name="Arguments" Type="Folder">
