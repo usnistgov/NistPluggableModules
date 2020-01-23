@@ -140,6 +140,7 @@
 		<Item Name="DatatoGraph.vi" Type="VI" URL="../Test/DatatoGraph.vi"/>
 		<Item Name="DatatoGraphChroma.vi" Type="VI" URL="../Test/DatatoGraphChroma.vi"/>
 		<Item Name="DatatoGraphNHR.vi" Type="VI" URL="../Test/DatatoGraphNHR.vi"/>
+		<Item Name="DatatoGraphNHRRGS.vi" Type="VI" URL="../Test/DatatoGraphNHRRGS.vi"/>
 		<Item Name="DatatoGraphPP.vi" Type="VI" URL="../Test/DatatoGraphPP.vi"/>
 		<Item Name="IniFiles.vi" Type="VI" URL="../Test/IniFiles.vi"/>
 		<Item Name="InitSelectRing.vi" Type="VI" URL="../Test/InitSelectRing.vi"/>
