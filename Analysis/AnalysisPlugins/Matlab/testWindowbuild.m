@@ -23,11 +23,9 @@ clear all;
 % msg = sprintf('t0 = %s',datestr(datenum(t0/spd),'HH:MM:SS.FFF'));
 % disp(msg)
 
-path = 'C:\Users\PowerLabNI3\Documents\PMUCAL\Output\';
-name = 'SavedWindow.mat';
-name = strcat(path,name);
+fileName = fullfile(getenv('USERPROFILE'),'Documents','PMUCAL','Output','SavedWindow.mat');
 
-A = open(name);
+A = open(fileName);
 P = A.P;
 clear A;
 

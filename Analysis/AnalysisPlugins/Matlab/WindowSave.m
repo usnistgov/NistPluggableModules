@@ -33,7 +33,8 @@ function [ ...
 % msg = sprintf ('A_dt: %s\nt0_dt: %s',char(A_dt), char(t0_dt));
 % msgbox(msg)
 
-cd('C:\Users\PowerLabNI3\Documents\PMUCAL\Output')
+cd (fullfile(getenv('USERPROFILE'),'Documents','PMUCAL','Output'))
+
 name = 'SavedWindow.mat';
 % if exist(name,'file')
 %     A = open(name);
