@@ -342,13 +342,13 @@
 			<Property Name="NI.ClassItem.State" Type="Int">1342710288</Property>
 		</Item>
 		<Item Name="AcPwrRemovedotInstrument.vi" Type="VI" URL="../PublicMethods/AcPwrRemovedotInstrument.vi">
-			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!'_!!!!#Q!11$$`````"F.U=GFO:Q!!(%"!!!(`````!!!047^E&gt;7RF4'FT&gt;%&amp;S=G&amp;Z!!1!!!!I1%!!!@````]!!"J":H2F=EVB&gt;'.I/EVP:(6M:5RJ=X2"=H*B?1!!'%!Q`````Q^.982D;%6Y=(*F=X.J&lt;WY!+%"!!!(`````!!!&lt;1G6G&lt;X*F47&amp;U9WA[47^E&gt;7RF4'FT&gt;%&amp;S=G&amp;Z!%"!1!!"`````Q!!-U*F:G^S:5VB&gt;'.I6WFU;'^V&gt;&amp;*F:(6O:'&amp;O&gt;%6O&gt;(*J:8-[47^E&gt;7RF4'FT&gt;%&amp;S=G&amp;Z)!!?1$$`````&amp;5VP:(6M:5RJ=X24;7ZH&lt;'6&amp;&lt;H2S?1!K1$$`````)5*F:G^S:5VB&gt;'.I/EVP:(6M:5RJ=X24;7ZH&lt;'6&amp;&lt;H2S?1!K1$$`````)%&amp;G&gt;'6S47&amp;U9WA[47^E&gt;7RF4'FT&gt;&amp;.J&lt;G&gt;M:56O&gt;(*Z!!"M!0!!%!!"!!)!!A!#!!-!"!!&amp;!!)!"A!(!!A!!A!#!!)!!A!*!Q!"#!!##!!!!!!!!!!!!!!!!!!!!!E!!!))!!!!#1!!!!!!!!!*!!!##!!!!!E!!!!!!!!!!!!!!!!!!!!!!!!!#1!!!!!"!!I!!!!!</Property>
+			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!(A!!!!$!!11$$`````"F.U=GFO:Q!!(E"!!!(`````!!!247^E&gt;7RF4'FT&gt;%&amp;S=G&amp;Z37Y!"!!!!#"!1!!"`````Q!!%EVP:(6M:5RJ=X2"=H*B?5^V&gt;!!!+%"!!!(`````!!!;17:U:8*.982D;$J.&lt;W2V&lt;'6-;8.U18*S98E!!"B!-0````]047&amp;U9WB&amp;?("S:8.T;7^O!#B!1!!"`````Q!!'U*F:G^S:5VB&gt;'.I/EVP:(6M:5RJ=X2"=H*B?1"!1%!!!@````]!!$.#:7:P=G6.982D;&amp;&gt;J&gt;'BP&gt;823:72V&lt;G2B&lt;H2&amp;&lt;H2S;76T/EVP:(6M:5RJ=X2"=H*B?3!!(E!Q`````R6.&lt;W2V&lt;'6-;8.U5WFO:WRF27ZU=HE!+E!Q`````S&amp;#:7:P=G6.982D;$J.&lt;W2V&lt;'6-;8.U5WFO:WRF27ZU=HE!+E!Q`````S"":H2F=EVB&gt;'.I/EVP:(6M:5RJ=X24;7ZH&lt;'6&amp;&lt;H2S?1!!&lt;!$Q!"!!!1!#!!)!!Q!%!!5!"A!#!!=!#!!*!!)!!A!#!!)!#A-!!1A!!AA!!!!!!!!!!!!!!!U!!!!*!!!##!!!!!E!!!!!!!!!#1!!!AA!!!!*!!!!!!!!!!!!!!!!!!!!!!!!!!E!!!!!!1!,!!!!!!</Property>
 			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 			<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
 			<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
 			<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
 			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
-			<Property Name="NI.ClassItem.State" Type="Int">1082143248</Property>
+			<Property Name="NI.ClassItem.State" Type="Int">1342710288</Property>
 		</Item>
 		<Item Name="AcPwrTypeFilePath.vi" Type="VI" URL="../PublicMethods/AcPwrTypeFilePath.vi">
 			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!%+!!!!#A!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AF&amp;=H*P=C"0&gt;81!"!!!!"B!-P````]05'&amp;U;&amp;2P5'RV:WFO35Z*!#:!=!!?!!!/$&amp;2F=X1O&lt;(:D&lt;'&amp;T=Q!!$&amp;2F=X1O&lt;(:D&lt;'&amp;T=Q!!&amp;E"1!!-!!!!"!!)):8*S&lt;X)A;7Y!!!R!5Q&gt;798*J97ZU!'%!]!!-!!-!"!!&amp;!!9!"!!%!!1!"!!(!!1!#!!'!Q!!?!!!$1A!!!!!!!!*!!!!$1M!!!!!!!!!!!!!!!!!!!!!!!!+!!!!!!!!!!I!!!!)!!!.!!!!$!!!!!!!!!!!!!!"!!E!!!!!</Property>
@@ -405,13 +405,13 @@
 			<Property Name="NI.ClassItem.State" Type="Int">1107821072</Property>
 		</Item>
 		<Item Name="LtaGetModuleProperties.vi" Type="VI" URL="../PublicMethods/LtaGetModuleProperties.vi">
-			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!%Y!!!!$!!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!&amp;E"!!!(`````!!-*28*S&lt;X)A4X6U!!1!!!!11$$`````"VBN&lt;%2B&gt;'%!*E"Q!"Y!!!Y-6'6T&gt;#ZM&gt;G.M98.T!!!-6'6T&gt;#ZM&gt;G.M98.T!!!A1&amp;!!!Q!!!!%!!B.F=H*P=C"J&lt;C!I&lt;G]A:8*S&lt;X)J!":!1!!"`````Q!)#%6S=G^S)%FO!!!-1$$`````!W&amp;S:Q"B!0!!$!!%!!5!"A!(!!5!"1!&amp;!!5!#1!&amp;!!I!"Q-!!(A!!!U)!!!!!!!!#1!!!!U,!!!!!!!!!!!!!!!!!!!!!!!"#A!!!!!!!!%+!!!!#!!!$1!!!!Q!!!!!!!!!!!!!!1!,!!!!!!</Property>
+			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!&amp;/!!!!$1!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!&amp;E"!!!(`````!!-*28*S&lt;X)A4X6U!!1!!!!11$$`````"VBN&lt;%2B&gt;'%!*E"Q!"Y!!!Y-6'6T&gt;#ZM&gt;G.M98.T!!!-6'6T&gt;#ZM&gt;G.M98.T!!!A1&amp;!!!Q!!!!%!!B.F=H*P=C"J&lt;C!I&lt;G]A:8*S&lt;X)J!":!1!!"`````Q!)#%6S=G^S)%FO!!!71#%228:F&lt;H1A3'&amp;O:'RF=E.B&lt;'Q!$%!Q`````Q.B=G=!91$Q!!Q!"!!&amp;!!9!"Q!&amp;!!5!"1!&amp;!!E!#A!,!!=$!!"Y!!!.#!!!!!!!!!E!!!!.#Q!!!!!!!!!!!!!!!!!!!!!!!1I!!!!+!!!"#A!!!!A!!!U!!!!-!!!!!!!!!!!!!!%!$!!!!!!</Property>
 			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 			<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
 			<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
 			<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
 			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
-			<Property Name="NI.ClassItem.State" Type="Int">1342710288</Property>
+			<Property Name="NI.ClassItem.State" Type="Int">1107821072</Property>
 		</Item>
 		<Item Name="LtaParseArg.vi" Type="VI" URL="../Private/LtaParseArg.vi">
 			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!#B!!!!"A!71$$`````$%&amp;S:V*F&lt;7&amp;J&lt;GFO:Q!!$E!Q`````Q6"=G=A-1!.1!-!"U&amp;S:T&amp;/&gt;7U!"!!!!""!-0````]'18*H)%FO!!"5!0!!$!!!!!%!!A!$!!-!!Q!$!!-!!Q!$!!1!!Q)!!(A!!!E!!!!*!!!!#1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!))!!!!!!!!!!!"!!5!!!!!</Property>
@@ -450,13 +450,13 @@
 			<Property Name="NI.ClassItem.State" Type="Int">1342710288</Property>
 		</Item>
 		<Item Name="ScriptedStateMachine.vi" Type="VI" URL="../PublicMethods/ScriptedStateMachine.vi">
-			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!&amp;M!!!!$Q!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AF&amp;=H*P=C"0&gt;81!'%"!!!(`````!!-+28*S&lt;X*"=H*B?1!!$E!Q`````Q2(:81`!!!+1&amp;-%2'&amp;U91!!*E"Q!"Y!!!Y-6'6T&gt;#ZM&gt;G.M98.T!!!-6'6T&gt;#ZM&gt;G.M98.T!!!%!!!!'E!Q`````R&amp;49X*J=(24:7.U;7^O4G&amp;N:1!71&amp;!!!Q!!!!%!!AB&amp;=H*P=C"*&lt;A!!'%"!!!(`````!!I+28*S&lt;X*"=H*B?1!!%%!Q`````Q:4&gt;(*J&lt;G=!!"2!1!!"`````Q!-"H.D=GFQ&gt;!!!91$Q!!Q!"!!&amp;!!9!"Q!)!!A!#!!*!!M!#!!.!!=$!!"Y!!!.#!!!#1!!!!E!!!!.#Q!!!!!!!!!!!!!!!!!##!!!!1I!!!!!!!!!#A!!!!I!!!U!!!!-!!!!!!!!!!!!!!%!$A!!!!!</Property>
+			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!&amp;?!!!!$A!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AF&amp;=H*P=C"0&gt;81!'%"!!!(`````!!-+28*S&lt;X*"=H*B?1!!"!!!!!J!5Q2%982B!!!G1(!!(A!!$AR5:8.U,GRW9WRB=X-!!!R5:8.U,GRW9WRB=X-!!"J!-0````]25W.S;8"U5W6D&gt;'FP&lt;EZB&lt;75!&amp;E"1!!-!!!!"!!))28*S&lt;X)A37Y!!"B!1!!"`````Q!*#E6S=G^S18*S98E!!""!-0````]'5X2S;7ZH!!!51%!!!@````]!#Q:T9X*J=(1!!'%!]!!-!!1!"1!'!!=!"1!&amp;!!5!#!!+!!5!$!!(!Q!!?!!!$1A!!!!!!!!*!!!!$1M!!!!!!!!!!!!!!!!!!AA!!!%+!!!!!!!!!!I!!!!+!!!.!!!!$!!!!!!!!!!!!!!"!!U!!!!!</Property>
 			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 			<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
 			<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
 			<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
 			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
-			<Property Name="NI.ClassItem.State" Type="Int">1342714384</Property>
+			<Property Name="NI.ClassItem.State" Type="Int">1342710288</Property>
 		</Item>
 		<Item Name="SetGetModuleList.vi" Type="VI" URL="../PublicMethods/SetGetModuleList.vi">
 			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!#7!!!!"1!%!!!!%%!Q`````Q:4&gt;(*J&lt;G=!!"B!1!!"`````Q!"#EVP:(6M:5RJ=X1!!!Z!)1B4:81`)#BG+1!!6!$Q!!Q!!!!!!!!!!A!!!!!!!!!$!!!!!!!!!!)#!!"Y!!!!!!!!!!!!!!!!!!!*!!!!!!!!!!!!!!!!!!!!#!!!!!!!!!!!!!!!!!!!!AA!!!!!!1!%!!!!!!</Property>
@@ -484,6 +484,15 @@
 			<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
 			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 			<Property Name="NI.ClassItem.State" Type="Int">1342710288</Property>
+		</Item>
+		<Item Name="TransferData.vi" Type="VI" URL="../../../sbtbcntl/Framework/TransferData.vi">
+			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!&amp;G!!!!$A!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!ABF=H*P=C"*4Q!!)%!Q`````R&gt;"9W.F=X.P=H-[28*S&lt;X*4:8:F=GFU?1!%!!!!$5!$!!&gt;5;7VF&lt;X6U!"2!-0````]+47^E&gt;7RF6(FQ:1!!&amp;E!Q`````QV49X*J=(2$&lt;WVN97ZE!":!5!!$!!!!!1!##76S=G^S)'^V&gt;!!;1%!!!@````]!#1R&amp;=H*P=E&amp;S=G&amp;Z37Y!!""!5QJ6=W6S28:U5G6G!!!;1%!!!@````]!#1V&amp;=H*P=E&amp;S=G&amp;Z4X6U!'Q!]!!1!!-!"!!&amp;!!5!"1!'!!5!"Q!&amp;!!A!"1!+!!M!"1!&amp;!!Q$!!%)!!!)!!!!#!!!!!!!!!!!!!!!!!!!!!A!!!!!!!!##!!!!!!!!!))!!!!!!!!!1I!!!!+!!!!!!!!!!!!!!!.#Q!!!!%!$1!!!!!</Property>
+			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
+			<Property Name="NI.ClassItem.Flags" Type="Int">1077936128</Property>
+			<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
+			<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
+			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
+			<Property Name="NI.ClassItem.State" Type="Int">1074278928</Property>
 		</Item>
 		<Item Name="UpdatePluginIndex.vi" Type="VI" URL="../PublicMethods/UpdatePluginIndex.vi">
 			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!%L!!!!$!!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!%E"!!!(`````!!-&amp;28*S&lt;X)!"!!!!"Z!=!!?!!!/$&amp;2F=X1O&lt;(:D&lt;'&amp;T=Q!!"&amp;2F=X1!!#"!5!!$!!!!!1!#%W6S=G^S)'FO)#BO&lt;S"F=H*P=CE!%E"!!!(`````!!=&amp;28*S&lt;X)!#U!(!!6*&lt;G2F?!!51$$`````#F"M&gt;7&gt;J&lt;EZB&lt;75!!'%!]!!-!!1!"1!&amp;!!9!"1!&amp;!!5!"1!)!!E!#A!'!Q!!?!!!$1A!!!!!!!!!!!!!$1M!!!!!!!!!!!!!!!!!!!!!!!%+!!!!#!!!!!A!!!!+!!!.!!!!$!!!!!!!!!!!!!!"!!M!!!!!</Property>
