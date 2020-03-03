@@ -22,6 +22,7 @@
 		<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
 		<Item Name="Broadcast" Type="Folder">
 			<Item Name="clBroadcastEvents.ctl" Type="VI" URL="../Protected/Broadcasts/clBroadcastEvents.ctl"/>
+			<Item Name="Config.vi" Type="VI" URL="../Protected/Broadcasts/Config.vi"/>
 			<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../Protected/Broadcasts/DestroyBroadcastEvents.vi"/>
 			<Item Name="DidInit.vi" Type="VI" URL="../Protected/Broadcasts/DidInit.vi"/>
 			<Item Name="DidStop.vi" Type="VI" URL="../Protected/Broadcasts/DidStop.vi"/>
