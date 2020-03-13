@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AC Power Module &mdash; NistPluggableModules 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="NistPluggableModules 0.1 documentation" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ac-power-module">
+<h1>AC Power Module<a class="headerlink" href="#ac-power-module" title="Permalink to this headline">¶</a></h1>
+<p>The AC Power Module is an IVI compliant module with additional plug-in support for an AC load.  At the time of writing, the AC load supported is the Chroma 68300.  The properties and meythods used for this load may be generalized a bit more at a later date.</p>
+<div class="section" id="class-specification">
+<h2>Class Specification<a class="headerlink" href="#class-specification" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="acpwrbaseclass">
+<h3>AcPwrBaseClass<a class="headerlink" href="#acpwrbaseclass" title="Permalink to this headline">¶</a></h3>
+<p>All other AcPwr classes inherit from the AcPwrBase class.  Multiple phases (channels of loads) are defined all sharing a common Frequency and Frequency Range.  Each Phase has a Handle which uniquely identifies the hardware supporting that phase.</p>
+<p><a class="reference internal" href="_images/image0.png"><img alt="image0" src="_images/image0.png" style="width: 3in;" /></a></p>
+<p>Figure : AcPwrBaseClass UML specification</p>
+<div class="section" id="properties">
+<h4>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Frequency : double</dt>
+<dd>The frequency setpoint for all phases.</dd>
+<dt>FrequencyRange : [double]</dt>
+<dd>An array of frequencies that limit the upper and lower allowable frequencies, if the array has only one element, then that will be the upper allowable frequency with the lower being 0.  If the array has two elements, then the first element is the lower allowable frequency and the second element is the upper.</dd>
+<dt>Phases : [struct]</dt>
+<dd><p class="first">An array of structures containing the properties of each phase or channel.</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>Handle : string</dt>
+<dd>A unique identifier of the hardware supporting the phase.</dd>
+<dt>Connected : bool</dt>
+<dd>Used by the system and not end-user settable.  Indicates that the phase has been initialized and is tready to receive further commands.  Closing a phase disconnects the phase and resets Connected.</dd>
+<dt>Name : string</dt>
+<dd>The name of the phase.  In some cases this is for the conveinience of the end user, in other cases, the hardware may need bot a phase Handle and a Name.</dd>
+<dt>Enabled : bool</dt>
+<dd>Set by the end user to determine if the phase should be enabled (energized) or disabled (de-energized).</dd>
+<dt>VoltageLevel : double</dt>
+<dd>Specifies the line-to-neutral voltave level when operating in constant voltage mode.  May also specify a voltage offseyt for an AC voltage</dd>
+<dt>VoltageRange : [double]</dt>
+<dd>Array of voltages specifying the minimum and maximum allowable voltage levels.  If the array has only one element, then it is the maximum allowable level with the minimum being 0.  If therer are two elements then the first element is the minimum level and the second is the upper limit.</dd>
+<dt>CurrentLimit : double</dt>
+<dd>Specifies the output current limit.  For the ChromaAcLoadClass this will be <em>IrmsMax</em></dd>
+<dt>Waveform : string</dt>
+<dd>The name of the waveform to be generated if the phase is capable of generating waveform functions.</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt>FunctionClass : class</dt>
+<dd>If the phase is capable of generating waveform functions (either standard or arbitrary) this property holds the class reference of the function that creates the waveforms</dd>
+<dt>FunctionIniFilePath : path</dt>
+<dd>The path to the .ini file holding the properties the waveform function</dd>
+</dl>
+</div>
+<div class="section" id="methods">
+<h4>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Initialize(reset:bool, QueryID:bool)</dt>
+<dd>Opens a connection to all phases.  optionally reset the phase or check that the phase ID is valid.</dd>
+<dt>ConfigPhases()</dt>
+<dd>Configure all phases with their property values</dd>
+<dt>ConfigFrequency()</dt>
+<dd>Configure the frequency of all phases to the single frequency property value.</dd>
+<dt>Disable()</dt>
+<dd>Cause all phases to apply the minimum ampout of power possible.  The devise remains connected after disablew.</dd>
+<dt>ResetCurrentProtection()</dt>
+<dd>If the phases have tripped on over current, this method resets the overcurrent protection if the user has manually reset the Enabled property to true.  Note that during a protection event, the enabled property must be automatically cleared.</dd>
+<dt>ResetVoltageProtection()</dt>
+<dd>If the phases have tripped on over or under voltage, this method resets the protection and re-enables the phases if the user has manually reset the Enabled property to true.  Note that during a protection event, the enabled property must be automatically cleared.</dd>
+<dt>Reset()</dt>
+<dd>Disable all phases and return all properties to default values.</dd>
+</dl>
+</div>
+<div class="section" id="measurement-extension-group">
+<h4>Measurement Extension Group<a class="headerlink" href="#measurement-extension-group" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id1">
+<h4>Properties<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Measurement : [struct]</dt>
+<dd><p class="first">An array of structures containing properties of each measurement to be made</p>
+<dl class="last docutils">
+<dt>Handle : string</dt>
+<dd>A unique identifier of the hardware supporting the phase.</dd>
+<dt>Name : string</dt>
+<dd>The name of the phase.  In some cases this is for the conveinience of the end user, in other cases, the hardware may need bot a phase Handle and a Name.</dd>
+<dt>Enabled : bool</dt>
+<dd>Set by the end user to determine if the phase should be enabled (energized) or disabled (de-energized).</dd>
+<dt>Type : enum</dt>
+<dd><dl class="first last docutils">
+<dt>The type of measurement to be made:</dt>
+<dd>Voltage RMS L-N,
+Current RMS,
+Frequency,
+Voltage DC,
+Current DC,
+Power Factor,
+Crest Factor,
+Current Peak,
+Power VA,
+Real Power,
+Power DC,
+Phase Angle,
+Voltage RMS L-L,
+Current OHD,
+Current EHD,
+Current THD,
+Voltage OHD,
+Voltage EHD,
+Voltage THD</dd>
+</dl>
+</dd>
+<dt>Result : double</dt>
+<dd>The result of the measurement (may eventually become a varient type if any measurement results cannot be represented by doubles).</dd>
+</dl>
+</dd>
+<dt>RefreshTime : double</dt>
+<dd>The time delay between fetching individual measurements</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h4>Methods<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>InitiateMeasurment (Handle, Enum)</dt>
+<dd>Initiates all the measurements in the measurements structure for all of the phases that are enabled. Initiate will cause one measurement per structure element to be made.  After Initiate is called, Fetch will return the result of that measurement, then another measurement can be initiated</dd>
+<dt>FetchMeasurement (Handle, Name)</dt>
+<dd>Returns the result of the previous call to the initiate group.  The return value is the entire measurement structure with the Handle, Name, Enabled, Type, and the latest Result</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="chromaacloadclass">
+<h3>ChromaAcLoadClass<a class="headerlink" href="#chromaacloadclass" title="Permalink to this headline">¶</a></h3>
+<p>The Chroma AC load support one phase per device so multiple devises must be used to create multiple phases.  The IVI AC Power specification does not (yet) peovide an extension group for AC Loads but it seems to make sense to extend it.  Eventually this child class may become a base class for generic AC loads.</p>
+<p><a class="reference internal" href="_images/image110.png"><img alt="image1" src="_images/image110.png" style="width: 3in;" /></a></p>
+<div class="section" id="id3">
+<h4>Properties<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Load : [struct]</dt>
+<dd><p class="first">An array of structures containing the properties used for each Load Device</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>AC/DC : bool</dt>
+<dd>Specifies the device for AC or DC loading</dd>
+<dt>Mode : enum (CC, CP, CR, CV, RLC, Inrush, Rect)</dt>
+<dd><dl class="first last docutils">
+<dt>Specifies the load mode:</dt>
+<dd>CC = constant current,
+CP = Constant Power,
+CR = Constant Resistance,
+CV = Constant Voltage (DC loading only),
+RLC = Resistance, Inductance, Capacitance (AC loading only),
+Inrush = RLC Inrush Current (AC only),
+Rect = Rectified (DC only).</dd>
+</dl>
+</dd>
+<dt>CrestFactor : double</dt>
+<dd>Specifies the load crest factor, meaning of this varies in different modes.</dd>
+<dt>PowerFactor : double</dt>
+<dd>Specifies the power factor of AC loading.  Essentially this is the phase relationship between the voltage and current.</dd>
+<dt>Priority : enum</dt>
+<dd><dl class="first last docutils">
+<dt>Sets CrestFactor / PowerFactor Priority:</dt>
+<dd>CF = Crest Factor Priority
+PF = Power Factor Priority
+both (CF) = Both have priority with CrestFactor preferred
+both (PF) = Both have priority with PowerFactor preferred</dd>
+</dl>
+</dd>
+<dt>PowerLoading :double</dt>
+<dd>Specifies the AC power consumption of the load in Watts</dd>
+<dt>IpeakMax : double</dt>
+<dd>Specifies the maximum peak current that the load will accept</dd>
+<dt>Slew : struct</dt>
+<dd><p class="first">Specifies the rise and fall times of changing properties in the load.</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>RiseSlewRate : double</dt>
+<dd>Specifies the rising rate of the property depending on Mode</dd>
+<dt>FallSlewRate : double</dt>
+<dd>Specifies the falling rate of the property depending on Mode</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt>Resistance :double</dt>
+<dd>Specifies the resistance of the DC load in ohms.  when in CR mode, the Rise and Fall slew times will specify how quickly the resistance will change when this property changes.</dd>
+<dt>LC :struct</dt>
+<dd><p class="first">A structure containing the Inductive / capacitive properties of the load</p>
+<dl class="last docutils">
+<dt>C  : double</dt>
+<dd>Specifies the Capacitance when in AC RLC mode</dd>
+<dt>L  : double</dt>
+<dd>Specifies the Inductance when in AC RLC mode</dd>
+<dt>RL(ohm) : double</dt>
+<dd>Specifies the (inductive) impedance in AC RLC mode</dd>
+<dt>RS(ohm) : double</dt>
+<dd>Specifies the (capacitive) impedance in AC RLC mode</dd>
+</dl>
+</dd>
+<dt>Wave : enum</dt>
+<dd><dl class="first last docutils">
+<dt>Specifies the wave polarity</dt>
+<dd>Pos,
+Neg,
+Both,</dd>
+</dl>
+</dd>
+<dt>LineSync : bool</dt>
+<dd>True if the load is to be synchronized to the line input.</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt>LoadShortCircuited : bool</dt>
+<dd>Specifies that the load is in the short circuited mode.</dd>
+<dt>Timing : struct</dt>
+<dd><p class="first">Single structure defines the timing of all phases</p>
+<dl class="docutils">
+<dt>TimingOn :enum</dt>
+<dd><dl class="first last docutils">
+<dt>Specifies the timing mode for all phases</dt>
+<dd>Holdup,
+Off,
+Transfer</dd>
+</dl>
+</dd>
+</dl>
+<p>Hours : uint32</p>
+<p>Minutes : uint32</p>
+<p>Seconds : double</p>
+<p class="last">CutoffVoltage : double</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h4>Methods<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>ConfigLoads()</dt>
+<dd>Configures the load modes, current shape, and relative phase of current to voltage</dd>
+<dt>ConfigCurrent()</dt>
+<dd>Configures the current properties of the loads.  In CC mode, the Rise and Fall Slew rates detetermine how fast the current changes when the properties are changed.</dd>
+<dt>ConfigPower()</dt>
+<dd>Configures the systems power loading</dd>
+<dt>ConfigVoltage()</dt>
+<dd>Sets the DC voltage when in CV mode.  Only in DC modes.</dd>
+<dt>ConfigImpedance()</dt>
+<dd>Configures the loads impedance settings</dd>
+<dt>ConfigureShortCircuited()</dt>
+<dd>Places the load into or returmns from short circuited mode</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AC Power Module</a><ul>
+<li><a class="reference internal" href="#class-specification">Class Specification</a><ul>
+<li><a class="reference internal" href="#acpwrbaseclass">AcPwrBaseClass</a><ul>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#measurement-extension-group">Measurement Extension Group</a></li>
+<li><a class="reference internal" href="#id1">Properties</a></li>
+<li><a class="reference internal" href="#id2">Methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#chromaacloadclass">ChromaAcLoadClass</a><ul>
+<li><a class="reference internal" href="#id3">Properties</a></li>
+<li><a class="reference internal" href="#id4">Methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/AcPwrModule.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2017, Allen Goldstein.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.2.
+    </div>
+  </body>
+</html>
