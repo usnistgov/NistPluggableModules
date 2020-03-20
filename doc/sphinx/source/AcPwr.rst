@@ -1,171 +1,9 @@
 ###############
-AC Power Module
+AC Power Plugins
 ###############
 *************************
 Class Specification
 *************************
-
-AcPwrBaseClass
-==============
-
-All other AcPwr classes inherit from the AcPwrBase class.  Multiple phases (channels of loads) are defined all sharing a common Frequency and Frequency Range.  Each Phase has a Handle which uniquely identifies the hardware supporting that phase.
-
-|image0|
-
-Figure \: AcPwrBaseClass UML specification
-
-Properties
-----------
-Frequency \: double
- The frequency setpoint for all phases.
- 
-FrequencyRange \: [double] 
- An array of frequencies that limit the upper and lower allowable frequencies, if the array has only one element, then that will be the upper allowable frequency with the lower being 0.  If the array has two elements, then the first element is the lower allowable frequency and the second element is the upper.
-
-
-Phases \: [struct]
- An array of structures containing the properties of each phase or channel.  
-
-	Handle \: string
-	  A unique identifier of the hardware supporting the phase.
-	  
-	Connected \: bool
-	  Used by the system and not end-user settable.  Indicates that the phase has been initialized and is tready to receive further commands.  Closing a phase disconnects the phase and resets Connected.
-  
-	Name \: string
-	 The name of the phase.  In some cases this is for the conveinience of the end user, in other cases, the hardware may need bot a phase Handle and a Name. 
-	 
-	Enabled \: bool
-	  Set by the end user to determine if the phase should be enabled (energized) or disabled (de-energized).
-	 
-	VoltageLevel \: double
-	 Specifies the line-to-neutral voltave level when operating in constant voltage mode.  May also specify a voltage offseyt for an AC voltage
-	 
-	VoltageRange \: [double]
-	   Array of voltages specifying the minimum and maximum allowable voltage levels.  If the array has only one element, then it is the maximum allowable level with the minimum being 0.  If therer are two elements then the first element is the minimum level and the second is the upper limit.
-	   
-	CurrentLimit \: double
-	  Specifies the output current limit.  For the ChromaAcLoadClass this will be *IrmsMax* 
-	  
-	Waveform \: string
-	  The name of the waveform to be generated if the phase is capable of generating waveform functions.	
-	  
-FunctionClass \: class
-  If the phase is capable of generating waveform functions (either standard or arbitrary) this property holds the class reference of the function that creates the waveforms
-    
-FunctionIniFilePath \: path
-  The path to the .ini file holding the properties the waveform function
-
-            	
-Methods
----------------
-
-Initialize(reset\:bool, QueryID\:bool)
-  Opens a connection to all phases.  Optionally reset the phase or check that the phase ID is valid.
-  
-ConfigPhases()
-  Configure all phases with their property values
-  
-ConfigFrequency()
-  Configure the frequency of all phases to the single frequency property value.
-  
-Disable()
-   Cause all phases to apply the minimum amount of power possible. Instruments have various ways of perfroming the disable but typically do this by opening a realy on the channel that disconnects the generation/acquisitoin circuitry from the external pheonmena.  The software connection to the device remains connected after the input/output is disabled.
-   
-ResetCurrentProtection()
-   If the phases have tripped on over current, this method resets the overcurrent protection if the user has manually reset the Enabled property to true.  Note that during a protection event, the enabled property must be automatically cleared.
-   
-ResetVoltageProtection()
-   If the phases have tripped on over or under voltage, this method resets the protection and re-enables the phases if the user has manually reset the Enabled property to true.  Note that during a protection event, the enabled property must be automatically cleared.
-   
-Reset()
-    Disable all phases and return all properties to default values.
-	
-Close()
-    Closes the software connection to the devce and resets the device.	
-    
-AcPwrBaseClass Measurement Extension Group    
-==========================================
-
-Methods
----------------
-InitiateMeasurment (Handle, Enum)
-	Initiates all the measurements in the measurements structure for all of the phases that are enabled. Initiate will cause one measurement per structure element to be made.  After Initiate is called, Fetch will return the result of that measurement, then another measurement can be initiated
-	
-FetchMeasurement (Handle, Name)
-	Returns the result of the previous call to the initiate group.  The return value is the entire measurement structure with the Handle, Name, Enabled, Type, and the latest Result 
-
-AcPwrBaseClass NON-IVI Extension Group    
-======================================
-Methods
----------------
-ChangeWhileMeasuring () 
-	Returns if the instrument can configure it's output settings, or commit those settings like updating output value while it is in the process of acquiring measurements. 
-
-DefaultFromINI
-	Returns the current configuration stored in the INI file. 
-
-PrefDialog (Device Specifc Insturment Configuration)
-	Displays the prior instruments properties and allows a user to change the  instrument properties and save these new set properties to the same location on disk or in a new location with a new name called "Type". 
-
-DeviceOn
-	Enables the output. 
-	
-DeviceOff
-	Disables the output.
-
-ConfigDevice
-	Configures the instrument based on the INI file settings or changes to these settings made using the PrefDialog.vi.
-
-GetSettings
-	This function retrieves the instrument properties. 
-	
-SetSettings
-	This function sets the instruments properties.  
-
-Properties
----------------
-
-Measurement \: [struct]
-	An array of structures containing properties of each measurement to be made
-	
-	Handle \: string
-	  A unique identifier of the hardware supporting the phase.
-	
-	Name \: string
-	 The name of the phase.  In some cases this is for the conveinience of the end user, in other cases, the hardware may need both a phase Handle and a Name. 
-	 
-	Enabled \: boolean
-	  Set by the end user to determine if the phase should be enabled (energized) or disabled (de-energized).
-
-	Measurement Type \: enumerated control 
-	   The type of measurement to be made:
-		Voltage (Vrms or V),  
-		Current (Arms or A),
-		Power(W),
-		Peak Voltage(V),
-		Peak Current(A),
-		Peak Power(W),
-		Frequency (Hz),
-		Resistance (Ohms),
-		Voltage Overshoot(V),
-		Postivie Peak Current,
-		Voltage Undershoot(V),
-		Negative Peak Current (A),
-		Apparent Power (VA),
-		Reactive Power (VAR),
-		Voltage THD,
-		Power Factor, and
-		Current's Crest Factor.
-			
-	PluginConfigVariant 
-		This property allows child classes to have differing configuration properties from the base class and transmit the data from method to method or any external caller using the base classes property infastructure.    
-	
-	PluginMeasVariant
-		This property allows child classes to have differing measurement properties from the base class and transmit the data from method to method or any external caller using the base classes property infastructure.    
-	
-RefreshTime (ms)\: double
-   The time delay between fetching/reading individual measurements
 
 ChromaAcLoadClass
 =================
@@ -275,106 +113,51 @@ Timing \: struct
 Methods
 --------
 
-ConfigLoads()
-	Configures the load modes, current shape, and relative phase of current to voltage
+CheckHandle()
+	Check to see if the input handle is already connected. 
 
-ConfigCurrent()
-	Configures the current properties of the loads.  In CC mode, the Rise and Fall Slew rates detetermine how fast the current changes when the properties are changed.
+CheckSettings
+	Checks the value of the instrument settings and returns an error if the value is outside the instruments range. 
+
+ChromaProtectionStatus()
+	Retrieves a string status from the Chroma indicating any measurment errors. 
+
+ConvertStatus()
+	Converts the instruments numerical status into a string status. 
+
+DisableControls
+	disables the controls in the phases cluster based on the Configuration Mode control. This will enable the user to only change the values of the controls that are allowed by that mode.  
 	
-ConfigPower()
-	Configures the systems power loading
+NumOfPhases
+	Checks the number of phases and ensures it is less than or equal to three. 
 	
-ConfigVoltage()
-	Sets the DC voltage when in CV mode.  Only in DC modes.
+SupportedMeasurementType
+	Checks if the Measurment Type(s) selected is capable by the instrument based on the current instruments configuration. 
 	
-ConfigImpedance()
-	Configures the loads impedance settings
+VariantToProperties
+	Extracts the PluginConfigVariant, PluginMeasVariant, and Measurement Refersh Time. Converts PluginConfigVariant and PluginMeasVariant into the Configuration and Measurement Cluster. 
 	
-ConfigureShortCircuited()
-	Places the load into or returmns from short circuited mode
-		
+WriteToBaseConfigVariant
+	Writes to the PluginConfigVariant and the PluginMeasVariant properties.  
 
-   
-Range Check
-------------
 
-The Range Check vi checks to see whether or not the variables being configured into the VI are valid. It functions as an SSM, in which the user specifies an array of variables to check before calling the vi. It has the following case statements:
+NHRDCPowerClass
+=================
 
-- Power: The power of the load, in Watts.
-	- Range: 0 < *Load Power* :math:`\le` Power Limit
-	- Modes Used: DC CP and AC CP
+The NHRDCPower device is a three channel DC Output. One Module supports multiple devices thus multiple channels can be emulated within a single module.
 
-- Power Limit: The power of the load, in Watts.
-	- Range: 0 < *Load Power* :math:`\le` 4500
-	- Modes Used: DC CP and AC CP
-	
-- Current: The current of the load, in Amperes.
-	- Range: 0 < *ILoad* :math:`\le` Current Limit
-	- Modes Used: AC CC, DC CC, and DC Rectified
+NHRRegenerativeGridSimulator
+============================
 
-- Current Limit: The maximum RMS current of the load, in Amperes.
-	- Range: 0 < *Current Limit* :math:`\le` 45
-	- Modes Used: AC CC, AC CP, AC CR, RLC CP
+The NHR Regenerative Grid Simulator is a three channel AC/DC Output that can be combined into any combination between one and three channels. A single module can  
 
-- Current Peak: The maximum peak current allowed through a DC load, in Amperes.
-	- Range: 0 < *Ipeak* :math:`\le` 36
-	- Modes Used: DC CC, DC CP, DC CV, DC CR, and DC Rectified
+PacificPowerSource
+==================
 
-- AC Resistance: The resistance of the AC load, in :math:`\Omega`.
-	- Range: 1.39 :math:`\le` :math:`\Omega` :math:`\le` 2500
-	- Modes Used: AC CR
-
-- DC Resistance: The resistance of the DC load, in :math:`\Omega`.
-	- Range: 1.25 :math:`\le` :math:`\Omega` :math:`\le` 1000
-	- Modes Used: DC CR
-
-- Voltage: The voltage level of the DC load, in Volts.
-	- Range: 7.5 :math:`\le` *Voltage* :math:`\le` 500
-	- Modes Used: DC CV
-
-- Frequency: The frequency of the load, in Herz.
-	- Range: 45 :math:`\le` *frequency* :math:`\le` 440
-	- Modes Used: DC Rectified
-
-- Crest Factor: The crest factor of the device.
-	- Range: 1.414 :math:`\le` *CF* :math:`\le` 5
-	- Modes Used: AC CC, AC CP, AC CR, and DC Rectified
-
-- Power Factor: The power factor for non-RLC AC loads.
-	- Range: 0 < *PF* :math:`\le` 1
-	- Modes Used: AC CC, AC CP, AC CR
-
-- RLC Power Factor: The power factor of RLC loads.
-	- Range: .4 :math:`\le` *PF* :math:`\le` .75
-	- Modes Used: RLC CP
-
-- Rise Slew Rate: The rise slew rate of the load, in 
-	- Range: 4 :math:`\le` *Slew Rate* :math:`\le` 600
-	- Modes Used: DC CC and DC CR
-
-- Fall Slew Rate: The fall slew rate of the load, in
-	- Range: 4 :math:`\le` *Slew Rate* :math:`\le` 600
-	- Modes Used: DC CC and DC CR
-
-- RS: The series resistance of the RLC system, in :math:`\Omega`.
-	- Range: 0 :math:`\le` *Series Resistance* :math:`\le` 9.999
-	- Modes Used: RLC and RLC Inrush
-
-- RL: The parallel resistance of the RLC system, in :math:`\Omega`.
-	- Range: 1.39 :math:`\le` *Parallel Resistance* :math:`\le` 9999.99
-	- Modes Used: RLC and RLC Inrush
-
-- LS: The inductance of the RLC system, in :math:`\mu H`.
-	- Range: 0 < *Series Inductance* :math:`\le` 9999
-	- Modes Used: RLC and RLC Inrush
-
-- C: The capacitance of the RLC system, in :math:`\mu F`.
-	- Range: 100 :math:`\le` *Parallel Capacitance* :math:`\le` 9999
-	- Modes Used: RLC and RLC Inrush
-
+The Pacif Power 360AMXT is a three channel AC Souurce that supports combining all three channels into one channel or being combined into a split phase operation.
 
 ***************
-AcPwr Plugins
+AcPwr Plugin Properties
 ***************
 
 The classes (ChromaAcLoad, NHRDCPower, NHRGridSim, and PacificPowerSource) listed below inherit all the modules and properties from the AcPwr Base Class. 
@@ -382,243 +165,323 @@ The classes (ChromaAcLoad, NHRDCPower, NHRGridSim, and PacificPowerSource) liste
 ChromaAcLoad.lvclass
 ====================
 
-The following section lists every operation mode the AC/DC Chroma Power Load 638xx is capable of. Each mode utilizes a different set of parameters from the rest. If a variable is listed under an operation mode, it must be configured in order for the chroma to operate. If a variable is not listed under an operation mode, its value will be ignored when configuring the device. **Failing to configure a variable properly will potentially cause the Chroma to fail without sending an error message**. 
-
-General Variables
------------------
-
-*The following variables are used by every operation mode*
-
-	- AC/DC: Whether the device operates in AC or DC. When set to *true*, the device operates in DC mode. When set to *false*, the device operates in AC mode.
-		AC Modes: CC, CP, CR, RLC, RLC CP, and Inrush
-		DC Modes: CV, CP, CC, CR, and Rectified Mode
-		
-	- Mode: The operation modes of the device. The user must be careful to select an appropriate current type or the device will fail to configure.
-		- CC: Constant Current. AC/DC
-		- CP: Constant Power. AC/DC
-		- CR: Constant Resistance. AC/DC
-		- CV: Constant Voltage. DC only
-		- RLC: RLC Circuit Simulation. AC only
-		- RLC CP: RLC circuit with constant RMS Power. AC only
-		- Inrush: Measures the inrush of an RLC circuit. AC only
-		- Rectified: DC rectified mode. Converts a DC signal into an AC one. DC only
-		
-	- Load Short Circuited: When set to true, the load short circuits itself at its input. When set to false, the load operates normally. By default, this mode should be set to *false*.
+*The following section lists the properties and operational mode of the AC/DC Chroma Load (638xx). Each mode uses a set of properties that are similar and distinct from the rest. If a variable is listed under an operation mode, it must be configured in order for the Chroma to operate. **The load should be appropriately configured for the physically wiring and the source connected**. 
 
 |image2|
 
 *This is the preference dialogue screen that allows the user to configure the device.*
 
-AC Modes
-========
 
-CC (Constant Current)
----------------------
-
-*The device attempts to match the value of the RMS current to an amount specified by the user.*
-
-	- Load Current (A/Arms): The RMS current that the device will try to emulate.
-	
-	- Load Current Peak Limit(A): The maximum peak current allowed through the device.
-	
-	- Load Current Limit (A/Arms): The maximum RMS current allowed through the device.
-	
-	- Priority: Determines whether the device prioritizes the Current Factor, Power Factor, or both. If the device is prioritizing both, it will still 'prefer' one over the other.
-	
-	- Crest Factor: The crest factor of the load.
-	
-	- Power Factor: The power factor of the load.
-	
-	- Slew Rate: The maximum speed at which the load changes the current. 
-		- Rise Slew Rate (A/ms):The maximum speed at which the curent rises. 
-		
-		- Fall Slew Rate (A/ms):The maximum speed at which the current falls. 
-
-CP (Constant Power)
--------------------
-
-*The device attempts to match the value of the RMS power to an amount specified by the user.*
-
-	- Load Power(W): The RMS power that the load will try to consume. 
-	
-	- Load Power Limit(W): The maximum RMS power that the load will try to consume. 
-	
-	- Load Current Peak Limit(A): The maximum peak current allowed through the device. 	
-	
-	- Priority: Determines whether the device prioritizes the Current Factor, Power Factor, or both. If the device is prioritizing both, it will still 'prefer' one over the other.	
-	
-	- Crest Factor: The crest factor of the load. 
-	
-	- Power Factor: The power factor of the load. 
-
-CR (Constant Resistance)
-------------------------
-
-*The device attempts to emulate a resistor with a constant value*
-
-	- Load Resistance (Ohms): The resistance that the load will attempt to emulate.
-	
-	- Load Current Limit (A/Arms): The maximum RMS current allowed through the device. 
-	
-	- Slew Rate: The maximum speed at which the load changes the current. 
-		- Rise Slew Rate (A/ms):The maximum speed at which the curent rises. 
-		
-		- Fall Slew Rate (A/ms):The maximum speed at which the current falls. 
-	
-RLC
----
-
-*The load emulates an RLC circuit, with an inductor in series and a capacitor in parallel.*
-
-	- Load Current (A/Arms): The RMS current that the device will try to emulate, in Amperes. 
-	
-	- Load Current Peak Limit(A): The maximum peak current allowed through the device. 
-	
-	- Load Current Limit (A/Arms): The maximum RMS current allowed through the device. 
-	
-	- LC/RLC Mode
-	
-		- Series Resistance: The series resistance of the system in :math:`\Omega`. 
-		
-		- Parallel Resistance: The parallel resistance of the system in :math:`\Omega`. 
-		
-		- Inductance: The inductance of the system in :math:`\mu H`.
-		
-		- Capacitance: The capacitance of the system in :math:`\mu F`. 
-		
-RLC CP (Constant Power)
-------
-*The load emulates an RLC circuit operating a constant RMS power. An inductor is in series and a capacitor is in parallel.*
-
-	- Load Power(W): The RMS power that the device will try to maintain. 
-	
-	- Load Power Limit(W): The maximum RMS power that the load will try to consume.
-	
-	- Load Current Limit (A/Arms): The maximum RMS current allowed through the device.
-	
-	- Power Factor: The power factor of the load. 
-	
-*Special*: Trying to set the maximum peak current of the system using RLC CP causes the chroma to cease functionality, but will not send an error message.
-
-Inrush
-------
-
-**Note**: Measuring the inrush current of the device is tricky, seeing as the mode quickly turns off. In order to perform measurements on this device, the user is recommended to use the *Set Peak Current Meas Hold* vi with the input set to *true*, then using the *Measure or Fetch Peak Current* vi.
-
-	- Load Current (A/Arms): The RMS current that the device will try to emulate. 
-
-	- Load Current Peak Limit(A): The maximum peak current allowed through the device. 
-	
-	- Load Current Limit (A/Arms): The maximum RMS current allowed through the device. 
-	
-	- LC/RLC Mode
-	
-		- Series Resistance: The series resistance of the system in :math:`\Omega`. 
-	
-		- Parallel Resistance: The parallel resistance of the system in :math:`\Omega`. 
-	
-		- Inductance: The inductance of the system in :math:`\mu H`. 
-
-		- Capacitance: The capacitance of the system in :math:`\mu F`. 	
-	
-*To Be Added to Inrush*
-	- Phase: **Warning** This cannot currently be set; the module defaults to a phase of 0. In order to be able to set this, please modify the BaseConfig or Loads controls to include a *Phase* variable, then modify the *ConfigDevice* vi. When modifying the vi, look over to the 'Inrush" case of the SSM, expand the *Unbundle by Name*, select the newly created phase, and then wire it to the input of the *Set Phase of AC Inrush* vi, replacing the constant of 0.
-	
-DC Modes
-========
-
-
-CC (Constant Current)
----------------------
-
-*The device attempts to operate at a constant DC current.*
-
-	- Load Current (A/Arms): The RMS current that the device will try to emulate. 
-
-	- Load Current Peak Limit(A): The maximum peak current allowed through the device.
-	
-	- Slew Rate: The maximum speed at which the load changes the current. 
-		- Rise Slew Rate (A/ms):The maximum speed at which the curent rises. 
-		
-		- Fall Slew Rate (A/ms):The maximum speed at which the current falls. 
-
-	
-CP (Constant Power)
--------------------
-
-*The device attempts to operate at a constant DC power.*
-
-	- Load Power(W): The RMS power that the load will try to consume. 
-	
-	- Load Power Limit(W): The maximum RMS power that the load will try to consume. 
-	
-	- Load Current Peak Limit(A): The maximum peak current allowed through the device. 
-
-CV (Constant Voltage)
----------------------
-
-*The device attempts to operate as a constant voltage power load.*
-
-	- Voltage Level: The voltage level at which the device attempts to operate, in V.
-
-	- Load Current Peak Limit (A): The maximum current at which the device can operate before shutting down.
-
-CR (Constant Resistance)
-------------------------
-
-*The device attempts to operate as a resistor with a constant value.*
-
-	- Load Resistance (Ohms): The resistance that the load will attempt to emulate.
-	
-	- Load Current Limit (A/Arms): The maximum RMS current allowed through the device. 
-		
-	- Slew Rate: The maximum speed at which the load changes the current. 
-		- Rise Slew Rate (A/ms):The maximum speed at which the curent rises. 
-		
-		- Fall Slew Rate (A/ms):The maximum speed at which the current falls. 
-	
-Rectified
----------
-
-*The device converts a DC signal into an AC output.*
-
-	- Load Current (A/Arms): The RMS current that the device will try to emulate. 
-
-	- Load Current Peak Limit(A): The maximum peak current allowed through the device. 
-	
-	- Load Current Limit (A/Arms): The maximum RMS current allowed through the device.
-	
-	- Synch Frequency (Hz): The frequency of the output AC signal. 
-
-		
+	- Disable Controls Based On Configuration Mode?: A property that allows the disables various properties based on the value of the configuration variable. 
+	- Device(s)Settings: A collection of properties that allow a user to control the instrument. 
+		- Configuration Mode: The operation modes of the device. The user must be careful to select an appropriate current type or the device will fail to configure.
+			- Constant Voltage (DC): The device attempts to operate as a constant voltage load.
+			- Constant Power (DC): The device attempts to operate at a constant DC power.
+			- Constant Power (AC): The device attempts to match the value of the RMS current to an amount specified by the user
+			- Constant Current (DC): The device attempts to operate at a constant DC current.
+			- Constant Current (AC): The device attempts to match the value of the RMS power to an amount specified by the user.
+			- Constant Resistance (DC): The device attempts to emulate a resistor with a constant value
+			- Constant Resistance (AC): The device attempts to emulate a resistor with a constant value
+			- Rectified Mode (DC): The device converts a DC signal into an AC output.
+			- Inrush (AC): **Note**: Measuring the inrush current of the device is tricky, seeing as the mode quickly turns off. In order to perform measurements on this device, the user is recommended to use the *Set Peak Current Meas Hold* vi with the input set to *true*, then using the *Measure or Fetch Peak Current* vi.
+			- RLC CP (AC): The load emulates an RLC circuit operating a constant RMS power. An inductor is in series and a capacitor is in parallel.
+			- RLC (AC): The load emulates an RLC circuit, with an inductor in series and a capacitor in parallel.
+		- MeasName: Every measurement from this module will be labeled with the value entered into this variable. 
+		- Phases: A cluster of properties that determines the properties of each phase. 
+			- Handle: The name of the insturment with which software can use to connect and control the instrument. 
+			- Name: A distinct software name that an operator may use to distinguish instruments. 
+			- Phase Select: Determines the phase of the instrument
+			- Instrument Options: Allows for instrument initializations commands such as simulation (Simulation=0).
+			- id query: If set to true queries the instrument ID and checks that it is valid for this instrument driver. 
+			- reset device: Sends a software command that reinitializes the device 
+			- Load Short Circuited: The instrument shorts its input.
+			- Line Synchronization: In Rectified mode this Boolean when set to true uses the measured input frequency as the reference loading frequency.  
+			- Load Current: The current the instrument will try to sink.   
+			- Load Voltage: The voltage the instrument will try to sink. 
+			- Load Power: The Power that the instrument will try to sink. 
+			- Load Resistance: The input resistance set at the instruments' input. 
+			- Load Current Peak Limit: A user defined limit where the instrument will throw an error if the measurements exceed the value.
+			- Load Current Limit: A user defined limit that allows the instrument to return an error if the current measurement exceeds the set value.
+			- Load Power LImit: A user defined limit that allows the instrument to return an error if the Power measurements exceeds the set value. 
+			- Synch Frequency: In Rectified Mode and if the Boolean is set to false the synch frequency must be set to the expected input frequency.  
+			- Priority: Determines if the the instrument should optimize. for the crest factor or the power factor. 
+			- Crest Factor: The instrument will try to establish a ration such that the value set = Peak Current/ RMS Current.
+			- Power Factor: The instrument will try to establish a ratio such that the value set = Real Power/Apparent Power. 
+	- Measurements: A collection of properties that allow user to control the instuments measurements. 
+		- Handle: The name of the instrument and channel with which the software will use to collect measurements. 
+		- Name: A distinct software name that an operator may use to distinguish instruments and/or channels.
+		- Enabled: This property determines if the measurement data is acquired or not. 
+		- Measurement Type: A property that determines what type of measurement the instrument will report back.  
+			-Voltage
+			-Current
+			-Power
+			-Peak Voltage
+			-Peak Current
+			-Peak Power
+			-Frequency
+			-Resistance
+			-Voltage Overshoot
+			-Positive Peak Current
+			-Voltage Undershoot
+			-Negative Peak Current
+			-Apparent Power
+			-Reactive Power
+			-Voltage THD
+			-Power Factor
+			-Current's Crest Factor
+		- Hold Peak Current Measurment: This property allows the instrument to return the value based on magnitude. It is only
+		- Fetch/Read: A property that determines how the measurement is taken. 
+	- Measurement RefreshTime: The time in milliseconds to wait between the instruments' measurements.
+	- Cancel: Closes the window and discards any changes to the settings
+	- Save: Closes the panel and saves these settings to an INI file. 
+	- Save As: Closes the panel and saves these settings to a different INI file in the same file location. 		
 
 NHRDCPower.lvclass
 ===================
 
-The following section lists every operational mode of the NHR 9200 DC Battery Test System. 
-
-General Variables
------------------
-
-*The following variables are used by every operation mode*
-
-	- Off - The module is off when in the Stand-by state, providing no voltage, current, power or resistance.
-	- Stand By - The module is off when in the Stand-by state, providing no voltage, current, power or resistance.
-	- Charge - The module acts as a Source where the Voltage property control the output voltage, and the Current, Power and Resistance properties define the operating limits.
-	- Discharge - The module acts as a Load, where the Voltage, Current, Power and Resistance values concurrently control the state of the module - the mode drawing the least amount of current being the dominant mode.
-	- Battery Emulation - The module acts as a Battery, where it sinks or sources current automatically based on the sensed voltage. Use the Voltage, Current, Power and Resistance fields to configure the behavior of the emulated battery.
+*The following section lists the user accessible properties of the NHR 9200 DC Battery Test System.*
 
 |image3|
 
 *This is the preference dialogue screen that allows the user to configure the device.*
 
+	- Device(s)Settings: A collection of properties that allow a user to control one or multiple instrument. 
+		- MeasName: Every measurement from this module will be labeled with the value entered into this variable. 
+		- Modules: A collection of properties that allows for the control of one or multiple instruments. 
+			- Handle: The name of the insturment with which software can use to connect and control the instrument.
+			- Name: A distinct software name that an operator may use to distinguish instruments.
+			- id query: If set to true queries the instrument ID and checks that it is valid for this instrument driver.
+			- reset device: If this property is true a command is sent to the device 
+			- Options String: Allows for instrument initializations commands such as simulation (Simulation=0).
+			- Operating State: The operation modes of the device. The user must be careful to select an appropriate current type or the device will fail to configure.
+				- Off - The module is off when in the Stand-by state, providing no voltage, current, power or resistance.
+				- Stand By - The module is off when in the Stand-by state, providing no voltage, current, power or resistance.
+				- Charge - The module acts as a Source where the Voltage property control the output voltage, and the Current, Power and Resistance properties define the operating limits.
+				- Discharge - The module acts as a Load, where the Voltage, Current, Power and Resistance values concurrently control the state of the module - the mode drawing the least amount of current being the dominant mode.
+				- Battery Emulation - The module acts as a Battery, where it sinks or sources current automatically based on the sensed voltage. Use the Voltage, Current, Power and Resistance fields to configure the behavior of the emulated battery.
+			- Initial Battery Detect Voltage: A property that sets the initial voltage which the instrument must see at its outpu before it begins to source or sink current. 
+			- Aperture Time: A property that set the maximum window with which the instrument is allowed to gather measurements before it returns. The instruments is always acquiring data at the maixmum rate. This property determines the amount of time 
+			- Regulation Gain: This property sets the distance the output will try to move when the set value does not equal the measurement value. 
+			- OutputSettings: A collection of properties that determines the ouput values of the instrument. Additional values in the array are ignored unless the Enable Macro Property is set to true. 
+				-Enable Voltage: This property configures the instrument to set the voltage output or input. 
+				-Voltage: If the Enable Voltage property is set to true the value of this property is used to set the maximum value. 
+				-Enable Current: This property configures the instrument to set the current output or input. 
+				-Current: If the Enable Voltage property is set to true the value of this property is used to set the maximum value.
+				-Enable Resistance: This property configures the instrument to set the resistance output or input.
+				-Resistance: This property sets the value of the sereies output resistance.
+				-Enable Power: This property configures the instrument to set the power output or input. 
+				-Power: If the Enable Power property is set to true the value of this property is used to set the maximum value. 
+				-Enable Wait: This property enables the instrument to wait to set an output value until a certain conditions is met. 
+				-Wait Value: If the Enable Wait property is set to true the value of this property is used to set the threshold value a measurement must cross before setting the output value.
+				-Wait On Value: If the Enable Wait property is set to true the value this property allows the sets the conditions for the wait. 
+					-Voltage Greater Than or Equal To
+					-VOltage Less Than or Equal To
+					-Current Greater Than or Equal To
+					-Current Less THan or Equal To
+					-Power Greater Than or Equal To
+					-Power Less Than Or Equal To
+				-Macro After Step Delay: This property allows the uer to set a time delay in seconds after each step.
+			- SlewRate
+				-Set Voltage Rate V/S
+				-Set Current Rate A/S
+				-Set Resistance Rate R/S
+				-Set Power Rate W/S
+			- SafetySettings: A cluster of properties used to set the instruments parameters that will prevent damage to the instrument or any external devices connected to it. 
+				-SetWatchDog: 
+				-Voltage: This property sets the maximum voltage value that the insturment will source or sink. If the measurement value exceeds this value longer than the VoltageDelay property the output will enter a high impedance state. 
+				-VoltageDelay: This property sets the amount of time the measured voltage is allowed to exceed the Voltage Safety Property before the ouptut goes into a high impedance state. 
+				-Current: This property sets the maximum current value that the insturment will source or sink. If the measurement value exceeds this value longer than the PowerDelay property the output will enter a high impedance state.
+				-CurrentDelay: This property sets the amount of time the measured current is allowed to exceed the Current Safety Property before the ouptut goes into a high impedance state. 
+				-Power: This property sets the maximum power value that the insturment will source or sink. If the measurement value exceeds this value longer than the PowerDelay property the output will enter a high impedance state.
+				-PowerDelay: This property sets the amount of time the measured power is allowed to exceed the Power Safety Property before the ouptut goes into a high impedance state. 
+			- Macro
+				-UseMacros?: Set this property to true in order to enable the use of multiple Output Settings to control the instrument.
+				-RunMacroContinuously?: Set this property to true in order to have multiple output settings repeated for an infinite number of times. 
+				-LoadMacroFromFile?: Set this property to true in order to load a set of instructions from a location on disk. 
+				-LoadMacroFilePath: The location on disk that the instructions will be loaded from if the Load Macro From File? property is set to true. 
+				-SaveMacro: Set this property to true to save the current macro to a file. 
+				-SaveMacroFilePath: The location on disk that the current configured set of instruction will be 
+	- Measurements: A collection of properties that allow user to control the instuments measurements.
+		- Handle: The name of the instrument and channel with which the software will use to collect measurements.
+		- Name: A distinct software name that an operator may use to distinguish instruments and/or channels.
+		- Enabled: This property determines if the measurement data is acquired or not.
+		- Measurement Type: A property that determines what type of measurement the instrument will report back.
+			-Power
+			-Voltage
+			-Current
+	
+	- Measurement RefreshTime: The time in milliseconds to wait between the instruments' measurements.
+	- Cancel:Closes the window and discards any changes to the settings
+	- Save:Closes the panel and saves these settings to an INI file. 
+	- Save As:Closes the panel and saves these settings to a different INI file in the same file location. 
+
+
 NHRGridSim.lvclass
 ===================
+The following section lists every user accesible property of the NHR 9210 AC/DC RegenerativeGrid Simulator. 
 
+|image4|
+
+*This is the preference dialogue screen that allows the user to configure the device.*
+
+	- Device(s)Settings: A collection of properties that allow a user to control the instrument. 
+		- MeasName: Every measurement from this module will be labeled with the value entered into this property. 
+		- Modules: 
+			- Handle: The name of the insturment with which software can use to connect and control the instrument.
+			- id query:  If set to true queries the instrument ID and checks that it is valid for this instrument driver.
+			- reset:  
+			- Initialize Timeout
+			- Regulation Gain
+			- Phases
+				-Phase Name
+				-Pout
+				-Vout
+				-Iout
+				-PhaseAngle
+			- Mode: 
+				-One 3-Phase AC
+				-One AC
+				-One DC
+				-Three AC
+				-Three DC
+				-One 2-Phase AC and One AC
+				-One 2-Phase AC and One DC
+				-Two AC
+				-One AC and One DC
+				-Two AC and One DC
+				-Two AC and One DC
+				-One AC and Two DC
+				-One DC and One AC
+				-Two DC
+
+			- Measurement: 
+				-Aperture Length
+				-NumberOfSamples
+				
+			- Ranges: 
+				-Irange
+				-Vrange
+			- Phase: 
+			- TransformerRatio: 
+			- FreqOut: 
+			- Grid: 
+			- WatchDog: 
+				-Enable WatchDog
+				-Robust WatchDog
+				-Watchdog Interval
+
+			- SafteyLimits: 
+				-Min Voltage 
+				-Min Voltage Time
+				-Max Voltage
+				-MaxVoltage Time
+				-Max Sink Power
+				-Max Sink Power Time
+				-Max Source Power
+				-Max Source Power Time
+				-Max Sink Amps
+				-Max SInk Amps Time
+				-Max Source Amps
+				-Max Source Amps Time
+				-Peak Voltage
+				-Peak Voltage Enable
+				-Peak Amps
+				-Peak Amps Enable
+		
+	- Measurements: A collection of properties that allow user to control the instuments measurements.
+		- Handle: The name of the instrument and channel with which the software will use to collect measurements.
+		- Name: A distinct software name that an operator may use to distinguish instruments and/or channels.
+		- Enabled: This property determines if the measurement data is acquired or not.
+		- Phase: This property sets the measurement to acquire from the selected phase. 
+		- Measurement Type: A property that determines what type of measurement the instrument will report back.
+			-Average Current
+			-Average Voltage
+	
+	- Measurement RefreshTime (ms):The time to wait between the instruments' measurements.
+	- Cancel:Closes the window and discards any changes to the settings
+	- Save:Closes the panel and saves these settings to an INI file. 
+	- Save As:Closes the panel and saves these settings to a different INI file in the same file location. 
+
+Mode
+-----------------
+
+*The following variables are used by every operation mode*
+
+	- Mode: The operation modes of the device. The user must be careful to select an appropriate mode that matches the physical configuration the instrument is currently configured for and the type of loads connected to the instrument. 
+|image6|
+*These are the various modes of the NI 9410 Regenrative Grid Simulator.* 
 
 PacificPowerSource.lvclass
 ==========================
+*The following section lists every user accesible property of the PPS360AMXT Pacific Power Supply.* 
 
+|image5|
+
+*This is the preference dialogue screen that allows the user to configure the device.*
+
+	- Device(s)Settings: A collection of properties that allow a user to control the instrument. 
+		- MeasName: Every measurement from this module will be labeled with the value entered into this property. 
+		- Modules: A cluster of properties that determines the properties of each instrument.
+			- Handle: The name of the insturment with which software can use to connect and control the instrument.
+			- Clear Device: 
+			- Transient Execution:
+			- ID Query: If set to true queries the instrument ID and checks that it is valid for this instrument driver.
+			- Reset:
+			- Impedance Parameters:
+				-State:
+				-Impedance:
+			- Port Type:
+			- Program #:
+				-Program Number:
+				-Form:
+				-Coupling:
+				-Frequency:
+				-Current Limt:
+				-Voltage Level:
+				-Waveform A:
+				-Voltage Level:
+				-Waveform B:
+				-Phase B:
+				-Voltage Level:
+				-Waveform C:
+				-Phace C:
+			- Source Range:
+				-Range Control:
+				-Voltage Maximum:
+				-Voltafe Minimum:
+				-Initial Voltage:
+				-Frequency Range:
+				-Frequency Maximum: 
+				-Frequency Minimum: 
+	- Measurements: A collection of properties that allow user to control the instuments measurements.
+		- Handle: The name of the instrument and channel with which the software will use to collect measurements.
+		- Name: A distinct software name that an operator may use to distinguish instruments and/or channels.
+		- Enabled: This property determines if the measurement data is acquired or not.
+		- Channel Name: This property sets the measurement to acquire from the selected internal channel name. 
+		- Measurement Type:  A property that determines what type of measurement the instrument will report back.
+			-Voltage RMS L-N
+			-Voltage RMS L-L
+			-Frequency
+			-Current RMS
+			-Current Peak
+			-Crest Factor
+			-Power Factor
+			-Power VA
+			-Real Power
+	- Measurement RefreshTime: The time to wait between the instruments' measurements.
+	- Cancel: Closes the window and discards any changes to the settings
+	- Save: Closes the panel and saves these settings to an INI file. 
+	- Save As: Closes the panel and saves these settings to a different INI file in the same file location. 
+
+Form
+-----------------
+
+*The following variables are used by every operation mode*
+
+	- One - Output is taken from a single channel Phase A. 
+	- Split - Output is taken from two channels Phase A and B. 
+	- Three - Output is taken from all three channels Phase A, B, and C. 
+|image7|
 
 ************
 Code Design
@@ -681,9 +544,20 @@ The AcPwrState vi acts as a way to control the measurements of the device.
 .. |image1| image:: images/AcPwr/image1.png
    :width: 3in
 
-.. |image2| image:: images/AcPwr/image2(new).png
+.. |image2| image:: images/AcPwr/image2.png
    :width: 9in
 
 .. |image3| image:: images/AcPwr/image3.png
    :width: 9in	
-	
+
+.. |image4| image:: images/AcPwr/image4.png
+   :width: 9in	
+   
+.. |image5| image:: images/AcPwr/image5.png
+   :width: 9in	   
+   
+.. |image6| image:: images/AcPwr/image6.png
+   :width: 9in	
+   
+.. |image7| image:: images/AcPwr/image7.png
+   :width: 9in	

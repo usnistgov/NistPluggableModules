@@ -2,7 +2,7 @@
 AC Power Module
 ###############
 
-The AC Power Module is an IVI compliant module with additional plug-in support for an AC load.  At the time of writing, the AC load supported is the Chroma 68300.  The properties and meythods used for this load may be generalized a bit more at a later date.
+The AC Power Module is an IVI compliant module with additional plug-in support for an AC load and DC Source.  At the time of writing, the AC load supported is the Chroma 683xx and DC source is NHR 9200. The AC Module currently supports a PPS360AMXT and NHR 9410(AC & DC Source). 
 
 Class Specification
 ====================
