@@ -13,6 +13,7 @@ Contents:
    introduction
    GettingStarted
    errors
+   AcPwr
    moduleAppendix
 
 
