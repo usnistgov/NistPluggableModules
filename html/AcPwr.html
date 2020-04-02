@@ -1,0 +1,845 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Ac Power Module &#8212; NistPluggableModules 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ac-power-module">
+<h1>Ac Power Module<a class="headerlink" href="#ac-power-module" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="operation-modes">
+<h2>Operation Modes<a class="headerlink" href="#operation-modes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="chromaacload-lvclass">
+<h3>ChromaAcLoad.lvclass<a class="headerlink" href="#chromaacload-lvclass" title="Permalink to this headline">¶</a></h3>
+<p>The following section lists every operation mode the Ac Chroma Power Load 63800 is capable of. Each mode utilizes a different set of parameters from the rest. If a variable is listed under an operation mode, it must be configured in order for the chroma to operate. If a variable is not listed under an operation mode, its value will be ignored when configuring the device. <strong>Failing to configure a variable properly will potentially cause the Chroma to fail without sending an error message</strong>.</p>
+<div class="section" id="general-variables">
+<h4>General Variables<a class="headerlink" href="#general-variables" title="Permalink to this headline">¶</a></h4>
+<p><em>The following variables are used by every operation mode</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>AC/DC: Whether the device operates in AC or DC. When set to <em>true</em>, the device operates in DC mode. When set to <em>false</em>, the device operates in AC mode.</dt>
+<dd>AC Modes: CC, CP, CR, RLC, RLC CP, and Inrush</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Mode: The operation modes of the device. The user must be careful to select an appropriate current type or the device will fail to configure.</dt>
+<dd><ul class="first last">
+<li>CC: Constant current. AC/DC</li>
+<li>CP: Constant power. AC/DC</li>
+<li>CR: Constant resistance. AC/DC</li>
+<li>CV: Constant voltage. DC only</li>
+<li>RLC: RLC circuit simulation. AC only</li>
+<li>RLC CP: RLC circuit with constant RMS Power. AC only</li>
+<li>Inrush: Measures the inrush of an RLC circuit. AC only</li>
+<li>Rectified: DC rectified mode. Converts a DC signal into an AC one. DC only</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Load Short Circuited: When set to true, the load short circuits itself at its input. When set to false, the load operates normally. By default, this mode should be set to <em>false</em>.</li>
+</ul>
+</div></blockquote>
+<p><a class="reference internal" href="_images/image2.png"><img alt="image2" src="_images/image2.png" style="width: 9in;" /></a>
+<em>This is the preference dialogue screen that allows the user to configure the device.</em></p>
+</div>
+</div>
+<div class="section" id="ac-modes">
+<h3>AC Modes<a class="headerlink" href="#ac-modes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="cc-constant-current">
+<h4>CC (Constant Current)<a class="headerlink" href="#cc-constant-current" title="Permalink to this headline">¶</a></h4>
+<p><em>The device attempts to match the value of the RMS current to an amount specified by the user.</em></p>
+<blockquote>
+<div><ul class="simple">
+<li>ILoad: The RMS current that the device will try to emulate, in Amperes. <em>Range:</em> <span class="math notranslate nohighlight">\(0 &lt; LoadCurrent \le 36\)</span></li>
+<li>Priority: Determines whether the device prioritizes the Current Factor, Power Factor, or both. If the device is prioritizing both, it will still ‘prefer’ one over the other.</li>
+<li>Power Factor: The power factor of the load. <em>Range:</em> <span class="math notranslate nohighlight">\(0 \le PF \le 1\)</span></li>
+<li>Crest Factor: The crest factor of the load. <em>Range:</em> <span class="math notranslate nohighlight">\(1.414 \le\)</span> <em>CF</em> <span class="math notranslate nohighlight">\(\le 5\)</span></li>
+<li>Current Limit: The maximum RMS current allowed through the device. <em>Range:</em> <span class="math notranslate nohighlight">\(0 \le\)</span> <em>Max RMS Current</em> <span class="math notranslate nohighlight">\(\le 36\)</span></li>
+<li>IpeakMax: The maximum peak current allowed through the device. <em>Range:</em> <span class="math notranslate nohighlight">\(0 \le\)</span> <em>Peak Current</em> <span class="math notranslate nohighlight">\(\le 108\)</span></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="cp-constant-power">
+<h4>CP (Constant Power)<a class="headerlink" href="#cp-constant-power" title="Permalink to this headline">¶</a></h4>
+<p><em>The device attempts to match the value of the RMS power to an amount specified by the user.</em></p>
+<blockquote>
+<div><ul class="simple">
+<li>PowerLoading: The RMS power that the load will try to consume. <em>Range:</em> 0 &lt; <em>Load Power</em> <span class="math notranslate nohighlight">\(\le 3600\)</span></li>
+<li>Current Limit: The maximum RMS current of the load. Also used to set the maximum RMS power of the load. <em>Range:</em> 0 &lt; <em>Max RMS Current</em> <span class="math notranslate nohighlight">\(\le 36\)</span></li>
+<li>Voltage Level: The voltage level of the load. This is <strong>only</strong> used to set the maximum RMS power of the load. <em>Range:</em> <span class="math notranslate nohighlight">\(50 \le\)</span> <em>Voltage Level</em> <span class="math notranslate nohighlight">\(\le 350\)</span></li>
+<li>Priority: Determines whether the device prioritizes the Current Factor, Power Factor, or both. If the device is prioritizing both, it will still ‘prefer’ one over the other.</li>
+<li>Power Factor: The power factor of the load. <em>Range:</em> <span class="math notranslate nohighlight">\(0 \le PF \le 1\)</span></li>
+<li>Crest Factor: The crest factor of the load. <em>Range:</em> <span class="math notranslate nohighlight">\(1.414 \le\)</span> <em>CF</em> <span class="math notranslate nohighlight">\(\le 5\)</span></li>
+<li>IpeakMax: The maximum peak current allowed through the device. <em>Range:</em> 0 &lt; <em>Peak Current</em> <span class="math notranslate nohighlight">\(\le 108\)</span></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="cr-constant-resistance">
+<h4>CR (Constant Resistance)<a class="headerlink" href="#cr-constant-resistance" title="Permalink to this headline">¶</a></h4>
+<p><em>The device attempts to emulate a resistor with a constant value</em></p>
+<blockquote>
+<div><ul class="simple">
+<li>Resistance: The resistance that the load will attempt to emulate, in <span class="math notranslate nohighlight">\(\Omega\)</span>.. <em>Range:</em> <span class="math notranslate nohighlight">\(1.39 \le\)</span> <em>Load Resistance</em> <span class="math notranslate nohighlight">\(\le 2500\)</span></li>
+<li>Power Factor: The power factor of the load. <em>Range:</em> <span class="math notranslate nohighlight">\(0 \le PF \le 1\)</span></li>
+<li>Crest Factor: The crest factor of the load. <em>Range:</em> <span class="math notranslate nohighlight">\(1.414 \le\)</span> <em>CF</em> <span class="math notranslate nohighlight">\(\le 5\)</span></li>
+<li>Current Limit: The maximum RMS current of the load. <em>Range:</em> 0 &lt; <em>Max RMS Current</em> <span class="math notranslate nohighlight">\(\le 36\)</span></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="rlc">
+<h4>RLC<a class="headerlink" href="#rlc" title="Permalink to this headline">¶</a></h4>
+<p><em>The load emulates an RLC circuit, with an inductor in series and a capacitor in parallel.</em></p>
+<blockquote>
+<div><ul class="simple">
+<li>RS: The series resistance of the system in <span class="math notranslate nohighlight">\(\Omega\)</span>. <em>Range:</em> 0 <span class="math notranslate nohighlight">\(\le\)</span> <em>Series Resistance</em> <span class="math notranslate nohighlight">\(\le 9.999\)</span></li>
+<li>RL: The parallel resistance of the system in <span class="math notranslate nohighlight">\(\Omega\)</span>. <em>Range:</em> 1.39 <span class="math notranslate nohighlight">\(\le\)</span> <em>Parallel Resistance</em> <span class="math notranslate nohighlight">\(\le 9999.99\)</span></li>
+<li>LS: The inductance of the system in <span class="math notranslate nohighlight">\(\mu H\)</span>. <em>Range</em>: 0 <span class="math notranslate nohighlight">\(\le\)</span> <em>Series Inductance</em> <span class="math notranslate nohighlight">\(\le\)</span> 9999</li>
+<li>C: The capacitance of the system in <span class="math notranslate nohighlight">\(\mu F\)</span>. <em>Range</em>: 100 <span class="math notranslate nohighlight">\(\le\)</span> <em>Parallel Capacitance</em> <span class="math notranslate nohighlight">\(\le\)</span> 9999</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="rlc-cp">
+<h4>RLC CP<a class="headerlink" href="#rlc-cp" title="Permalink to this headline">¶</a></h4>
+<p><em>The load emulates an RLC circuit operating a constant RMS power. An inductor is in series and a capacitor is in parallel.</em></p>
+<blockquote>
+<div><ul class="simple">
+<li>Power Loading: The RMS power that the device will try to maintain, in Watts. <em>Range:</em> 200 <span class="math notranslate nohighlight">\(\le\)</span> <em>Load Power</em> <span class="math notranslate nohighlight">\(\le\)</span> 3600</li>
+<li>Power Factor: The power factor of the system. <em>Range:</em> 0.4 <span class="math notranslate nohighlight">\(\le\)</span> <em>Power Factor</em> <span class="math notranslate nohighlight">\(\le\)</span> 0.75</li>
+<li>Current Limit: The maximum RMS current of the system. <em>Range:</em> 0 &lt; <em>Max RMS Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
+</ul>
+</div></blockquote>
+<p><em>Special</em>: Trying to set the maximum peak current of the system using RLC CP causes the chroma to cease functionality, but will not send an error message.</p>
+</div>
+<div class="section" id="inrush">
+<h4>Inrush<a class="headerlink" href="#inrush" title="Permalink to this headline">¶</a></h4>
+<p><strong>Note</strong>: Measuring the inrush current of the device is tricky, seeing as the mode quickly turns off. In order to perform measurements on this device, the user is recommended to use the <em>Set Peak Current Meas Hold</em> vi with the input set to <em>true</em>, then using the <em>Measure or Fetch Peak Current</em> vi.</p>
+<blockquote>
+<div><ul class="simple">
+<li>IpeakMax: The maximum peak current of the system. <em>Range: Max Peak Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 160</li>
+<li>RS: The series resistance of the system in <span class="math notranslate nohighlight">\(\Omega\)</span>. <em>Range:</em> 0 <span class="math notranslate nohighlight">\(\le\)</span> <em>Series Resistance</em> <span class="math notranslate nohighlight">\(\le 9.999\)</span></li>
+<li>RL: The parallel resistance of the system in <span class="math notranslate nohighlight">\(\Omega\)</span>. <em>Range:</em> 1.39 <span class="math notranslate nohighlight">\(\le\)</span> <em>Parallel Resistance</em> <span class="math notranslate nohighlight">\(\le 9999.99\)</span></li>
+<li>LS: The inductance of the system in <span class="math notranslate nohighlight">\(\mu H\)</span>. <em>Range</em>: 0 <span class="math notranslate nohighlight">\(\le\)</span> <em>Series Inductance</em> <span class="math notranslate nohighlight">\(\le\)</span> 9999</li>
+<li>C: The capacitance of the system in <span class="math notranslate nohighlight">\(\mu F\)</span>. <em>Range</em>: 100 <span class="math notranslate nohighlight">\(\le\)</span> <em>Parallel Capacitance</em> <span class="math notranslate nohighlight">\(\le\)</span> 9999</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt><em>To Be Added to Inrush</em></dt>
+<dd><ul class="first last simple">
+<li>Phase: <strong>Warning</strong> This cannot currently be set; the module defaults to a phase of 0. In order to be able to set this, please modify the BaseConfig or Loads controls to include a <em>Phase</em> variable, then modify the <em>ConfigDevice</em> vi. When modifying the vi, look over to the ‘Inrush” case of the SSM, expand the <em>Unbundle by Name</em>, select the newly created phase, and then wire it to the input of the <em>Set Phase of AC Inrush</em> vi, replacing the constant of 0.</li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="dc-modes">
+<h3>DC Modes<a class="headerlink" href="#dc-modes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4>CC (Constant Current)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p><em>The device attempts to operate at a constant DC current.</em></p>
+<blockquote>
+<div><ul class="simple">
+<li>I Load: The current at which the device attempts to operate, in A. <em>Range:</em> 0 &lt; <em>Load Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
+<li>Fall Slew Rate: The maximum rate at which the current can decrease, in mA. <em>Range:</em> 4 <span class="math notranslate nohighlight">\(\le\)</span> <em>Slew Rate</em> <span class="math notranslate nohighlight">\(\le\)</span> 600</li>
+<li>Rise Slew Rate: The maximum rate at which the current can increase, in mA. <em>Range:</em> 4 <span class="math notranslate nohighlight">\(\le\)</span> <em>Slew Rate</em> <span class="math notranslate nohighlight">\(\le\)</span> 600</li>
+<li>Ipeak Max: The maximum current at which the device can operate before shutting down, in A. <em>Range:</em> 0 &lt; <em>Peak Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h4>CP (Constant Power)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p><em>The device attempts to operate at a constant DC power.</em></p>
+<blockquote>
+<div><ul class="simple">
+<li>Power Loading: The power at which the device attempts to operate, in Watts. <em>Range:</em> 0 &lt; <em>Load Power</em> <span class="math notranslate nohighlight">\(\le\)</span> 3600</li>
+<li>Ipeak Max: The maximum current at which the device can operate before shutting down, in A. <em>Range:</em> 0 &lt; <em>Peak Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="cv">
+<h4>CV<a class="headerlink" href="#cv" title="Permalink to this headline">¶</a></h4>
+<p><em>The device attempts to operate as a constant voltage power load.</em></p>
+<blockquote>
+<div><ul class="simple">
+<li>Voltage Level: The voltage level at which the device attempts to operate, in V. <em>Range:</em> 7.5 <span class="math notranslate nohighlight">\(\le\)</span> <em>Voltage Level</em> <span class="math notranslate nohighlight">\(\le\)</span> 500</li>
+<li>Ipeak Max: The maximum current at which the device can operate before shutting down, in A. <em>Range:</em> 0 &lt; <em>Peak Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h4>CR (Constant Resistance)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p><em>The device attempts to operate as a resistor with a constant value.</em></p>
+<blockquote>
+<div><ul class="simple">
+<li>Resistance: The resistance of the load, in <span class="math notranslate nohighlight">\(\Omega\)</span>. <em>Range:</em> 1.25 <span class="math notranslate nohighlight">\(\le\)</span> <em>Load Resistance</em> <span class="math notranslate nohighlight">\(\le\)</span> 1000</li>
+<li>Fall Slew Rate: The maximum rate at which the current can decrease, in mA. <em>Range:</em> 4 <span class="math notranslate nohighlight">\(\le\)</span> <em>Slew Rate</em> 600</li>
+<li>Rise Slew Rate: The maximum rate at which the current can increase, in mA. <em>Range:</em> 4 <span class="math notranslate nohighlight">\(\le\)</span> <em>Slew Rate</em> 600</li>
+<li>Ipeak Max: The maximum current at which the device can operate before shutting down, in A. <em>Range:</em> 0 &lt; <em>Peak Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="rectified">
+<h4>Rectified<a class="headerlink" href="#rectified" title="Permalink to this headline">¶</a></h4>
+<p><em>The device converts a DC signal into an AC output.</em></p>
+<blockquote>
+<div><ul class="simple">
+<li>I Load: The current at which the device attempts to operate, in A. <em>Range:</em> 0 &lt; <em>Load Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
+<li>Line Sync: A boolean value. When the value is true, the system uses line sync for synchronization. When the value is false, the system uses frequency to synchronize.</li>
+<li>Frequency: The frequency of the output AC signal. <em>Range:</em> 45 <span class="math notranslate nohighlight">\(\le\)</span> <em>Frequency</em> <span class="math notranslate nohighlight">\(\le\)</span> 440</li>
+<li>Crest Factor: The crest factor of the output signal. <em>Range:</em> 1.414 <span class="math notranslate nohighlight">\(\le\)</span> <em>Crest Factor</em> <span class="math notranslate nohighlight">\(\le\)</span> 5</li>
+<li>Ipeak Max: The maximum current at which the device can operate before shutting down, in A. <em>Range:</em> 0 &lt; <em>Peak Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="class-specification">
+<h2>Class Specification<a class="headerlink" href="#class-specification" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="acpwrbaseclass">
+<h3>AcPwrBaseClass<a class="headerlink" href="#acpwrbaseclass" title="Permalink to this headline">¶</a></h3>
+<p>All other AcPwr classes inherit from the AcPwrBase class.  Multiple phases (channels of loads) are defined all sharing a common Frequency and Frequency Range.  Each Phase has a Handle which uniquely identifies the hardware supporting that phase.</p>
+<p><a class="reference internal" href="_images/image0.png"><img alt="image0" src="_images/image0.png" style="width: 3in;" /></a></p>
+<p>Figure : AcPwrBaseClass UML specification</p>
+<div class="section" id="properties">
+<h4>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Frequency <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
+<dd>The frequency setpoint for all phases.</dd>
+<dt>FrequencyRange <span class="classifier-delimiter">:</span> <span class="classifier">[double]</span></dt>
+<dd>An array of frequencies that limit the upper and lower allowable frequencies, if the array has only one element, then that will be the upper allowable frequency with the lower being 0.  If the array has two elements, then the first element is the lower allowable frequency and the second element is the upper.</dd>
+<dt>Phases <span class="classifier-delimiter">:</span> <span class="classifier">[struct]</span></dt>
+<dd><p class="first">An array of structures containing the properties of each phase or channel.</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>Handle <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>A unique identifier of the hardware supporting the phase.</dd>
+<dt>Connected <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>Used by the system and not end-user settable.  Indicates that the phase has been initialized and is tready to receive further commands.  Closing a phase disconnects the phase and resets Connected.</dd>
+<dt>Name <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>The name of the phase.  In some cases this is for the conveinience of the end user, in other cases, the hardware may need bot a phase Handle and a Name.</dd>
+<dt>Enabled <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>Set by the end user to determine if the phase should be enabled (energized) or disabled (de-energized).</dd>
+<dt>VoltageLevel <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
+<dd>Specifies the line-to-neutral voltave level when operating in constant voltage mode.  May also specify a voltage offseyt for an AC voltage</dd>
+<dt>VoltageRange <span class="classifier-delimiter">:</span> <span class="classifier">[double]</span></dt>
+<dd>Array of voltages specifying the minimum and maximum allowable voltage levels.  If the array has only one element, then it is the maximum allowable level with the minimum being 0.  If therer are two elements then the first element is the minimum level and the second is the upper limit.</dd>
+<dt>CurrentLimit <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
+<dd>Specifies the output current limit.  For the ChromaAcLoadClass this will be <em>IrmsMax</em></dd>
+<dt>Waveform <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>The name of the waveform to be generated if the phase is capable of generating waveform functions.</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt>FunctionClass <span class="classifier-delimiter">:</span> <span class="classifier">class</span></dt>
+<dd>If the phase is capable of generating waveform functions (either standard or arbitrary) this property holds the class reference of the function that creates the waveforms</dd>
+<dt>FunctionIniFilePath <span class="classifier-delimiter">:</span> <span class="classifier">path</span></dt>
+<dd>The path to the .ini file holding the properties the waveform function</dd>
+</dl>
+</div>
+<div class="section" id="methods">
+<h4>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Initialize(reset:bool, QueryID:bool)</dt>
+<dd>Opens a connection to all phases.  optionally reset the phase or check that the phase ID is valid.</dd>
+<dt>ConfigPhases()</dt>
+<dd>Configure all phases with their property values</dd>
+<dt>ConfigFrequency()</dt>
+<dd>Configure the frequency of all phases to the single frequency property value.</dd>
+<dt>Disable()</dt>
+<dd>Cause all phases to apply the minimum ampout of power possible.  The devise remains connected after disabled.</dd>
+<dt>ResetCurrentProtection()</dt>
+<dd>If the phases have tripped on over current, this method resets the overcurrent protection if the user has manually reset the Enabled property to true.  Note that during a protection event, the enabled property must be automatically cleared.</dd>
+<dt>ResetVoltageProtection()</dt>
+<dd>If the phases have tripped on over or under voltage, this method resets the protection and re-enables the phases if the user has manually reset the Enabled property to true.  Note that during a protection event, the enabled property must be automatically cleared.</dd>
+<dt>Reset()</dt>
+<dd>Disable all phases and return all properties to default values.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="measurement-extension-group">
+<h3>Measurement Extension Group<a class="headerlink" href="#measurement-extension-group" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h4>Properties<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Measurement <span class="classifier-delimiter">:</span> <span class="classifier">[struct]</span></dt>
+<dd><p class="first">An array of structures containing properties of each measurement to be made</p>
+<dl class="last docutils">
+<dt>Handle <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>A unique identifier of the hardware supporting the phase.</dd>
+<dt>Name <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>The name of the phase.  In some cases this is for the conveinience of the end user, in other cases, the hardware may need bot a phase Handle and a Name.</dd>
+<dt>Enabled <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>Set by the end user to determine if the phase should be enabled (energized) or disabled (de-energized).</dd>
+<dt>Type <span class="classifier-delimiter">:</span> <span class="classifier">enum</span></dt>
+<dd><dl class="first last docutils">
+<dt>The type of measurement to be made:</dt>
+<dd>Voltage RMS L-N,
+Current RMS,
+Frequency,
+Voltage DC,
+Current DC,
+Power Factor,
+Crest Factor,
+Current Peak,
+Power VA,
+Real Power,
+Power DC,
+Phase Angle,
+Voltage RMS L-L,
+Current OHD,
+Current EHD,
+Current THD,
+Voltage OHD,
+Voltage EHD,
+Voltage THD</dd>
+</dl>
+</dd>
+<dt>Result <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
+<dd>The result of the measurement (may eventually become a varient type if any measurement results cannot be represented by doubles).</dd>
+</dl>
+</dd>
+<dt>RefreshTime <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
+<dd>The time delay between fetching individual measurements</dd>
+</dl>
+</div>
+<div class="section" id="id5">
+<h4>Methods<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>InitiateMeasurment (Handle, Enum)</dt>
+<dd>Initiates all the measurements in the measurements structure for all of the phases that are enabled. Initiate will cause one measurement per structure element to be made.  After Initiate is called, Fetch will return the result of that measurement, then another measurement can be initiated</dd>
+<dt>FetchMeasurement (Handle, Name)</dt>
+<dd>Returns the result of the previous call to the initiate group.  The return value is the entire measurement structure with the Handle, Name, Enabled, Type, and the latest Result</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="chromaacloadclass">
+<h3>ChromaAcLoadClass<a class="headerlink" href="#chromaacloadclass" title="Permalink to this headline">¶</a></h3>
+<p>The Chroma AC load support one phase per device so multiple devises must be used to create multiple phases.  The IVI AC Power specification does not (yet) peovide an extension group for AC Loads but it seems to make sense to extend it.  Eventually this child class may become a base class for generic AC loads.</p>
+<p><a class="reference internal" href="_images/image1.png"><img alt="image1" src="_images/image1.png" style="width: 3in;" /></a></p>
+<div class="section" id="id6">
+<h4>Properties<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Load <span class="classifier-delimiter">:</span> <span class="classifier">[struct]</span></dt>
+<dd><p class="first">An array of structures containing the properties used for each Load Device</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>AC/DC <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>Specifies the device for AC or DC loading</dd>
+<dt>Mode <span class="classifier-delimiter">:</span> <span class="classifier">enum (CC, CP, CR, CV, RLC, Inrush, Rect)</span></dt>
+<dd><dl class="first last docutils">
+<dt>Specifies the load mode:</dt>
+<dd>CC = constant current,
+CP = Constant Power,
+CR = Constant Resistance,
+CV = Constant Voltage (DC loading only),
+RLC = Resistance, Inductance, Capacitance (AC loading only),
+Inrush = RLC Inrush Current (AC only),
+Rect = Rectified (DC only).</dd>
+</dl>
+</dd>
+<dt>CrestFactor <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
+<dd>Specifies the load crest factor, meaning of this varies in different modes.</dd>
+<dt>PowerFactor <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
+<dd>Specifies the power factor of AC loading.  Essentially this is the phase relationship between the voltage and current.</dd>
+<dt>Priority <span class="classifier-delimiter">:</span> <span class="classifier">enum</span></dt>
+<dd><dl class="first last docutils">
+<dt>Sets CrestFactor / PowerFactor Priority:</dt>
+<dd>CF = Crest Factor Priority
+PF = Power Factor Priority
+both (CF) = Both have priority with CrestFactor preferred
+both (PF) = Both have priority with PowerFactor preferred</dd>
+</dl>
+</dd>
+<dt>PowerLoading :double</dt>
+<dd>Specifies the AC power consumption of the load in Watts</dd>
+<dt>IpeakMax <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
+<dd>Specifies the maximum peak current that the load will accept</dd>
+<dt>Slew <span class="classifier-delimiter">:</span> <span class="classifier">struct</span></dt>
+<dd><p class="first">Specifies the rise and fall times of changing properties in the load.</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>RiseSlewRate <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
+<dd>Specifies the rising rate of the property depending on Mode</dd>
+<dt>FallSlewRate <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
+<dd>Specifies the falling rate of the property depending on Mode</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt>Resistance :double</dt>
+<dd>Specifies the resistance of the DC load in ohms.  when in CR mode, the Rise and Fall slew times will specify how quickly the resistance will change when this property changes.</dd>
+<dt>LC :struct</dt>
+<dd><p class="first">A structure containing the Inductive / capacitive properties of the load</p>
+<dl class="last docutils">
+<dt>C <span class="math notranslate nohighlight">\((\mu F)\)</span> <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
+<dd>Specifies the Capacitance when in AC RLC mode</dd>
+<dt>L <span class="math notranslate nohighlight">\((\mu H)\)</span> <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
+<dd>Specifies the Inductance when in AC RLC mode</dd>
+<dt>RL(ohm) <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
+<dd>Specifies the (inductive) impedance in AC RLC mode</dd>
+<dt>RS(ohm) <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
+<dd>Specifies the (capacitive) impedance in AC RLC mode</dd>
+</dl>
+</dd>
+<dt>Wave <span class="classifier-delimiter">:</span> <span class="classifier">enum</span></dt>
+<dd><dl class="first last docutils">
+<dt>Specifies the wave polarity</dt>
+<dd>Pos,
+Neg,
+Both,</dd>
+</dl>
+</dd>
+<dt>LineSync <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True if the load is to be synchronized to the line input.</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt>LoadShortCircuited <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>Specifies that the load is in the short circuited mode.</dd>
+<dt>Timing <span class="classifier-delimiter">:</span> <span class="classifier">struct</span></dt>
+<dd><p class="first">Single structure defines the timing of all phases</p>
+<dl class="docutils">
+<dt>TimingOn :enum</dt>
+<dd><dl class="first last docutils">
+<dt>Specifies the timing mode for all phases</dt>
+<dd>Holdup,
+Off,
+Transfer</dd>
+</dl>
+</dd>
+</dl>
+<p>Hours : uint32</p>
+<p>Minutes : uint32</p>
+<p>Seconds : double</p>
+<p class="last">CutoffVoltage : double</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id7">
+<h4>Methods<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>ConfigLoads()</dt>
+<dd>Configures the load modes, current shape, and relative phase of current to voltage</dd>
+<dt>ConfigCurrent()</dt>
+<dd>Configures the current properties of the loads.  In CC mode, the Rise and Fall Slew rates detetermine how fast the current changes when the properties are changed.</dd>
+<dt>ConfigPower()</dt>
+<dd>Configures the systems power loading</dd>
+<dt>ConfigVoltage()</dt>
+<dd>Sets the DC voltage when in CV mode.  Only in DC modes.</dd>
+<dt>ConfigImpedance()</dt>
+<dd>Configures the loads impedance settings</dd>
+<dt>ConfigureShortCircuited()</dt>
+<dd>Places the load into or returmns from short circuited mode</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="section" id="range-check">
+<h2>Range Check<a class="headerlink" href="#range-check" title="Permalink to this headline">¶</a></h2>
+<p>The Range Check vi checks to see whether or not the variables being configured into the VI are valid. It functions as an SSM, in which the user specifies an array of variables to check before calling the vi. It has the following case statements:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>ILoad: The current of the load, in Amperes.</dt>
+<dd><ul class="first last">
+<li>Range: 0 &lt; <em>ILoad</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
+<li>Modes Used: AC CC, DC CC, and DC Rectified</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Current Limit: The maximum RMS current of the load, in Amperes.</dt>
+<dd><ul class="first last">
+<li>Range: 0 &lt; <em>Current Limit</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
+<li>Modes Used: AC CC, AC CP, AC CR, RLC CP</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CF: The crest factor of the device.</dt>
+<dd><ul class="first last">
+<li>Range: 1.414 <span class="math notranslate nohighlight">\(\le\)</span> <em>CF</em> <span class="math notranslate nohighlight">\(\le\)</span> 5</li>
+<li>Modes Used: AC CC, AC CP, AC CR, and DC Rectified</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Constant PF: The power factor for non-RLC AC loads.</dt>
+<dd><ul class="first last">
+<li>Range: 0 &lt; <em>PF</em> <span class="math notranslate nohighlight">\(\le\)</span> 1</li>
+<li>Modes Used: AC CC, AC CP, AC CR</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>RLC PF: The power factor of RLC loads.</dt>
+<dd><ul class="first last">
+<li>Range: .4 <span class="math notranslate nohighlight">\(\le\)</span> <em>PF</em> <span class="math notranslate nohighlight">\(\le\)</span> .75</li>
+<li>Modes Used: RLC CP</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>DC Ipeak: The maximum peak current allowed through a DC load, in Amperes.</dt>
+<dd><ul class="first last">
+<li>Range: 0 &lt; <em>Ipeak</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
+<li>Modes Used: DC CC, DC CP, DC CV, DC CR, and DC Rectified</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Inrush Ipeak: The maximum peak current allowed through an RLC Inrush load, in Amperes.</dt>
+<dd><ul class="first last">
+<li>Range: 0 &lt; <em>Ipeak</em> <span class="math notranslate nohighlight">\(\le\)</span> 160</li>
+<li>Modes Used: RLC Inrush</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>AC Ipeak: The maximum peak current allowed through an AC load, in Amperes.</dt>
+<dd><ul class="first last">
+<li>Range: 0 &lt; <em>Ipeak</em> <span class="math notranslate nohighlight">\(\le\)</span> 108</li>
+<li>Modes Used: AC CC, RLC, and AC CP</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Load Power: The power of the load, in Watts.</dt>
+<dd><ul class="first last">
+<li>Range: 0 &lt; <em>Load Power</em> <span class="math notranslate nohighlight">\(\le\)</span> 3600</li>
+<li>Modes Used: DC CP and AC CP</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>RLC Power: The power of the RLC load, in Watts.</dt>
+<dd><ul class="first last">
+<li>Range: 200 <span class="math notranslate nohighlight">\(\le\)</span> <em>Load Power</em> <span class="math notranslate nohighlight">\(\le\)</span> 3600</li>
+<li>Modes Used: RLC CP</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>DC Voltage: The voltage level of the DC load, in Volts.</dt>
+<dd><ul class="first last">
+<li>Range: 7.5 <span class="math notranslate nohighlight">\(\le\)</span> <em>Voltage</em> <span class="math notranslate nohighlight">\(\le\)</span> 500</li>
+<li>Modes Used: DC CV</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>AC Voltage: The voltage level of the AC load, in volts.</dt>
+<dd><ul class="first last">
+<li>Range: 50 <span class="math notranslate nohighlight">\(\le\)</span> <em>Voltage</em> <span class="math notranslate nohighlight">\(\le\)</span> 350</li>
+<li>Modes Used: AC CP</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>AC R Load: The resistance of the AC load, in <span class="math notranslate nohighlight">\(\Omega\)</span>.</dt>
+<dd><ul class="first last">
+<li>Range: 1.39 <span class="math notranslate nohighlight">\(\le\)</span> <span class="math notranslate nohighlight">\(\Omega\)</span> <span class="math notranslate nohighlight">\(\le\)</span> 2500</li>
+<li>Modes Used: AC CR</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>DC R Load: The resistance of the DC load, in <span class="math notranslate nohighlight">\(\Omega\)</span>.</dt>
+<dd><ul class="first last">
+<li>Range: 1.25 <span class="math notranslate nohighlight">\(\le\)</span> <span class="math notranslate nohighlight">\(\Omega\)</span> <span class="math notranslate nohighlight">\(\le\)</span> 1000</li>
+<li>Modes Used: DC CR</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Frequency: The frequency of the load, in Herz.</dt>
+<dd><ul class="first last">
+<li>Range: 45 <span class="math notranslate nohighlight">\(\le\)</span> <em>frequency</em> <span class="math notranslate nohighlight">\(\le\)</span> 440</li>
+<li>Modes Used: DC Rectified</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Fall Slew: The fall slew rate of the load, in</dt>
+<dd><ul class="first last">
+<li>Range: 4 <span class="math notranslate nohighlight">\(\le\)</span> <em>Slew Rate</em> <span class="math notranslate nohighlight">\(\le\)</span> 600</li>
+<li>Modes Used: DC CC and DC CR</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Rise Slew: The rise slew rate of the load, in</dt>
+<dd><ul class="first last">
+<li>Range: 4 <span class="math notranslate nohighlight">\(\le\)</span> <em>Slew Rate</em> <span class="math notranslate nohighlight">\(\le\)</span> 600</li>
+<li>Modes Used: DC CC and DC CR</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>RS: The series resistance of the RLC system, in <span class="math notranslate nohighlight">\(\Omega\)</span>.</dt>
+<dd><ul class="first last">
+<li>Range: 0 <span class="math notranslate nohighlight">\(\le\)</span> <em>Series Resistance</em> <span class="math notranslate nohighlight">\(\le\)</span> 9.999</li>
+<li>Modes Used: RLC and RLC Inrush</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>RL: The parallel resistance of the RLC system, in <span class="math notranslate nohighlight">\(\Omega\)</span>.</dt>
+<dd><ul class="first last">
+<li>Range: 1.39 <span class="math notranslate nohighlight">\(\le\)</span> <em>Parallel Resistance</em> <span class="math notranslate nohighlight">\(\le\)</span> 9999.99</li>
+<li>Modes Used: RLC and RLC Inrush</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>LS: The inductance of the RLC system, in <span class="math notranslate nohighlight">\(\mu H\)</span>.</dt>
+<dd><ul class="first last">
+<li>Range: 0 &lt; <em>Series Inductance</em> <span class="math notranslate nohighlight">\(\le\)</span> 9999</li>
+<li>Modes Used: RLC and RLC Inrush</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>C: The capacitance of the RLC system, in <span class="math notranslate nohighlight">\(\mu F\)</span>.</dt>
+<dd><ul class="first last">
+<li>Range: 100 <span class="math notranslate nohighlight">\(\le\)</span> <em>Parallel Capacitance</em> <span class="math notranslate nohighlight">\(\le\)</span> 9999</li>
+<li>Modes Used: RLC and RLC Inrush</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="code-design">
+<h2>Code Design<a class="headerlink" href="#code-design" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="miscellaneous">
+<h3>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="recommended-improvements">
+<h4>Recommended Improvements<a class="headerlink" href="#recommended-improvements" title="Permalink to this headline">¶</a></h4>
+<p>-The project currently has a “load short circuited variable” that is not wired up to anything. There’s a VI that can use this variable, but it seemed more appropriate to attach this VI to a separate call, rather than the “Config device” call.</p>
+</div>
+</div>
+</div>
+<div class="section" id="code-almanac">
+<h2>Code Almanac<a class="headerlink" href="#code-almanac" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="acpwrmodule-lvlib">
+<h3>AcPwrModule.lvlib<a class="headerlink" href="#acpwrmodule-lvlib" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="private">
+<h4>Private<a class="headerlink" href="#private" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="acpwrclass-vi">
+<h5>AcPwrClass vi<a class="headerlink" href="#acpwrclass-vi" title="Permalink to this headline">¶</a></h5>
+<p>The AcPwrClass vi acts as a general control for the “Main” module.</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="3%" />
+<col width="97%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>TERMINAL</strong></td>
+<td><strong>PURPOSE</strong></td>
+</tr>
+<tr class="row-even"><td>Class In</td>
+<td>Wiring a class into this terminal allows the user to directly override the current class properties of the cloned module.</td>
+</tr>
+<tr class="row-odd"><td>Class Out</td>
+<td>By accessing this terminal, the user can access the class properties of the cloned module. This is the only way the main module has to access its class properties.</td>
+</tr>
+<tr class="row-even"><td>Set? (F)</td>
+<td>This terminal determines whether the module saves the properties of the <em>Class In</em> terminal to the class or not. By default (false), the properties are not saved; this terminal must be set to true in order for a save to occur.</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="acpwrstate-vi">
+<h5>AcPwrState.vi<a class="headerlink" href="#acpwrstate-vi" title="Permalink to this headline">¶</a></h5>
+<p>The AcPwrState vi acts as a way to control the measurements of the device.</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="3%" />
+<col width="97%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>TERMINAL</strong></td>
+<td><strong>PURPOSE</strong></td>
+</tr>
+<tr class="row-even"><td>State In</td>
+<td>Wiring a string variable into this terminal allows the user to control the state of the module’s measurement. The string <em>must</em> match one of the measurement statuses described in the <em>Measurements SSM</em>, otherwise the module will default to the <em>Idle</em> state.</td>
+</tr>
+<tr class="row-odd"><td>State Out</td>
+<td>Outputs a string with a value indicating the status of the module’s measurements. The string <em>should</em> match one of the measurement statuses described in the <em>Measurements SSM</em>, and are sometimes used to control the logic flow of the module.</td>
+</tr>
+<tr class="row-even"><td>Set?</td>
+<td>This terminal determines whether the string input to the <em>State In</em> terminal is saved and used to control the state of the measurements loop. By default (false), the value is ignored; the value must be set for true in order for the input to be utilized.</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Ac Power Module</a><ul>
+<li><a class="reference internal" href="#operation-modes">Operation Modes</a><ul>
+<li><a class="reference internal" href="#chromaacload-lvclass">ChromaAcLoad.lvclass</a><ul>
+<li><a class="reference internal" href="#general-variables">General Variables</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ac-modes">AC Modes</a><ul>
+<li><a class="reference internal" href="#cc-constant-current">CC (Constant Current)</a></li>
+<li><a class="reference internal" href="#cp-constant-power">CP (Constant Power)</a></li>
+<li><a class="reference internal" href="#cr-constant-resistance">CR (Constant Resistance)</a></li>
+<li><a class="reference internal" href="#rlc">RLC</a></li>
+<li><a class="reference internal" href="#rlc-cp">RLC CP</a></li>
+<li><a class="reference internal" href="#inrush">Inrush</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dc-modes">DC Modes</a><ul>
+<li><a class="reference internal" href="#id1">CC (Constant Current)</a></li>
+<li><a class="reference internal" href="#id2">CP (Constant Power)</a></li>
+<li><a class="reference internal" href="#cv">CV</a></li>
+<li><a class="reference internal" href="#id3">CR (Constant Resistance)</a></li>
+<li><a class="reference internal" href="#rectified">Rectified</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#class-specification">Class Specification</a><ul>
+<li><a class="reference internal" href="#acpwrbaseclass">AcPwrBaseClass</a><ul>
+<li><a class="reference internal" href="#properties">Properties</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#measurement-extension-group">Measurement Extension Group</a><ul>
+<li><a class="reference internal" href="#id4">Properties</a></li>
+<li><a class="reference internal" href="#id5">Methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#chromaacloadclass">ChromaAcLoadClass</a><ul>
+<li><a class="reference internal" href="#id6">Properties</a></li>
+<li><a class="reference internal" href="#id7">Methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#range-check">Range Check</a></li>
+<li><a class="reference internal" href="#code-design">Code Design</a><ul>
+<li><a class="reference internal" href="#miscellaneous">Miscellaneous</a><ul>
+<li><a class="reference internal" href="#recommended-improvements">Recommended Improvements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#code-almanac">Code Almanac</a><ul>
+<li><a class="reference internal" href="#acpwrmodule-lvlib">AcPwrModule.lvlib</a><ul>
+<li><a class="reference internal" href="#private">Private</a><ul>
+<li><a class="reference internal" href="#acpwrclass-vi">AcPwrClass vi</a></li>
+<li><a class="reference internal" href="#acpwrstate-vi">AcPwrState.vi</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/AcPwr.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Allen Goldstein.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>
