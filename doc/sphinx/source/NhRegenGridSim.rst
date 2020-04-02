@@ -262,42 +262,22 @@ Mode 7
 Mode 8
 ======
 
-|Nh9410Mode8Limits|
-
-.. |Nh9410Mode8Limits| image:: images/AcPwr/Nh9410Mode8Limits.png
-	:width: 9in
 
 Mode 9
 ======
 
-|Nh9410Mode9Limits|
-
-.. |Nh9410Mode9Limits| image:: images/AcPwr/Nh9410Mode9Limits.png
-	:width: 9in
-
 Mode 10
 =======
-
-|Nh9410Mode10Limits|
-
-.. |Nh9410Mode10Limits| image:: images/AcPwr/Nh9410Mode10Limits.png
-	:width: 9in
 
 Mode 11
 =======
 
-|Nh9410Mode11Limits|
 
-.. |Nh9410Mode11Limits| image:: images/AcPwr/Nh9410Mode11Limits.png
-	:width: 9in
 
 Mode 12
 =======
 
-|Nh9410Mode12Limits|
 
-.. |Nh9410Mode12Limits| image:: images/AcPwr/Nh9410Mode12Limits.png
-	:width: 9in
 
 *************
 PublicMethods
