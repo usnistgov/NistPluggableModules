@@ -323,7 +323,7 @@ Set
 Low Level
 ---------
 
-	- Action Abort Measurement Trigger: Resets the list and measurement trigger systems to the Idle state. Any list or measurement that is in progress is immediately aborted. Abort Trigger also resets the WTG bit in the Operation Condition Status register (see chapter 3 under “Programming the Status Registers”). Abort Trigger is executed at power turn-on and upon execution of RCL, RST, or any implied abort command
+	- Action Abort Measurement Trigger: Resets the list and measurement trigger systems to the Idle state. Any list or measurement that is in progress is immediately aborted. Abort Trigger also resets the WTG bit in the Operation Condition Status register (see chapter 3 under “\\Programming the Status Registers”\\). Abort Trigger is executed at power turn-on and upon execution of RCL, RST, or any implied abort command
 	
 	- Query Auto Transformer: Returns the auto transformer ratio on the instrument
 		- Outputs:

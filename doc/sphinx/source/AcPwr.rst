@@ -937,6 +937,8 @@ Code Design
 Miscellaneous
 =============
 
+*Properties are inhereted by the IVI Instrument Driver Class Specification. All Instrument drivers must have this method and property. 
+
 Recommended Improvements
 ~~~~~~~~~~~~~~
 -description of properties for the base extension groups
