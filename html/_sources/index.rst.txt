@@ -7,19 +7,22 @@ Welcome to NistPluggableModules's documentation!
 ================================================
 
 Contents:
+=========
 
 .. toctree::
    :maxdepth: 2
-   introduction
-   GettingStarted
-   errors
-   moduleAppendix
 
+      introduction <index.rst>
+      GettingStarted <GettingStarted.rst>
+      errors <errors.rst>
+      AcPwr <AcPwr.rst>
+      moduleAppendix <noduleAppendix.rst>
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+..
+   Indices and tables
+   ==================
+..
+   * :ref:`genindex`
+   * :ref:`modindex`
+   * :ref:`search`
 

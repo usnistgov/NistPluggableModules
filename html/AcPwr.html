@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Ac Power Module &#8212; NistPluggableModules 0.1 documentation</title>
+    <title>3. AC Power Module &#8212; NistPluggableModules 0.1 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
@@ -18,7 +18,8 @@
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="2. Error Codes" href="errors.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -26,6 +27,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="errors.html" title="2. Error Codes"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>  
@@ -36,247 +40,38 @@
           <div class="body" role="main">
             
   <div class="section" id="ac-power-module">
-<h1>Ac Power Module<a class="headerlink" href="#ac-power-module" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="operation-modes">
-<h2>Operation Modes<a class="headerlink" href="#operation-modes" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="chromaacload-lvclass">
-<h3>ChromaAcLoad.lvclass<a class="headerlink" href="#chromaacload-lvclass" title="Permalink to this headline">¶</a></h3>
-<p>The following section lists every operation mode the Ac Chroma Power Load 63800 is capable of. Each mode utilizes a different set of parameters from the rest. If a variable is listed under an operation mode, it must be configured in order for the chroma to operate. If a variable is not listed under an operation mode, its value will be ignored when configuring the device. <strong>Failing to configure a variable properly will potentially cause the Chroma to fail without sending an error message</strong>.</p>
-<div class="section" id="general-variables">
-<h4>General Variables<a class="headerlink" href="#general-variables" title="Permalink to this headline">¶</a></h4>
-<p><em>The following variables are used by every operation mode</em></p>
-<blockquote>
-<div><ul class="simple">
-<li><dl class="first docutils">
-<dt>AC/DC: Whether the device operates in AC or DC. When set to <em>true</em>, the device operates in DC mode. When set to <em>false</em>, the device operates in AC mode.</dt>
-<dd>AC Modes: CC, CP, CR, RLC, RLC CP, and Inrush</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Mode: The operation modes of the device. The user must be careful to select an appropriate current type or the device will fail to configure.</dt>
-<dd><ul class="first last">
-<li>CC: Constant current. AC/DC</li>
-<li>CP: Constant power. AC/DC</li>
-<li>CR: Constant resistance. AC/DC</li>
-<li>CV: Constant voltage. DC only</li>
-<li>RLC: RLC circuit simulation. AC only</li>
-<li>RLC CP: RLC circuit with constant RMS Power. AC only</li>
-<li>Inrush: Measures the inrush of an RLC circuit. AC only</li>
-<li>Rectified: DC rectified mode. Converts a DC signal into an AC one. DC only</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li>Load Short Circuited: When set to true, the load short circuits itself at its input. When set to false, the load operates normally. By default, this mode should be set to <em>false</em>.</li>
-</ul>
-</div></blockquote>
-<p><a class="reference internal" href="_images/image2.png"><img alt="image2" src="_images/image2.png" style="width: 9in;" /></a>
-<em>This is the preference dialogue screen that allows the user to configure the device.</em></p>
-</div>
-</div>
-<div class="section" id="ac-modes">
-<h3>AC Modes<a class="headerlink" href="#ac-modes" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="cc-constant-current">
-<h4>CC (Constant Current)<a class="headerlink" href="#cc-constant-current" title="Permalink to this headline">¶</a></h4>
-<p><em>The device attempts to match the value of the RMS current to an amount specified by the user.</em></p>
-<blockquote>
-<div><ul class="simple">
-<li>ILoad: The RMS current that the device will try to emulate, in Amperes. <em>Range:</em> <span class="math notranslate nohighlight">\(0 &lt; LoadCurrent \le 36\)</span></li>
-<li>Priority: Determines whether the device prioritizes the Current Factor, Power Factor, or both. If the device is prioritizing both, it will still ‘prefer’ one over the other.</li>
-<li>Power Factor: The power factor of the load. <em>Range:</em> <span class="math notranslate nohighlight">\(0 \le PF \le 1\)</span></li>
-<li>Crest Factor: The crest factor of the load. <em>Range:</em> <span class="math notranslate nohighlight">\(1.414 \le\)</span> <em>CF</em> <span class="math notranslate nohighlight">\(\le 5\)</span></li>
-<li>Current Limit: The maximum RMS current allowed through the device. <em>Range:</em> <span class="math notranslate nohighlight">\(0 \le\)</span> <em>Max RMS Current</em> <span class="math notranslate nohighlight">\(\le 36\)</span></li>
-<li>IpeakMax: The maximum peak current allowed through the device. <em>Range:</em> <span class="math notranslate nohighlight">\(0 \le\)</span> <em>Peak Current</em> <span class="math notranslate nohighlight">\(\le 108\)</span></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="cp-constant-power">
-<h4>CP (Constant Power)<a class="headerlink" href="#cp-constant-power" title="Permalink to this headline">¶</a></h4>
-<p><em>The device attempts to match the value of the RMS power to an amount specified by the user.</em></p>
-<blockquote>
-<div><ul class="simple">
-<li>PowerLoading: The RMS power that the load will try to consume. <em>Range:</em> 0 &lt; <em>Load Power</em> <span class="math notranslate nohighlight">\(\le 3600\)</span></li>
-<li>Current Limit: The maximum RMS current of the load. Also used to set the maximum RMS power of the load. <em>Range:</em> 0 &lt; <em>Max RMS Current</em> <span class="math notranslate nohighlight">\(\le 36\)</span></li>
-<li>Voltage Level: The voltage level of the load. This is <strong>only</strong> used to set the maximum RMS power of the load. <em>Range:</em> <span class="math notranslate nohighlight">\(50 \le\)</span> <em>Voltage Level</em> <span class="math notranslate nohighlight">\(\le 350\)</span></li>
-<li>Priority: Determines whether the device prioritizes the Current Factor, Power Factor, or both. If the device is prioritizing both, it will still ‘prefer’ one over the other.</li>
-<li>Power Factor: The power factor of the load. <em>Range:</em> <span class="math notranslate nohighlight">\(0 \le PF \le 1\)</span></li>
-<li>Crest Factor: The crest factor of the load. <em>Range:</em> <span class="math notranslate nohighlight">\(1.414 \le\)</span> <em>CF</em> <span class="math notranslate nohighlight">\(\le 5\)</span></li>
-<li>IpeakMax: The maximum peak current allowed through the device. <em>Range:</em> 0 &lt; <em>Peak Current</em> <span class="math notranslate nohighlight">\(\le 108\)</span></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="cr-constant-resistance">
-<h4>CR (Constant Resistance)<a class="headerlink" href="#cr-constant-resistance" title="Permalink to this headline">¶</a></h4>
-<p><em>The device attempts to emulate a resistor with a constant value</em></p>
-<blockquote>
-<div><ul class="simple">
-<li>Resistance: The resistance that the load will attempt to emulate, in <span class="math notranslate nohighlight">\(\Omega\)</span>.. <em>Range:</em> <span class="math notranslate nohighlight">\(1.39 \le\)</span> <em>Load Resistance</em> <span class="math notranslate nohighlight">\(\le 2500\)</span></li>
-<li>Power Factor: The power factor of the load. <em>Range:</em> <span class="math notranslate nohighlight">\(0 \le PF \le 1\)</span></li>
-<li>Crest Factor: The crest factor of the load. <em>Range:</em> <span class="math notranslate nohighlight">\(1.414 \le\)</span> <em>CF</em> <span class="math notranslate nohighlight">\(\le 5\)</span></li>
-<li>Current Limit: The maximum RMS current of the load. <em>Range:</em> 0 &lt; <em>Max RMS Current</em> <span class="math notranslate nohighlight">\(\le 36\)</span></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="rlc">
-<h4>RLC<a class="headerlink" href="#rlc" title="Permalink to this headline">¶</a></h4>
-<p><em>The load emulates an RLC circuit, with an inductor in series and a capacitor in parallel.</em></p>
-<blockquote>
-<div><ul class="simple">
-<li>RS: The series resistance of the system in <span class="math notranslate nohighlight">\(\Omega\)</span>. <em>Range:</em> 0 <span class="math notranslate nohighlight">\(\le\)</span> <em>Series Resistance</em> <span class="math notranslate nohighlight">\(\le 9.999\)</span></li>
-<li>RL: The parallel resistance of the system in <span class="math notranslate nohighlight">\(\Omega\)</span>. <em>Range:</em> 1.39 <span class="math notranslate nohighlight">\(\le\)</span> <em>Parallel Resistance</em> <span class="math notranslate nohighlight">\(\le 9999.99\)</span></li>
-<li>LS: The inductance of the system in <span class="math notranslate nohighlight">\(\mu H\)</span>. <em>Range</em>: 0 <span class="math notranslate nohighlight">\(\le\)</span> <em>Series Inductance</em> <span class="math notranslate nohighlight">\(\le\)</span> 9999</li>
-<li>C: The capacitance of the system in <span class="math notranslate nohighlight">\(\mu F\)</span>. <em>Range</em>: 100 <span class="math notranslate nohighlight">\(\le\)</span> <em>Parallel Capacitance</em> <span class="math notranslate nohighlight">\(\le\)</span> 9999</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="rlc-cp">
-<h4>RLC CP<a class="headerlink" href="#rlc-cp" title="Permalink to this headline">¶</a></h4>
-<p><em>The load emulates an RLC circuit operating a constant RMS power. An inductor is in series and a capacitor is in parallel.</em></p>
-<blockquote>
-<div><ul class="simple">
-<li>Power Loading: The RMS power that the device will try to maintain, in Watts. <em>Range:</em> 200 <span class="math notranslate nohighlight">\(\le\)</span> <em>Load Power</em> <span class="math notranslate nohighlight">\(\le\)</span> 3600</li>
-<li>Power Factor: The power factor of the system. <em>Range:</em> 0.4 <span class="math notranslate nohighlight">\(\le\)</span> <em>Power Factor</em> <span class="math notranslate nohighlight">\(\le\)</span> 0.75</li>
-<li>Current Limit: The maximum RMS current of the system. <em>Range:</em> 0 &lt; <em>Max RMS Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
-</ul>
-</div></blockquote>
-<p><em>Special</em>: Trying to set the maximum peak current of the system using RLC CP causes the chroma to cease functionality, but will not send an error message.</p>
-</div>
-<div class="section" id="inrush">
-<h4>Inrush<a class="headerlink" href="#inrush" title="Permalink to this headline">¶</a></h4>
-<p><strong>Note</strong>: Measuring the inrush current of the device is tricky, seeing as the mode quickly turns off. In order to perform measurements on this device, the user is recommended to use the <em>Set Peak Current Meas Hold</em> vi with the input set to <em>true</em>, then using the <em>Measure or Fetch Peak Current</em> vi.</p>
-<blockquote>
-<div><ul class="simple">
-<li>IpeakMax: The maximum peak current of the system. <em>Range: Max Peak Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 160</li>
-<li>RS: The series resistance of the system in <span class="math notranslate nohighlight">\(\Omega\)</span>. <em>Range:</em> 0 <span class="math notranslate nohighlight">\(\le\)</span> <em>Series Resistance</em> <span class="math notranslate nohighlight">\(\le 9.999\)</span></li>
-<li>RL: The parallel resistance of the system in <span class="math notranslate nohighlight">\(\Omega\)</span>. <em>Range:</em> 1.39 <span class="math notranslate nohighlight">\(\le\)</span> <em>Parallel Resistance</em> <span class="math notranslate nohighlight">\(\le 9999.99\)</span></li>
-<li>LS: The inductance of the system in <span class="math notranslate nohighlight">\(\mu H\)</span>. <em>Range</em>: 0 <span class="math notranslate nohighlight">\(\le\)</span> <em>Series Inductance</em> <span class="math notranslate nohighlight">\(\le\)</span> 9999</li>
-<li>C: The capacitance of the system in <span class="math notranslate nohighlight">\(\mu F\)</span>. <em>Range</em>: 100 <span class="math notranslate nohighlight">\(\le\)</span> <em>Parallel Capacitance</em> <span class="math notranslate nohighlight">\(\le\)</span> 9999</li>
-</ul>
-</div></blockquote>
-<dl class="docutils">
-<dt><em>To Be Added to Inrush</em></dt>
-<dd><ul class="first last simple">
-<li>Phase: <strong>Warning</strong> This cannot currently be set; the module defaults to a phase of 0. In order to be able to set this, please modify the BaseConfig or Loads controls to include a <em>Phase</em> variable, then modify the <em>ConfigDevice</em> vi. When modifying the vi, look over to the ‘Inrush” case of the SSM, expand the <em>Unbundle by Name</em>, select the newly created phase, and then wire it to the input of the <em>Set Phase of AC Inrush</em> vi, replacing the constant of 0.</li>
-</ul>
-</dd>
-</dl>
-</div>
-</div>
-<div class="section" id="dc-modes">
-<h3>DC Modes<a class="headerlink" href="#dc-modes" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id1">
-<h4>CC (Constant Current)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<p><em>The device attempts to operate at a constant DC current.</em></p>
-<blockquote>
-<div><ul class="simple">
-<li>I Load: The current at which the device attempts to operate, in A. <em>Range:</em> 0 &lt; <em>Load Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
-<li>Fall Slew Rate: The maximum rate at which the current can decrease, in mA. <em>Range:</em> 4 <span class="math notranslate nohighlight">\(\le\)</span> <em>Slew Rate</em> <span class="math notranslate nohighlight">\(\le\)</span> 600</li>
-<li>Rise Slew Rate: The maximum rate at which the current can increase, in mA. <em>Range:</em> 4 <span class="math notranslate nohighlight">\(\le\)</span> <em>Slew Rate</em> <span class="math notranslate nohighlight">\(\le\)</span> 600</li>
-<li>Ipeak Max: The maximum current at which the device can operate before shutting down, in A. <em>Range:</em> 0 &lt; <em>Peak Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="id2">
-<h4>CP (Constant Power)<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
-<p><em>The device attempts to operate at a constant DC power.</em></p>
-<blockquote>
-<div><ul class="simple">
-<li>Power Loading: The power at which the device attempts to operate, in Watts. <em>Range:</em> 0 &lt; <em>Load Power</em> <span class="math notranslate nohighlight">\(\le\)</span> 3600</li>
-<li>Ipeak Max: The maximum current at which the device can operate before shutting down, in A. <em>Range:</em> 0 &lt; <em>Peak Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="cv">
-<h4>CV<a class="headerlink" href="#cv" title="Permalink to this headline">¶</a></h4>
-<p><em>The device attempts to operate as a constant voltage power load.</em></p>
-<blockquote>
-<div><ul class="simple">
-<li>Voltage Level: The voltage level at which the device attempts to operate, in V. <em>Range:</em> 7.5 <span class="math notranslate nohighlight">\(\le\)</span> <em>Voltage Level</em> <span class="math notranslate nohighlight">\(\le\)</span> 500</li>
-<li>Ipeak Max: The maximum current at which the device can operate before shutting down, in A. <em>Range:</em> 0 &lt; <em>Peak Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="id3">
-<h4>CR (Constant Resistance)<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
-<p><em>The device attempts to operate as a resistor with a constant value.</em></p>
-<blockquote>
-<div><ul class="simple">
-<li>Resistance: The resistance of the load, in <span class="math notranslate nohighlight">\(\Omega\)</span>. <em>Range:</em> 1.25 <span class="math notranslate nohighlight">\(\le\)</span> <em>Load Resistance</em> <span class="math notranslate nohighlight">\(\le\)</span> 1000</li>
-<li>Fall Slew Rate: The maximum rate at which the current can decrease, in mA. <em>Range:</em> 4 <span class="math notranslate nohighlight">\(\le\)</span> <em>Slew Rate</em> 600</li>
-<li>Rise Slew Rate: The maximum rate at which the current can increase, in mA. <em>Range:</em> 4 <span class="math notranslate nohighlight">\(\le\)</span> <em>Slew Rate</em> 600</li>
-<li>Ipeak Max: The maximum current at which the device can operate before shutting down, in A. <em>Range:</em> 0 &lt; <em>Peak Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="rectified">
-<h4>Rectified<a class="headerlink" href="#rectified" title="Permalink to this headline">¶</a></h4>
-<p><em>The device converts a DC signal into an AC output.</em></p>
-<blockquote>
-<div><ul class="simple">
-<li>I Load: The current at which the device attempts to operate, in A. <em>Range:</em> 0 &lt; <em>Load Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
-<li>Line Sync: A boolean value. When the value is true, the system uses line sync for synchronization. When the value is false, the system uses frequency to synchronize.</li>
-<li>Frequency: The frequency of the output AC signal. <em>Range:</em> 45 <span class="math notranslate nohighlight">\(\le\)</span> <em>Frequency</em> <span class="math notranslate nohighlight">\(\le\)</span> 440</li>
-<li>Crest Factor: The crest factor of the output signal. <em>Range:</em> 1.414 <span class="math notranslate nohighlight">\(\le\)</span> <em>Crest Factor</em> <span class="math notranslate nohighlight">\(\le\)</span> 5</li>
-<li>Ipeak Max: The maximum current at which the device can operate before shutting down, in A. <em>Range:</em> 0 &lt; <em>Peak Current</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
-</ul>
-</div></blockquote>
-</div>
-</div>
-</div>
+<h1>3. AC Power Module<a class="headerlink" href="#ac-power-module" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="class-specification">
-<h2>Class Specification<a class="headerlink" href="#class-specification" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="acpwrbaseclass">
-<h3>AcPwrBaseClass<a class="headerlink" href="#acpwrbaseclass" title="Permalink to this headline">¶</a></h3>
-<p>All other AcPwr classes inherit from the AcPwrBase class.  Multiple phases (channels of loads) are defined all sharing a common Frequency and Frequency Range.  Each Phase has a Handle which uniquely identifies the hardware supporting that phase.</p>
-<p><a class="reference internal" href="_images/image0.png"><img alt="image0" src="_images/image0.png" style="width: 3in;" /></a></p>
+<h2>3.1. Class Specification<a class="headerlink" href="#class-specification" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="baseclass">
+<h3>3.1.1. BaseClass<a class="headerlink" href="#baseclass" title="Permalink to this headline">¶</a></h3>
+<p>This document describes the properties and methods of a single or multi-phase
+AC Power instrument and additional features of more complex instruments.
+These properites and methods are based upon the IviACPwr Specification
+(<a class="reference external" href="https://www.ivifoundation.org/downloads/Class%20Specifications/IVI-4.5_ACPwr_2011-03-11.pdf">https://www.ivifoundation.org/downloads/Class%20Specifications/IVI-4.5_ACPwr_2011-03-11.pdf</a>). Only some of the properties/methods mentioned in the IviACPwr Specification were used in the class specification.
+All plugins (children) inherit all the properties and methods from this base class (parent) and some plugins may have properties and methods specific to the plugins.
+If a plugin simply inherits the method or property from the base class then this property or method will not be menitoned (needs review to ensure this statement is accurate).
+Unique properties and methods will be mentioned and properties and methods that are unused by the plugins will aslo be mentioned (work needed here).</p>
+<p><a class="reference internal" href="_images/image12.png"><img alt="image12" src="_images/image12.png" style="width: 3in;" /></a></p>
 <p>Figure : AcPwrBaseClass UML specification</p>
 <div class="section" id="properties">
-<h4>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h4>
+<h4>3.1.1.1. Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Frequency <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
 <dd>The frequency setpoint for all phases.</dd>
-<dt>FrequencyRange <span class="classifier-delimiter">:</span> <span class="classifier">[double]</span></dt>
-<dd>An array of frequencies that limit the upper and lower allowable frequencies, if the array has only one element, then that will be the upper allowable frequency with the lower being 0.  If the array has two elements, then the first element is the lower allowable frequency and the second element is the upper.</dd>
-<dt>Phases <span class="classifier-delimiter">:</span> <span class="classifier">[struct]</span></dt>
-<dd><p class="first">An array of structures containing the properties of each phase or channel.</p>
-<blockquote class="last">
-<div><dl class="docutils">
-<dt>Handle <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
-<dd>A unique identifier of the hardware supporting the phase.</dd>
-<dt>Connected <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd>Used by the system and not end-user settable.  Indicates that the phase has been initialized and is tready to receive further commands.  Closing a phase disconnects the phase and resets Connected.</dd>
-<dt>Name <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
-<dd>The name of the phase.  In some cases this is for the conveinience of the end user, in other cases, the hardware may need bot a phase Handle and a Name.</dd>
-<dt>Enabled <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd>Set by the end user to determine if the phase should be enabled (energized) or disabled (de-energized).</dd>
-<dt>VoltageLevel <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
-<dd>Specifies the line-to-neutral voltave level when operating in constant voltage mode.  May also specify a voltage offseyt for an AC voltage</dd>
-<dt>VoltageRange <span class="classifier-delimiter">:</span> <span class="classifier">[double]</span></dt>
-<dd>Array of voltages specifying the minimum and maximum allowable voltage levels.  If the array has only one element, then it is the maximum allowable level with the minimum being 0.  If therer are two elements then the first element is the minimum level and the second is the upper limit.</dd>
-<dt>CurrentLimit <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
-<dd>Specifies the output current limit.  For the ChromaAcLoadClass this will be <em>IrmsMax</em></dd>
-<dt>Waveform <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
-<dd>The name of the waveform to be generated if the phase is capable of generating waveform functions.</dd>
-</dl>
-</div></blockquote>
-</dd>
-<dt>FunctionClass <span class="classifier-delimiter">:</span> <span class="classifier">class</span></dt>
-<dd>If the phase is capable of generating waveform functions (either standard or arbitrary) this property holds the class reference of the function that creates the waveforms</dd>
-<dt>FunctionIniFilePath <span class="classifier-delimiter">:</span> <span class="classifier">path</span></dt>
-<dd>The path to the .ini file holding the properties the waveform function</dd>
 </dl>
 </div>
 <div class="section" id="methods">
-<h4>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h4>
+<h4>3.1.1.2. Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
-<dt>Initialize(reset:bool, QueryID:bool)</dt>
+<dt>Initialize()</dt>
 <dd>Opens a connection to all phases.  optionally reset the phase or check that the phase ID is valid.</dd>
 <dt>ConfigPhases()</dt>
 <dd>Configure all phases with their property values</dd>
 <dt>ConfigFrequency()</dt>
 <dd>Configure the frequency of all phases to the single frequency property value.</dd>
 <dt>Disable()</dt>
-<dd>Cause all phases to apply the minimum ampout of power possible.  The devise remains connected after disabled.</dd>
+<dd>Cause all phases to apply the minimum ampout of power possible.  The devise remains connected after disablew.</dd>
 <dt>ResetCurrentProtection()</dt>
 <dd>If the phases have tripped on over current, this method resets the overcurrent protection if the user has manually reset the Enabled property to true.  Note that during a protection event, the enabled property must be automatically cleared.</dd>
 <dt>ResetVoltageProtection()</dt>
@@ -287,395 +82,884 @@
 </div>
 </div>
 <div class="section" id="measurement-extension-group">
-<h3>Measurement Extension Group<a class="headerlink" href="#measurement-extension-group" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id4">
-<h4>Properties<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<h3>3.1.2. Measurement Extension Group<a class="headerlink" href="#measurement-extension-group" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="_images/image13.png"><img alt="image13" src="_images/image13.png" style="width: 3in;" /></a></p>
+<p>Figure : AcPwrMeasurement Extension Group UML specification</p>
+<p>This extension group provides the ability to measure AC power source output signals such as voltage and current.</p>
+<div class="section" id="id1">
+<h4>3.1.2.1. Methods<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Initiate Measurement()</dt>
+<dd>Initiates a measurement of one or more measurement groups for all output phases. You can specify multiple groups.</dd>
+<dt>FetchMeasurement()</dt>
+<dd>Returns the value measured by a previous call to the Initiate Measurement function. The Fetch Measurement function returns a single measured value for the requested measurement type. Call this function multiple times to retrieve the available measurement types and output phases. The available measurement types are divided into measurement groups. Use the Initiate Measurement function to measure fresh values for that group.</dd>
+<dt>FetchMeasurementArray()</dt>
+<dd>Returns the values measured by a previous call to the Initiate Measurement function. The Fetch Measurement Array function returns an array of measured values of the requested measurement type. Call this function multiple times to retrieve the available measurement types and output phases. The available measurement type are divided into measurement groups. Use the Initiate Measurement function to measure fresh values for that group</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h4>3.1.2.2. Properties<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><dl class="docutils">
+<dt>Handle <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd>A unique identifier of the hardware supporting the phase.</dd>
+<dt>Type <span class="classifier-delimiter">:</span> <span class="classifier">enum</span></dt>
+<dd><dl class="first last docutils">
+<dt>The type of measurement to be made:</dt>
+<dd><p class="first">-Voltage RMS L-N</p>
+<p>-Current RMS</p>
+<p>-Frequency</p>
+<p>-Voltage DC</p>
+<p>-Current DC</p>
+<p>-Power Factor</p>
+<p>-Crest Factor</p>
+<p>-Current Peak</p>
+<p>-Power VA</p>
+<p>-Real Power</p>
+<p>-Power DC</p>
+<p>-Phase Angle</p>
+<p>-Voltage RMS L-L</p>
+<p>-Current OHD</p>
+<p>-Current EHD</p>
+<p>-Current THD</p>
+<p>-Voltage OHD</p>
+<p>-Voltage EHD</p>
+<p class="last">-Voltage THD</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="phase-extension-group">
+<h3>3.1.3. Phase Extension Group<a class="headerlink" href="#phase-extension-group" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="_images/image14.png"><img alt="image14" src="_images/image14.png" style="width: 3in;" /></a></p>
+<p>Figure : AcPwrPhase Extension Group UML specification</p>
+</div>
+<div class="section" id="current-protection-extension-group">
+<h3>3.1.4. Current Protection Extension Group<a class="headerlink" href="#current-protection-extension-group" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="_images/image15.png"><img alt="image15" src="_images/image15.png" style="width: 3in;" /></a></p>
+<p>Figure : AcPwrCurrent Protection Extension Group UML specification</p>
+</div>
+<div class="section" id="voltage-protection-extension-group">
+<h3>3.1.5. Voltage Protection Extension Group<a class="headerlink" href="#voltage-protection-extension-group" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="_images/image16.png"><img alt="image16" src="_images/image16.png" style="width: 3in;" /></a></p>
+<p>Figure : AcPwrVoltage Protection Extension Group UML specification</p>
+</div>
+<div class="section" id="impedance-extension-group">
+<h3>3.1.6. Impedance Extension Group<a class="headerlink" href="#impedance-extension-group" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="_images/image17.png"><img alt="image17" src="_images/image17.png" style="width: 3in;" /></a></p>
+<p>Figure : AcPwrImpedance Extension Group UML specification</p>
+</div>
+<div class="section" id="dcgeneration-extension-group">
+<h3>3.1.7. DCGeneration Extension Group<a class="headerlink" href="#dcgeneration-extension-group" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="_images/image18.png"><img alt="image18" src="_images/image18.png" style="width: 3in;" /></a></p>
+<p>Figure : AcPwrDCGeneration Extension Group UML specification</p>
+</div>
+<div class="section" id="non-ivi-extension-group">
+<h3>3.1.8. NON-IVI Extension Group<a class="headerlink" href="#non-ivi-extension-group" title="Permalink to this headline">¶</a></h3>
+<p>In order to get full functionality of each plugin and allow plugin interoperability additional base methods and properties were needed and are discussed below.</p>
+<div class="section" id="id3">
+<h4>3.1.8.1. Properties<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Measurement <span class="classifier-delimiter">:</span> <span class="classifier">[struct]</span></dt>
 <dd><p class="first">An array of structures containing properties of each measurement to be made</p>
 <dl class="last docutils">
-<dt>Handle <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
-<dd>A unique identifier of the hardware supporting the phase.</dd>
 <dt>Name <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
-<dd>The name of the phase.  In some cases this is for the conveinience of the end user, in other cases, the hardware may need bot a phase Handle and a Name.</dd>
-<dt>Enabled <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>The name of the phase.  In all cases this is for the conveinience of the end user.</dd>
+<dt>Enabled <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span></dt>
 <dd>Set by the end user to determine if the phase should be enabled (energized) or disabled (de-energized).</dd>
-<dt>Type <span class="classifier-delimiter">:</span> <span class="classifier">enum</span></dt>
-<dd><dl class="first last docutils">
-<dt>The type of measurement to be made:</dt>
-<dd>Voltage RMS L-N,
-Current RMS,
-Frequency,
-Voltage DC,
-Current DC,
-Power Factor,
-Crest Factor,
-Current Peak,
-Power VA,
-Real Power,
-Power DC,
-Phase Angle,
-Voltage RMS L-L,
-Current OHD,
-Current EHD,
-Current THD,
-Voltage OHD,
-Voltage EHD,
-Voltage THD</dd>
 </dl>
 </dd>
-<dt>Result <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
-<dd>The result of the measurement (may eventually become a varient type if any measurement results cannot be represented by doubles).</dd>
-</dl>
-</dd>
+<dt>PluginConfigVariant <span class="classifier-delimiter">:</span> <span class="classifier">Variaint</span></dt>
+<dd>This contains any new configuration properties of the plugin(child) that are not in the Base class (parent).</dd>
+<dt>PluginMeasVariant <span class="classifier-delimiter">:</span> <span class="classifier">Variant</span></dt>
+<dd>This contains any new measurement properties of the plugin(child) that are not in the Base class (parent).</dd>
 <dt>RefreshTime <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
 <dd>The time delay between fetching individual measurements</dd>
 </dl>
 </div>
+<div class="section" id="id4">
+<h4>3.1.8.2. Methods<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>StartMeas ()</dt>
+<dd>Starts the instruments acquistion of measurements.</dd>
+<dt>StopMeas ()</dt>
+<dd>Stops the instruments acquisition of measurements.</dd>
+<dt>ChangeWhileMeasuring ()</dt>
+<dd>Returns if the instrument can configure it’s output settings, or commit those settings like updating output value while it is in the process of acquiring measurements.</dd>
+<dt>DefaultFromINI()</dt>
+<dd>Returns the current configuration stored in the INI file.</dd>
+<dt>PrefDialog (Device Specifc Insturment Configuration)</dt>
+<dd>Displays the prior instruments properties and allows a user to change the  instrument properties and save these new set properties to the same location on disk or in a new location with a new name called “Type”.</dd>
+<dt>DeviceOn ()</dt>
+<dd>Enables the output.</dd>
+<dt>DeviceOff ()</dt>
+<dd>Disables the output.</dd>
+<dt>ConfigDevice ()</dt>
+<dd>Configures the instrument based on the INI file settings or changes to these settings made using the PrefDialog.vi. This function call contains a set of configuration functions such as ConfigPhases and ConfigFrequency.</dd>
+<dt>GetSettings ()</dt>
+<dd>This function retrieves the instrument properties.</dd>
+<dt>SetSettings ()</dt>
+<dd>This function sets the instruments properties.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="chroma-acload-class">
+<h3>3.1.9. Chroma AcLoad Class<a class="headerlink" href="#chroma-acload-class" title="Permalink to this headline">¶</a></h3>
+<p>The Chroma AC Load is a one channel instrument capable of simulating various AC and DC loads based upon power, resistance, or current. This device support one phase per device so multiple devises must be used to create multiple phases. One Module can support up to three devices
+so with a single module all three phases can be emulated. The IVI AC Power specification does not (yet) peovide an extension group for AC Loads but it seems to make sense to extend it.  Eventually this child class may become a base class for generic AC loads. The following sections detail additional
+properties and methods that are unique from the base class and Property Dialog window that will allow an operator to configure the instrument.</p>
+<p><a class="reference internal" href="_images/image8.png"><img alt="image8" src="_images/image8.png" style="width: 9in;" /></a></p>
+<div class="section" id="configuration-dialog-properties-and-operation-modes">
+<h4>3.1.9.1. Configuration Dialog Properties and Operation Modes<a class="headerlink" href="#configuration-dialog-properties-and-operation-modes" title="Permalink to this headline">¶</a></h4>
+<p><em>The following section lists the properties and operational mode of the AC/DC Chroma Load (638xx). Each mode uses a set of properties that are similar and distinct from the rest. If a variable is listed under an operation mode, it must be configured in order for the Chroma to operate. **The load should be appropriately configured for the physically wiring and the source connected*</em>.</p>
+<p><a class="reference internal" href="_images/image2.png"><img alt="image2" src="_images/image2.png" style="width: 9in;" /></a></p>
+<p><em>This is the preference dialogue screen that allows the user to configure the device.</em></p>
+<blockquote>
+<div><ul>
+<li><p class="first">Disable Controls Based On Configuration Mode?: A property that allows the disables various properties based on the value of the configuration variable.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Device(s)Settings: A collection of properties that allow a user to control the instrument.</dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>Configuration Mode: The operation modes of the device. The user must be careful to select an appropriate current type or the device will fail to configure.</dt>
+<dd><ul class="first last">
+<li>Constant Voltage (DC): The device attempts to operate as a constant voltage load.</li>
+<li>Constant Power (DC): The device attempts to operate at a constant DC power.</li>
+<li>Constant Power (AC): The device attempts to match the value of the RMS current to an amount specified by the user</li>
+<li>Constant Current (DC): The device attempts to operate at a constant DC current.</li>
+<li>Constant Current (AC): The device attempts to match the value of the RMS power to an amount specified by the user.</li>
+<li>Constant Resistance (DC): The device attempts to emulate a resistor with a constant value</li>
+<li>Constant Resistance (AC): The device attempts to emulate a resistor with a constant value</li>
+<li>Rectified Mode (DC): The device converts a DC signal into an AC output.</li>
+<li>Inrush (AC): <strong>Note</strong>: Measuring the inrush current of the device is tricky, seeing as the mode quickly turns off. In order to perform measurements on this device, the user is recommended to use the <em>Set Peak Current Meas Hold</em> vi with the input set to <em>true</em>, then using the <em>Measure or Fetch Peak Current</em> vi.</li>
+<li>RLC CP (AC): The load emulates an RLC circuit operating a constant RMS power. An inductor is in series and a capacitor is in parallel.</li>
+<li>RLC (AC): The load emulates an RLC circuit, with an inductor in series and a capacitor in parallel.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>MeasName: Every measurement from this module will be labeled with the value entered into this variable.</li>
+<li><dl class="first docutils">
+<dt>Phases: A cluster of properties that determines the properties of each phase.</dt>
+<dd><ul class="first last">
+<li>Handle: The name of the insturment with which software can use to connect and control the instrument.</li>
+<li>Name: A distinct software name that an operator may use to distinguish instruments.</li>
+<li>Phase Select: Determines the phase of the instrument</li>
+<li>Instrument Options: Allows for instrument initializations commands such as simulation (Simulation=0).</li>
+<li>id query: If set to true queries the instrument ID and checks that it is valid for this instrument driver.</li>
+<li>reset device: If this property is true a software command is sent that initializes the instrument back to the default state.</li>
+<li>Load Short Circuited: The instrument shorts its input.</li>
+<li>Line Synchronization: In Rectified mode this Boolean when set to true uses the measured input frequency as the reference loading frequency.</li>
+<li>Load Current: The current the instrument will try to sink.</li>
+<li>Load Voltage: The voltage the instrument will try to sink.</li>
+<li>Load Power: The Power that the instrument will try to sink.</li>
+<li>Load Resistance: The input resistance set at the instruments’ input.</li>
+<li>Load Current Peak Limit: A user defined limit where the instrument will throw an error if the measurements exceed the value.</li>
+<li>Load Current Limit: A user defined limit that allows the instrument to return an error if the current measurement exceeds the set value.</li>
+<li>Load Power LImit: A user defined limit that allows the instrument to return an error if the Power measurements exceeds the set value.</li>
+<li>Synch Frequency: In Rectified Mode and if the Boolean is set to false the synch frequency must be set to the expected input frequency.</li>
+<li>Priority: Determines if the the instrument should optimize. for the crest factor or the power factor.</li>
+<li>Crest Factor: The instrument will try to establish a ration such that the value set = Peak Current/ RMS Current.</li>
+<li>Power Factor: The instrument will try to establish a ratio such that the value set = Real Power/Apparent Power.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Measurements: A collection of properties that allow user to control the instuments measurements.</dt>
+<dd><ul class="first last">
+<li><p class="first">Handle: The name of the instrument and channel with which the software will use to collect measurements.</p>
+</li>
+<li><p class="first">Name: A distinct software name that an operator may use to distinguish instruments and/or channels.</p>
+</li>
+<li><p class="first">Enabled: This property determines if the measurement data is acquired or not.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Measurement Type: A property that determines what type of measurement the instrument will report back.</dt>
+<dd><p class="first">-Voltage</p>
+<p>-Current</p>
+<p>-Power</p>
+<p>-Peak Voltage</p>
+<p>-Peak Current</p>
+<p>-Peak Power</p>
+<p>-Frequency</p>
+<p>-Resistance</p>
+<p>-Voltage Overshoot</p>
+<p>-Positive Peak Current</p>
+<p>-Voltage Undershoot</p>
+<p>-Negative Peak Current</p>
+<p>-Apparent Power</p>
+<p>-Reactive Power</p>
+<p>-Voltage THD</p>
+<p>-Power Factor</p>
+<p class="last">-Current’s Crest Factor</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Hold Peak Current Measurment: This property allows the instrument to return the value based on magnitude. It is only</p>
+</li>
+<li><p class="first">Fetch/Read: A property that determines how the measurement is taken.</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Measurement RefreshTime: The time in milliseconds to wait between the instruments’ measurements.</p>
+</li>
+<li><p class="first">Cancel: Closes the window and discards any changes to the settings</p>
+</li>
+<li><p class="first">Save: Closes the panel and saves these settings to an INI file.</p>
+</li>
+<li><p class="first">Save As: Closes the panel and saves these settings to a different INI file in the same file location.</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="unique-methods">
+<h4>3.1.9.2. Unique Methods<a class="headerlink" href="#unique-methods" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>CheckHandle()</dt>
+<dd>Check to see if the input handle is already connected.</dd>
+<dt>CheckSettings</dt>
+<dd>Checks the value of the instrument settings and returns an error if the value is outside the instruments range.</dd>
+<dt>ChromaProtectionStatus()</dt>
+<dd>Retrieves a string status from the Chroma indicating any measurment errors.</dd>
+<dt>ConvertStatus()</dt>
+<dd>Converts the instruments numerical status into a string status.</dd>
+<dt>DisableControls</dt>
+<dd>disables the controls in the phases cluster based on the Configuration Mode control. This will enable the user to only change the values of the controls that are allowed by that mode.</dd>
+<dt>NumOfPhases</dt>
+<dd>Checks the number of phases and ensures it is less than or equal to three.</dd>
+<dt>SupportedMeasurementType</dt>
+<dd>Checks if the Measurment Type(s) selected is capable by the instrument based on the current instruments configuration.</dd>
+<dt>VariantToProperties</dt>
+<dd>Extracts the PluginConfigVariant, PluginMeasVariant, and Measurement Refersh Time. Converts PluginConfigVariant and PluginMeasVariant into the Configuration and Measurement Cluster.</dd>
+<dt>WriteToBaseConfigVariant</dt>
+<dd>Writes to the PluginConfigVariant and the PluginMeasVariant properties.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="nhrdc-power-class">
+<h3>3.1.10. NHRDC Power Class<a class="headerlink" href="#nhrdc-power-class" title="Permalink to this headline">¶</a></h3>
+<p><em>The NHR 9200 is a Battery Test Simulator. Within each NHR 9200 are three
+NHR 4960 that serave as DC output, DC Load, or a Battery. Each NHR 4860 has one single channel.
+The following section lists the user accessible properties, operation mode,
+and unique methods of the NHR 9200 DC Battery Test System.</em></p>
+<p><a class="reference internal" href="_images/image9.png"><img alt="image9" src="_images/image9.png" style="width: 9in;" /></a></p>
+<div class="section" id="configuration-dialog-properties-and-operation-mode">
+<h4>3.1.10.1. Configuration Dialog Properties and Operation Mode<a class="headerlink" href="#configuration-dialog-properties-and-operation-mode" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference internal" href="_images/image3.png"><img alt="image3" src="_images/image3.png" style="width: 9in;" /></a></p>
+<p><em>This is the preference dialogue screen that allows the user to configure the device.</em></p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>Device(s)Settings: A collection of properties that allow a user to control one or multiple instrument.</dt>
+<dd><ul class="first last">
+<li><p class="first">MeasName: Every measurement from this module will be labeled with the value entered into this variable.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Modules: A collection of properties that allows for the control of one or multiple instruments.</dt>
+<dd><ul class="first last">
+<li><p class="first">Handle: The name of the insturment with which software can use to connect and control the instrument.</p>
+</li>
+<li><p class="first">Name: A distinct software name that an operator may use to distinguish instruments.</p>
+</li>
+<li><p class="first">id query: If set to true queries the instrument ID and checks that it is valid for this instrument driver.</p>
+</li>
+<li><p class="first">reset device: If this property is true a command is sent to the device</p>
+</li>
+<li><p class="first">Options String: Allows for instrument initializations commands such as simulation (Simulation=0).</p>
+</li>
+<li><dl class="first docutils">
+<dt>Operating State: The operation modes of the device. The user must be careful to select an appropriate current type or the device will fail to configure.</dt>
+<dd><ul class="first last simple">
+<li>Off - The module is off when in the Stand-by state, providing no voltage, current, power or resistance.</li>
+<li>Stand By - The module is off when in the Stand-by state, providing no voltage, current, power or resistance.</li>
+<li>Charge - The module acts as a Source where the Voltage property control the output voltage, and the Current, Power and Resistance properties define the operating limits.</li>
+<li>Discharge - The module acts as a Load, where the Voltage, Current, Power and Resistance values concurrently control the state of the module - the mode drawing the least amount of current being the dominant mode.</li>
+<li>Battery Emulation - The module acts as a Battery, where it sinks or sources current automatically based on the sensed voltage. Use the Voltage, Current, Power and Resistance fields to configure the behavior of the emulated battery.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Initial Battery Detect Voltage: A property that sets the initial voltage which the instrument must see at its outpu before it begins to source or sink current.</p>
+</li>
+<li><p class="first">Aperture Time: A property that set the maximum window with which the instrument is allowed to gather measurements before it returns. The instruments is always acquiring data at the maixmum rate. This property determines the amount of time</p>
+</li>
+<li><p class="first">Regulation Gain: This property sets the distance the output will try to move when the set value does not equal the measurement value.</p>
+</li>
+<li><dl class="first docutils">
+<dt>OutputSettings: A collection of properties that determines the ouput values of the instrument. Additional values in the array are ignored unless the Enable Macro Property is set to true.</dt>
+<dd><p class="first">-Enable Voltage: This property configures the instrument to set the voltage output or input.</p>
+<p>-Voltage: If the Enable Voltage property is set to true the value of this property is used to set the maximum value.</p>
+<p>-Enable Current: This property configures the instrument to set the current output or input.</p>
+<p>-Current: If the Enable Voltage property is set to true the value of this property is used to set the maximum value.</p>
+<p>-Enable Resistance: This property configures the instrument to set the resistance output or input.</p>
+<p>-Resistance: This property sets the value of the sereies output resistance.</p>
+<p>-Enable Power: This property configures the instrument to set the power output or input.</p>
+<p>-Power: If the Enable Power property is set to true the value of this property is used to set the maximum value.</p>
+<p>-Enable Wait: This property enables the instrument to wait to set an output value until a certain conditions is met.</p>
+<p>-Wait Value: If the Enable Wait property is set to true the value of this property is used to set the threshold value a measurement must cross before setting the output value.</p>
+<dl class="docutils">
+<dt>-Wait On Value: If the Enable Wait property is set to true the value this property allows the sets the conditions for the wait.</dt>
+<dd><p class="first">-Voltage Greater Than or Equal To</p>
+<p>-Voltage Less Than or Equal To</p>
+<p>-Current Greater Than or Equal To</p>
+<p>-Current Less THan or Equal To</p>
+<p>-Power Greater Than or Equal To</p>
+<p class="last">-Power Less Than Or Equal To</p>
+</dd>
+</dl>
+<p class="last">-Macro After Step Delay: This property allows the uer to set a time delay in seconds after each step.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>SlewRate: A cluster of properties used to set the slew rate</dt>
+<dd><p class="first">-Set Voltage Rate V/S: This property sets how quickly the Voltage can change per second.</p>
+<p>-Set Current Rate A/S: This property sets how quickly the Current can change per second.</p>
+<p>-Set Resistance Rate R/S: This property sets how quickly the Resistnace can change per second.</p>
+<p class="last">-Set Power Rate W/S: This property sets how quickly the Power can change per second.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>SafetySettings: A cluster of properties used to set the instruments parameters that will prevent damage to the instrument or any external devices connected to it.</dt>
+<dd><p class="first">-SetWatchDog: Enables the instrument to turn off its output if the cotroller has not sent any command to the instrument in 10 seconds.</p>
+<p>-Voltage: This property sets the maximum voltage value that the insturment will source or sink. If the measurement value exceeds this value longer than the VoltageDelay property the output will enter a high impedance state.</p>
+<p>-VoltageDelay: This property sets the amount of time the measured voltage is allowed to exceed the Voltage Safety Property before the ouptut goes into a high impedance state.</p>
+<p>-Current: This property sets the maximum current value that the insturment will source or sink. If the measurement value exceeds this value longer than the PowerDelay property the output will enter a high impedance state.</p>
+<p>-CurrentDelay: This property sets the amount of time the measured current is allowed to exceed the Current Safety Property before the ouptut goes into a high impedance state.</p>
+<p>-Power: This property sets the maximum power value that the insturment will source or sink. If the measurement value exceeds this value longer than the PowerDelay property the output will enter a high impedance state.</p>
+<p class="last">-PowerDelay: This property sets the amount of time the measured power is allowed to exceed the Power Safety Property before the ouptut goes into a high impedance state.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Macro</dt>
+<dd><p class="first">-UseMacros?: Set this property to true in order to enable the use of multiple Output Settings to control the instrument.</p>
+<p>-RunMacroContinuously?: Set this property to true in order to have multiple output settings repeated for an infinite number of times.</p>
+<p>-LoadMacroFromFile?: Set this property to true in order to load a set of instructions from a location on disk.</p>
+<p>-LoadMacroFilePath: The location on disk that the instructions will be loaded from if the Load Macro From File? property is set to true.</p>
+<p>-SaveMacro: Set this property to true to save the current macro to a file.</p>
+<p class="last">-SaveMacroFilePath: The location on disk that the current configured set of instruction will be</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Measurements: A collection of properties that allow user to control the instuments measurements.</dt>
+<dd><ul class="first last simple">
+<li>Handle: The name of the instrument and channel with which the software will use to collect measurements.</li>
+<li>Name: A distinct software name that an operator may use to distinguish instruments and/or channels.</li>
+<li>Enabled: This property determines if the measurement data is acquired or not.</li>
+<li><dl class="first docutils">
+<dt>Measurement Type: A property that determines what type of measurement the instrument will report back.</dt>
+<dd>-Power
+-Voltage
+-Current</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Measurement RefreshTime: The time in milliseconds to wait between the instruments’ measurements.</p>
+</li>
+<li><p class="first">Cancel:Closes the window and discards any changes to the settings</p>
+</li>
+<li><p class="first">Save:Closes the panel and saves these settings to an INI file.</p>
+</li>
+<li><p class="first">Save As:Closes the panel and saves these settings to a different INI file in the same file location.</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
 <div class="section" id="id5">
-<h4>Methods<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<h4>3.1.10.2. Unique Methods<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
-<dt>InitiateMeasurment (Handle, Enum)</dt>
-<dd>Initiates all the measurements in the measurements structure for all of the phases that are enabled. Initiate will cause one measurement per structure element to be made.  After Initiate is called, Fetch will return the result of that measurement, then another measurement can be initiated</dd>
-<dt>FetchMeasurement (Handle, Name)</dt>
-<dd>Returns the result of the previous call to the initiate group.  The return value is the entire measurement structure with the Handle, Name, Enabled, Type, and the latest Result</dd>
+<dt>CheckHandle()</dt>
+<dd>Check to see if the input handle is already connected.</dd>
+<dt>CheckSettings</dt>
+<dd>Checks the value of the instrument settings and returns an error if the value is outside the instruments range.</dd>
+<dt>ChromaProtectionStatus()</dt>
+<dd>Retrieves a string status from the Chroma indicating any measurment errors.</dd>
+<dt>ConvertStatus()</dt>
+<dd>Converts the instruments numerical status into a string status.</dd>
+<dt>DisableControls</dt>
+<dd>disables the controls in the phases cluster based on the Configuration Mode control. This will enable the user to only change the values of the controls that are allowed by that mode.</dd>
+<dt>NumOfPhases</dt>
+<dd>Checks the number of phases and ensures it is less than or equal to three.</dd>
+<dt>SupportedMeasurementType</dt>
+<dd>Checks if the Measurment Type(s) selected is capable by the instrument based on the current instruments configuration.</dd>
+<dt>VariantToProperties</dt>
+<dd>Extracts the PluginConfigVariant, PluginMeasVariant, and Measurement Refersh Time. Converts PluginConfigVariant and PluginMeasVariant into the Configuration and Measurement Cluster.</dd>
+<dt>WriteToBaseConfigVariant</dt>
+<dd>Writes to the PluginConfigVariant and the PluginMeasVariant properties.</dd>
 </dl>
 </div>
 </div>
-<div class="section" id="chromaacloadclass">
-<h3>ChromaAcLoadClass<a class="headerlink" href="#chromaacloadclass" title="Permalink to this headline">¶</a></h3>
-<p>The Chroma AC load support one phase per device so multiple devises must be used to create multiple phases.  The IVI AC Power specification does not (yet) peovide an extension group for AC Loads but it seems to make sense to extend it.  Eventually this child class may become a base class for generic AC loads.</p>
-<p><a class="reference internal" href="_images/image1.png"><img alt="image1" src="_images/image1.png" style="width: 3in;" /></a></p>
+<div class="section" id="nhr-regenerative-grid-simulator">
+<h3>3.1.11. NHR Regenerative Grid Simulator<a class="headerlink" href="#nhr-regenerative-grid-simulator" title="Permalink to this headline">¶</a></h3>
+<p>The NHR Regenerative Grid Simulator is a three channel AC or DC Output that can be combined into any combination between one and three channels. A single module can</p>
+<p><a class="reference internal" href="_images/image10.png"><img alt="image10" src="_images/image10.png" style="width: 9in;" /></a></p>
 <div class="section" id="id6">
-<h4>Properties<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
-<dl class="docutils">
-<dt>Load <span class="classifier-delimiter">:</span> <span class="classifier">[struct]</span></dt>
-<dd><p class="first">An array of structures containing the properties used for each Load Device</p>
-<blockquote class="last">
-<div><dl class="docutils">
-<dt>AC/DC <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd>Specifies the device for AC or DC loading</dd>
-<dt>Mode <span class="classifier-delimiter">:</span> <span class="classifier">enum (CC, CP, CR, CV, RLC, Inrush, Rect)</span></dt>
-<dd><dl class="first last docutils">
-<dt>Specifies the load mode:</dt>
-<dd>CC = constant current,
-CP = Constant Power,
-CR = Constant Resistance,
-CV = Constant Voltage (DC loading only),
-RLC = Resistance, Inductance, Capacitance (AC loading only),
-Inrush = RLC Inrush Current (AC only),
-Rect = Rectified (DC only).</dd>
-</dl>
+<h4>3.1.11.1. Configuration Dialog Properties and Operation Modes<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>The following section lists every user accesible property of the NHR 9210 AC/DC RegenerativeGrid Simulator.</p>
+<p><a class="reference internal" href="_images/image4.png"><img alt="image4" src="_images/image4.png" style="width: 9in;" /></a></p>
+<p><em>This is the preference dialogue screen that allows the user to configure the device.</em></p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>Device(s)Settings: A collection of properties that allow a user to control the instrument.</dt>
+<dd><ul class="first last">
+<li><p class="first">MeasName: Every measurement from this module will be labeled with the value entered into this property.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Modules: A collection of properties that allows for the control of one or multiple instruments.</dt>
+<dd><ul class="first last">
+<li><p class="first">Handle: The name of the insturment with which software can use to connect and control the instrument.</p>
+</li>
+<li><p class="first">id query: If set to true queries the instrument ID and checks that it is valid for this instrument driver.</p>
+</li>
+<li><p class="first">reset: If this property is true a software command is sent that initializes the instrument back to the default state.</p>
+</li>
+<li><p class="first">Initialize Timeout: The maximum time in seconds that the instrument can spend initializing the instrument.</p>
+</li>
+<li><p class="first">Regulation Gain: This property sets the distance the output will try to move when the output value does not equal the measurement value.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Phases: A cluster of properties that determines the properties of each phase.</dt>
+<dd><p class="first">-Phase Name: The name of the phase</p>
+<p>-Pout: The power output of this phase.</p>
+<p>-Vout: The voltage output of this phase.</p>
+<p>-Iout: The current output of this phase.</p>
+<p class="last">-PhaseAngle: The phase angle of this phase rel</p>
 </dd>
-<dt>CrestFactor <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
-<dd>Specifies the load crest factor, meaning of this varies in different modes.</dd>
-<dt>PowerFactor <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
-<dd>Specifies the power factor of AC loading.  Essentially this is the phase relationship between the voltage and current.</dd>
-<dt>Priority <span class="classifier-delimiter">:</span> <span class="classifier">enum</span></dt>
-<dd><dl class="first last docutils">
-<dt>Sets CrestFactor / PowerFactor Priority:</dt>
-<dd>CF = Crest Factor Priority
-PF = Power Factor Priority
-both (CF) = Both have priority with CrestFactor preferred
-both (PF) = Both have priority with PowerFactor preferred</dd>
 </dl>
+</li>
+<li><dl class="first docutils">
+<dt>Mode: The operation modes of the device. The user must be careful to select an appropriate mode for the physical configuration wired. Pleaee see the following mode section for an explanation of the modes.</dt>
+<dd><p class="first">-One 3-Phase AC</p>
+<p>-One AC</p>
+<p>-One DC</p>
+<p>-Three AC</p>
+<p>-Three DC</p>
+<p>-One 2-Phase AC and One AC</p>
+<p>-One 2-Phase AC and One DC</p>
+<p>-Two AC</p>
+<p>-One AC and One DC</p>
+<p>-Two AC and One DC</p>
+<p>-Two AC and One DC</p>
+<p>-One AC and Two DC</p>
+<p>-One DC and One AC</p>
+<p class="last">-Two DC</p>
 </dd>
-<dt>PowerLoading :double</dt>
-<dd>Specifies the AC power consumption of the load in Watts</dd>
-<dt>IpeakMax <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
-<dd>Specifies the maximum peak current that the load will accept</dd>
-<dt>Slew <span class="classifier-delimiter">:</span> <span class="classifier">struct</span></dt>
-<dd><p class="first">Specifies the rise and fall times of changing properties in the load.</p>
-<blockquote class="last">
-<div><dl class="docutils">
-<dt>RiseSlewRate <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
-<dd>Specifies the rising rate of the property depending on Mode</dd>
-<dt>FallSlewRate <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
-<dd>Specifies the falling rate of the property depending on Mode</dd>
 </dl>
+</li>
+<li><dl class="first docutils">
+<dt>Measurement: A cluster of measurement properties.</dt>
+<dd><p class="first last">-Aperture Length: The time that the instrument will be taking measurement.
+-NumberOfSamples: The amount of measuremnt will take in the set measurement window.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Ranges: A cluster of voltage and current range properites.</dt>
+<dd><p class="first last">-Irange: The minimum and maximum current that the instrument can output.
+-Vrange: The minimum and maximum voltage that the instrument can output.</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Phase: The phase of all the channels if all the channels are in AC Mode. This setting will overwrite all previously existing phase setting.</p>
+</li>
+<li><p class="first">FreqOut: Sets the frequeny of the output signal. Only applicapable to channels in AC Mode.</p>
+</li>
+<li><dl class="first docutils">
+<dt>WatchDog: A collection of properties that turns of the instrument if communication between the instrument and the controller is disruptted.</dt>
+<dd><p class="first">-Enable WatchDog: Enable the instrument to turn off its output</p>
+<p>-Robust WatchDog: Enables the instrument to turn off its output if it doesn not receive a specifc set of commands from the controling computer.  The controlling computer has the time allocated in Watchdog Interval</p>
+<p class="last">-Watchdog Interval: The maximum amount of time that the instrument can stay disconnected from the controller before it turns of its output. Robust Watchdog or Enable Watchdog must be set to true.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>SafteyLimits:</dt>
+<dd><p class="first">-Min Voltage: The instrument will disable its output if the instruments voltage is below this threshold for longer than the time value set in Min Voltage Time property.</p>
+<p>-Min Voltage Time: The maximum time the instrument can stay below the Min Voltage property before the instrument disables its output.</p>
+<p>-Max Voltage: The instrument will disable its output if the instruments voltage is above this threshold for longer than the time value set in Max Voltage Time property.</p>
+<p>-Max Voltage Time: The maximum time the instrument can stay above the Max Voltage property before the instrument disables its output.</p>
+<p>-Max Sink Power: The instrument will disable its output if the instruments power is above this threshold for longer than the time value set in Max Sink Power Time property.</p>
+<p>-Max Sink Power Time: The maximum time the instrument can stay above the Max Sink Power property before the instrument disables its output.</p>
+<p>-Max Source Power: The instrument will disable its output if the instruments Power is above this threshold for longer than the time value set in Max Source Power Time property.</p>
+<p>-Max Source Power Time: The maximum time the instrument can stay above the Max Source Power property before the instrument disables its output.</p>
+<p>-Max Sink Amps: The instrument will disable its output if the instruments current is below this threshold for longer than the time value set in Max Sink Amps Time property.</p>
+<p>-Max Sink Amps Time: The maximum time the instrument can stay above the Max Sink Amps property before the instrument disables its output.</p>
+<p>-Max Source Amps: The instrument will disable its output if the instruments current is below this threshold for longer than the time value set in Max Source Amps property.</p>
+<p>-Max Source Amps Time: The maximum time the instrument can stay above the Max Source Power property before the instrument disables its output.</p>
+<p>-Peak Voltage: A threshold voltage value that if the instrument exceeds and the Peak Voltage Enable value is set to true will cause the instrument to turn off.</p>
+<p>-Peak Voltage Enable: Enables the instrument to turn of the output if the peak voltage value is exceeded.</p>
+<p>-Peak Amps: A threshold current value that if the instrument exceeds.</p>
+<p class="last">-Peak Amps Enable: Enables the instrument to turn of the output if the peak current value is exceeded.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Measurements: A collection of properties that allow user to control the instuments measurements.</dt>
+<dd><ul class="first last simple">
+<li>Handle: The name of the instrument and channel with which the software will use to collect measurements.</li>
+<li>Name: A distinct software name that an operator may use to distinguish instruments and/or channels.</li>
+<li>Enabled: This property determines if the measurement data is acquired or not.</li>
+<li>Phase: This property sets the measurement to acquire from the selected phase.</li>
+<li><dl class="first docutils">
+<dt>Measurement Type: A property that determines what type of measurement the instrument will report back.</dt>
+<dd>-Average Current
+-Average Voltage</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Measurement RefreshTime (ms):The time to wait between the instruments’ measurements.</p>
+</li>
+<li><p class="first">Cancel:Closes the window and discards any changes to the settings</p>
+</li>
+<li><p class="first">Save:Closes the panel and saves these settings to an INI file.</p>
+</li>
+<li><p class="first">Save As:Closes the panel and saves these settings to a different INI file in the same file location.</p>
+</li>
+</ul>
 </div></blockquote>
-</dd>
-<dt>Resistance :double</dt>
-<dd>Specifies the resistance of the DC load in ohms.  when in CR mode, the Rise and Fall slew times will specify how quickly the resistance will change when this property changes.</dd>
-<dt>LC :struct</dt>
-<dd><p class="first">A structure containing the Inductive / capacitive properties of the load</p>
-<dl class="last docutils">
-<dt>C <span class="math notranslate nohighlight">\((\mu F)\)</span> <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
-<dd>Specifies the Capacitance when in AC RLC mode</dd>
-<dt>L <span class="math notranslate nohighlight">\((\mu H)\)</span> <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
-<dd>Specifies the Inductance when in AC RLC mode</dd>
-<dt>RL(ohm) <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
-<dd>Specifies the (inductive) impedance in AC RLC mode</dd>
-<dt>RS(ohm) <span class="classifier-delimiter">:</span> <span class="classifier">double</span></dt>
-<dd>Specifies the (capacitive) impedance in AC RLC mode</dd>
-</dl>
-</dd>
-<dt>Wave <span class="classifier-delimiter">:</span> <span class="classifier">enum</span></dt>
-<dd><dl class="first last docutils">
-<dt>Specifies the wave polarity</dt>
-<dd>Pos,
-Neg,
-Both,</dd>
-</dl>
-</dd>
-<dt>LineSync <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd>True if the load is to be synchronized to the line input.</dd>
-</dl>
+<div class="section" id="mode">
+<h5>3.1.11.1.1. Mode<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h5>
+<p><em>The following variables are used by every operation mode</em></p>
+<blockquote>
+<div><ul class="simple">
+<li>Mode: The operation modes of the device. The user must be careful to select an appropriate mode that matches the physical configuration the instrument is currently configured for and the type of loads connected to the instrument.</li>
+</ul>
 </div></blockquote>
-</dd>
-<dt>LoadShortCircuited <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd>Specifies that the load is in the short circuited mode.</dd>
-<dt>Timing <span class="classifier-delimiter">:</span> <span class="classifier">struct</span></dt>
-<dd><p class="first">Single structure defines the timing of all phases</p>
-<dl class="docutils">
-<dt>TimingOn :enum</dt>
-<dd><dl class="first last docutils">
-<dt>Specifies the timing mode for all phases</dt>
-<dd>Holdup,
-Off,
-Transfer</dd>
-</dl>
-</dd>
-</dl>
-<p>Hours : uint32</p>
-<p>Minutes : uint32</p>
-<p>Seconds : double</p>
-<p class="last">CutoffVoltage : double</p>
-</dd>
-</dl>
+<p><a class="reference internal" href="_images/image6.png"><img alt="image6" src="_images/image6.png" style="width: 9in;" /></a></p>
+<p><em>These are the various modes of the NI 9410 Regenrative Grid Simulator.</em></p>
+</div>
 </div>
 <div class="section" id="id7">
-<h4>Methods<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<h4>3.1.11.2. Unique Methods<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
-<dt>ConfigLoads()</dt>
-<dd>Configures the load modes, current shape, and relative phase of current to voltage</dd>
-<dt>ConfigCurrent()</dt>
-<dd>Configures the current properties of the loads.  In CC mode, the Rise and Fall Slew rates detetermine how fast the current changes when the properties are changed.</dd>
-<dt>ConfigPower()</dt>
-<dd>Configures the systems power loading</dd>
-<dt>ConfigVoltage()</dt>
-<dd>Sets the DC voltage when in CV mode.  Only in DC modes.</dd>
-<dt>ConfigImpedance()</dt>
-<dd>Configures the loads impedance settings</dd>
-<dt>ConfigureShortCircuited()</dt>
-<dd>Places the load into or returmns from short circuited mode</dd>
+<dt>CheckHandle()</dt>
+<dd>Check to see if the input handle is already connected.</dd>
+<dt>CheckSettings</dt>
+<dd>Checks the value of the instrument settings and returns an error if the value is outside the instruments range.</dd>
+<dt>ChromaProtectionStatus()</dt>
+<dd>Retrieves a string status from the Chroma indicating any measurment errors.</dd>
+<dt>ConvertStatus()</dt>
+<dd>Converts the instruments numerical status into a string status.</dd>
+<dt>DisableControls</dt>
+<dd>disables the controls in the phases cluster based on the Configuration Mode control. This will enable the user to only change the values of the controls that are allowed by that mode.</dd>
+<dt>NumOfPhases</dt>
+<dd>Checks the number of phases and ensures it is less than or equal to three.</dd>
+<dt>SupportedMeasurementType</dt>
+<dd>Checks if the Measurment Type(s) selected is capable by the instrument based on the current instruments configuration.</dd>
+<dt>VariantToProperties</dt>
+<dd>Extracts the PluginConfigVariant, PluginMeasVariant, and Measurement Refersh Time. Converts PluginConfigVariant and PluginMeasVariant into the Configuration and Measurement Cluster.</dd>
+<dt>WriteToBaseConfigVariant</dt>
+<dd>Writes to the PluginConfigVariant and the PluginMeasVariant properties.</dd>
 </dl>
 </div>
 </div>
+<div class="section" id="pacific-power-source">
+<h3>3.1.12. Pacific Power Source<a class="headerlink" href="#pacific-power-source" title="Permalink to this headline">¶</a></h3>
+<p>The Pacific Power 360AMXT is a three channel AC Souurce that supports combining all three channels into one channel or being combined into a split phase operation.</p>
+<p><a class="reference internal" href="_images/image11.png"><img alt="image11" src="_images/image11.png" style="width: 9in;" /></a></p>
+<div class="section" id="id8">
+<h4>3.1.12.1. Configuration Dialog Properties and Operation Modes<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<p><em>The following section lists every user accesible property of the PPS360AMXT Pacific Power Supply.</em></p>
+<p><a class="reference internal" href="_images/image5.png"><img alt="image5" src="_images/image5.png" style="width: 9in;" /></a></p>
+<p><em>This is the preference dialogue screen that allows the user to configure the device.</em></p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>Device(s)Settings: A collection of properties that allow a user to control the instrument.</dt>
+<dd><ul class="first last">
+<li><p class="first">MeasName: Every measurement from this module will be labeled with the value entered into this property.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Modules: A cluster of properties that determines the properties of each instrument.</dt>
+<dd><ul class="first last">
+<li><p class="first">Handle: The name of the insturment with which software can use to connect and control the instrument.</p>
+</li>
+<li><p class="first">Clear Device: If set to true clears all the previous settings.</p>
+</li>
+<li><p class="first">Transient Execution:</p>
+</li>
+<li><p class="first">ID Query: If set to true queries the instrument ID and checks that it is valid for this instrument driver.</p>
+</li>
+<li><p class="first">Reset: If this property is true a software command is sent that initializes the instrument back to the default state.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Impedance Parameters: A cluster of parameters that sets the instruments output’s impedance.</dt>
+<dd><p class="first last">-State: If true enables the output impedance.
+-Impedance: The output impedance value that the instrument ouptut will be set to.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Port Type: This informs the instrument what physical connection type exsist between the controller and the instrument.</dt>
+<dd><ul class="first last simple">
+<li>GPIB</li>
+<li>Serial</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Program #: A cluster of properties that allows sets the voltage, current, and various other properties for the output channel.</dt>
+<dd><p class="first">-Program Number: A number identifier for the cluster properties. An operater can store numerous different combinations of properties by using</p>
+<dl class="docutils">
+<dt>-Form: A cluster of the output modes. See form section below for more details.</dt>
+<dd><p class="first">-Single</p>
+<p>-Split</p>
+<p class="last">-Three</p>
+</dd>
+<dt>-Coupling:</dt>
+<dd><p class="first">-Direct</p>
+<p class="last">-Transformer</p>
+</dd>
+</dl>
+<p>-Frequency: The output frequency of all the channel(s).</p>
+<p>-Current Limt: The maximum current any channel on the instrument can provide.</p>
+<p>-Voltage Level: The peak voltage level that channel A can provide.</p>
+<dl class="docutils">
+<dt>-Waveform A: The shape of the output signal from channel A.</dt>
+<dd><p class="first">-Sine</p>
+<p>-Waveform 2</p>
+<p>-Waveform 3</p>
+<p>-Waveform 4</p>
+<p>-Waveform 5</p>
+<p>-Waveform 6</p>
+<p>-Waveform 7</p>
+<p>-Waveform 8</p>
+<p>-Waveform 9</p>
+<p>-Waveform 10</p>
+<p>-Waveform 11</p>
+<p>-Waveform 12</p>
+<p>-Waveform 13</p>
+<p>-Waveform 14</p>
+<p>-Waveform 15</p>
+<p>-Waveform 16</p>
+<p>-Waveform 17</p>
+<p>-Waveform 18</p>
+<p>-Waveform 19</p>
+<p>-Waveform 20</p>
+<p>-Waveform 21</p>
+<p class="last">-Waveform 22</p>
+</dd>
+</dl>
+<p>-Voltage Level: The peak voltage level that channel B can provide.
+-Waveform B: The shape of the output signal from channel B.</p>
+<blockquote>
+<div><p>-Sine</p>
+<p>-Waveform 2</p>
+<p>-Waveform 3</p>
+<p>-Waveform 4</p>
+<p>-Waveform 5</p>
+<p>-Waveform 6</p>
+<p>-Waveform 7</p>
+<p>-Waveform 8</p>
+<p>-Waveform 9</p>
+<p>-Waveform 10</p>
+<p>-Waveform 11</p>
+<p>-Waveform 12</p>
+<p>-Waveform 13</p>
+<p>-Waveform 14</p>
+<p>-Waveform 15</p>
+<p>-Waveform 16</p>
+<p>-Waveform 17</p>
+<p>-Waveform 18</p>
+<p>-Waveform 19</p>
+<p>-Waveform 20</p>
+<p>-Waveform 21</p>
+<p>-Waveform 22</p>
+</div></blockquote>
+<p>-Phase B: The delay in the signal coming from channel B with respect to channel A</p>
+<p>-Voltage Level: The peak voltage level that channel C can provide.</p>
+<dl class="docutils">
+<dt>-Waveform C: The shape of the output signal from channel C.</dt>
+<dd><p class="first">-Sine</p>
+<p>-Waveform 2</p>
+<p>-Waveform 3</p>
+<p>-Waveform 4</p>
+<p>-Waveform 5</p>
+<p>-Waveform 6</p>
+<p>-Waveform 7</p>
+<p>-Waveform 8</p>
+<p>-Waveform 9</p>
+<p>-Waveform 10</p>
+<p>-Waveform 11</p>
+<p>-Waveform 12</p>
+<p>-Waveform 13</p>
+<p>-Waveform 14</p>
+<p>-Waveform 15</p>
+<p>-Waveform 16</p>
+<p>-Waveform 17</p>
+<p>-Waveform 18</p>
+<p>-Waveform 19</p>
+<p>-Waveform 20</p>
+<p>-Waveform 21</p>
+<p class="last">-Waveform 22</p>
+</dd>
+</dl>
+<p class="last">-Phase C: The delay in the signal coming from channel C with respect to channel A</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Source Range: A cluster of properties that allows the user to set the output voltage range of the instrument.</dt>
+<dd><dl class="first docutils">
+<dt>-Range Control: Sets the voltage output range for the instrument.</dt>
+<dd><p class="first">-Auto</p>
+<p>-&lt;110V</p>
+<p>-110V-120.9V</p>
+<p>-121-130.9V</p>
+<p class="last">-&gt;131V</p>
+</dd>
+</dl>
+<p>-Voltage Maximum: The maximum output voltage of the instrument.</p>
+<p>-Voltage Minimum: The minimum output voltage of the instrument.</p>
+<p>-Initial Voltage: The initial output voltage of the ac waveform.</p>
+<p>-Frequency Range: Sets the frequency range of the output waveform.</p>
+<p>-Frequency Maximum: Sets the maximum value of the frequency.</p>
+<p class="last">-Frequency Minimum: Sets the minimum value of the freqeuncy.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Measurements: A collection of properties that allow user to control the instuments measurements.</dt>
+<dd><ul class="first last">
+<li><p class="first">Handle: The name of the instrument and channel with which the software will use to collect measurements.</p>
+</li>
+<li><p class="first">Name: A distinct software name that an operator may use to distinguish instruments and/or channels.</p>
+</li>
+<li><p class="first">Enabled: This property determines if the measurement data is acquired or not.</p>
+</li>
+<li><p class="first">Channel Name: This property sets the measurement to acquire from the selected internal channel name.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Measurement Type:  A property that determines what type of measurement the instrument will report back.</dt>
+<dd><p class="first">-Voltage RMS L-N</p>
+<p>-Voltage RMS L-L</p>
+<p>-Frequency</p>
+<p>-Current RMS</p>
+<p>-Current Peak</p>
+<p>-Crest Factor</p>
+<p>-Power Factor</p>
+<p>-Power VA</p>
+<p class="last">-Real Power</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Measurement RefreshTime: The time to wait between the instruments’ measurements.</p>
+</li>
+<li><p class="first">Cancel: Closes the window and discards any changes to the settings</p>
+</li>
+<li><p class="first">Save: Closes the panel and saves these settings to an INI file.</p>
+</li>
+<li><p class="first">Save As: Closes the panel and saves these settings to a different INI file in the same file location.</p>
+</li>
+</ul>
+</div></blockquote>
+<div class="section" id="form">
+<h5>3.1.12.1.1. Form<a class="headerlink" href="#form" title="Permalink to this headline">¶</a></h5>
+<p><em>The following variables are used by every operation mode</em></p>
+<blockquote>
+<div><ul class="simple">
+<li>One - Output is taken from a single channel Phase A.</li>
+<li>Split - Output is taken from two channels Phase A and B.</li>
+<li>Three - Output is taken from all three channels Phase A, B, and C.</li>
+</ul>
+</div></blockquote>
+<p><a class="reference internal" href="_images/image7.png"><img alt="image7" src="_images/image7.png" style="width: 9in;" /></a></p>
 </div>
-<div class="section" id="range-check">
-<h2>Range Check<a class="headerlink" href="#range-check" title="Permalink to this headline">¶</a></h2>
-<p>The Range Check vi checks to see whether or not the variables being configured into the VI are valid. It functions as an SSM, in which the user specifies an array of variables to check before calling the vi. It has the following case statements:</p>
-<ul class="simple">
-<li><dl class="first docutils">
-<dt>ILoad: The current of the load, in Amperes.</dt>
-<dd><ul class="first last">
-<li>Range: 0 &lt; <em>ILoad</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
-<li>Modes Used: AC CC, DC CC, and DC Rectified</li>
-</ul>
-</dd>
+</div>
+<div class="section" id="id9">
+<h4>3.1.12.2. Unique Methods<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>CheckHandle()</dt>
+<dd>Check to see if the input handle is already connected.</dd>
+<dt>CheckSettings</dt>
+<dd>Checks the value of the instrument settings and returns an error if the value is outside the instruments range.</dd>
+<dt>ChromaProtectionStatus()</dt>
+<dd>Retrieves a string status from the Chroma indicating any measurment errors.</dd>
+<dt>ConvertStatus()</dt>
+<dd>Converts the instruments numerical status into a string status.</dd>
+<dt>DisableControls</dt>
+<dd>disables the controls in the phases cluster based on the Configuration Mode control. This will enable the user to only change the values of the controls that are allowed by that mode.</dd>
+<dt>NumOfPhases</dt>
+<dd>Checks the number of phases and ensures it is less than or equal to three.</dd>
+<dt>SupportedMeasurementType</dt>
+<dd>Checks if the Measurment Type(s) selected is capable by the instrument based on the current instruments configuration.</dd>
+<dt>VariantToProperties</dt>
+<dd>Extracts the PluginConfigVariant, PluginMeasVariant, and Measurement Refersh Time. Converts PluginConfigVariant and PluginMeasVariant into the Configuration and Measurement Cluster.</dd>
+<dt>WriteToBaseConfigVariant</dt>
+<dd>Writes to the PluginConfigVariant and the PluginMeasVariant properties.</dd>
 </dl>
-</li>
-<li><dl class="first docutils">
-<dt>Current Limit: The maximum RMS current of the load, in Amperes.</dt>
-<dd><ul class="first last">
-<li>Range: 0 &lt; <em>Current Limit</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
-<li>Modes Used: AC CC, AC CP, AC CR, RLC CP</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>CF: The crest factor of the device.</dt>
-<dd><ul class="first last">
-<li>Range: 1.414 <span class="math notranslate nohighlight">\(\le\)</span> <em>CF</em> <span class="math notranslate nohighlight">\(\le\)</span> 5</li>
-<li>Modes Used: AC CC, AC CP, AC CR, and DC Rectified</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Constant PF: The power factor for non-RLC AC loads.</dt>
-<dd><ul class="first last">
-<li>Range: 0 &lt; <em>PF</em> <span class="math notranslate nohighlight">\(\le\)</span> 1</li>
-<li>Modes Used: AC CC, AC CP, AC CR</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>RLC PF: The power factor of RLC loads.</dt>
-<dd><ul class="first last">
-<li>Range: .4 <span class="math notranslate nohighlight">\(\le\)</span> <em>PF</em> <span class="math notranslate nohighlight">\(\le\)</span> .75</li>
-<li>Modes Used: RLC CP</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>DC Ipeak: The maximum peak current allowed through a DC load, in Amperes.</dt>
-<dd><ul class="first last">
-<li>Range: 0 &lt; <em>Ipeak</em> <span class="math notranslate nohighlight">\(\le\)</span> 36</li>
-<li>Modes Used: DC CC, DC CP, DC CV, DC CR, and DC Rectified</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Inrush Ipeak: The maximum peak current allowed through an RLC Inrush load, in Amperes.</dt>
-<dd><ul class="first last">
-<li>Range: 0 &lt; <em>Ipeak</em> <span class="math notranslate nohighlight">\(\le\)</span> 160</li>
-<li>Modes Used: RLC Inrush</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>AC Ipeak: The maximum peak current allowed through an AC load, in Amperes.</dt>
-<dd><ul class="first last">
-<li>Range: 0 &lt; <em>Ipeak</em> <span class="math notranslate nohighlight">\(\le\)</span> 108</li>
-<li>Modes Used: AC CC, RLC, and AC CP</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Load Power: The power of the load, in Watts.</dt>
-<dd><ul class="first last">
-<li>Range: 0 &lt; <em>Load Power</em> <span class="math notranslate nohighlight">\(\le\)</span> 3600</li>
-<li>Modes Used: DC CP and AC CP</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>RLC Power: The power of the RLC load, in Watts.</dt>
-<dd><ul class="first last">
-<li>Range: 200 <span class="math notranslate nohighlight">\(\le\)</span> <em>Load Power</em> <span class="math notranslate nohighlight">\(\le\)</span> 3600</li>
-<li>Modes Used: RLC CP</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>DC Voltage: The voltage level of the DC load, in Volts.</dt>
-<dd><ul class="first last">
-<li>Range: 7.5 <span class="math notranslate nohighlight">\(\le\)</span> <em>Voltage</em> <span class="math notranslate nohighlight">\(\le\)</span> 500</li>
-<li>Modes Used: DC CV</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>AC Voltage: The voltage level of the AC load, in volts.</dt>
-<dd><ul class="first last">
-<li>Range: 50 <span class="math notranslate nohighlight">\(\le\)</span> <em>Voltage</em> <span class="math notranslate nohighlight">\(\le\)</span> 350</li>
-<li>Modes Used: AC CP</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>AC R Load: The resistance of the AC load, in <span class="math notranslate nohighlight">\(\Omega\)</span>.</dt>
-<dd><ul class="first last">
-<li>Range: 1.39 <span class="math notranslate nohighlight">\(\le\)</span> <span class="math notranslate nohighlight">\(\Omega\)</span> <span class="math notranslate nohighlight">\(\le\)</span> 2500</li>
-<li>Modes Used: AC CR</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>DC R Load: The resistance of the DC load, in <span class="math notranslate nohighlight">\(\Omega\)</span>.</dt>
-<dd><ul class="first last">
-<li>Range: 1.25 <span class="math notranslate nohighlight">\(\le\)</span> <span class="math notranslate nohighlight">\(\Omega\)</span> <span class="math notranslate nohighlight">\(\le\)</span> 1000</li>
-<li>Modes Used: DC CR</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Frequency: The frequency of the load, in Herz.</dt>
-<dd><ul class="first last">
-<li>Range: 45 <span class="math notranslate nohighlight">\(\le\)</span> <em>frequency</em> <span class="math notranslate nohighlight">\(\le\)</span> 440</li>
-<li>Modes Used: DC Rectified</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Fall Slew: The fall slew rate of the load, in</dt>
-<dd><ul class="first last">
-<li>Range: 4 <span class="math notranslate nohighlight">\(\le\)</span> <em>Slew Rate</em> <span class="math notranslate nohighlight">\(\le\)</span> 600</li>
-<li>Modes Used: DC CC and DC CR</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Rise Slew: The rise slew rate of the load, in</dt>
-<dd><ul class="first last">
-<li>Range: 4 <span class="math notranslate nohighlight">\(\le\)</span> <em>Slew Rate</em> <span class="math notranslate nohighlight">\(\le\)</span> 600</li>
-<li>Modes Used: DC CC and DC CR</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>RS: The series resistance of the RLC system, in <span class="math notranslate nohighlight">\(\Omega\)</span>.</dt>
-<dd><ul class="first last">
-<li>Range: 0 <span class="math notranslate nohighlight">\(\le\)</span> <em>Series Resistance</em> <span class="math notranslate nohighlight">\(\le\)</span> 9.999</li>
-<li>Modes Used: RLC and RLC Inrush</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>RL: The parallel resistance of the RLC system, in <span class="math notranslate nohighlight">\(\Omega\)</span>.</dt>
-<dd><ul class="first last">
-<li>Range: 1.39 <span class="math notranslate nohighlight">\(\le\)</span> <em>Parallel Resistance</em> <span class="math notranslate nohighlight">\(\le\)</span> 9999.99</li>
-<li>Modes Used: RLC and RLC Inrush</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>LS: The inductance of the RLC system, in <span class="math notranslate nohighlight">\(\mu H\)</span>.</dt>
-<dd><ul class="first last">
-<li>Range: 0 &lt; <em>Series Inductance</em> <span class="math notranslate nohighlight">\(\le\)</span> 9999</li>
-<li>Modes Used: RLC and RLC Inrush</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>C: The capacitance of the RLC system, in <span class="math notranslate nohighlight">\(\mu F\)</span>.</dt>
-<dd><ul class="first last">
-<li>Range: 100 <span class="math notranslate nohighlight">\(\le\)</span> <em>Parallel Capacitance</em> <span class="math notranslate nohighlight">\(\le\)</span> 9999</li>
-<li>Modes Used: RLC and RLC Inrush</li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
+</div>
+</div>
 </div>
 <div class="section" id="code-design">
-<h2>Code Design<a class="headerlink" href="#code-design" title="Permalink to this headline">¶</a></h2>
+<h2>3.2. Code Design<a class="headerlink" href="#code-design" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="miscellaneous">
-<h3>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h3>
+<h3>3.2.1. Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h3>
+<p><a href="#id10"><span class="problematic" id="id11">*</span></a>Properties are inhereted by the IVI Instrument Driver Class Specification. All Instrument drivers must have this method and property.</p>
 <div class="section" id="recommended-improvements">
-<h4>Recommended Improvements<a class="headerlink" href="#recommended-improvements" title="Permalink to this headline">¶</a></h4>
-<p>-The project currently has a “load short circuited variable” that is not wired up to anything. There’s a VI that can use this variable, but it seemed more appropriate to attach this VI to a separate call, rather than the “Config device” call.</p>
+<h4>3.2.1.1. Recommended Improvements<a class="headerlink" href="#recommended-improvements" title="Permalink to this headline">¶</a></h4>
+<p>-description of properties for the base extension groups
+-Verify that properties/methods inhereted from the base class and used in the children class aren’t repeated.
+-Note which properties/methods inhereted from the base class and are unused in the children class.
+-Group children class properties based on the IVI guidlines (significant change requiring a change to the module code)
+-edit the Code Almanac below</p>
 </div>
 </div>
 </div>
 <div class="section" id="code-almanac">
-<h2>Code Almanac<a class="headerlink" href="#code-almanac" title="Permalink to this headline">¶</a></h2>
+<h2>3.3. Code Almanac<a class="headerlink" href="#code-almanac" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="acpwrmodule-lvlib">
-<h3>AcPwrModule.lvlib<a class="headerlink" href="#acpwrmodule-lvlib" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="private">
-<h4>Private<a class="headerlink" href="#private" title="Permalink to this headline">¶</a></h4>
-<div class="section" id="acpwrclass-vi">
-<h5>AcPwrClass vi<a class="headerlink" href="#acpwrclass-vi" title="Permalink to this headline">¶</a></h5>
+<h3>3.3.1. AcPwrModule.lvlib<a class="headerlink" href="#acpwrmodule-lvlib" title="Permalink to this headline">¶</a></h3>
 <p>The AcPwrClass vi acts as a general control for the “Main” module.</p>
 <blockquote>
 <div><table border="1" class="docutils">
@@ -699,9 +983,6 @@ Transfer</dd>
 </tbody>
 </table>
 </div></blockquote>
-</div>
-<div class="section" id="acpwrstate-vi">
-<h5>AcPwrState.vi<a class="headerlink" href="#acpwrstate-vi" title="Permalink to this headline">¶</a></h5>
 <p>The AcPwrState vi acts as a way to control the measurements of the device.</p>
 <blockquote>
 <div><table border="1" class="docutils">
@@ -728,8 +1009,6 @@ Transfer</dd>
 </div>
 </div>
 </div>
-</div>
-</div>
 
 
           </div>
@@ -739,72 +1018,74 @@ Transfer</dd>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Ac Power Module</a><ul>
-<li><a class="reference internal" href="#operation-modes">Operation Modes</a><ul>
-<li><a class="reference internal" href="#chromaacload-lvclass">ChromaAcLoad.lvclass</a><ul>
-<li><a class="reference internal" href="#general-variables">General Variables</a></li>
+<li><a class="reference internal" href="#">3. AC Power Module</a><ul>
+<li><a class="reference internal" href="#class-specification">3.1. Class Specification</a><ul>
+<li><a class="reference internal" href="#baseclass">3.1.1. BaseClass</a><ul>
+<li><a class="reference internal" href="#properties">3.1.1.1. Properties</a></li>
+<li><a class="reference internal" href="#methods">3.1.1.2. Methods</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#ac-modes">AC Modes</a><ul>
-<li><a class="reference internal" href="#cc-constant-current">CC (Constant Current)</a></li>
-<li><a class="reference internal" href="#cp-constant-power">CP (Constant Power)</a></li>
-<li><a class="reference internal" href="#cr-constant-resistance">CR (Constant Resistance)</a></li>
-<li><a class="reference internal" href="#rlc">RLC</a></li>
-<li><a class="reference internal" href="#rlc-cp">RLC CP</a></li>
-<li><a class="reference internal" href="#inrush">Inrush</a></li>
+<li><a class="reference internal" href="#measurement-extension-group">3.1.2. Measurement Extension Group</a><ul>
+<li><a class="reference internal" href="#id1">3.1.2.1. Methods</a></li>
+<li><a class="reference internal" href="#id2">3.1.2.2. Properties</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#dc-modes">DC Modes</a><ul>
-<li><a class="reference internal" href="#id1">CC (Constant Current)</a></li>
-<li><a class="reference internal" href="#id2">CP (Constant Power)</a></li>
-<li><a class="reference internal" href="#cv">CV</a></li>
-<li><a class="reference internal" href="#id3">CR (Constant Resistance)</a></li>
-<li><a class="reference internal" href="#rectified">Rectified</a></li>
+<li><a class="reference internal" href="#phase-extension-group">3.1.3. Phase Extension Group</a></li>
+<li><a class="reference internal" href="#current-protection-extension-group">3.1.4. Current Protection Extension Group</a></li>
+<li><a class="reference internal" href="#voltage-protection-extension-group">3.1.5. Voltage Protection Extension Group</a></li>
+<li><a class="reference internal" href="#impedance-extension-group">3.1.6. Impedance Extension Group</a></li>
+<li><a class="reference internal" href="#dcgeneration-extension-group">3.1.7. DCGeneration Extension Group</a></li>
+<li><a class="reference internal" href="#non-ivi-extension-group">3.1.8. NON-IVI Extension Group</a><ul>
+<li><a class="reference internal" href="#id3">3.1.8.1. Properties</a></li>
+<li><a class="reference internal" href="#id4">3.1.8.2. Methods</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#chroma-acload-class">3.1.9. Chroma AcLoad Class</a><ul>
+<li><a class="reference internal" href="#configuration-dialog-properties-and-operation-modes">3.1.9.1. Configuration Dialog Properties and Operation Modes</a></li>
+<li><a class="reference internal" href="#unique-methods">3.1.9.2. Unique Methods</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#class-specification">Class Specification</a><ul>
-<li><a class="reference internal" href="#acpwrbaseclass">AcPwrBaseClass</a><ul>
-<li><a class="reference internal" href="#properties">Properties</a></li>
-<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#nhrdc-power-class">3.1.10. NHRDC Power Class</a><ul>
+<li><a class="reference internal" href="#configuration-dialog-properties-and-operation-mode">3.1.10.1. Configuration Dialog Properties and Operation Mode</a></li>
+<li><a class="reference internal" href="#id5">3.1.10.2. Unique Methods</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#measurement-extension-group">Measurement Extension Group</a><ul>
-<li><a class="reference internal" href="#id4">Properties</a></li>
-<li><a class="reference internal" href="#id5">Methods</a></li>
+<li><a class="reference internal" href="#nhr-regenerative-grid-simulator">3.1.11. NHR Regenerative Grid Simulator</a><ul>
+<li><a class="reference internal" href="#id6">3.1.11.1. Configuration Dialog Properties and Operation Modes</a><ul>
+<li><a class="reference internal" href="#mode">3.1.11.1.1. Mode</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#chromaacloadclass">ChromaAcLoadClass</a><ul>
-<li><a class="reference internal" href="#id6">Properties</a></li>
-<li><a class="reference internal" href="#id7">Methods</a></li>
+<li><a class="reference internal" href="#id7">3.1.11.2. Unique Methods</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#pacific-power-source">3.1.12. Pacific Power Source</a><ul>
+<li><a class="reference internal" href="#id8">3.1.12.1. Configuration Dialog Properties and Operation Modes</a><ul>
+<li><a class="reference internal" href="#form">3.1.12.1.1. Form</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#range-check">Range Check</a></li>
-<li><a class="reference internal" href="#code-design">Code Design</a><ul>
-<li><a class="reference internal" href="#miscellaneous">Miscellaneous</a><ul>
-<li><a class="reference internal" href="#recommended-improvements">Recommended Improvements</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#code-almanac">Code Almanac</a><ul>
-<li><a class="reference internal" href="#acpwrmodule-lvlib">AcPwrModule.lvlib</a><ul>
-<li><a class="reference internal" href="#private">Private</a><ul>
-<li><a class="reference internal" href="#acpwrclass-vi">AcPwrClass vi</a></li>
-<li><a class="reference internal" href="#acpwrstate-vi">AcPwrState.vi</a></li>
+<li><a class="reference internal" href="#id9">3.1.12.2. Unique Methods</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="#code-design">3.2. Code Design</a><ul>
+<li><a class="reference internal" href="#miscellaneous">3.2.1. Miscellaneous</a><ul>
+<li><a class="reference internal" href="#recommended-improvements">3.2.1.1. Recommended Improvements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#code-almanac">3.3. Code Almanac</a><ul>
+<li><a class="reference internal" href="#acpwrmodule-lvlib">3.3.1. AcPwrModule.lvlib</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="errors.html"
+                        title="previous chapter">2. Error Codes</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -834,6 +1115,9 @@ Transfer</dd>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="errors.html" title="2. Error Codes"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &#187;</li> 
       </ul>
     </div>
