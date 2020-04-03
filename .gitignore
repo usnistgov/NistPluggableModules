@@ -42,3 +42,5 @@
 /SpecAn/*.aliases
 /SpecAn/*.lvlps
 build
+/doc/sphinx/source/AcPwrOld.rst
+/SpecAn/SpecAnPlugins/Main2.vi
