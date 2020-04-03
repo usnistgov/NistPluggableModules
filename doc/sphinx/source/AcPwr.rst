@@ -125,13 +125,13 @@ Phase Extension Group
 Figure \: AcPwrPhase Extension Group UML specification
 
 Current Protection Extension Group   
-============================
+==================================
 |image15|
 
 Figure \: AcPwrCurrent Protection Extension Group UML specification
 
 Voltage Protection Extension Group   
-============================
+==================================
 |image16|
 
 Figure \: AcPwrVoltage Protection Extension Group UML specification
@@ -352,7 +352,7 @@ and unique methods of the NHR 9200 DC Battery Test System.*
 |image9|
 
 Configuration Dialog Properties and Operation Mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 |image3|
@@ -409,7 +409,9 @@ Configuration Dialog Properties and Operation Mode
 					-Power Greater Than or Equal To
 					
 					-Power Less Than Or Equal To
+
 				-Macro After Step Delay: This property allows the uer to set a time delay in seconds after each step.
+
 			- SlewRate: A cluster of properties used to set the slew rate
 				-Set Voltage Rate V/S: This property sets how quickly the Voltage can change per second. 
 				
@@ -496,7 +498,7 @@ The NHR Regenerative Grid Simulator is a three channel AC or DC Output that can 
 |image10|
 
 Configuration Dialog Properties and Operation Modes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The following section lists every user accesible property of the NHR 9210 AC/DC RegenerativeGrid Simulator. 
 
 |image4|
@@ -612,12 +614,14 @@ The following section lists every user accesible property of the NHR 9210 AC/DC 
 	- Cancel:Closes the window and discards any changes to the settings
 	- Save:Closes the panel and saves these settings to an INI file. 
 	- Save As:Closes the panel and saves these settings to a different INI file in the same file location. 
+
 Mode
 ----
 
 *The following variables are used by every operation mode*
 
 	- Mode: The operation modes of the device. The user must be careful to select an appropriate mode that matches the physical configuration the instrument is currently configured for and the type of loads connected to the instrument. 
+
 |image6|
 
 *These are the various modes of the NI 9410 Regenrative Grid Simulator.* 
@@ -660,7 +664,7 @@ The Pacific Power 360AMXT is a three channel AC Souurce that supports combining 
 |image11|
 
 Configuration Dialog Properties and Operation Modes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *The following section lists every user accesible property of the PPS360AMXT Pacific Power Supply.* 
 
 |image5|
@@ -694,6 +698,7 @@ Configuration Dialog Properties and Operation Modes
 					-Direct
 					
 					-Transformer
+				
 				-Frequency: The output frequency of all the channel(s).
 				
 				-Current Limt: The maximum current any channel on the instrument can provide. 
@@ -742,9 +747,11 @@ Configuration Dialog Properties and Operation Modes
 					-Waveform 20
 					
 					-Waveform 21
-					
+
 					-Waveform 22
+
 				-Voltage Level: The peak voltage level that channel B can provide.
+				
 				-Waveform B: The shape of the output signal from channel B.
 					-Sine
 					
@@ -785,10 +792,11 @@ Configuration Dialog Properties and Operation Modes
 					-Waveform 19
 					
 					-Waveform 20
-					
+
 					-Waveform 21
 					
 					-Waveform 22
+
 				-Phase B: The delay in the signal coming from channel B with respect to channel A
 				
 				-Voltage Level: The peak voltage level that channel C can provide.
@@ -837,18 +845,20 @@ Configuration Dialog Properties and Operation Modes
 					-Waveform 21
 					
 					-Waveform 22
+
 				-Phase C: The delay in the signal coming from channel C with respect to channel A
 			- Source Range: A cluster of properties that allows the user to set the output voltage range of the instrument. 
 				-Range Control: Sets the voltage output range for the instrument. 
 					-Auto
 					
 					-<110V
-					
+
 					-110V-120.9V
 					
 					-121-130.9V
 					
 					->131V
+
 				-Voltage Maximum: The maximum output voltage of the instrument. 
 				
 				-Voltage Minimum: The minimum output voltage of the instrument. 
@@ -896,6 +906,7 @@ Form
 	- One - Output is taken from a single channel Phase A. 
 	- Split - Output is taken from two channels Phase A and B. 
 	- Three - Output is taken from all three channels Phase A, B, and C. 
+
 |image7|
 
 Unique Methods
@@ -937,10 +948,10 @@ Code Design
 Miscellaneous
 =============
 
-*Properties are inhereted by the IVI Instrument Driver Class Specification. All Instrument drivers must have this method and property. 
+*Properties are inhereted by the IVI Instrument Driver Class Specification. All Instrument drivers must have this method and property.* 
 
 Recommended Improvements
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
 -description of properties for the base extension groups
 -Verify that properties/methods inhereted from the base class and used in the children class aren't repeated. 
 -Note which properties/methods inhereted from the base class and are unused in the children class.
@@ -955,12 +966,10 @@ AcPwrModule.lvlib
 =================
 
 Private
--------
-
-
+~~~~~~~
 
 AcPwrClass vi
-^^^^^^^^^^^^^
+--------------
 The AcPwrClass vi acts as a general control for the "Main" module.
 	
 	+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -975,7 +984,7 @@ The AcPwrClass vi acts as a general control for the "Main" module.
 	
 
 AcPwrState.vi
-^^^^^^^^^^^^^
+-------------
 
 The AcPwrState vi acts as a way to control the measurements of the device.
 	
