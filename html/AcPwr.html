@@ -15,10 +15,10 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Appendix A Pluggable Module Reference" href="moduleAppendix.html" />
     <link rel="prev" title="2. Error Codes" href="errors.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -27,6 +27,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="moduleAppendix.html" title="4. Appendix A Pluggable Module Reference"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="errors.html" title="2. Error Codes"
              accesskey="P">previous</a> |</li>
@@ -778,10 +781,10 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 <p class="last">-Waveform 22</p>
 </dd>
 </dl>
-<p>-Voltage Level: The peak voltage level that channel B can provide.
--Waveform B: The shape of the output signal from channel B.</p>
-<blockquote>
-<div><p>-Sine</p>
+<p>-Voltage Level: The peak voltage level that channel B can provide.</p>
+<dl class="docutils">
+<dt>-Waveform B: The shape of the output signal from channel B.</dt>
+<dd><p class="first">-Sine</p>
 <p>-Waveform 2</p>
 <p>-Waveform 3</p>
 <p>-Waveform 4</p>
@@ -802,8 +805,9 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 <p>-Waveform 19</p>
 <p>-Waveform 20</p>
 <p>-Waveform 21</p>
-<p>-Waveform 22</p>
-</div></blockquote>
+<p class="last">-Waveform 22</p>
+</dd>
+</dl>
 <p>-Phase B: The delay in the signal coming from channel B with respect to channel A</p>
 <p>-Voltage Level: The peak voltage level that channel C can provide.</p>
 <dl class="docutils">
@@ -945,7 +949,7 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 <h2>3.2. Code Design<a class="headerlink" href="#code-design" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="miscellaneous">
 <h3>3.2.1. Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h3>
-<p><a href="#id10"><span class="problematic" id="id11">*</span></a>Properties are inhereted by the IVI Instrument Driver Class Specification. All Instrument drivers must have this method and property.</p>
+<p><em>Properties are inhereted by the IVI Instrument Driver Class Specification. All Instrument drivers must have this method and property.</em></p>
 <div class="section" id="recommended-improvements">
 <h4>3.2.1.1. Recommended Improvements<a class="headerlink" href="#recommended-improvements" title="Permalink to this headline">¶</a></h4>
 <p>-description of properties for the base extension groups
@@ -960,6 +964,10 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 <h2>3.3. Code Almanac<a class="headerlink" href="#code-almanac" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="acpwrmodule-lvlib">
 <h3>3.3.1. AcPwrModule.lvlib<a class="headerlink" href="#acpwrmodule-lvlib" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="private">
+<h4>3.3.1.1. Private<a class="headerlink" href="#private" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="acpwrclass-vi">
+<h5>3.3.1.1.1. AcPwrClass vi<a class="headerlink" href="#acpwrclass-vi" title="Permalink to this headline">¶</a></h5>
 <p>The AcPwrClass vi acts as a general control for the “Main” module.</p>
 <blockquote>
 <div><table border="1" class="docutils">
@@ -983,6 +991,9 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 </tbody>
 </table>
 </div></blockquote>
+</div>
+<div class="section" id="acpwrstate-vi">
+<h5>3.3.1.1.2. AcPwrState.vi<a class="headerlink" href="#acpwrstate-vi" title="Permalink to this headline">¶</a></h5>
 <p>The AcPwrState vi acts as a way to control the measurements of the device.</p>
 <blockquote>
 <div><table border="1" class="docutils">
@@ -1006,6 +1017,8 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 </tbody>
 </table>
 </div></blockquote>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1076,7 +1089,14 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 </ul>
 </li>
 <li><a class="reference internal" href="#code-almanac">3.3. Code Almanac</a><ul>
-<li><a class="reference internal" href="#acpwrmodule-lvlib">3.3.1. AcPwrModule.lvlib</a></li>
+<li><a class="reference internal" href="#acpwrmodule-lvlib">3.3.1. AcPwrModule.lvlib</a><ul>
+<li><a class="reference internal" href="#private">3.3.1.1. Private</a><ul>
+<li><a class="reference internal" href="#acpwrclass-vi">3.3.1.1.1. AcPwrClass vi</a></li>
+<li><a class="reference internal" href="#acpwrstate-vi">3.3.1.1.2. AcPwrState.vi</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1086,6 +1106,9 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="errors.html"
                         title="previous chapter">2. Error Codes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="moduleAppendix.html"
+                        title="next chapter">4. Appendix A Pluggable Module Reference</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -1115,6 +1138,9 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="moduleAppendix.html" title="4. Appendix A Pluggable Module Reference"
+             >next</a> |</li>
         <li class="right" >
           <a href="errors.html" title="2. Error Codes"
              >previous</a> |</li>

@@ -7,16 +7,16 @@ Welcome to NistPluggableModules's documentation!
 ================================================
 
 Contents:
-=========
 
 .. toctree::
    :maxdepth: 2
-
-      introduction <index.rst>
-      GettingStarted <GettingStarted.rst>
-      errors <errors.rst>
-      AcPwr <AcPwr.rst>
-      moduleAppendix <noduleAppendix.rst>
+   :numbered:
+   
+   introduction 
+   GettingStarted
+   errors
+   AcPwr
+   moduleAppendix
 
 ..
    Indices and tables

@@ -15,7 +15,6 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -45,9 +44,7 @@
             
   <div class="section" id="error-codes">
 <span id="errors"></span><h1>2. Error Codes<a class="headerlink" href="#error-codes" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><blockquote>
-<div><table border="1" class="colwidths-given docutils" id="id1">
+<table border="1" class="colwidths-given docutils" id="id1">
 <caption><span class="caption-text">General Error Codes</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="10%" />
@@ -108,7 +105,63 @@
 </tbody>
 </table>
 <table border="1" class="colwidths-given docutils" id="id3">
-<caption><span class="caption-text">Digitizer Module Error Codes</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Sync Module Error Codes</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="10%" />
+<col width="45%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CODE</th>
+<th class="head">ERROR</th>
+<th class="head">COMMENT</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>22001</td>
+<td>Clock Name: %s Not Found</td>
+<td>Configure Clock command passed a clock name that was not found in the array of module clock properties</td>
+</tr>
+<tr class="row-odd"><td>22002</td>
+<td>Unsupported Clock Type %s</td>
+<td>The Named Clock has a clock type that is not handled by the configure clocks method</td>
+</tr>
+<tr class="row-even"><td>22003</td>
+<td>Unable to Synchronize Timing System to Clock Reference.  Be sure a cable is connected from the clock reference output to the ClkIn of the timing card</td>
+<td>The timing card uses a PLL to synchronize to an external timing reference (GPS, 1588, ETc.) Generally this is a 10 MHz clock input.</td>
+</tr>
+<tr class="row-odd"><td>22004</td>
+<td>Trigger Name: %s Not Found</td>
+<td>Configure Trigger command passed a trigger name that was not found in the array of module trigger properties</td>
+</tr>
+<tr class="row-even"><td>22005</td>
+<td>Unsupported Trigger Type %s</td>
+<td>The Named Trigger has a trigger type that is not handled by the configure triggers method</td>
+</tr>
+<tr class="row-odd"><td>22006</td>
+<td>Trigger Name %s is not a %s trigger type.  Check the INI file</td>
+<td>The Named Trigger has a trigger type that does not match the trigger type being handled.</td>
+</tr>
+<tr class="row-even"><td>22007</td>
+<td>Trigger Name %s Timestamping has not been Enabled</td>
+<td>An attempt to read a trigger timestamp was made to a trigger which has not had timestamping enabled</td>
+</tr>
+<tr class="row-odd"><td>22008</td>
+<td>Warning: Windows clock synchronization can only occur is LabVIEW is being run as administrator. Either:1) Ensure LabVIEW was started with Run As Administrator OR 2) Open Sync Module Settings and disable SyncWinClk.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>22009</td>
+<td>Reference Clock Not Present: Status = %s</td>
+<td>The Reference Clock is not operating</td>
+</tr>
+<tr class="row-odd"><td>22010</td>
+<td>Time out &lt; %d ms while waiting for Sync Loop to stop</td>
+<td>The Sync look was requested to stop in the indicated time but for some reason did not.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given docutils" id="id4">
+<caption><span class="caption-text">Digitizer Module Error Codes</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="10%" />
 <col width="45%" />
@@ -131,9 +184,7 @@
 </tr>
 <tr class="row-even"><td>23003</td>
 <td>%d Pretrigger samples can only work with a Reference trigger source</td>
-<td><blockquote class="first last">
-<div>Either set the pretrigger samples to 0 or set the Trigger source to Reference.</div></blockquote>
-</td>
+<td>Either set the pretrigger samples to 0 or set the Trigger source to Reference.</td>
 </tr>
 <tr class="row-odd"><td>23004</td>
 <td>Invalid or unknown trigger source %s</td>
@@ -141,8 +192,8 @@
 </tr>
 </tbody>
 </table>
-<table border="1" class="colwidths-given docutils" id="id4">
-<caption><span class="caption-text">Function Generator Error Codes</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-given docutils" id="id5">
+<caption><span class="caption-text">Function Generator Error Codes</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="10%" />
 <col width="45%" />
@@ -165,9 +216,8 @@
 </tr>
 </tbody>
 </table>
-</div></blockquote>
-<table border="1" class="colwidths-given docutils" id="id5">
-<caption><span class="caption-text">Analysis Class Error Codes</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-given docutils" id="id6">
+<caption><span class="caption-text">Analysis Class Error Codes</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="10%" />
 <col width="45%" />
@@ -190,83 +240,178 @@
 </tr>
 </tbody>
 </table>
-<table border="1" class="docutils" id="id6">
-<caption><span class="caption-text">Test Class Error Codes
-   :header: “CODE”, “ERROR”, “COMMENT”
-   :widths: 10,45,45</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<table border="1" class="colwidths-given docutils" id="id7">
+<caption><span class="caption-text">AC Pwr Error Codes</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
+<col width="10%" />
+<col width="45%" />
+<col width="45%" />
 </colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CODE</th>
+<th class="head">ERROR</th>
+<th class="head">COMMENT</th>
+</tr>
+</thead>
 <tbody valign="top">
-<tr class="row-odd"><td>30001</td>
+<tr class="row-even"><td>26001</td>
+<td>Operation mode %s is only compatible with AC</td>
+<td>The user selected an AC-only operation mode, but attempted to treat the device as a DC system. The configuration was cancelled.</td>
+</tr>
+<tr class="row-odd"><td>26002</td>
+<td>Operation mode %s is only compatible with DC</td>
+<td>The user selected a DC-only operation mode, but attempted to treat the device as an AC system. The configuration was cancelled.</td>
+</tr>
+<tr class="row-even"><td>26003</td>
+<td>Maximum AC Power Load %d is not above 0.</td>
+<td>The user attempted to set the maximum AC Power Load to 0 or a negative value, making it impossible for the load to dissipate power.</td>
+</tr>
+<tr class="row-odd"><td>26004</td>
+<td>Slew Rates can only be controlled when load is in CR and CC operation modes.</td>
+<td>A function call was made to alter the slew rates of the function while the load was set to an operating mode in which the slew rates cannot be managed.</td>
+</tr>
+<tr class="row-even"><td>26005</td>
+<td>Operation mode % is not compatible with RLC operations.</td>
+<td>A function call was made to configure the RLC values of the device, though the device is in a non-RLC operation mode.</td>
+</tr>
+<tr class="row-odd"><td>26006</td>
+<td>The %s of %#g was outside of the parameter’s range of %#g-%#g..</td>
+<td>A parameter was selected that fell outside of its appropriate range; please set the parameter to fall within the range.</td>
+</tr>
+<tr class="row-even"><td>26007</td>
+<td>The module attempted to range check an invalid parameter %s.</td>
+<td>RangeCheck.vi attempted to run a check that didn’t exist. Check the string calling the variable and adjust it so it fits an appropriate value.</td>
+</tr>
+<tr class="row-odd"><td>26008</td>
+<td>The number of loads %d must be equal to the number of phases %d.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>26009</td>
+<td>The module received a command to initialize the device but is currently acquiring data. Abort the acquistion and close the reference in order to initialize a session to the device.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>26010</td>
+<td>The number of phases required by the mode %d does not match the number of configured modes %d.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>26011</td>
+<td>The number of phases configured %d must be less than or equal to 3.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>26012</td>
+<td>Measurement Type %s is not currently supported.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>26013</td>
+<td>Measurement Handle %s does not match Output Handle.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>26014</td>
+<td>The %s cannot be zero.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>26015</td>
+<td>The %s cannot be zero.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>26016</td>
+<td>The configured fetch time %g seconds must be greater than the set aperture time of %g seconds.</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given docutils" id="id8">
+<caption><span class="caption-text">SpecAn Error Codes</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="10%" />
+<col width="45%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CODE</th>
+<th class="head">ERROR</th>
+<th class="head">COMMENT</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>27001</td>
+<td>The plugin’s acquisiton mode cannot be changed while acquiring data. Abort the acquisiton then change the acquisition mode.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>27002</td>
+<td>The module received a command to initialize the device but is currently acquiring data. Abort the acquistion and close the reference in order to initialize a session to the device.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>27003</td>
+<td>The module received a command to initiate acquisition but is currently acquiring data. Abort the acquistion in order to initiate another acquisition.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>27004</td>
+<td>The  module exceeded the amount of time specified waiting for the acquisition loop to enter the idle state. Increase the amount of time needed for the acquisition to complete or reduce the amount of data requested.</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given docutils" id="id9">
+<caption><span class="caption-text">Test Class Error Codes</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="10%" />
+<col width="45%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CODE</th>
+<th class="head">ERROR</th>
+<th class="head">COMMENT</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>30001</td>
 <td>Unknown module name %s</td>
 <td>Attemped to access an unknown or unsupported pluggable module</td>
 </tr>
-<tr class="row-even"><td>30002</td>
+<tr class="row-odd"><td>30002</td>
 <td>Loop stop condition name %s is unknown.  Loop will be stopped</td>
 <td>Unrecognized loop stop condition names must force a stop to avoid infinate loops</td>
 </tr>
-<tr class="row-odd"><td>30003</td>
+<tr class="row-even"><td>30003</td>
 <td>Sync module not locked.  Abort the test, wait for lock, and try again</td>
 <td>This framework must be synchronized before any test can be conducted”</td>
 </tr>
-<tr class="row-even"><td>30102</td>
+<tr class="row-odd"><td>30102</td>
 <td>Test Automation invalid Get argument %s</td>
 <td>The test script sent an argument that is not supported</td>
 </tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-even"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-odd"><td><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">header:</th><td class="field-body">“CODE”</td>
-</tr>
 </tbody>
 </table>
-</td>
-<td>ERROR</td>
-<td>COMMENT</td>
+<table border="1" class="colwidths-given docutils" id="id10">
+<caption><span class="caption-text">Bus Class Error Codes</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="10%" />
+<col width="45%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">CODE</th>
+<th class="head">ERROR</th>
+<th class="head">COMMENT</th>
 </tr>
-<tr class="row-even"><td><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
+</thead>
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">widths:</th><td class="field-body">10</td>
-</tr>
-</tbody>
-</table>
-</td>
-<td>45</td>
-<td>45</td>
-</tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>&#160;</td>
-<td>&#160;</td>
-</tr>
 <tr class="row-even"><td>31001</td>
-<td>Bus Number not found %d</td>
+<td>Bus Number not found %#d</td>
 <td>While searching the bus class for a particular bus number, the bus was not found in the class</td>
 </tr>
 <tr class="row-odd"><td>31002</td>
-<td>Bus number %d already exists</td>
+<td>Bus number %#d already exists</td>
 <td>While trying to add a bus, the bus number was found to already exist</td>
 </tr>
 <tr class="row-even"><td>31003</td>
-<td>Invalid Module type %s</td>
+<td>Invalid Module type %#s</td>
 <td>While configuring modules, an unrecognized module type was found</td>
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </div>
 
 
