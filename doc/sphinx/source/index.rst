@@ -10,16 +10,19 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-   introduction
+   :numbered:
+   
+   introduction 
    GettingStarted
    errors
+   AcPwr
    moduleAppendix
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+..
+   Indices and tables
+   ==================
+..
+   * :ref:`genindex`
+   * :ref:`modindex`
+   * :ref:`search`
 
