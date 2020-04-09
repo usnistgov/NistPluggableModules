@@ -19,13 +19,6 @@
 		<Item Name="AcPwrPlugins.lvlib:NHRGridSim.lvclass" Type="Friended Library" URL="../../AcPwrPlugins/NhRegenGridSim/NHRGridSim.lvclass"/>
 		<Item Name="AcPwrPlugins.lvlib:PacificPowerSource.lvclass" Type="Friended Library" URL="../../AcPwrPlugins/PacificPowerSource/PacificPowerSource.lvclass"/>
 	</Item>
-	<Item Name="Private" Type="Folder">
-		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
-		<Item Name="AcPwrClass.vi" Type="VI" URL="../Private/AcPwrClass.vi"/>
-		<Item Name="AcPwrState.vi" Type="VI" URL="../Private/AcPwrState.vi"/>
-		<Item Name="CheckonIdle.vi" Type="VI" URL="../Private/CheckonIdle.vi"/>
-		<Item Name="CheckOnIdleEnum.ctl" Type="VI" URL="../Protected/CheckOnIdleEnum.ctl"/>
-	</Item>
 	<Item Name="Protected" Type="Folder">
 		<Item Name="Broadcast" Type="Folder">
 			<Item Name="clBroadcastEvents.ctl" Type="VI" URL="../Protected/Broadcasts/clBroadcastEvents.ctl">
@@ -149,6 +142,5 @@
 		<Item Name="TestInfo.vi" Type="VI" URL="../Test/TestInfo.vi"/>
 		<Item Name="UpdateSelectRing.vi" Type="VI" URL="../Test/UpdateSelectRing.vi"/>
 	</Item>
-	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 	<Item Name="TestCloneAPI.vi" Type="VI" URL="../Test/TestCloneAPI.vi"/>
 </Library>
