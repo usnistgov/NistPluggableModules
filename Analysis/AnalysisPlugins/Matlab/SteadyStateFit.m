@@ -8,9 +8,8 @@ function [Synx,Freq,ROCOF] = SteadyStateFit ( ...
 	Samples ...
 )
 
-%*********************DEBUGGING*****************************************
-% cd('C:\Users\PowerLabNI3\Documents\PMUCAL\Output')
-% name = 'SavedSSFit.mat';
+%******DEBUGGING******(alternativly: use PmuFitSave.m)********************
+% name = fullfile(getenv('USERPROFILE'),'Documents','PMUCAL','Output','Saved4PFit.mat');
 % if exist(name,'file')
 %     A = open(name);
 %     P = A.P;
@@ -31,45 +30,37 @@ function [Synx,Freq,ROCOF] = SteadyStateFit ( ...
 % save(name,'P')
 %*********************DEBUGGING*****************************************
 
-%SignalParams: array of doubles
-% For Steady State signals:
-% LV:Mat
-% 0 : 1 Fundamental Frequency
-% 1 : 2 Harmonic Frequency
-% 2 : 3 Interharmonic Frequency
-% 3 : 4 Fundamental Initial Phase (at T0)
-% 4 : 5 Harmonic Initial Phase
-% 5 : 6 Interharmonic Initial Phase
-% 6 : 7 Harmonic Index
-% 7 : 8 Interharmonic Index
-% 8 : 9 Voltage Magnitude Index
-% 9 : 10 Current Magnitude Index 
-%AnalysisCycles: integer
-%HarmFreq ?
-%FundCycles: number of cycles of fundamental frequency
+% Signal params.  Note that the labeling convention comes mostly from the
+% standard
+    %Xm = SignalParams(1,:)*sqrt(2);     % phase amplitude (given by the user in RMS
+    Fin = SignalParams(2,:);    % frequency (must be the same for all 6 channels or an error will be thrown
+    %Ps = SignalParams(3,:);     % phase 
+    Fh = SignalParams(4,:);     % Frequency of the interfering signal
+    %Ph = SignalParams(5,:);     % Phase of the interfering signal
+    Kh = SignalParams(6,:);     % index of the interfering signal    
+    %Fa = SignalParams(7,:);     % phase (angle) moduation frequency
+    %Ka = SignalParams(8,:);     % phase (angle) moduation index
+    %Fx = SignalParams(9,:);     % amplitude moduation frequency
+    %Kx = SignalParams(10,:);     % amplitude moduation index
+    %Rf = SignalParams(11,:);     % ROCOF
+    %KaS = SignalParams(12,:);   % phase (angle) step index
+    %KxS = SignalParams(13,:);   % magnitude step index
 
-FundFrequency = SignalParams(1);  % fundamental frequency
+FundFrequency = Fin(1);  % fundamental frequency
 
 %HarmFrequency = SignalParams(2);
 % InterHarmFrequency = SignalParams(3);
 % HarmIndex = SignalParams(7);
 % InterHarmIndex = SignalParams(8);
 % fh = max(HarmFrequency,InterHarmFrequency);
-fh = SignalParams(2);           % harmonic frequency
 NHarm = 1;
-if SignalParams(3) ~= 0; NHarm = 2; end
+if Kh(1)>0; NHarm = 2; end
 
 N = size(Samples,2);
 NPhases = size(Samples,1);
 
-% if (HarmIndex == 0) && (InterHarmIndex == 0) 
-%     NHarm = 1;  %Only the fundamental frequency
-% else
-%     NHarm = 2;  %Fund frequency + one harm/inter harmonic
-% end
-
 %algorithms based on the IEEE Std 1057 - Annex A
-Freqs(1:NPhases) = FundFrequency;
+Freqs(1:NPhases) = Fin;
 ROCOFs(1:NPhases) = 0;
 Ain(1:NPhases) = 0;
 Theta(1:NPhases) = 0;
@@ -81,11 +72,10 @@ tn = linspace(-(N/2),(N/2)-1,N)*(1/SampleRate);
 FitCrit = 1e-8;   
 MaxIter = 10;
 
-
 for p = 1:NPhases    
     %Pre-fit: generate the model using first estimated frequency
     w = 2*pi*FundFrequency;
-    wh = 2*pi*fh;
+    wh = 2*pi*Fh(p);
     H = [cos(w*tn)' sin(w*tn)' ones(1,N)'];
     if NHarm>1
         H = [H cos(wh*tn)' sin(wh*tn)'];
@@ -126,7 +116,7 @@ for p = 1:NPhases
 %     r = Samples(p,:) - bestFit;
 %     figure(p)
 %     plot(tn,Samples(p,:),'-b',tn,bestFit,'-g',tn,r*100,'-r')
-%        erms(p) = sqrt((1/N)*sum(r.^2));
+%     erms(p) = sqrt((1/N)*sum(r.^2));
 %**********************DEBUGGING*******************************************        
     
     
@@ -137,8 +127,8 @@ for p = 1:NPhases
     Ain(p) = sqrt(A^2 + B^2)*MagCorr(p);
     Theta(p) = atan2(B,A) + DelayCorr(p)*1e-9*2*pi*Freqs(p);
     if NHarm > 1
-        AinH(p) = sqrt(C(1)^2 + D(1)^2)*MagCorr(p);
-        ThetaH(p) = atan2(D(1),C(1)) + DelayCorr(p)*1e-9*2*pi*fh;        
+        AinH(p) = sqrt(C^2 + D^2)*MagCorr(p);
+        ThetaH(p) = atan2(D,C) + DelayCorr(p)*1e-9*2*pi*Fh(p);        
     else
         AinH(p) = 0;
         ThetaH(p) = 0;

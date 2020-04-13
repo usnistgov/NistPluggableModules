@@ -35,7 +35,7 @@ function [Signal,size] = PmuWaveforms( ...
 % interger number of periods of the "combined" frequency of the fundamental
 % and any added intefering frequency or modulation that may be added. 
 Freqs = [Fin(1,1)];
-if Kh > 0; Freqs(2) =  Fh(1,1); end
+if Kh(1) > 0; Freqs(2) =  Fh(1,1); end
 size = SizeLcmPeriods(Freqs, FSamp);
 if size > sizeMax; size = sizeMax; end
     
