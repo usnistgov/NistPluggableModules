@@ -18,16 +18,16 @@
 		</Item>
 		<Item Name="Module&amp;PluginCalls" Type="Folder">
 			<Item Name="Broadcasts" Type="Folder">
+				<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../SpecAnModule/PublicAPI/Broadcasts/ObtainBroadcastEvents.vi"/>
+				<Item Name="clBroadcastEvents.ctl" Type="VI" URL="../SpecAnModule/PublicAPI/Broadcasts/clBroadcastEvents.ctl"/>
 				<Item Name="clDidInit.ctl" Type="VI" URL="../SpecAnModule/PublicAPI/Arguments/Broadcasts/clDidInit.ctl"/>
 			</Item>
 			<Item Name="Requests" Type="Folder">
+				<Item Name="clEventType.ctl" Type="VI" URL="../SpecAnModule/PublicAPI/Requests/clEventType.ctl"/>
+				<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../SpecAnModule/PublicAPI/Requests/ObtainRequestEvents.vi"/>
+				<Item Name="clRequestEvents.ctl" Type="VI" URL="../SpecAnModule/PublicAPI/Requests/clRequestEvents.ctl"/>
 				<Item Name="clStopArgument.ctl" Type="VI" URL="../SpecAnModule/PublicAPI/Arguments/Requests/clStopArgument.ctl"/>
 			</Item>
-			<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../SpecAnModule/PublicAPI/Broadcasts/ObtainBroadcastEvents.vi"/>
-			<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../SpecAnModule/PublicAPI/Requests/ObtainRequestEvents.vi"/>
-			<Item Name="clRequestEvents.ctl" Type="VI" URL="../SpecAnModule/PublicAPI/Requests/clRequestEvents.ctl"/>
-			<Item Name="clEventType.ctl" Type="VI" URL="../SpecAnModule/PublicAPI/Requests/clEventType.ctl"/>
-			<Item Name="clBroadcastEvents.ctl" Type="VI" URL="../SpecAnModule/PublicAPI/Broadcasts/clBroadcastEvents.ctl"/>
 		</Item>
 		<Item Name="SpecAnModule.lvlib" Type="Library" URL="../SpecAnModule/SpecAnModule.lvlib"/>
 		<Item Name="SpecAnPlugins.lvlib" Type="Library" URL="../SpecAnPlugins/SpecAnPlugins.lvlib"/>

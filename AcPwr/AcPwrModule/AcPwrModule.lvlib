@@ -61,55 +61,23 @@
 			</Item>
 		</Item>
 		<Item Name="Requests" Type="Folder">
-			<Item Name="clRequestEvents.ctl" Type="VI" URL="../Protected/Requests/clRequestEvents.ctl">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="ConfigDeviceRequest.vi" Type="VI" URL="../Protected/Requests/ConfigDeviceRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../Protected/Requests/DestroyRequestEvents.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="DeviceOffRequest.vi" Type="VI" URL="../Protected/Requests/DeviceOffRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="DeviceOnRequest.vi" Type="VI" URL="../Protected/Requests/DeviceOnRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="GetSettingsRequest.vi" Type="VI" URL="../Protected/Requests/GetSettingsRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../Protected/Requests/ObtainRequestEvents.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="SetSettingsRequest.vi" Type="VI" URL="../Protected/Requests/SetSettingsRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="ShowPanelRequest.vi" Type="VI" URL="../Protected/Requests/ShowPanelRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="StartMeasRequest.vi" Type="VI" URL="../Protected/Requests/StartMeasRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="StopMeasRequest.vi" Type="VI" URL="../Protected/Requests/StopMeasRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="StopRequest.vi" Type="VI" URL="../Protected/Requests/StopRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
+			<Item Name="clRequestEvents.ctl" Type="VI" URL="../Protected/Requests/clRequestEvents.ctl"/>
+			<Item Name="ConfigDeviceRequest.vi" Type="VI" URL="../Protected/Requests/ConfigDeviceRequest.vi"/>
+			<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../Protected/Requests/DestroyRequestEvents.vi"/>
+			<Item Name="DeviceOffRequest.vi" Type="VI" URL="../Protected/Requests/DeviceOffRequest.vi"/>
+			<Item Name="DeviceOnRequest.vi" Type="VI" URL="../Protected/Requests/DeviceOnRequest.vi"/>
+			<Item Name="GetSettingsRequest.vi" Type="VI" URL="../Protected/Requests/GetSettingsRequest.vi"/>
+			<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../Protected/Requests/ObtainRequestEvents.vi"/>
+			<Item Name="SetSettingsRequest.vi" Type="VI" URL="../Protected/Requests/SetSettingsRequest.vi"/>
+			<Item Name="ShowPanelRequest.vi" Type="VI" URL="../Protected/Requests/ShowPanelRequest.vi"/>
+			<Item Name="StartMeasRequest.vi" Type="VI" URL="../Protected/Requests/StartMeasRequest.vi"/>
+			<Item Name="StopMeasRequest.vi" Type="VI" URL="../Protected/Requests/StopMeasRequest.vi"/>
+			<Item Name="StopRequest.vi" Type="VI" URL="../Protected/Requests/StopRequest.vi"/>
 		</Item>
-		<Item Name="clEventType.ctl" Type="VI" URL="../Protected/clEventType.ctl">
-			<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-		</Item>
-		<Item Name="DestroyClone.vi" Type="VI" URL="../Protected/DestroyClone.vi">
-			<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-		</Item>
-		<Item Name="ErrorHandler.vi" Type="VI" URL="../Protected/ErrorHandler.vi">
-			<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-		</Item>
-		<Item Name="HandleExit.vi" Type="VI" URL="../Protected/HandleExit.vi">
-			<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-		</Item>
+		<Item Name="clEventType.ctl" Type="VI" URL="../Protected/clEventType.ctl"/>
+		<Item Name="DestroyClone.vi" Type="VI" URL="../Protected/DestroyClone.vi"/>
+		<Item Name="ErrorHandler.vi" Type="VI" URL="../Protected/ErrorHandler.vi"/>
+		<Item Name="HandleExit.vi" Type="VI" URL="../Protected/HandleExit.vi"/>
 	</Item>
 	<Item Name="PublicAPI" Type="Folder">
 		<Item Name="Arguments" Type="Folder">
