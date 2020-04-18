@@ -13,7 +13,11 @@
 		<Item Name="SensorModule.lvlib" Type="Friended Library" URL="../../SensorModule/SensorModule.lvlib"/>
 	</Item>
 	<Item Name="Matlab" Type="Folder">
+		<Item Name="Test" Type="Folder">
+			<Item Name="testCircBuf.m" Type="Document" URL="../Matlab/Test/testCircBuf.m"/>
+		</Item>
 		<Item Name="AnnexDPmu.m" Type="Document" URL="../Matlab/AnnexDPmu.m"/>
+		<Item Name="circBuf.m" Type="Document" URL="../Matlab/circBuf.m"/>
 	</Item>
 	<Item Name="SensorBase.lvclass" Type="LVClass" URL="../SensorBaseClass/SensorBase.lvclass"/>
 	<Item Name="PmuBase.lvclass" Type="LVClass" URL="../PmuBaseClass/PmuBase.lvclass"/>

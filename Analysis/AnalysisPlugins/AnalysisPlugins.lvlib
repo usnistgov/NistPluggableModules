@@ -12,6 +12,10 @@
 		<Item Name="AnalysisModule.lvlib" Type="Friended Library" URL="../../AnalysisModule/AnalysisModule.lvlib"/>
 	</Item>
 	<Item Name="Matlab" Type="Folder">
+		<Item Name="Test" Type="Folder">
+			<Item Name="TestRampFit.m" Type="Document" URL="../Matlab/Test/TestRampFit.m"/>
+			<Item Name="TestSSFit.m" Type="Document" URL="../Matlab/Test/TestSSFit.m"/>
+		</Item>
 		<Item Name="ModulationFit.m" Type="Document" URL="../Matlab/ModulationFit.m"/>
 		<Item Name="PmuFitSave.m" Type="Document" URL="../Matlab/PmuFitSave.m"/>
 		<Item Name="SaveWaveforms.m" Type="Document" URL="../Matlab/SaveWaveforms.m"/>

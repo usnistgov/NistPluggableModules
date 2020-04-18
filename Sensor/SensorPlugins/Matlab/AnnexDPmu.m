@@ -10,7 +10,8 @@ function [Timestamp,...
                         F0, ...
                         Fs, ...
                         FSamp, ...
-                        SettlingTime)  
+                        SettlingTime,...
+                        Duration)  
                      
 % Overview this implements a PMU model in the style of the C37.118.1 Annex
 % Signal Processing model in that it uses a quadrature demodulator to
@@ -34,31 +35,44 @@ elseif (SettlingTime < (N+1)/FSamp)
     error(errMsg)
 
 else
-    if length(Signal(:,1)) < 2*(N+1)
-        errMsg = sprintf('Error: Event Signal length: %d must be greater than two filter windows: %d', ...
-                    length(Signal(:,1)), ...
-                    2 * (N+1) );
-        error(errMsg)
+    % in an effort to conserve memory, some of the FUNCTION class waveform
+    % generators now analyse the period of the waveform and produce only
+    % one cycle.  
+    % The below creates a cicrular buffer containing the Signal and assumes 
+    % that when the buffer wraps, the samples can be concatinated without discontinuity.  
+    
+    if (false)  % now using a circular buffer and a Duration input
+%     if length(Signal(:,1)) < 2*(N+1)
+%         errMsg = sprintf('Error: Event Signal length: %d must be greater than two filter windows: %d', ...
+%                     length(Signal(:,1)), ...
+%                     2 * (N+1) );
+%         error(errMsg)
 
     else
         % From Duration and T0 minus the settling time,
         % calculate time vector, add (negative) time at the beginning for the
         % settling time
-        Duration = length(Signal(:,1))/FSamp;
+        % Duration = length(Signal(:,1))/FSamp;  % Duration in seconds is now an input
         tStart = -SettlingTime;
-        tEnd = Duration - SettlingTime;
+        tEnd = Duration + SettlingTime;
         t = (tStart:1/FSamp:tEnd);
         t = (t(1:end-1)).';
         
         % number of phases              
         Nphases = length(Signal(1,:));
-        Nsynx = floor(length(t)/(FSamp/Fs))- (2*(SettlingTime*Fs))+1 ; % number of synchrophasor reports
+        Nsynx = floor(length(t)/(FSamp/Fs))- (2*floor((SettlingTime*Fs)))+1 ; % number of synchrophasor reports
         
         Synx = zeros(Nsynx,Nphases);
         ImpPosSeq = zeros(Nsynx,floor(Nphases/3));
         Freq = zeros(Nsynx,1);
         ROCOF = Freq;
         Timestamp = Freq;
+        
+        % Make the Signal into a circular buffer
+        X = circBuf(Signal);
+        for i = 1: length(t)
+            Signal(i,:) = X(i,:);
+        end
         
                
         % DFT
@@ -93,7 +107,7 @@ else
         % decimate  
         
         kStart = floor(SettlingTime*FSamp+1);
-        kEnd = floor(((Duration-SettlingTime)*FSamp)+1);
+        kEnd = floor(((Duration+SettlingTime)*FSamp)+1);
         
         for j = 1:Nphases  % decimation loop per phase
             i = 1;
