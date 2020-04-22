@@ -19,6 +19,23 @@
 		<Item Name="CheckonIdle.vi" Type="VI" URL="../../AcPwrModule/Private/CheckonIdle.vi"/>
 		<Item Name="CheckOnIdleEnum.ctl" Type="VI" URL="../../AcPwrModule/Protected/CheckOnIdleEnum.ctl"/>
 	</Item>
+	<Item Name="Queue" Type="Folder">
+		<Item Name="Dequeue.vi" Type="VI" URL="../../AcPwrModule/Protected/Queue/Dequeue.vi"/>
+		<Item Name="Enqueue.vi" Type="VI" URL="../../AcPwrModule/Protected/Queue/Enqueue.vi"/>
+		<Item Name="ObtainQueue.vi" Type="VI" URL="../../AcPwrModule/Protected/Queue/ObtainQueue.vi"/>
+	</Item>
+	<Item Name="Files" Type="Folder">
+		<Item Name="clMessage.ctl" Type="VI" URL="../../AcPwrModule/PublicAPI/Arguments/Messages/clMessage.ctl"/>
+		<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../../AcPwrModule/Protected/Broadcasts/DestroyBroadcastEvents.vi"/>
+		<Item Name="ReportError.vi" Type="VI" URL="../../AcPwrModule/Protected/Broadcasts/ReportError.vi"/>
+		<Item Name="DidInit.vi" Type="VI" URL="../../AcPwrModule/Protected/Broadcasts/DidInit.vi"/>
+		<Item Name="DidStop.vi" Type="VI" URL="../../AcPwrModule/Protected/Broadcasts/DidStop.vi"/>
+		<Item Name="Settings.vi" Type="VI" URL="../../AcPwrModule/Protected/Broadcasts/Settings.vi"/>
+		<Item Name="Measurements.vi" Type="VI" URL="../../AcPwrModule/Protected/Broadcasts/Measurements.vi"/>
+		<Item Name="StatusUpdate.vi" Type="VI" URL="../../AcPwrModule/Protected/Broadcasts/StatusUpdate.vi"/>
+		<Item Name="DestroyClone.vi" Type="VI" URL="../../AcPwrModule/Protected/DestroyClone.vi"/>
+		<Item Name="ErrorHandler.vi" Type="VI" URL="../../AcPwrModule/Protected/ErrorHandler.vi"/>
+	</Item>
 	<Item Name="Main.vi" Type="VI" URL="../../AcPwrModule/Main.vi"/>
 	<Item Name="AcPwrBase.lvclass" Type="LVClass" URL="../AcPwrBaseClass/AcPwrBase.lvclass"/>
 	<Item Name="ChromaAcLoad.lvclass" Type="LVClass" URL="../ChromaAcLoad/ChromaAcLoad.lvclass"/>
