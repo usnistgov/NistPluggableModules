@@ -10,7 +10,6 @@
 
 </Property>
 	<Item Name="Friends List" Type="Friends List">
-		<Item Name="AcPwrModule.lvlib" Type="Friended Library" URL="../../AcPwrModule/AcPwrModule.lvlib"/>
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 	</Item>
 	<Item Name="Private" Type="Folder">
@@ -27,10 +26,12 @@
 	<Item Name="Files" Type="Folder">
 		<Item Name="clMessage.ctl" Type="VI" URL="../../AcPwrModule/PublicAPI/Arguments/Messages/clMessage.ctl"/>
 		<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../../AcPwrModule/Protected/Broadcasts/DestroyBroadcastEvents.vi"/>
+		<Item Name="HandleExit.vi" Type="VI" URL="../../AcPwrModule/Protected/HandleExit.vi"/>
 		<Item Name="ReportError.vi" Type="VI" URL="../../AcPwrModule/Protected/Broadcasts/ReportError.vi"/>
 		<Item Name="DidInit.vi" Type="VI" URL="../../AcPwrModule/Protected/Broadcasts/DidInit.vi"/>
 		<Item Name="DidStop.vi" Type="VI" URL="../../AcPwrModule/Protected/Broadcasts/DidStop.vi"/>
 		<Item Name="Settings.vi" Type="VI" URL="../../AcPwrModule/Protected/Broadcasts/Settings.vi"/>
+		<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../../AcPwrModule/Protected/Requests/DestroyRequestEvents.vi"/>
 		<Item Name="Measurements.vi" Type="VI" URL="../../AcPwrModule/Protected/Broadcasts/Measurements.vi"/>
 		<Item Name="StatusUpdate.vi" Type="VI" URL="../../AcPwrModule/Protected/Broadcasts/StatusUpdate.vi"/>
 		<Item Name="DestroyClone.vi" Type="VI" URL="../../AcPwrModule/Protected/DestroyClone.vi"/>
