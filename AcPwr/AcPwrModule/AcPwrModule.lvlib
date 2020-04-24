@@ -14,7 +14,6 @@
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 	</Item>
 	<Item Name="Protected" Type="Folder">
-		<Item Name="Broadcast" Type="Folder"/>
 		<Item Name="Requests" Type="Folder">
 			<Item Name="CloseRequest.vi" Type="VI" URL="../../AcPwrPlugins/AcPwrBaseClass/PublicAPI/Requests/CloseRequest.vi"/>
 			<Item Name="ConfigDeviceRequest.vi" Type="VI" URL="../../AcPwrPlugins/AcPwrBaseClass/PublicAPI/Requests/ConfigDeviceRequest.vi"/>
@@ -35,12 +34,6 @@
 		</Item>
 	</Item>
 	<Item Name="PublicAPI" Type="Folder">
-		<Item Name="Arguments" Type="Folder">
-			<Item Name="Broadcasts" Type="Folder"/>
-			<Item Name="Messages" Type="Folder"/>
-			<Item Name="Requests" Type="Folder"/>
-		</Item>
-		<Item Name="Broadcasts" Type="Folder"/>
 		<Item Name="StartClone.vi" Type="VI" URL="../PublicAPI/StartClone.vi"/>
 		<Item Name="StopClone.vi" Type="VI" URL="../PublicAPI/StopClone.vi"/>
 	</Item>
