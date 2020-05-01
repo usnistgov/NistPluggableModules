@@ -22,7 +22,6 @@
 			<Item Name="GetSettingsRequest.vi" Type="VI" URL="../../AcPwrPlugins/AcPwrBaseClass/PublicAPI/Requests/GetSettingsRequest.vi"/>
 			<Item Name="InitializeRequest.vi" Type="VI" URL="../../AcPwrPlugins/AcPwrBaseClass/PublicAPI/Requests/InitializeRequest.vi"/>
 			<Item Name="LoadPluginRequest.vi" Type="VI" URL="../../AcPwrPlugins/AcPwrBaseClass/PublicAPI/Requests/LoadPluginRequest.vi"/>
-			<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../Protected/Requests/ObtainRequestEvents.vi"/>
 			<Item Name="PathToINIRequest.vi" Type="VI" URL="../../AcPwrPlugins/AcPwrBaseClass/PublicAPI/Requests/PathToINIRequest.vi"/>
 			<Item Name="PrefDlgRequest.vi" Type="VI" URL="../../AcPwrPlugins/AcPwrBaseClass/PublicAPI/Requests/PrefDlgRequest.vi"/>
 			<Item Name="ResetRequest.vi" Type="VI" URL="../../AcPwrPlugins/AcPwrBaseClass/PublicAPI/Requests/ResetRequest.vi"/>
