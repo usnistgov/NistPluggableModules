@@ -16,6 +16,19 @@
 		<Item Name="Documentation" Type="Folder">
 			<Item Name="errors.rst" Type="Document" URL="../../doc/sphinx/source/errors.rst"/>
 		</Item>
+		<Item Name="Module&amp;PluginCalls" Type="Folder">
+			<Item Name="Broadcasts" Type="Folder">
+				<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../SpecAnModule/PublicAPI/Broadcasts/ObtainBroadcastEvents.vi"/>
+				<Item Name="clBroadcastEvents.ctl" Type="VI" URL="../SpecAnModule/PublicAPI/Broadcasts/clBroadcastEvents.ctl"/>
+				<Item Name="clDidInit.ctl" Type="VI" URL="../SpecAnModule/PublicAPI/Arguments/Broadcasts/clDidInit.ctl"/>
+			</Item>
+			<Item Name="Requests" Type="Folder">
+				<Item Name="clEventType.ctl" Type="VI" URL="../SpecAnModule/PublicAPI/Requests/clEventType.ctl"/>
+				<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../SpecAnModule/PublicAPI/Requests/ObtainRequestEvents.vi"/>
+				<Item Name="clRequestEvents.ctl" Type="VI" URL="../SpecAnModule/PublicAPI/Requests/clRequestEvents.ctl"/>
+				<Item Name="clStopArgument.ctl" Type="VI" URL="../SpecAnModule/PublicAPI/Arguments/Requests/clStopArgument.ctl"/>
+			</Item>
+		</Item>
 		<Item Name="SpecAnModule.lvlib" Type="Library" URL="../SpecAnModule/SpecAnModule.lvlib"/>
 		<Item Name="SpecAnPlugins.lvlib" Type="Library" URL="../SpecAnPlugins/SpecAnPlugins.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
@@ -174,6 +187,10 @@
 			<Item Name="agesani_32.dll" Type="Document" URL="agesani_32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
+			<Item Name="Tag-bool.lvlib" Type="Library" URL="/&lt;extravilib&gt;/ChannelInstances/Tag-bool.lvlib"/>
+			<Item Name="_ChannelSupport.lvlib" Type="Library" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/_ChannelSupport.lvlib"/>
+			<Item Name="ChannelProbePositionAndTitle.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbePositionAndTitle.vi"/>
+			<Item Name="ChannelProbeWindowStagger.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbeWindowStagger.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>

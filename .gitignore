@@ -41,3 +41,6 @@
 /Analysis/AnalysisPlugins/Matlab/Fourier/Fourier.mlx
 /SpecAn/*.aliases
 /SpecAn/*.lvlps
+build
+/doc/sphinx/source/AcPwrOld.rst
+/SpecAn/SpecAnPlugins/Main2.vi
