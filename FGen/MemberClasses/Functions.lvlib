@@ -5,10 +5,14 @@
 	<Property Name="NI.Lib.Version" Type="Str">1.0.0.0</Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Item Name="Matlab" Type="Folder">
+		<Item Name="Test" Type="Folder">
+			<Item Name="TestPmuTestSignals.m" Type="Document" URL="../Matlab/Test/TestPmuTestSignals.m"/>
+		</Item>
 		<Item Name="CalcStateMatrix.m" Type="Document" URL="../Matlab/CalcStateMatrix.m"/>
 		<Item Name="Chirp.mlx" Type="Document" URL="../Matlab/Chirp.mlx"/>
 		<Item Name="IntCycles.m" Type="Document" URL="../Matlab/IntCycles.m"/>
 		<Item Name="PmuTestSignals.m" Type="Document" URL="../Matlab/PmuTestSignals.m"/>
+		<Item Name="PmuWaveforms.m" Type="Document" URL="../Matlab/PmuWaveforms.m"/>
 		<Item Name="StateAmPm.mlx" Type="Document" URL="../Matlab/StateAmPm.mlx"/>
 	</Item>
 	<Item Name="ArbitraryFunction.lvclass" Type="LVClass" URL="../ArbitraryFunction/ArbitraryFunction.lvclass"/>
