@@ -20,7 +20,7 @@
 		<Item Name="ModulePluginShared" Type="Folder">
 			<Item Name="clBroadcastEvents.ctl" Type="VI" URL="../AcPwrModule/Protected/Broadcasts/clBroadcastEvents.ctl"/>
 			<Item Name="clRequestEvents.ctl" Type="VI" URL="../AcPwrModule/Protected/Requests/clRequestEvents.ctl"/>
-			<Item Name="MeasurmentDataCluster.ctl" Type="VI" URL="../AcPwrModule/PublicAPI/MeasurmentDataCluster.ctl"/>
+			<Item Name="MeasurmentDataCluster.ctl" Type="VI" URL="../MeasurmentDataCluster.ctl"/>
 			<Item Name="clStopArgument.ctl" Type="VI" URL="../AcPwrModule/PublicAPI/Arguments/Requests/clStopArgument.ctl"/>
 			<Item Name="clDidInit.ctl" Type="VI" URL="../AcPwrModule/PublicAPI/Arguments/Broadcasts/clDidInit.ctl"/>
 			<Item Name="clEventType.ctl" Type="VI" URL="../AcPwrModule/Protected/clEventType.ctl"/>

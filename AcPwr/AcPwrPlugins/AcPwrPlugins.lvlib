@@ -13,9 +13,9 @@
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 	</Item>
 	<Item Name="Private" Type="Folder">
-		<Item Name="AcPwrClass.vi" Type="VI" URL="../../AcPwrModule/Private/AcPwrClass.vi"/>
-		<Item Name="AcPwrState.vi" Type="VI" URL="../../AcPwrModule/Private/AcPwrState.vi"/>
-		<Item Name="CheckonIdle.vi" Type="VI" URL="../../AcPwrModule/Private/CheckonIdle.vi"/>
+		<Item Name="AcPwrClass.vi" Type="VI" URL="../AcPwrClass.vi"/>
+		<Item Name="AcPwrState.vi" Type="VI" URL="../AcPwrState.vi"/>
+		<Item Name="CheckonIdle.vi" Type="VI" URL="../CheckonIdle.vi"/>
 		<Item Name="CheckOnIdleEnum.ctl" Type="VI" URL="../../AcPwrModule/Protected/CheckOnIdleEnum.ctl"/>
 	</Item>
 	<Item Name="Queue" Type="Folder">
