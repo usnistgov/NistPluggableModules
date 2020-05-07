@@ -15,7 +15,7 @@
 	</Item>
 	<Item Name="Protected" Type="Folder">
 		<Item Name="Requests" Type="Folder">
-			<Item Name="CloseRequest.vi" Type="VI" URL="../../AcPwrPlugins/AcPwrBaseClass/PublicAPI/Requests/CloseRequest.vi"/>
+			<Item Name="CloseRequest.vi" Type="VI" URL="../CloseRequest.vi"/>
 			<Item Name="ConfigDeviceRequest.vi" Type="VI" URL="../../AcPwrPlugins/AcPwrBaseClass/PublicAPI/Requests/ConfigDeviceRequest.vi"/>
 			<Item Name="DeviceOffRequest.vi" Type="VI" URL="../../AcPwrPlugins/AcPwrBaseClass/PublicAPI/Requests/DeviceOffRequest.vi"/>
 			<Item Name="DeviceOnRequest.vi" Type="VI" URL="../../AcPwrPlugins/AcPwrBaseClass/PublicAPI/Requests/DeviceOnRequest.vi"/>
