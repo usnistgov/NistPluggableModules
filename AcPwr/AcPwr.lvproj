@@ -18,15 +18,15 @@
 			<Item Name="IVI-4.5_ACPwr_2011-03-11.pdf" Type="Document" URL="../Documentation/IVI-4.5_ACPwr_2011-03-11.pdf"/>
 		</Item>
 		<Item Name="ModulePluginShared" Type="Folder">
-			<Item Name="clBroadcastEvents.ctl" Type="VI" URL="../AcPwrModule/Protected/Broadcasts/clBroadcastEvents.ctl"/>
-			<Item Name="clRequestEvents.ctl" Type="VI" URL="../AcPwrModule/Protected/Requests/clRequestEvents.ctl"/>
+			<Item Name="clBroadcastEvents.ctl" Type="VI" URL="../clBroadcastEvents.ctl"/>
+			<Item Name="clRequestEvents.ctl" Type="VI" URL="../clRequestEvents.ctl"/>
 			<Item Name="MeasurmentDataCluster.ctl" Type="VI" URL="../MeasurmentDataCluster.ctl"/>
-			<Item Name="clStopArgument.ctl" Type="VI" URL="../AcPwrModule/PublicAPI/Arguments/Requests/clStopArgument.ctl"/>
-			<Item Name="clDidInit.ctl" Type="VI" URL="../AcPwrModule/PublicAPI/Arguments/Broadcasts/clDidInit.ctl"/>
-			<Item Name="clEventType.ctl" Type="VI" URL="../AcPwrModule/Protected/clEventType.ctl"/>
-			<Item Name="ObtainBroadcastForRegistration.vi" Type="VI" URL="../AcPwrModule/PublicAPI/Broadcasts/ObtainBroadcastForRegistration.vi"/>
-			<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../AcPwrModule/Protected/Requests/ObtainRequestEvents.vi"/>
-			<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../AcPwrModule/Protected/Broadcasts/ObtainBroadcastEvents.vi"/>
+			<Item Name="clStopArgument.ctl" Type="VI" URL="../clStopArgument.ctl"/>
+			<Item Name="clDidInit.ctl" Type="VI" URL="../clDidInit.ctl"/>
+			<Item Name="clEventType.ctl" Type="VI" URL="../clEventType.ctl"/>
+			<Item Name="ObtainBroadcastForRegistration.vi" Type="VI" URL="../ObtainBroadcastForRegistration.vi"/>
+			<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../ObtainRequestEvents.vi"/>
+			<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../ObtainBroadcastEvents.vi"/>
 			<Item Name="DatatoGraphChroma.vi" Type="VI" URL="../AcPwrModule/Test/DatatoGraphChroma.vi"/>
 		</Item>
 		<Item Name="AcPwrModule.lvlib" Type="Library" URL="../AcPwrModule/AcPwrModule.lvlib"/>
