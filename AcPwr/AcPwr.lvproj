@@ -24,10 +24,10 @@
 			<Item Name="clStopArgument.ctl" Type="VI" URL="../clStopArgument.ctl"/>
 			<Item Name="clDidInit.ctl" Type="VI" URL="../clDidInit.ctl"/>
 			<Item Name="clEventType.ctl" Type="VI" URL="../clEventType.ctl"/>
-			<Item Name="ObtainBroadcastForRegistration.vi" Type="VI" URL="../ObtainBroadcastForRegistration.vi"/>
+			<Item Name="AcPwrAttributesTypeDef.ctl" Type="VI" URL="../AcPwrAttributesTypeDef.ctl"/>
 			<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../ObtainRequestEvents.vi"/>
 			<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../ObtainBroadcastEvents.vi"/>
-			<Item Name="DatatoGraphChroma.vi" Type="VI" URL="../AcPwrModule/Test/DatatoGraphChroma.vi"/>
+			<Item Name="RetrieveAcPwrMeasurementData.vi" Type="VI" URL="../AcPwrModule/Test/RetrieveAcPwrMeasurementData.vi"/>
 		</Item>
 		<Item Name="AcPwrModule.lvlib" Type="Library" URL="../AcPwrModule/AcPwrModule.lvlib"/>
 		<Item Name="AcPwrPlugins.lvlib" Type="Library" URL="../AcPwrPlugins/AcPwrPlugins.lvlib"/>
