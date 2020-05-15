@@ -17,18 +17,7 @@
 		<Item Name="Documentation" Type="Folder">
 			<Item Name="IVI-4.5_ACPwr_2011-03-11.pdf" Type="Document" URL="../Documentation/IVI-4.5_ACPwr_2011-03-11.pdf"/>
 		</Item>
-		<Item Name="ModulePluginShared" Type="Folder">
-			<Item Name="clBroadcastEvents.ctl" Type="VI" URL="../clBroadcastEvents.ctl"/>
-			<Item Name="clRequestEvents.ctl" Type="VI" URL="../clRequestEvents.ctl"/>
-			<Item Name="MeasurmentDataCluster.ctl" Type="VI" URL="../MeasurmentDataCluster.ctl"/>
-			<Item Name="clStopArgument.ctl" Type="VI" URL="../clStopArgument.ctl"/>
-			<Item Name="clDidInit.ctl" Type="VI" URL="../clDidInit.ctl"/>
-			<Item Name="clEventType.ctl" Type="VI" URL="../clEventType.ctl"/>
-			<Item Name="AcPwrAttributesTypeDef.ctl" Type="VI" URL="../AcPwrAttributesTypeDef.ctl"/>
-			<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../ObtainRequestEvents.vi"/>
-			<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../ObtainBroadcastEvents.vi"/>
-			<Item Name="RetrieveAcPwrMeasurementData.vi" Type="VI" URL="../AcPwrModule/Test/RetrieveAcPwrMeasurementData.vi"/>
-		</Item>
+		<Item Name="AcPwrShared.lvlib" Type="Library" URL="../AcPwrShared/AcPwrShared.lvlib"/>
 		<Item Name="AcPwrModule.lvlib" Type="Library" URL="../AcPwrModule/AcPwrModule.lvlib"/>
 		<Item Name="AcPwrPlugins.lvlib" Type="Library" URL="../AcPwrPlugins/AcPwrPlugins.lvlib"/>
 		<Item Name="Visualization.lvlib" Type="Library" URL="../../Visualization/Visualization.lvlib"/>
@@ -692,9 +681,6 @@
 			<Item Name="kernel32.dll" Type="Document" URL="kernel32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
-				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
-			</Item>
 			<Item Name="FgenModule.lvlib" Type="Library" URL="../../FGen/FgenModule/FgenModule.lvlib"/>
 			<Item Name="FgenPlugins.lvlib" Type="Library" URL="../../FGen/FgenPlugins/FgenPlugins.lvlib"/>
 			<Item Name="nilvaiu.dll" Type="Document" URL="nilvaiu.dll">
@@ -733,6 +719,9 @@
 			<Item Name="Comms.lvlib" Type="Library" URL="../../../LV_TestAutomation/Comms_lib/Comms.lvlib"/>
 			<Item Name="Ini_lib.lvlib" Type="Library" URL="../../../LV_Ini/Ini_lib.lvlib"/>
 			<Item Name="Config_class.lvlib" Type="Library" URL="../../../LV_Config_class/Config_class.lvlib"/>
+			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
