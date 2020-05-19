@@ -41,7 +41,7 @@ while (i < length(prime))
     s = cyc/F;
     n = Fs*s;
     if rem(n,1)==0;break;end;
-    cyc = cyc+prime(i);
+    cyc = cyc*prime(i);
     i = i+1;
 
 end

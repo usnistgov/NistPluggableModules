@@ -39,9 +39,11 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
     
     methods (Test)
         function regressionTests (testCase)
-            testDefault(testCase);
-            pause;
-            test_50f0_75i0(testCase);
+            %testDefault(testCase);
+            %pause;
+            %test_50f0_75i0(testCase);
+            %setDefaults(testCase);
+            test_70f0(testCase);
         end
     end
     
@@ -72,6 +74,13 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
             testCase.signalParams(6,:) = [0.5,0.5,0.5];
             runOnce(testCase)
         end
+        
+        function test_70f0(testCase)
+           testCase.signalParams(2,:)=[70,70,70];    % Fin
+           testCase.signalParams(3,:)=[-90,-90,-90];
+           runOnce(testCase);
+        end
+            
             
     end
 end
