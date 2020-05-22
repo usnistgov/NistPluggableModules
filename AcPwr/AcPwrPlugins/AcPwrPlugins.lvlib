@@ -17,27 +17,27 @@
 	<Item Name="Private" Type="Folder">
 		<Item Name="AcPwrClass.vi" Type="VI" URL="../AcPwrClass.vi"/>
 		<Item Name="AcPwrState.vi" Type="VI" URL="../AcPwrState.vi"/>
+	</Item>
+	<Item Name="Queue&amp;Messages" Type="Folder">
 		<Item Name="CheckonIdle.vi" Type="VI" URL="../CheckonIdle.vi"/>
 		<Item Name="CheckOnIdleEnum.ctl" Type="VI" URL="../CheckOnIdleEnum.ctl"/>
-	</Item>
-	<Item Name="Queue" Type="Folder">
+		<Item Name="clMessage.ctl" Type="VI" URL="../clMessage.ctl"/>
+		<Item Name="ObtainQueue.vi" Type="VI" URL="../../AcPwrModule/Protected/Queue/ObtainQueue.vi"/>
 		<Item Name="Dequeue.vi" Type="VI" URL="../../AcPwrModule/Protected/Queue/Dequeue.vi"/>
 		<Item Name="Enqueue.vi" Type="VI" URL="../../AcPwrModule/Protected/Queue/Enqueue.vi"/>
-		<Item Name="ObtainQueue.vi" Type="VI" URL="../../AcPwrModule/Protected/Queue/ObtainQueue.vi"/>
-	</Item>
-	<Item Name="Files" Type="Folder">
-		<Item Name="clMessage.ctl" Type="VI" URL="../clMessage.ctl"/>
 		<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../DestroyBroadcastEvents.vi"/>
+		<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../DestroyRequestEvents.vi"/>
+		<Item Name="DestroyClone.vi" Type="VI" URL="../DestroyClone.vi"/>
 		<Item Name="HandleExit.vi" Type="VI" URL="../HandleExit.vi"/>
+		<Item Name="ErrorHandler.vi" Type="VI" URL="../ErrorHandler.vi"/>
+	</Item>
+	<Item Name="Broadcasts" Type="Folder">
 		<Item Name="ReportError.vi" Type="VI" URL="../ReportError.vi"/>
 		<Item Name="DidInit.vi" Type="VI" URL="../DidInit.vi"/>
 		<Item Name="DidStop.vi" Type="VI" URL="../DidStop.vi"/>
 		<Item Name="Settings.vi" Type="VI" URL="../Settings.vi"/>
-		<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../DestroyRequestEvents.vi"/>
 		<Item Name="Measurements.vi" Type="VI" URL="../Measurements.vi"/>
 		<Item Name="StatusUpdate.vi" Type="VI" URL="../StatusUpdate.vi"/>
-		<Item Name="DestroyClone.vi" Type="VI" URL="../DestroyClone.vi"/>
-		<Item Name="ErrorHandler.vi" Type="VI" URL="../ErrorHandler.vi"/>
 	</Item>
 	<Item Name="Main.vi" Type="VI" URL="../../AcPwrModule/Main.vi"/>
 	<Item Name="AcPwrBase.lvclass" Type="LVClass" URL="../AcPwrBaseClass/AcPwrBase.lvclass"/>
