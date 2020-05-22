@@ -14,10 +14,6 @@
 	<Item Name="Friends List" Type="Friends List">
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 	</Item>
-	<Item Name="Private" Type="Folder">
-		<Item Name="AcPwrClass.vi" Type="VI" URL="../AcPwrClass.vi"/>
-		<Item Name="AcPwrState.vi" Type="VI" URL="../AcPwrState.vi"/>
-	</Item>
 	<Item Name="Queue&amp;Messages" Type="Folder">
 		<Item Name="CheckonIdle.vi" Type="VI" URL="../CheckonIdle.vi"/>
 		<Item Name="CheckOnIdleEnum.ctl" Type="VI" URL="../CheckOnIdleEnum.ctl"/>
@@ -37,6 +33,8 @@
 		<Item Name="DidStop.vi" Type="VI" URL="../DidStop.vi"/>
 		<Item Name="Settings.vi" Type="VI" URL="../Settings.vi"/>
 		<Item Name="Measurements.vi" Type="VI" URL="../Measurements.vi"/>
+		<Item Name="PathToINI.vi" Type="VI" URL="../PathToINI.vi"/>
+		<Item Name="ReloadConfigurationFile.vi" Type="VI" URL="../ReloadConfigurationFile.vi"/>
 		<Item Name="StatusUpdate.vi" Type="VI" URL="../StatusUpdate.vi"/>
 	</Item>
 	<Item Name="Main.vi" Type="VI" URL="../../AcPwrModule/Main.vi"/>
