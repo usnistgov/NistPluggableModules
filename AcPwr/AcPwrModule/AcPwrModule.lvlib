@@ -20,21 +20,21 @@
 		<Item Name="StopClone.vi" Type="VI" URL="../PublicAPI/StopClone.vi"/>
 	</Item>
 	<Item Name="Requests" Type="Folder">
-		<Item Name="CloseRequest.vi" Type="VI" URL="../CloseRequest.vi"/>
-		<Item Name="ConfigDeviceRequest.vi" Type="VI" URL="../ConfigDeviceRequest.vi"/>
-		<Item Name="DeviceOffRequest.vi" Type="VI" URL="../DeviceOffRequest.vi"/>
-		<Item Name="DeviceOnRequest.vi" Type="VI" URL="../DeviceOnRequest.vi"/>
-		<Item Name="GetSettingsRequest.vi" Type="VI" URL="../GetSettingsRequest.vi"/>
-		<Item Name="InitializeRequest.vi" Type="VI" URL="../InitializeRequest.vi"/>
-		<Item Name="LoadPluginRequest.vi" Type="VI" URL="../LoadPluginRequest.vi"/>
-		<Item Name="PathToINIRequest.vi" Type="VI" URL="../PathToINIRequest.vi"/>
-		<Item Name="PrefDlgRequest.vi" Type="VI" URL="../PrefDlgRequest.vi"/>
-		<Item Name="ResetRequest.vi" Type="VI" URL="../ResetRequest.vi"/>
-		<Item Name="SetSettingsRequest.vi" Type="VI" URL="../SetSettingsRequest.vi"/>
-		<Item Name="ShowPanelRequest.vi" Type="VI" URL="../Protected/Requests/ShowPanelRequest.vi"/>
-		<Item Name="StartMeasurementRequest.vi" Type="VI" URL="../StartMeasurementRequest.vi"/>
-		<Item Name="StopMeasurementRequest.vi" Type="VI" URL="../StopMeasurementRequest.vi"/>
-		<Item Name="StopRequest.vi" Type="VI" URL="../Protected/Requests/StopRequest.vi"/>
+		<Item Name="CloseRequest.vi" Type="VI" URL="../Requests/CloseRequest.vi"/>
+		<Item Name="ConfigDeviceRequest.vi" Type="VI" URL="../Requests/ConfigDeviceRequest.vi"/>
+		<Item Name="DeviceOffRequest.vi" Type="VI" URL="../Requests/DeviceOffRequest.vi"/>
+		<Item Name="DeviceOnRequest.vi" Type="VI" URL="../Requests/DeviceOnRequest.vi"/>
+		<Item Name="GetSettingsRequest.vi" Type="VI" URL="../Requests/GetSettingsRequest.vi"/>
+		<Item Name="InitializeRequest.vi" Type="VI" URL="../Requests/InitializeRequest.vi"/>
+		<Item Name="LoadPluginRequest.vi" Type="VI" URL="../Requests/LoadPluginRequest.vi"/>
+		<Item Name="PathToINIRequest.vi" Type="VI" URL="../Requests/PathToINIRequest.vi"/>
+		<Item Name="PrefDlgRequest.vi" Type="VI" URL="../Requests/PrefDlgRequest.vi"/>
+		<Item Name="ResetRequest.vi" Type="VI" URL="../Requests/ResetRequest.vi"/>
+		<Item Name="SetSettingsRequest.vi" Type="VI" URL="../Requests/SetSettingsRequest.vi"/>
+		<Item Name="ShowPanelRequest.vi" Type="VI" URL="../Requests/ShowPanelRequest.vi"/>
+		<Item Name="StartMeasurementRequest.vi" Type="VI" URL="../Requests/StartMeasurementRequest.vi"/>
+		<Item Name="StopMeasurementRequest.vi" Type="VI" URL="../Requests/StopMeasurementRequest.vi"/>
+		<Item Name="StopRequest.vi" Type="VI" URL="../Requests/StopRequest.vi"/>
 	</Item>
 	<Item Name="Test" Type="Folder">
 		<Item Name="GetINIFiles.vi" Type="VI" URL="../Test/GetINIFiles.vi"/>

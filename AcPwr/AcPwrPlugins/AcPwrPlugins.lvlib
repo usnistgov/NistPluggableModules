@@ -15,29 +15,29 @@
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 	</Item>
 	<Item Name="Queue&amp;Messages" Type="Folder">
-		<Item Name="CheckonIdle.vi" Type="VI" URL="../CheckonIdle.vi"/>
-		<Item Name="CheckOnIdleEnum.ctl" Type="VI" URL="../CheckOnIdleEnum.ctl"/>
-		<Item Name="clMessage.ctl" Type="VI" URL="../clMessage.ctl"/>
-		<Item Name="ObtainQueue.vi" Type="VI" URL="../../AcPwrModule/Protected/Queue/ObtainQueue.vi"/>
-		<Item Name="Dequeue.vi" Type="VI" URL="../../AcPwrModule/Protected/Queue/Dequeue.vi"/>
-		<Item Name="Enqueue.vi" Type="VI" URL="../../AcPwrModule/Protected/Queue/Enqueue.vi"/>
-		<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../DestroyBroadcastEvents.vi"/>
-		<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../DestroyRequestEvents.vi"/>
-		<Item Name="DestroyClone.vi" Type="VI" URL="../DestroyClone.vi"/>
-		<Item Name="HandleExit.vi" Type="VI" URL="../HandleExit.vi"/>
-		<Item Name="ErrorHandler.vi" Type="VI" URL="../ErrorHandler.vi"/>
+		<Item Name="CheckonIdle.vi" Type="VI" URL="../Common/CheckonIdle.vi"/>
+		<Item Name="CheckOnIdleEnum.ctl" Type="VI" URL="../Common/CheckOnIdleEnum.ctl"/>
+		<Item Name="clMessage.ctl" Type="VI" URL="../Common/clMessage.ctl"/>
+		<Item Name="ObtainQueue.vi" Type="VI" URL="../../AcPwrModule/Queue/ObtainQueue.vi"/>
+		<Item Name="Dequeue.vi" Type="VI" URL="../../AcPwrModule/Queue/Dequeue.vi"/>
+		<Item Name="Enqueue.vi" Type="VI" URL="../../AcPwrModule/Queue/Enqueue.vi"/>
+		<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../Common/DestroyBroadcastEvents.vi"/>
+		<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../Common/DestroyRequestEvents.vi"/>
+		<Item Name="DestroyClone.vi" Type="VI" URL="../Common/DestroyClone.vi"/>
+		<Item Name="HandleExit.vi" Type="VI" URL="../Common/HandleExit.vi"/>
+		<Item Name="ErrorHandler.vi" Type="VI" URL="../Common/ErrorHandler.vi"/>
 	</Item>
 	<Item Name="Broadcasts" Type="Folder">
-		<Item Name="ReportError.vi" Type="VI" URL="../ReportError.vi"/>
-		<Item Name="DidInit.vi" Type="VI" URL="../DidInit.vi"/>
-		<Item Name="DidStop.vi" Type="VI" URL="../DidStop.vi"/>
-		<Item Name="Settings.vi" Type="VI" URL="../Settings.vi"/>
-		<Item Name="Measurements.vi" Type="VI" URL="../Measurements.vi"/>
-		<Item Name="PathToINI.vi" Type="VI" URL="../PathToINI.vi"/>
-		<Item Name="ReloadConfigurationFile.vi" Type="VI" URL="../ReloadConfigurationFile.vi"/>
-		<Item Name="StatusUpdate.vi" Type="VI" URL="../StatusUpdate.vi"/>
+		<Item Name="ReportError.vi" Type="VI" URL="../Common/ReportError.vi"/>
+		<Item Name="DidInit.vi" Type="VI" URL="../Common/DidInit.vi"/>
+		<Item Name="DidStop.vi" Type="VI" URL="../Common/DidStop.vi"/>
+		<Item Name="Settings.vi" Type="VI" URL="../Common/Settings.vi"/>
+		<Item Name="Measurements.vi" Type="VI" URL="../Common/Measurements.vi"/>
+		<Item Name="PathToINI.vi" Type="VI" URL="../Common/PathToINI.vi"/>
+		<Item Name="ReloadConfigurationFile.vi" Type="VI" URL="../Common/ReloadConfigurationFile.vi"/>
+		<Item Name="StatusUpdate.vi" Type="VI" URL="../Common/StatusUpdate.vi"/>
 	</Item>
-	<Item Name="Main.vi" Type="VI" URL="../../AcPwrModule/Main.vi"/>
+	<Item Name="Main.vi" Type="VI" URL="../Common/Main.vi"/>
 	<Item Name="AcPwrBase.lvclass" Type="LVClass" URL="../AcPwrBaseClass/AcPwrBase.lvclass"/>
 	<Item Name="ChromaAcLoad.lvclass" Type="LVClass" URL="../ChromaAcLoad/ChromaAcLoad.lvclass"/>
 	<Item Name="NHRDCPower.lvclass" Type="LVClass" URL="../NHRDCPower/NHRDCPower.lvclass"/>
