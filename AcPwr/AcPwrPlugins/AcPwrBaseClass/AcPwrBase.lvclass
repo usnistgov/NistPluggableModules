@@ -102,9 +102,6 @@
 			</Item>
 		</Item>
 	</Item>
-	<Item Name="Community" Type="Folder">
-		<Property Name="NI.LibItem.Scope" Type="Int">1</Property>
-	</Item>
 	<Item Name="PublicMethods" Type="Folder">
 		<Item Name="ChangeWhileMeasuring.vi" Type="VI" URL="../PublicMethods/ChangeWhileMeasuring.vi">
 			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!&amp;H!!!!#Q!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!'%!B%EFO=X2S&gt;7VF&lt;H24:82U;7ZH=Q!!&amp;E!B%5^V&gt;("V&gt;%^S4'^B:&amp;:B&lt;(6F!$Z!=!!?!!!G%E&amp;D5(&gt;S5'RV:WFO=SZM&gt;GRJ9B&amp;"9V"X=E*B=W5O&lt;(:D&lt;'&amp;T=Q!!$5&amp;D5(&gt;S1G&amp;T:3"P&gt;81!"!!!!#"!5!!$!!!!!1!#%W6S=G^S)'FO)#BO&lt;S"F=H*P=CE!0E"Q!"Y!!#9317.1&gt;X*1&lt;(6H;7ZT,GRW&lt;'FC%5&amp;D5(&gt;S1G&amp;T:3ZM&gt;G.M98.T!!!-17.1&gt;X*#98.F)'FO!!"5!0!!$!!$!!1!"1!'!!=!"Q!(!!=!#!!(!!=!#1)!!(A!!!U)!!!*!!!!#1!!!)U,!!!!!!!!!!!!!!!!!!!!!!!!#!!!!!!!!!!!!!!!E!!!!!!"!!I!!!!!</Property>
