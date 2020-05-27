@@ -15,12 +15,12 @@
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 	</Item>
 	<Item Name="Queue&amp;Messages" Type="Folder">
-		<Item Name="CheckonIdle.vi" Type="VI" URL="../Common/CheckonIdle.vi"/>
 		<Item Name="CheckOnIdleEnum.ctl" Type="VI" URL="../Common/CheckOnIdleEnum.ctl"/>
 		<Item Name="clMessage.ctl" Type="VI" URL="../Common/clMessage.ctl"/>
-		<Item Name="ObtainQueue.vi" Type="VI" URL="../../AcPwrModule/Queue/ObtainQueue.vi"/>
-		<Item Name="Dequeue.vi" Type="VI" URL="../../AcPwrModule/Queue/Dequeue.vi"/>
-		<Item Name="Enqueue.vi" Type="VI" URL="../../AcPwrModule/Queue/Enqueue.vi"/>
+		<Item Name="CheckonIdle.vi" Type="VI" URL="../Common/CheckonIdle.vi"/>
+		<Item Name="ObtainQueue.vi" Type="VI" URL="../Common/Queue/ObtainQueue.vi"/>
+		<Item Name="Dequeue.vi" Type="VI" URL="../Common/Queue/Dequeue.vi"/>
+		<Item Name="Enqueue.vi" Type="VI" URL="../Common/Queue/Enqueue.vi"/>
 		<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../Common/DestroyBroadcastEvents.vi"/>
 		<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../Common/DestroyRequestEvents.vi"/>
 		<Item Name="DestroyClone.vi" Type="VI" URL="../Common/DestroyClone.vi"/>
