@@ -18,5 +18,6 @@
 	<Item Name="clStopArgument.ctl" Type="VI" URL="../clStopArgument.ctl"/>
 	<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../ObtainBroadcastEvents.vi"/>
 	<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../ObtainRequestEvents.vi"/>
+	<Item Name="PathToMain.vi" Type="VI" URL="../PathToMain.vi"/>
 	<Item Name="RetrieveAcPwrMeasurementData.vi" Type="VI" URL="../RetrieveAcPwrMeasurementData.vi"/>
 </Library>
