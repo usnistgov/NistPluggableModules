@@ -17,18 +17,7 @@
 		<Item Name="Documentation" Type="Folder">
 			<Item Name="IVI-4.5_ACPwr_2011-03-11.pdf" Type="Document" URL="../Documentation/IVI-4.5_ACPwr_2011-03-11.pdf"/>
 		</Item>
-		<Item Name="ModulePluginShared" Type="Folder">
-			<Item Name="clBroadcastEvents.ctl" Type="VI" URL="../AcPwrModule/Protected/Broadcasts/clBroadcastEvents.ctl"/>
-			<Item Name="clRequestEvents.ctl" Type="VI" URL="../AcPwrModule/Protected/Requests/clRequestEvents.ctl"/>
-			<Item Name="MeasurmentDataCluster.ctl" Type="VI" URL="../AcPwrModule/PublicAPI/MeasurmentDataCluster.ctl"/>
-			<Item Name="clStopArgument.ctl" Type="VI" URL="../AcPwrModule/PublicAPI/Arguments/Requests/clStopArgument.ctl"/>
-			<Item Name="clDidInit.ctl" Type="VI" URL="../AcPwrModule/PublicAPI/Arguments/Broadcasts/clDidInit.ctl"/>
-			<Item Name="clEventType.ctl" Type="VI" URL="../AcPwrModule/Protected/clEventType.ctl"/>
-			<Item Name="ObtainBroadcastForRegistration.vi" Type="VI" URL="../AcPwrModule/PublicAPI/Broadcasts/ObtainBroadcastForRegistration.vi"/>
-			<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../AcPwrModule/Protected/Requests/ObtainRequestEvents.vi"/>
-			<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../AcPwrModule/Protected/Broadcasts/ObtainBroadcastEvents.vi"/>
-			<Item Name="DatatoGraphChroma.vi" Type="VI" URL="../AcPwrModule/Test/DatatoGraphChroma.vi"/>
-		</Item>
+		<Item Name="AcPwrShared.lvlib" Type="Library" URL="../AcPwrShared/AcPwrShared.lvlib"/>
 		<Item Name="AcPwrModule.lvlib" Type="Library" URL="../AcPwrModule/AcPwrModule.lvlib"/>
 		<Item Name="AcPwrPlugins.lvlib" Type="Library" URL="../AcPwrPlugins/AcPwrPlugins.lvlib"/>
 		<Item Name="Visualization.lvlib" Type="Library" URL="../../Visualization/Visualization.lvlib"/>
@@ -680,19 +669,12 @@
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../../../../Program Files (x86)/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
-			<Item Name="Tag-bool.lvlib" Type="Library" URL="/&lt;extravilib&gt;/ChannelInstances/Tag-bool.lvlib"/>
-			<Item Name="_ChannelSupport.lvlib" Type="Library" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/_ChannelSupport.lvlib"/>
-			<Item Name="ChannelProbePositionAndTitle.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbePositionAndTitle.vi"/>
-			<Item Name="ChannelProbeWindowStagger.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbeWindowStagger.vi"/>
 			<Item Name="SyncModule.lvlib" Type="Library" URL="../../Sync/SyncModule/SyncModule.lvlib"/>
 			<Item Name="nisync.dll" Type="Document" URL="nisync.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="SyncPlugins.lvlib" Type="Library" URL="../../Sync/SyncPlugins/SyncPlugins.lvlib"/>
 			<Item Name="kernel32.dll" Type="Document" URL="kernel32.dll">
-				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
-			</Item>
-			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="FgenModule.lvlib" Type="Library" URL="../../FGen/FgenModule/FgenModule.lvlib"/>
@@ -733,6 +715,13 @@
 			<Item Name="Comms.lvlib" Type="Library" URL="../../../LV_TestAutomation/Comms_lib/Comms.lvlib"/>
 			<Item Name="Ini_lib.lvlib" Type="Library" URL="../../../LV_Ini/Ini_lib.lvlib"/>
 			<Item Name="Config_class.lvlib" Type="Library" URL="../../../LV_Config_class/Config_class.lvlib"/>
+			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="Tag-bool.lvlib" Type="Library" URL="/&lt;extravilib&gt;/ChannelInstances/Tag-bool.lvlib"/>
+			<Item Name="_ChannelSupport.lvlib" Type="Library" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/_ChannelSupport.lvlib"/>
+			<Item Name="ChannelProbePositionAndTitle.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbePositionAndTitle.vi"/>
+			<Item Name="ChannelProbeWindowStagger.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbeWindowStagger.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
