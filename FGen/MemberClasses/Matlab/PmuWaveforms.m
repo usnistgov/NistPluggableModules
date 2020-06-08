@@ -36,7 +36,9 @@ function [Signal,size] = PmuWaveforms( ...
 % and any added intefering frequency or modulation that may be added. 
 Freqs = [Fin(1,1)];
 if Kh(1) > 0; Freqs(2) =  Fh(1,1); end
-size = SizeLcmPeriods(Freqs, FSamp);
+if (KaS(1) ~= 0 || KxS(1) ~= 0); size = sizeMax;       % do not resize step tests
+    else; size = SizeLcmPeriods(Freqs, FSamp);
+end
 if size > sizeMax; size = sizeMax; end
     
 % Phase in radians

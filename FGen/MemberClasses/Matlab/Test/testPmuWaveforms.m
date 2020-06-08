@@ -12,6 +12,13 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
         signalParams
         sizeMax
     end
+    
+   methods(Static)
+        function [Xm Fin Ps Fh Ph Kh Fa Ka Fx Kx Rf KaS KxS] = getParamIndex()
+            Xm=1;Fin=2;Ps=3;Fh=4;Ph=5;Kh=6;Fa=7;Ka=8;Fx=9;Kx=10;Rf=11;KaS=12;KxS=13;
+        end
+    end
+    
         
     methods (TestMethodSetup)
         function setDefaults(testCase)
@@ -43,28 +50,29 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
             %pause;
             %test_50f0_75i0(testCase);
             %setDefaults(testCase);
-            test_70f0(testCase);
+            %test_70f0(testCase);
+            test_ampl_step(testCase);
         end
     end
     
     methods (Access=private)
-    % These private methods are called by the regression tests
-    
+        % These private methods are called by the regression tests
+        
         function runOnce(testCase)
-           [Signal,size] = PmuWaveforms(...
-                    testCase.t0,...
-                    testCase.SettlingTime,...
-                    testCase.sizeMax,...
-                    testCase.Fs,...
-                    testCase.signalParams...
-                    );
-
-                t = linspace(0,size/testCase.Fs,size);
-            plot(t,Signal(1,:))          
-
-                
+            [Signal,size] = PmuWaveforms(...
+                testCase.t0,...
+                testCase.SettlingTime,...
+                testCase.sizeMax,...
+                testCase.Fs,...
+                testCase.signalParams...
+                );
+            
+            %t = linspace(0,size/testCase.Fs,size);
+            t = testCase.t0-testCase.SettlingTime:1/testCase.Fs:((size-1)/testCase.Fs)+testCase.t0+testCase.SettlingTime;
+            
+            plot(t,Signal(1,:))
         end
-    
+        
         function testDefault(testCase)
             runOnce(testCase)
         end
@@ -80,7 +88,20 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
            testCase.signalParams(3,:)=[-90,-90,-90];
            runOnce(testCase);
         end
+        
+        %est an amplitude step (50 Hz, 1 second + 7 cycle settling time)
+        function test_ampl_step(testCase)
+            setDefaults(testCase)
+            [Xm Fin Ps Fh Ph Kh Fa Ka Fx Kx Rf KaS KxS] = testCase.getParamIndex();
+            testCase.Fs = 48000;
+            testCase.t0=-1;
+            testCase.sizeMax = testCase.Fs*2;
+            testCase.SettlingTime = 7/testCase.signalParams(Fin,1);
+            testCase.signalParams(KxS,:) = 0.1*testCase.signalParams(Xm,:);
+            runOnce(testCase);
+        end
             
             
     end
-end
+    
+ end
