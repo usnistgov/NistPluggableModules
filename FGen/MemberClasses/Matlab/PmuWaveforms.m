@@ -111,5 +111,34 @@ end
 
 Signal = real(cSignal);
 
+
+%%-------------DEBUGGING-------------------------------------------------
+% In the step test, I learned from the below that unwrapping is needed when determining frequency!
+
+% fig = 0;
+% 
+% fig = fig+1;
+% figure(fig)
+% 
+% plot(real(cSignal(1,:)));
+% hold on
+% plot(imag(cSignal(1,:)));
+% hold off
+% 
+% Pi = angle(cSignal);
+% Pi = unwrap(Pi')';
+% fig=fig+1;
+% figure(fig)
+% plot(Pi(1,:));
+% 
+% 
+% fig=fig+1;
+% figure(fig)
+% 
+% Fi = (-diff(Pi')*FSamp/(2*pi))';
+
+% plot(Fi(1,:));
+%%------------------------------------------------------------------------
+
 end  %function
 

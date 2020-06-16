@@ -13,13 +13,15 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
         sizeMax
     end
     
-   methods(Static)
+    
+%% Static method to get indexes into the signalParams matrix    
+    methods(Static)
         function [Xm Fin Ps Fh Ph Kh Fa Ka Fx Kx Rf KaS KxS] = getParamIndex()
             Xm=1;Fin=2;Ps=3;Fh=4;Ph=5;Kh=6;Fa=7;Ka=8;Fx=9;Kx=10;Rf=11;KaS=12;KxS=13;
         end
     end
     
-        
+%% Setting up the test methods        
     methods (TestMethodSetup)
         function setDefaults(testCase)
             testCase.t0 = 0;
@@ -27,36 +29,31 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
             testCase.SettlingTime=0;
             testCase.sizeMax = 10000000;
             
-            Xm = [1,1,1];
-            Fin = [50,50,50];
-            Ps = [0,-120,120];
-            Fh = [0,0,0];
-            Ph = [0,-120,120];
-            Kh = [0,0,0];
-            Fa = [0,0,0];
-            Ka = [0,0,0];
-            Fx = [0,0,0];
-            Kx = [0,0,0];
-            Rf = [0,0,0];
-            Kas = [0,0,0];
-            Kxs = [0,0,0];
-            testCase.signalParams = [Xm;Fin;Ps;Fh;Ph;Kh;Fa;Ka;Fx;Kx;Rf;Kas;Kxs]; 
+            NPhases = 3;
+            testCase.signalParams = zeros(13,NPhases);
+            [Xm Fin Ps Fh Ph Kh Fa Ka Fx Kx Rf KaS KxS] = testCase.getParamIndex();
+            
+            testCase.signalParams(Xm,:) = 1;
+            testCase.signalParams(Fin,:) = [50,50,50];
+            testCase.signalParams(Ps,:) = [0,-120,120];
         end           
     end
     
+ %%   res = run(testCase) runs the below
     methods (Test)
         function regressionTests (testCase)
             %testDefault(testCase);
-            %pause;
+            %test_50f1(testCase);
             %test_50f0_75i0(testCase);
             %setDefaults(testCase);
             %test_70f0(testCase);
-            test_ampl_step(testCase);
+            %test_ampl_step(testCase);
         end
     end
     
+    
+%%  These are the regression tests and the single test runner "runOnce  
     methods (Access=private)
-        % These private methods are called by the regression tests
         
         function runOnce(testCase)
             [Signal,size] = PmuWaveforms(...
@@ -67,13 +64,18 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
                 testCase.signalParams...
                 );
             
-            %t = linspace(0,size/testCase.Fs,size);
             t = testCase.t0-testCase.SettlingTime:1/testCase.Fs:((size-1)/testCase.Fs)+testCase.t0+testCase.SettlingTime;
             
             plot(t,Signal(1,:))
+            % saveWaveforms(testCase,Signal,size);
         end
         
         function testDefault(testCase)
+            runOnce(testCase)
+        end
+        
+        function test_50f1(testCase)
+            testCase.signalParams(2,:)= 50.1;
             runOnce(testCase)
         end
         
@@ -99,6 +101,33 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
             testCase.SettlingTime = 7/testCase.signalParams(Fin,1);
             testCase.signalParams(KxS,:) = 0.1*testCase.signalParams(Xm,:);
             runOnce(testCase);
+        end
+        
+        function saveWaveforms(testCase,Signal,size)
+            % cd to the working directory
+            cd (fullfile(getenv('USERPROFILE'),'Documents','PMUCAL','Output','step test'))
+            
+            % get the time to use as a file name
+            P.Timestamp = now();
+            t = datetime;
+            v = datevec(t);
+            name = strcat(num2str(v(1)), ...
+                num2str(v(2),'%02.f'), ...
+                num2str(v(3),'%02.f'), ...
+                num2str(v(4),'%02.f'), ...
+                num2str(v(5),'%02.f'), ...
+                num2str(v(6),'%02.f'), ...
+                '.mat');
+        
+            % Set up the storage structure
+            P.Y = Signal;
+            P.dt = 1/testCase.Fs;
+            P.ActualPts = size;
+            
+            % Save it
+            save(name,'P');
+        
+
         end
             
             
