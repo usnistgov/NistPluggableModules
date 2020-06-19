@@ -72,36 +72,78 @@ classdef TestStepFit < matlab.unittest.TestCase
 %   The functions in this method list are run automatically when "res=run(testCase)" is called.
     methods (Test)
         function regressionTests (testCase)
-            %testCase.test_DefaultAmplLocate
-            testCase.test_DefaultAmplFit
-            %testCase.test_LocateAmplSweep
-            %testCase.test_DefaultPhaseLocate
-            %testCase.test_DefaultPhaseFit
-            %testCase.test_LocatePhaseSweep
+%             testCase.test_LocateDefaultPosAmpl
+%             testCase.test_LocateDefaultNegAmpl
+%             testCase.test_LocateDefaultPosPhase
+%             testCase.test_LocateDefaultNegPhase
+%             testCase.test_LocatePosAmplSweep
+%             testCase.test_LocateNegAmplSweep
+%             testCase.test_LocatePosPhaseSweep
+%             testCase.test_LocateNegPhaseSweep
+            testCase.test_FitDefaultPosAmpl
+            testCase.test_FitDefaultNegAmpl
+            testCase.test_FitDefaultPosPhase
+            testCase.test_FitDefaultNegPhase
+            testCase.test_FitPosAmplSweep
+            testCase.test_FitNegAmplSweep
+            testCase.test_FitPosPhaseSweep
+            testCase.test_FitNegPhaseSweep
           end
     end
 
     %% Regression Tests (public so they can be called externally)
     methods(Access = public)
  
-        function test_DefaultAmplLocate(testCase)
-        % test locating an amplitude step in the center of the window    
+        function test_LocateDefaultPosAmpl(testCase)
+        % test locating an amplitude step in the center of the window 
+            testCase.Name='test_LocateDefaultPosAmpl';
+            fprintf('\n%s\n',testCase.Name)
             testCase.setDefaults
             testCase.exp = [0,0,0];
             runOneLocate(testCase)            
         end
-        
-        function test_DefaultAmplFit(testCase)
-        % test fitting an amplitude step in the center of the window    
+
+        function test_LocateDefaultNegAmpl(testCase)
+        % test locating an amplitude step in the center of the window 
             testCase.setDefaults
+            testCase.Name='test_LocateDefaultNegAmpl';
+            fprintf('\n%s\n',testCase.Name)
+            [~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KxS] = testCase.getParamIndex();
+            testCase.signalParams(KxS,:)=-0.1;
             testCase.exp = [0,0,0];
-            runOneFit(testCase)            
+            runOneLocate(testCase)            
         end
+
+        function test_LocateDefaultPosPhase(testCase)
+        % test locating an amplitude step in the center of the window    
+            testCase.setDefaults
+            testCase.Name='test_LocateDefaultPosPhase';
+            fprintf('\n%s\n',testCase.Name)
+            [~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KaS, KxS] = testCase.getParamIndex();
+            testCase.signalParams(KxS,:) = 0;
+            testCase.signalParams(KaS,:) = 10;
+            testCase.exp = [0,0,0];
+            runOneLocate(testCase)            
+        end
+         
+        function test_LocateDefaultNegPhase(testCase)
+        % test locating an amplitude step in the center of the window    
+            testCase.setDefaults
+            testCase.Name='test_LocateDefaultNegPhase';
+            fprintf('\n%s\n',testCase.Name)
+            [~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KaS, KxS] = testCase.getParamIndex();
+            testCase.signalParams(KxS,:) = 0;
+            testCase.signalParams(KaS,:) = -10;
+            testCase.exp = [0,0,0];
+            runOneLocate(testCase)            
+        end        
         
-        function test_LocateAmplSweep(testCase)
+        function test_LocatePosAmplSweep(testCase)
         % loop sweeps the step location by 1/10 cycle from -1/2 cycle to +1/2 cycle from center
         % This simulates the PMU test using equivalent time sampling
             testCase.setDefaults
+            testCase.Name='test_LocatePosAmplSweep';
+            fprintf('\n%s\n',testCase.Name)
             testCase.stepOffset = -(0.5/testCase.F0);
              for i = 1:10
                 testCase.exp = [testCase.stepOffset,testCase.stepOffset,testCase.stepOffset];
@@ -109,43 +151,182 @@ classdef TestStepFit < matlab.unittest.TestCase
                 testCase.stepOffset = testCase.stepOffset + 0.1/testCase.F0;
             end
         end
-       
-        function test_DefaultPhaseLocate(testCase)
-        % test locating an amplitude step in the center of the window    
+        
+       function test_LocateNegAmplSweep(testCase)
+        % loop sweeps the step location by 1/10 cycle from -1/2 cycle to +1/2 cycle from center
+        % This simulates the PMU test using equivalent time sampling
             testCase.setDefaults
+            testCase.Name='test_LocateNegAmplSweep';
+            fprintf('\n%s\n',testCase.Name)
+            [~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KxS] = testCase.getParamIndex();
+            testCase.signalParams(KxS,:) = -0.1;
+             testCase.stepOffset = -(0.5/testCase.F0);
+             for i = 1:10
+                testCase.exp = [testCase.stepOffset,testCase.stepOffset,testCase.stepOffset];
+                runOneLocate(testCase)
+                testCase.stepOffset = testCase.stepOffset + 0.1/testCase.F0;
+            end
+        end
+        
+        function test_LocatePosPhaseSweep(testCase)
+            % loop sweeps the step location by 1/10 cycle from -1/2 cycle to +1/2 cycle from center
+            % This simulates the PMU test using equivalent time sampling
+            testCase.setDefaults
+            testCase.Name='test_LocatePosPhaseSweep';
+            fprintf('\n%s\n',testCase.Name)
             [~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KaS, KxS] = testCase.getParamIndex();
             testCase.signalParams(KxS,:) = 0;
             testCase.signalParams(KaS,:) = 10;
-            testCase.exp = [0,0,0];
-            runOneLocate(testCase)            
+            testCase.stepOffset = -(0.5/testCase.F0);
+            for i = 1:10
+                testCase.exp = [testCase.stepOffset,testCase.stepOffset,testCase.stepOffset];
+                runOneLocate(testCase)
+                testCase.stepOffset = testCase.stepOffset + 0.1/testCase.F0;
+            end
         end
         
-        function test_DefaultPhaseFit(testCase)
+        function test_LocateNegPhaseSweep(testCase)
+            % loop sweeps the step location by 1/10 cycle from -1/2 cycle to +1/2 cycle from center
+            % This simulates the PMU test using equivalent time sampling
+            testCase.setDefaults
+            testCase.Name='test_LocateNegPhaseSweep';
+            fprintf('\n%s\n',testCase.Name)
+            [~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KaS, KxS] = testCase.getParamIndex();
+            testCase.signalParams(KxS,:) = 0;
+            testCase.signalParams(KaS,:) = -10;
+            testCase.stepOffset = -(0.5/testCase.F0);
+            for i = 1:10
+                testCase.exp = [testCase.stepOffset,testCase.stepOffset,testCase.stepOffset];
+                runOneLocate(testCase)
+                testCase.stepOffset = testCase.stepOffset + 0.1/testCase.F0;
+            end
+        end
+        
+            
+        function test_FitDefaultPosAmpl(testCase)
+        % test fitting an amplitude step in the center of the window    
+            testCase.setDefaults            
+            testCase.Name='test_FitDefaultPosAmpl';
+            fprintf('\n%s\n',testCase.Name)
+             testCase.fitOne  
+        end
+        
+        function test_FitDefaultNegAmpl(testCase)
+        % test fitting an amplitude step in the center of the window    
+            testCase.setDefaults 
+            testCase.Name='test_FitDefaultNegAmpl';
+            fprintf('\n%s\n',testCase.Name)
+            [~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KxS] = testCase.getParamIndex();
+            testCase.signalParams(KxS,:)=-0.1;
+            testCase.fitOne  
+        end
+        
+        function test_FitDefaultPosPhase(testCase)
         % test fitting an amplitude step in the center of the window    
             testCase.setDefaults
-            [~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KaS, KxS] = testCase.getParamIndex();
+            testCase.Name='test_FitDefaultPosPhase';
+            fprintf('\n%s\n',testCase.Name)
+            [Xm, Fin, Ps, ~, ~, ~, ~, ~, ~, ~, ~, KaS, KxS] = testCase.getParamIndex();
             testCase.signalParams(KxS,:) = 0;
-            testCase.signalParams(KaS,:) = 10;
-            
-            testCase.exp = [0,0,0];
-            runOneFit(testCase)            
+            testCase.signalParams(KaS,:) = 10;                                  
+            testCase.fitOne            
         end
-        
-        function test_LocatePhaseSweep(testCase)
-        % loop sweeps the step location by 1/10 cycle from -1/2 cycle to +1/2 cycle from center
-        % This simulated the PMU test using equivalent time sampling
+                
+        function test_FitDefaultNegPhase(testCase)
+        % test fitting an amplitude step in the center of the window    
             testCase.setDefaults
-            [~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KaS, KxS] = testCase.getParamIndex();
+            testCase.Name='test_FitDefaultNegPhase';
+            fprintf('\n%s\n',testCase.Name)
+            [Xm, Fin, Ps, ~, ~, ~, ~, ~, ~, ~, ~, KaS, KxS] = testCase.getParamIndex();
             testCase.signalParams(KxS,:) = 0;
-            testCase.signalParams(KaS,:) = 10;
-            
+            testCase.signalParams(KaS,:) = -10;                                  
+            testCase.fitOne            
+        end
+                
+        function test_FitPosAmplSweep(testCase)
+        % loop sweeps the step location by 1/10 cycle from -1/2 cycle to +1/2 cycle from center
+        % This simulates the PMU test using equivalent time sampling
+            testCase.setDefaults
+            testCase.Name='test_FitPosAmplSweep';
+            fprintf('\n%s\n',testCase.Name)
+            testCase.fitSweep            
+        end  
+        
+        function test_FitNegAmplSweep(testCase)
+        % loop sweeps the step location by 1/10 cycle from -1/2 cycle to +1/2 cycle from center
+        % This simulates the PMU test using equivalent time sampling
+            testCase.setDefaults
+            testCase.Name='test_FitNegAmplSweep';
+            fprintf('\n%s\n',testCase.Name)
+            [~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KxS] = testCase.getParamIndex();
+            testCase.signalParams(KxS,:) = -0.1;
+            testCase.fitSweep            
+        end           
+        
+       function test_FitPosPhaseSweep(testCase)
+        % loop sweeps the step location by 1/10 cycle from -1/2 cycle to +1/2 cycle from center
+        % This simulates the PMU test using equivalent time sampling
+            testCase.setDefaults
+            testCase.Name='test_FitPosPhaseSweep';
+            fprintf('\n%s\n',testCase.Name)
+ 
+            [Xm, Fin, Ps, ~, ~, ~, ~, ~, ~, ~, ~, KaS, KxS] = testCase.getParamIndex();
+            testCase.signalParams(KaS,:)=10;    % +10 degree step 
+            testCase.signalParams(KxS,:)=0;    % +10 degree step 
+            testCase.fitSweep
+       end  
+       
+       function test_FitNegPhaseSweep(testCase)
+        % loop sweeps the step location by 1/10 cycle from -1/2 cycle to +1/2 cycle from center
+        % This simulates the PMU test using equivalent time sampling
+            testCase.setDefaults
+            testCase.Name='test_FitNegPhaseSweep';
+            fprintf('\n%s\n',testCase.Name)
+ 
+            % signal parameters to be used to calcualte expected values
+            [~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KaS, KxS] = testCase.getParamIndex();
+            testCase.signalParams(KaS,:)=-10;    % +10 degree step 
+            testCase.signalParams(KxS,:)=0;    % +10 degree step 
+            testCase.fitSweep
+       end  
+        
+         
+       function fitOne(testCase)
+           tau = testCase.stepOffset;
+           [Xm, Fin, Ps, ~, ~, ~, ~, ~, ~, ~, ~, KaS, KxS] = testCase.getParamIndex();
+           a=testCase.signalParams(Xm,:)*sqrt(2);
+           w=testCase.signalParams(Fin,:)*2*pi;
+           p=testCase.signalParams(Ps,:)*pi/180;
+           Kx=testCase.signalParams(KxS,:);
+           Ka=testCase.signalParams(KaS,:);
+           
+           testCase.exp = (1+(tau>0)*Kx).*a.*exp(-1i.*((-tau*w)+(p+(tau>0)*Ka)));
+           runOneFit(testCase)
+       end
+       
+       
+        function fitSweep(testCase)             
+            %get signal parameters for expected values
+            [Xm, Fin, Ps, ~, ~, ~, ~, ~, ~, ~, ~, KaS, KxS] = testCase.getParamIndex();
+            a=testCase.signalParams(Xm,:)*sqrt(2);
+            w=testCase.signalParams(Fin,:)*2*pi;
+            p=testCase.signalParams(Ps,:)*pi/180;
+                        
             testCase.stepOffset = -(0.5/testCase.F0);
-             for i = 1:10
-                testCase.exp = [testCase.stepOffset,testCase.stepOffset,testCase.stepOffset];
-                runOneLocate(testCase)
+            for i = 1:10
+                tau = testCase.stepOffset;
+                disp(sprintf('\nTau=%f',tau))
+                Kx=testCase.signalParams(KxS,:);
+                Ka=testCase.signalParams(KaS,:);
+                
+                % calculate expected values
+                testCase.exp = (1+(tau>0)*Kx).*a.*exp(-1i.*((-tau*w)+(p+(tau>0)*Ka)));
+                runOneFit(testCase)
                 testCase.stepOffset = testCase.stepOffset + 0.1/testCase.F0;
             end
-        end
+           
+       end
+        
         
     end
     
@@ -174,7 +355,7 @@ classdef TestStepFit < matlab.unittest.TestCase
             testCase.signalParams(Xm,:) = 1;
             testCase.signalParams(Fin,:) = 50;
             testCase.signalParams(Ps,:) = [0,-120,120];
-            testCase.signalParams(KxS,:) = 0.1*testCase.signalParams(Xm,:);
+            testCase.signalParams(KxS,:) = 0.1;
             
             testCase.SettlingTime = 7/testCase.signalParams(Fin,1);
            
@@ -191,7 +372,7 @@ classdef TestStepFit < matlab.unittest.TestCase
                 Y, ...
                 testCase.Ignore ...
                 );
-            disp(tau);
+            fprintf('tau1=%e, tau2=%e, tau3=%e\n',tau(1),tau(2),tau(3));
             % verify the result, allowed to be up to 2 samples off
             testCase.verifyEqual(tau,testCase.exp,'AbsTol',2/testCase.Fs);
             
@@ -202,7 +383,7 @@ classdef TestStepFit < matlab.unittest.TestCase
         function runOneFit(testCase)
            [~,Y] = testCase.getWaveform(testCase);
  
-            [~,~,~] = StepFit (...
+            [Synx,Freq,Rocof] = StepFit (...
                 testCase.signalParams, ...
                 testCase.DelayCorr, ...
                 testCase.MagCorr, ...
@@ -211,6 +392,8 @@ classdef TestStepFit < matlab.unittest.TestCase
                 testCase.Fs, ...
                 Y ...
                 );
+            
+            testCase.verifyEqual(Synx,testCase.exp,'RelTol',1e-6)
            
         end
         

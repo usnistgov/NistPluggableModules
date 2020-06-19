@@ -50,7 +50,7 @@ opts = fitoptions( 'Method', 'NonlinearLeastSquares' );
 opts.Algorithm = 'Levenberg-Marquardt';
 opts.Display = 'Off';
 opts.DiffMinChange = 1.18e-12;
-%opts.Robust='LAR';
+opts.Robust='LAR';
 
 Synx=NaN(1,NPhases);Freq=Synx;ROCOF=Synx;
 
@@ -65,7 +65,7 @@ for i = 1:NPhases
         f = strcat('a*(1+(x>=b)*',sKxS,')*cos(',sw,'*x+c)');
         opts.StartPoint = [1 tau(i) Ps(i)*pi/180];
     else
-        sKaS(i) = num2str(KaS(i)*pi/180);
+        sKaS = num2str(KaS(i)*pi/180);
         f = strcat('a*cos(',sw,'*x+(x>=b)*',sKaS,'+c)');
         opts.StartPoint = [1 tau(i) Ps(i)*pi/180];
     end
@@ -82,7 +82,7 @@ for i = 1:NPhases
     % use the below for research and visualization
     [fitresult{i}, gof(i), output{i}] = fit( xData, yData, ft, opts );
     
-    msg=sprintf('Phase %d: LocateTau=%e, FitTau=%e, RSquare=%e, rmse=%e\n',...
+    msg=sprintf('Phase %d: LocateTau=%e, FitTau=%e, RSquare=%e, rmse=%e',...
                 i,tau(i),fitresult{i}.b,gof(i).rsquare,gof(i).rmse);
     disp(msg);
     
