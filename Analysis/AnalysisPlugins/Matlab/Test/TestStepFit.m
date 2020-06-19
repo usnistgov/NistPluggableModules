@@ -72,12 +72,12 @@ classdef TestStepFit < matlab.unittest.TestCase
 %   The functions in this method list are run automatically when "res=run(testCase)" is called.
     methods (Test)
         function regressionTests (testCase)
-            testCase.test_DefaultAmplLocate
+            %testCase.test_DefaultAmplLocate
             testCase.test_DefaultAmplFit
-            testCase.test_LocateAmplSweep
-            testCase.test_DefaultPhaseLocate
-            testCase.test_DefaultPhaseFit
-            testCase.test_LocatePhaseSweep
+            %testCase.test_LocateAmplSweep
+            %testCase.test_DefaultPhaseLocate
+            %testCase.test_DefaultPhaseFit
+            %testCase.test_LocatePhaseSweep
           end
     end
 

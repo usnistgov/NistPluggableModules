@@ -10,6 +10,10 @@ function [Synx,Freq,ROCOF] = StepFit (...
     Samples ...
     )
 
+
+
+
+
 %% Initial Signal Parameters
 
 %  Note that the labeling convention comes mostly from the PMU standard
@@ -30,136 +34,71 @@ KxS = SignalParams(13,:);   % magnitude step index
 % Samples are rows of phases and columns of samples (unfortunate but this
 % is the way the calibrator was designed)
 
-%%
-
-Synx = 0;Freq=0;ROCOF=0;
-
-
-% Find the initial guess of the step times tau
+Synx=0;Freq=0;ROCOF=0;
+%% initial guess for step location tau
 ignore = 5;     %percent of the beginning and end of the gradient of hilbert to ignore
 tau = StepLocate(SampleRate,Samples,ignore);
-disp(tau);
-% 
-% km = 3; kf = km;   % detection threshold
-% ignore = 0.05;     % amount of the detection signal to ignore at each end.  (This may be set to 0 after experimments with windowed Hilbert transform
-% 
-% 
-% dimY = size(Samples); nPhases = dimY(1);
-% 
-% N = length(Samples);
-% t = (-(N/2)+1:(N/2))*1/SampleRate;     % time vector centered on the window
-% br = dimY(2)*ignore;                   % may be removed later
-% tbr = t(br:end-br);                    % time vector with ignored values removed
-% 
-% %% this section gets a first guess at the step location
-% Y = (hilbert(Samples'))';              %find the analytic signal
-% 
-% % need a loop to individually calculate the gradients of each phase
-% Fi = zeros(dimY);dAi = Fi;
-% 
-% for i = 1:nPhases
-%     Fi(i,:) = gradient(unwrap(angle(Y(i,:))));  % hilbert frequency
-%     dAi(i,:) = gradient(abs(Y(i,:)));           % amplitude gradient
-% end
-% % optional if you want to have the hilbert estimated frequency in Hz
-% Fi = -Fi*SampleRate/(2*pi);
-% 
-% % frequency detection signal
-% fm = median((Fi(:,br:end-br)),2);
-% detF = abs(Fi(:,br:end-br)-fm);    %detection signal limited by the ignored samples
-% [MF,IF] = max(detF,[],2);          % max value and index into the limited detection signal
-% 
-% disp([MF,IF]);
-% 
-% % amplitude detection signal
-% am = median(dAi(:,br:end-br),2);
-% detA = abs(Fi(:,br:end-br)-am);    % amplitude detection signal limited by the ignored samples
-% [MA,IA] = max(detA,[],2);          % max value and index into the limited detection signal
-% 
-% disp([MA,IA]);
-% 
-% % Threshold detection
-% critF = MF./(kf*fm);
-% critA = MA./(kf*fm);
-% 
-% % test for no step and get tau values
-% tau = NaN(nPhases);
-% if ~(any(critF<1) && any(critA<1))     
-%     cf = critF>=critA;
-%     ca = critF<critA;
-%     idx = cf.*IF+ca.*IA;
-%     tau = tbr(idx);
-%     
-% 
-% 
-% %%------------------------------------------------------------DEBUGGING-------------------------------------------------------------------------------
-% fig = 0;
-% 
-% %% Plot the analytic signal
-% ya = Y(1,:);yb = Y(2,:);yc = Y(3,:);
-% 
-% fig = fig+1;
-% figure(fig);
-% 
-% sgtitle('analytic signal');
-% 
-% subplot(3,1,1)
-% plot(t,real(ya))
-% hold on
-% plot(t,imag(ya));
-% subplot(3,1,2)
-% plot(t,real(yb))
-% hold on
-% plot(t,imag(yb));
-% subplot(3,1,3)
-% plot(t,real(yc))
-% hold on
-% plot(t,imag(yc));
-% 
-% 
-% %% Plot the amplitude gradient 
-% dAa = dAi(1,:);dAb = dAi(2,:);dAc = dAi(3,:);
-% 
-% fig = fig+1;
-% figure(fig);
-% sgtitle('amplitude gradient')
-% 
-% subplot(3,1,1)
-% plot(t,dAa)
-% subplot(3,1,2)
-% plot(t,dAb)
-% subplot(3,1,3)
-% plot(t,dAc)
-% 
-% 
-% 
-% %% Plot the hilbert frequency in Hz
-% Fa = Fi(1,:);Fb = Fi(2,:);Fc = Fi(3,:);
-% 
-% fig = fig+1;
-% figure(fig);
-% sgtitle('Hilbert frequency (Hz)')
-% 
-% subplot(3,1,1)
-% plot(t,Fa)
-% subplot(3,1,2)
-% plot(t,Fb)
-% subplot(3,1,3)
-% plot(t,Fc)
-% 
-% %% Plot the frequency detection signal
-% detFa = detF(1,:);detFb = detF(2,:);detFc = detF(3,:);
-% 
-% fig = fig+1;
-% figure(fig);
-% sgtitle('frequency detection signal')
-% 
-% subplot(3,1,1)
-% plot(tbr,detFa)
-% subplot(3,1,2)
-% plot(tbr,detFb)
-% subplot(3,1,3)
-% plot(tbr,detFc)
-% 
+
+%% Levenburg-Marquadt Curve Fit
+Ydim = size(Samples);
+NPhases = Ydim(1);
+N = Ydim(2);
+x = (-(N/2):(N/2)-1)/SampleRate;     % time vector centered on the window
+w = 2*pi*Fin;
+
+opts = fitoptions( 'Method', 'NonlinearLeastSquares' );
+opts.Algorithm = 'Levenberg-Marquardt';
+opts.Display = 'Off';
+opts.DiffMinChange = 1.18e-12;
+%opts.Robust='LAR';
+
+Synx=NaN(1,NPhases);Freq=Synx;ROCOF=Synx;
+
+for i = 1:NPhases
+    
+    sw = num2str(w(i));    % frequency
+    
+    % steps can be phase or amplitude, (have not done any research yet on
+    % combined steps)
+    if ~(KxS(i) == 0)      % phase step
+        sKxS = num2str(KxS(i));
+        f = strcat('a*(1+(x>=b)*',sKxS,')*cos(',sw,'*x+c)');
+        opts.StartPoint = [1 tau(i) Ps(i)*pi/180];
+    else
+        sKaS(i) = num2str(KaS(i)*pi/180);
+        f = strcat('a*cos(',sw,'*x+(x>=b)*',sKaS,'+c)');
+        opts.StartPoint = [1 tau(i) Ps(i)*pi/180];
+    end
+    
+    ft = fittype(f,'independent','x','dependent','y');
+    
+    % Fit model to data.
+    [xData, yData] = prepareCurveData(x,Samples(i,:));
+    
+    %use the below for calibration and comment out the visualizatons
+    % fitresult{i} = ( xData, yData, ft, opts );
+       
+%%-----------------------Visualization-------------------------------------   
+    % use the below for research and visualization
+    [fitresult{i}, gof(i), output{i}] = fit( xData, yData, ft, opts );
+    
+    msg=sprintf('Phase %d: LocateTau=%e, FitTau=%e, RSquare=%e, rmse=%e\n',...
+                i,tau(i),fitresult{i}.b,gof(i).rsquare,gof(i).rmse);
+    disp(msg);
+    
+    figure(i)
+    sgtitle(sprintf('Phase%d ',i))
+    subplot(2,1,1)
+    plot(fitresult{i},x,Samples(i,:))
+    subplot(2,1,2)
+    plot(x,20*real(log10(output{i}.residuals(:,1))))
+%--------------------------------------------------------------------------    
+
+%% calculate the synchrophasor at the window center, frequency and ROCOF 
+    a=fitresult{i}.a;b=fitresult{i}.b;c=fitresult{i}.c;
+    Synx(i)=a*(1+(b>=0)*KxS(i))*exp(-1i*(c+(b>=0)*KaS(i)));
+    Freq(i)= w(i)*180/pi;
+    ROCOF(i) = 0;
+end
 
 end

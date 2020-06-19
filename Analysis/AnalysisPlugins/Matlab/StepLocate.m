@@ -59,75 +59,75 @@ end
 %    disp(tau);
     
 %%---------------------Visualization---------------------------------------
-fig = 0;
-
-%% Plot the analytic signal
-ya = Y(1,:);yb = Y(2,:);yc = Y(3,:);
-
-fig = fig+1;
-figure(fig);
-
-sgtitle('analytic signal');
-
-subplot(3,1,1)
-plot(t,real(ya))
-hold on
-plot(t,imag(ya));
-hold off
-subplot(3,1,2)
-plot(t,real(yb))
-hold on
-plot(t,imag(yb));
-hold off
-subplot(3,1,3)
-plot(t,real(yc))
-hold on
-plot(t,imag(yc));
-hold off
-
-%% Plot the amplitude gradient 
-dAa = dAi(1,:);dAb = dAi(2,:);dAc = dAi(3,:);
-
-fig = fig+1;
-figure(fig);
-sgtitle('amplitude gradient')
-
-subplot(3,1,1)
-plot(t,dAa)
-subplot(3,1,2)
-plot(t,dAb)
-subplot(3,1,3)
-plot(t,dAc)
-
-
-
-%% Plot the hilbert frequency in Hz
-Fa = Fi(1,:);Fb = Fi(2,:);Fc = Fi(3,:);
-
-fig = fig+1;
-figure(fig);
-sgtitle('Hilbert frequency (Hz)')
-
-subplot(3,1,1)
-plot(t,Fa)
-subplot(3,1,2)
-plot(t,Fb)
-subplot(3,1,3)
-plot(t,Fc)
-
-%% Plot the frequency detection signal
-detFa = detF(1,:);detFb = detF(2,:);detFc = detF(3,:);
-
-fig = fig+1;
-figure(fig);
-sgtitle('frequency detection signal')
-
-subplot(3,1,1)
-plot(tbr,detFa)
-subplot(3,1,2)
-plot(tbr,detFb)
-subplot(3,1,3)
-plot(tbr,detFc)
+% fig = 0;
+% 
+% %% Plot the analytic signal
+% ya = Y(1,:);yb = Y(2,:);yc = Y(3,:);
+% 
+% fig = fig+1;
+% figure(fig);
+% 
+% sgtitle('analytic signal');
+% 
+% subplot(3,1,1)
+% plot(t,real(ya))
+% hold on
+% plot(t,imag(ya));
+% hold off
+% subplot(3,1,2)
+% plot(t,real(yb))
+% hold on
+% plot(t,imag(yb));
+% hold off
+% subplot(3,1,3)
+% plot(t,real(yc))
+% hold on
+% plot(t,imag(yc));
+% hold off
+% 
+% %% Plot the amplitude gradient 
+% dAa = dAi(1,:);dAb = dAi(2,:);dAc = dAi(3,:);
+% 
+% fig = fig+1;
+% figure(fig);
+% sgtitle('amplitude gradient')
+% 
+% subplot(3,1,1)
+% plot(t,dAa)
+% subplot(3,1,2)
+% plot(t,dAb)
+% subplot(3,1,3)
+% plot(t,dAc)
+% 
+% 
+% 
+% %% Plot the hilbert frequency in Hz
+% Fa = Fi(1,:);Fb = Fi(2,:);Fc = Fi(3,:);
+% 
+% fig = fig+1;
+% figure(fig);
+% sgtitle('Hilbert frequency (Hz)')
+% 
+% subplot(3,1,1)
+% plot(t,Fa)
+% subplot(3,1,2)
+% plot(t,Fb)
+% subplot(3,1,3)
+% plot(t,Fc)
+% 
+% %% Plot the frequency detection signal
+% detFa = detF(1,:);detFb = detF(2,:);detFc = detF(3,:);
+% 
+% fig = fig+1;
+% figure(fig);
+% sgtitle('frequency detection signal')
+% 
+% subplot(3,1,1)
+% plot(tbr,detFa)
+% subplot(3,1,2)
+% plot(tbr,detFb)
+% subplot(3,1,3)
+% plot(tbr,detFc)
 
 
 end
