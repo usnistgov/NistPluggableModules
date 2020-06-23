@@ -10,14 +10,14 @@ function [tau] = StepLocate (...
 % is the way the calibrator was designed long ago)
 
 %% Initialization
-km = 3; kf = km;   % detection threshold
+km = 10; kf = 3;   % detection threshold
 ignore = ignore/100;     % amount of the detection signal to ignore at each end.  (This may be set to 0 after experimments with windowed Hilbert transform
 
 dimY = size(Samples); nPhases = dimY(1);
 
 N = dimY(2);
 t = (-(N/2):(N/2)-1)/SampleRate;     % time vector centered on the window
-br = dimY(2)*ignore;                   % may be removed later
+br = N*ignore;                   % may be removed later
 tbr = t(br:end-br);                    % limited time vector with ignored values removed
 
 %% this section gets a first guess at the step location
@@ -31,24 +31,24 @@ for i = 1:nPhases
     dAi(i,:) = gradient(abs(Y(i,:)));           % amplitude gradient
 end
 % optional if you want to have the hilbert estimated frequency in Hz
-Fi = -Fi*SampleRate/(2*pi);
+Freqs = -Fi*SampleRate/(2*pi);
 
 % frequency detection signal
-fm = median((Fi(:,br:end-br)),2);
-detF = abs(Fi(:,br:end-br)-fm);    %detection signal limited by the ignored samples
+fm = median(Fi(:,br:end-br),2);
+detF = abs(Fi(:,br:end-br)-fm(1,:));    %detection signal limited by the ignored samples
 [MF,IF] = max(detF,[],2);          % max value and index into the limited detection signal
 
 % amplitude detection signal
-am = median(dAi(:,br:end-br),2);
-detA = abs(Fi(:,br:end-br)-am);    % amplitude detection signal limited by the ignored samples
+am = median(abs(dAi(:,br:end-br)),2);
+detA = abs(dAi(:,br:end-br)-am(1,:));    % amplitude detection signal limited by the ignored samples
 [MA,IA] = max(detA,[],2);          % max value and index into the limited detection signal
 
 % Threshold detection
-critF = abs(MF./(kf*fm));
-critA = abs(MA./(kf*am));
+critF = MF./(kf*fm);
+critA = MA./(km*am);
 
 % test for no step and get tau values
-tau = NaN(nPhases);
+tau = NaN(nPhases,1);
 if ~(any(critF<1) && any(critA<1))     
     cf = critF>=critA;
     ca = critF<critA;
@@ -59,69 +59,50 @@ end
 %    disp(tau);
     
 %%---------------------Visualization---------------------------------------
-% fig = 0;
-% 
-% %% Plot the analytic signal
-% ya = Y(1,:);yb = Y(2,:);yc = Y(3,:);
-% 
-% fig = fig+1;
-% figure(fig);
-% 
-% sgtitle('analytic signal');
-% 
-% subplot(3,1,1)
-% plot(t,real(ya))
-% hold on
-% plot(t,imag(ya));
-% hold off
-% subplot(3,1,2)
-% plot(t,real(yb))
-% hold on
-% plot(t,imag(yb));
-% hold off
-% subplot(3,1,3)
-% plot(t,real(yc))
-% hold on
-% plot(t,imag(yc));
-% hold off
-% 
-% %% Plot the amplitude gradient 
-% dAa = dAi(1,:);dAb = dAi(2,:);dAc = dAi(3,:);
-% 
-% fig = fig+1;
-% figure(fig);
-% sgtitle('amplitude gradient')
-% 
-% subplot(3,1,1)
-% plot(t,dAa)
-% subplot(3,1,2)
-% plot(t,dAb)
-% subplot(3,1,3)
-% plot(t,dAc)
-% 
-% 
-% 
-% %% Plot the hilbert frequency in Hz
-% Fa = Fi(1,:);Fb = Fi(2,:);Fc = Fi(3,:);
-% 
-% fig = fig+1;
-% figure(fig);
-% sgtitle('Hilbert frequency (Hz)')
-% 
-% subplot(3,1,1)
-% plot(t,Fa)
-% subplot(3,1,2)
-% plot(t,Fb)
-% subplot(3,1,3)
-% plot(t,Fc)
-% 
-% %% Plot the frequency detection signal
-% detFa = detF(1,:);detFb = detF(2,:);detFc = detF(3,:);
-% 
-% fig = fig+1;
-% figure(fig);
-% sgtitle('frequency detection signal')
-% 
+fig = 0;
+
+%% Plot the analytic signal
+fig = fig+1;
+figure(fig);
+%sgtitle('analytic signal');    %does not work in LV 2015
+
+for i = 1:nPhases
+    subplot(nPhases,1,i)
+    plot(t,real(Y(i,:)),t,imag(Y(i,:)))
+end
+%% Plot the amplitude gradient 
+fig = fig+1;
+figure(fig);
+%sgtitle('amplitude detection signal')  %does not work in LV 2015
+
+
+for i = 1:nPhases
+    subplot(nPhases,1,i)
+    plot(tbr,detA(i,:))
+end
+
+%% Plot the hilbert frequency in Hz
+fig = fig+1;
+figure(fig);
+%sgtitle('Hilbert frequency (Hz)')  %does not work in LV 2015
+
+for i = 1:nPhases
+    subplot(nPhases,1,i)
+    plot(t,Fi(i,:))
+end
+
+%% Plot the frequency detection signal
+detFa = detF(1,:);detFb = detF(2,:);detFc = detF(3,:);
+
+fig = fig+1;
+figure(fig);
+%sgtitle('frequency detection signal') %does not work in LV 2015
+
+for i = 1:nPhases
+    subplot(nPhases,1,i)
+    plot(tbr,detF(i,:))
+end
+
 % subplot(3,1,1)
 % plot(tbr,detFa)
 % subplot(3,1,2)

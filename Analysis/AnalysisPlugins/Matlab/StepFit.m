@@ -60,14 +60,20 @@ for i = 1:NPhases
     
     % steps can be phase or amplitude, (have not done any research yet on
     % combined steps)
-    if ~(KxS(i) == 0)      % phase step
-        sKxS = num2str(KxS(i));
-        f = strcat('a*(1+(x>=b)*',sKxS,')*cos(',sw,'*x+c)');
-        opts.StartPoint = [1 tau(i) Ps(i)*pi/180];
+    if isnan(tau(i))
+        % no step was found in the data,
+        f = strcat('a*cos(',sw,'*x+c)');
+        opts.StartPoint = [1 Ps(i)*pi/180];
     else
-        sKaS = num2str(KaS(i)*pi/180);
-        f = strcat('a*cos(',sw,'*x+(x>=b)*',sKaS,'+c)');
-        opts.StartPoint = [1 tau(i) Ps(i)*pi/180];
+        if ~(KxS(i) == 0)      % phase step
+            sKxS = num2str(KxS(i));
+            f = strcat('a*(1+(x>=b)*',sKxS,')*cos(',sw,'*x+c)');
+            opts.StartPoint = [1 tau(i) Ps(i)*pi/180];
+        else
+            sKaS = num2str(KaS(i)*pi/180);
+            f = strcat('a*cos(',sw,'*x+(x>=b)*',sKaS,'+c)');
+            opts.StartPoint = [1 tau(i) Ps(i)*pi/180];
+        end
     end
     
     ft = fittype(f,'independent','x','dependent','y');
@@ -82,12 +88,18 @@ for i = 1:NPhases
     % use the below for research and visualization
     [fitresult{i}, gof(i), output{i}] = fit( xData, yData, ft, opts );
     
-    msg=sprintf('Phase %d: LocateTau=%e, FitTau=%e, RSquare=%e, rmse=%e',...
-                i,tau(i),fitresult{i}.b,gof(i).rsquare,gof(i).rmse);
+
+    if isnan(tau(i))
+        msg=sprintf('Phase %d:, RSquare=%e, rmse=%e',...
+            i,gof(i).rsquare,gof(i).rmse);
+    else
+        msg=sprintf('Phase %d: LocateTau=%e, FitTau=%e, RSquare=%e, rmse=%e',...
+            i,tau(i),fitresult{i}.b,gof(i).rsquare,gof(i).rmse);        
+    end
     disp(msg);
     
     figure(i)
-    sgtitle(sprintf('Phase%d ',i))
+    %sgtitle(sprintf('Phase%d ',i)) does not work for Matlab 2015
     subplot(2,1,1)
     plot(fitresult{i},x,Samples(i,:))
     subplot(2,1,2)
@@ -95,8 +107,13 @@ for i = 1:NPhases
 %--------------------------------------------------------------------------    
 
 %% calculate the synchrophasor at the window center, frequency and ROCOF 
-    a=fitresult{i}.a;b=fitresult{i}.b;c=fitresult{i}.c;
-    Synx(i)=a*(1+(b>=0)*KxS(i))*exp(-1i*(c+(b>=0)*KaS(i)));
+    if isnan(tau(i))
+       a=fitresult{i}.a;c=fitresult{i}.c;
+       Synx(i)=a*exp(-1i*c);
+    else
+        a=fitresult{i}.a;b=fitresult{i}.b;c=fitresult{i}.c;
+        Synx(i)=a*(1+(b>=0)*KxS(i))*exp(-1i*(c+(b>=0)*KaS(i)));
+    end
     Freq(i)= w(i)*180/pi;
     ROCOF(i) = 0;
 end
