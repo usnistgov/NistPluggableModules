@@ -82,36 +82,39 @@ for i = 1:NPhases
     [xData, yData] = prepareCurveData(x,Samples(i,:));
     
     %use the below for calibration and comment out the visualizatons
-    % fitresult{i} = ( xData, yData, ft, opts );
+    fitresult{i} = fit( xData, yData, ft, opts );
        
 %%-----------------------Visualization-------------------------------------   
-    % use the below for research and visualization
-    [fitresult{i}, gof(i), output{i}] = fit( xData, yData, ft, opts );
-    
-
-    if isnan(tau(i))
-        msg=sprintf('Phase %d:, RSquare=%e, rmse=%e',...
-            i,gof(i).rsquare,gof(i).rmse);
-    else
-        msg=sprintf('Phase %d: LocateTau=%e, FitTau=%e, RSquare=%e, rmse=%e',...
-            i,tau(i),fitresult{i}.b,gof(i).rsquare,gof(i).rmse);        
-    end
-    disp(msg);
-    
-    figure(i)
-    %sgtitle(sprintf('Phase%d ',i)) does not work for Matlab 2015
-    subplot(2,1,1)
-    plot(fitresult{i},x,Samples(i,:))
-    subplot(2,1,2)
-    plot(x,20*real(log10(output{i}.residuals(:,1))))
+%     % use the below for research and visualization
+%     [fitresult{i}, gof(i), output{i}] = fit( xData, yData, ft, opts );
+%     
+% 
+%     if isnan(tau(i))
+%         msg=sprintf('Phase %d:, RSquare=%e, rmse=%e',...
+%             i,gof(i).rsquare,gof(i).rmse);
+%     else
+%         msg=sprintf('Phase %d: LocateTau=%e, FitTau=%e, RSquare=%e, rmse=%e',...
+%             i,tau(i),fitresult{i}.b,gof(i).rsquare,gof(i).rmse);        
+%     end
+%     disp(msg);
+%     
+%     figure(i)
+%     %sgtitle(sprintf('Phase%d ',i)) does not work for Matlab 2015
+%     subplot(2,1,1)
+%     plot(fitresult{i},x,Samples(i,:))
+%     subplot(2,1,2)
+%     plot(x,20*real(log10(output{i}.residuals(:,1))))
 %--------------------------------------------------------------------------    
 
 %% calculate the synchrophasor at the window center, frequency and ROCOF 
     if isnan(tau(i))
-       a=fitresult{i}.a;c=fitresult{i}.c;
+       a=fitresult{i}.a*MagCorr(i);     % Magnitude corrected
+       c=fitresult{i}.c+DelayCorr(i)*1e-9*2*pi*Freqs(p);   % Delay Corrected
        Synx(i)=a*exp(-1i*c);
     else
-        a=fitresult{i}.a;b=fitresult{i}.b;c=fitresult{i}.c;
+        a=fitresult{i}.a*MagCorr(i);     % Magnitude corrected;
+        b=fitresult{i}.b;
+        c=fitresult{i}.c+DelayCorr(i)*1e-9*2*pi*Fin(i);   % Delay Corrected;
         Synx(i)=a*(1+(b>=0)*KxS(i))*exp(-1i*(c+(b>=0)*KaS(i)));
     end
     Freq(i)= w(i)*180/pi;

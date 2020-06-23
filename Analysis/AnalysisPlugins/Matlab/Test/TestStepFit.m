@@ -358,6 +358,8 @@ classdef TestStepFit < matlab.unittest.TestCase
             testCase.signalParams(KxS,:) = 0.1;
             
             testCase.SettlingTime = 7/testCase.signalParams(Fin,1);
+            testCase.MagCorr = ones(1,NPhases);
+            testCase.DelayCorr = zeros(1,NPhases);
            
         end
 
@@ -393,7 +395,7 @@ classdef TestStepFit < matlab.unittest.TestCase
                 Y ...
                 );
             
-            testCase.verifyEqual(Synx,testCase.exp,'RelTol',1e-6)
+            testCase.verifyEqual(Synx,testCase.exp,'RelTol',1e-5)
            
         end
         
