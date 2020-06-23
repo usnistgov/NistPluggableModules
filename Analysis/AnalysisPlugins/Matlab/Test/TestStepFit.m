@@ -402,7 +402,7 @@ classdef TestStepFit < matlab.unittest.TestCase
             fprintf('tau1=%e, tau2=%e, tau3=%e\n',tau(1),tau(2),tau(3));
             % verify the result, allowed to be up to 2 samples off
             testCase.verifyEqual(tau,testCase.exp,'AbsTol',2/testCase.Fs);
-            
+           
             
         end
 
@@ -410,7 +410,7 @@ classdef TestStepFit < matlab.unittest.TestCase
         function runOneFit(testCase)
            [~,Y] = testCase.getWaveform(testCase);
  
-            [Synx,Freq,Rocof] = StepFit (...
+            [Synx,Freq,ROCOF] = StepFit (...
                 testCase.signalParams, ...
                 testCase.DelayCorr, ...
                 testCase.MagCorr, ...
@@ -421,6 +421,8 @@ classdef TestStepFit < matlab.unittest.TestCase
                 );
             
             testCase.verifyEqual(Synx,testCase.exp,'RelTol',1e-5)
+            %testCase.verifyEqual(Freq,testCase.signalParams(2,:),'RelTol',1e-5)
+ 
            
         end
         

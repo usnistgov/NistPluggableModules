@@ -1,6 +1,6 @@
 % Uses Britto-Martins' technique (Hilbert followed by  Levenberg-Marquadt) to find best fit for a stepped signal
 % Allen Goldstein, NIST, 2020.  no copyright, free to use with this header.
-function [tau] = StepLocate (...
+function [tau, freq] = StepLocate (...
     SampleRate, ...
     Samples, ...
     ignore ...
@@ -31,10 +31,11 @@ for i = 1:nPhases
     dAi(i,:) = gradient(abs(Y(i,:)));           % amplitude gradient
 end
 % optional if you want to have the hilbert estimated frequency in Hz
-Freqs = -Fi*SampleRate/(2*pi);
+%freq = -mean(Fi,2)*SampleRate/(2*pi);
 
 % frequency detection signal
 fm = median(Fi(:,br:end-br),2);
+freq = -fm*SampleRate/(2*pi);
 detF = abs(Fi(:,br:end-br)-fm(1,:));    %detection signal limited by the ignored samples
 [MF,IF] = max(detF,[],2);          % max value and index into the limited detection signal
 

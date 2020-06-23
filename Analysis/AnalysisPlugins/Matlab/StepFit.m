@@ -36,7 +36,7 @@ KxS = SignalParams(13,:);   % magnitude step index
 
 %% initial guess for step location tau
 ignore = 5;     %percent of the beginning and end of the gradient of hilbert to ignore
-tau = StepLocate(SampleRate,Samples,ignore);
+[tau, freq] = StepLocate(SampleRate,Samples,ignore);
 
 %% Levenburg-Marquadt Curve Fit
 Ydim = size(Samples);
@@ -51,7 +51,9 @@ opts.Display = 'Off';
 opts.DiffMinChange = 1.18e-12;
 opts.Robust='LAR';
 
-Synx=NaN(1,NPhases);Freq=Synx;
+Synx=NaN(1,NPhases);
+Freq=ones(1,NPhases);
+Freq = Freq(1,:).*freq';
 ROCOF = zeros(1,NPhases);
 
 for i = 1:NPhases
@@ -62,8 +64,16 @@ for i = 1:NPhases
     % combined steps)
     if isnan(tau(i))
         % no step was found in the data,
-        f = strcat('a*cos(',sw,'*x+c)');
-        opts.StartPoint = [1 Ps(i)*pi/180];
+        [Synx,Freq,ROCOF] = SteadyStateFit ( ...
+            SignalParams, ...
+            DelayCorr, ...
+            MagCorr, ...
+            F0, ...
+            AnalysisCycles, ...
+            SampleRate, ...
+            Samples ...
+            );
+        return
     else
         if ~(KxS(i) == 0)      % phase step
             sKxS = num2str(KxS(i));
@@ -141,5 +151,4 @@ end
        end
        Synx=V;
    end
-   Freq = Fin;       
 end
