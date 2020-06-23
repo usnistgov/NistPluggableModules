@@ -60,7 +60,28 @@ classdef TestStepFit < matlab.unittest.TestCase
             
             x = t(((N/2)-(Nx/2))+1:(N/2)+(Nx/2));           % windowed time vector
             Y = Signal(:,((N/2)-(Nx/2))-offset+1:(N/2)+(Nx/2)-offset);    % windowed signal
-        end                       
+        end  
+        
+        function [Synx,Freq,Rocof]=getTestProperties(testCase,Props)
+            testCase.signalParams=Props.SignalParams;
+            testCase.DelayCorr=Props.DelayCorr;
+            testCase.MagCorr=Props.MagCorr;
+            testCase.F0=Props.F0;
+            testCase.AnalysisCycles=Props.AnalysisCycles;
+            testCase.Fs=Props.SampleRate;
+            Y=Props.Samples;
+            
+            [Synx,Freq,Rocof] = StepFit (...
+                testCase.signalParams, ...
+                testCase.DelayCorr, ...
+                testCase.MagCorr, ...
+                testCase.F0, ...
+                testCase.AnalysisCycles, ...
+                testCase.Fs, ...
+                Y ...
+                );
+         end
+        
     end
 %% Constructor method (called when the testCase object is created)
     methods
@@ -294,13 +315,15 @@ classdef TestStepFit < matlab.unittest.TestCase
        function fitOne(testCase)
            tau = testCase.stepOffset;
            [Xm, Fin, Ps, ~, ~, ~, ~, ~, ~, ~, ~, KaS, KxS] = testCase.getParamIndex();
-           a=testCase.signalParams(Xm,:)*sqrt(2);
+           a=testCase.signalParams(Xm,:);
            w=testCase.signalParams(Fin,:)*2*pi;
            p=testCase.signalParams(Ps,:)*pi/180;
            Kx=testCase.signalParams(KxS,:);
            Ka=testCase.signalParams(KaS,:);
            
-           testCase.exp = (1+(tau>0)*Kx).*a.*exp(-1i.*((-tau*w)+(p+(tau>0)*Ka)));
+           testCase.exp = (1+(tau>0)*Kx).*a.*exp(1i.*((-tau*w)+(p+(tau>0)*Ka)));
+           testCase.exp = [testCase.exp testCase.exp(1)];
+
            runOneFit(testCase)
        end
        
@@ -308,7 +331,7 @@ classdef TestStepFit < matlab.unittest.TestCase
         function fitSweep(testCase)             
             %get signal parameters for expected values
             [Xm, Fin, Ps, ~, ~, ~, ~, ~, ~, ~, ~, KaS, KxS] = testCase.getParamIndex();
-            a=testCase.signalParams(Xm,:)*sqrt(2);
+            a=testCase.signalParams(Xm,:);
             w=testCase.signalParams(Fin,:)*2*pi;
             p=testCase.signalParams(Ps,:)*pi/180;
                         
@@ -320,7 +343,9 @@ classdef TestStepFit < matlab.unittest.TestCase
                 Ka=testCase.signalParams(KaS,:);
                 
                 % calculate expected values
-                testCase.exp = (1+(tau>0)*Kx).*a.*exp(-1i.*((-tau*w)+(p+(tau>0)*Ka)));
+                testCase.exp = (1+(tau>0)*Kx).*a.*exp(1i.*((-tau*w)+(p+(tau>0)*Ka)));
+                testCase.exp = [testCase.exp testCase.exp(1)];
+                
                 runOneFit(testCase)
                 testCase.stepOffset = testCase.stepOffset + 0.1/testCase.F0;
             end

@@ -34,7 +34,6 @@ KxS = SignalParams(13,:);   % magnitude step index
 % Samples are rows of phases and columns of samples (unfortunate but this
 % is the way the calibrator was designed)
 
-Synx=0;Freq=0;ROCOF=0;
 %% initial guess for step location tau
 ignore = 5;     %percent of the beginning and end of the gradient of hilbert to ignore
 tau = StepLocate(SampleRate,Samples,ignore);
@@ -52,7 +51,8 @@ opts.Display = 'Off';
 opts.DiffMinChange = 1.18e-12;
 opts.Robust='LAR';
 
-Synx=NaN(1,NPhases);Freq=Synx;ROCOF=Synx;
+Synx=NaN(1,NPhases);Freq=Synx;
+ROCOF = zeros(1,NPhases);
 
 for i = 1:NPhases
     
@@ -108,17 +108,38 @@ for i = 1:NPhases
 
 %% calculate the synchrophasor at the window center, frequency and ROCOF 
     if isnan(tau(i))
-       a=fitresult{i}.a*MagCorr(i);     % Magnitude corrected
-       c=fitresult{i}.c+DelayCorr(i)*1e-9*2*pi*Freqs(p);   % Delay Corrected
+       a=fitresult{i}.a*MagCorr(i)/sqrt(2);     % Magnitude corrected
+       c=fitresult{i}.c+DelayCorr(i)*1e-9*2*pi*Fin(i);   % Delay Corrected
        Synx(i)=a*exp(-1i*c);
     else
-        a=fitresult{i}.a*MagCorr(i);     % Magnitude corrected;
+        a=fitresult{i}.a*MagCorr(i)/sqrt(2);     % Magnitude corrected;
         b=fitresult{i}.b;
         c=fitresult{i}.c+DelayCorr(i)*1e-9*2*pi*Fin(i);   % Delay Corrected;
         Synx(i)=a*(1+(b>=0)*KxS(i))*exp(-1i*(c+(b>=0)*KaS(i)));
     end
-    Freq(i)= w(i)*180/pi;
-    ROCOF(i) = 0;
+    
+    
+ 
 end
-
+    
+   %Calculating symmetrical components if there are enough phases
+   if (NPhases > 2)
+       alfa = exp(2*pi*1i/3);
+       Ai = (1/3)*[1 1 1; 1 alfa alfa^2; 1 alfa^2 alfa];
+       
+       Vabc = Synx(1:3)';
+       Vzpn = Ai*Vabc; %voltage: zero, positive and negative sequence
+       V = [Vabc.' Vzpn(2)];
+       
+       if (NPhases > 5)
+           Iabc = Synx(4:6)';
+           Izpn = Ai*Iabc; %curren: zero, positive and negative sequence
+           V = [V Iabc.' Izpn(2)];
+           
+           %Calculate the frequency as the mean gradient of the phase of the
+           %voltage positive sequence
+       end
+       Synx=V;
+   end
+   Freq = Fin;       
 end

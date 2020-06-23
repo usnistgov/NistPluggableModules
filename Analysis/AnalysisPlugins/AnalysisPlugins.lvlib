@@ -20,6 +20,8 @@
 		<Item Name="PmuFitSave.m" Type="Document" URL="../Matlab/PmuFitSave.m"/>
 		<Item Name="SaveWaveforms.m" Type="Document" URL="../Matlab/SaveWaveforms.m"/>
 		<Item Name="SteadyStateFit.m" Type="Document" URL="../Matlab/SteadyStateFit.m"/>
+		<Item Name="StepFit.m" Type="Document" URL="../Matlab/StepFit.m"/>
+		<Item Name="StepLocate.m" Type="Document" URL="../Matlab/StepLocate.m"/>
 		<Item Name="WindowBuild.m" Type="Document" URL="../Matlab/WindowBuild.m"/>
 		<Item Name="WindowSave.m" Type="Document" URL="../Matlab/WindowSave.m"/>
 	</Item>
