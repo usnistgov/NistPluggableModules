@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
-<Project Type="Project" LVVersion="14008000">
+<Project Type="Project" LVVersion="18008000">
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Item Name="My Computer" Type="My Computer">
 		<Property Name="mathScriptPath" Type="Str">SensorPlugins\Matlab;X:\Projects\PMUCal\Modules\WfrmGenerator\WfrmPlugins\Matlab;X:\Projects\PMUCal\Modules\WfrmGenerator\WfrmPlugins\Matlab\C37;X:\Projects\PMUCal\Modules\WfrmGenerator\WfrmPlugins\Matlab\User;X:\Projects\PMUCal\Modules\Analysis\AnalysisPlugins\Matlab</Property>
