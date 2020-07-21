@@ -17,33 +17,33 @@
 	</Item>
 	<Item Name="Shared" Type="Folder">
 		<Item Name="Private" Type="Folder">
-			<Item Name="CheckOnIdle.ctl" Type="VI" URL="../../SensorModule/Private/CheckOnIdle.ctl"/>
-			<Item Name="CheckOnIdle.vi" Type="VI" URL="../../SensorModule/Private/CheckOnIdle.vi"/>
-			<Item Name="SetGetClass.vi" Type="VI" URL="../../SensorModule/Private/SetGetClass.vi"/>
-			<Item Name="SetGetState.vi" Type="VI" URL="../../SensorModule/Private/SetGetState.vi"/>
+			<Item Name="CheckOnIdle.ctl" Type="VI" URL="../Shared/CheckOnIdle.ctl"/>
+			<Item Name="CheckOnIdle.vi" Type="VI" URL="../Shared/CheckOnIdle.vi"/>
+			<Item Name="SetGetClass.vi" Type="VI" URL="../Shared/SetGetClass.vi"/>
+			<Item Name="SetGetState.vi" Type="VI" URL="../Shared/SetGetState.vi"/>
 		</Item>
 		<Item Name="Queue" Type="Folder">
-			<Item Name="Dequeue.vi" Type="VI" URL="../../SensorModule/Protected/Queue/Dequeue.vi"/>
-			<Item Name="Enqueue.vi" Type="VI" URL="../../SensorModule/Protected/Queue/Enqueue.vi"/>
-			<Item Name="ObtainQueue.vi" Type="VI" URL="../../SensorModule/Protected/Queue/ObtainQueue.vi"/>
+			<Item Name="Dequeue.vi" Type="VI" URL="../Shared/Dequeue.vi"/>
+			<Item Name="Enqueue.vi" Type="VI" URL="../Shared/Enqueue.vi"/>
+			<Item Name="ObtainQueue.vi" Type="VI" URL="../Shared/ObtainQueue.vi"/>
 		</Item>
 		<Item Name="Broadcasts" Type="Folder">
-			<Item Name="StatusUpdate.vi" Type="VI" URL="../../SensorModule/Protected/Broadcasts/StatusUpdate.vi"/>
-			<Item Name="SensorConfig.vi" Type="VI" URL="../../SensorModule/Protected/Broadcasts/SensorConfig.vi"/>
-			<Item Name="SensorReport.vi" Type="VI" URL="../../SensorModule/Protected/Broadcasts/SensorReport.vi"/>
-			<Item Name="PathToINIBroadcast.vi" Type="VI" URL="../SensorBaseClass/Community/PathToINIBroadcast.vi"/>
-			<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../../SensorModule/Protected/Broadcasts/DestroyBroadcastEvents.vi"/>
-			<Item Name="DidStop.vi" Type="VI" URL="../../SensorModule/Protected/Broadcasts/DidStop.vi"/>
-			<Item Name="ReportError.vi" Type="VI" URL="../../SensorModule/Protected/Broadcasts/ReportError.vi"/>
+			<Item Name="StatusUpdate.vi" Type="VI" URL="../Shared/StatusUpdate.vi"/>
+			<Item Name="SensorConfig.vi" Type="VI" URL="../Shared/SensorConfig.vi"/>
+			<Item Name="SensorReport.vi" Type="VI" URL="../Shared/SensorReport.vi"/>
+			<Item Name="PathToINIBroadcast.vi" Type="VI" URL="../Shared/PathToINIBroadcast.vi"/>
+			<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../Shared/DestroyBroadcastEvents.vi"/>
+			<Item Name="DidStop.vi" Type="VI" URL="../Shared/DidStop.vi"/>
+			<Item Name="ReportError.vi" Type="VI" URL="../Shared/ReportError.vi"/>
 		</Item>
-		<Item Name="DidInit.vi" Type="VI" URL="../../SensorModule/Protected/Broadcasts/DidInit.vi"/>
-		<Item Name="clMessage.ctl" Type="VI" URL="../../SensorModule/PublicAPI/Arguments/Messages/clMessage.ctl"/>
-		<Item Name="ErrorHandler.vi" Type="VI" URL="../../SensorModule/Protected/ErrorHandler.vi"/>
-		<Item Name="HandleExit.vi" Type="VI" URL="../../SensorModule/Protected/HandleExit.vi"/>
-		<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../../SensorModule/Protected/Requests/DestroyRequestEvents.vi"/>
-		<Item Name="DestroyClone.vi" Type="VI" URL="../../SensorModule/Protected/DestroyClone.vi"/>
+		<Item Name="DidInit.vi" Type="VI" URL="../Shared/DidInit.vi"/>
+		<Item Name="clMessage.ctl" Type="VI" URL="../Shared/clMessage.ctl"/>
+		<Item Name="ErrorHandler.vi" Type="VI" URL="../Shared/ErrorHandler.vi"/>
+		<Item Name="HandleExit.vi" Type="VI" URL="../Shared/HandleExit.vi"/>
+		<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../Shared/DestroyRequestEvents.vi"/>
+		<Item Name="DestroyClone.vi" Type="VI" URL="../Shared/DestroyClone.vi"/>
 	</Item>
-	<Item Name="Main.vi" Type="VI" URL="../../SensorModule/Main.vi"/>
+	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 	<Item Name="SensorBase.lvclass" Type="LVClass" URL="../SensorBaseClass/SensorBase.lvclass"/>
 	<Item Name="PmuBase.lvclass" Type="LVClass" URL="../PmuBaseClass/PmuBase.lvclass"/>
 	<Item Name="C37.118 Sim.lvclass" Type="LVClass" URL="../C37.118_SimClass/C37.118 Sim.lvclass"/>
