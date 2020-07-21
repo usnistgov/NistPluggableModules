@@ -13,9 +13,6 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
-		<Item Name="Documentation" Type="Folder">
-			<Item Name="errors.docx" Type="Document" URL="../../documentation/errors.docx"/>
-		</Item>
 		<Item Name="SensorModule.lvlib" Type="Library" URL="../SensorModule/SensorModule.lvlib"/>
 		<Item Name="SensorPlugins.lvlib" Type="Library" URL="../SensorPlugins/SensorPlugins.lvlib"/>
 		<Item Name="Functions.lvlib" Type="Library" URL="../../FGen/MemberClasses/Functions.lvlib"/>

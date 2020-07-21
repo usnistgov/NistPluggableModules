@@ -17,12 +17,19 @@
 	<Item Name="Protected" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
 		<Item Name="Requests" Type="Folder">
+			<Item Name="ConfigureRequest.vi" Type="VI" URL="../../SensorPlugins/SensorBaseClass/PublicAPI/Requests/ConfigureRequest.vi"/>
+			<Item Name="LoadPluginRequest.vi" Type="VI" URL="../../SensorPlugins/SensorBaseClass/PublicAPI/Requests/LoadPluginRequest.vi"/>
+			<Item Name="PathToINIRequest.vi" Type="VI" URL="../../SensorPlugins/SensorBaseClass/PublicAPI/Requests/PathToINIRequest.vi"/>
+			<Item Name="ReadConfigRequest.vi" Type="VI" URL="../../SensorPlugins/SensorBaseClass/PublicAPI/Requests/ReadConfigRequest.vi"/>
 			<Item Name="ShowPanelRequest.vi" Type="VI" URL="../Protected/Requests/ShowPanelRequest.vi"/>
+			<Item Name="StartDataRequest.vi" Type="VI" URL="../../SensorPlugins/SensorBaseClass/PublicAPI/Requests/StartDataRequest.vi"/>
+			<Item Name="StopDataRequest.vi" Type="VI" URL="../../SensorPlugins/SensorBaseClass/PublicAPI/Requests/StopDataRequest.vi"/>
+			<Item Name="WriteConfigRequest.vi" Type="VI" URL="../../SensorPlugins/SensorBaseClass/PublicAPI/Requests/WriteConfigRequest.vi"/>
 		</Item>
 	</Item>
 	<Item Name="PublicAPI" Type="Folder">
 		<Item Name="Arguments" Type="Folder">
-			<Item Name="Broadcasts" Type="Folder">
+			<Item Name="Broadcasts(These are unused)" Type="Folder">
 				<Item Name="clErrorRpt.ctl" Type="VI" URL="../PublicAPI/Arguments/Broadcasts/clErrorRpt.ctl"/>
 				<Item Name="clStatUpdate.ctl" Type="VI" URL="../PublicAPI/Arguments/Broadcasts/clStatUpdate.ctl"/>
 			</Item>
