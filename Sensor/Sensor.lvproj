@@ -16,7 +16,6 @@
 		<Item Name="SensorModule.lvlib" Type="Library" URL="../SensorModule/SensorModule.lvlib"/>
 		<Item Name="SensorPlugins.lvlib" Type="Library" URL="../SensorPlugins/SensorPlugins.lvlib"/>
 		<Item Name="Functions.lvlib" Type="Library" URL="../../FGen/MemberClasses/Functions.lvlib"/>
-		<Item Name="TestPMUData.vi" Type="VI" URL="../SensorPlugins/C37.118_PmuClass/TestPMUData.vi"/>
 		<Item Name="SensorShared.lvlib" Type="Library" URL="../SensorShared/SensorShared.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="user.lib" Type="Folder">
