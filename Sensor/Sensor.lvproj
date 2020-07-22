@@ -13,6 +13,8 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
+		<Item Name="TestPMUData.vi" Type="VI" URL="../SensorPlugins/C37.118_PmuClass/TestPMUData.vi"/>
+		<Item Name="testSensor.vi" Type="VI" URL="../../Analysis/AnalysisModule/testSensor.vi"/>
 		<Item Name="SensorModule.lvlib" Type="Library" URL="../SensorModule/SensorModule.lvlib"/>
 		<Item Name="SensorPlugins.lvlib" Type="Library" URL="../SensorPlugins/SensorPlugins.lvlib"/>
 		<Item Name="Functions.lvlib" Type="Library" URL="../../FGen/MemberClasses/Functions.lvlib"/>

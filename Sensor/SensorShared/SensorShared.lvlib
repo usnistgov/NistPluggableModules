@@ -14,6 +14,4 @@
 	<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../ObtainRequestEvents.vi"/>
 	<Item Name="StopClone.vi" Type="VI" URL="../StopClone.vi"/>
 	<Item Name="StopRequest.vi" Type="VI" URL="../StopRequest.vi"/>
-	<Item Name="TestPMUData.vi" Type="VI" URL="../../SensorPlugins/C37.118_PmuClass/TestPMUData.vi"/>
-	<Item Name="testSensor.vi" Type="VI" URL="../../../Analysis/AnalysisModule/testSensor.vi"/>
 </Library>
