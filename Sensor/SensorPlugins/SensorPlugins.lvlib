@@ -26,6 +26,7 @@
 			<Item Name="Dequeue.vi" Type="VI" URL="../Shared/Dequeue.vi"/>
 			<Item Name="Enqueue.vi" Type="VI" URL="../Shared/Enqueue.vi"/>
 			<Item Name="ObtainQueue.vi" Type="VI" URL="../Shared/ObtainQueue.vi"/>
+			<Item Name="EnqueueType.ctl" Type="VI" URL="../EnqueueType.ctl"/>
 		</Item>
 		<Item Name="Broadcasts" Type="Folder">
 			<Item Name="StatusUpdate.vi" Type="VI" URL="../Shared/StatusUpdate.vi"/>
