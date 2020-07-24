@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
-<Project Type="Project" LVVersion="14008000">
+<Project Type="Project" LVVersion="18008000">
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Item Name="My Computer" Type="My Computer">
 		<Property Name="mathScriptPath" Type="Str">SensorPlugins\Matlab;X:\Projects\PMUCal\Modules\WfrmGenerator\WfrmPlugins\Matlab;X:\Projects\PMUCal\Modules\WfrmGenerator\WfrmPlugins\Matlab\C37;X:\Projects\PMUCal\Modules\WfrmGenerator\WfrmPlugins\Matlab\User;X:\Projects\PMUCal\Modules\Analysis\AnalysisPlugins\Matlab</Property>
@@ -145,7 +145,6 @@
 				<Item Name="whitespace.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/whitespace.ctl"/>
 			</Item>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
-			<Item Name="matscript.dll" Type="Document"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
