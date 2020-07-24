@@ -19,9 +19,17 @@
 		<Item Name="AnnexDPmu.m" Type="Document" URL="../Matlab/AnnexDPmu.m"/>
 		<Item Name="circBuf.m" Type="Document" URL="../Matlab/circBuf.m"/>
 	</Item>
+	<Item Name="Shared" Type="Folder">
+		<Item Name="Private" Type="Folder"/>
+		<Item Name="Queue" Type="Folder">
+			<Item Name="EnqueueType.ctl" Type="VI" URL="../Shared/EnqueueType.ctl"/>
+		</Item>
+		<Item Name="Broadcasts" Type="Folder"/>
+	</Item>
 	<Item Name="SensorBase.lvclass" Type="LVClass" URL="../SensorBaseClass/SensorBase.lvclass"/>
 	<Item Name="PmuBase.lvclass" Type="LVClass" URL="../PmuBaseClass/PmuBase.lvclass"/>
 	<Item Name="C37.118 Sim.lvclass" Type="LVClass" URL="../C37.118_SimClass/C37.118 Sim.lvclass"/>
 	<Item Name="C37.118 PMU.lvclass" Type="LVClass" URL="../C37.118_PmuClass/C37.118 PMU.lvclass"/>
 	<Item Name="Sim_Ideal_PMU.lvclass" Type="LVClass" URL="../Sim_Ideal_PMU/Sim_Ideal_PMU.lvclass"/>
+	<Item Name="test1.txt" Type="Document" URL="../Shared/test1.txt"/>
 </Library>
