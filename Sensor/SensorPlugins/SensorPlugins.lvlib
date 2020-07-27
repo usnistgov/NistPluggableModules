@@ -20,17 +20,40 @@
 		<Item Name="circBuf.m" Type="Document" URL="../Matlab/circBuf.m"/>
 	</Item>
 	<Item Name="Shared" Type="Folder">
-		<Item Name="Private" Type="Folder"/>
+		<Item Name="Private" Type="Folder">
+			<Item Name="SetGetClass.vi" Type="VI" URL="../Shared/SetGetClass.vi"/>
+			<Item Name="SetGetState.vi" Type="VI" URL="../Shared/SetGetState.vi"/>
+			<Item Name="CheckOnIdle.ctl" Type="VI" URL="../Shared/CheckOnIdle.ctl"/>
+			<Item Name="CheckOnIdle.vi" Type="VI" URL="../Shared/CheckOnIdle.vi"/>
+		</Item>
 		<Item Name="Queue" Type="Folder">
 			<Item Name="EnqueueType.ctl" Type="VI" URL="../Shared/EnqueueType.ctl"/>
 			<Item Name="DequeueType.ctl" Type="VI" URL="../Shared/DequeueType.ctl"/>
+			<Item Name="CreateQueueNames.vi" Type="VI" URL="../Shared/CreateQueueNames.vi"/>
+			<Item Name="Dequeue.vi" Type="VI" URL="../Shared/Dequeue.vi"/>
+			<Item Name="Enqueue.vi" Type="VI" URL="../Shared/Enqueue.vi"/>
+			<Item Name="ObtainQueue.vi" Type="VI" URL="../Shared/ObtainQueue.vi"/>
 		</Item>
-		<Item Name="Broadcasts" Type="Folder"/>
+		<Item Name="Broadcasts" Type="Folder">
+			<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../Shared/DestroyBroadcastEvents.vi"/>
+			<Item Name="DidStop.vi" Type="VI" URL="../Shared/DidStop.vi"/>
+			<Item Name="ReportError.vi" Type="VI" URL="../Shared/ReportError.vi"/>
+			<Item Name="PathToINIBroadcast.vi" Type="VI" URL="../Shared/PathToINIBroadcast.vi"/>
+			<Item Name="SensorConfig.vi" Type="VI" URL="../Shared/SensorConfig.vi"/>
+			<Item Name="SensorReport.vi" Type="VI" URL="../Shared/SensorReport.vi"/>
+			<Item Name="StatusUpdate.vi" Type="VI" URL="../Shared/StatusUpdate.vi"/>
+		</Item>
+		<Item Name="clMessage.ctl" Type="VI" URL="../Shared/clMessage.ctl"/>
+		<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../Shared/DestroyRequestEvents.vi"/>
+		<Item Name="HandleExit.vi" Type="VI" URL="../Shared/HandleExit.vi"/>
+		<Item Name="DestroyClone.vi" Type="VI" URL="../Shared/DestroyClone.vi"/>
+		<Item Name="ErrorHandler.vi" Type="VI" URL="../Shared/ErrorHandler.vi"/>
+		<Item Name="DidInit.vi" Type="VI" URL="../Shared/DidInit.vi"/>
 	</Item>
+	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 	<Item Name="SensorBase.lvclass" Type="LVClass" URL="../SensorBaseClass/SensorBase.lvclass"/>
 	<Item Name="PmuBase.lvclass" Type="LVClass" URL="../PmuBaseClass/PmuBase.lvclass"/>
 	<Item Name="C37.118 Sim.lvclass" Type="LVClass" URL="../C37.118_SimClass/C37.118 Sim.lvclass"/>
 	<Item Name="C37.118 PMU.lvclass" Type="LVClass" URL="../C37.118_PmuClass/C37.118 PMU.lvclass"/>
 	<Item Name="Sim_Ideal_PMU.lvclass" Type="LVClass" URL="../Sim_Ideal_PMU/Sim_Ideal_PMU.lvclass"/>
-	<Item Name="test1.txt" Type="Document" URL="../Shared/test1.txt"/>
 </Library>

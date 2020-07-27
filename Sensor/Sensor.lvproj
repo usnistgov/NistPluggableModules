@@ -19,7 +19,6 @@
 		<Item Name="Functions.lvlib" Type="Library" URL="../../FGen/MemberClasses/Functions.lvlib"/>
 		<Item Name="testSensor.vi" Type="VI" URL="../../Analysis/AnalysisModule/testSensor.vi"/>
 		<Item Name="TestPMUData.vi" Type="VI" URL="../SensorPlugins/C37.118_PmuClass/TestPMUData.vi"/>
-		<Item Name="test.txt" Type="Document" URL="../SensorShared/test.txt"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="user.lib" Type="Folder">
 				<Item Name="Array of VData to VArray__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array of VData to VArray__ogtk.vi"/>

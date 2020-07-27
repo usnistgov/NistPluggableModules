@@ -4,4 +4,14 @@
 	<Property Name="NI.Lib.SourceVersion" Type="Int">402685952</Property>
 	<Property Name="NI.Lib.Version" Type="Str">1.0.0.0</Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
+	<Item Name="clBroadcastEvents.ctl" Type="VI" URL="../clBroadcastEvents.ctl"/>
+	<Item Name="clDidInit.ctl" Type="VI" URL="../clDidInit.ctl"/>
+	<Item Name="clEventType.ctl" Type="VI" URL="../clEventType.ctl"/>
+	<Item Name="clRequestEvents.ctl" Type="VI" URL="../clRequestEvents.ctl"/>
+	<Item Name="clSensorData.ctl" Type="VI" URL="../clSensorData.ctl"/>
+	<Item Name="clStopArgument.ctl" Type="VI" URL="../clStopArgument.ctl"/>
+	<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../ObtainBroadcastEvents.vi"/>
+	<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../ObtainRequestEvents.vi"/>
+	<Item Name="StopClone.vi" Type="VI" URL="../StopClone.vi"/>
+	<Item Name="StopRequest.vi" Type="VI" URL="../StopRequest.vi"/>
 </Library>
