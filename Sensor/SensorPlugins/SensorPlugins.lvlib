@@ -23,6 +23,7 @@
 		<Item Name="Private" Type="Folder"/>
 		<Item Name="Queue" Type="Folder">
 			<Item Name="EnqueueType.ctl" Type="VI" URL="../Shared/EnqueueType.ctl"/>
+			<Item Name="DequeueType.ctl" Type="VI" URL="../Shared/DequeueType.ctl"/>
 		</Item>
 		<Item Name="Broadcasts" Type="Folder"/>
 	</Item>

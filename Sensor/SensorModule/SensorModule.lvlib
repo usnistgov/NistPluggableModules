@@ -32,6 +32,9 @@
 			<Item Name="StatusUpdate.vi" Type="VI" URL="../Protected/Broadcasts/StatusUpdate.vi"/>
 		</Item>
 		<Item Name="Queue" Type="Folder">
+			<Item Name="CheckOnIdle.ctl" Type="VI" URL="../../SensorPlugins/Shared/CheckOnIdle.ctl"/>
+			<Item Name="CheckOnIdle.vi" Type="VI" URL="../../SensorPlugins/Shared/CheckOnIdle.vi"/>
+			<Item Name="CreateQueueNames.vi" Type="VI" URL="../Protected/Queue/CreateQueueNames.vi"/>
 			<Item Name="Dequeue.vi" Type="VI" URL="../Protected/Queue/Dequeue.vi"/>
 			<Item Name="Enqueue.vi" Type="VI" URL="../Protected/Queue/Enqueue.vi"/>
 			<Item Name="ObtainQueue.vi" Type="VI" URL="../Protected/Queue/ObtainQueue.vi"/>
