@@ -708,7 +708,6 @@
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="SensorModule.lvlib" Type="Library" URL="../../Sensor/SensorModule/SensorModule.lvlib"/>
-			<Item Name="SensorPlugins.lvlib" Type="Library" URL="../../Sensor/SensorPlugins/SensorPlugins.lvlib"/>
 			<Item Name="AnalysisModule.lvlib" Type="Library" URL="../../Analysis/AnalysisModule/AnalysisModule.lvlib"/>
 			<Item Name="AnalysisPlugins.lvlib" Type="Library" URL="../../Analysis/AnalysisPlugins/AnalysisPlugins.lvlib"/>
 			<Item Name="Bus.lvclass" Type="LVClass" URL="../../BusClass/Bus.lvclass"/>
@@ -723,6 +722,7 @@
 			<Item Name="_ChannelSupport.lvlib" Type="Library" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/_ChannelSupport.lvlib"/>
 			<Item Name="ChannelProbePositionAndTitle.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbePositionAndTitle.vi"/>
 			<Item Name="ChannelProbeWindowStagger.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbeWindowStagger.vi"/>
+			<Item Name="SensorShared.lvlib" Type="Library" URL="../../Sensor/SensorShared/SensorShared.lvlib"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
