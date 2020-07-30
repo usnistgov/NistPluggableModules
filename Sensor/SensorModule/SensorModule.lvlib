@@ -48,6 +48,8 @@
 			<Item Name="PathToINIRequest.vi" Type="VI" URL="../Protected/Requests/PathToINIRequest.vi"/>
 			<Item Name="ReadConfigRequest.vi" Type="VI" URL="../Protected/Requests/ReadConfigRequest.vi"/>
 			<Item Name="ShowPanelRequest.vi" Type="VI" URL="../Protected/Requests/ShowPanelRequest.vi"/>
+			<Item Name="CreateSessionRequest.vi" Type="VI" URL="../Protected/Requests/CreateSessionRequest.vi"/>
+			<Item Name="CloseSessionRequest.vi" Type="VI" URL="../Protected/Requests/CloseSessionRequest.vi"/>
 			<Item Name="StartDataRequest.vi" Type="VI" URL="../Protected/Requests/StartDataRequest.vi"/>
 			<Item Name="StopDataRequest.vi" Type="VI" URL="../Protected/Requests/StopDataRequest.vi"/>
 			<Item Name="WriteConfigRequest.vi" Type="VI" URL="../Protected/Requests/WriteConfigRequest.vi"/>
