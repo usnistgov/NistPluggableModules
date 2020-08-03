@@ -43,6 +43,7 @@
 	<Item Name="clStopArgument.ctl" Type="VI" URL="../clStopArgument.ctl"/>
 	<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../ObtainBroadcastEvents.vi"/>
 	<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../ObtainRequestEvents.vi"/>
+	<Item Name="SiemensDEMMeasurements.ctl" Type="VI" URL="../SiemensDEMMeasurements.ctl"/>
 	<Item Name="StopClone.vi" Type="VI" URL="../StopClone.vi"/>
 	<Item Name="StopRequest.vi" Type="VI" URL="../StopRequest.vi"/>
 </Library>
