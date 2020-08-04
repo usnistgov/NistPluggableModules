@@ -14,6 +14,7 @@
 	<Property Name="NI.Lib.SourceVersion" Type="Int">402685952</Property>
 	<Property Name="NI.Lib.Version" Type="Str">1.0.0.0</Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
+	<Property Name="NI.SortType" Type="Int">3</Property>
 	<Property Name="OdbcAlarmLoggingTableName" Type="Str">NI_ALARM_EVENTS</Property>
 	<Property Name="OdbcBooleanLoggingTableName" Type="Str">NI_VARIABLE_BOOLEAN</Property>
 	<Property Name="OdbcConnectionRadio" Type="UInt">0</Property>
@@ -41,9 +42,9 @@
 	<Item Name="clRequestEvents.ctl" Type="VI" URL="../clRequestEvents.ctl"/>
 	<Item Name="clSensorData.ctl" Type="VI" URL="../clSensorData.ctl"/>
 	<Item Name="clStopArgument.ctl" Type="VI" URL="../clStopArgument.ctl"/>
+	<Item Name="SiemensDEMMeasurements.ctl" Type="VI" URL="../SiemensDEMMeasurements.ctl"/>
 	<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../ObtainBroadcastEvents.vi"/>
 	<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../ObtainRequestEvents.vi"/>
-	<Item Name="SiemensDEMMeasurements.ctl" Type="VI" URL="../SiemensDEMMeasurements.ctl"/>
 	<Item Name="StopClone.vi" Type="VI" URL="../StopClone.vi"/>
 	<Item Name="StopRequest.vi" Type="VI" URL="../StopRequest.vi"/>
 </Library>
