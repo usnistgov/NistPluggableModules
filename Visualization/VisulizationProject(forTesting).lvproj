@@ -587,6 +587,7 @@
 			<Item Name="Config_class.lvlib" Type="Library" URL="../../../LV_Config_class/Config_class.lvlib"/>
 			<Item Name="DigitizerModule.lvlib" Type="Library" URL="../../Digitizer/DigitizerModule/DigitizerModule.lvlib"/>
 			<Item Name="DigitizerPlugins.lvlib" Type="Library" URL="../../Digitizer/DigitizerPlugins/DigitizerPlugins.lvlib"/>
+			<Item Name="DigitizerShared.lvlib" Type="Library" URL="../../Digitizer/DigitizerShared/DigitizerShared.lvlib"/>
 			<Item Name="FgenModule.lvlib" Type="Library" URL="../../FGen/FgenModule/FgenModule.lvlib"/>
 			<Item Name="FgenPlugins.lvlib" Type="Library" URL="../../FGen/FgenPlugins/FgenPlugins.lvlib"/>
 			<Item Name="Functions.lvlib" Type="Library" URL="../../FGen/MemberClasses/Functions.lvlib"/>
