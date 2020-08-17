@@ -93,22 +93,25 @@ classdef TestStepFit < matlab.unittest.TestCase
 %   The functions in this method list are run automatically when "res=run(testCase)" is called.
     methods (Test)
         function regressionTests (testCase)
-%             testCase.test_LocateDefaultPosAmpl
-%             testCase.test_LocateDefaultNegAmpl
-%             testCase.test_LocateDefaultPosPhase
-%             testCase.test_LocateDefaultNegPhase
-%             testCase.test_LocatePosAmplSweep
-%             testCase.test_LocateNegAmplSweep
-%             testCase.test_LocatePosPhaseSweep
-%             testCase.test_LocateNegPhaseSweep
-            testCase.test_FitDefaultPosAmpl
-            testCase.test_FitDefaultNegAmpl
-            testCase.test_FitDefaultPosPhase
-            testCase.test_FitDefaultNegPhase
-            testCase.test_FitPosAmplSweep
-            testCase.test_FitNegAmplSweep
-            testCase.test_FitPosPhaseSweep
-            testCase.test_FitNegPhaseSweep
+            testCase.test_LocateDefaultPosAmpl
+            testCase.test_LocateDefaultNegAmpl
+            testCase.test_LocateDefaultPosPhase
+            testCase.test_LocateDefaultNegPhase
+            testCase.test_LocatePosAmplSweep
+            testCase.test_LocateNegAmplSweep
+            testCase.test_LocatePosPhaseSweep
+            testCase.test_LocateNegPhaseSweep
+           testCase.test_FitDefaultPosAmpl
+           testCase.test_FitDefaultNegAmpl
+           testCase.test_FitDefaultPosPhase
+           testCase.test_FitDefaultNegPhase
+           testCase.test_FitPosAmplSweep
+           testCase.test_FitNegAmplSweep
+           testCase.test_FitPosPhaseSweep
+           testCase.test_FitNegPhaseSweep
+            testCase.test_FitPosAmplEarly
+            testCase.test_FitPosAmplLate
+
           end
     end
 
@@ -232,6 +235,25 @@ classdef TestStepFit < matlab.unittest.TestCase
              testCase.fitOne  
         end
         
+        function test_FitPosAmplEarly(testCase)
+        % test fitting an amplitude step in the center of the window    
+            testCase.setDefaults            
+            testCase.Name='test_FitDefaultPosAmplEarly';
+            testCase.stepOffset = +(0.5/testCase.F0);
+            fprintf('\n%s\n',testCase.Name)
+            testCase.fitOne  
+        end        
+        
+        function test_FitPosAmplLate(testCase)
+        % test fitting an amplitude step in the center of the window    
+            testCase.setDefaults            
+            testCase.Name='test_FitDefaultPosAmplEarly';
+            testCase.stepOffset = -(0.5/testCase.F0);
+            fprintf('\n%s\n',testCase.Name)
+            testCase.fitOne  
+        end        
+        
+        
         function test_FitDefaultNegAmpl(testCase)
         % test fitting an amplitude step in the center of the window    
             testCase.setDefaults 
@@ -321,7 +343,7 @@ classdef TestStepFit < matlab.unittest.TestCase
            Kx=testCase.signalParams(KxS,:);
            Ka=testCase.signalParams(KaS,:);
            
-           testCase.exp = (1+(tau>0)*Kx).*a.*exp(1i.*((-tau*w)+(p+(tau>0)*Ka)));
+           testCase.exp = (1+(tau<0)*Kx).*a.*exp(1i.*((-tau*w)+(p+(tau<0)*Ka)));
            testCase.exp = [testCase.exp testCase.exp(1)];
 
            runOneFit(testCase)
@@ -343,7 +365,7 @@ classdef TestStepFit < matlab.unittest.TestCase
                 Ka=testCase.signalParams(KaS,:);
                 
                 % calculate expected values
-                testCase.exp = (1+(tau>0)*Kx).*a.*exp(1i.*((-tau*w)+(p+(tau>0)*Ka)));
+                testCase.exp = (1+(tau<0)*Kx).*a.*exp(1i.*((-tau*w)+(p+(tau<0)*Ka)));
                 testCase.exp = [testCase.exp testCase.exp(1)];
                 
                 runOneFit(testCase)

@@ -95,7 +95,8 @@ for i = 1:NPhases
     fitresult{i} = fit( xData, yData, ft, opts );
        
 %%-----------------------Visualization-------------------------------------   
-%     % use the below for research and visualization
+%     % use the below for research and visualization and comment out the
+%     % line above
 %     [fitresult{i}, gof(i), output{i}] = fit( xData, yData, ft, opts );
 %     
 % 
@@ -125,7 +126,7 @@ for i = 1:NPhases
         a=fitresult{i}.a*MagCorr(i)/sqrt(2);     % Magnitude corrected;
         b=fitresult{i}.b;
         c=fitresult{i}.c+DelayCorr(i)*1e-9*2*pi*Fin(i);   % Delay Corrected;
-        Synx(i)=a*(1+(b>=0)*KxS(i))*exp(-1i*(c+(b>=0)*KaS(i)));
+        Synx(i)=a*(1+(b<=0)*KxS(i))*exp(-1i*(c+(b<=0)*KaS(i)));
     end
     
     
@@ -151,4 +152,11 @@ end
        end
        Synx=V;
    end
+   
+ %%------------------------- Debugging display---------------------------
+ % Comment out when not debugging
+%     mags = abs(Synx);
+%     msg =sprintf('mags %f, ',mags);
+%     disp(msg)
+ %-----------------------------------------------------------------------
 end
