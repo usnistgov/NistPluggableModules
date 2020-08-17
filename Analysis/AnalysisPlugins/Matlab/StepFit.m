@@ -75,6 +75,8 @@ for i = 1:NPhases
             );
         return
     else
+        Freq = Fin;     % steplocate is not very good at finding the frequency
+        ROCOF = 0; 
         if ~(KxS(i) == 0)      % phase step
             sKxS = num2str(KxS(i));
             f = strcat('a*(1+(x>=b)*',sKxS,')*cos(',sw,'*x+c)');
