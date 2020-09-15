@@ -332,6 +332,15 @@
 		</Item>
 	</Item>
 	<Item Name="PublicMethods" Type="Folder">
+		<Item Name="CheckFileName.vi" Type="VI" URL="../PublicMethods/CheckFileName.vi">
+			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!$@!!!!#1!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AF&amp;=H*P=C"0&gt;81!"!!!!":!-0````].2GFM:3"/97VF)'^V&gt;!!71&amp;!!!Q!!!!%!!AB&amp;=H*P=C"*&lt;A!!&amp;E!Q`````QR';7RF)%ZB&lt;75A;7Y!!&amp;1!]!!-!!-!"!!%!!5!"!!%!!1!"!!'!!1!"!!(!A!!?!!!$1A!!!!!!!!!!!!!#1!!!!!!!!!!!!!!!!!!!!!!!!!)!!!!!!!!!!!!!!%+!!!!!!%!#!!!!!!</Property>
+			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
+			<Property Name="NI.ClassItem.Flags" Type="Int">0</Property>
+			<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
+			<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
+			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
+			<Property Name="NI.ClassItem.State" Type="Int">1107821056</Property>
+		</Item>
 		<Item Name="ExtractModuleID.vi" Type="VI" URL="../PublicMethods/ExtractModuleID.vi">
 			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!'$!!!!$A!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AF&amp;=H*P=C"0&gt;81!$U!$!!F.&lt;W2V&lt;'6*2(-!%%!Q`````Q:4&gt;(*J&lt;G=!!#J!=!!?!!!/$&amp;2F=X1O&lt;(:D&lt;'&amp;T=Q!!%&amp;2F=X1O&lt;(:D&lt;'&amp;T=S"0&gt;81!!#Z!5SF798*J97ZU)%^V&gt;("V&gt;#B.&lt;W2V&lt;'5A4'FT&gt;#"G&lt;X)A2'6C&gt;7&gt;H;7ZH+1!%!!!!&amp;%!Q`````QJ.&lt;W2V&lt;'65?8"F!!!71&amp;!!!Q!!!!%!!ABF=H*P=C"J&lt;A!!%%"4#UVP:(6M:3"-;8.U!#B!=!!?!!!/$&amp;2F=X1O&lt;(:D&lt;'&amp;T=Q!!$V2F=X1O&lt;(:D&lt;'&amp;T=S"*&lt;A"B!0!!$!!$!!1!"1!'!!=!#!!)!!E!#A!)!!M!$!-!!(A!!!U)!!!*!!!!#1!!!!U,!!!.#A!!!!!!!!!!!!%+!!!!#A!!!!!!!!!)!!!!#!!!$1!!!!Q!!!!!!!!!!!!!!1!.!!!!!!</Property>
 			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
@@ -412,6 +421,15 @@
 			<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
 			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 			<Property Name="NI.ClassItem.State" Type="Int">1107821072</Property>
+		</Item>
+		<Item Name="ManageScript.vi" Type="VI" URL="../PublicMethods/ManageScript.vi">
+			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!!?!!!!!A!%!!!!%A$Q!!%!!!-!!!!!!!!!!!!!!1!"!!!!!!</Property>
+			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
+			<Property Name="NI.ClassItem.Flags" Type="Int">256</Property>
+			<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
+			<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
+			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
+			<Property Name="NI.ClassItem.State" Type="Int">1342710288</Property>
 		</Item>
 		<Item Name="ManipulateModuleName.vi" Type="VI" URL="../PublicMethods/ManipulateModuleName.vi">
 			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!(A!!!!$!!11$$`````"F.U=GFO:Q!!(E"!!!(`````!!!247^E&gt;7RF4'FT&gt;%&amp;S=G&amp;Z37Y!"!!!!#"!1!!"`````Q!!%EVP:(6M:5RJ=X2"=H*B?5^V&gt;!!!+%"!!!(`````!!!;17:U:8*.982D;$J.&lt;W2V&lt;'6-;8.U18*S98E!!"B!-0````]047&amp;U9WB&amp;?("S:8.T;7^O!#B!1!!"`````Q!!'U*F:G^S:5VB&gt;'.I/EVP:(6M:5RJ=X2"=H*B?1"!1%!!!@````]!!$.#:7:P=G6.982D;&amp;&gt;J&gt;'BP&gt;823:72V&lt;G2B&lt;H2&amp;&lt;H2S;76T/EVP:(6M:5RJ=X2"=H*B?3!!(E!Q`````R6.&lt;W2V&lt;'6-;8.U5WFO:WRF27ZU=HE!+E!Q`````S&amp;#:7:P=G6.982D;$J.&lt;W2V&lt;'6-;8.U5WFO:WRF27ZU=HE!+E!Q`````S"":H2F=EVB&gt;'.I/EVP:(6M:5RJ=X24;7ZH&lt;'6&amp;&lt;H2S?1!!&lt;!$Q!"!!!1!#!!)!!Q!%!!5!"A!#!!=!#!!*!!)!!A!#!!)!#A-!!1A!!AA!!!!!!!!!!!!!!!U!!!!*!!!##!!!!!E!!!!!!!!!#1!!!AA!!!!*!!!!!!!!!!!!!!!!!!!!!!!!!!E!!!!!!1!,!!!!!!</Property>
