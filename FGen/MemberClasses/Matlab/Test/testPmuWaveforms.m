@@ -11,6 +11,7 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
         Fs
         signalParams
         sizeMax
+        fig = 0;
     end
     
     
@@ -40,17 +41,19 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
     end
     
  %%   res = run(testCase) runs the below
-    methods (Test)
-        function regressionTests (testCase)
-            %testDefault(testCase);
-            %test_50f1(testCase);
-            %test_50f0_75i0(testCase);
-            %setDefaults(testCase);
-            %test_70f0(testCase);
-            %test_ampl_step(testCase);
-        end
-    end
-    
+ methods (Test)
+     function regressionTests (testCase)
+         testCase.fig = testCase.fig + 1;
+         %testDefault(testCase); testCase.fig = testCase.fig + 1;
+         %test_50f1(testCase); testCase.fig = testCase.fig + 1;
+         %test_50f0_75i0(testCase); testCase.fig = testCase.fig + 1;
+         %setDefaults(testCase); testCase.fig = testCase.fig + 1;
+         %test_70f0(testCase); testCase.fig = testCase.fig + 1;
+         %test_ampl_step(testCase); testCase.fig = testCase.fig + 1;
+         test_ramp(testCase); testCase.fig = testCase.fig + 1;
+     end
+ end
+ 
     
 %%  These are the regression tests and the single test runner "runOnce  
     methods (Access=private)
@@ -101,6 +104,16 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
             testCase.SettlingTime = 7/testCase.signalParams(Fin,1);
             testCase.signalParams(KxS,:) = 0.1*testCase.signalParams(Xm,:);
             runOnce(testCase);
+        end
+        
+        function test_ramp(testCase)
+           setDefaults(testCase);
+           [Xm Fin Ps Fh Ph Kh Fa Ka Fx Kx Rf KaS KxS] = testCase.getParamIndex();
+           testCase.Fs = 24000;
+           testCase.sizeMax = testCase.Fs * 10;     % 10 seconds of ramping
+           testCase.SettlingTime = 1.0;             % 1 second of settling on each side of the ramp
+           testCase.signalParams(Rf,:) = 1.0;
+           runOnce(testCase);
         end
         
         function saveWaveforms(testCase,Signal,size)

@@ -30,16 +30,19 @@ function [Signal,size] = PmuWaveforms( ...
     KaS = signalparams(12,:);   % phase (angle) step index
     KxS = signalparams(13,:);   % magnitude step index
     
-
-% the first thing we need to do is determine the sample size that gives an
-% interger number of periods of the "combined" frequency of the fundamental
-% and any added intefering frequency or modulation that may be added. 
-Freqs = [Fin(1,1)];
-if Kh(1) > 0; Freqs(2) =  Fh(1,1); end
-if (KaS(1) ~= 0 || KxS(1) ~= 0); size = sizeMax;       % do not resize step tests
-    else; size = SizeLcmPeriods(Freqs, FSamp);
+    
+    
+size = sizeMax;    
+% If SettlingTime <= 0, and this is not a step test or ramp, then determine the
+% sample size that gives an interger number of periods of the "combined"
+% frequency of the fundamental and any added intefering frequency or 
+% modulation that may be added. 
+if (SettlingTime <= 0 || (KaS(1) ~= 0 && KxS(1) ~= 0) || Rf(1) == 0);
+    Freqs = [Fin(1,1)];
+    if Kh(1) > 0; Freqs(2) =  Fh(1,1); end
+    size = SizeLcmPeriods(Freqs, FSamp);
+    if size > sizeMax; size = sizeMax; end
 end
-if size > sizeMax; size = sizeMax; end
     
 % Phase in radians
 Ph = Ps*pi/180;
@@ -72,19 +75,23 @@ for i = 1:length(Ps)
 end
 
 % Phase Step
-for i = 1:length(KaS)
-    Theta(i,t >= 0) = Theta(i,t >= 0) + (KaS(i) * pi/180);
+if KaS(1) ~= 0;
+    for i = 1:length(KaS)
+        Theta(i,t >= 0) = Theta(i,t >= 0) + (KaS(i) * pi/180);
+    end
 end
 
 % % frequency ramp
-% for i = 1:length(Rf)
-%     Theta(i,t>=0 & t<SettlingTime) = Theta(i,t>=0 & t<SettlingTime) + (Rf(i) * 2 *pi * t(t>=0 & t<SettlingTime).^2);
-% end
-% 
-% % last frequency
-% for i = 1:length(Rf)
-%     Theta(i,t>=SettlingTime) = Theta(i,t>=SettlingTime) + (2*pi*Rf(i)*SettlingTime*t(t>=SettlingTime));
-% end
+if Rf(1) ~= 0;
+    for i = 1:length(Rf)
+        Theta(i,t>=0 & t<SettlingTime) = Theta(i,t>=0 & t<SettlingTime) + (Rf(i) * 2 *pi * t(t>=0 & t<SettlingTime).^2);
+    end
+    
+    % % last frequency hold for settling time
+    for i = 1:length(Rf)
+        Theta(i,t>=SettlingTime) = Theta(i,t>=SettlingTime) + (2*pi*Rf(i)*SettlingTime*t(t>=SettlingTime));
+    end
+end
 
 % frequency ramp
 for i = 1:length(Rf)
