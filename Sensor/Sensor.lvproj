@@ -1,6 +1,8 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
 <Project Type="Project" LVVersion="18008000">
+	<Property Name="CCSymbols" Type="Str"></Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
+	<Property Name="NI.Project.Description" Type="Str"></Property>
 	<Item Name="My Computer" Type="My Computer">
 		<Property Name="mathScriptPath" Type="Str">SensorPlugins\Matlab;X:\Projects\PMUCal\Modules\WfrmGenerator\WfrmPlugins\Matlab;X:\Projects\PMUCal\Modules\WfrmGenerator\WfrmPlugins\Matlab\C37;X:\Projects\PMUCal\Modules\WfrmGenerator\WfrmPlugins\Matlab\User;X:\Projects\PMUCal\Modules\Analysis\AnalysisPlugins\Matlab</Property>
 		<Property Name="NI.SortType" Type="Int">3</Property>
