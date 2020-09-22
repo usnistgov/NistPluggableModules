@@ -610,7 +610,6 @@
 			</Item>
 			<Item Name="LogErrors.vi" Type="VI" URL="../../../sbtbcntl/LogErrors.vi"/>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
-			<Item Name="matscript.dll" Type="Document"/>
 			<Item Name="nilvaiu.dll" Type="Document" URL="nilvaiu.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
