@@ -60,48 +60,48 @@ end
 %    disp(tau);
     
 %%---------------------Visualization---------------------------------------
-% fig = 0;
-%
-% %% Plot the analytic signal
-% fig = fig+1;
-% figure(fig);
-% %sgtitle('analytic signal');    %does not work in LV 2015
-% 
-% for i = 1:nPhases
-%     subplot(nPhases,1,i)
-%     plot(t,real(Y(i,:)),t,imag(Y(i,:)))
-% end
-% %% Plot the amplitude gradient 
-% fig = fig+1;
-% figure(fig);
-% %sgtitle('amplitude detection signal')  %does not work in LV 2015
-% 
-% 
-% for i = 1:nPhases
-%     subplot(nPhases,1,i)
-%     plot(tbr,detA(i,:))
-% end
-% 
-% %% Plot the hilbert frequency in Hz
-% fig = fig+1;
-% figure(fig);
-% %sgtitle('Hilbert frequency (Hz)')  %does not work in LV 2015
-% 
-% for i = 1:nPhases
-%     subplot(nPhases,1,i)
-%     plot(t,Fi(i,:))
-% end
-% 
-% %% Plot the frequency detection signal
-% detFa = detF(1,:);detFb = detF(2,:);detFc = detF(3,:);
-% 
-% fig = fig+1;
-% figure(fig);
-% %sgtitle('frequency detection signal') %does not work in LV 2015
-% 
-% for i = 1:nPhases
-%     subplot(nPhases,1,i)
-%     plot(tbr,detF(i,:))
-% end
+fig = 0;
+
+%% Plot the analytic signal
+fig = fig+1;
+figure(fig);
+%sgtitle('analytic signal');    %does not work in LV 2015
+
+for i = 1:nPhases
+    subplot(nPhases,1,i)
+    plot(t,real(Y(i,:)),t,imag(Y(i,:)))
+end
+%% Plot the amplitude gradient 
+fig = fig+1;
+figure(fig);
+%sgtitle('amplitude detection signal')  %does not work in LV 2015
+
+
+for i = 1:nPhases
+    subplot(nPhases,1,i)
+    plot(tbr,detA(i,:))
+end
+
+%% Plot the hilbert frequency in Hz
+fig = fig+1;
+figure(fig);
+%sgtitle('Hilbert frequency (Hz)')  %does not work in LV 2015
+
+for i = 1:nPhases
+    subplot(nPhases,1,i)
+    plot(t,Fi(i,:))
+end
+
+%% Plot the frequency detection signal
+detFa = detF(1,:);detFb = detF(2,:);detFc = detF(3,:);
+
+fig = fig+1;
+figure(fig);
+%sgtitle('frequency detection signal') %does not work in LV 2015
+
+for i = 1:nPhases
+    subplot(nPhases,1,i)
+    plot(tbr,detF(i,:))
+end
 %%-------------------------------------------------------------------------
 end
