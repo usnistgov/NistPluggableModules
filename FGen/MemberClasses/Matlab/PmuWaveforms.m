@@ -1,3 +1,4 @@
+% Generates multi=phase test signals for 60255.118.1 PMU testing
 function [Signal,size] = PmuWaveforms( ...
     t0, ...
     SettlingTime, ...
@@ -6,16 +7,25 @@ function [Signal,size] = PmuWaveforms( ...
     signalparams ...
     )
 
-% This is the .m file for the C37.118.1 power system signal for the
-% PMUImpairment module.  SigalParams description can be found in Event Parameters.docx.
 
 % For this signal, there may be multiple phases that can each be independent of the
 % others (giving the ability to create unbalanced signals).  In the
 % signalparms array, there is one column of parameters for each of
 % the phases.
 
-% Signal params.  Note that the labeling convention comes mostly from the
-% standard
+
+% t0 is an offset in seconds to the time vector.  For example, during a phase or 
+% amplitude step, the step will occur at t = 0 so T0 may be set to -2 seconds.  
+% The signal is phase shifted such that cos 0 occures after the initial settling time 
+%
+% SettlingTime in seconds will be applied to the beginning and end of the signal.  
+% At the beginning it starts at negative time and the signal is phase shifted 
+% such that cos 0 plus any phase shift occures at t = 0.  At the end it continues for SettlingTime.
+%
+% sizeMax:  in samples.  If SettlingTime = 0 and the signal is not a step, this produces the smallest signal (up to sizeMax) (in samples) that will allow a continuous reproduction without a discontinuity.  For stepsadn signals with settlingtime, the signal between the end of the initial and start of the final SettlingTime will be sizeMax samples long.
+
+
+% signalparams  (Note that the labeling convention comes mostly from the standard)
     Xm = signalparams(1,:)*sqrt(2);     % phase amplitude (given by the user in RMS
     Fin = signalparams(2,:);    % frequency (must be the same for all 6 channels or an error will be thrown
     Ps = signalparams(3,:);     % phase 
@@ -30,13 +40,15 @@ function [Signal,size] = PmuWaveforms( ...
     KaS = signalparams(12,:);   % phase (angle) step index
     KxS = signalparams(13,:);   % magnitude step index
     
-    
-    
+
+%%    
 size = sizeMax;    
+
 % If SettlingTime <= 0, and this is not a step test or ramp, then determine the
 % sample size that gives an interger number of periods of the "combined"
 % frequency of the fundamental and any added intefering frequency or 
 % modulation that may be added. 
+
 if (SettlingTime <= 0 || (KaS(1) ~= 0 && KxS(1) ~= 0) || Rf(1) == 0);
     Freqs = [Fin(1,1)];
     if Kh(1) > 0; Freqs(2) =  Fh(1,1); end
@@ -82,30 +94,37 @@ if KaS(1) ~= 0;
 end
 
 % % frequency ramp
-if Rf(1) ~= 0;
-    for i = 1:length(Rf)
-        Theta(i,t>=0 & t<SettlingTime) = Theta(i,t>=0 & t<SettlingTime) + (Rf(i) * 2 *pi * t(t>=0 & t<SettlingTime).^2);
-    end
-    
-    % % last frequency hold for settling time
-    for i = 1:length(Rf)
-        Theta(i,t>=SettlingTime) = Theta(i,t>=SettlingTime) + (2*pi*Rf(i)*SettlingTime*t(t>=SettlingTime));
-    end
-end
+% if Rf(1) ~= 0;
+%     for i = 1:length(Rf)
+%         Theta(i,t>=0 & t<SettlingTime) = Theta(i,t>=0 & t<SettlingTime) + (Rf(i) * 2 *pi * t(t>=0 & t<SettlingTime).^2);
+%     end
+%     
+%     % % last frequency hold for settling time
+%     for i = 1:length(Rf)
+%         Theta(i,t>=SettlingTime) = Theta(i,t>=SettlingTime) + (2*pi*Rf(i)*SettlingTime*t(t>=SettlingTime));
+%     end
+% end
 
 % frequency ramp
 for i = 1:length(Rf)
     if Rf(i)~=0
-        endRamp = (length(t)/FSamp)+t0-SettlingTime;
-        Theta(i,t>=0 & t<endRamp) = Theta(i,t>=0 & t<endRamp) + (pi*Rf(i)*t(t>=0 & t<endRamp).^2);
-        Theta(i,t>=endRamp) = Theta(i,(t>=endRamp)) + (pi*Rf(i)*endRamp*t(t>=endRamp));
+        endRamp = (size/FSamp)+t0;
+        Theta(i,t>=0 & t<=endRamp) = Theta(i,t>=0 & t<=endRamp) + (pi*Rf(i)*t(t>=0 & t<=endRamp).^2);
+        Theta(i,t>endRamp) = Theta(i,t>endRamp) + 2*(pi*Rf(i)*endRamp*t(t>endRamp));
+        %Theta(i,t>=0 & t<endRamp) = Theta(i,t>=0 & t<endRamp) + (pi*Rf(i)*t(t>=0 & t<endRamp).^2);
+        %Theta(i,t>=endRamp) = Theta(i,t>=endRamp) + 2*(pi*Rf(i)*endRamp*t(t>=endRamp));
+        
     end
 end
 
-
 % Complex signals
-cSignal = (Ain.*exp(-1i.*Theta));
-
+ cSignal = (Ain.*exp(-1i.*Theta));
+ 
+%-------------------------debug: frequency plot--------------------------
+% Theta = unwrap(angle(cSignal(1,:)));
+% Freq = -(diff(Theta).*FSamp/(2*pi));
+% plot(t(1:end-1),Freq);
+%-------------------------------------------------------------------------
 % Add a single harmonic or interharmonic
 if (Fh > FSamp/2)
     error('Interfering signal frequency is above FGen Nyquist frequency.  Can not generate');
@@ -121,7 +140,7 @@ Signal = real(cSignal);
 
 %%-------------DEBUGGING-------------------------------------------------
 % In the step test, I learned from the below that unwrapping is needed when determining frequency!
-
+% 
 % fig = 0;
 % 
 % fig = fig+1;
@@ -143,7 +162,7 @@ Signal = real(cSignal);
 % figure(fig)
 % 
 % Fi = (-diff(Pi')*FSamp/(2*pi))';
-
+% 
 % plot(Fi(1,:));
 %%------------------------------------------------------------------------
 

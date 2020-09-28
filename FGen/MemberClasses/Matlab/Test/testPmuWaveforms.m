@@ -26,9 +26,9 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
     methods (TestMethodSetup)
         function setDefaults(testCase)
             testCase.t0 = 0;
-            testCase.Fs = 100000;
+            testCase.Fs = 4800;
             testCase.SettlingTime=0;
-            testCase.sizeMax = 10000000;
+            testCase.sizeMax = 48000;
             
             NPhases = 3;
             testCase.signalParams = zeros(13,NPhases);
@@ -109,9 +109,10 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
         function test_ramp(testCase)
            setDefaults(testCase);
            [Xm Fin Ps Fh Ph Kh Fa Ka Fx Kx Rf KaS KxS] = testCase.getParamIndex();
-           testCase.Fs = 24000;
+           testCase.Fs = 4800;
            testCase.sizeMax = testCase.Fs * 10;     % 10 seconds of ramping
            testCase.SettlingTime = 1.0;             % 1 second of settling on each side of the ramp
+           testCase.signalParams(Fin,:)= 45.0;
            testCase.signalParams(Rf,:) = 1.0;
            runOnce(testCase);
         end
