@@ -18,6 +18,7 @@
 		</Item>
 		<Item Name="MyPluggableModule.lvlib" Type="Library" URL="../MyPluggableModule/MyPluggableModule.lvlib"/>
 		<Item Name="MyPlugins.lvlib" Type="Library" URL="../MyPlugins/MyPlugins.lvlib"/>
+		<Item Name="PluginsShared.lvlib" Type="Library" URL="../PluginsShared/PluginsShared.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="user.lib" Type="Folder">
 				<Item Name="Array Size(s)__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array Size(s)__ogtk.vi"/>

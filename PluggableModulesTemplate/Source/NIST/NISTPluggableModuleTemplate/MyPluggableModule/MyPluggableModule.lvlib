@@ -10,55 +10,23 @@
 </Property>
 	<Item Name="Private" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
-		<Item Name="Queue" Type="Folder">
-			<Property Name="NI.SortType" Type="Int">3</Property>
-			<Item Name="EnqueueTypes.ctl" Type="VI" URL="../Private/Queue/EnqueueTypes.ctl"/>
-			<Item Name="DequeueTypes.ctl" Type="VI" URL="../Private/Queue/DequeueTypes.ctl"/>
-			<Item Name="CreateQueueNames.vi" Type="VI" URL="../Private/Queue/CreateQueueNames.vi"/>
-			<Item Name="Dequeue.vi" Type="VI" URL="../Private/Queue/Dequeue.vi"/>
-			<Item Name="Enqueue.vi" Type="VI" URL="../Private/Queue/Enqueue.vi"/>
-			<Item Name="ObtainQueue.vi" Type="VI" URL="../Private/Queue/ObtainQueue.vi"/>
-		</Item>
-		<Item Name="anCLASS.vi" Type="VI" URL="../Private/anCLASS.vi"/>
 		<Item Name="Check Error.vi" Type="VI" URL="../Private/Check Error.vi"/>
-		<Item Name="DestroyClone.vi" Type="VI" URL="../Private/DestroyClone.vi"/>
-		<Item Name="ErrorHandler.vi" Type="VI" URL="../Private/ErrorHandler.vi"/>
-		<Item Name="HandleExit.vi" Type="VI" URL="../Private/HandleExit.vi"/>
 	</Item>
 	<Item Name="PublicAPI" Type="Folder">
-		<Item Name="Arguments" Type="Folder">
-			<Item Name="Broadcasts" Type="Folder">
-				<Item Name="clDidInit.ctl" Type="VI" URL="../PublicAPI/Arguments/Broadcasts/clDidInit.ctl"/>
-			</Item>
-			<Item Name="Messages" Type="Folder">
-				<Item Name="clMessage.ctl" Type="VI" URL="../PublicAPI/Arguments/Messages/clMessage.ctl"/>
-			</Item>
-			<Item Name="Requests" Type="Folder">
-				<Item Name="clStopArgument.ctl" Type="VI" URL="../PublicAPI/Arguments/Requests/clStopArgument.ctl"/>
-			</Item>
-		</Item>
 		<Item Name="Broadcasts" Type="Folder">
 			<Property Name="NI.LibItem.Scope" Type="Int">1</Property>
-			<Item Name="clBroadcastEvents.ctl" Type="VI" URL="../PublicAPI/Broadcasts/clBroadcastEvents.ctl"/>
-			<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../PublicAPI/Broadcasts/DestroyBroadcastEvents.vi"/>
-			<Item Name="DidInit.vi" Type="VI" URL="../PublicAPI/Broadcasts/DidInit.vi"/>
-			<Item Name="DidStop.vi" Type="VI" URL="../PublicAPI/Broadcasts/DidStop.vi"/>
-			<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../PublicAPI/Broadcasts/ObtainBroadcastEvents.vi"/>
 			<Item Name="ObtainBroadcastForRegistration.vi" Type="VI" URL="../PublicAPI/Broadcasts/ObtainBroadcastForRegistration.vi"/>
-			<Item Name="ReportError.vi" Type="VI" URL="../PublicAPI/Broadcasts/ReportError.vi"/>
-			<Item Name="StatusUpdate.vi" Type="VI" URL="../PublicAPI/Broadcasts/StatusUpdate.vi"/>
 		</Item>
 		<Item Name="Requests" Type="Folder">
 			<Property Name="NI.LibItem.Scope" Type="Int">1</Property>
-			<Item Name="clEventType.ctl" Type="VI" URL="../PublicAPI/Requests/clEventType.ctl"/>
-			<Item Name="clRequestEvents.ctl" Type="VI" URL="../PublicAPI/Requests/clRequestEvents.ctl"/>
-			<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../PublicAPI/Requests/DestroyRequestEvents.vi"/>
-			<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../PublicAPI/Requests/ObtainRequestEvents.vi"/>
-			<Item Name="ShowPanelRequest.vi" Type="VI" URL="../PublicAPI/Requests/ShowPanelRequest.vi"/>
-			<Item Name="StopRequest.vi" Type="VI" URL="../PublicAPI/Requests/StopRequest.vi"/>
+			<Item Name="Requests" Type="Folder">
+				<Item Name="LoadPluginRequest.vi" Type="VI" URL="../PublicAPI/Requests/LoadPluginRequest.vi"/>
+				<Item Name="PathToINIRequest.vi" Type="VI" URL="../PublicAPI/Requests/PathToINIRequest.vi"/>
+				<Item Name="PrefDlgRequest.vi" Type="VI" URL="../PublicAPI/Requests/PrefDlgRequest.vi"/>
+				<Item Name="ShowPanelRequest.vi" Type="VI" URL="../PublicAPI/Requests/ShowPanelRequest.vi"/>
+			</Item>
 		</Item>
 		<Item Name="StartClone.vi" Type="VI" URL="../PublicAPI/StartClone.vi"/>
-		<Item Name="StopClone.vi" Type="VI" URL="../PublicAPI/StopClone.vi"/>
 	</Item>
 	<Item Name="Test" Type="Folder">
 		<Item Name="IniFiles.vi" Type="VI" URL="../Test/IniFiles.vi"/>
@@ -68,6 +36,5 @@
 		<Item Name="TestInfo.vi" Type="VI" URL="../Test/TestInfo.vi"/>
 		<Item Name="UpdateSelectRing.vi" Type="VI" URL="../Test/UpdateSelectRing.vi"/>
 	</Item>
-	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 	<Item Name="TestCloneAPI.vi" Type="VI" URL="../Test/TestCloneAPI.vi"/>
 </Library>
