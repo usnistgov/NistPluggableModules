@@ -14,7 +14,7 @@
 	<Item Name="Queue" Type="Folder">
 		<Property Name="NI.SortType" Type="Int">3</Property>
 		<Item Name="EnqueueTypes.ctl" Type="VI" URL="../Queue SubVIs/EnqueueTypes.ctl"/>
-		<Item Name="clMessage.ctl" Type="VI" URL="../../MyPluggableModule/PublicAPI/Arguments/Messages/clMessage.ctl"/>
+		<Item Name="QueueMessageType.ctl" Type="VI" URL="../Queue SubVIs/QueueMessageType.ctl"/>
 		<Item Name="DequeueTypes.ctl" Type="VI" URL="../Queue SubVIs/DequeueTypes.ctl"/>
 		<Item Name="CreateQueueNames.vi" Type="VI" URL="../Queue SubVIs/CreateQueueNames.vi"/>
 		<Item Name="Dequeue.vi" Type="VI" URL="../Queue SubVIs/Dequeue.vi"/>
@@ -23,14 +23,14 @@
 		<Item Name="anCLASS.vi" Type="VI" URL="../Queue SubVIs/anCLASS.vi"/>
 	</Item>
 	<Item Name="SubVIs" Type="Folder">
-		<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../../MyPluggableModule/PublicAPI/Broadcasts/DestroyBroadcastEvents.vi"/>
-		<Item Name="DestroyClone.vi" Type="VI" URL="../../MyPluggableModule/Private/DestroyClone.vi"/>
-		<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../../MyPluggableModule/PublicAPI/Requests/DestroyRequestEvents.vi"/>
-		<Item Name="DidInit.vi" Type="VI" URL="../../MyPluggableModule/PublicAPI/Broadcasts/DidInit.vi"/>
-		<Item Name="ErrorHandler.vi" Type="VI" URL="../../MyPluggableModule/Private/ErrorHandler.vi"/>
-		<Item Name="HandleExit.vi" Type="VI" URL="../../MyPluggableModule/Private/HandleExit.vi"/>
-		<Item Name="ReportError.vi" Type="VI" URL="../../MyPluggableModule/PublicAPI/Broadcasts/ReportError.vi"/>
-		<Item Name="StatusUpdate.vi" Type="VI" URL="../../MyPluggableModule/PublicAPI/Broadcasts/StatusUpdate.vi"/>
+		<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../SubVIs/DestroyBroadcastEvents.vi"/>
+		<Item Name="DestroyClone.vi" Type="VI" URL="../SubVIs/DestroyClone.vi"/>
+		<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../SubVIs/DestroyRequestEvents.vi"/>
+		<Item Name="DidInit.vi" Type="VI" URL="../SubVIs/DidInit.vi"/>
+		<Item Name="ErrorHandler.vi" Type="VI" URL="../SubVIs/ErrorHandler.vi"/>
+		<Item Name="HandleExit.vi" Type="VI" URL="../SubVIs/HandleExit.vi"/>
+		<Item Name="ReportError.vi" Type="VI" URL="../../PluginsShared/ReportError.vi"/>
+		<Item Name="StatusUpdate.vi" Type="VI" URL="../SubVIs/StatusUpdate.vi"/>
 	</Item>
 	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 	<Item Name="MyPluginsBase.lvclass" Type="LVClass" URL="../MyPluginBaseClass/MyPluginsBase.lvclass"/>

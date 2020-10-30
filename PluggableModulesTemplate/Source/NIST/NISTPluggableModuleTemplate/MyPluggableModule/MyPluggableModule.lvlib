@@ -19,12 +19,10 @@
 		</Item>
 		<Item Name="Requests" Type="Folder">
 			<Property Name="NI.LibItem.Scope" Type="Int">1</Property>
-			<Item Name="Requests" Type="Folder">
-				<Item Name="LoadPluginRequest.vi" Type="VI" URL="../PublicAPI/Requests/LoadPluginRequest.vi"/>
-				<Item Name="PathToINIRequest.vi" Type="VI" URL="../PublicAPI/Requests/PathToINIRequest.vi"/>
-				<Item Name="PrefDlgRequest.vi" Type="VI" URL="../PublicAPI/Requests/PrefDlgRequest.vi"/>
-				<Item Name="ShowPanelRequest.vi" Type="VI" URL="../PublicAPI/Requests/ShowPanelRequest.vi"/>
-			</Item>
+			<Item Name="LoadPluginRequest.vi" Type="VI" URL="../PublicAPI/Requests/LoadPluginRequest.vi"/>
+			<Item Name="PathToINIRequest.vi" Type="VI" URL="../PublicAPI/Requests/PathToINIRequest.vi"/>
+			<Item Name="PrefDlgRequest.vi" Type="VI" URL="../PublicAPI/Requests/PrefDlgRequest.vi"/>
+			<Item Name="ShowPanelRequest.vi" Type="VI" URL="../PublicAPI/Requests/ShowPanelRequest.vi"/>
 		</Item>
 		<Item Name="StartClone.vi" Type="VI" URL="../PublicAPI/StartClone.vi"/>
 	</Item>
@@ -32,7 +30,6 @@
 		<Item Name="IniFiles.vi" Type="VI" URL="../Test/IniFiles.vi"/>
 		<Item Name="InitControls.vi" Type="VI" URL="../Test/InitControls.vi"/>
 		<Item Name="InitSelectRing.vi" Type="VI" URL="../Test/InitSelectRing.vi"/>
-		<Item Name="TestInfo.ctl" Type="VI" URL="../Test/TestInfo.ctl"/>
 		<Item Name="TestInfo.vi" Type="VI" URL="../Test/TestInfo.vi"/>
 		<Item Name="UpdateSelectRing.vi" Type="VI" URL="../Test/UpdateSelectRing.vi"/>
 	</Item>
