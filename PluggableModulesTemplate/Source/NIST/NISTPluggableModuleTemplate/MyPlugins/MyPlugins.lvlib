@@ -20,7 +20,6 @@
 		<Item Name="Dequeue.vi" Type="VI" URL="../Queue SubVIs/Dequeue.vi"/>
 		<Item Name="Enqueue.vi" Type="VI" URL="../Queue SubVIs/Enqueue.vi"/>
 		<Item Name="ObtainQueue.vi" Type="VI" URL="../Queue SubVIs/ObtainQueue.vi"/>
-		<Item Name="anCLASS.vi" Type="VI" URL="../Queue SubVIs/anCLASS.vi"/>
 	</Item>
 	<Item Name="SubVIs" Type="Folder">
 		<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../SubVIs/DestroyBroadcastEvents.vi"/>
