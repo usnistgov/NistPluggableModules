@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
-<Project Type="Project" LVVersion="14008000">
+<Project Type="Project" LVVersion="18008000">
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Property Name="NI.Project.Description" Type="Str"></Property>
 	<Item Name="My Computer" Type="My Computer">
@@ -18,6 +18,7 @@
 		</Item>
 		<Item Name="MyPluggableModule.lvlib" Type="Library" URL="../MyPluggableModule/MyPluggableModule.lvlib"/>
 		<Item Name="MyPlugins.lvlib" Type="Library" URL="../MyPlugins/MyPlugins.lvlib"/>
+		<Item Name="PluginsShared.lvlib" Type="Library" URL="../PluginsShared/PluginsShared.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="user.lib" Type="Folder">
 				<Item Name="Array Size(s)__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array Size(s)__ogtk.vi"/>
