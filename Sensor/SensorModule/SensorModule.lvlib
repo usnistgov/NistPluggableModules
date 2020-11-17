@@ -74,5 +74,8 @@
 		<Item Name="TestInfo.vi" Type="VI" URL="../Test/TestInfo.vi"/>
 		<Item Name="UpdateSelectRing.vi" Type="VI" URL="../Test/UpdateSelectRing.vi"/>
 	</Item>
+	<Item Name="SetT0Request.vi" Type="VI" URL="../Protected/Requests/SetT0Request.vi">
+		<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
+	</Item>
 	<Item Name="TestCloneAPI.vi" Type="VI" URL="../Test/TestCloneAPI.vi"/>
 </Library>
