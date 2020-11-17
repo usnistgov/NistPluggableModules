@@ -57,4 +57,5 @@
 	<Item Name="C37.118 PMU.lvclass" Type="LVClass" URL="../C37.118_PmuClass/C37.118 PMU.lvclass"/>
 	<Item Name="Sim_Ideal_PMU.lvclass" Type="LVClass" URL="../Sim_Ideal_PMU/Sim_Ideal_PMU.lvclass"/>
 	<Item Name="SiemensDigitalEnergyMeter.lvclass" Type="LVClass" URL="../SiemensDigitalEnergyMeter/SiemensDigitalEnergyMeter.lvclass"/>
+	<Item Name="PmuCalCal.lvclass" Type="LVClass" URL="../PmuCalCal/PmuCalCal.lvclass"/>
 </Library>
