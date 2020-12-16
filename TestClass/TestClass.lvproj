@@ -29,6 +29,7 @@
 			<Item Name="AcPwrPlugins.lvlib" Type="Library" URL="../../AcPwr/AcPwrPlugins/AcPwrPlugins.lvlib"/>
 			<Item Name="AcPwrModule.lvlib" Type="Library" URL="../../AcPwr/AcPwrModule/AcPwrModule.lvlib"/>
 			<Item Name="Visualization.lvlib" Type="Library" URL="../../Visualization/Visualization.lvlib"/>
+			<Item Name="SensorModule.lvlib" Type="Library" URL="../../Sensor/SensorModule/SensorModule.lvlib"/>
 		</Item>
 		<Item Name="Test.lvclass" Type="LVClass" URL="../Test.lvclass"/>
 		<Item Name="Dependencies" Type="Dependencies">
@@ -701,7 +702,6 @@
 			<Item Name="kernel32.dll" Type="Document" URL="kernel32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="LogErrors.vi" Type="VI" URL="../../../sbtbcntl/LogErrors.vi"/>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
 			<Item Name="matscript.dll" Type="Document"/>
 			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="NHRDCPowerModule.dll">
@@ -725,7 +725,6 @@
 			</Item>
 			<Item Name="ScopeModule.lvlib" Type="Library" URL="../../Scope/ScopeModule/ScopeModule.lvlib"/>
 			<Item Name="ScopePlugins.lvlib" Type="Library" URL="../../Scope/ScopePlugins/ScopePlugins.lvlib"/>
-			<Item Name="SensorModule.lvlib" Type="Library" URL="../../Sensor/SensorModule/SensorModule.lvlib"/>
 			<Item Name="SensorShared.lvlib" Type="Library" URL="../../Sensor/SensorShared/SensorShared.lvlib"/>
 			<Item Name="Tag-bool.lvlib" Type="Library" URL="/&lt;extravilib&gt;/ChannelInstances/Tag-bool.lvlib"/>
 		</Item>
