@@ -44,13 +44,13 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
  methods (Test)
      function regressionTests (testCase)
          testCase.fig = testCase.fig + 1;
-         %testDefault(testCase); testCase.fig = testCase.fig + 1;
+         testDefault(testCase); testCase.fig = testCase.fig + 1;
          %test_50f1(testCase); testCase.fig = testCase.fig + 1;
          %test_50f0_75i0(testCase); testCase.fig = testCase.fig + 1;
          %setDefaults(testCase); testCase.fig = testCase.fig + 1;
          %test_70f0(testCase); testCase.fig = testCase.fig + 1;
          %test_ampl_step(testCase); testCase.fig = testCase.fig + 1;
-         test_ramp(testCase); testCase.fig = testCase.fig + 1;
+         %test_ramp(testCase); testCase.fig = testCase.fig + 1;
      end
  end
  
@@ -98,10 +98,10 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
         function test_ampl_step(testCase)
             setDefaults(testCase)
             [Xm Fin Ps Fh Ph Kh Fa Ka Fx Kx Rf KaS KxS] = testCase.getParamIndex();
-            testCase.Fs = 48000;
+            testCase.Fs = 4800;
             testCase.t0=-1;
             testCase.sizeMax = testCase.Fs*2;
-            testCase.SettlingTime = 7/testCase.signalParams(Fin,1);
+            %testCase.SettlingTime = 7/testCase.signalParams(Fin,1);
             testCase.signalParams(KxS,:) = 0.1*testCase.signalParams(Xm,:);
             runOnce(testCase);
         end
@@ -110,10 +110,10 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
            setDefaults(testCase);
            [Xm Fin Ps Fh Ph Kh Fa Ka Fx Kx Rf KaS KxS] = testCase.getParamIndex();
            testCase.Fs = 4800;
-           testCase.sizeMax = testCase.Fs * 10;     % 10 seconds of ramping
-           testCase.SettlingTime = 1.0;             % 1 second of settling on each side of the ramp
-           testCase.signalParams(Fin,:)= 45.0;
-           testCase.signalParams(Rf,:) = 1.0;
+           testCase.sizeMax = testCase.Fs * 10;     % 10 seconds max size
+           testCase.SettlingTime = 0;             % 1 second of settling on each side of the ramp
+           testCase.signalParams(Fin,:)= 50.0;
+           testCase.signalParams(Rf,:) = 0;
            runOnce(testCase);
         end
         

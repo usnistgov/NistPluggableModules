@@ -49,16 +49,13 @@ size = sizeMax;
 % frequency of the fundamental and any added intefering frequency or 
 % modulation that may be added. 
 
-if (SettlingTime <= 0 || (KaS(1) ~= 0 && KxS(1) ~= 0) || Rf(1) == 0);
+if (SettlingTime <= 0 && (KaS(1) == 0 && KxS(1) == 0) && Rf(1) == 0);
     Freqs = [Fin(1,1)];
     if Kh(1) > 0; Freqs(2) =  Fh(1,1); end
     size = SizeLcmPeriods(Freqs, FSamp);
     if size > sizeMax; size = sizeMax; end
 end
-    
-% Phase in radians
-Ph = Ps*pi/180;
-    
+       
 % calculate the angular frequencies
 Wf = 2*pi*Fin;  % fundamental frequency
 Wa = 2*pi*Fa;   % phase (angle) modulation frequency
@@ -80,7 +77,7 @@ end
 Theta = zeros(length(Ps),length(t));
 for i = 1:length(Ps)
     Theta(i,:) = (Wf(i)*t) ...                         % Fundamental
-                 + Ph(i) ...               % phase shift
+                 + Ps(i)*(pi/180) ...               % phase shift
                  - ( ...                 
                     (Ka(i)*cos((Wa(i)*t)-pi)) ...     % Phase modulation
                   );
