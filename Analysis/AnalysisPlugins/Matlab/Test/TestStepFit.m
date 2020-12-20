@@ -93,26 +93,27 @@ classdef TestStepFit < matlab.unittest.TestCase
 %   The functions in this method list are run automatically when "res=run(testCase)" is called.
     methods (Test)
         function regressionTests (testCase)
-            testCase.test_LocateDefaultPosAmpl
-            testCase.test_LocateDefaultNegAmpl
-            testCase.test_LocateDefaultPosPhase
-            testCase.test_LocateDefaultNegPhase
-            testCase.test_LocatePosAmplSweep
-            testCase.test_LocateNegAmplSweep
-            testCase.test_LocatePosPhaseSweep
-            testCase.test_LocateNegPhaseSweep
-           testCase.test_FitDefaultPosAmpl
-           testCase.test_FitDefaultNegAmpl
-           testCase.test_FitDefaultPosPhase
-           testCase.test_FitDefaultNegPhase
-           testCase.test_FitPosAmplSweep
-           testCase.test_FitNegAmplSweep
-           testCase.test_FitPosPhaseSweep
-           testCase.test_FitNegPhaseSweep
-            testCase.test_FitPosAmplEarly
-            testCase.test_FitPosAmplLate
+%             testCase.test_LocateDefaultPosAmpl
+%             testCase.test_LocateDefaultNegAmpl
+%             testCase.test_LocateDefaultPosPhase
+%             testCase.test_LocateDefaultNegPhase
+%             testCase.test_LocatePosAmplSweep
+%             testCase.test_LocateNegAmplSweep
+%             testCase.test_LocatePosPhaseSweep
+%             testCase.test_LocateNegPhaseSweep
+%             testCase.test_FitDefaultPosAmpl
+%             testCase.test_FitDefaultNegAmpl
+%             testCase.test_FitDefaultPosPhase
+%             testCase.test_FitDefaultNegPhase
+%             testCase.test_FitPosAmplSweep
+%             testCase.test_FitNegAmplSweep
+%             testCase.test_FitPosPhaseSweep
+%             testCase.test_FitNegPhaseSweep
+%             testCase.test_FitPosAmplEarly
+%             testCase.test_FitPosAmplLate
+              testCase.test_CapturedStep
 
-          end
+        end
     end
 
     %% Regression Tests (public so they can be called externally)
@@ -331,8 +332,44 @@ classdef TestStepFit < matlab.unittest.TestCase
             testCase.signalParams(KaS,:)=-10;    % +10 degree step 
             testCase.signalParams(KxS,:)=0;    % +10 degree step 
             testCase.fitSweep
-       end  
-        
+       end
+       
+       % In the NISTPluggableModules PmuAnalysisClass:Fitter.vi, a disabled
+       % diagram allows for saving the complete input to the fitter in the
+       % user's PMUCal output folder.  Copy that file to the active matlab
+       % folter and rename it "SavedStepFit.mat"
+       function test_CapturedStep(testCase)
+           
+           A = open('SavedStepFit.mat');
+           P = A.P;
+           clear A
+           
+           for i = 1:length(P)
+               testCase.Name = sprintf('test_CapturedStep iteration %d',i);
+               fprintf('\n%s\n',testCase.Name)
+               
+               testCase.signalParams = P(i).SignalParams;
+               testCase.DelayCorr = P(i).DelayCorr;
+               testCase.MagCorr = P(i).MagCorr;
+               testCase.F0 = P(i).F0;
+               testCase.AnalysisCycles = P(i).AnalysisCycles;
+               testCase.Fs = P(i).SampleRate;               
+               Y = P(i).Samples;
+               
+               [Synx,Freq,ROCOF] = StepFit (...
+                testCase.signalParams, ...
+                testCase.DelayCorr, ...
+                testCase.MagCorr, ...
+                testCase.F0, ...
+                testCase.AnalysisCycles, ...
+                testCase.Fs, ...
+                Y ...
+                );
+            
+                fprintf('Synx = %f, Freq = %f, ROCCOF = %f', Synx, Freq, ROCOF);
+           end
+       end
+       
          
        function fitOne(testCase)
            tau = testCase.stepOffset;
