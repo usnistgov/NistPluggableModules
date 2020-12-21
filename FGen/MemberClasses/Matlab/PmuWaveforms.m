@@ -63,14 +63,14 @@ Wx = 2*pi*Fx;   % amplitude modulation frequency
 Wh = 2*pi*Fh;
 
 % create the time array.  Add the settling time to both ends of the size
-t = t0-SettlingTime:1/FSamp:((size-1)/FSamp)+t0+SettlingTime;
-
+%t = t0-SettlingTime:1/FSamp:((size-1)/FSamp)+t0+SettlingTime;
+t = -SettlingTime:1/FSamp:((size-1)/FSamp)+SettlingTime;
 % Amplitude, AM and magnitude step
 Ain = zeros(length(Xm),length(t));
 for i = 1:length(Xm)
     Ain(i,:) = Xm(i) *(1+Kx(i)*cos((Wx(i)*t)));
     % Amplitude Step: applied after time passes 0
-    Ain(i,t >= 0) = Ain(i,t >= 0) * (1 + KxS(i));
+    Ain(i,t >= 0+t0) = Ain(i,t >= 0+t0) * (1 + KxS(i));
 end
 
 % Phase
@@ -86,7 +86,7 @@ end
 % Phase Step
 if KaS(1) ~= 0;
     for i = 1:length(KaS)
-        Theta(i,t >= 0) = Theta(i,t >= 0) + (KaS(i) * pi/180);
+Theta(i,t >= (0+t0)) = Theta(i,t >= (0+t0)) + (KaS(i) * pi/180);
     end
 end
 
