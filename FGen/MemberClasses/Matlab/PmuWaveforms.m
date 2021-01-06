@@ -1,5 +1,5 @@
 % Generates multi=phase test signals for 60255.118.1 PMU testing
-function [Signal,size] = PmuWaveforms( ...
+function [Signal,wfSize] = PmuWaveforms( ...
     t0, ...
     SettlingTime, ...
     sizeMax, ...
@@ -26,7 +26,7 @@ function [Signal,size] = PmuWaveforms( ...
 
 
 % signalparams  (Note that the labeling convention comes mostly from the standard)
-    Xm = signalparams(1,:)*sqrt(2);     % phase amplitude (given by the user in RMS
+    Xm = signalparams(1,:)*sqrt(2);     % phase amplitude (given by the user in RMS)
     Fin = signalparams(2,:);    % frequency (must be the same for all 6 channels or an error will be thrown
     Ps = signalparams(3,:);     % phase 
     Fh = signalparams(4,:);     % Frequency of the interfering signal
@@ -40,20 +40,30 @@ function [Signal,size] = PmuWaveforms( ...
     KaS = signalparams(12,:);   % phase (angle) step index
     KxS = signalparams(13,:);   % magnitude step index
     
+    % ARG 20201226 added frequency and rocof step rows
+    [r, c] = size(signalparams);
+    KfS = zeros(1,c); KrS = KfS;
+    if r > 13
+        KfS = signalparams(14,:);
+        KrS = signalparams(15,:);
+    end
+    
 
 %%    
-size = sizeMax;    
+wfSize = sizeMax;    % this is the waveform NOT INCLUDING the settling time added to both ends
 
 % If SettlingTime <= 0, and this is not a step test or ramp, then determine the
 % sample size that gives an interger number of periods of the "combined"
 % frequency of the fundamental and any added intefering frequency or 
 % modulation that may be added. 
 
-if (SettlingTime <= 0 && (KaS(1) == 0 && KxS(1) == 0) && Rf(1) == 0);
+stepIdx = all([Rf; KaS; KxS; KfS; KrS]');
+noSteps = all(stepIdx == 0);
+if (SettlingTime <= 0 && noSteps);
     Freqs = [Fin(1,1)];
     if Kh(1) > 0; Freqs(2) =  Fh(1,1); end
-    size = SizeLcmPeriods(Freqs, FSamp);
-    if size > sizeMax; size = sizeMax; end
+    wfSize = SizeLcmPeriods(Freqs, FSamp);
+    if wfSize > sizeMax; wfSize = sizeMax; end
 end
        
 % calculate the angular frequencies
@@ -64,7 +74,7 @@ Wh = 2*pi*Fh;
 
 % create the time array.  Add the settling time to both ends of the size
 %t = t0-SettlingTime:1/FSamp:((size-1)/FSamp)+t0+SettlingTime;
-t = -SettlingTime:1/FSamp:((size-1)/FSamp)+SettlingTime;
+t = -SettlingTime:1/FSamp:((wfSize-1)/FSamp)+SettlingTime;
 % Amplitude, AM and magnitude step
 Ain = zeros(length(Xm),length(t));
 for i = 1:length(Xm)
@@ -103,15 +113,24 @@ end
 % end
 
 % frequency ramp
-for i = 1:length(Rf)
-    if Rf(i)~=0
-        endRamp = (size/FSamp)+t0;
-        Theta(i,t>=0 & t<=endRamp) = Theta(i,t>=0 & t<=endRamp) + (pi*Rf(i)*t(t>=0 & t<=endRamp).^2);
-        Theta(i,t>endRamp) = Theta(i,t>endRamp) + 2*(pi*Rf(i)*endRamp*t(t>endRamp));
-        %Theta(i,t>=0 & t<endRamp) = Theta(i,t>=0 & t<endRamp) + (pi*Rf(i)*t(t>=0 & t<endRamp).^2);
-        %Theta(i,t>=endRamp) = Theta(i,t>=endRamp) + 2*(pi*Rf(i)*endRamp*t(t>=endRamp));
-        
+rampIdx = all([Rf; KrS]');
+if ~(all(rampIdx == 0))
+    if all(Rf == 0); Rf = KrS; end  % prefer Rf over KrS
+    for i = 1:length(Rf)
+        if Rf(i)~=0
+            endRamp = (wfSize/FSamp);
+            Theta(i,t>=(0+t0) & t<=endRamp) = Theta(i,t>=(0+t0) & t<=endRamp) + (pi*Rf(i)*t(t>=(0+t0) & t<=endRamp).^2);
+            %Theta(i,t>(endRamp+t0)) = Theta(i,t>(endRamp+t0)) + (pi*Rf(i)*(endRamp+t0)*t(t>(endRamp+t0)))+ (pi*Rf(i)*(endRamp+t0))^2;
+            Theta(i,t>(endRamp+t0)) = Theta(i,t>(endRamp+t0)) + (pi*Rf(i)*(endRamp+t0)*t(t>(endRamp+t0)));
+         end
     end
+end
+
+% frequency step
+if ~(all(KfS == 0))
+    for i = 1:length(KfS)
+       Theta(i,t>=(0+t0)) = Theta(i,t>=(0+t0)) + ((2*pi*KfS(i))*(t(t>=(0+t0))-t0));
+    end  
 end
 
 % Complex signals

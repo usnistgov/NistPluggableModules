@@ -17,8 +17,13 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
     
 %% Static method to get indexes into the signalParams matrix    
     methods(Static)
-        function [Xm Fin Ps Fh Ph Kh Fa Ka Fx Kx Rf KaS KxS] = getParamIndex()
-            Xm=1;Fin=2;Ps=3;Fh=4;Ph=5;Kh=6;Fa=7;Ka=8;Fx=9;Kx=10;Rf=11;KaS=12;KxS=13;
+        % returns Xm=1;Fin=2;Ps=3;Fh=4;Ph=5;Kh=6;Fa=7;Ka=8;Fx=9;Kx=10;Rf=11;KaS=12;KxS=13;KfS=14;KrS=15
+        % where variables after Ps are variable output arguments
+        function [Xm, Fin, Ps, varargout] = getParamIndex()
+            Xm=1;Fin=2;Ps=3;
+            for i = 1:nargout-3
+                varargout{i}=i+3;
+            end
         end
     end
     
@@ -31,8 +36,8 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
             testCase.sizeMax = 48000;
             
             NPhases = 3;
-            testCase.signalParams = zeros(13,NPhases);
-            [Xm Fin Ps Fh Ph Kh Fa Ka Fx Kx Rf KaS KxS] = testCase.getParamIndex();
+            testCase.signalParams = zeros(15,NPhases);
+            [Xm, Fin, Ps] = testCase.getParamIndex();
             
             testCase.signalParams(Xm,:) = 1;
             testCase.signalParams(Fin,:) = [50,50,50];
@@ -49,8 +54,11 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
          %test_50f0_75i0(testCase); testCase.fig = testCase.fig + 1;
          %setDefaults(testCase); testCase.fig = testCase.fig + 1;
          %test_70f0(testCase); testCase.fig = testCase.fig + 1;
-         test_ampl_step(testCase); testCase.fig = testCase.fig + 1;
+         %test_ampl_step(testCase); testCase.fig = testCase.fig + 1;
+         test_freq_step(testCase); testCase.fig = testCase.fig + 1;
          %test_ramp(testCase); testCase.fig = testCase.fig + 1;
+         %test_rocof_step(testCase); testCase.fig = testCase.fig + 1;
+
      end
  end
  
@@ -105,18 +113,40 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
             testCase.SettlingTime = 1;
             testCase.signalParams(KxS,:) = 0.1;
             runOnce(testCase);
-        end
+        end        
         
         function test_ramp(testCase)
            setDefaults(testCase);
-           [Xm Fin Ps Fh Ph Kh Fa Ka Fx Kx Rf KaS KxS] = testCase.getParamIndex();
+           [~, Fin, ~, ~, ~, ~, ~, ~, ~, ~, Rf] = testCase.getParamIndex();
            testCase.Fs = 4800;
            testCase.sizeMax = testCase.Fs * 10;     % 10 seconds max size
-           testCase.SettlingTime = 0.005;             % 1 second of settling on each side of the ramp
+           testCase.SettlingTime = 1;             % 1 second of settling on each side of the ramp
            testCase.signalParams(Fin,:)= 50.0;
-           testCase.signalParams(Rf,:) = 0;
+           testCase.signalParams(Rf,:) = 1;
            runOnce(testCase);
         end
+        
+         function test_rocof_step(testCase)
+           setDefaults(testCase);
+           [~, Fin, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KrS] = testCase.getParamIndex();
+           testCase.Fs = 4800;
+           testCase.sizeMax = testCase.Fs * 1;     % 10 seconds max size
+           testCase.SettlingTime = 1;             % 1 second of settling on each side of the ramp
+           testCase.signalParams(Fin,:)= 49.0;
+           testCase.signalParams(KrS,:) = 1;
+           runOnce(testCase);
+         end
+        
+         function test_freq_step(testCase)
+           setDefaults(testCase);
+           [~, Fin, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KfS, ~] = testCase.getParamIndex();
+           testCase.Fs = 4800;
+           testCase.sizeMax = testCase.Fs * 1;     % 10 seconds max size
+           testCase.SettlingTime = 1;             % 1 second of settling on each side of the ramp
+           testCase.signalParams(Fin,:)= 50.0;
+           testCase.signalParams(KfS,:) = 1;
+           runOnce(testCase);
+        end         
         
         function saveWaveforms(testCase,Signal,size)
             % cd to the working directory
