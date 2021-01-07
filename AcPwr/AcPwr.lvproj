@@ -725,6 +725,7 @@
 			<Item Name="ChannelProbeWindowStagger.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbeWindowStagger.vi"/>
 			<Item Name="SensorShared.lvlib" Type="Library" URL="../../Sensor/SensorShared/SensorShared.lvlib"/>
 			<Item Name="DigitizerShared.lvlib" Type="Library" URL="../../Digitizer/DigitizerShared/DigitizerShared.lvlib"/>
+			<Item Name="ScopeShared.lvlib" Type="Library" URL="../../Scope/ScopeShared/ScopeShared.lvlib"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
