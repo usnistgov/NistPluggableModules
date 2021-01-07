@@ -25,6 +25,7 @@
 		</Item>
 		<Item Name="ScopeModule.lvlib" Type="Library" URL="../ScopeModule/ScopeModule.lvlib"/>
 		<Item Name="ScopePlugins.lvlib" Type="Library" URL="../ScopePlugins/ScopePlugins.lvlib"/>
+		<Item Name="ScopeShared.lvlib" Type="Library" URL="../ScopeShared/ScopeShared.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="Agilent 90000 Series.lvlib" Type="Library" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Agilent 90000 Series.lvlib"/>
