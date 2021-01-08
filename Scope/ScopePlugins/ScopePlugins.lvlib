@@ -11,6 +11,9 @@
 	<Item Name="Friends List" Type="Friends List">
 		<Item Name="ScopeModule.lvlib" Type="Friended Library" URL="../../ScopeModule/ScopeModule.lvlib"/>
 	</Item>
+	<Item Name="Queue&amp;Messages" Type="Folder">
+		<Item Name="CreateQueueNames.vi" Type="VI" URL="../../ScopeModule/Protected/Queue/CreateQueueNames.vi"/>
+	</Item>
 	<Item Name="TypeDefs" Type="Folder">
 		<Item Name="Acquisition.ctl" Type="VI" URL="../TypeDefs/Acquisition.ctl"/>
 		<Item Name="Channel.ctl" Type="VI" URL="../TypeDefs/Channel.ctl"/>
