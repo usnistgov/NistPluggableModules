@@ -1,22 +1,21 @@
-classdef TestSSFit < matlab.unittest.TestCase
-    % Class-based unit testing for ramp fitter
+classdef testAnyFit < matlab.unittest.TestCase
+    % Class-based unit testing for all of the PMU fitters
     %
     %   run these tests with two command-line commands:
-    %   >> testCase = TestSSFit();
+    %   >> testCase = testAnyFit();
     %   >> res = run(testCase);
     %
     
     properties
         Name    % Test name
-        TS      % Time series structure to be analysed
-        exp     %expected values
         SignalParams    % Parameters input to PmuTestSignals
+        TS      % Time series structure to be analysed
         AnalysisCycles  % number of fundamental cycles to be analysed
-        N       % signal size
         Fs      % sample rate
         Window  % window of AnalysisCycles to be analysed by the fitter
-        DlyCorr
-        MagCorr
+        DlyCorr % Delay correction factors
+        MagCorr % Magnitude correction factors
+        expect     %expected values
     end
     
     % % Signal params.  Note that the labeling convention comes mostly from the
@@ -41,12 +40,13 @@ classdef TestSSFit < matlab.unittest.TestCase
     
     %%Constructor Methods
     methods (Access = public)
+        
+        function self = testAnyFit(varargin)
         % Class Constructor
         % obj = TestSSFit (['Fs', (Samplerate)],['AnalysisCycles'],(n))
-        function self = TestSSFit(varargin)
-           self.SignalParams = zeros(15,6);
-           self.Fs = 4800; % default samplerate
-           self.AnalysisCycles = 6;
+            self.SignalParams = zeros(15,6);
+            self.Fs = 4800; % default samplerate
+            self.AnalysisCycles = 6;
             if nargin > 0
                 for i = 1 : 2 : numel(varargin)
                     switch varargin{i}
@@ -59,56 +59,42 @@ classdef TestSSFit < matlab.unittest.TestCase
                     end
                 end
             end
-            self.TS = struct('Name','default','N',(self.Fs/50)*self.AnalysisCycles,'t0',0,'SettlingTime',0,'f0',50,'X',[],'Y',[]);   
+            self.TS = struct('Name','default','N',(self.Fs/50)*self.AnalysisCycles,'t0',0,'SettlingTime',0,'f0',50,'X',[],'Y',[]);
             self.DlyCorr = zeros(6,1);
             self.MagCorr = ones(6,1);
         end
         
-        % Clear the SignalParams and set default values 
+        %===================================
         function self=setTsDefaults(self)
+            % Clear the SignalParams and set default values
             self.Name = 'Default';
             self.SignalParams = zeros(15,6);
             self.SignalParams(1,:) = 1;
             self.SignalParams(2,:) = 50;
             self.SignalParams(3,:) = [0,-120,120,0,-120,120];
-        end   
+        end
         
     end
     
-      
-    %----------------------------------------------------------------------
+   %----------------------------------------------------------------------
     %% Test Methods
+    % These functions will be called on   >> "res = run(testCase);"
     methods (Test)
         function regressionTests (self)
-            test50f0(self)      % test the nominal 50 Hz steady state fit
-            %testArt (self)
-            %testLab (self)
+            %test50f0(self)      % test the nominal 50 Hz steady state fit
+            test50f0_100h0(self)
             %testCapture (self)
-            %testSignal (self)
         end
     end
-    
-    
+
     %----------------------------------------------------------------------
     %% Public methods
     methods (Access = public)
         
-        % Returns the signal and the size from PmuWaveforms (found in
-        % ../FGen/MemberClasses/Matlab)
-        function self = getTimeSeries(self)
-            [self.TS.Y, self.TS.N] = PmuWaveforms(...
-                self.TS.t0, ...
-                self.TS.SettlingTime, ...
-                self.TS.N, ...
-                self.Fs, ...
-                self.SignalParams);
-            self.TS.X = self.TS.t0-self.TS.SettlingTime:1/self.Fs:((self.TS.N-1)/self.Fs)+self.TS.t0+self.TS.SettlingTime;            
-        end
-        
+ 
         %======================================
-        % One of the series of tests
         function oneSSFit(self)
-            
+        % Run one Steady State Fit          
             [Synx,Freq,ROCOF] = SteadyStateFit (...
                 self.SignalParams,...
                 self.DlyCorr, ...
@@ -120,42 +106,57 @@ classdef TestSSFit < matlab.unittest.TestCase
 
             
 
-            act = [abs(Synx),Freq,ROCOF];
+            act = [Synx,Freq,ROCOF];
             
             disp(self.TS.Name)            
-            fprintf('actual: %f %f %f %f %f %f %f %f %f %f',act);
-%             msg = sprintf('expected: %f %f %f %f',self.exp);
-%             disp(msg);
-%             
-            %self.verifyEqual(act,self.exp,'AbsTol',0.001)
+            fprintf('Magnitudes: %f %f %f %f %f %f %f %f \n',abs(Synx(1:8)));
+            fprintf('Phases: %f %f %f %f %f %f %f %f \n', angle(Synx(1:8))*180/pi);
+            fprintf('Freq %f, ROCOF %f\n', Freq, ROCOF)
+            if numel(Synx) > 8
+                fprintf('Harmonic Magnitudes: %f %f %f %f %f %f\n', abs(Synx(9:14)));
+                fprintf('Harmonic Phases: %f %f %f %f %f %f\n', angle(Synx(9:14))*180/pi)
+            end
+            self.verifyEqual(act,self.expect,'AbsTol',0.001)
             %pause;
         end  
         
-        %------------------------------
+        %=======================================
         function test50f0(self)
+        % Steady State 50 Hz fitter test
             self.setTsDefaults;
             self.getTimeSeries;
             self.getWindow(0);
             plot(self.Window');
-            self.oneSSFit            
-        end
+            self.expect = [1-i*0, exp(-i*2*pi/3), exp(i*2*pi/3), 1-i*0,...
+                        1-i*0, exp(-i*2*pi/3), exp(i*2*pi/3), 1-i*0,...
+                        50, 0];
+            self.oneSSFit;            
+        end      
         
-        %-------------------------------
-        function testLab (self)
-            self.TS.Name = 'Test 50Hz, 1 Hz/sec t0=0';
-            self.TS.N = 96*3;
-            self.TS.t0 = 0;
-            self.TS.dt = 1/self.Fs;
-            self.TS.f0 = 50;
-            self.TS.df = 1;
-            self.TS.phi0 = 0;
-            self.exp = [1/sqrt(2), 50, 1];
-            %testOne (self);
+        %==========================================
+        function test50f0_100h0(self)
+        % Steady State 50 Hz with 100 Hz harmonic fitter test
+            self.setTsDefaults;
+            Ah = 0.1;    % harmonic index
+            [~,~,~,Fh,Ph,Kh] = self.getParamIndex;  
+            self.SignalParams(Fh,:)=100;
+            self.SignalParams(Ph,:) = [0, -120, 120, 0, -120, 120];
+            self.SignalParams(Kh,:) = Ah;
+            % expected values
+            AhRt2 = Ah*sqrt(2);                    
+            self.expect = [1-1i*0, exp(-1i*2*pi/3), exp(1i*2*pi/3), 1-1i*0,...
+                        1-1i*0, exp(-1i*2*pi/3), exp(1i*2*pi/3), 1-1i*0,...
+                        AhRt2-1*0, AhRt2*exp(-1i*2*pi/3), AhRt2*exp(1i*2*pi/3),...
+                        AhRt2-1*0, AhRt2*exp(-1i*2*pi/3), AhRt2*exp(1i*2*pi/3),...
+                        50, 0];            
+            self.getTimeSeries;
+            self.getWindow(0);
+            self.oneSSFit;            
+        end            
         
-        end
-        %--------------------------------
-        % Uses the windowed data captured to the user's output folder
+        %==========================================
         function testCapture (self)
+        % Uses the windowed data captured to the user's output folder
             path = 'C:\Users\PowerLabNI3\Documents\PMUCAL\Output\';
             name = 'SavedSSFit.mat';
             name = strcat(path,name);
@@ -206,8 +207,21 @@ classdef TestSSFit < matlab.unittest.TestCase
     %% private methods
     methods (Access = private)
         
-        % get a window of analysisCycles for analysis
+       function self = getTimeSeries(self)
+        % Returns the signal and the size from PmuWaveforms (found in
+        % ../FGen/MemberClasses/Matlab)
+            [self.TS.Y, self.TS.N] = PmuWaveforms(...
+                self.TS.t0, ...
+                self.TS.SettlingTime, ...
+                self.TS.N, ...
+                self.Fs, ...
+                self.SignalParams);
+            self.TS.X = self.TS.t0-self.TS.SettlingTime:1/self.Fs:((self.TS.N-1)/self.Fs)+self.TS.t0+self.TS.SettlingTime;            
+        end
+                
+        %=======================================
         function self = getWindow(self,offset)
+        % get a window of analysisCycles for analysis
             
             % number of samples needed
             nSamples = self.AnalysisCycles*self.Fs/self.TS.f0;
@@ -250,6 +264,5 @@ classdef TestSSFit < matlab.unittest.TestCase
     end
         
     
-end
-
-
+end    
+        

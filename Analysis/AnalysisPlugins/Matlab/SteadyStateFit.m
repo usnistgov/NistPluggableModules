@@ -155,8 +155,11 @@ Izpn = Ai*Iabc; %curren: zero, positive and negative sequence
 %Synx output:
 Synx = [ Vabc.' Vzpn(2) Iabc.' Izpn(2)];
 
-%AinH = AinH./Ain  %not used yet, but should be output to verify a calibrator
-%ThetaH
+%Harmonics or interharmonics are output to verify a calibrator
+if NHarm > 1
+    SynxH = (AinH/sqrt(2).*exp(-1i*Theta));
+    Synx = horzcat(Synx, SynxH);    
+end
 
 Freq = mean(Freqs(1:3)); % average of the voltage frequencies 
 ROCOF = mean(ROCOFs(1:3));
