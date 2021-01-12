@@ -148,7 +148,7 @@ end % if
 
 for i = 1:length(Wh)
     ThetaH(i,:) = (Wh(i)*t) + Ph(i)*(pi/180);
-    cSignal(i,:) = cSignal(i,:) + ((Kh(i) * (sqrt(2)*Xm(i))) * (cos(ThetaH(i,:)) + 1i*sin(ThetaH(i,:))));
+    cSignal(i,:) = cSignal(i,:) + ((Kh(i) * (Xm(i))) * (cos(ThetaH(i,:)) + 1i*sin(ThetaH(i,:))));
 end
 
 Signal = real(cSignal);

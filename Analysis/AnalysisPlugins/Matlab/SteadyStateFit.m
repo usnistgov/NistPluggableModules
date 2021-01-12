@@ -157,7 +157,7 @@ Synx = [ Vabc.' Vzpn(2) Iabc.' Izpn(2)];
 
 %Harmonics or interharmonics are output to verify a calibrator
 if NHarm > 1
-    SynxH = (AinH/sqrt(2).*exp(-1i*Theta));
+    SynxH = (AinH/sqrt(2).*exp(-1i*ThetaH));
     Synx = horzcat(Synx, SynxH);    
 end
 
