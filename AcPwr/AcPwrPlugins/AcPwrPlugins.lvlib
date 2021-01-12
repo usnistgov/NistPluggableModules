@@ -18,6 +18,7 @@
 		<Item Name="CheckOnIdleEnum.ctl" Type="VI" URL="../Common/CheckOnIdleEnum.ctl"/>
 		<Item Name="clMessage.ctl" Type="VI" URL="../Common/clMessage.ctl"/>
 		<Item Name="DequeueEnum.ctl" Type="VI" URL="../Common/DequeueEnum.ctl"/>
+		<Item Name="QueueTypeEnum.ctl" Type="VI" URL="../Common/QueueTypeEnum.ctl"/>
 		<Item Name="EnqueueEnum.ctl" Type="VI" URL="../Common/EnqueueEnum.ctl"/>
 		<Item Name="CheckonIdle.vi" Type="VI" URL="../Common/CheckonIdle.vi"/>
 		<Item Name="ObtainQueue.vi" Type="VI" URL="../Common/Queue/ObtainQueue.vi"/>
