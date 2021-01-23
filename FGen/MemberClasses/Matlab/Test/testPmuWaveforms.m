@@ -52,10 +52,11 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
          %testDefault(testCase); testCase.fig = testCase.fig + 1;
          %test_50f1(testCase); testCase.fig = testCase.fig + 1;
          %test_50f0_75i0(testCase); testCase.fig = testCase.fig + 1;
+         test_45f2(testCase); testCase.fig = testCase.fig+1;
          %setDefaults(testCase); testCase.fig = testCase.fig + 1;
          %test_70f0(testCase); testCase.fig = testCase.fig + 1;
          %test_ampl_step(testCase); testCase.fig = testCase.fig + 1;
-         test_freq_step(testCase); testCase.fig = testCase.fig + 1;
+         %test_freq_step(testCase); testCase.fig = testCase.fig + 1;
          %test_ramp(testCase); testCase.fig = testCase.fig + 1;
          %test_rocof_step(testCase); testCase.fig = testCase.fig + 1;
 
@@ -95,6 +96,28 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
             testCase.signalParams(4,:)=[75,75,75];
             testCase.signalParams(6,:) = [0.5,0.5,0.5];
             runOnce(testCase)
+        end
+               
+        function test_45f2(testCase)
+            setDefaults(testCase)
+            [Xm Fin Ps] = testCase.getParamIndex();            
+            testCase.Fs = 50000;
+            testCase.sizeMax = 50000;
+            testCase.signalParams(Xm,:) = 70;
+            testCase.signalParams(Fin,:) = 45.2;
+           [Signal,size] = PmuWaveforms(...
+                testCase.t0,...
+                testCase.SettlingTime,...
+                testCase.sizeMax,...
+                testCase.Fs,...
+                testCase.signalParams...
+                );
+            
+            %t = testCase.t0-testCase.SettlingTime:1/testCase.Fs:((size-1)/testCase.Fs)+testCase.t0+testCase.SettlingTime;
+            t = -testCase.SettlingTime:1/testCase.Fs:((size-1)/testCase.Fs)+testCase.SettlingTime;
+            
+            plot(t,Signal(1,:))
+            saveWaveforms(testCase,Signal,size);            
         end
         
         function test_70f0(testCase)
@@ -150,7 +173,7 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
         
         function saveWaveforms(testCase,Signal,size)
             % cd to the working directory
-            cd (fullfile(getenv('USERPROFILE'),'Documents','PMUCAL','Output','step test'))
+            cd (fullfile(getenv('USERPROFILE'),'Documents','PMUCAL','Output','45f2'))
             
             % get the time to use as a file name
             P.Timestamp = now();
