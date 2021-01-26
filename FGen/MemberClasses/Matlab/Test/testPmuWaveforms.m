@@ -102,7 +102,7 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
             setDefaults(testCase)
             [Xm Fin Ps] = testCase.getParamIndex();            
             testCase.Fs = 50000;
-            testCase.sizeMax = 50000;
+            testCase.sizeMax = 500000;
             testCase.signalParams(Xm,:) = 70;
             testCase.signalParams(Fin,:) = 45.2;
            [Signal,size] = PmuWaveforms(...

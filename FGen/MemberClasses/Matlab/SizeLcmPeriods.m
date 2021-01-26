@@ -13,7 +13,7 @@ function size = SizeLcmPeriods(Freqs, Fs)
 % P = 1./sym(Freqs);      % creates a symbolic object of the periods
 % l = lcm(P);
 % ----------
-% We can work around needing the symbolic toolbox by converting to rational numbers
+% % We can work around needing the symbolic toolbox by converting to rational numbers
 P = 1./Freqs;   % periods
 P = rats(P);    % rational number of the periods
 P = strsplit(P);    % separate the rational numbers into a cell array
@@ -50,7 +50,7 @@ prime = factor(Fmult);
 
 i = 1;
 cyc = 1;
-while (i < length(prime))
+while (i <= length(prime))
     s = cyc/F;
     n = Fs*s;
     if rem(n,1)==0;break;end;
