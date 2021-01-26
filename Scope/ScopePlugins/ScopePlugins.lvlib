@@ -11,20 +11,22 @@
 	<Item Name="Friends List" Type="Friends List">
 		<Item Name="ScopeModule.lvlib" Type="Friended Library" URL="../../ScopeModule/ScopeModule.lvlib"/>
 	</Item>
-	<Item Name="Queue&amp;Messages" Type="Folder">
-		<Item Name="CreateQueueNames.vi" Type="VI" URL="../../ScopeModule/Protected/Queue/CreateQueueNames.vi"/>
-		<Item Name="WaveformCheck.vi" Type="VI" URL="../WaveformCheck.vi"/>
-	</Item>
-	<Item Name="TypeDefs" Type="Folder">
-		<Item Name="Acquisition.ctl" Type="VI" URL="../TypeDefs/Acquisition.ctl"/>
-		<Item Name="Channel.ctl" Type="VI" URL="../TypeDefs/Channel.ctl"/>
-		<Item Name="Channels.ctl" Type="VI" URL="../TypeDefs/Channels.ctl"/>
-		<Item Name="DequeueTypes.ctl" Type="VI" URL="../TypeDefs/DequeueTypes.ctl"/>
-		<Item Name="EnqueueTypes.ctl" Type="VI" URL="../TypeDefs/EnqueueTypes.ctl"/>
-		<Item Name="InitOptions.ctl" Type="VI" URL="../TypeDefs/InitOptions.ctl"/>
-		<Item Name="QueueNames.ctl" Type="VI" URL="../TypeDefs/QueueNames.ctl"/>
-		<Item Name="Trigger.ctl" Type="VI" URL="../TypeDefs/Trigger.ctl"/>
-		<Item Name="Waveform.ctl" Type="VI" URL="../TypeDefs/Waveform.ctl"/>
+	<Item Name="Shared" Type="Folder">
+		<Item Name="Queue&amp;Messages" Type="Folder">
+			<Item Name="CreateQueueNames.vi" Type="VI" URL="../../ScopeModule/Protected/Queue/CreateQueueNames.vi"/>
+			<Item Name="WaveformCheck.vi" Type="VI" URL="../WaveformCheck.vi"/>
+		</Item>
+		<Item Name="TypeDefs" Type="Folder">
+			<Item Name="Acquisition.ctl" Type="VI" URL="../TypeDefs/Acquisition.ctl"/>
+			<Item Name="Channel.ctl" Type="VI" URL="../TypeDefs/Channel.ctl"/>
+			<Item Name="Channels.ctl" Type="VI" URL="../TypeDefs/Channels.ctl"/>
+			<Item Name="DequeueTypes.ctl" Type="VI" URL="../TypeDefs/DequeueTypes.ctl"/>
+			<Item Name="EnqueueTypes.ctl" Type="VI" URL="../TypeDefs/EnqueueTypes.ctl"/>
+			<Item Name="InitOptions.ctl" Type="VI" URL="../TypeDefs/InitOptions.ctl"/>
+			<Item Name="QueueNames.ctl" Type="VI" URL="../TypeDefs/QueueNames.ctl"/>
+			<Item Name="Trigger.ctl" Type="VI" URL="../TypeDefs/Trigger.ctl"/>
+			<Item Name="Waveform.ctl" Type="VI" URL="../TypeDefs/Waveform.ctl"/>
+		</Item>
 	</Item>
 	<Item Name="Infiniium.lvclass" Type="LVClass" URL="../InfiniiumClass/Infiniium.lvclass"/>
 	<Item Name="IVI_Class.lvclass" Type="LVClass" URL="../IVI_Class/IVI_Class.lvclass"/>
