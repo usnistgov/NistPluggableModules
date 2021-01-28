@@ -33,7 +33,7 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
             testCase.t0 = 0;
             testCase.Fs = 4800;
             testCase.SettlingTime=0;
-            testCase.sizeMax = 48000;
+            testCase.sizeMax = testCase.Fs * 10;    % 10 seconds max
             
             NPhases = 3;
             testCase.signalParams = zeros(15,NPhases);
@@ -52,13 +52,14 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
          %testDefault(testCase); testCase.fig = testCase.fig + 1;
          %test_50f1(testCase); testCase.fig = testCase.fig + 1;
          %test_50f0_75i0(testCase); testCase.fig = testCase.fig + 1;
-         test_45f2(testCase); testCase.fig = testCase.fig+1;
+         %test_45f2(testCase); testCase.fig = testCase.fig+1;
          %setDefaults(testCase); testCase.fig = testCase.fig + 1;
          %test_70f0(testCase); testCase.fig = testCase.fig + 1;
          %test_ampl_step(testCase); testCase.fig = testCase.fig + 1;
          %test_freq_step(testCase); testCase.fig = testCase.fig + 1;
          %test_ramp(testCase); testCase.fig = testCase.fig + 1;
          %test_rocof_step(testCase); testCase.fig = testCase.fig + 1;
+         test_ampl_modulation(testCase); testCase.fig = testCase.fig + 1;
 
      end
  end
@@ -141,7 +142,6 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
         function test_ramp(testCase)
            setDefaults(testCase);
            [~, Fin, ~, ~, ~, ~, ~, ~, ~, ~, Rf] = testCase.getParamIndex();
-           testCase.Fs = 4800;
            testCase.sizeMax = testCase.Fs * 10;     % 10 seconds max size
            testCase.SettlingTime = 1;             % 1 second of settling on each side of the ramp
            testCase.signalParams(Fin,:)= 50.0;
@@ -152,7 +152,6 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
          function test_rocof_step(testCase)
            setDefaults(testCase);
            [~, Fin, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KrS] = testCase.getParamIndex();
-           testCase.Fs = 4800;
            testCase.sizeMax = testCase.Fs * 1;     % 10 seconds max size
            testCase.SettlingTime = 1;             % 1 second of settling on each side of the ramp
            testCase.signalParams(Fin,:)= 49.0;
@@ -169,7 +168,16 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
            testCase.signalParams(Fin,:)= 50.0;
            testCase.signalParams(KfS,:) = 1;
            runOnce(testCase);
-        end         
+         end   
+        
+         function test_ampl_modulation(testCase)
+             setDefaults(testCase)
+             [~, Fin, ~, ~, ~, ~, ~, ~, Fx, Kx, ~, ~, ~, ~, ~] = testCase.getParamIndex();
+             testCase.signalParams(Fx,:) = 1;
+             testCase.signalParams(Kx,:) = 0.1;
+             runOnce(testCase);
+         end
+
         
         function saveWaveforms(testCase,Signal,size)
             % cd to the working directory

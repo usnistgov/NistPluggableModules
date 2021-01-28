@@ -59,9 +59,12 @@ wfSize = sizeMax;    % this is the waveform NOT INCLUDING the settling time adde
 
 stepIdx = all([Rf; KaS; KxS; KfS; KrS]');
 noSteps = all(stepIdx == 0);
+Freqs = [Fin(1,1)];
+if Kh(1) > 0; Freqs = [Freqs, Fh(1,1)]; end;
+if Ka(1) > 0; Freqs = [Freqs, Fa(1,1)]; end;
+if Kx(1) > 0; Freqs = [Freqs, Fx(1,1)]; end;
+    
 if (SettlingTime <= 0 && noSteps);
-    Freqs = [Fin(1,1)];
-    if Kh(1) > 0; Freqs(2) =  Fh(1,1); end
     wfSize = SizeLcmPeriods(Freqs, FSamp);
     if wfSize > sizeMax; wfSize = sizeMax; end
 end
