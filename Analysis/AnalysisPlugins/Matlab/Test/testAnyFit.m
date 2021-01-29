@@ -3,19 +3,30 @@ classdef testAnyFit < matlab.unittest.TestCase
     %
     %   run these tests with two command-line commands:
     %   >> testCase = testAnyFit();
-    %   >> res = run(testCase);
+    %   >> res = run(testCase);    
+    %
+    %   List of optional Name. Value Parameters showing default parameters
+    %       'F0', 50            default nominal frequency
+    %       'Fs', 4800          default waveform sample rate
+    %       'AnalysisCycles', 6 default Number of nominal cycles in the analysis wondow
+    %
+    % List of fitters tested by this unittest class
+    %   
+    %   SteadyStateFit.m : Fits Frequency Range, Maginitude Range, Harmonic and Interharmic tests
     %
     
     properties
         Name    % Test name
+        F0 = 50       % nominal frequency
+        Fs = 4800     % sample rate
+        AnalysisCycles = 6 % number of fundamental cycles to be analysed
         SignalParams    % Parameters input to PmuTestSignals
         TS      % Time series structure to be analysed
-        AnalysisCycles  % number of fundamental cycles to be analysed
-        Fs      % sample rate
         Window  % window of AnalysisCycles to be analysed by the fitter
         DlyCorr % Delay correction factors
         MagCorr % Magnitude correction factors
         expect     %expected values
+        fig = 1 % figure numbers
     end
     
     % % Signal params.  Note that the labeling convention comes mostly from the
@@ -45,11 +56,11 @@ classdef testAnyFit < matlab.unittest.TestCase
         % Class Constructor
         % obj = TestSSFit (['Fs', (Samplerate)],['AnalysisCycles'],(n))
             self.SignalParams = zeros(15,6);
-            self.Fs = 4800; % default samplerate
-            self.AnalysisCycles = 6;
             if nargin > 0
                 for i = 1 : 2 : numel(varargin)
                     switch varargin{i}
+                        case 'F0'
+                            self.F0 = varargin{i+1};
                         case 'Fs'
                             self.Fs = varargin{i+1};
                         case 'AnalysisCycles'
@@ -59,74 +70,35 @@ classdef testAnyFit < matlab.unittest.TestCase
                     end
                 end
             end
-            self.TS = struct('Name','default','N',(self.Fs/50)*self.AnalysisCycles,'t0',0,'SettlingTime',0,'f0',50,'X',[],'Y',[]);
-            self.DlyCorr = zeros(6,1);
-            self.MagCorr = ones(6,1);
-        end
-        
-        %===================================
-        function self=setTsDefaults(self)
-            % Clear the SignalParams and set default values
-            self.Name = 'Default';
-            self.SignalParams = zeros(15,6);
-            self.SignalParams(1,:) = 1;
-            self.SignalParams(2,:) = 50;
-            self.SignalParams(3,:) = [0,-120,120,0,-120,120];
+            self.TS = struct('Name','default','N',self.Fs,'t0',0,'SettlingTime',0,'f0',self.F0,'X',[],'Y',[]);
+            self.DlyCorr = zeros(6,1);  % used by actual hardware to compensate for absolute phase
+            self.MagCorr = ones(6,1);   % used by actual hardware to compensate for input gain
         end
         
     end
-    
    %----------------------------------------------------------------------
     %% Test Methods
     % These functions will be called on   >> "res = run(testCase);"
     methods (Test)
         function regressionTests (self)
-            %test50f0(self)      % test the nominal 50 Hz steady state fit
-            test50f0_100h0(self)
-            %testCapture (self)
+            %test50f0(self); self.fig=self.fig+1;      % test the nominal 50 Hz steady state fit
+            %test50f0_100h0(self; self.fig=self.fig+1; 
+            %testSSCapture (self); self.fig=self.fig+1; 
+            test50f0_5m0_0x1(self); self.fig=self.fig+1; 
         end
     end
 
     %----------------------------------------------------------------------
-    %% Public methods
-    methods (Access = public)
-        
- 
-        %======================================
-        function oneSSFit(self)
-        % Run one Steady State Fit          
-            [Synx,Freq,ROCOF] = SteadyStateFit (...
-                self.SignalParams,...
-                self.DlyCorr, ...
-                self.MagCorr, ...
-                self.TS.f0, ...
-                self.AnalysisCycles, ...
-                self.Fs, ...
-                self.Window);
-
-            
-
-            act = [Synx,Freq,ROCOF];
-            
-            disp(self.TS.Name)            
-            fprintf('Magnitudes: %f %f %f %f %f %f %f %f \n',abs(Synx(1:8)));
-            fprintf('Phases: %f %f %f %f %f %f %f %f \n', angle(Synx(1:8))*180/pi);
-            fprintf('Freq %f, ROCOF %f\n', Freq, ROCOF)
-            if numel(Synx) > 8
-                fprintf('Harmonic Magnitudes: %f %f %f %f %f %f\n', abs(Synx(9:14)));
-                fprintf('Harmonic Phases: %f %f %f %f %f %f\n', angle(Synx(9:14))*180/pi)
-            end
-            self.verifyEqual(act,self.expect,'AbsTol',0.001)
-            %pause;
-        end  
-        
+    %% Public methods for Steady State fitter testing
+    methods (Access = public)       
+      
         %=======================================
         function test50f0(self)
         % Steady State 50 Hz fitter test
             self.setTsDefaults;
             self.getTimeSeries;
             self.getWindow(0);
-            plot(self.Window');
+            plot((real(self.Window))');
             self.expect = [1-i*0, exp(-i*2*pi/3), exp(i*2*pi/3), 1-i*0,...
                         1-i*0, exp(-i*2*pi/3), exp(i*2*pi/3), 1-i*0,...
                         50, 0];
@@ -152,10 +124,38 @@ classdef testAnyFit < matlab.unittest.TestCase
             self.getTimeSeries;
             self.getWindow(0);
             self.oneSSFit;            
-        end            
+        end 
         
+        %======================================
+        function oneSSFit(self)
+        % Run one Steady State Fit          
+            [Synx,Freq,ROCOF] = SteadyStateFit (...
+                self.SignalParams,...
+                self.DlyCorr, ...
+                self.MagCorr, ...
+                self.TS.f0, ...
+                self.AnalysisCycles, ...
+                self.Fs, ...
+                real(self.Window));
+
+            
+
+            act = [Synx,Freq,ROCOF];
+            
+            disp(self.TS.Name)            
+            fprintf('Magnitudes: %f %f %f %f %f %f %f %f \n',abs(Synx(1:8)));
+            fprintf('Phases: %f %f %f %f %f %f %f %f \n', angle(Synx(1:8))*180/pi);
+            fprintf('Freq %f, ROCOF %f\n', Freq, ROCOF)
+            if numel(Synx) > 8
+                fprintf('Harmonic Magnitudes: %f %f %f %f %f %f\n', abs(Synx(9:14)));
+                fprintf('Harmonic Phases: %f %f %f %f %f %f\n', angle(Synx(9:14))*180/pi)
+            end
+            self.verifyEqual(act,self.expect,'AbsTol',0.001)
+            %pause;
+        end  
+          
         %==========================================
-        function testCapture (self)
+        function testSSCapture (self)
         % Uses the windowed data captured to the user's output folder
             path = 'C:\Users\PowerLabNI3\Documents\PMUCAL\Output\';
             name = 'SavedSSFit.mat';
@@ -178,53 +178,127 @@ classdef testAnyFit < matlab.unittest.TestCase
                
                [Synx,Freq,ROCOF] = SteadyStateFit ( ...
                    self.SignalParams, ...
-                   DelayCorr, ...
-                   MagCorr, ...
-                   F0, ...
+                   self.DelayCorr, ...
+                   self.MagCorr, ...
+                   self.F0, ...
                    self.AnalysisCycles, ...
                    SampleRate, ...
                    Samples ...
                    );
-               
-               
             end
-
-        end
-        
-        %--------------------------------
-        % test the signal generator
-        function testSignal (self)
-            self.N = 48000;     % 10 seconds
-            self.SettlingTime = 2;
-            self.SignalParams(2,:) = 1;
-            %self.t0 = -1;
-            testOne (self)
-        end
-            
+        end        
 
     end
     
+    %----------------------------------------------------------------------
+    %% Methods for the Modulation Fitter
+    methods (Access = private)
+        function test50f0_5m0_0x1(self)
+            self.setTsDefaults()
+            self.AnalysisCycles = 3;
+            [ ~, ~, ~, ~, ~, ~, ~, ~, Fx, Kx] = self.getParamIndex();
+            self.SignalParams(Fx,:) = 5;
+            self.SignalParams(Kx,:) = 0.1;
+            self.getTimeSeries();            
+            self.runMod1Second(true);
+            
+            
+            
+            
+        end
+        
+        function runMod1Second(self,bDisplay)
+            % run the modularon fitter for 1 second and verify the TVE, 
+            % FE, and RFE with the expected result.  Optionally display the 
+            % results and pause
+            
+            % pre allocate actual (returned fitter) data arrays and expected value arrays
+            actSynx = zeros(length(self.SignalParams(1,:))+2,self.F0);
+            expSynx = actSynx;            
+            actFreq = zeros(self.F0);
+            expFreq = actFreq;
+            actROCOF = actFreq;
+            expROCOF = actROCOF;
+            
+            % run a loop for 1 second of simulated data, comparing the fitted SynX against the center values of the window
+            for i = 1:self.F0
+                self.getWindow(i*(self.Fs/self.F0));
+                [actSynx(:,i), actFreq(i), actROCOF(i), iter] = ModulationFit(...
+                    self.SignalParams,...
+                    self.DlyCorr,...
+                    self.MagCorr,...
+                    self.F0,...
+                    self.AnalysisCycles,...
+                    self.Fs,...
+                    real(self.Window));
+                tap = ceil(length(self.Window)/2);
+                expSynx(1:3,i) = self.Window(1:3,tap)./sqrt(2); expSynx(4,i) = self.Window(1,tap)./sqrt(2);
+                expSynx(5:7,i) = self.Window(4:6,tap)./sqrt(2); expSynx(8,i) = self.Window(4,tap)./sqrt(2);
+                expFreq = mean(mod(diff(angle(self.Window(4,tap-5:tap+5))'),pi)-pi)*(self.Fs/(2*pi));
+                expROCOF = mean(mod(diff(angle(self.Window(4,tap-6:tap+6))',2),pi)-pi)*(self.Fs/(2*pi));
+            end
+            
+            
+            TVE = sqrt(((real(actSynx)-real(expSynx)).^2+(imag(actSynx)-imag(expSynx)).^2)./(real(expSynx).^2+imag(expSynx).^2))*100;
+            ME =  (abs(actSynx)-abs(expSynx))./ abs(expSynx);
+            PE = wrapToPi(angle(actSynx)-angle(expSynx)).*(180/pi); 
+            
+            if bDisplay == true
+                subplot(3,1,1)
+                plot(TVE'); 
+                title('TVE')
+                subplot(3,1,2)
+                plot(ME');
+                title('ME')
+                subplot(3,1,3)
+                plot(PE');
+                title('PE')
+                
+            end
+            
+        end
+
+            
+            
+        
+    end
+    %----------------------------------------------------------------------
     %% private methods
     methods (Access = private)
         
-       function self = getTimeSeries(self)
-        % Returns the signal and the size from PmuWaveforms (found in
-        % ../FGen/MemberClasses/Matlab)
-            [self.TS.Y, self.TS.N] = PmuWaveforms(...
+        %===================================
+        function self=setTsDefaults(self)
+            % Clear the SignalParams and set default values
+            self.Name = 'Default';
+            self.SignalParams = zeros(15,6);
+            [Xm, Fin, Ps] = self.getParamIndex();
+            self.SignalParams(Xm,:) = 1;
+            self.SignalParams(Fin,:) = 50;
+            self.SignalParams(Ps,:) = [0,-120,120,0,-120,120];
+        end
+        
+        
+        %======================================
+        function self = getTimeSeries(self)
+            % Returns the signal and the size from PmuWaveforms (found in
+            % ../FGen/MemberClasses/Matlab)
+            [self.TS.Y, self.TS.N] = AnalyticWaveforms(...
                 self.TS.t0, ...
                 self.TS.SettlingTime, ...
                 self.TS.N, ...
                 self.Fs, ...
                 self.SignalParams);
-            self.TS.X = self.TS.t0-self.TS.SettlingTime:1/self.Fs:((self.TS.N-1)/self.Fs)+self.TS.t0+self.TS.SettlingTime;            
+            self.TS.X = self.TS.t0-self.TS.SettlingTime:1/self.Fs:((self.TS.N-1)/self.Fs)+self.TS.t0+self.TS.SettlingTime;
         end
-                
+        
         %=======================================
         function self = getWindow(self,offset)
-        % get a window of analysisCycles for analysis
+            % get a window of analysisCycles for analysis
+            %    ofset is the number of samples into the TS to begin
             
-            % number of samples needed
-            nSamples = self.AnalysisCycles*self.Fs/self.TS.f0;
+            % number of samples needed we need to use odd size windows to get a good expected value
+            offset = mod(offset,(length(self.TS.Y)));    %Wrap
+            nSamples = (self.AnalysisCycles*self.Fs/self.TS.f0)+1;
             
             %either the time series is long enough or not
             if (length(self.TS.Y)-offset) >= nSamples
@@ -238,15 +312,16 @@ classdef testAnyFit < matlab.unittest.TestCase
                     if nRemaining >= length(self.TS.Y)
                         W = horzcat(W,self.TS.Y);
                     else
-                        W = horzcat(W,self.TS.Y(:,1:nRemaining)); 
+                        W = horzcat(W,self.TS.Y(:,1:nRemaining));
                     end
                 end
-                self.Window = W;
+                self.Window = W;                
             end
+            plot(real(self.Window'));
         end
         
     end
-        
+    
     
     
 %% Static method to get indexes into the signalParams matrix    
