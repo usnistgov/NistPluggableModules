@@ -84,7 +84,9 @@ classdef testAnyFit < matlab.unittest.TestCase
             %test50f0(self); self.fig=self.fig+1;      % test the nominal 50 Hz steady state fit
             %test50f0_100h0(self; self.fig=self.fig+1; 
             %testSSCapture (self); self.fig=self.fig+1; 
-            test50f0_5m0_0x1(self); self.fig=self.fig+1; 
+            %test50f0_5m0_0x1(self); self.fig=self.fig+1; 
+            test50f0_0m9_0x1(self); self.fig=self.fig+1; 
+           %AMcFitExperiment(self); self.fig=self.fig+1;
         end
     end
 
@@ -200,11 +202,31 @@ classdef testAnyFit < matlab.unittest.TestCase
             self.SignalParams(Fx,:) = 5;
             self.SignalParams(Kx,:) = 0.1;
             self.getTimeSeries();            
-            self.runMod1Second(true);
-            
-            
-            
-            
+            self.runMod1Second(true);           
+        end
+        
+        function test50f0_0m9_0x1(self)
+            self.setTsDefaults()
+            self.AnalysisCycles = 3;
+            self.TS.N = self.Fs*2;  % need more than 1 second of data
+            [ ~, ~, ~, ~, ~, ~, ~, ~, Fx, Kx] = self.getParamIndex();
+            self.SignalParams(Fx,:) = 0.9;
+            self.SignalParams(Kx,:) = 0.1;
+            self.getTimeSeries();            
+            self.runMod1Second(true);           
+        end        
+        
+        function AMcFitExperiment(self)
+            self.setTsDefaults();
+            self.AnalysisCycles = 50;
+            [ ~, ~, ~, ~, ~, ~, ~, ~, Fx, Kx] = self.getParamIndex();
+            self.SignalParams(Fx,:) = 5;
+            self.SignalParams(Kx,:) = 0.1;
+            self.getTimeSeries(); 
+            self.getWindow(0);
+            [x,y] = prepareCurveData(0:1/self.Fs:1,real(self.Window(1,:)));
+            plot(x,y)
+                       
         end
         
         function runMod1Second(self,bDisplay)
@@ -240,19 +262,19 @@ classdef testAnyFit < matlab.unittest.TestCase
             
             
             TVE = sqrt(((real(actSynx)-real(expSynx)).^2+(imag(actSynx)-imag(expSynx)).^2)./(real(expSynx).^2+imag(expSynx).^2))*100;
-            ME =  (abs(actSynx)-abs(expSynx))./ abs(expSynx);
+            ME =  (abs(actSynx)-abs(expSynx))./ abs(expSynx)*100;
             PE = wrapToPi(angle(actSynx)-angle(expSynx)).*(180/pi); 
             
             if bDisplay == true
                 subplot(3,1,1)
                 plot(TVE'); 
-                title('TVE')
+                title('TVE (%)')
                 subplot(3,1,2)
                 plot(ME');
-                title('ME')
+                title('ME (%)')
                 subplot(3,1,3)
                 plot(PE');
-                title('PE')
+                title('PE (deg)')
                 
             end
             

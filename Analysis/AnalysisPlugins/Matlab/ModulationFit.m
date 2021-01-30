@@ -7,34 +7,37 @@ function [Synx,Freq,ROCOF, iterations] = ModulationFit ( ...
 	SampleRate, ...
 	Samples ...
 )
-% dummy
-%Ain = [70,70,70,5,5,5];
-%Theta = [0, -(2/3)*pi, (2/3)*pi, 0, -(2/3)*pi, (2/3)*pi,];
-%Synx = (Ain.*exp(-1i.*Theta)).';
-% Freq = 60;
-% ROCOF = 0;
-% iterations = 0;
+% Citation: G. N. Stenbakken, "Calculating combined amplitude and phase 
+% modulated power signal parameters," 2011 IEEE Power and Energy Society 
+% General Meeting, Detroit, MI, USA, 2011, pp. 1-7, doi: 10.1109/PES.2011.6039442.
+% 
 
-%SignalParams: array of doubles
-% For Modulated Signals:
-% LV: Mat
-% 0 : 1 Duration (?)
-% 1 : 2 Fundamental Frequency
-% 2 : 3 Modulation Frequency
-% 3 : 4 FM index
-% 4 : 5 AM index
+% Citation: G. N. Stenbakken, "Calculating combined amplitude and phase 
+% modulated power signal parameters," 2011 IEEE Power and Energy Society 
+% General Meeting, Detroit, MI, USA, 2011, pp. 1-7, doi: 10.1109/PES.2011.6039442.
+% 
+[Xm,Fin,Ps,Fh,Ph,Kh,Fa,Ka,Fx,Kx,Rf,KaS,KxS,KfS,KrS] = getParamIndex(SignalParams);
 
 %parameters to receive as good initial estimates to the algorithms:
-fm = SignalParams(3);  %modulation frequency
-ModIndex = max(SignalParams(4),SignalParams(5)); %mod index (FM or AM)
-Freq = SignalParams(2); %fund frequency
-NSamples = size(Samples,2);
-NPhases = size(Samples,1);
-Freqs(1:NPhases) = Freq;
-ROCOFs(1:NPhases) = 0;
+% fm = SignalParams(3);
+fm = Fa(1); %modulation frequency
+% Combined modulation assumes the same modulation frequency
+if Ka(1) == 0
+ fm = Fx(1); %modulation frequency  
+end
+
+ModIndex = max(Ka(1),Kx(1)); %mod index (FM or AM)
+Freqs = Fin; %fund frequency
+[NPhases, NSamples] = size(Samples);
+Freq = Freqs(1);
+ROCOFs = zeros(1,NPhases);
+
+wf = 2*pi*Freqs;
+wF = 2*pi*Freq;
+wm = 2*pi*fm;
+
 
 dt = 1/SampleRate;
-%tn = (-NSamples/2:NSamples/2-1)*dt;
 tn = (-(NSamples/2-(1/2)):NSamples/2-(1/2))*dt;
 MaxIter = 40;
 FitCrit = 1e-7;   %dFm min
@@ -44,7 +47,7 @@ Ain = zeros(1,NPhases);
 Theta = zeros(1,NPhases);
 iterations = zeros(1,NPhases);
 
-if fm<1
+if fm<0
     %Taylor model
     
     % pre-allocate arrays for speed
@@ -53,30 +56,26 @@ if fm<1
     
     for p = 1:NPhases
         %Pre-fit: generate the model using first estimated frequency
-        H = [ones(1,NSamples)' cos(2*pi*Freq*tn)' sin(2*pi*Freq*tn)' ];
+        H = [ones(1,NSamples)' cos(wF*tn)' sin(wF*tn)' ];
         S = (H'*H)\(H'*Samples(p,:)');
         %Vdc(1) = S(1); 
         A(1) = S(2); B(1) = S(3);
-        %Ain(p) = sqrt(A(1)^2 + B(1)^2)*MagCorr(p);
-        %Theta(p) = atan2(B(1),A(1)) + DelayCorr(p)*1e-9*2*pi*Freq;
         for k = 1:MaxIter
             %Four parameter iterative fit
             % update model -- adding frequency variation model
-            H = [ones(1,NSamples)' cos(2*pi*Freqs(p)*tn)' sin(2*pi*Freqs(p)*tn)'];
-            G = [H (-A(k)*tn.*sin(2*pi*Freqs(p)*tn) + B(k)*tn.*cos(2*pi*Freqs(p)*tn))'];
+            H = [ones(1,NSamples)' cos(wf(p)*tn)' sin(wf(p)*tn)'];
+            G = [H (-A(k)*tn.*sin(wf(p)*tn) + B(k)*tn.*cos(wf(p)*tn))'];
             S = (G'*G)\(G'*Samples(p,:)');
             A(k+1) = S(2); B(k+1) = S(3); 
-            %Ain(p) = sqrt(A(k+1)^2 + B(k+1)^2)*MagCorr(p);
-            %Theta(p) = atan2(B(k+1),A(k+1)) + DelayCorr(p)*1e-9*2*pi*Freq; 
             dFreq(p,k) = S(size(S,1))/(2*pi);
-            Freqs(p) = Freqs(p) + dFreq(p,k);
+            w(p) = 2*pi*(Freqs(p) + dFreq(p,k));
             ROCOFs(p) = dFreq(p,k);
             if dFreq(p,k)<FitCrit
                 break
             end
         end
         Ain(p) = sqrt(A(k+1)^2 + B(k+1)^2)*MagCorr(p);
-        Theta(p) = atan2(B(k+1),A(k+1)) + DelayCorr(p)*1e-9*2*pi*Freq;
+        Theta(p) = atan2(B(k+1),A(k+1)) + DelayCorr(p)*1e-9*wF;
         iterations(p) = k;
     end
     Synx = (Ain/sqrt(2).*exp(-1i.*Theta)).';	    
@@ -91,12 +90,12 @@ else
         for k = 1:MaxIter
             Afm = abs(Af); phif = angle(Af);
             %Fit sample data with model matrix    
-            H = [cos(2*pi*Freq*tn + Afm*sin(2*pi*fm*tn + phif))', ...
-                 sin(2*pi*Freq*tn + Afm*sin(2*pi*fm*tn + phif))', ...
-                 cos(2*pi*(Freq - fm)*tn + Afm*sin(2*pi*fm*tn + phif))', ...
-                 sin(2*pi*(Freq - fm)*tn + Afm*sin(2*pi*fm*tn + phif))', ...
-                 cos(2*pi*(Freq + fm)*tn + Afm*sin(2*pi*fm*tn + phif))', ...
-                 sin(2*pi*(Freq + fm)*tn + Afm*sin(2*pi*fm*tn + phif))', ...
+            H = [cos(wF*tn + Afm*sin(wm*tn + phif))', ...
+                 sin(wF*tn + Afm*sin(wm*tn + phif))', ...
+                 cos((wF-wm)*tn + Afm*sin(wm*tn + phif))', ...
+                 sin((wF-wm)*tn + Afm*sin(wm*tn + phif))', ...
+                 cos((wF+wm)*tn + Afm*sin(wm*tn + phif))', ...
+                 sin((wF+wm)*tn + Afm*sin(wm*tn + phif))', ...
                  ones(1,NSamples)'];
 
             S = (H'*H)\(H'*Samples(p,:)'); 
@@ -129,7 +128,7 @@ else
         Freqs(p) = Freq + ka*fm*cos(2*pi*fm*t1 + phif);
         ROCOFs(p) = -ka*fm^2*sin(2*pi*fm*t1 + phif);
 	Ain(p) = abs(AF(p))*MagCorr(p);
-	Theta(p) = phiF(p) + DelayCorr(p)*1e-9*2*pi*Freq;
+	Theta(p) = phiF(p) + DelayCorr(p)*1e-9*wF;
 	iterations(p) = k;
     end
     Synx = (Ain/sqrt(2).*exp(1i.*Theta)).';
@@ -137,7 +136,7 @@ end
 
 
 
-%Calculating simmetrical components
+%Calculating symmetrical components
 alfa = exp(2*pi*1i/3);
 Ai = (1/3)*[1 1 1; 1 alfa alfa^2; 1 alfa^2 alfa];
 Vabc = Synx(1:3,:);
@@ -151,3 +150,14 @@ Synx = [ Vabc.' Vzpn(2) Iabc.' Izpn(2)];
 %Freq and ROCOF outputs:
 Freq = mean(Freqs(1:3));
 ROCOF = mean(ROCOFs(1:3));
+
+    % local function to get the values of SignalParams
+    function [varargout] = getParamIndex(signalparams)
+        for i = 1:nargout
+            varargout{i}=signalparams(i,:);
+        end
+    end
+
+
+
+end
