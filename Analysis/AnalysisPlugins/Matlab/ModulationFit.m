@@ -16,17 +16,17 @@ function [Synx,Freq,ROCOF, iterations] = ModulationFit ( ...
 % modulated power signal parameters," 2011 IEEE Power and Energy Society 
 % General Meeting, Detroit, MI, USA, 2011, pp. 1-7, doi: 10.1109/PES.2011.6039442.
 % 
-[Xm,Fin,Ps,Fh,Ph,Kh,Fa,Ka,Fx,Kx,Rf,KaS,KxS,KfS,KrS] = getParamIndex(SignalParams);
+[~,Fin,~,~,~,~,Fa,Ka,Fx,Kx,~,~,~,~,~] = getParamIndex(SignalParams);
 
 %parameters to receive as good initial estimates to the algorithms:
 % fm = SignalParams(3);
-fm = Fa(1); %modulation frequency
+fm = Fa(1);Km = Ka; %modulation frequency, amplitude
 % Combined modulation assumes the same modulation frequency
 if Ka(1) == 0
- fm = Fx(1); %modulation frequency  
+ fm = Fx(1); Km = Kx; %modulation frequency  
 end
 
-ModIndex = max(Ka(1),Kx(1)); %mod index (FM or AM)
+%ModIndex = max(Ka(1),Kx(1)); %mod index (FM or AM)
 Freqs = Fin; %fund frequency
 [NPhases, NSamples] = size(Samples);
 Freq = Freqs(1);
@@ -58,7 +58,7 @@ if fm<0
         %Pre-fit: generate the model using first estimated frequency
         H = [ones(1,NSamples)' cos(wF*tn)' sin(wF*tn)' ];
         S = (H'*H)\(H'*Samples(p,:)');
-        %Vdc(1) = S(1); 
+        %Vdc(1) = S(1);
         A(1) = S(2); B(1) = S(3);
         for k = 1:MaxIter
             %Four parameter iterative fit
@@ -66,9 +66,9 @@ if fm<0
             H = [ones(1,NSamples)' cos(wf(p)*tn)' sin(wf(p)*tn)'];
             G = [H (-A(k)*tn.*sin(wf(p)*tn) + B(k)*tn.*cos(wf(p)*tn))'];
             S = (G'*G)\(G'*Samples(p,:)');
-            A(k+1) = S(2); B(k+1) = S(3); 
+            A(k+1) = S(2); B(k+1) = S(3);
             dFreq(p,k) = S(size(S,1))/(2*pi);
-            w(p) = 2*pi*(Freqs(p) + dFreq(p,k));
+            wf(p) = 2*pi*(Freqs(p) + dFreq(p,k));
             ROCOFs(p) = dFreq(p,k);
             if dFreq(p,k)<FitCrit
                 break
@@ -78,58 +78,71 @@ if fm<0
         Theta(p) = atan2(B(k+1),A(k+1)) + DelayCorr(p)*1e-9*wF;
         iterations(p) = k;
     end
-    Synx = (Ain/sqrt(2).*exp(-1i.*Theta)).';	    
+    Synx = (Ain/sqrt(2).*exp(-1i.*Theta)).';
 else
     %three waveform method
     for p = 1:NPhases
         %Initialize af<phif
-        Af = 0;
-        vsum = 0; phif = 0; 
+        Af = Km(p);
+        phif = 0;
         Freqs(p) = 0; ROCOFs(p) = 0;
-
+        
         for k = 1:MaxIter
             Afm = abs(Af); phif = angle(Af);
-            %Fit sample data with model matrix    
+            %Fit sample data with model matrix
             H = [cos(wF*tn + Afm*sin(wm*tn + phif))', ...
-                 sin(wF*tn + Afm*sin(wm*tn + phif))', ...
-                 cos((wF-wm)*tn + Afm*sin(wm*tn + phif))', ...
-                 sin((wF-wm)*tn + Afm*sin(wm*tn + phif))', ...
-                 cos((wF+wm)*tn + Afm*sin(wm*tn + phif))', ...
-                 sin((wF+wm)*tn + Afm*sin(wm*tn + phif))', ...
-                 ones(1,NSamples)'];
-
-            S = (H'*H)\(H'*Samples(p,:)'); 
-            AF(p) = sqrt(S(1)^2 + S(2)^2); phiF(p) = atan2(-S(2),S(1));
+                sin(wF*tn + Afm*sin(wm*tn + phif))', ...
+                cos((wF-wm)*tn + Afm*sin(wm*tn + phif))', ...
+                sin((wF-wm)*tn + Afm*sin(wm*tn + phif))', ...
+                cos((wF+wm)*tn + Afm*sin(wm*tn + phif))', ...
+                sin((wF+wm)*tn + Afm*sin(wm*tn + phif))', ...
+                ones(1,NSamples)'];
+            
+            S = (H'*H)\(H'*Samples(p,:)');
+            
+            
+            %-------------- DEBUG -----------------------------------
+            % plot the model, original and the residual
+%             fit = sum(S.*H',1);
+%             figure(3)
+%             subplot(2,1,1)
+%             plot(tn,Samples(p,:));
+%             hold on
+%             plot(tn,fit')
+%             hold off
+%             subplot(2,1,2)
+%             plot(tn,(Samples(p,:)-fit)')
+%             %pause
+            %-------------------------------------------------------------
+            AF = sqrt(S(1)^2 + S(2)^2); phiF = atan2(-S(2),S(1));
             AL = sqrt(S(3)^2 + S(4)^2); phiL = atan2(-S(4),S(3));
             AU = sqrt(S(5)^2 + S(6)^2); phiU = atan2(-S(6),S(5));
-            %phiL_deg = phiL*180/pi
-            %phiU_deg = phiU*180/pi
-
+            
             %LV reverse engineering - ModPhaseFit.vi
-            mi = (AU*cos(phiU - phiF(p)) - AL*cos(phiL-phiF(p))) + 1i*(AU*sin(phiU - phiF(p)) - AL*sin(phiL-phiF(p)));
-            su = (AU*cos(phiU - phiF(p)) + AL*cos(phiL-phiF(p))) + 1i*(AU*sin(phiU - phiF(p)) + AL*sin(phiL-phiF(p)));
-            fcos = abs(mi)*cos(angle(mi))/AF(p);
-            fsin = abs(su)*sin(angle(su))/AF(p);
-            acos = abs(su)*cos(angle(su))/AF(p);
-            asin = abs(mi)*sin(angle(mi))/AF(p);
+            mi = (AU*cos(phiU - phiF) - AL*cos(phiL-phiF)) + 1i*(AU*sin(phiU - phiF) - AL*sin(phiL-phiF));
+            su = (AU*cos(phiU - phiF) + AL*cos(phiL-phiF)) + 1i*(AU*sin(phiU - phiF) + AL*sin(phiL-phiF));
+            fcos = abs(mi)*cos(angle(mi))/AF;
+            fsin = abs(su)*sin(angle(su))/AF;
+            acos = abs(su)*cos(angle(su))/AF;
+            asin = abs(mi)*sin(angle(mi))/AF;
             dFm = sqrt(fcos^2 + fsin^2);
             ma = sqrt(asin^2 + acos^2);
             phia = atan2(asin,acos);
             phif = atan2(fsin,fcos);
-            Af = Af + dFm*exp(1i*phif);
+            Af = (Af + dFm*exp(1i*phif));
             if abs(dFm) < FitCrit
                 break
             end
         end
         %p-phase Phasor %%%% for t=0
-        ka = abs(Af); kx = ma; t1 = 0;
-        AF(p) = AF(p)*(1+kx*cos(phia));  
-        %phiF(p) = phiF(p) + ka*sin(phif);
+        ka = abs(Af); t1 = 0;
+        AF = AF*(1+ma*cos(phia));
+        phiF = phiF + abs(Af)*sin(angle(Af));
         Freqs(p) = Freq + ka*fm*cos(2*pi*fm*t1 + phif);
         ROCOFs(p) = -ka*fm^2*sin(2*pi*fm*t1 + phif);
-	Ain(p) = abs(AF(p))*MagCorr(p);
-	Theta(p) = phiF(p) + DelayCorr(p)*1e-9*wF;
-	iterations(p) = k;
+        Ain(p) = abs(AF)*MagCorr(p);
+        Theta(p) = phiF + DelayCorr(p)*1e-9*wF;
+        iterations(p) = k;
     end
     Synx = (Ain/sqrt(2).*exp(1i.*Theta)).';
 end

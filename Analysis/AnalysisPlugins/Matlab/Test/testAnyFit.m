@@ -84,9 +84,11 @@ classdef testAnyFit < matlab.unittest.TestCase
             %test50f0(self); self.fig=self.fig+1;      % test the nominal 50 Hz steady state fit
             %test50f0_100h0(self; self.fig=self.fig+1; 
             %testSSCapture (self); self.fig=self.fig+1; 
-            %test50f0_5m0_0x1(self); self.fig=self.fig+1; 
-            test50f0_0m9_0x1(self); self.fig=self.fig+1; 
-           %AMcFitExperiment(self); self.fig=self.fig+1;
+            test50f0_5m0_0x1(self); self.fig=self.fig+1;
+            test50f0_0m9_0x1(self); self.fig=self.fig+1;
+            test50f0_5m0_0a1(self); self.fig=self.fig+1;
+            test50f0_0m9_0a1(self); self.fig=self.fig+1;
+            %AMcFitExperiment(self); self.fig=self.fig+1;
         end
     end
 
@@ -194,7 +196,7 @@ classdef testAnyFit < matlab.unittest.TestCase
     
     %----------------------------------------------------------------------
     %% Methods for the Modulation Fitter
-    methods (Access = private)
+    methods (Access = public)
         function test50f0_5m0_0x1(self)
             self.setTsDefaults()
             self.AnalysisCycles = 3;
@@ -214,19 +216,38 @@ classdef testAnyFit < matlab.unittest.TestCase
             self.SignalParams(Kx,:) = 0.1;
             self.getTimeSeries();            
             self.runMod1Second(true);           
-        end        
+        end    
+        
+       function test50f0_5m0_0a1(self)
+            self.setTsDefaults()
+            self.AnalysisCycles = 3;
+            [ ~, ~, ~, ~, ~, ~, Fa, Ka, ~, ~] = self.getParamIndex();
+            self.SignalParams(Fa,:) = 5;
+            self.SignalParams(Ka,:) = 0.1;
+            self.getTimeSeries();            
+            self.runMod1Second(true);           
+        end
+        
+        function test50f0_0m9_0a1(self)
+            self.setTsDefaults()
+            self.AnalysisCycles = 3;
+            self.TS.N = self.Fs*2;  % need more than 1 second of data
+            [ ~, ~, ~, ~, ~, ~, Fa, Ka, ~, ~] = self.getParamIndex();
+            self.SignalParams(Fa,:) = 0.9;
+            self.SignalParams(Ka,:) = 0.1;
+            self.getTimeSeries();            
+            self.runMod1Second(true);           
+        end           
         
         function AMcFitExperiment(self)
             self.setTsDefaults();
             self.AnalysisCycles = 50;
-            [ ~, ~, ~, ~, ~, ~, ~, ~, Fx, Kx] = self.getParamIndex();
-            self.SignalParams(Fx,:) = 5;
-            self.SignalParams(Kx,:) = 0.1;
+            [ ~, ~, ~, ~, ~, ~, Fa, Ka, Fx, Kx] = self.getParamIndex();
+            self.SignalParams(Fa,:) = 5;
+            self.SignalParams(Ka,:) = 0.1;
             self.getTimeSeries(); 
             self.getWindow(0);
-            [x,y] = prepareCurveData(0:1/self.Fs:1,real(self.Window(1,:)));
-            plot(x,y)
-                       
+            [x,y] = prepareCurveData(0:1/self.Fs:1,real(self.Window(1,:)));                       
         end
         
         function runMod1Second(self,bDisplay)
@@ -258,6 +279,7 @@ classdef testAnyFit < matlab.unittest.TestCase
                 expSynx(5:7,i) = self.Window(4:6,tap)./sqrt(2); expSynx(8,i) = self.Window(4,tap)./sqrt(2);
                 expFreq = mean(mod(diff(angle(self.Window(4,tap-5:tap+5))'),pi)-pi)*(self.Fs/(2*pi));
                 expROCOF = mean(mod(diff(angle(self.Window(4,tap-6:tap+6))',2),pi)-pi)*(self.Fs/(2*pi));
+                %disp([i, iter]);
             end
             
             
@@ -266,6 +288,7 @@ classdef testAnyFit < matlab.unittest.TestCase
             PE = wrapToPi(angle(actSynx)-angle(expSynx)).*(180/pi); 
             
             if bDisplay == true
+                figure(self.fig);
                 subplot(3,1,1)
                 plot(TVE'); 
                 title('TVE (%)')
@@ -275,7 +298,7 @@ classdef testAnyFit < matlab.unittest.TestCase
                 subplot(3,1,3)
                 plot(PE');
                 title('PE (deg)')
-                
+                pause
             end
             
         end
@@ -339,7 +362,7 @@ classdef testAnyFit < matlab.unittest.TestCase
                 end
                 self.Window = W;                
             end
-            plot(real(self.Window'));
+            %plot(real(self.Window'));
         end
         
     end
