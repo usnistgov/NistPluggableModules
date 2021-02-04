@@ -667,7 +667,6 @@
 			<Item Name="Ini_lib.lvlib" Type="Library" URL="../../../LV_Ini/Ini_lib.lvlib"/>
 			<Item Name="Config_class.lvlib" Type="Library" URL="../../../LV_Config_class/Config_class.lvlib"/>
 			<Item Name="ScopeShared.lvlib" Type="Library" URL="../../Scope/ScopeShared/ScopeShared.lvlib"/>
-			<Item Name="matscript.dll" Type="Document"/>
 			<Item Name="SNMP Open Port.vi" Type="VI" URL="../../../../../Downloads/snmp communication/snmp communication.llb/SNMP Open Port.vi"/>
 			<Item Name="SNMP Close Port.vi" Type="VI" URL="../../../../../Downloads/snmp communication/snmp communication.llb/SNMP Close Port.vi"/>
 			<Item Name="SNMP Type Num to Type String.vi" Type="VI" URL="../../../../../Downloads/snmp communication/snmp communication.llb/SNMP Type Num to Type String.vi"/>
@@ -688,6 +687,10 @@
 			<Item Name="SNMP Build Get Request Packet.vi" Type="VI" URL="../../../../../Downloads/snmp communication/snmp communication.llb/SNMP Build Get Request Packet.vi"/>
 			<Item Name="SNMP Get Request.vi" Type="VI" URL="../../../../../Downloads/snmp communication/snmp communication.llb/SNMP Get Request.vi"/>
 			<Item Name="Get snmp Item(s).vi" Type="VI" URL="../../../../../Downloads/snmp communication/snmp communication.llb/Get snmp Item(s).vi"/>
+			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="matscript.dll" Type="Document"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
