@@ -22,7 +22,6 @@
 		<Item Name="Visualization.lvlib" Type="Library" URL="../../Visualization/Visualization.lvlib"/>
 		<Item Name="testSensor.vi" Type="VI" URL="../../Analysis/AnalysisModule/testSensor.vi"/>
 		<Item Name="TestPMUData.vi" Type="VI" URL="../SensorPlugins/C37.118_PmuClass/TestPMUData.vi"/>
-		<Item Name="Untitled 2.vi" Type="VI" URL="../../../../../Desktop/Test VIs&amp;Projects/Untitled 2.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="user.lib" Type="Folder">
 				<Item Name="Array of VData to VArray__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Array of VData to VArray__ogtk.vi"/>
@@ -698,6 +697,7 @@
 			<Item Name="SNMP Build Set Request Packet.vi" Type="VI" URL="../../../../../Downloads/snmp communication/snmp communication.llb/SNMP Build Set Request Packet.vi"/>
 			<Item Name="SNMP Set Request.vi" Type="VI" URL="../../../../../Downloads/snmp communication/snmp communication.llb/SNMP Set Request.vi"/>
 			<Item Name="Set snmp Item(s).vi" Type="VI" URL="../../../../../Downloads/snmp communication/snmp communication.llb/Set snmp Item(s).vi"/>
+			<Item Name="matscript.dll" Type="Document"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
