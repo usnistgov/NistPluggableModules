@@ -29,6 +29,7 @@
 		<Item Name="Queue" Type="Folder">
 			<Item Name="EnqueueType.ctl" Type="VI" URL="../Shared/EnqueueType.ctl"/>
 			<Item Name="DequeueType.ctl" Type="VI" URL="../Shared/DequeueType.ctl"/>
+			<Item Name="QueueType.ctl" Type="VI" URL="../Shared/QueueType.ctl"/>
 			<Item Name="CreateQueueNames.vi" Type="VI" URL="../Shared/CreateQueueNames.vi"/>
 			<Item Name="Dequeue.vi" Type="VI" URL="../Shared/Dequeue.vi"/>
 			<Item Name="Enqueue.vi" Type="VI" URL="../Shared/Enqueue.vi"/>
