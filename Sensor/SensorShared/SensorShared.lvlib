@@ -42,6 +42,7 @@
 	<Item Name="clRequestEvents.ctl" Type="VI" URL="../clRequestEvents.ctl"/>
 	<Item Name="clSensorData.ctl" Type="VI" URL="../clSensorData.ctl"/>
 	<Item Name="RoomAlertMeasurements.ctl" Type="VI" URL="../RoomAlertMeasurements.ctl"/>
+	<Item Name="SensorVisulization.ctl" Type="VI" URL="../SensorVisulization.ctl"/>
 	<Item Name="clStopArgument.ctl" Type="VI" URL="../clStopArgument.ctl"/>
 	<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../ObtainBroadcastEvents.vi"/>
 	<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../ObtainRequestEvents.vi"/>
