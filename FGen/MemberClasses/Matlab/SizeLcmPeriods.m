@@ -23,7 +23,9 @@ P = P(2:end-1);     % first and last elements are whitespace
 n = zeros(numel(P),1); d = n;
 for i = 1:numel(P)    
     r = strsplit(P{i},'/');
-    n(i) = str2double(r{1,1}); d(i) = str2double(r{1,2});
+    n(i) = str2double(r{1,1}); 
+    d(i) = 1;
+    if numel(r)==2; d(i) = str2double(r{1,2}); end;
 end
 nLcm = lcms(n);     % added an lcm set function to matlab path
 dHcf = hcfs(d);     % added and hcf (gcd) set function to matlab path

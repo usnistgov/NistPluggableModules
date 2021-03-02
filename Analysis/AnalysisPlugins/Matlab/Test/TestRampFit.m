@@ -45,7 +45,7 @@ classdef TestRampFit < matlab.unittest.TestCase
 %% Test Methods
     methods (Test)
         function regressionTests (testCase) 
-             %testArt (testCase)
+            %testArt (testCase)
             %testLab (testCase)
             %testCapture (testCase)
             testDefaults (testCase)
