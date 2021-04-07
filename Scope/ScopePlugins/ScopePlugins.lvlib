@@ -11,47 +11,47 @@
 </Property>
 	<Item Name="Shared" Type="Folder">
 		<Item Name="Broadcasts" Type="Folder">
-			<Item Name="DidInit.vi" Type="VI" URL="../../ScopeModule/Protected/Broadcasts/DidInit.vi"/>
-			<Item Name="DidStop.vi" Type="VI" URL="../../ScopeModule/Protected/Broadcasts/DidStop.vi"/>
-			<Item Name="ReportError.vi" Type="VI" URL="../../ScopeModule/Protected/Broadcasts/ReportError.vi"/>
-			<Item Name="StatusUpdate.vi" Type="VI" URL="../../ScopeModule/Protected/Broadcasts/StatusUpdate.vi"/>
-			<Item Name="BdcstAcquisition.vi" Type="VI" URL="../ScopePluginBaseClass/Community/Broadcast/BdcstAcquisition.vi"/>
-			<Item Name="BdcstChannels.vi" Type="VI" URL="../ScopePluginBaseClass/Community/Broadcast/BdcstChannels.vi"/>
-			<Item Name="BdcstHandle.vi" Type="VI" URL="../ScopePluginBaseClass/Community/Broadcast/BdcstHandle.vi"/>
-			<Item Name="BdcstModel.vi" Type="VI" URL="../ScopePluginBaseClass/Community/Broadcast/BdcstModel.vi"/>
-			<Item Name="BdcstTrigger.vi" Type="VI" URL="../ScopePluginBaseClass/Community/Broadcast/BdcstTrigger.vi"/>
-			<Item Name="BdcstWfrm.vi" Type="VI" URL="../ScopePluginBaseClass/Community/Broadcast/BdcstWfrm.vi"/>
-			<Item Name="PathToINIBroadcast.vi" Type="VI" URL="../ScopePluginBaseClass/Community/PathToINIBroadcast.vi"/>
+			<Item Name="DidInit.vi" Type="VI" URL="../Shared/Broadcasts/DidInit.vi"/>
+			<Item Name="DidStop.vi" Type="VI" URL="../Shared/Broadcasts/DidStop.vi"/>
+			<Item Name="ReportError.vi" Type="VI" URL="../Shared/Broadcasts/ReportError.vi"/>
+			<Item Name="StatusUpdate.vi" Type="VI" URL="../Shared/Broadcasts/StatusUpdate.vi"/>
+			<Item Name="BdcstAcquisition.vi" Type="VI" URL="../Shared/Broadcasts/BdcstAcquisition.vi"/>
+			<Item Name="BdcstChannels.vi" Type="VI" URL="../Shared/Broadcasts/BdcstChannels.vi"/>
+			<Item Name="BdcstHandle.vi" Type="VI" URL="../Shared/Broadcasts/BdcstHandle.vi"/>
+			<Item Name="BdcstModel.vi" Type="VI" URL="../Shared/Broadcasts/BdcstModel.vi"/>
+			<Item Name="BdcstTrigger.vi" Type="VI" URL="../Shared/Broadcasts/BdcstTrigger.vi"/>
+			<Item Name="BdcstWfrm.vi" Type="VI" URL="../Shared/Broadcasts/BdcstWfrm.vi"/>
+			<Item Name="PathToINIBroadcast.vi" Type="VI" URL="../Shared/Broadcasts/PathToINIBroadcast.vi"/>
 		</Item>
 		<Item Name="Queue&amp;Messages" Type="Folder">
-			<Item Name="DequeueTypes.ctl" Type="VI" URL="../TypeDefs/DequeueTypes.ctl"/>
-			<Item Name="clMessage.ctl" Type="VI" URL="../../ScopeModule/PublicAPI/Arguments/Messages/clMessage.ctl"/>
-			<Item Name="EnqueueTypes.ctl" Type="VI" URL="../TypeDefs/EnqueueTypes.ctl"/>
-			<Item Name="QueueNames.ctl" Type="VI" URL="../TypeDefs/QueueNames.ctl"/>
-			<Item Name="Dequeue.vi" Type="VI" URL="../../ScopeModule/Protected/Queue/Dequeue.vi"/>
-			<Item Name="Enqueue.vi" Type="VI" URL="../../ScopeModule/Protected/Queue/Enqueue.vi"/>
-			<Item Name="ObtainQueue.vi" Type="VI" URL="../../ScopeModule/Protected/Queue/ObtainQueue.vi"/>
-			<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../../ScopeModule/Protected/Requests/DestroyRequestEvents.vi"/>
-			<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../../ScopeModule/Protected/Broadcasts/DestroyBroadcastEvents.vi"/>
-			<Item Name="DestroyClone.vi" Type="VI" URL="../../ScopeModule/Protected/DestroyClone.vi"/>
-			<Item Name="ErrorHandler.vi" Type="VI" URL="../../ScopeModule/Protected/ErrorHandler.vi"/>
-			<Item Name="HandleExit.vi" Type="VI" URL="../../ScopeModule/Protected/HandleExit.vi"/>
-			<Item Name="FgClass.vi" Type="VI" URL="../../ScopeModule/Private/FgClass.vi"/>
-			<Item Name="FgState.vi" Type="VI" URL="../../ScopeModule/Private/FgState.vi"/>
-			<Item Name="CreateQueueNames.vi" Type="VI" URL="../../ScopeModule/Protected/Queue/CreateQueueNames.vi"/>
-			<Item Name="WaveformCheck.vi" Type="VI" URL="../WaveformCheck.vi"/>
+			<Item Name="DequeueTypes.ctl" Type="VI" URL="../Shared/Queue&amp;Messages/DequeueTypes.ctl"/>
+			<Item Name="clMessage.ctl" Type="VI" URL="../Shared/Queue&amp;Messages/clMessage.ctl"/>
+			<Item Name="EnqueueTypes.ctl" Type="VI" URL="../Shared/Queue&amp;Messages/EnqueueTypes.ctl"/>
+			<Item Name="QueueNames.ctl" Type="VI" URL="../Shared/TypeDefs/QueueNames.ctl"/>
+			<Item Name="Dequeue.vi" Type="VI" URL="../Shared/Queue&amp;Messages/Dequeue.vi"/>
+			<Item Name="Enqueue.vi" Type="VI" URL="../Shared/Queue&amp;Messages/Enqueue.vi"/>
+			<Item Name="ObtainQueue.vi" Type="VI" URL="../Shared/Queue&amp;Messages/ObtainQueue.vi"/>
+			<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../Shared/Queue&amp;Messages/DestroyRequestEvents.vi"/>
+			<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../Shared/Queue&amp;Messages/DestroyBroadcastEvents.vi"/>
+			<Item Name="DestroyClone.vi" Type="VI" URL="../Shared/Queue&amp;Messages/DestroyClone.vi"/>
+			<Item Name="ErrorHandler.vi" Type="VI" URL="../Shared/Queue&amp;Messages/ErrorHandler.vi"/>
+			<Item Name="HandleExit.vi" Type="VI" URL="../Shared/Queue&amp;Messages/HandleExit.vi"/>
+			<Item Name="FgClass.vi" Type="VI" URL="../Shared/Queue&amp;Messages/FgClass.vi"/>
+			<Item Name="FgState.vi" Type="VI" URL="../Shared/Queue&amp;Messages/FgState.vi"/>
+			<Item Name="CreateQueueNames.vi" Type="VI" URL="../Shared/Queue&amp;Messages/CreateQueueNames.vi"/>
+			<Item Name="WaveformCheck.vi" Type="VI" URL="../Shared/Queue&amp;Messages/WaveformCheck.vi"/>
 		</Item>
 		<Item Name="TypeDefs" Type="Folder">
-			<Item Name="Acquisition.ctl" Type="VI" URL="../TypeDefs/Acquisition.ctl"/>
-			<Item Name="Channel.ctl" Type="VI" URL="../TypeDefs/Channel.ctl"/>
-			<Item Name="Channels.ctl" Type="VI" URL="../TypeDefs/Channels.ctl"/>
-			<Item Name="Trigger.ctl" Type="VI" URL="../TypeDefs/Trigger.ctl"/>
+			<Item Name="Acquisition.ctl" Type="VI" URL="../Shared/TypeDefs/Acquisition.ctl"/>
+			<Item Name="Channel.ctl" Type="VI" URL="../Shared/TypeDefs/Channel.ctl"/>
+			<Item Name="Channels.ctl" Type="VI" URL="../Shared/TypeDefs/Channels.ctl"/>
+			<Item Name="Trigger.ctl" Type="VI" URL="../Shared/TypeDefs/Trigger.ctl"/>
 		</Item>
-		<Item Name="Counter.vi" Type="VI" URL="../../ScopeModule/Private/Counter.vi"/>
+		<Item Name="Counter.vi" Type="VI" URL="../Shared/Counter.vi"/>
 	</Item>
 	<Item Name="Infiniium.lvclass" Type="LVClass" URL="../InfiniiumClass/Infiniium.lvclass"/>
 	<Item Name="IVI_Class.lvclass" Type="LVClass" URL="../IVI_Class/IVI_Class.lvclass"/>
 	<Item Name="NIScope.lvclass" Type="LVClass" URL="../NIScopeClass/NIScope.lvclass"/>
 	<Item Name="ScopePluginsBase.lvclass" Type="LVClass" URL="../ScopePluginBaseClass/ScopePluginsBase.lvclass"/>
-	<Item Name="Main.vi" Type="VI" URL="../../ScopeModule/Main.vi"/>
+	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 </Library>

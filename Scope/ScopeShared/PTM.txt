@@ -1,1 +1,1 @@
-C:\Users\ico\Documents\Projects\NistPluggableModules\Scope\ScopeModule\Main.vi
+C:\Users\ico\Documents\Projects\NistPluggableModules\Scope\ScopePlugins\Main.vi
