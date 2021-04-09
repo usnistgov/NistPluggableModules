@@ -17,35 +17,35 @@
 		<Item Name="Requests" Type="Folder">
 			<Property Name="NI.LibItem.Scope" Type="Int">1</Property>
 			<Item Name="Unused" Type="Folder">
-				<Item Name="GetAcquisitionRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/GetAcquisitionRequest.vi"/>
-				<Item Name="GetChannelsRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/GetChannelsRequest.vi"/>
-				<Item Name="GetHandleRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/GetHandleRequest.vi"/>
-				<Item Name="GetModelRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/GetModelRequest.vi"/>
-				<Item Name="GetTriggerRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/GetTriggerRequest.vi"/>
-				<Item Name="InitAcquisitionRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/InitAcquisitionRequest.vi"/>
-				<Item Name="SetAcquisitionRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/SetAcquisitionRequest.vi"/>
-				<Item Name="SetChannelRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/SetChannelRequest.vi"/>
-				<Item Name="SetExtAcquisitionRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/SetExtAcquisitionRequest.vi"/>
-				<Item Name="SetHandleRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/SetHandleRequest.vi"/>
-				<Item Name="SetModelRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/SetModelRequest.vi"/>
-				<Item Name="SetTriggerRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/SetTriggerRequest.vi"/>
+				<Item Name="GetAcquisitionRequest.vi" Type="VI" URL="../Protected/Requests/GetAcquisitionRequest.vi"/>
+				<Item Name="GetChannelsRequest.vi" Type="VI" URL="../Protected/Requests/GetChannelsRequest.vi"/>
+				<Item Name="GetHandleRequest.vi" Type="VI" URL="../Protected/Requests/GetHandleRequest.vi"/>
+				<Item Name="GetModelRequest.vi" Type="VI" URL="../Protected/Requests/GetModelRequest.vi"/>
+				<Item Name="GetTriggerRequest.vi" Type="VI" URL="../Protected/Requests/GetTriggerRequest.vi"/>
+				<Item Name="InitAcquisitionRequest.vi" Type="VI" URL="../Protected/Requests/InitAcquisitionRequest.vi"/>
+				<Item Name="SetAcquisitionRequest.vi" Type="VI" URL="../Protected/Requests/SetAcquisitionRequest.vi"/>
+				<Item Name="SetChannelRequest.vi" Type="VI" URL="../Protected/Requests/SetChannelRequest.vi"/>
+				<Item Name="SetExtAcquisitionRequest.vi" Type="VI" URL="../Protected/Requests/SetExtAcquisitionRequest.vi"/>
+				<Item Name="SetHandleRequest.vi" Type="VI" URL="../Protected/Requests/SetHandleRequest.vi"/>
+				<Item Name="SetModelRequest.vi" Type="VI" URL="../Protected/Requests/SetModelRequest.vi"/>
+				<Item Name="SetTriggerRequest.vi" Type="VI" URL="../Protected/Requests/SetTriggerRequest.vi"/>
 			</Item>
 			<Item Name="Used in TestClass" Type="Folder">
-				<Item Name="FetchWaveformRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/FetchWaveformRequest.vi"/>
+				<Item Name="FetchWaveformRequest.vi" Type="VI" URL="../Protected/Requests/FetchWaveformRequest.vi"/>
 			</Item>
-			<Item Name="AbortRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/AbortRequest.vi"/>
-			<Item Name="CloseRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/CloseRequest.vi"/>
-			<Item Name="ConfigAquisitionRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/ConfigAquisitionRequest.vi"/>
-			<Item Name="ConfigChannelsRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/ConfigChannelsRequest.vi"/>
-			<Item Name="ConfigTriggerRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/ConfigTriggerRequest.vi"/>
-			<Item Name="InitializeRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/InitializeRequest.vi"/>
-			<Item Name="LoadPluginRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/LoadPluginRequest.vi"/>
-			<Item Name="PathToINIRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/PathToINIRequest.vi"/>
-			<Item Name="PrefDlgRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/PrefDlgRequest.vi"/>
-			<Item Name="ReadWaveformRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/ReadWaveformRequest.vi"/>
-			<Item Name="SetSyncRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/SetSyncRequest.vi"/>
+			<Item Name="AbortRequest.vi" Type="VI" URL="../Protected/Requests/AbortRequest.vi"/>
+			<Item Name="CloseRequest.vi" Type="VI" URL="../Protected/Requests/CloseRequest.vi"/>
+			<Item Name="ConfigAquisitionRequest.vi" Type="VI" URL="../Protected/Requests/ConfigAquisitionRequest.vi"/>
+			<Item Name="ConfigChannelsRequest.vi" Type="VI" URL="../Protected/Requests/ConfigChannelsRequest.vi"/>
+			<Item Name="ConfigTriggerRequest.vi" Type="VI" URL="../Protected/Requests/ConfigTriggerRequest.vi"/>
+			<Item Name="InitializeRequest.vi" Type="VI" URL="../Protected/Requests/InitializeRequest.vi"/>
+			<Item Name="LoadPluginRequest.vi" Type="VI" URL="../Protected/Requests/LoadPluginRequest.vi"/>
+			<Item Name="PathToINIRequest.vi" Type="VI" URL="../Protected/Requests/PathToINIRequest.vi"/>
+			<Item Name="PrefDlgRequest.vi" Type="VI" URL="../Protected/Requests/PrefDlgRequest.vi"/>
+			<Item Name="ReadWaveformRequest.vi" Type="VI" URL="../Protected/Requests/ReadWaveformRequest.vi"/>
+			<Item Name="SetSyncRequest.vi" Type="VI" URL="../Protected/Requests/SetSyncRequest.vi"/>
 			<Item Name="ShowPanelRequest.vi" Type="VI" URL="../Protected/Requests/ShowPanelRequest.vi"/>
-			<Item Name="StopAcquisitionRequest.vi" Type="VI" URL="../../ScopePlugins/ScopePluginBaseClass/PublicAPI/Requests/StopAcquisitionRequest.vi"/>
+			<Item Name="StopAcquisitionRequest.vi" Type="VI" URL="../Protected/Requests/StopAcquisitionRequest.vi"/>
 			<Item Name="StopRequest.vi" Type="VI" URL="../Protected/Requests/StopRequest.vi"/>
 		</Item>
 	</Item>
