@@ -24,10 +24,10 @@ RemainingSamples = [];
 RemainingTime = [];
 
 % The window size
-nWindow = round(AnalysisCycles/(dt(1)*F0));
+nWindow = round(AnalysisCycles/(dt*F0));
 
 % The samples needed in the window
-nSamplesNeeded = round((AnalysisTime - WindowTime)/dt(1));
+nSamplesNeeded = round((AnalysisTime - WindowTime)/dt);
 
 % if we need more samples than the window size, then we only need the
 % window size
@@ -55,11 +55,11 @@ if nSamplesNeeded > nWindow; nSamplesNeeded = nWindow; end
 %     nSamplesNeeded = nWindow;
 % else    % if the Window is full, then remove the old samples from the beginning
 %     WindowIn = WindowIn(:,nSamplesNeeded+1:end);
-%     TimeStamp = WindowTime + nSamplesNeeded * dt(1);
+%     TimeStamp = WindowTime + nSamplesNeeded * dt;
 % end
 
 % determine the timestamp that we need
-timeStampNeeded = (nWindow/2-nSamplesNeeded)*dt(1)+AnalysisTime;
+timeStampNeeded = (nWindow/2-nSamplesNeeded)*dt+AnalysisTime;
 
 % DEBUG display the timestamp
 tN = datetime(timeStampNeeded, 'ConvertFrom', 'epochtime', 'Epoch', '1904-01-01'); tN.Format='dd-MMM-uuuu HH:mm:ss.SSS';
@@ -70,7 +70,7 @@ disp (msg);
 % find the index of the first needed sample of Y
 %   This assumes that t0(1) is the time of the first sample of Y
 nY = length(Y);
-iY = round((timeStampNeeded - SampleT0(1))/dt(1))+1; 
+iY = round((timeStampNeeded - SampleT0)/dt)+1; 
 
 % If the Window is just starting, fill WindowIn with 0's
 if isempty(WindowIn)
@@ -101,7 +101,7 @@ end
 % Delete the unneeded samples from Y and adjust t0(1)
 Y = Y(:,iY:end);
 nY = length(Y);
-SampleT0(1:end) = timeStampNeeded;
+SampleT0 = timeStampNeeded;
 
 
 % determine how many samples to trim from the window
@@ -116,7 +116,7 @@ if nSamplesNeeded <= nY
     WindowOut = horzcat(WindowIn,Y(:,1:nSamplesNeeded));
     TimeStamp = AnalysisTime;    
     RemainingSamples = Y(:,nSamplesNeeded+1:end);
-    RemainingTime = SampleT0 + nSamplesNeeded*dt(1);
+    RemainingTime = SampleT0 + nSamplesNeeded*dt;
     Continue = 'f';
     % If a valid window is available, decide if the
     % settlingTime has elapsed and set Valid if so.
@@ -124,7 +124,7 @@ if nSamplesNeeded <= nY
     if TimeStamp >= WinT0 + SettlingTime; Valid = 't'; end;    
 else
     WindowOut = horzcat(WindowIn,Y);
-    TimeStamp = AnalysisTime - (nSamplesNeeded - nY)*dt(1);
+    TimeStamp = AnalysisTime - (nSamplesNeeded - nY)*dt;
     RemainingSamples = [];
     RemainingTime = [];
     Valid = 'f';
