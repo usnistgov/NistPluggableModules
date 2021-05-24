@@ -45,7 +45,6 @@
 			<Item Name="Acquisition.ctl" Type="VI" URL="../Shared/TypeDefs/Acquisition.ctl"/>
 			<Item Name="Channel.ctl" Type="VI" URL="../Shared/TypeDefs/Channel.ctl"/>
 			<Item Name="Channels.ctl" Type="VI" URL="../Shared/TypeDefs/Channels.ctl"/>
-			<Item Name="ConnectionArray.ctl" Type="VI" URL="../NIScopeClass/PublicMethods/ConnectionArray.ctl"/>
 			<Item Name="Trigger.ctl" Type="VI" URL="../Shared/TypeDefs/Trigger.ctl"/>
 		</Item>
 		<Item Name="Counter.vi" Type="VI" URL="../Shared/Counter.vi"/>
