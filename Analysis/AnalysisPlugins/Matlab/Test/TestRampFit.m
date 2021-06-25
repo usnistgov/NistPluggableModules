@@ -16,7 +16,10 @@ classdef TestRampFit < matlab.unittest.TestCase
         sizeMax         % signal size
         Fs      % sample rate
         TS      %Time series to be analysed
-        exp     %expected values        
+        exp     %expected values    
+        
+        MagCorr
+        DelayCorr
     end
     
 %% Signal params.  Note that the labeling convention comes mostly from the
@@ -47,8 +50,8 @@ classdef TestRampFit < matlab.unittest.TestCase
         function regressionTests (testCase) 
             %testArt (testCase)
             %testLab (testCase)
-            %testCapture (testCase)
-            testDefaults (testCase)
+            testCapture (testCase)
+            %testDefaults (testCase)
         end
     end
     
@@ -59,7 +62,7 @@ classdef TestRampFit < matlab.unittest.TestCase
         function setDefaults(testCase)
             testCase.F0 = 50;
             testCase.t0 = 0; % beginning of the time series
-            testCase.Fs =24000;
+            testCase.Fs =48000;
             testCase.SettlingTime = 1.0;
             testCase.sizeMax = testCase.Fs * 10;
             testCase.AnalysisCycles = 6;
@@ -68,10 +71,14 @@ classdef TestRampFit < matlab.unittest.TestCase
             testCase.SignalParams = zeros (13,6);
             [Xm,Fin,Ps,Fh,Ph,Kh,Fa,Ka,Fx,Kx,Rf,KaS,KxS] = testCase.getParamIndex();
             
-            testCase.SignalParams(Xm,:) = 1;
+            testCase.SignalParams(Xm,:) = [70, 70, 70, 5, 5, 5];
             testCase.SignalParams(Fin,:) = 45;
             testCase.SignalParams(Ps,:) = [0,-120,120,0,-120,120];
             testCase.SignalParams(Rf,:) = 1;
+            
+            testCase.MagCorr = [21.000557, 21.000932, 21.000614, 10.00427, 10.00351, 10.00485];        %Unused (for now)
+            testCase.DelayCorr = [1501, 1555, 1926, 482, 506, 534];      %Unused (for now)
+            
         end
         
         %======================================
@@ -110,8 +117,8 @@ classdef TestRampFit < matlab.unittest.TestCase
                 
                 [Synx,Freq,ROCOF,iterations] = RampFit(...
                     testCase.SignalParams,...
-                    DelayCorr, ...
-                    MagCorr, ...
+                    testCase.DelayCorr, ...
+                    testCase.MagCorr, ...
                     testCase.F0, ...
                     testCase.AnalysisCycles, ...
                     testCase.Fs, ...
@@ -140,35 +147,29 @@ classdef TestRampFit < matlab.unittest.TestCase
         end
         %--------------------------------
         function testCapture (testCase)
-            path = 'C:\Users\PowerLabNI3\Documents\PMUCAL\Output\';
-            name = 'SavedRamp.mat';
-            name = strcat(path,name);
-            
-            A = open(name);
+            path = fullfile(getenv('USERPROFILE'),'Documents','PMUCAL','Output','SavedWindow.mat');            
+            A = open(path);
             P = A.P;
             clear A;
             
+            testCase.setDefaults()  % the defaults need to be set up for the data capture
+            
             for i = 1:length(P)
-               SignalParams = P(i).SignalParams;
-               DelayCorr = P(i).DelayCorr;
-               MagCorr = P(i).MagCorr;
-               F0 = P(i).F0;
-               AnalysisCycles = P(i).AnalysisCycles;
-               SampleRate = P(i).SampleRate;
-               Samples = P(i).Samples;
+               Samples = P(i).Window;
+               if isempty(Samples); continue; end;
                
                    
                
                [Synx,Freq,ROCOF,iterations] = RampFit ( ...
-                   SignalParams, ...
-                   DelayCorr, ...
-                   MagCorr, ...
-                   F0, ...
-                   AnalysisCycles, ...
-                   SampleRate, ...
+                   testCase.SignalParams, ...
+                   testCase.DelayCorr, ...
+                   testCase.MagCorr, ...
+                   testCase.F0, ...
+                   testCase.AnalysisCycles, ...
+                   testCase.Fs, ...
                    Samples ...
                    )
-               pause
+               %pause
                
             end
 
