@@ -12,6 +12,7 @@
 </Property>
 	<Item Name="Waveform.ctl" Type="VI" URL="../Waveform.ctl"/>
 	<Item Name="clBroadcastEvents.ctl" Type="VI" URL="../clBroadcastEvents.ctl"/>
+	<Item Name="ScopeData.ctl" Type="VI" URL="../ScopeData.ctl"/>
 	<Item Name="clDidInit.ctl" Type="VI" URL="../clDidInit.ctl"/>
 	<Item Name="clEventType.ctl" Type="VI" URL="../clEventType.ctl"/>
 	<Item Name="clRequestEvents.ctl" Type="VI" URL="../clRequestEvents.ctl"/>
