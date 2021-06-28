@@ -124,7 +124,7 @@ if ~(all(rampIdx == 0))
             endRamp = (wfSize/FSamp);
             Theta(i,t>=(0+t0) & t<=endRamp) = Theta(i,t>=(0+t0) & t<=endRamp) + (pi*Rf(i)*t(t>=(0+t0) & t<=endRamp).^2);
             %Theta(i,t>(endRamp+t0)) = Theta(i,t>(endRamp+t0)) + (pi*Rf(i)*(endRamp+t0)*t(t>(endRamp+t0)))+ (pi*Rf(i)*(endRamp+t0))^2;
-            Theta(i,t>(endRamp+t0)) = Theta(i,t>(endRamp+t0)) + (pi*Rf(i)*(endRamp+t0)*t(t>(endRamp+t0)));
+            Theta(i,t>(endRamp+t0)) = Theta(i,t>(endRamp+t0)) + (2*pi*Rf(i)*t(t==(endRamp+t0))*t(t>(endRamp+t0)));
          end
     end
 end
@@ -158,32 +158,31 @@ Signal = real(cSignal);
 
 
 %%-------------DEBUGGING-------------------------------------------------
-% In the step test, I learned from the below that unwrapping is needed when determining frequency!
-% 
-% fig = 0;
-% 
-% fig = fig+1;
-% figure(fig)
-% 
-% plot(real(cSignal(1,:)));
-% hold on
-% plot(imag(cSignal(1,:)));
-% hold off
-% 
-% Pi = angle(cSignal);
-% Pi = unwrap(Pi')';
-% fig=fig+1;
-% figure(fig)
-% plot(Pi(1,:));
-% 
-% 
-% fig=fig+1;
-% figure(fig)
-% 
-% Fi = (-diff(Pi')*FSamp/(2*pi))';
-% 
-% plot(Fi(1,:));
+%%In the step test, I learned from the below that unwrapping is needed when determining frequency!
+%
+%fig = 0;
+%
+%fig = fig+1;
+%figure(fig)
+%
+%plot(real(cSignal(1,:)));
+%hold on
+%plot(imag(cSignal(1,:)));
+%hold off
+%
+%Pi = angle(cSignal);
+%Pi = unwrap(Pi')';
+%fig=fig+1;
+%figure(fig)
+%plot(Pi(1,:));
+%
+%fig=fig+1;
+%figure(fig)
+%
+%Fi = (-diff(Pi')*FSamp/(2*pi))';
+%
+%plot(Fi(1,:));
 %%------------------------------------------------------------------------
 
-end  %function
+ end  %function
 
