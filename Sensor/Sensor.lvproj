@@ -591,7 +591,6 @@
 			<Item Name="SNMP Build Set Request Packet.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Build Set Request Packet.vi"/>
 			<Item Name="SNMP Set Request.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Set Request.vi"/>
 			<Item Name="Set snmp Item(s).vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/Set snmp Item(s).vi"/>
-			<Item Name="matscript.dll" Type="Document"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
