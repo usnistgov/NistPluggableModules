@@ -34,8 +34,8 @@
 			<Item Name="Dequeue.vi" Type="VI" URL="../Shared/Dequeue.vi"/>
 			<Item Name="Enqueue.vi" Type="VI" URL="../Shared/Enqueue.vi"/>
 			<Item Name="ObtainQueue.vi" Type="VI" URL="../Shared/ObtainQueue.vi"/>
-			<Item Name="VarianttoQueueData.vi" Type="VI" URL="../Shared/VarianttoQueueData.vi"/>
-			<Item Name="QueueDatatoVariant.vi" Type="VI" URL="../Shared/QueueDatatoVariant.vi"/>
+			<Item Name="DeQueue&amp;VTD.vi" Type="VI" URL="../Shared/DeQueue&amp;VTD.vi"/>
+			<Item Name="DTV&amp;EnQueue.vi" Type="VI" URL="../Shared/DTV&amp;EnQueue.vi"/>
 		</Item>
 		<Item Name="Broadcasts" Type="Folder">
 			<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../Shared/DestroyBroadcastEvents.vi"/>
