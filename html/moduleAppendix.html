@@ -1,20 +1,18 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>4. Appendix A Pluggable Module Reference &#8212; NistPluggableModules 0.1 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,7 +27,8 @@
         <li class="right" >
           <a href="AcPwr.html" title="3. AC Power Module"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">4. </span>Appendix A Pluggable Module Reference</a></li> 
       </ul>
     </div>  
 
@@ -39,7 +38,7 @@
           <div class="body" role="main">
             
   <div class="section" id="appendix-a-pluggable-module-reference">
-<h1>4. Appendix A Pluggable Module Reference<a class="headerlink" href="#appendix-a-pluggable-module-reference" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4. </span>Appendix A Pluggable Module Reference<a class="headerlink" href="#appendix-a-pluggable-module-reference" title="Permalink to this headline">¶</a></h1>
 <p>A pluggable module is a stand-alone module that can be launched by a
 framework or other application then runs independent of the launching
 application. Multiple clones of the same module type may be launched and
@@ -56,11 +55,11 @@ module can perform many different types of operations. Plug-ins can be
 changed on-the-fly during runtime without needing to stop and restart
 the module clone.</p>
 <ol class="arabic simple">
-<li>Quick Start</li>
+<li><p>Quick Start</p></li>
 </ol>
 <p>To get a quick overview of how pluggable modules work, use the
 TestCloneAPI.vi application:</p>
-<p><a class="reference internal" href="_images/image19.png"><img alt="image0" src="_images/image19.png" style="width: 1.42222in; height: 2.11111in;" /></a></p>
+<p><a class="reference internal" href="_images/image110.png"><img alt="image0" src="_images/image110.png" style="width: 1.42222in; height: 2.11111in;" /></a></p>
 <p>Figure : LabVIEW Project showing TestCloneAPI.vi</p>
 <p>TestCloneAPI.vi is an application that can be used to test the modules
 application programming interface (API) as it is being developed. It
@@ -78,7 +77,7 @@ plugin’s .ini file is sent to one or all clones. When multiple clones
 are launched, the “Select Module to send request listbox will allow
 requests to be sent to one or all modules.</p>
 <ol class="arabic simple">
-<li>Launching a Module Clone</li>
+<li><p>Launching a Module Clone</p></li>
 </ol>
 <p>A framework application launches a clone of a module by passing a
 reference to the module Main.vi to the StartClone.vi which launches the
@@ -91,7 +90,7 @@ ready to accept requests. Following that, the semaphore reference must
 be destroyed by ModuleAdmin:DestroySyncRefnums.vi</p>
 <p><a class="reference internal" href="_images/image32.png"><img alt="image2" src="_images/image32.png" style="width: 4.01389in; height: 1.42030in;" /></a></p>
 <ol class="arabic simple">
-<li>Module Top Level: Main.vi</li>
+<li><p>Module Top Level: Main.vi</p></li>
 </ol>
 <p>The Main.vi is the top level of the pluggable module. The path to
 Main.vi is used by a framework which launches clones of the module to
@@ -106,7 +105,7 @@ handler (the consumer).</p>
 <p><a class="reference internal" href="_images/image42.png"><img alt="image3" src="_images/image42.png" style="width: 6.50000in; height: 2.78264in;" /></a></p>
 <p>Figure : Top Level: Main.vi</p>
 <ol class="arabic simple">
-<li>Start-up and initialization</li>
+<li><p>Start-up and initialization</p></li>
 </ol>
 <p><a class="reference internal" href="_images/image52.png"><img alt="image4" src="_images/image52.png" style="width: 2.99249in; height: 3.86111in;" /></a></p>
 <p>Figure : Module start up</p>
@@ -133,8 +132,8 @@ ModuleAdmin:WaitOnModuleSync and WaitOnEventSync methods. Finally the
 module broadcasts a status message indicating to all applications
 registered to receive broadcasts that it has initialized.</p>
 <ol class="arabic simple">
-<li>Requests</li>
-<li>Handling Requests</li>
+<li><p>Requests</p></li>
+<li><p>Handling Requests</p></li>
 </ol>
 <p><a class="reference internal" href="_images/image71.png"><img alt="image6" src="_images/image71.png" style="width: 4.79108in; height: 3.47917in;" /></a></p>
 <p>Figure : Responding to the ShowPanel Request</p>
@@ -153,18 +152,18 @@ know what datatype to expect so, for those commands with data, the first
 thing that normally happens is the data variant is cast into the
 appropriate datatype.</p>
 <ol class="arabic simple">
-<li>Creating New Request Types</li>
+<li><p>Creating New Request Types</p></li>
 </ol>
 <p>To create a new request type, begin by editing the clRequestEvents.ctl
 typedef:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="_images/image81.png"><img alt="image7" src="_images/image81.png" style="width: 1.71528in; height: 3.21079in;" /></a></td>
-<td><a class="reference internal" href="_images/image91.png"><img alt="image8" src="_images/image91.png" style="width: 1.84677in; height: 3.18750in;" /></a></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/image81.png"><img alt="image7" src="_images/image81.png" style="width: 1.71528in; height: 3.21079in;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/image91.png"><img alt="image8" src="_images/image91.png" style="width: 1.84677in; height: 3.18750in;" /></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -199,14 +198,14 @@ did not need to make a typedef.)</p>
 <p>Next, a Request method will need to be created to be used by a framework
 or other app to generate the new request. Typically, you can start from
 an existing request method such as the ShowPanelRequest shown below:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="_images/image121.png"><img alt="image11" src="_images/image121.png" style="width: 1.27872in; height: 2.29861in;" /></a></td>
-<td><a class="reference internal" href="_images/image131.png"><img alt="image12" src="_images/image131.png" style="width: 4.11103in; height: 2.29708in;" /></a></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/image121.png"><img alt="image11" src="_images/image121.png" style="width: 1.27872in; height: 2.29861in;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/image131.png"><img alt="image12" src="_images/image131.png" style="width: 4.11103in; height: 2.29708in;" /></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -229,7 +228,7 @@ ShowPanelRequest ModuleID input and the new value of the toggle is
 placed into the data input. the request event is generated and the
 pluggable module responds by showing or hiding its frontpanel.</p>
 <ol class="arabic simple">
-<li>Broadcasts</li>
+<li><p>Broadcasts</p></li>
 </ol>
 <p>Similar to Requests, Broadcasts are user events. Broadcasts are
 generated inside the pluggable module and may be received by the
@@ -238,18 +237,18 @@ applications can receive the broadcasts at the same time. When a
 broadcast is generated, the broadcast data is placed into a separate
 queue for each application that is registered to receive the broadcast.</p>
 <ol class="arabic simple">
-<li>Creating new broadcast types</li>
+<li><p>Creating new broadcast types</p></li>
 </ol>
 <p>To create a new broadcast type, begin by editing the
 clBroadcastEvents.ctl typedef:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="_images/image151.png"><img alt="image14" src="_images/image151.png" style="width: 1.52083in; height: 2.73382in;" /></a></td>
-<td><a class="reference internal" href="_images/image161.png"><img alt="image15" src="_images/image161.png" style="width: 1.49158in; height: 2.68750in;" /></a></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/image151.png"><img alt="image14" src="_images/image151.png" style="width: 1.52083in; height: 2.73382in;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/image161.png"><img alt="image15" src="_images/image161.png" style="width: 1.49158in; height: 2.68750in;" /></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -263,14 +262,14 @@ typedef will need to have public access so a good place to put it would
 be in PublicAPI/Arguments/Broadcasts.</p>
 <p>Next, create a new broadcast method. The best thing to do is to make a
 copy of an existing broadcast method:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="_images/image171.png"><img alt="image16" src="_images/image171.png" style="width: 1.51052in; height: 2.71528in;" /></a></td>
-<td><a class="reference internal" href="_images/image181.png"><img alt="image17" src="_images/image181.png" style="width: 3.72917in; height: 1.70126in;" /></a></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/image171.png"><img alt="image16" src="_images/image171.png" style="width: 1.51052in; height: 2.71528in;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/image181.png"><img alt="image17" src="_images/image181.png" style="width: 3.72917in; height: 1.70126in;" /></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -284,7 +283,7 @@ response to a PathToIni request is shown below:</p>
 <p><a class="reference internal" href="_images/image191.png"><img alt="image18" src="_images/image191.png" style="width: 4.56250in; height: 3.30148in;" /></a></p>
 <p>Figure : Example of a broadcast in response to a request.</p>
 <ol class="arabic simple">
-<li>Plugin Classes</li>
+<li><p>Plugin Classes</p></li>
 </ol>
 <p>Plugins are abstracted classes that do the core work of any module.
 Abstracted means that plugins can be created to perform similar
@@ -292,36 +291,36 @@ operations for which an application programming interface (API) has been
 created using different hardware, computer languages, or procedures.
 Here are some examples of how plugins can be used:</p>
 <ul class="simple">
-<li>Modules can be created supporting IVI<sup>TM</sup>
+<li><p>Modules can be created supporting IVI<sup>TM</sup>
 (<a class="reference external" href="http://www.ivifoundation.org/">http://www.ivifoundation.org/</a>) compliant APIs with plugins
 supporting a variety of hardware. New hardware can later be added to
-support the same instrument functionality.</li>
-<li>Generic modules can be created with a common API for various system
+support the same instrument functionality.</p></li>
+<li><p>Generic modules can be created with a common API for various system
 models and plugins for each system can be created. An example is an
 event on the electrical power system. plugins can be created to model
 different kinds of events on different power system topologies, for
 example a phase step transient in an IEEE Bus model may be one
 plugin, while a Line to line fault on an existing model of a section
-of an actual power system may be another plugin.</li>
-<li>Measurement algorithms can be created as plugins. For example a
+of an actual power system may be another plugin.</p></li>
+<li><p>Measurement algorithms can be created as plugins. For example a
 Phasor Measurement Unit module can support different plugins for
-algorithms such as frequency tracking or non-frequency tracking.</li>
+algorithms such as frequency tracking or non-frequency tracking.</p></li>
 </ul>
 <p>Plugins can be created to support computer languages such as Matlab,
 Python, any of the C variants, etc. Users can then create new plugins
 without needing to know anything about Labview programming.</p>
 <p>A new plugin consists of:</p>
 <ul class="simple">
-<li>A child class of the PluginsBase Class</li>
-<li>A .ini file providing a relative path to the plugin child class and a
+<li><p>A child class of the PluginsBase Class</p></li>
+<li><p>A .ini file providing a relative path to the plugin child class and a
 name for the Plugin Type. The init file can also contain other
 information such as default configuration and parameter values. The
 path to the .ini file is available to the framework or any
-application via a module request/broadcast.</li>
-<li>Any plugin method overrides created by the plugin designer.</li>
+application via a module request/broadcast.</p></li>
+<li><p>Any plugin method overrides created by the plugin designer.</p></li>
 </ul>
 <ol class="arabic simple">
-<li>Plugin Methods</li>
+<li><p>Plugin Methods</p></li>
 </ol>
 <p>The work of the plugin is done by plugin methods. You will create a set
 of plugin methods in the base class that throw an error because base
@@ -334,21 +333,21 @@ an example. This can later be changed to another typedef for your
 BasePlugin. You will likely add other parameter and configuration
 properties to the BasePlugin based on the typedefs you create for those
 data types.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="_images/image20.png"><img alt="image19" src="_images/image20.png" style="width: 1.70833in; height: 2.27778in;" /></a></td>
-<td><a class="reference internal" href="_images/image211.png"><img alt="image20" src="_images/image211.png" style="width: 1.72351in; height: 2.20139in;" /></a></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/image20.png"><img alt="image19" src="_images/image20.png" style="width: 1.70833in; height: 2.27778in;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/image211.png"><img alt="image20" src="_images/image211.png" style="width: 1.72351in; height: 2.20139in;" /></a></p></td>
 </tr>
 </tbody>
 </table>
 <p>Figure : Sample “PluginOutput” variant datatype added to BasePlugin
 properties</p>
 <ol class="arabic simple">
-<li>Creating an new base plugin method</li>
+<li><p>Creating an new base plugin method</p></li>
 </ol>
 <p>Most plugin methods will be “must override” methods in the Base Plugin.
 The entire collection of base plugin methods can be considered as the
@@ -358,28 +357,28 @@ steps that go into creating the sample “PluginMethod” Generally plugin
 methods will be evoked by a request and will generate a broadcast, so
 begin by creating new requests and broadcasts per sections 4.2.2 and
 4.3.1:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="_images/image221.png"><img alt="image21" src="_images/image221.png" style="width: 1.62232in; height: 2.85417in;" /></a></td>
-<td><a class="reference internal" href="_images/image23.png"><img alt="image22" src="_images/image23.png" style="width: 1.61559in; height: 2.81250in;" /></a></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/image221.png"><img alt="image21" src="_images/image221.png" style="width: 1.62232in; height: 2.85417in;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/image23.png"><img alt="image22" src="_images/image23.png" style="width: 1.61559in; height: 2.81250in;" /></a></p></td>
 </tr>
 </tbody>
 </table>
 <p>Figure : PluginOutput request and broadcast have been added to the
 typedefs</p>
 <p>Create the Request and Broadcast vis:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="50%" />
-<col width="50%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="_images/image24.png"><img alt="image23" src="_images/image24.png" style="width: 2.90972in; height: 1.34736in;" /></a></td>
-<td><a class="reference internal" href="_images/image25.png"><img alt="image24" src="_images/image25.png" style="width: 2.69444in; height: 1.30930in;" /></a></td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/image24.png"><img alt="image23" src="_images/image24.png" style="width: 2.90972in; height: 1.34736in;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/image25.png"><img alt="image24" src="_images/image25.png" style="width: 2.69444in; height: 1.30930in;" /></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -411,7 +410,7 @@ button, you will get the following expected error:</p>
 that has not been overrridden</p>
 <p>Next you will create a child plugin class and override the method.</p>
 <ol class="arabic simple">
-<li>Creating a new Plugin Child Class</li>
+<li><p>Creating a new Plugin Child Class</p></li>
 </ol>
 <p>Begin by creating a new class and setting it to inherit from the
 BasePlugin class:</p>
@@ -444,6 +443,7 @@ indicator will show the string that came from the Sample Plugin method.</p>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -451,7 +451,7 @@ indicator will show the string that came from the Sample Plugin method.</p>
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="AcPwr.html"
-                        title="previous chapter">3. AC Power Module</a></p>
+                        title="previous chapter"><span class="section-number">3. </span>AC Power Module</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -460,17 +460,15 @@ indicator will show the string that came from the Sample Plugin method.</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -484,12 +482,13 @@ indicator will show the string that came from the Sample Plugin method.</p>
         <li class="right" >
           <a href="AcPwr.html" title="3. AC Power Module"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">4. </span>Appendix A Pluggable Module Reference</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Allen Goldstein.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
     </div>
   </body>
 </html>

@@ -1,20 +1,18 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SpecAn Module &#8212; NistPluggableModules 0.1 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -25,7 +23,8 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">SpecAn Module</a></li> 
       </ul>
     </div>  
 
@@ -42,47 +41,44 @@
 <div class="section" id="specanbaseclass">
 <h3>SpecAnBaseClass<a class="headerlink" href="#specanbaseclass" title="Permalink to this headline">¶</a></h3>
 <p>All other Spectrum Analyzers classes inherit from the SpecAnBase class.</p>
-<p><a class="reference internal" href="_images/image0.png"><img alt="image0" src="_images/image0.png" style="width: 3in;" /></a></p>
+<p><a class="reference internal" href="_images/image01.png"><img alt="image0" src="_images/image01.png" style="width: 3in;" /></a></p>
 <p>Figure : SpecAnBaseClass Properties UML Specification</p>
 <div class="section" id="properties">
 <h4>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h4>
-<dl class="docutils">
-<dt>Acquisition <span class="classifier-delimiter">:</span> <span class="classifier">Struct</span></dt>
-<dd><p class="first">A structure containing the properties of each module which pertain to the acquisition.</p>
-<blockquote class="last">
-<div><dl class="docutils">
-<dt>Handle <span class="classifier-delimiter">:</span> <span class="classifier">String</span></dt>
-<dd>A unique identifier of the hardware supporting the acquisition.</dd>
-<dt>Connected <span class="classifier-delimiter">:</span> <span class="classifier">Boolean</span></dt>
-<dd>Used by the system and not end-user settable.  Indicates that the module has been initialized and is ready to receive further commands.  Closing an acquisition disconnects the acquisition and resets Connected.</dd>
-<dt>Enabled <span class="classifier-delimiter">:</span> <span class="classifier">Boolean</span></dt>
-<dd>Set by the end user to determine if the hardware should be enabled or disabled.</dd>
-<dt>SweepModeContinuous <span class="classifier-delimiter">:</span> <span class="classifier">Boolean</span></dt>
-<dd>If true the sweep mode is acquiried continuously and if false the sweep mode is not continuous.</dd>
-<dt>NumberOfSweeps <span class="classifier-delimiter">:</span> <span class="classifier">Int32</span></dt>
-<dd>Determines the number of sweeps to acquire. A Sweep is definied by adjusting the frequency of the tuner from the start frequency to the stop frequency in a defined amount of time.</dd>
-<dt>DetectorTypeAuto <span class="classifier-delimiter">:</span> <span class="classifier">Boolean</span></dt>
-<dd>Set by the user to allow the API to automatically select the detector type.</dd>
-<dt>DetectorType <span class="classifier-delimiter">:</span> <span class="classifier">Enum</span></dt>
-<dd>Specifies the detection method used (Average, Maximum Peak, etc) to capture and process the signal.</dd>
-<dt>VerticalScale <span class="classifier-delimiter">:</span> <span class="classifier">Enum</span></dt>
-<dd>Specifies the vertical scale (log amplifiers versus linear amplifiers) of the measurment hardware.</dd>
-<dt>MaximumTime <span class="classifier-delimiter">:</span> <span class="classifier">Double</span></dt>
-<dd>Specifies the maximum amount of time in seconds that the fetch or read function will attempt to retrieve data before the funciton returns.</dd>
+<dl>
+<dt>Acquisition : Struct</dt><dd><p>A structure containing the properties of each module which pertain to the acquisition.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Handle : String</dt><dd><p>A unique identifier of the hardware supporting the acquisition.</p>
+</dd>
+<dt>Connected : Boolean</dt><dd><p>Used by the system and not end-user settable.  Indicates that the module has been initialized and is ready to receive further commands.  Closing an acquisition disconnects the acquisition and resets Connected.</p>
+</dd>
+<dt>Enabled : Boolean</dt><dd><p>Set by the end user to determine if the hardware should be enabled or disabled.</p>
+</dd>
+<dt>SweepModeContinuous : Boolean</dt><dd><p>If true the sweep mode is acquiried continuously and if false the sweep mode is not continuous.</p>
+</dd>
+<dt>NumberOfSweeps : Int32</dt><dd><p>Determines the number of sweeps to acquire. A Sweep is definied by adjusting the frequency of the tuner from the start frequency to the stop frequency in a defined amount of time.</p>
+</dd>
+<dt>DetectorTypeAuto : Boolean</dt><dd><p>Set by the user to allow the API to automatically select the detector type.</p>
+</dd>
+<dt>DetectorType : Enum</dt><dd><p>Specifies the detection method used (Average, Maximum Peak, etc) to capture and process the signal.</p>
+</dd>
+<dt>VerticalScale : Enum</dt><dd><p>Specifies the vertical scale (log amplifiers versus linear amplifiers) of the measurment hardware.</p>
+</dd>
+<dt>MaximumTime : Double</dt><dd><p>Specifies the maximum amount of time in seconds that the fetch or read function will attempt to retrieve data before the funciton returns.</p>
+</dd>
 </dl>
 </div></blockquote>
 </dd>
-<dt>Frequency <span class="classifier-delimiter">:</span> <span class="classifier">Struct</span></dt>
-<dd><p class="first">A structure containing the properties of each module which pertain to the Frequency.</p>
-<blockquote class="last">
-<div><dl class="docutils">
-<dt>FrequencyStart <span class="classifier-delimiter">:</span> <span class="classifier">Double</span></dt>
-<dd>Specifies the left edge of the frequency domain. This is used in conjunction with the Frequency Stop property to define the frequency domain. If the Frequency start is equal to the Frequency Stop attribute value then the spectrum analyzer’s horizontal attributes are in the time-domain.</dd>
-<dt>FrequencyStop <span class="classifier-delimiter">:</span> <span class="classifier">Double</span></dt>
-<dd>Specifies the right edge of the frequency domiain. This is used in conjunction with the Frequency Start property to define the frequency domain. If the Frequency start is equal to the Frequency Stop attribute value then the spectrum analyzer’s horizontal attributes are in the time-domain.</dd>
-<dt>FrequencyOffset <span class="classifier-delimiter">:</span> <span class="classifier">Double</span></dt>
-<dd><p class="first">Specifies an offset value, in Hertz, that is added to the frequency readout. The offset is used to compensate for external frequency conversion. This changes the driver’s Frequency Start and Stop attributes. The equations relating the affected values are</p>
-<blockquote class="last">
+<dt>Frequency : Struct</dt><dd><p>A structure containing the properties of each module which pertain to the Frequency.</p>
+<blockquote>
+<div><dl>
+<dt>FrequencyStart : Double</dt><dd><p>Specifies the left edge of the frequency domain. This is used in conjunction with the Frequency Stop property to define the frequency domain. If the Frequency start is equal to the Frequency Stop attribute value then the spectrum analyzer’s horizontal attributes are in the time-domain.</p>
+</dd>
+<dt>FrequencyStop : Double</dt><dd><p>Specifies the right edge of the frequency domiain. This is used in conjunction with the Frequency Start property to define the frequency domain. If the Frequency start is equal to the Frequency Stop attribute value then the spectrum analyzer’s horizontal attributes are in the time-domain.</p>
+</dd>
+<dt>FrequencyOffset : Double</dt><dd><p>Specifies an offset value, in Hertz, that is added to the frequency readout. The offset is used to compensate for external frequency conversion. This changes the driver’s Frequency Start and Stop attributes. The equations relating the affected values are</p>
+<blockquote>
 <div><p>Frequency Start = Actual Start Frequency + Frequency Offset</p>
 <p>Frequency Stop = Actual Stop Frequency + Frequency Offset</p>
 </div></blockquote>
@@ -90,41 +86,39 @@
 </dl>
 </div></blockquote>
 </dd>
-<dt>Level <span class="classifier-delimiter">:</span> <span class="classifier">Struct</span></dt>
-<dd><p class="first">A structure containing the properties of each module which pertain to the input signal level.</p>
-<blockquote class="last">
-<div><dl class="docutils">
-<dt>AmplitudeUnits <span class="classifier-delimiter">:</span> <span class="classifier">Enum</span></dt>
-<dd>Specifies the unit (dBm, dBmV, dBuV, or etc) for input, output, and display.</dd>
-<dt>InputImpedance <span class="classifier-delimiter">:</span> <span class="classifier">Double</span></dt>
-<dd>Specifies the value of the input impedance in ohms expected at the active input port. This is typically 50 or 75 ohms.</dd>
-<dt>ReferenceLevel <span class="classifier-delimiter">:</span> <span class="classifier">Double</span></dt>
-<dd>The calibrated vertical poition of the captured data used as a reference for amplitude measurements. This is typically a value slightly higher than the largest expected signal level. The units are determined by the Amplitude Units attribute.</dd>
-<dt>ReferenceLevelOffset <span class="classifier-delimiter">:</span> <span class="classifier">Double</span></dt>
-<dd>Specifies an offset for the Reference Level attribute. This value is used to adjust the reference level for the external signal gain or loss. A positive value corresponds to a gain while a negative number corresponds to a loss. Th value is in dB.</dd>
-<dt>AttenuationAuto <span class="classifier-delimiter">:</span> <span class="classifier">Boolean</span></dt>
-<dd>If set to True, the attenuation is automatically selected otherwise the resolution bandwidth must be set by the user.</dd>
-<dt>Attenuation <span class="classifier-delimiter">:</span> <span class="classifier">Double</span></dt>
-<dd>Specifies the input attenuation in positive dB.</dd>
+<dt>Level : Struct</dt><dd><p>A structure containing the properties of each module which pertain to the input signal level.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>AmplitudeUnits : Enum</dt><dd><p>Specifies the unit (dBm, dBmV, dBuV, or etc) for input, output, and display.</p>
+</dd>
+<dt>InputImpedance : Double</dt><dd><p>Specifies the value of the input impedance in ohms expected at the active input port. This is typically 50 or 75 ohms.</p>
+</dd>
+<dt>ReferenceLevel : Double</dt><dd><p>The calibrated vertical poition of the captured data used as a reference for amplitude measurements. This is typically a value slightly higher than the largest expected signal level. The units are determined by the Amplitude Units attribute.</p>
+</dd>
+<dt>ReferenceLevelOffset : Double</dt><dd><p>Specifies an offset for the Reference Level attribute. This value is used to adjust the reference level for the external signal gain or loss. A positive value corresponds to a gain while a negative number corresponds to a loss. Th value is in dB.</p>
+</dd>
+<dt>AttenuationAuto : Boolean</dt><dd><p>If set to True, the attenuation is automatically selected otherwise the resolution bandwidth must be set by the user.</p>
+</dd>
+<dt>Attenuation : Double</dt><dd><p>Specifies the input attenuation in positive dB.</p>
+</dd>
 </dl>
 </div></blockquote>
 </dd>
-<dt>SweepCoupling <span class="classifier-delimiter">:</span> <span class="classifier">Struct</span></dt>
-<dd><p class="first">A structure containing the properties of each sweep. A sweep is thought of as adjusting the frequency of a tuner from the start frequency to the stop frequency in a defined amount of time.</p>
-<blockquote class="last">
-<div><dl class="docutils">
-<dt>ResolutionBandwidthAuto <span class="classifier-delimiter">:</span> <span class="classifier">Boolean</span></dt>
-<dd>If set to True, the resolution bandwidth is automatically selected otherwise the resolution bandwidth must be set by the user.</dd>
-<dt>ResolutionBandwidth <span class="classifier-delimiter">:</span> <span class="classifier">Double</span></dt>
-<dd>Specifies the width of the IF filter in Hertz. See notes.</dd>
-<dt>VideoBandwidthAuto <span class="classifier-delimiter">:</span> <span class="classifier">Boolean</span></dt>
-<dd>If set to True, the video bandwidth is automatically selected. If set to False, the video bandwidth should be selected by the user.</dd>
-<dt>VideoBandwidth <span class="classifier-delimiter">:</span> <span class="classifier">Double</span></dt>
-<dd>Specifies the video bandwidth of the post-detection filter in Hertz. See notes.</dd>
-<dt>SweepTimeAuto <span class="classifier-delimiter">:</span> <span class="classifier">Boolean</span></dt>
-<dd>If set to True, the swee time is automatically selected otherwise the swee time must be set by the user.</dd>
-<dt>SweepTime <span class="classifier-delimiter">:</span> <span class="classifier">Double</span></dt>
-<dd>Specifies the lenght of time to sweep from the left edge to the right edge of the current domain. The units are in seconds. See notes.</dd>
+<dt>SweepCoupling : Struct</dt><dd><p>A structure containing the properties of each sweep. A sweep is thought of as adjusting the frequency of a tuner from the start frequency to the stop frequency in a defined amount of time.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>ResolutionBandwidthAuto : Boolean</dt><dd><p>If set to True, the resolution bandwidth is automatically selected otherwise the resolution bandwidth must be set by the user.</p>
+</dd>
+<dt>ResolutionBandwidth : Double</dt><dd><p>Specifies the width of the IF filter in Hertz. See notes.</p>
+</dd>
+<dt>VideoBandwidthAuto : Boolean</dt><dd><p>If set to True, the video bandwidth is automatically selected. If set to False, the video bandwidth should be selected by the user.</p>
+</dd>
+<dt>VideoBandwidth : Double</dt><dd><p>Specifies the video bandwidth of the post-detection filter in Hertz. See notes.</p>
+</dd>
+<dt>SweepTimeAuto : Boolean</dt><dd><p>If set to True, the swee time is automatically selected otherwise the swee time must be set by the user.</p>
+</dd>
+<dt>SweepTime : Double</dt><dd><p>Specifies the lenght of time to sweep from the left edge to the right edge of the current domain. The units are in seconds. See notes.</p>
+</dd>
 </dl>
 </div></blockquote>
 </dd>
@@ -136,61 +130,58 @@
 <p>Sweep Time = k* Span / RBW^2</p>
 <p>The value of k is in the 2 to 3 range for filters used in some instruments. As can be seen from the above equation, the RBW has a drastic effect on sweep speed. These are issues to keep in mind when developing automated tests. When considering interchangeability and measurement accuracy, it is important to consider the way different instruments couple settings together. The valid combination of RBW, VBW, and sweep time on one spectrum analyzer may not be a valid combination on another spectrum analyzer. Awareness of these differences ensures that the results obtained in one system correlate with the results from another system.</p>
 </div></blockquote>
-<dl class="docutils">
-<dt>Trace <span class="classifier-delimiter">:</span> <span class="classifier">[Struct]</span></dt>
-<dd><p class="first">An array of structures containing the properties of each trace.</p>
-<blockquote class="last">
-<div><dl class="docutils">
-<dt>TraceName <span class="classifier-delimiter">:</span> <span class="classifier">String</span></dt>
-<dd>Returns the pysical repeated capability identify by the specific driver for the item that corresponds to the index that the user specifies. If the driver defines a qualified trace name, this property returns the qualified name.</dd>
-<dt>TraceSize <span class="classifier-delimiter">:</span> <span class="classifier">Int32</span></dt>
-<dd>Returns the number of points in the trace array.</dd>
-<dt>TraceType <span class="classifier-delimiter">:</span> <span class="classifier">Enum</span></dt>
-<dd>Specifies the represtation of the acquired data (Video Average, View, Store, etc).</dd>
+<dl>
+<dt>Trace : [Struct]</dt><dd><p>An array of structures containing the properties of each trace.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>TraceName : String</dt><dd><p>Returns the pysical repeated capability identify by the specific driver for the item that corresponds to the index that the user specifies. If the driver defines a qualified trace name, this property returns the qualified name.</p>
+</dd>
+<dt>TraceSize : Int32</dt><dd><p>Returns the number of points in the trace array.</p>
+</dd>
+<dt>TraceType : Enum</dt><dd><p>Specifies the represtation of the acquired data (Video Average, View, Store, etc).</p>
+</dd>
 </dl>
 </div></blockquote>
 </dd>
 </dl>
-<p><a class="reference internal" href="_images/image1.png"><img alt="image1" src="_images/image1.png" style="width: 3in;" /></a></p>
+<p><a class="reference internal" href="_images/image19.png"><img alt="image1" src="_images/image19.png" style="width: 3in;" /></a></p>
 <p>Figure : SpecAnBaseClass Methods UML Specification</p>
 </div>
 <div class="section" id="methods">
 <h4>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h4>
-<dl class="docutils">
-<dt>Abort()</dt>
-<dd>This function stops a previously initiated measurement and returns the spectrum analyzer to the idle state. This function does not check instrument status.</dd>
-<dt>AcquisitionStatus()</dt>
-<dd>This function determines and returns the status of an acquisition.</dd>
-<dt>Close()</dt>
-<dd>This function closes the reference to the instrument and sets the connected boolean to false.</dd>
-<dt>ConfigureAcquisition()</dt>
-<dd>This function configures the acquistion attributes of the spectrum analyzer such as SweepModeContinuous or NumberofSweeps.</dd>
-<dt>ConfigureFrequncy()</dt>
-<dd>This function configures the frequency range, center frequency, and frequency offset.If the frequency range is equal to zero then the spectrum analyzer operates in the time-domain mode. Inputs to this function are the offset, start, and stop.</dd>
-<dt>ConfigureLevel()</dt>
-<dd>This function configures the vertical attributes of the spectrum analyzer. This corresponds to the Amplitude Units, Input Attenuation, Input Impedance, Reference Level, and Reference Level Offset attributes.</dd>
-<dt>ConfigureSweepCoupling()</dt>
-<dd>This function configures the coupling and sweeping attributes such as sweep time (time it takes to go from the start frequency to the stop frequency), Resolution Bandwidthm, and the Video Bandwidth.</dd>
-<dt>ConfigureTraceType()</dt>
-<dd>This function configures the Trace Type attribute such as Video Average, Minimum Hold, Clear Write, etc.</dd>
-<dt>FetchYTrace()</dt>
-<dd><p class="first">This function returns the trace the spectrum analyzer acquires. The trace is from a previously initiated acquisition. The user calls the Initiate function to start an acquisition. The user calls the Acquisition Status function to determine when the acquisition is complete.</p>
+<dl>
+<dt>Abort()</dt><dd><p>This function stops a previously initiated measurement and returns the spectrum analyzer to the idle state. This function does not check instrument status.</p>
+</dd>
+<dt>AcquisitionStatus()</dt><dd><p>This function determines and returns the status of an acquisition.</p>
+</dd>
+<dt>Close()</dt><dd><p>This function closes the reference to the instrument and sets the connected boolean to false.</p>
+</dd>
+<dt>ConfigureAcquisition()</dt><dd><p>This function configures the acquistion attributes of the spectrum analyzer such as SweepModeContinuous or NumberofSweeps.</p>
+</dd>
+<dt>ConfigureFrequncy()</dt><dd><p>This function configures the frequency range, center frequency, and frequency offset.If the frequency range is equal to zero then the spectrum analyzer operates in the time-domain mode. Inputs to this function are the offset, start, and stop.</p>
+</dd>
+<dt>ConfigureLevel()</dt><dd><p>This function configures the vertical attributes of the spectrum analyzer. This corresponds to the Amplitude Units, Input Attenuation, Input Impedance, Reference Level, and Reference Level Offset attributes.</p>
+</dd>
+<dt>ConfigureSweepCoupling()</dt><dd><p>This function configures the coupling and sweeping attributes such as sweep time (time it takes to go from the start frequency to the stop frequency), Resolution Bandwidthm, and the Video Bandwidth.</p>
+</dd>
+<dt>ConfigureTraceType()</dt><dd><p>This function configures the Trace Type attribute such as Video Average, Minimum Hold, Clear Write, etc.</p>
+</dd>
+<dt>FetchYTrace()</dt><dd><p>This function returns the trace the spectrum analyzer acquires. The trace is from a previously initiated acquisition. The user calls the Initiate function to start an acquisition. The user calls the Acquisition Status function to determine when the acquisition is complete.</p>
 <p>The user may call the Read Y Trace function instead of the Initiate function. This function starts an acquisition, waits for the acquisition to complete, and returns the trace in one function call.</p>
 <p>The Amplitude array returns data that represents the amplitude of the signals obtained by sweeping from the start frequency to the stop frequency (in frequency domain, in the time domain the amplitude array is ordered from beginning of sweep to end). The Amplitude Units attribute determines the units of the points in the Amplitude array.</p>
-<p class="last">This function does not check the instrument status. The user should call the AcquisitionStatus function at the conclusion of the sequence to check the instrument status.</p>
+<p>This function does not check the instrument status. The user should call the AcquisitionStatus function at the conclusion of the sequence to check the instrument status.</p>
 </dd>
-<dt>GetTraceName()</dt>
-<dd>This function returns the specific driver defined trace name that corresponds to the index that the user specifies. If the driver defines a qualified trace name, this property returns the qualified name. If the value that the user passes for the Index parameter is less than one or greater than the value of the Trace Count attribute, the function returns an empty string in the Name parameter and returns the Invalid Value error.</dd>
-<dt>Initialize()</dt>
-<dd>This function opens a reference to the Spectrum Analyzer and sets the connected boolean to true.</dd>
-<dt>Initiate()</dt>
-<dd>This function initiates an acquisition. After calling this function, the spectrum analyzer leaves the idle state. This function does not check the instrument status. The user should call the Acquisition Status function to determine when the acquisition is complete.</dd>
-<dt>ReadYTrace()</dt>
-<dd><p class="first">This function initiates a signal acquisition based on the present instrument configuration. It then waits for the acquisition to complete, and returns the trace as an array of amplitude values. The amplitude array returns data that represent the amplitude of the signals obtained by sweeping from the start frequency to the stop frequency (in frequency domain, in time domain the amplitude array is ordered from beginning of sweep to end). The Amplitude Units attribute determines the units of the points in the amplitude array. This function resets the sweep count.</p>
-<p class="last">If the spectrum analyzer did not complete the acquisition within the time period the user specified with the MaxTime parameter, the function returns the Max Time Exceeded error.</p>
+<dt>GetTraceName()</dt><dd><p>This function returns the specific driver defined trace name that corresponds to the index that the user specifies. If the driver defines a qualified trace name, this property returns the qualified name. If the value that the user passes for the Index parameter is less than one or greater than the value of the Trace Count attribute, the function returns an empty string in the Name parameter and returns the Invalid Value error.</p>
 </dd>
-<dt>SelfTest()</dt>
-<dd>This VI runs the instrument’s self test routine and returns the test result(s).</dd>
+<dt>Initialize()</dt><dd><p>This function opens a reference to the Spectrum Analyzer and sets the connected boolean to true.</p>
+</dd>
+<dt>Initiate()</dt><dd><p>This function initiates an acquisition. After calling this function, the spectrum analyzer leaves the idle state. This function does not check the instrument status. The user should call the Acquisition Status function to determine when the acquisition is complete.</p>
+</dd>
+<dt>ReadYTrace()</dt><dd><p>This function initiates a signal acquisition based on the present instrument configuration. It then waits for the acquisition to complete, and returns the trace as an array of amplitude values. The amplitude array returns data that represent the amplitude of the signals obtained by sweeping from the start frequency to the stop frequency (in frequency domain, in time domain the amplitude array is ordered from beginning of sweep to end). The Amplitude Units attribute determines the units of the points in the amplitude array. This function resets the sweep count.</p>
+<p>If the spectrum analyzer did not complete the acquisition within the time period the user specified with the MaxTime parameter, the function returns the Max Time Exceeded error.</p>
+</dd>
+<dt>SelfTest()</dt><dd><p>This VI runs the instrument’s self test routine and returns the test result(s).</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="trigger-extension-group">
@@ -200,17 +191,16 @@
 </div>
 <div class="section" id="id1">
 <h4>Properties<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<dl class="docutils">
-<dt>Trigger <span class="classifier-delimiter">:</span> <span class="classifier">Struct</span></dt>
-<dd><p class="first">A structure containing the properties of each module’s trigger.</p>
-<blockquote class="last">
-<div><dl class="docutils">
-<dt>TriggerSource <span class="classifier-delimiter">:</span> <span class="classifier">String</span></dt>
-<dd>Specifies the source and type of the trigger signal that cause the analyzer to begin acquiring data. Examples are External, Immediate, Software, AC Line, etc.</dd>
-<dt>TriggerLevel <span class="classifier-delimiter">:</span> <span class="classifier">Double</span></dt>
-<dd>Specifies the level that the signal shall reach to trigger the acqusition. The units are specified by the Amplitude Units attribute.</dd>
-<dt>TriggerSlope <span class="classifier-delimiter">:</span> <span class="classifier">Enum</span></dt>
-<dd>Specifies which slope of the trigger signal (Positive or Negative) triggers the acquisition.</dd>
+<dl>
+<dt>Trigger : Struct</dt><dd><p>A structure containing the properties of each module’s trigger.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>TriggerSource : String</dt><dd><p>Specifies the source and type of the trigger signal that cause the analyzer to begin acquiring data. Examples are External, Immediate, Software, AC Line, etc.</p>
+</dd>
+<dt>TriggerLevel : Double</dt><dd><p>Specifies the level that the signal shall reach to trigger the acqusition. The units are specified by the Amplitude Units attribute.</p>
+</dd>
+<dt>TriggerSlope : Enum</dt><dd><p>Specifies which slope of the trigger signal (Positive or Negative) triggers the acquisition.</p>
+</dd>
 </dl>
 </div></blockquote>
 </dd>
@@ -218,11 +208,11 @@
 </div>
 <div class="section" id="id2">
 <h4>Methods<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
-<dl class="docutils">
-<dt>ConfigureTrigger ()</dt>
-<dd>This function allows the user to configure the Spectrum Analyser to acquire measurements based on a software, external, video or etc signal and the associated paramater such as level and slope.</dd>
-<dt>SendSoftwareTrigger ()</dt>
-<dd>This function sends a software trigger to the Spectrum Analyzer in order to begin acquisition.</dd>
+<dl class="simple">
+<dt>ConfigureTrigger ()</dt><dd><p>This function allows the user to configure the Spectrum Analyser to acquire measurements based on a software, external, video or etc signal and the associated paramater such as level and slope.</p>
+</dd>
+<dt>SendSoftwareTrigger ()</dt><dd><p>This function sends a software trigger to the Spectrum Analyzer in order to begin acquisition.</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="utility-extension-group">
@@ -232,13 +222,13 @@
 </div>
 <div class="section" id="id3">
 <h4>Methods<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
-<dl class="docutils">
-<dt>Reset ()</dt>
-<dd>This VI resets the instrument to a known state and sends initialization commands to the instrument.  The initialization commands set instrument settings such as Headers Off, Short Command form, and Data Transfer Binary to the state necessary for the operation of the instrument driver.</dd>
-<dt>Disable ()</dt>
-<dd>This VI places the instrument in a quiescent state where it has minimal or no impact on the system to which it is connected.</dd>
-<dt>Selftest ()</dt>
-<dd>This VI runs the instrument’s self test routine and returns the test result(s).</dd>
+<dl class="simple">
+<dt>Reset ()</dt><dd><p>This VI resets the instrument to a known state and sends initialization commands to the instrument.  The initialization commands set instrument settings such as Headers Off, Short Command form, and Data Transfer Binary to the state necessary for the operation of the instrument driver.</p>
+</dd>
+<dt>Disable ()</dt><dd><p>This VI places the instrument in a quiescent state where it has minimal or no impact on the system to which it is connected.</p>
+</dd>
+<dt>Selftest ()</dt><dd><p>This VI runs the instrument’s self test routine and returns the test result(s).</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="marker-extension-group">
@@ -248,10 +238,9 @@
 </div>
 <div class="section" id="id4">
 <h4>Properties<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
-<dl class="docutils">
-<dt>Marker <span class="classifier-delimiter">:</span> <span class="classifier">Struct</span></dt>
-<dd><p class="first">A structure containing the properties of each module’s markers.</p>
-<blockquote class="last">
+<dl>
+<dt>Marker : Struct</dt><dd><p>A structure containing the properties of each module’s markers.</p>
+<blockquote>
 <div><p>ActiveMarker : [String]
 Specifies the marker which is currently active. The values for this attribute correspond to the Marker repeated capability. If the driver defines a qualified Marker name, this attribute returns the qualified name.</p>
 <p>MarkerEnabled : Boolean
@@ -276,29 +265,29 @@ Specifies the lower limit of the search domain vertical range for the Marker Sea
 </div>
 <div class="section" id="id5">
 <h4>Methods<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
-<dl class="docutils">
-<dt>ConfigureMarkerEnabled ()</dt>
-<dd>This function enables the active marker on the specified Trace.</dd>
-<dt>ConfigureMarkerFrequencyCounter ()</dt>
-<dd>This function sets the marker frequency counter resolution and enables or disables the marker frequency counter.</dd>
-<dt>ConfigureMarkerSearch ()</dt>
-<dd>This function configures the Peak Excursion and Marker Threshold attribute values</dd>
-<dt>ConfigureSignalTrackEnabled ()</dt>
-<dd>If set to True , the active marker is enabled. When False, the active marker is disabled. For additional information about signal-tracking, see Section 1.4, Definition of Terms and Acronyms, and Section 6.2.12, Signal Track Enabled.</dd>
-<dt>DisableAllMarkers ()</dt>
-<dd>This function turns off all markers.</dd>
-<dt>GetMarkerName ()</dt>
-<dd>This function returns the specific driver defined marker name that corresponds to the index that the user specifies. If the driver defines a qualified marker name, this function returns the qualified name. If the value that the user passes for the Index parameter is less then one or greater than the value of the Marker Count attribute, the function returns an empty string in the Name parameter and returns the Invalid Value error</dd>
-<dt>MarkerSearch ()</dt>
-<dd>This function specifies the type of marker search and performs the search. This function returns the Marker Not Enabled error if the Marker Enabled attribute is set to False.</dd>
-<dt>MoveMarker ()</dt>
-<dd>This function specifies the frequency in Hertz or time position in seconds of the specified horizontal position.</dd>
-<dt>QueryMarker ()</dt>
-<dd>This function returns the horizontal position and the amplitude level of the active marker.</dd>
-<dt>SetActiveMarker ()</dt>
-<dd>This function selects one of the available markers, and makes it the active marker.</dd>
-<dt>SetInstrumentFromMarker()</dt>
-<dd>This function uses the Marker Position or Marker Amplitude attributes to configure the spectrum analyzer setting specified by the InstrumentSetting parameter. This function may set the Frequency Start, Frequency Stop, or Reference Level attributes. If the Marker Enabled attribute is set to False, this function returns the Marker Not Enabled error. If the Marker Type attribute is not Delta and the InstrumentSetting parameter is Frequency Span, the function returns the Delta Marker Not Enabled error.</dd>
+<dl class="simple">
+<dt>ConfigureMarkerEnabled ()</dt><dd><p>This function enables the active marker on the specified Trace.</p>
+</dd>
+<dt>ConfigureMarkerFrequencyCounter ()</dt><dd><p>This function sets the marker frequency counter resolution and enables or disables the marker frequency counter.</p>
+</dd>
+<dt>ConfigureMarkerSearch ()</dt><dd><p>This function configures the Peak Excursion and Marker Threshold attribute values</p>
+</dd>
+<dt>ConfigureSignalTrackEnabled ()</dt><dd><p>If set to True , the active marker is enabled. When False, the active marker is disabled. For additional information about signal-tracking, see Section 1.4, Definition of Terms and Acronyms, and Section 6.2.12, Signal Track Enabled.</p>
+</dd>
+<dt>DisableAllMarkers ()</dt><dd><p>This function turns off all markers.</p>
+</dd>
+<dt>GetMarkerName ()</dt><dd><p>This function returns the specific driver defined marker name that corresponds to the index that the user specifies. If the driver defines a qualified marker name, this function returns the qualified name. If the value that the user passes for the Index parameter is less then one or greater than the value of the Marker Count attribute, the function returns an empty string in the Name parameter and returns the Invalid Value error</p>
+</dd>
+<dt>MarkerSearch ()</dt><dd><p>This function specifies the type of marker search and performs the search. This function returns the Marker Not Enabled error if the Marker Enabled attribute is set to False.</p>
+</dd>
+<dt>MoveMarker ()</dt><dd><p>This function specifies the frequency in Hertz or time position in seconds of the specified horizontal position.</p>
+</dd>
+<dt>QueryMarker ()</dt><dd><p>This function returns the horizontal position and the amplitude level of the active marker.</p>
+</dd>
+<dt>SetActiveMarker ()</dt><dd><p>This function selects one of the available markers, and makes it the active marker.</p>
+</dd>
+<dt>SetInstrumentFromMarker()</dt><dd><p>This function uses the Marker Position or Marker Amplitude attributes to configure the spectrum analyzer setting specified by the InstrumentSetting parameter. This function may set the Frequency Start, Frequency Stop, or Reference Level attributes. If the Marker Enabled attribute is set to False, this function returns the Marker Not Enabled error. If the Marker Type attribute is not Delta and the InstrumentSetting parameter is Frequency Span, the function returns the Delta Marker Not Enabled error.</p>
+</dd>
 </dl>
 </div>
 </div>
@@ -309,10 +298,9 @@ Specifies the lower limit of the search domain vertical range for the Marker Sea
 <p>Figure : Keysight44xxClass Properties UML Specification</p>
 <div class="section" id="id6">
 <h4>Properties<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
-<dl class="docutils">
-<dt>RFBurst <span class="classifier-delimiter">:</span> <span class="classifier">Struct</span></dt>
-<dd><p class="first">A structure containing the properties of an RFBurst Trigger.</p>
-<blockquote class="last">
+<dl>
+<dt>RFBurst : Struct</dt><dd><p>A structure containing the properties of an RFBurst Trigger.</p>
+<blockquote>
 <div><p>TriggerLevelType : Enum
 Specifies the frequency in Hertz or time position in seconds of the active marker (depending on the mode in which the analyzer is operating, frequency or time-domain). This attribute returns the Marker Not Enabled error if the active marker is not enabled.</p>
 <p>FrequencySelect : Boolean
@@ -321,9 +309,8 @@ Returns the amplitude of the active marker. The units are specified by the Ampli
 If set to True , the active marker is enabled. When False, the active marker is disabled.</p>
 </div></blockquote>
 </dd>
-<dt>TV <span class="classifier-delimiter">:</span> <span class="classifier">Struct</span></dt>
-<dd><p class="first">A structure containing the properties of a TV Trigger.</p>
-<blockquote class="last">
+<dt>TV : Struct</dt><dd><p>A structure containing the properties of a TV Trigger.</p>
+<blockquote>
 <div><p>MonitorEnabled : Boolean
 Specifies the frequency in Hertz or time position in seconds of the active marker (depending on the mode in which the analyzer is operating, frequency or time-domain). This attribute returns the Marker Not Enabled error if the active marker is not enabled.</p>
 <p>TVField : Enum
@@ -346,6 +333,7 @@ If set to True , the active marker is enabled. When False, the active marker is 
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -386,17 +374,15 @@ If set to True , the active marker is enabled. When False, the active marker is 
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -407,12 +393,13 @@ If set to True , the active marker is enabled. When False, the active marker is 
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">SpecAn Module</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Allen Goldstein.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
     </div>
   </body>
 </html>

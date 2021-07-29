@@ -1,20 +1,18 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2. Error Codes &#8212; NistPluggableModules 0.1 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -33,7 +31,8 @@
         <li class="right" >
           <a href="GettingStarted.html" title="1. Getting Started"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Error Codes</a></li> 
       </ul>
     </div>  
 
@@ -43,378 +42,379 @@
           <div class="body" role="main">
             
   <div class="section" id="error-codes">
-<span id="errors"></span><h1>2. Error Codes<a class="headerlink" href="#error-codes" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="colwidths-given docutils" id="id1">
+<span id="errors"></span><h1><span class="section-number">2. </span>Error Codes<a class="headerlink" href="#error-codes" title="Permalink to this headline">¶</a></h1>
+<table class="colwidths-given docutils align-default" id="id1">
 <caption><span class="caption-text">General Error Codes</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="10%" />
-<col width="45%" />
-<col width="45%" />
+<col style="width: 10%" />
+<col style="width: 45%" />
+<col style="width: 45%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">CODE</th>
-<th class="head">ERROR</th>
-<th class="head">COMMENT</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>CODE</p></th>
+<th class="head"><p>ERROR</p></th>
+<th class="head"><p>COMMENT</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>5001</td>
-<td>Override Error: Abstract class called</td>
-<td>NISTObject_class: This error occurs when the parent instance of a method that must be overridden is called. A child override instance should be called instead</td>
+<tbody>
+<tr class="row-even"><td><p>5001</p></td>
+<td><p>Override Error: Abstract class called</p></td>
+<td><p>NISTObject_class: This error occurs when the parent instance of a method that must be overridden is called. A child override instance should be called instead</p></td>
 </tr>
-<tr class="row-odd"><td>5002</td>
-<td>The invalid message string % was received by module %s</td>
-<td>NISTCloneableModule.lvlib:Main.vi.  Error thrown when the default case of the queued message handler is called.  An unhandled message was inserted into the queue</td>
+<tr class="row-odd"><td><p>5002</p></td>
+<td><p>The invalid message string % was received by module %s</p></td>
+<td><p>NISTCloneableModule.lvlib:Main.vi.  Error thrown when the default case of the queued message handler is called.  An unhandled message was inserted into the queue</p></td>
 </tr>
-<tr class="row-even"><td>5004</td>
-<td>Plugin class file not found at path: %s</td>
-<td>Check plugin .ini file for properly formatted relative path to class and check that the specified plugin class exists.      Each plugin has a .ini file which contains a path to the class file itself.  This error indicates that the class file was not found at the path indicated in the ini file</td>
+<tr class="row-even"><td><p>5004</p></td>
+<td><p>Plugin class file not found at path: %s</p></td>
+<td><p>Check plugin .ini file for properly formatted relative path to class and check that the specified plugin class exists.      Each plugin has a .ini file which contains a path to the class file itself.  This error indicates that the class file was not found at the path indicated in the ini file</p></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="colwidths-given docutils" id="id2">
+<table class="colwidths-given docutils align-default" id="id2">
 <caption><span class="caption-text">Scope Error Codes</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="10%" />
-<col width="45%" />
-<col width="45%" />
+<col style="width: 10%" />
+<col style="width: 45%" />
+<col style="width: 45%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">CODE</th>
-<th class="head">ERROR</th>
-<th class="head">COMMENT</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>CODE</p></th>
+<th class="head"><p>ERROR</p></th>
+<th class="head"><p>COMMENT</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>21001</td>
-<td>Improper channel name %s.  Must be Channel 1 through Channel 4</td>
-<td>The OScope channel names must be specific to the scope class</td>
+<tbody>
+<tr class="row-even"><td><p>21001</p></td>
+<td><p>Improper channel name %s.  Must be Channel 1 through Channel 4</p></td>
+<td><p>The OScope channel names must be specific to the scope class</p></td>
 </tr>
-<tr class="row-odd"><td>21002</td>
-<td>Trigger Type %s is not yet supported</td>
-<td>This Trigger type will require the addition of an IVI extended class to the module</td>
+<tr class="row-odd"><td><p>21002</p></td>
+<td><p>Trigger Type %s is not yet supported</p></td>
+<td><p>This Trigger type will require the addition of an IVI extended class to the module</p></td>
 </tr>
-<tr class="row-even"><td>21003</td>
-<td>The scope module is not connected to the oscilloscope.  Call Initialize to connect to the Oscope</td>
-<td>&#160;</td>
+<tr class="row-even"><td><p>21003</p></td>
+<td><p>The scope module is not connected to the oscilloscope.  Call Initialize to connect to the Oscope</p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td>21004</td>
-<td>Acquisition type %s is not supported by this oscilloscope</td>
-<td>&#160;</td>
+<tr class="row-odd"><td><p>21004</p></td>
+<td><p>Acquisition type %s is not supported by this oscilloscope</p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="colwidths-given docutils" id="id3">
+<table class="colwidths-given docutils align-default" id="id3">
 <caption><span class="caption-text">Sync Module Error Codes</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="10%" />
-<col width="45%" />
-<col width="45%" />
+<col style="width: 10%" />
+<col style="width: 45%" />
+<col style="width: 45%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">CODE</th>
-<th class="head">ERROR</th>
-<th class="head">COMMENT</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>CODE</p></th>
+<th class="head"><p>ERROR</p></th>
+<th class="head"><p>COMMENT</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>22001</td>
-<td>Clock Name: %s Not Found</td>
-<td>Configure Clock command passed a clock name that was not found in the array of module clock properties</td>
+<tbody>
+<tr class="row-even"><td><p>22001</p></td>
+<td><p>Clock Name: %s Not Found</p></td>
+<td><p>Configure Clock command passed a clock name that was not found in the array of module clock properties</p></td>
 </tr>
-<tr class="row-odd"><td>22002</td>
-<td>Unsupported Clock Type %s</td>
-<td>The Named Clock has a clock type that is not handled by the configure clocks method</td>
+<tr class="row-odd"><td><p>22002</p></td>
+<td><p>Unsupported Clock Type %s</p></td>
+<td><p>The Named Clock has a clock type that is not handled by the configure clocks method</p></td>
 </tr>
-<tr class="row-even"><td>22003</td>
-<td>Unable to Synchronize Timing System to Clock Reference.  Be sure a cable is connected from the clock reference output to the ClkIn of the timing card</td>
-<td>The timing card uses a PLL to synchronize to an external timing reference (GPS, 1588, ETc.) Generally this is a 10 MHz clock input.</td>
+<tr class="row-even"><td><p>22003</p></td>
+<td><p>Unable to Synchronize Timing System to Clock Reference.  Be sure a cable is connected from the clock reference output to the ClkIn of the timing card</p></td>
+<td><p>The timing card uses a PLL to synchronize to an external timing reference (GPS, 1588, ETc.) Generally this is a 10 MHz clock input.</p></td>
 </tr>
-<tr class="row-odd"><td>22004</td>
-<td>Trigger Name: %s Not Found</td>
-<td>Configure Trigger command passed a trigger name that was not found in the array of module trigger properties</td>
+<tr class="row-odd"><td><p>22004</p></td>
+<td><p>Trigger Name: %s Not Found</p></td>
+<td><p>Configure Trigger command passed a trigger name that was not found in the array of module trigger properties</p></td>
 </tr>
-<tr class="row-even"><td>22005</td>
-<td>Unsupported Trigger Type %s</td>
-<td>The Named Trigger has a trigger type that is not handled by the configure triggers method</td>
+<tr class="row-even"><td><p>22005</p></td>
+<td><p>Unsupported Trigger Type %s</p></td>
+<td><p>The Named Trigger has a trigger type that is not handled by the configure triggers method</p></td>
 </tr>
-<tr class="row-odd"><td>22006</td>
-<td>Trigger Name %s is not a %s trigger type.  Check the INI file</td>
-<td>The Named Trigger has a trigger type that does not match the trigger type being handled.</td>
+<tr class="row-odd"><td><p>22006</p></td>
+<td><p>Trigger Name %s is not a %s trigger type.  Check the INI file</p></td>
+<td><p>The Named Trigger has a trigger type that does not match the trigger type being handled.</p></td>
 </tr>
-<tr class="row-even"><td>22007</td>
-<td>Trigger Name %s Timestamping has not been Enabled</td>
-<td>An attempt to read a trigger timestamp was made to a trigger which has not had timestamping enabled</td>
+<tr class="row-even"><td><p>22007</p></td>
+<td><p>Trigger Name %s Timestamping has not been Enabled</p></td>
+<td><p>An attempt to read a trigger timestamp was made to a trigger which has not had timestamping enabled</p></td>
 </tr>
-<tr class="row-odd"><td>22008</td>
-<td>Warning: Windows clock synchronization can only occur is LabVIEW is being run as administrator. Either:1) Ensure LabVIEW was started with Run As Administrator OR 2) Open Sync Module Settings and disable SyncWinClk.</td>
-<td>&#160;</td>
+<tr class="row-odd"><td><p>22008</p></td>
+<td><p>Warning: Windows clock synchronization can only occur is LabVIEW is being run as administrator. Either:1) Ensure LabVIEW was started with Run As Administrator OR 2) Open Sync Module Settings and disable SyncWinClk.</p></td>
+<td></td>
 </tr>
-<tr class="row-even"><td>22009</td>
-<td>Reference Clock Not Present: Status = %s</td>
-<td>The Reference Clock is not operating</td>
+<tr class="row-even"><td><p>22009</p></td>
+<td><p>Reference Clock Not Present: Status = %s</p></td>
+<td><p>The Reference Clock is not operating</p></td>
 </tr>
-<tr class="row-odd"><td>22010</td>
-<td>Time out &lt; %d ms while waiting for Sync Loop to stop</td>
-<td>The Sync look was requested to stop in the indicated time but for some reason did not.</td>
+<tr class="row-odd"><td><p>22010</p></td>
+<td><p>Time out &lt; %d ms while waiting for Sync Loop to stop</p></td>
+<td><p>The Sync look was requested to stop in the indicated time but for some reason did not.</p></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="colwidths-given docutils" id="id4">
+<table class="colwidths-given docutils align-default" id="id4">
 <caption><span class="caption-text">Digitizer Module Error Codes</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="10%" />
-<col width="45%" />
-<col width="45%" />
+<col style="width: 10%" />
+<col style="width: 45%" />
+<col style="width: 45%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">CODE</th>
-<th class="head">ERROR</th>
-<th class="head">COMMENT</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>CODE</p></th>
+<th class="head"><p>ERROR</p></th>
+<th class="head"><p>COMMENT</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>23001</td>
-<td>Channel Name: %s Not Found</td>
-<td>a command passed a channel name that was not found in the array of channel properties</td>
+<tbody>
+<tr class="row-even"><td><p>23001</p></td>
+<td><p>Channel Name: %s Not Found</p></td>
+<td><p>a command passed a channel name that was not found in the array of channel properties</p></td>
 </tr>
-<tr class="row-odd"><td>23002</td>
-<td>Invalid Sample Clock Type %s selected</td>
-<td>This hardware requires a sample clock source and selected type is not available.</td>
+<tr class="row-odd"><td><p>23002</p></td>
+<td><p>Invalid Sample Clock Type %s selected</p></td>
+<td><p>This hardware requires a sample clock source and selected type is not available.</p></td>
 </tr>
-<tr class="row-even"><td>23003</td>
-<td>%d Pretrigger samples can only work with a Reference trigger source</td>
-<td>Either set the pretrigger samples to 0 or set the Trigger source to Reference.</td>
+<tr class="row-even"><td><p>23003</p></td>
+<td><p>%d Pretrigger samples can only work with a Reference trigger source</p></td>
+<td><p>Either set the pretrigger samples to 0 or set the Trigger source to Reference.</p></td>
 </tr>
-<tr class="row-odd"><td>23004</td>
-<td>Invalid or unknown trigger source %s</td>
-<td>Trigger sources can be Edge, Immediate, or reference.</td>
+<tr class="row-odd"><td><p>23004</p></td>
+<td><p>Invalid or unknown trigger source %s</p></td>
+<td><p>Trigger sources can be Edge, Immediate, or reference.</p></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="colwidths-given docutils" id="id5">
+<table class="colwidths-given docutils align-default" id="id5">
 <caption><span class="caption-text">Function Generator Error Codes</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="10%" />
-<col width="45%" />
-<col width="45%" />
+<col style="width: 10%" />
+<col style="width: 45%" />
+<col style="width: 45%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">CODE</th>
-<th class="head">ERROR</th>
-<th class="head">COMMENT</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>CODE</p></th>
+<th class="head"><p>ERROR</p></th>
+<th class="head"><p>COMMENT</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>24001</td>
-<td>Trigger type %s is not supported by this hardware</td>
-<td>attempted to configure a trigger type that is not handled by the hardware being used.</td>
+<tbody>
+<tr class="row-even"><td><p>24001</p></td>
+<td><p>Trigger type %s is not supported by this hardware</p></td>
+<td><p>attempted to configure a trigger type that is not handled by the hardware being used.</p></td>
 </tr>
-<tr class="row-odd"><td>24501</td>
-<td>Multiband function class, handle %s does not have equal number of frequency, Damping, Index and phase elements</td>
-<td>The confuration elements for multiband oscillators must have the same number of elements for each channel</td>
+<tr class="row-odd"><td><p>24501</p></td>
+<td><p>Multiband function class, handle %s does not have equal number of frequency, Damping, Index and phase elements</p></td>
+<td><p>The confuration elements for multiband oscillators must have the same number of elements for each channel</p></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="colwidths-given docutils" id="id6">
+<table class="colwidths-given docutils align-default" id="id6">
 <caption><span class="caption-text">Analysis Class Error Codes</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="10%" />
-<col width="45%" />
-<col width="45%" />
+<col style="width: 10%" />
+<col style="width: 45%" />
+<col style="width: 45%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">CODE</th>
-<th class="head">ERROR</th>
-<th class="head">COMMENT</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>CODE</p></th>
+<th class="head"><p>ERROR</p></th>
+<th class="head"><p>COMMENT</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>25001</td>
-<td>Warning: Cannot Change Configuration while Analysis is running</td>
-<td>User attempted to access the Analysis Configuration while an analysis was in progress</td>
+<tbody>
+<tr class="row-even"><td><p>25001</p></td>
+<td><p>Warning: Cannot Change Configuration while Analysis is running</p></td>
+<td><p>User attempted to access the Analysis Configuration while an analysis was in progress</p></td>
 </tr>
-<tr class="row-odd"><td>25002</td>
-<td>Unsupported Test Type: %s</td>
-<td>Support for this test type has not beed created yet</td>
+<tr class="row-odd"><td><p>25002</p></td>
+<td><p>Unsupported Test Type: %s</p></td>
+<td><p>Support for this test type has not beed created yet</p></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="colwidths-given docutils" id="id7">
+<table class="colwidths-given docutils align-default" id="id7">
 <caption><span class="caption-text">AC Pwr Error Codes</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="10%" />
-<col width="45%" />
-<col width="45%" />
+<col style="width: 10%" />
+<col style="width: 45%" />
+<col style="width: 45%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">CODE</th>
-<th class="head">ERROR</th>
-<th class="head">COMMENT</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>CODE</p></th>
+<th class="head"><p>ERROR</p></th>
+<th class="head"><p>COMMENT</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>26001</td>
-<td>Operation mode %s is only compatible with AC</td>
-<td>The user selected an AC-only operation mode, but attempted to treat the device as a DC system. The configuration was cancelled.</td>
+<tbody>
+<tr class="row-even"><td><p>26001</p></td>
+<td><p>Operation mode %s is only compatible with AC</p></td>
+<td><p>The user selected an AC-only operation mode, but attempted to treat the device as a DC system. The configuration was cancelled.</p></td>
 </tr>
-<tr class="row-odd"><td>26002</td>
-<td>Operation mode %s is only compatible with DC</td>
-<td>The user selected a DC-only operation mode, but attempted to treat the device as an AC system. The configuration was cancelled.</td>
+<tr class="row-odd"><td><p>26002</p></td>
+<td><p>Operation mode %s is only compatible with DC</p></td>
+<td><p>The user selected a DC-only operation mode, but attempted to treat the device as an AC system. The configuration was cancelled.</p></td>
 </tr>
-<tr class="row-even"><td>26003</td>
-<td>Maximum AC Power Load %d is not above 0.</td>
-<td>The user attempted to set the maximum AC Power Load to 0 or a negative value, making it impossible for the load to dissipate power.</td>
+<tr class="row-even"><td><p>26003</p></td>
+<td><p>Maximum AC Power Load %d is not above 0.</p></td>
+<td><p>The user attempted to set the maximum AC Power Load to 0 or a negative value, making it impossible for the load to dissipate power.</p></td>
 </tr>
-<tr class="row-odd"><td>26004</td>
-<td>Slew Rates can only be controlled when load is in CR and CC operation modes.</td>
-<td>A function call was made to alter the slew rates of the function while the load was set to an operating mode in which the slew rates cannot be managed.</td>
+<tr class="row-odd"><td><p>26004</p></td>
+<td><p>Slew Rates can only be controlled when load is in CR and CC operation modes.</p></td>
+<td><p>A function call was made to alter the slew rates of the function while the load was set to an operating mode in which the slew rates cannot be managed.</p></td>
 </tr>
-<tr class="row-even"><td>26005</td>
-<td>Operation mode % is not compatible with RLC operations.</td>
-<td>A function call was made to configure the RLC values of the device, though the device is in a non-RLC operation mode.</td>
+<tr class="row-even"><td><p>26005</p></td>
+<td><p>Operation mode % is not compatible with RLC operations.</p></td>
+<td><p>A function call was made to configure the RLC values of the device, though the device is in a non-RLC operation mode.</p></td>
 </tr>
-<tr class="row-odd"><td>26006</td>
-<td>The %s of %#g was outside of the parameter’s range of %#g-%#g..</td>
-<td>A parameter was selected that fell outside of its appropriate range; please set the parameter to fall within the range.</td>
+<tr class="row-odd"><td><p>26006</p></td>
+<td><p>The %s of %#g was outside of the parameter’s range of %#g-%#g..</p></td>
+<td><p>A parameter was selected that fell outside of its appropriate range; please set the parameter to fall within the range.</p></td>
 </tr>
-<tr class="row-even"><td>26007</td>
-<td>The module attempted to range check an invalid parameter %s.</td>
-<td>RangeCheck.vi attempted to run a check that didn’t exist. Check the string calling the variable and adjust it so it fits an appropriate value.</td>
+<tr class="row-even"><td><p>26007</p></td>
+<td><p>The module attempted to range check an invalid parameter %s.</p></td>
+<td><p>RangeCheck.vi attempted to run a check that didn’t exist. Check the string calling the variable and adjust it so it fits an appropriate value.</p></td>
 </tr>
-<tr class="row-odd"><td>26008</td>
-<td>The number of loads %d must be equal to the number of phases %d.</td>
-<td>&#160;</td>
+<tr class="row-odd"><td><p>26008</p></td>
+<td><p>The number of loads %d must be equal to the number of phases %d.</p></td>
+<td></td>
 </tr>
-<tr class="row-even"><td>26009</td>
-<td>The module received a command to initialize the device but is currently acquiring data. Abort the acquistion and close the reference in order to initialize a session to the device.</td>
-<td>&#160;</td>
+<tr class="row-even"><td><p>26009</p></td>
+<td><p>The module received a command to initialize the device but is currently acquiring data. Abort the acquistion and close the reference in order to initialize a session to the device.</p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td>26010</td>
-<td>The number of phases required by the mode %d does not match the number of configured modes %d.</td>
-<td>&#160;</td>
+<tr class="row-odd"><td><p>26010</p></td>
+<td><p>The number of phases required by the mode %d does not match the number of configured modes %d.</p></td>
+<td></td>
 </tr>
-<tr class="row-even"><td>26011</td>
-<td>The number of phases configured %d must be less than or equal to 3.</td>
-<td>&#160;</td>
+<tr class="row-even"><td><p>26011</p></td>
+<td><p>The number of phases configured %d must be less than or equal to 3.</p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td>26012</td>
-<td>Measurement Type %s is not currently supported.</td>
-<td>&#160;</td>
+<tr class="row-odd"><td><p>26012</p></td>
+<td><p>Measurement Type %s is not currently supported.</p></td>
+<td></td>
 </tr>
-<tr class="row-even"><td>26013</td>
-<td>Measurement Handle %s does not match Output Handle.</td>
-<td>&#160;</td>
+<tr class="row-even"><td><p>26013</p></td>
+<td><p>Measurement Handle %s does not match Output Handle.</p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td>26014</td>
-<td>The %s cannot be zero.</td>
-<td>&#160;</td>
+<tr class="row-odd"><td><p>26014</p></td>
+<td><p>The %s cannot be zero.</p></td>
+<td></td>
 </tr>
-<tr class="row-even"><td>26015</td>
-<td>The %s cannot be zero.</td>
-<td>&#160;</td>
+<tr class="row-even"><td><p>26015</p></td>
+<td><p>The %s cannot be zero.</p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td>26016</td>
-<td>The configured fetch time %g seconds must be greater than the set aperture time of %g seconds.</td>
-<td>&#160;</td>
+<tr class="row-odd"><td><p>26016</p></td>
+<td><p>The configured fetch time %g seconds must be greater than the set aperture time of %g seconds.</p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="colwidths-given docutils" id="id8">
+<table class="colwidths-given docutils align-default" id="id8">
 <caption><span class="caption-text">SpecAn Error Codes</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="10%" />
-<col width="45%" />
-<col width="45%" />
+<col style="width: 10%" />
+<col style="width: 45%" />
+<col style="width: 45%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">CODE</th>
-<th class="head">ERROR</th>
-<th class="head">COMMENT</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>CODE</p></th>
+<th class="head"><p>ERROR</p></th>
+<th class="head"><p>COMMENT</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>27001</td>
-<td>The plugin’s acquisiton mode cannot be changed while acquiring data. Abort the acquisiton then change the acquisition mode.</td>
-<td>&#160;</td>
+<tbody>
+<tr class="row-even"><td><p>27001</p></td>
+<td><p>The plugin’s acquisiton mode cannot be changed while acquiring data. Abort the acquisiton then change the acquisition mode.</p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td>27002</td>
-<td>The module received a command to initialize the device but is currently acquiring data. Abort the acquistion and close the reference in order to initialize a session to the device.</td>
-<td>&#160;</td>
+<tr class="row-odd"><td><p>27002</p></td>
+<td><p>The module received a command to initialize the device but is currently acquiring data. Abort the acquistion and close the reference in order to initialize a session to the device.</p></td>
+<td></td>
 </tr>
-<tr class="row-even"><td>27003</td>
-<td>The module received a command to initiate acquisition but is currently acquiring data. Abort the acquistion in order to initiate another acquisition.</td>
-<td>&#160;</td>
+<tr class="row-even"><td><p>27003</p></td>
+<td><p>The module received a command to initiate acquisition but is currently acquiring data. Abort the acquistion in order to initiate another acquisition.</p></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td>27004</td>
-<td>The  module exceeded the amount of time specified waiting for the acquisition loop to enter the idle state. Increase the amount of time needed for the acquisition to complete or reduce the amount of data requested.</td>
-<td>&#160;</td>
+<tr class="row-odd"><td><p>27004</p></td>
+<td><p>The  module exceeded the amount of time specified waiting for the acquisition loop to enter the idle state. Increase the amount of time needed for the acquisition to complete or reduce the amount of data requested.</p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="colwidths-given docutils" id="id9">
+<table class="colwidths-given docutils align-default" id="id9">
 <caption><span class="caption-text">Test Class Error Codes</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="10%" />
-<col width="45%" />
-<col width="45%" />
+<col style="width: 10%" />
+<col style="width: 45%" />
+<col style="width: 45%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">CODE</th>
-<th class="head">ERROR</th>
-<th class="head">COMMENT</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>CODE</p></th>
+<th class="head"><p>ERROR</p></th>
+<th class="head"><p>COMMENT</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>30001</td>
-<td>Unknown module name %s</td>
-<td>Attemped to access an unknown or unsupported pluggable module</td>
+<tbody>
+<tr class="row-even"><td><p>30001</p></td>
+<td><p>Unknown module name %s</p></td>
+<td><p>Attemped to access an unknown or unsupported pluggable module</p></td>
 </tr>
-<tr class="row-odd"><td>30002</td>
-<td>Loop stop condition name %s is unknown.  Loop will be stopped</td>
-<td>Unrecognized loop stop condition names must force a stop to avoid infinate loops</td>
+<tr class="row-odd"><td><p>30002</p></td>
+<td><p>Loop stop condition name %s is unknown.  Loop will be stopped</p></td>
+<td><p>Unrecognized loop stop condition names must force a stop to avoid infinate loops</p></td>
 </tr>
-<tr class="row-even"><td>30003</td>
-<td>Sync module not locked.  Abort the test, wait for lock, and try again</td>
-<td>This framework must be synchronized before any test can be conducted”</td>
+<tr class="row-even"><td><p>30003</p></td>
+<td><p>Sync module not locked.  Abort the test, wait for lock, and try again</p></td>
+<td><p>This framework must be synchronized before any test can be conducted”</p></td>
 </tr>
-<tr class="row-odd"><td>30102</td>
-<td>Test Automation invalid Get argument %s</td>
-<td>The test script sent an argument that is not supported</td>
+<tr class="row-odd"><td><p>30102</p></td>
+<td><p>Test Automation invalid Get argument %s</p></td>
+<td><p>The test script sent an argument that is not supported</p></td>
 </tr>
 </tbody>
 </table>
-<table border="1" class="colwidths-given docutils" id="id10">
+<table class="colwidths-given docutils align-default" id="id10">
 <caption><span class="caption-text">Bus Class Error Codes</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="10%" />
-<col width="45%" />
-<col width="45%" />
+<col style="width: 10%" />
+<col style="width: 45%" />
+<col style="width: 45%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">CODE</th>
-<th class="head">ERROR</th>
-<th class="head">COMMENT</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>CODE</p></th>
+<th class="head"><p>ERROR</p></th>
+<th class="head"><p>COMMENT</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>31001</td>
-<td>Bus Number not found %#d</td>
-<td>While searching the bus class for a particular bus number, the bus was not found in the class</td>
+<tbody>
+<tr class="row-even"><td><p>31001</p></td>
+<td><p>Bus Number not found %#d</p></td>
+<td><p>While searching the bus class for a particular bus number, the bus was not found in the class</p></td>
 </tr>
-<tr class="row-odd"><td>31002</td>
-<td>Bus number %#d already exists</td>
-<td>While trying to add a bus, the bus number was found to already exist</td>
+<tr class="row-odd"><td><p>31002</p></td>
+<td><p>Bus number %#d already exists</p></td>
+<td><p>While trying to add a bus, the bus number was found to already exist</p></td>
 </tr>
-<tr class="row-even"><td>31003</td>
-<td>Invalid Module type %#s</td>
-<td>While configuring modules, an unrecognized module type was found</td>
+<tr class="row-even"><td><p>31003</p></td>
+<td><p>Invalid Module type %#s</p></td>
+<td><p>While configuring modules, an unrecognized module type was found</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -422,10 +422,10 @@
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="GettingStarted.html"
-                        title="previous chapter">1. Getting Started</a></p>
+                        title="previous chapter"><span class="section-number">1. </span>Getting Started</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="AcPwr.html"
-                        title="next chapter">3. AC Power Module</a></p>
+                        title="next chapter"><span class="section-number">3. </span>AC Power Module</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -434,17 +434,15 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -461,12 +459,13 @@
         <li class="right" >
           <a href="GettingStarted.html" title="1. Getting Started"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">NistPluggableModules 0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Error Codes</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Allen Goldstein.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
     </div>
   </body>
 </html>

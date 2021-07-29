@@ -28,7 +28,7 @@ BaseClasses Library
 ~~~~~~~~~~~~~~~~~~~
 Download and install BaseClasses_.
 
-	.. _BaseClasses: LV_Packages/packages/nist_lib_nistbaseclasses/nist_lib_nistbaseclasses-1.1.0.3.vip
+	.. _BaseClasses: https://github.com/usnistgov/LV_Packages/blob/master/packages/nist_lib_nistbaseclasses/nist_lib_nistbaseclasses-1.1.0.3.vip
 	
 All classes in PARTF inheret from the BaseObject class.  All Plugin classes inheret from BasePlugin class.  All of the Plugin modules have a Base Plugin class for that module which all the plugin classes inheret from.
 
@@ -36,7 +36,7 @@ ModuleAdmin Library
 ~~~~~~~~~~~~~~~~~~~
 Download and install ModuleAdmin_.
 
-	.. _ModuleAdmin: LV_Packages/packages/nist_lib_nistbaseclasses/nist_lib_nistbaseclasses-1.1.0.3.vip
+	.. _ModuleAdmin: https://github.com/usnistgov/LV_Packages/blob/master/packages/nist_lib_nistmoduleadminlib/nist_lib_nistmoduleadminlib-2.3.0.12.vip
 
 The administrative library and classes for the Cloneable, Pluggable modules used in the PARTF.  Provides a ModuleAdmin class for maintining module properties.  CloneRegistration providing properties and methods for adding, removing and accounting for instantiated clones, and VIs for synchronizing module clones and their calling applications.
 
@@ -52,7 +52,7 @@ NISTErrorLib
 ~~~~~~~~~~~~
 Download and install NISTErrorLib_.
 
-	.. _`NISTErrorLib`: LV_Packages/packages/nist_lib_nisterrorlib/nist_lib_nisterrorlib-1.2.0.2.vip
+	.. _`NISTErrorLib`:  https://github.com/usnistgov/LV_Packages/blob/master/packages/nist_lib_nisterrorlib/nist_lib_nisterrorlib-1.2.0.2.vip
 
 The NIST Error Library builds upon the LabVIEW native error handler to add the ability to handle multiple errors, to prioritize errors and to assign an error severity which allws for additional error handling techniques besides a simple immediat stop or continue.  this library is at the core of the robust and informative error handling that is essential to anything but the smallest of projects.
 
@@ -82,7 +82,7 @@ Sensor Module
 ~~~~~~~~~~~~~
 The Sensor module is dependent on the freely available 'NIST Socket Class API`_
 
-	.. _'NIST Socket Class API`: LV_Packages/packages/nist_lib_socket_class/nist_lib_socket_class-1.3.0.9.vip
+	.. _'NIST Socket Class API`: https://github.com/usnistgov/LV_Packages/blob/master/packages/nist_lib_socket_class/nist_lib_socket_class-1.3.0.9.vip
 	
 The NIST Socket class API simplifies some of the tasks needed when performing socket communications in LabVIEW.
 
