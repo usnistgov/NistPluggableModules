@@ -47,4 +47,5 @@
 	<Item Name="NHRDCPower.lvclass" Type="LVClass" URL="../NHRDCPower/NHRDCPower.lvclass"/>
 	<Item Name="NHRGridSim.lvclass" Type="LVClass" URL="../NhRegenGridSim/NHRGridSim.lvclass"/>
 	<Item Name="PacificPowerSource.lvclass" Type="LVClass" URL="../PacificPowerSource/PacificPowerSource.lvclass"/>
+	<Item Name="ChromaPowerSupply.lvclass" Type="LVClass" URL="../ChromaPowerSupply/ChromaPowerSupply.lvclass"/>
 </Library>
