@@ -558,7 +558,6 @@
 			<Item Name="ScopeModule.lvlib" Type="Library" URL="../../Scope/ScopeModule/ScopeModule.lvlib"/>
 			<Item Name="AcPwrModule.lvlib" Type="Library" URL="../../AcPwr/AcPwrModule/AcPwrModule.lvlib"/>
 			<Item Name="Comms.lvlib" Type="Library" URL="../../../LV_TestAutomation/Comms_lib/Comms.lvlib"/>
-			<Item Name="Ini_lib.lvlib" Type="Library" URL="../../../LV_Ini/Ini_lib.lvlib"/>
 			<Item Name="Config_class.lvlib" Type="Library" URL="../../../LV_Config_class/Config_class.lvlib"/>
 			<Item Name="ScopeShared.lvlib" Type="Library" URL="../../Scope/ScopeShared/ScopeShared.lvlib"/>
 			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
@@ -591,6 +590,7 @@
 			<Item Name="SNMP Build Set Request Packet.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Build Set Request Packet.vi"/>
 			<Item Name="SNMP Set Request.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Set Request.vi"/>
 			<Item Name="Set snmp Item(s).vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/Set snmp Item(s).vi"/>
+			<Item Name="IniFileArray.vi" Type="VI" URL="../../../LV_Ini/IniFileArray.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
