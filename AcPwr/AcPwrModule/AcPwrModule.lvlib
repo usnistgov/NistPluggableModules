@@ -20,6 +20,7 @@
 		<Item Name="StopClone.vi" Type="VI" URL="../PublicAPI/StopClone.vi"/>
 	</Item>
 	<Item Name="Requests" Type="Folder">
+		<Item Name="AbortRequest.vi" Type="VI" URL="../Requests/AbortRequest.vi"/>
 		<Item Name="CloseRequest.vi" Type="VI" URL="../Requests/CloseRequest.vi"/>
 		<Item Name="ConfigDeviceRequest.vi" Type="VI" URL="../Requests/ConfigDeviceRequest.vi"/>
 		<Item Name="DeviceOffRequest.vi" Type="VI" URL="../Requests/DeviceOffRequest.vi"/>
