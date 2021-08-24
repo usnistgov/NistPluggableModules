@@ -13,6 +13,7 @@ classdef testAnyFit < matlab.unittest.TestCase
     % List of fitters tested by this unittest class
     %   
     %   SteadyStateFit.m : Fits Frequency Range, Maginitude Range, Harmonic and Interharmic tests
+    %   ModulationFit.m : Fits amplitude, phase or combined modulation
     %
     
     properties
@@ -49,6 +50,7 @@ classdef testAnyFit < matlab.unittest.TestCase
     %     KfS = signalparams(14,:);   % frequency step index
     %     KrS = signalparams(15,:);   % ROCOF step index (redundant with Rf)
     
+    %%----------------------------------------------------------------------
     %%Constructor Methods
     methods (Access = public)
         
@@ -84,10 +86,11 @@ classdef testAnyFit < matlab.unittest.TestCase
             %test50f0(self); self.fig=self.fig+1;      % test the nominal 50 Hz steady state fit
             %test50f0_100h0(self; self.fig=self.fig+1; 
             %testSSCapture (self); self.fig=self.fig+1; 
-            test50f0_5m0_0x1(self); self.fig=self.fig+1;
-            test50f0_0m9_0x1(self); self.fig=self.fig+1;
-            test50f0_5m0_0a1(self); self.fig=self.fig+1;
-            test50f0_0m9_0a1(self); self.fig=self.fig+1;
+            %test50f0_5m0_0x1(self); self.fig=self.fig+1;
+            %test50f0_0m9_0x1(self); self.fig=self.fig+1;
+            %test50f0_5m0_0a1(self); self.fig=self.fig+1;
+            %test50f0_0m9_0a1(self); self.fig=self.fig+1;
+            test50f0_2m0_2k5(self); self.fig=self.fig+1;
             %AMcFitExperiment(self); self.fig=self.fig+1;
         end
     end
@@ -237,7 +240,22 @@ classdef testAnyFit < matlab.unittest.TestCase
             self.SignalParams(Ka,:) = 0.1;
             self.getTimeSeries();            
             self.runMod1Second(true);           
-        end           
+        end
+        
+        function test50f0_2m0_2k5(self)
+            % this is a very high rate modulation (peak frequency 5 Hz, peak ROCOF 62 Hz)
+            % the standard modulation fit cannot handle it so I am experimenting with an
+            % HHT fitter
+            self.setTsDefaults()
+            self.AnalysisCycles = 3;
+            self.TS.N = self.Fs*2;  % need more than 1 second of data
+            [ ~, ~, ~, ~, ~, ~, Fa, Ka, ~, ~] = self.getParamIndex();
+            self.SignalParams(Fa,:) = 2.0;
+            self.SignalParams(Ka,:) = 2.5;
+            self.getTimeSeries();            
+            self.runMod1Second(true);           
+        end
+            
         
         function AMcFitExperiment(self)
             self.setTsDefaults();
