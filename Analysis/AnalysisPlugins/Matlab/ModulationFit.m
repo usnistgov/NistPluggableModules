@@ -38,7 +38,9 @@ wm = 2*pi*fm;
 
 
 dt = 1/SampleRate;
-tn = (-(NSamples/2-(1/2)):NSamples/2-(1/2))*dt;
+%tn = (-(NSamples/2-(1/2)):NSamples/2-(1/2))*dt;
+tn = linspace(-(NSamples/2),(NSamples/2)-1,NSamples)/SampleRate;
+
 MaxIter = 40;
 FitCrit = 1e-7;   %dFm min
 

@@ -56,8 +56,7 @@ FundFrequency = Fin(1);  % fundamental frequency
 NHarm = 1;
 if Kh(1)>0; NHarm = 2; end
 
-N = size(Samples,2);
-NPhases = size(Samples,1);
+[NPhases,N] = size(Samples);
 
 %algorithms based on the IEEE Std 1057 - Annex A
 Freqs(1:NPhases) = Fin;
@@ -69,6 +68,7 @@ ThetaH(1:NPhases)=0;
 
 %time-base
 tn = linspace(-(N/2),(N/2)-1,N)*(1/SampleRate);
+%tn = (-(N/2-(1/2)):N/2-(1/2))/SampleRate;
 FitCrit = 1e-8;   
 MaxIter = 10;
 
