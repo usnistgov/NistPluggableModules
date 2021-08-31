@@ -137,11 +137,12 @@ classdef testAnyFit < matlab.unittest.TestCase
             %test50f0(self); self.fig=self.fig+1;      % test the nominal 50 Hz steady state fit
             %test50f0_100h0(self); self.fig=self.fig+1; 
             %testSSCapture (self); self.fig=self.fig+1; 
-            test50f0_5m0_0x1(self); self.fig=self.fig+1;
-            test50f0_0m9_0x1(self); self.fig=self.fig+1;
-            test50f0_5m0_0a1(self); self.fig=self.fig+1;
-            test50f0_0m9_0a1(self); self.fig=self.fig+1;
+            %test50f0_5m0_0x1(self); self.fig=self.fig+1;
+            %test50f0_0m9_0x1(self); self.fig=self.fig+1;
+            %test50f0_5m0_0a1(self); self.fig=self.fig+1;
+            %test50f0_0m9_0a1(self); self.fig=self.fig+1;
             %test50f0_2m0_2k5(self); self.fig=self.fig+1;
+            testModFitActualData(self);self.fig=self.fig+1;
             %AMcFitExperiment(self); self.fig=self.fig+1;
         end
     end
@@ -322,13 +323,12 @@ classdef testAnyFit < matlab.unittest.TestCase
             % this is a very high rate modulation (peak frequency 5 Hz, peak ROCOF 62 Hz)
             % the standard modulation fit cannot handle it so I am experimenting with an
             % HHT fitter
-            self.setTsDefaults()
-            self.AnalysisCycles = 3;
-            % self.TS.N = self.Fs*2;  % need more than 1 second of data
+            self.setTsDefaults();
             self.Duration = 2;
             [ ~, ~, ~, ~, ~, ~, Fa, Ka, ~, ~] = self.getParamIndex();
             self.SignalParams(Fa,:) = 2.0;
             self.SignalParams(Ka,:) = 2.5;
+            self.AnalysisCycles = self.F0/self.SignalParams(Fa,1);
             self.getTimeSeries();
             self.TS.Ts.Name = 'test50f0_2m0_2k5';
             self.runMod1Second(true);           
@@ -345,6 +345,65 @@ classdef testAnyFit < matlab.unittest.TestCase
             %self.getWindow(0);
             %[x,y] = prepareCurveData(0:1/self.Fs:1,real(self.Window(1,:)));
             [x,y] = prepareCurveData(self.TS.Ts.Time,self.TS.Ts.Data);
+        end
+        
+        function testModFitActualData(self)
+            % open the actual data file captured in PMUCal\output
+            self.setTsDefaults();
+            name = fullfile(getenv('USERPROFILE'),'Documents','PMUCAL','Output','SavedModWindows.mat');
+            if exist(name,'file')
+                A = open(name);
+                P = A.P;
+                clear A;
+            else
+                error ('Data file %s not found.',name)
+            end
+            
+            % pre allocate actual (returned fitter) data arrays and expected value arrays
+            actSynx = zeros(8,numel(P));
+            %expSynx = actSynx;            
+            actFreq = zeros(1,numel(P));
+            %expFreq = actFreq;
+            actROCOF = actFreq;
+            %expROCOF = actROCOF;
+            
+            
+            
+            for i = 1:numel(P)
+                self.SignalParams = P(i).SignalParams;
+                self.DlyCorr = P(i).DelayCorr;
+                self.MagCorr = P(i).MagCorr;
+                self.F0 = P(i).MagCorr;
+                self.AnalysisCycles = P(i).AnalysisCycles;
+                self.Fs = P(i).SampleRate;
+                Window = timeseries(P(i).Samples);
+                
+                [actSynx(:,i), actFreq(i), actROCOF(i), iter] = ModulationFit(...
+                    self.SignalParams,...
+                    self.DlyCorr,...
+                    self.MagCorr,...
+                    self.F0,...
+                    self.AnalysisCycles,...
+                    self.Fs,...
+                    Window.Data...
+                    );
+            end
+            
+            
+            figure(self.fig); self.fig=self.fig+1;
+            subplot(4,1,1)
+            plot(abs(actSynx.'))
+            title('Ampl')
+            ylim([0,80])
+            subplot(4,1,2)
+            plot(unwrap(angle(actSynx.')))
+            title('Phase')
+            subplot(4,1,3)
+            plot(actFreq)
+            title('Freq')
+            subplot(4,1,4)
+            plot(actROCOF)
+            title('ROCOF')                                     
         end
         
         function runMod1Second(self,bDisplay)
@@ -392,18 +451,27 @@ classdef testAnyFit < matlab.unittest.TestCase
             TVE = sqrt(((real(actSynx)-real(expSynx)).^2+(imag(actSynx)-imag(expSynx)).^2)./(real(expSynx).^2+imag(expSynx).^2))*100;
             ME =  (abs(actSynx)-abs(expSynx))./ abs(expSynx)*100;
             PE = wrapToPi(angle(actSynx)-angle(expSynx)).*(180/pi); 
+            FE = actFreq-expFreq;
+            RFE = actROCOF-expROCOF;
             
             if bDisplay == true
                 figure(self.fig);
-                subplot(3,1,1)
+                subplot(5,1,1)
                 plot(TVE'); 
                 title('TVE (%)')
-                subplot(3,1,2)
+                subplot(5,1,2)
                 plot(ME');
                 title('ME (%)')
-                subplot(3,1,3)
+                subplot(5,1,3)
                 plot(PE');
                 title('PE (deg)')
+                subplot(5,1,4)
+                plot(FE');
+                title('FE (Hz)')
+                subplot(5,1,5)
+                plot(RFE');
+                title('RFE (Hz/s)')
+                
                 pause
             end
             
