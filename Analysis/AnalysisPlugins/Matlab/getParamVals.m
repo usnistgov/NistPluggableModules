@@ -1,8 +1,8 @@
-% function to get the indexes into SignalParams
-    function [varargout] = getParamIndex()
-        varargout = zeros(nargout,1);
+% function to get the values of SignalParams
+    function [varargout] = getParamVals(signalparams)
+        varargout = cell(nargout,1);
         for i = 1:nargout
-            varargout{i }= i;
+            varargout{i} = signalparams(i,:);
         end
     end
 

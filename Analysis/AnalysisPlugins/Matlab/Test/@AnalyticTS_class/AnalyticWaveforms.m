@@ -49,6 +49,10 @@ Wh = 2*pi*Fh;
 
 % create the time array.  Add the settling time to both ends of the size
 t = -SettlingTime:1/FSamp:((wfSize-1)/FSamp)+SettlingTime;
+
+t = linspace(-SettlingTime,SettlingTime+((wfSize-1)),wfSize)/FSamp;
+
+
 % Amplitude, AM and magnitude step
 Ain = zeros(length(Xm),length(t));
 for i = 1:length(Xm)
@@ -97,6 +101,7 @@ end
 
 % Complex signals
 cSignal = (Ain.*exp(-1i.*Theta));
+%cSignal = (Ain.*exp(1i.*Theta));
 
 %-------------------------debug: frequency plot--------------------------
 % Theta = unwrap(angle(cSignal(1,:)));

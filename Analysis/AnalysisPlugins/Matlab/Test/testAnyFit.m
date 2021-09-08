@@ -3,7 +3,7 @@ classdef testAnyFit < matlab.unittest.TestCase
     %
     %   run these tests with two command-line commands:
     %   >> testCase = testAnyFit();
-    %   >> res = run(testCase); 
+    %   >> res = run(testCase); OR
     %   >> res = testCase.run();
     %
     %   List of optional Name. Value Parameters showing default parameters
@@ -16,7 +16,6 @@ classdef testAnyFit < matlab.unittest.TestCase
     %   SteadyStateFit.m : Fits Frequency Range, Maginitude Range, Harmonic and Interharmic tests
     %   ModulationFit.m : Fits amplitude, phase or combined modulation
     %
-    
     properties
         Name    % Test name
         T0             % start time
@@ -59,6 +58,9 @@ classdef testAnyFit < matlab.unittest.TestCase
         
         function self = testAnyFit(varargin)
         % Class Constructor
+            %import matlab.unittest.constraints.IsEqualTo
+            %import matlab.unittest.constraints.AbsoluteTolerance
+
         
             defaultName = 'unnamed';
             defaultT0 = 0;             % start time in seconds
@@ -73,9 +75,9 @@ classdef testAnyFit < matlab.unittest.TestCase
             defaultSignalParams(Xm,:) = 1;
             defaultSignalParams(Fin,:) = 50;
             
-            self.SignalParams(Ps,:) = [0,-120,120,0,-120,120];            defaultDlyCorr = zeros(6,1);
-            defaultMagCorr = ones(6,1);
-            
+            self.SignalParams(Ps,:) = [0,-120,120,0,-120,120];            
+            defaultMagCorr = ones(1,6);
+            defaultDlyCorr = zeros(1,6);
             p = inputParser;
             
             % validation
@@ -134,7 +136,8 @@ classdef testAnyFit < matlab.unittest.TestCase
     % These functions will be called on   >> "res = run(testCase);"
     methods (Test)
         function regressionTests (self)
-            %test50f0(self); self.fig=self.fig+1;      % test the nominal 50 Hz steady state fit
+            test4P_50f2(self); self.fig=self.fig+1;
+            test50f0(self); self.fig=self.fig+1;      % test the nominal 50 Hz steady state fit
             %test50f0_100h0(self); self.fig=self.fig+1; 
             %testSSCapture (self); self.fig=self.fig+1; 
             %test50f0_5m0_0x1(self); self.fig=self.fig+1;
@@ -142,20 +145,55 @@ classdef testAnyFit < matlab.unittest.TestCase
             %test50f0_5m0_0a1(self); self.fig=self.fig+1;
             %test50f0_0m9_0a1(self); self.fig=self.fig+1;
             %test50f0_2m0_2k5(self); self.fig=self.fig+1;
-            testModFitActualData(self);self.fig=self.fig+1;
+            %testModFitActualData(self);self.fig=self.fig+1;
             %AMcFitExperiment(self); self.fig=self.fig+1;
         end
     end
 
     %----------------------------------------------------------------------
     %% Public methods for Steady State fitter testing
-    methods (Access = public)       
-      
+    methods (Access = public)    
+        
+        %=======================================
+        function test4P_50f2(self)
+            % test the 4-Parameter fit function with a frequency a litle
+            % off from the intial frequency we give the fitter
+            disp('test4P_50f2')
+            self.setTsDefaults;
+            [~,Fin,~,Fh] = self.getParamIndex;
+            self.SignalParams(Fin,:) = 50.2;
+            self.SignalParams(Fh,:)=0;
+            self.getTimeSeries();
+            self.TS.Ts.Name = 'test4P_50f2';
+            Samples = self.TS.getWindow(0,6,'even');    % get 6 cycles of the data
+            [~,F,~,Fh] = getParamVals(self.SignalParams);
+            %F = ones(1,size(self.SignalParams,2))*50.0;   % give an inaccurate starting frequency
+            dt = 1/self.Fs;
+            [actPhasors,actFreqs,actROCOFs,iter,~] = Fit4Param(F, dt, real(Samples.Data),1,Fh);
+            A = abs(actPhasors);
+            Theta = angle(actPhasors);
+            actPhasors = A.*exp(-1i*Theta);
+            
+            % Validate the actual values against the expected values
+            
+            expPhasors = Samples.UserData.Vals;
+            expFreqs = Samples.UserData.Freqs;
+            expROCOFs = Samples.UserData.ROCOFs;
+                       
+            disp(iter)
+            self.verifyEqual(actPhasors,expPhasors,'AbsTol',1e-3)
+            self.verifyEqual(actFreqs,expFreqs,'AbsTol',1e-10)
+            self.verifyEqual(actROCOFs,expROCOFs,'AbsTol',1e-10)
+
+        end
+  
         %=======================================
         function test50f0(self)
+            %disp('test50f0')
+            
         % Steady State 50 Hz fitter test
             self.setTsDefaults;
-            self.getTimeSeries;
+            self.getTimeSeries();
 %             self.expect = [1-1i*0, exp(-1i*2*pi/3), exp(1i*2*pi/3), 1-1i*0,...
 %                         1-1i*0, exp(-1i*2*pi/3), exp(1i*2*pi/3), 1-1i*0,...
 %                         50, 0];
@@ -196,7 +234,7 @@ classdef testAnyFit < matlab.unittest.TestCase
                 self.TS.F0, ...
                 self.AnalysisCycles, ...
                 self.Fs, ...
-                real(Window.Data)'...
+                real(Window.Data)...
                 );
             
             % retreive the expected values
@@ -230,7 +268,7 @@ classdef testAnyFit < matlab.unittest.TestCase
                 fprintf('Harmonic Phases: %f %f %f %f %f %f\n', angle(Synx(9:14))*180/pi)
             end
             self.verifyEqual(act,self.expect,'AbsTol',0.001)
-            pause;
+            %pause;
         end  
           
         %==========================================

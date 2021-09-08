@@ -164,6 +164,13 @@ Synx = [ Vabc.' Vzpn(2) Iabc.' Izpn(2)];
 Freq = mean(Freqs(1:3));
 ROCOF = mean(ROCOFs(1:3));
 
+    % local function to get the values of SignalParams
+    function [varargout] = getParamIndex(signalparams)
+        for i = 1:nargout
+            varargout{i}=signalparams(i,:);
+        end
+    end
+
 
 
 end

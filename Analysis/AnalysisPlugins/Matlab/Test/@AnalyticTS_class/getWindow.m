@@ -53,23 +53,31 @@ function window = getWindow(obj,offset,analysisCycles,varargin)
     idx = floor(N/2); % center of the window
     % if the window is odd sized, then the 0 is at the center (idx+1), if
     % not, then interpolate the center value
-    odd = ~rem(N,2)==1;
-    if odd  % if true, the size is even, get 5 values for freq and ROCOF interpolation
+    even = ~rem(N,2)==1;
+    if even  % if true, the size is even, get 5 values for freq and ROCOF interpolation
         vals = window.Data(idx-1:idx+3,:);
+        midVals = vals(3,:);
         %tVals = window.Time(idx-1:idx+3,:); % time values for interpolaton
         tVals = -1.5/obj.SampleRate:1/obj.SampleRate:1.5/obj.SampleRate; % time valuse for interpolation 
-        midVals = vals(3,:);
+        %midVals = interp1(tVals,vals,0,'PCHIP');
+
+
     else
-        vals = window.Data(idx-1:idx+2,:);
-        tVals = window.Time(idx-1:idx+2,:); % time values for interpolaton
-        midVals = interp1(tVals,vals,0,'PCHIP');
+        vals = window.Data(idx-1:idx+3,:);
+        tVals = -2/obj.SampleRate:1/obj.SampleRate:2/obj.SampleRate; % time valuse for interpolation        
+        %tVals = window.Time(idx-1:idx+3,:); % time values for interpolaton
+        %midVals = vals(3,:);
+        midVals = interp1(tVals,vals,.5/obj.SampleRate,'PCHIP');
+        
+        
     end
     phi = angle(vals);
     freqs = diff(unwrap(phi))*obj.SampleRate/(2*pi);
+    %freqs = -diff(unwrap(phi))*obj.SampleRate/(2*pi);
     ROCOFS = gradient(freqs);
     
     % if the window is odd, need to interpolate freqs and ROCOF
-    if odd
+    if even
         freqs = interp1(tVals,freqs,0,'PCHIP');
         ROCOFS = interp1(tVals,ROCOFS,0,'PCHIP');
     else
