@@ -60,17 +60,14 @@ function window = getWindow(obj,offset,analysisCycles,varargin)
         %tVals = window.Time(idx-1:idx+3,:); % time values for interpolaton
         tVals = -1.5/obj.SampleRate:1/obj.SampleRate:1.5/obj.SampleRate; % time valuse for interpolation 
         %midVals = interp1(tVals,vals,0,'PCHIP');
-
-
     else
         vals = window.Data(idx-1:idx+3,:);
         tVals = -2/obj.SampleRate:1/obj.SampleRate:2/obj.SampleRate; % time valuse for interpolation        
         %tVals = window.Time(idx-1:idx+3,:); % time values for interpolaton
         %midVals = vals(3,:);
-        midVals = interp1(tVals,vals,.5/obj.SampleRate,'PCHIP');
-        
-        
+        midVals = interp1(tVals,vals,.5/obj.SampleRate,'PCHIP');                
     end
+    
     phi = angle(vals);
     freqs = diff(unwrap(phi))*obj.SampleRate/(2*pi);
     %freqs = -diff(unwrap(phi))*obj.SampleRate/(2*pi);

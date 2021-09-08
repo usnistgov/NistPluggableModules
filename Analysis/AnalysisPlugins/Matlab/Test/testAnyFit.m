@@ -30,6 +30,7 @@ classdef testAnyFit < matlab.unittest.TestCase
         MagCorr % Magnitude correction factors
         expect     %expected values
         fig = 1 % figure numbers
+        Window  % the window of data to be analysed
     end
     
     % % Signal params.  Note that the labeling convention comes mostly from the
@@ -111,23 +112,6 @@ classdef testAnyFit < matlab.unittest.TestCase
             self.DlyCorr = p.Results.DlyCorr;
             self.MagCorr = p.Results.MagCorr;
            
-        % obj = TestSSFit (['Fs', (Samplerate)],['AnalysisCycles'],(n))
-%             self.SignalParams = zeros(15,6);
-%             if nargin > 0
-%                 for i = 1 : 2 : numel(varargin)
-%                     switch varargin{i}
-%                         case 'F0'
-%                             self.F0 = varargin{i+1};
-%                         case 'Fs'
-%                             self.Fs = varargin{i+1};
-%                         case 'AnalysisCycles'
-%                             self.AnalysisCycles = varargin{i+1};
-%                         otherwise
-%                             warning ('TestSSFit constructor: unrecognised input argument %s, using default value',varargin{i})
-%                     end
-%                 end
-%             end
-%             % self.TS = struct('Name','default','N',self.Fs,'t0',0,'SettlingTime',0,'f0',self.F0,'X',[],'Y',[]);
         end
         
     end
@@ -138,7 +122,7 @@ classdef testAnyFit < matlab.unittest.TestCase
         function regressionTests (self)
             test4P_50f2(self); self.fig=self.fig+1;
             test50f0(self); self.fig=self.fig+1;      % test the nominal 50 Hz steady state fit
-            %test50f0_100h0(self); self.fig=self.fig+1; 
+            test50f0_100h0(self); self.fig=self.fig+1; 
             %testSSCapture (self); self.fig=self.fig+1; 
             %test50f0_5m0_0x1(self); self.fig=self.fig+1;
             %test50f0_0m9_0x1(self); self.fig=self.fig+1;
@@ -169,7 +153,7 @@ classdef testAnyFit < matlab.unittest.TestCase
             [~,F,~,Fh] = getParamVals(self.SignalParams);
             %F = ones(1,size(self.SignalParams,2))*50.0;   % give an inaccurate starting frequency
             dt = 1/self.Fs;
-            [actPhasors,actFreqs,actROCOFs,iter,~] = Fit4Param(F, dt, real(Samples.Data),1,Fh);
+            [actPhasors,actFreqs,actROCOFs,iter,~] = Fit4Param(F, dt, real(Samples.Data));
             A = abs(actPhasors);
             Theta = angle(actPhasors);
             actPhasors = A.*exp(-1i*Theta);
@@ -188,16 +172,18 @@ classdef testAnyFit < matlab.unittest.TestCase
         end
   
         %=======================================
-        function test50f0(self)
-            %disp('test50f0')
-            
+        function test50f0(self)            
         % Steady State 50 Hz fitter test
             self.setTsDefaults;
             self.getTimeSeries();
-%             self.expect = [1-1i*0, exp(-1i*2*pi/3), exp(1i*2*pi/3), 1-1i*0,...
-%                         1-1i*0, exp(-1i*2*pi/3), exp(1i*2*pi/3), 1-1i*0,...
-%                         50, 0];
             self.TS.Ts.Name = 'test50f0';
+            self.Window = self.TS.getWindow(0,self.AnalysisCycles,'even');
+            % retreive the expected values
+            expSynx = self.Window.UserData.Vals/sqrt(2);
+            symComp = self.calcSymComp(expSynx.');  % symmetrical components
+            expFreq = self.Window.UserData.Freqs(1);
+            expROCOF = self.Window.UserData.ROCOFs(1);
+            self.expect = horzcat(symComp,expFreq,expROCOF);
             self.oneSSFit;            
         end      
         
@@ -210,15 +196,17 @@ classdef testAnyFit < matlab.unittest.TestCase
             self.SignalParams(Fh,:)=100;
             self.SignalParams(Ph,:) = [0, -120, 120, 0, -120, 120];
             self.SignalParams(Kh,:) = Ah;
-            % expected values
-%             AhRt2 = Ah*sqrt(2);                    
-%             self.expect = [1-1i*0, exp(-1i*2*pi/3), exp(1i*2*pi/3), 1-1i*0,...
-%                         1-1i*0, exp(-1i*2*pi/3), exp(1i*2*pi/3), 1-1i*0,...
-%                         AhRt2-1*0, AhRt2*exp(-1i*2*pi/3), AhRt2*exp(1i*2*pi/3),...
-%                         AhRt2-1*0, AhRt2*exp(-1i*2*pi/3), AhRt2*exp(1i*2*pi/3),...
-%                         50, 0];            
             self.getTimeSeries;
-            self.TS.Ts.Name = 'test50f0_100h0';            
+            self.TS.Ts.Name = 'test50f0_100h0';  
+            self.Window = self.TS.getWindow(0,self.AnalysisCycles,'even');
+            
+           % expected values
+            self.expect = [1-1i*0, exp(-1i*2*pi/3), exp(1i*2*pi/3), 1-1i*0,...
+                        1-1i*0, exp(-1i*2*pi/3), exp(1i*2*pi/3), 1-1i*0,...
+                        Ah-1*0, Ah*exp(-1i*2*pi/3), Ah*exp(1i*2*pi/3),...
+                        Ah-1*0, Ah*exp(-1i*2*pi/3), Ah*exp(1i*2*pi/3)]/sqrt(2);
+                    
+            self.expect = horzcat(self.expect, 50, 0);            
             self.oneSSFit;            
         end 
         
@@ -235,28 +223,7 @@ classdef testAnyFit < matlab.unittest.TestCase
                 self.AnalysisCycles, ...
                 self.Fs, ...
                 real(Window.Data)...
-                );
-            
-            % retreive the expected values
-            expSynx = Window.UserData.Vals/sqrt(2);
-            symComp = self.calcSymComp(expSynx.');  % symmetrical components
-            expFreq = Window.UserData.Freqs(1);
-            expROCOF = Window.UserData.ROCOFs(1);
-            %self.expect = horzcat(symComp,expFreq,expROCOF);
-            
-            % Intefering signals tests have additional frequencies
-            [~,~,~,~,~,Kh] = self.getParamIndex; 
-            if self.SignalParams(Kh,1) > 0;
-               warning('intefering signals test not correctly implmented yet')
-               Ah = self.SignalParams(Kh,:);
-               expH = Ah.*expSynx;
-               symComp = horzcat(symComp,expH);
-            end
-            self.expect = horzcat(symComp,expFreq,expROCOF);
-
-            
-            
-
+                );            
             act = [Synx,Freq,ROCOF];
             
             disp(self.TS.Ts.Name)            

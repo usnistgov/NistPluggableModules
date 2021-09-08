@@ -1,4 +1,4 @@
-function [ Phasors, Freqs, ROCOFs, iter, PhasorsH] = Fit4Param( F, dt, Samples, nHarm, Fh)
+function [ Phasors, Freqs, ROCOFs, iter, PhasorsH] = Fit4Param( F, dt, Samples, varargin)
 % Fits modulated signals with small modulation index (Km < 0.2) and
 % modulation frequency < 1 Hz.
 %   Input:
@@ -7,7 +7,9 @@ function [ Phasors, Freqs, ROCOFs, iter, PhasorsH] = Fit4Param( F, dt, Samples, 
 %       Samples: rows of samples and columns of Phases
 %               Note:  At the time of this writing, Labview stores
 %               transposed samples
-
+%       varargin: if there are any additional inputs, only the first
+%       (varagrin{}) will be read as a vector interharmonic frequencies fi,
+%       one for each phase
 
 [nSamples, nPhases] = size(Samples);
 % pre-allocate the outputs
@@ -17,29 +19,30 @@ Freqs = zeros(1,nPhases);
 ROCOFs = zeros(1,nPhases);
 iter = zeros(1,nPhases);
 
+
+Fi = ones(1,nPhases)*-1; %default no interharmonic frequency
+if nargin > 3   % check for any varargin
+    validateattributes(varargin{1},{'numeric'},{'size',[1,nPhases]})
+    Fi = varargin{1};
+end
+
+
 % Set up the regression loop
 MaxIter = 40;
 FitCrit = 1e-7;
 %tn = ((-(nSamples/2 - (1/2)):nSamples/2 - (1/2))*dt)';
 tn = (linspace(-(nSamples/2),(nSamples/2)-1,nSamples)*dt)';
-if nHarm > 1
-    H = zeros(nSamples,5);
-else
-    H = zeros(nSamples,3);
-end
-
-
 
 for p = 1:nPhases
     w = 2*pi*F(p);
-    wh = 2*pi*Fh(p);
     H = [cos(w*tn), sin(w*tn), ones(nSamples,1)];
-    if nHarm>1
-        H = [H cos(wh*tn) sin(wh*tn)];
+    if Fi(p)>0
+        wi = 2*pi*Fi(p);
+        H = [H cos(wi*tn) sin(wi*tn)];
     end    
     S = (H'*H)\(H'*Samples(:,p));
     A = S(1); B = S(2); % Note DC offset is ignored
-    if nHarm>1
+    if Fi(p)>0
         C = S(4); D = S(5);
     end
         
@@ -47,13 +50,13 @@ for p = 1:nPhases
     % cosine fit.
     for k = 1:MaxIter
         H = [cos(w*tn), sin(w*tn), ones(nSamples,1)];
-        if nHarm>1
-            H = [H cos(wh*tn) sin(wh*tn)];
+        if Fi(p)>0
+            H = [H cos(wi*tn) sin(wi*tn)];
         end
         G = [H (-A*tn.*sin(w*tn) + B*tn.*cos(w*tn))];
         S = (G'*G)\(G'*Samples(:,p));
         A = S(1); B = S(2); % Note DC offset is ignored
-        if nHarm>1
+        if Fi(p)>0
             C = S(4); D = S(5);
         end
         
@@ -72,7 +75,7 @@ for p = 1:nPhases
     iter(p)=k;
     
     % Harmonics or interharmonics
-    if nHarm > 1
+    if Fi>0
         PhasorsH(p) = complex(C,D);
         %AinH(p) = sqrt(C^2 + D^2)*MagCorr(p);
         %ThetaH(p) = atan2(D,C);        

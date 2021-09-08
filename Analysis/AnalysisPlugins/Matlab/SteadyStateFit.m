@@ -31,9 +31,8 @@ function [Synx,Freq,ROCOF] = SteadyStateFit ( ...
 % 
 % save(name,'P')
 %*********************DEBUGGING*****************************************
-[~,F,~,Fh,~,Kh] = getParamVals(SignalParams);
-NHarm = 1;
-if Kh(1)>0; NHarm = 2; end
+[~,F,~,Fi,~,Ki] = getParamVals(SignalParams);
+if ~(Ki(1)>0); Fi(1,:) = -1; end   % no interharmonics
 
 
 %% ----------4 Parameter fit moved to its own function---------------------
@@ -130,7 +129,7 @@ if Kh(1)>0; NHarm = 2; end
 % Synx = (Ain/sqrt(2).*exp(-1i.*Theta)).';
 %% -------------------------------------------------------------------------
 
-[ Synx, Freqs, ROCOFs, iter, SynxH] = Fit4Param( F, 1/SampleRate, Samples, NHarm, Fh);
+[ Synx, Freqs, ROCOFs, iter, SynxH] = Fit4Param( F, 1/SampleRate, Samples, Fi);
 if iter > 40
     warning ('4 parameter fit did not converge')
 end
@@ -152,7 +151,10 @@ Izpn = Ai*Iabc; %curren: zero, positive and negative sequence
 Synx = [ Vabc.' Vzpn(2) Iabc.' Izpn(2)];
 
 %Harmonics or interharmonics are output to verify a calibrator
-if NHarm > 1
+if Ki(1) > 0
+    Ain = abs(SynxH).*MagCorr;
+    Theta = angle(SynxH)+ DelayCorr*1e-9*2*pi.*F;
+    SynxH = (Ain/sqrt(2).*exp(-1i.*Theta));
     Synx = horzcat(Synx, SynxH);    
 end
 
