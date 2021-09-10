@@ -93,6 +93,7 @@ classdef AnalyticTS_class
     methods (Access = public)
         obj = AnalyticWaveforms(obj)
         window = getWindow(obj,offset,analysisCycles,varargin)
+        [Synx,Freq,ROCOF] = getWindowCenterParams(obj,offset,analysisCycles)
     end
     %% =========================================================================
     % static methods found in a class method file

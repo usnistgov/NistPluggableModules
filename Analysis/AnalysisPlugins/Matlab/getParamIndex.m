@@ -1,8 +1,7 @@
 % function to get the indexes into SignalParams
     function [varargout] = getParamIndex()
-        varargout = zeros(nargout,1);
         for i = 1:nargout
-            varargout{i }= i;
+            varargout{i}= i;
         end
     end
 

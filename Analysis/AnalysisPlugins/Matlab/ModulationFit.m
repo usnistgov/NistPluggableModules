@@ -16,7 +16,7 @@ function [Synx,Freq,ROCOF, iterations] = ModulationFit ( ...
 % modulated power signal parameters," 2011 IEEE Power and Energy Society 
 % General Meeting, Detroit, MI, USA, 2011, pp. 1-7, doi: 10.1109/PES.2011.6039442.
 % 
-[~,Fin,~,~,~,~,Fa,Ka,Fx,Kx,~,~,~,~,~] = getParamIndex(SignalParams);
+[~,Fin,~,~,~,~,Fa,Ka,Fx,Kx] = getParamVals(SignalParams);
 
 %parameters to receive as good initial estimates to the algorithms:
 % fm = SignalParams(3);
@@ -38,7 +38,8 @@ wm = 2*pi*fm;
 
 
 dt = 1/SampleRate;
-tn = (-(NSamples/2-(1/2)):NSamples/2-(1/2))*dt;
+%tn = (-(NSamples/2-(1/2)):NSamples/2-(1/2))*dt;
+tn = linspace(-NSamples/2,NSamples/2-1,NSamples)*dt;
 MaxIter = 40;
 FitCrit = 1e-7;   %dFm min
 
@@ -143,8 +144,39 @@ else
         Ain(p) = abs(AF)*MagCorr(p);
         Theta(p) = phiF + DelayCorr(p)*1e-9*wF;
         iterations(p) = k;
-    end
+        
+%     %**********************DEBUGGING PLOT**************************************
+%     %residuals
+%     bestFit = S'*H';
+%     r = Samples(p,:) - bestFit;
+%     figure(p)
+%     subplot(2,1,1)
+%     plot(tn,Samples(p,:),'-b',tn,bestFit,'-g')
+%     legend({'Samples','Best Fit'})
+%     title('Fit')
+%     subplot(2,1,2)
+%     plot(tn,r,'-r')
+%     title ('Residual')
+%     %erms(p) = sqrt((1/NSamples)*sum(r.^2));
+%     %**********************DEBUGGING*******************************************        
+        
+        
+    end % for p = i : NPhases
     Synx = (Ain/sqrt(2).*exp(1i.*Theta)).';
+    
+%     %Using the phases at the center of the window, calculate the frequency and ROCOF
+%      idx = floor(NSamples/2)+1;  %index to the middle of the window
+%      H = H(idx-3:idx+3,:);
+%      fitR = S([1,3,5])'*H(:,[1,3,5])';
+%      fitI = S([2,4,6])'*H(:,[2,4,6])';
+%      phi = atan2(fitI,fitR);
+%     Freqs = diff(unwrap(phi))*SampleRate/(2*pi);
+%     ROCOFs = diff(Freqs)*SampleRate;
+%     tVals = linspace(-3,3,6)/SampleRate;    % time vector of the Freqs
+%     Freqs = interp1(tVals,Freqs,0,'PCHIP');
+%     ROCOFs = ROCOFs(3);
+    
+    
 end
 
 
