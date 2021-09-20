@@ -528,8 +528,8 @@ classdef testAnyFit < matlab.unittest.TestCase
             if bDisplay == true, self.dispErrors(act,exp,self.fig),end
             
             self.verifyEqual(actSynx,expSynx,'AbsTol',1e-6)
-            self.verifyEqual(actFreq,expFreq,'AbsTol',1e-6)
-            self.verifyEqual(actROCOF,expROCOF,'AbsTol',1e-6)
+            self.verifyEqual(actFreq,expFreq,'AbsTol',1e-5)
+            self.verifyEqual(actROCOF,expROCOF,'AbsTol',1e-4)
             
         end
 

@@ -115,9 +115,10 @@ else
 %             plot(tn,(Samples(p,:)-fit)')
 %             %pause
             %-------------------------------------------------------------
-            AF = sqrt(S(1)^2 + S(2)^2); phiF = atan2(-S(2),S(1));
-            AL = sqrt(S(3)^2 + S(4)^2); phiL = atan2(-S(4),S(3));
-            AU = sqrt(S(5)^2 + S(6)^2); phiU = atan2(-S(6),S(5));
+            
+            cF = complex(S(1),S(2)); AF = abs(cF); phiF = -angle(cF);
+            cL = complex(S(3),S(4)); AL = abs(cL); phiL = -angle(cL);
+            cU = complex(S(5),S(6)); AU = abs(cU); phiU = -angle(cU);
             
             %LV reverse engineering - ModPhaseFit.vi
             mi = (AU*cos(phiU - phiF) - AL*cos(phiL-phiF)) + 1i*(AU*sin(phiU - phiF) - AL*sin(phiL-phiF));
@@ -136,11 +137,11 @@ else
             end
         end
         %p-phase Phasor %%%% for t=0
-        ka = abs(Af); t1 = 0;
+        %ka = abs(Af); t1 = 0;
         AF = AF*(1+ma*cos(phia));
         phiF = phiF + abs(Af)*sin(angle(Af));
-        Freqs(p) = Freq + ka*fm*cos(2*pi*fm*t1 + phif);
-        ROCOFs(p) = -ka*fm^2*sin(2*pi*fm*t1 + phif);
+        Freqs(p) = Freq + abs(Af)*fm*cos(angle(Af));
+        ROCOFs(p) = -wm^2*abs(Af)*sin(angle(Af))/(2*pi);
         Ain(p) = abs(AF)*MagCorr(p);
         Theta(p) = phiF + DelayCorr(p)*1e-9*wF;
         iterations(p) = k;
