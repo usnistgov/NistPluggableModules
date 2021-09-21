@@ -126,10 +126,10 @@ classdef testAnyFit < matlab.unittest.TestCase
             %test50f0(self); self.fig=self.fig+1;      % test the nominal 50 Hz steady state fit
             %test50f0_100h0(self); self.fig=self.fig+1; 
             %testSSCapture (self); self.fig=self.fig+1; 
-            %test50f0_5m0_0x1(self); self.fig=self.fig+1;
-            %test50f0_0m9_0x1(self); self.fig=self.fig+1;
+            test50f0_5m0_0x1(self); self.fig=self.fig+1;
+            test50f0_0m9_0x1(self); self.fig=self.fig+1;
             test50f0_5m0_0a1(self); self.fig=self.fig+1;
-            %test50f0_0m9_0a1(self); self.fig=self.fig+1;
+            test50f0_0m9_0a1(self); self.fig=self.fig+1;
             %test50f0_2m0_2k5(self); self.fig=self.fig+1;
             %testModFitActualData(self);self.fig=self.fig+1;
             %AMcFitExperiment(self); self.fig=self.fig+1;
