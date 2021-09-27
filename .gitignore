@@ -44,3 +44,5 @@
 build
 /doc/sphinx/source/AcPwrOld.rst
 /SpecAn/SpecAnPlugins/Main2.vi
+/Analysis/AnalysisPlugins/Matlab/*.asv
+/Analysis/AnalysisPlugins/Matlab/Test/*.asv
