@@ -27,6 +27,15 @@
 	<Item Name="VisualizeSensor.ctl" Type="Class Private Data" URL="VisualizeSensor.ctl">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 	</Item>
+	<Item Name="PrepareWaveformDataForTDMS.vi" Type="VI" URL="../PrepareWaveformDataForTDMS.vi">
+		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!%[!!!!$1!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"1!+!!!C1%!!!P``````````!!11476B=X6S:7VF&lt;H1A2'&amp;U91!!$E!Q`````Q2O97VF!!!;1%!!!@````]!"AV$;'&amp;O&lt;G6M)%ZB&lt;76T!!1!!!!A1&amp;!!!Q!!!!%!!B.F=H*P=C"J&lt;C!I&lt;G]A:8*S&lt;X)J!""!6!!$#&amp;&gt;B&gt;G6G&lt;X*N!!!?1%!!!@````]!#B"898:F:G^S&lt;5&amp;S=G&amp;Z)'FO!!"5!0!!$!!$!!5!"Q!)!!A!#!!)!!A!#1!)!!A!#Q-!!(A!!!U)!!!*!!!!#1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#A!!!!!!!!!!!!!##!!!!!!"!!Q!!!!!</Property>
+		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
+		<Property Name="NI.ClassItem.Flags" Type="Int">32</Property>
+		<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
+		<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
+		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
+		<Property Name="NI.ClassItem.State" Type="Int">1074266640</Property>
+	</Item>
 	<Item Name="RetrieveMeasurementValues&amp;Attributes.vi" Type="VI" URL="../RetrieveMeasurementValues&amp;Attributes.vi">
 		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!(_!!!!'!!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!'%!B%UFO9W^S=G6D&gt;#"%982B6(FQ:4]!%%!Q`````Q:4&gt;(*J&lt;G=!!"Z!1!!"`````Q!&amp;%%&amp;S=G&amp;Z)%^G)&amp;.U=GFO:X-!!""!6!!$#&amp;&gt;B&gt;G6G&lt;X*N!!!?1%!!!@````]!"R"898:F:G^S&lt;5&amp;S=G&amp;Z4X6U!!!)1#%$5G6E!!J!)16"&lt;7*F=A!+1#%&amp;2X*F:7Y!#E!B"5&amp;V:'FP!"J!5!!%!!E!#A!,!!Q+4'FH;(25&lt;X&gt;F=A!!'%"!!!(`````!!U+4'FH;(25&lt;X&gt;F=A!!"!!!!"F!"Q!35'RP&gt;#Z:)&amp;.D97RF)%FO:'6Y!!!91%!!!@````]!%!J1&lt;'^U76.D97RF!!!A1&amp;!!!Q!!!!%!!B.F=H*P=C"J&lt;C!I&lt;G]A:8*S&lt;X)J!!R!5Q&gt;798*J97ZU!!9!6!!$!!Q!1!!"`````Q!5!#:!=!!)!!%!&amp;1!8!!!76W&amp;W:7:P=GV$;'&amp;S&gt;&amp;*F:G6S:7ZD:1!!6!$Q!!Q!!Q!%!!9!#!!/!!]!$Q!2!")!$Q!4!"9$!!"Y!!!.#!!!#1!!!!E!!!!*!!!!#1!!!!!!!!!!!!!##!!!!!I!!!!!!!!!#A!!!!A!!!!!!1!8!!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
