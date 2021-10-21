@@ -18,4 +18,6 @@
 	<Item Name="VisualizeScope.lvclass" Type="LVClass" URL="../VisualizeScope/VisualizeScope.lvclass"/>
 	<Item Name="VisualizeAcPwr.lvclass" Type="LVClass" URL="../VisualizeAcPwr/VisualizeAcPwr.lvclass"/>
 	<Item Name="VisualizeSensor.lvclass" Type="LVClass" URL="../VisualizeSensor/VisualizeSensor.lvclass"/>
+	<Item Name="VisualizeFGen.lvclass" Type="LVClass" URL="../VisualizeFGen/VisualizeFGen.lvclass"/>
+	<Item Name="VisualizeSync.lvclass" Type="LVClass" URL="../VisualizeSync/VisualizeSync.lvclass"/>
 </Library>
