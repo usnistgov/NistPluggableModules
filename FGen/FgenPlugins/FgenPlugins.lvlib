@@ -12,6 +12,23 @@
 		<Item Name="FgenModule.lvlib" Type="Friended Library" URL="../../FgenModule/FgenModule.lvlib"/>
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 	</Item>
+	<Item Name="Shared" Type="Folder">
+		<Item Name="Broadcast" Type="Folder">
+			<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../Shared/Broadcast/DestroyBroadcastEvents.vi"/>
+			<Item Name="DidStop.vi" Type="VI" URL="../Shared/Broadcast/DidStop.vi"/>
+			<Item Name="ReportError.vi" Type="VI" URL="../Shared/Broadcast/ReportError.vi"/>
+			<Item Name="StatusUpdate.vi" Type="VI" URL="../Shared/Broadcast/StatusUpdate.vi"/>
+		</Item>
+		<Item Name="Queue" Type="Folder">
+			<Item Name="Dequeue.vi" Type="VI" URL="../Shared/Queue/Dequeue.vi"/>
+			<Item Name="Enqueue.vi" Type="VI" URL="../Shared/Queue/Enqueue.vi"/>
+			<Item Name="ObtainQueue.vi" Type="VI" URL="../Shared/Queue/ObtainQueue.vi"/>
+		</Item>
+		<Item Name="DestroyClone.vi" Type="VI" URL="../Shared/DestroyClone.vi"/>
+		<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../Shared/DestroyRequestEvents.vi"/>
+		<Item Name="ErrorHandler.vi" Type="VI" URL="../../FgenModule/Protected/ErrorHandler.vi"/>
+		<Item Name="HandleExit.vi" Type="VI" URL="../Shared/HandleExit.vi"/>
+	</Item>
 	<Item Name="TypeDefs" Type="Folder">
 		<Item Name="Channel.ctl" Type="VI" URL="../TypeDefs/Channel.ctl"/>
 		<Item Name="Channels.ctl" Type="VI" URL="../TypeDefs/Channels.ctl"/>
@@ -24,5 +41,6 @@
 	<Item Name="DaqMx_Single.lvclass" Type="LVClass" URL="../DaqMx_Single/DaqMx_Single.lvclass"/>
 	<Item Name="FgenPluginsBase.lvclass" Type="LVClass" URL="../FgenPluginBaseClass/FgenPluginsBase.lvclass"/>
 	<Item Name="IviFgen.lvclass" Type="LVClass" URL="../IviFgenClass/IviFgen.lvclass"/>
+	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 	<Item Name="NiPxi6733.lvclass" Type="LVClass" URL="../NiPxi6733Class/NiPxi6733.lvclass"/>
 </Library>

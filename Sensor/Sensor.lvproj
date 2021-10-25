@@ -19,7 +19,6 @@
 		<Item Name="SensorPlugins.lvlib" Type="Library" URL="../SensorPlugins/SensorPlugins.lvlib"/>
 		<Item Name="SensorShared.lvlib" Type="Library" URL="../SensorShared/SensorShared.lvlib"/>
 		<Item Name="Functions.lvlib" Type="Library" URL="../../FGen/MemberClasses/Functions.lvlib"/>
-		<Item Name="Visualization.lvlib" Type="Library" URL="../../Visualization/Visualization.lvlib"/>
 		<Item Name="testSensor.vi" Type="VI" URL="../../Analysis/AnalysisModule/testSensor.vi"/>
 		<Item Name="TestPMUData.vi" Type="VI" URL="../SensorPlugins/C37.118_PmuClass/TestPMUData.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
@@ -75,10 +74,13 @@
 				<Item Name="Waveform Subtype Enum__ogtk.ctl" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Waveform Subtype Enum__ogtk.ctl"/>
 				<Item Name="Write Key (Variant)__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/variantconfig/variantconfig.llb/Write Key (Variant)__ogtk.vi"/>
 				<Item Name="Write Section Cluster__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/variantconfig/variantconfig.llb/Write Section Cluster__ogtk.vi"/>
-				<Item Name="Write INI Cluster__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/variantconfig/variantconfig.llb/Write INI Cluster__ogtk.vi"/>
-				<Item Name="Get Cluster Element Names__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Get Cluster Element Names__ogtk.vi"/>
-				<Item Name="Get Cluster Elements TDs__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Get Cluster Elements TDs__ogtk.vi"/>
-				<Item Name="Read INI Cluster__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/variantconfig/variantconfig.llb/Read INI Cluster__ogtk.vi"/>
+				<Item Name="DeQueueType.ctl" Type="VI" URL="/&lt;userlib&gt;/NIST/ModuleAdminLib/ModuleAdmin/TypeDefinitions/DeQueueType.ctl"/>
+				<Item Name="QueueEntry.ctl" Type="VI" URL="/&lt;userlib&gt;/NIST/ModuleAdminLib/ModuleAdmin/TypeDefinitions/QueueEntry.ctl"/>
+				<Item Name="QueueType.ctl" Type="VI" URL="/&lt;userlib&gt;/NIST/ModuleAdminLib/ModuleAdmin/TypeDefinitions/QueueType.ctl"/>
+				<Item Name="Dequeue.vi" Type="VI" URL="/&lt;userlib&gt;/NIST/ModuleAdminLib/ModuleAdmin/Dequeue.vi"/>
+				<Item Name="Enqueue.vi" Type="VI" URL="/&lt;userlib&gt;/NIST/ModuleAdminLib/ModuleAdmin/Enqueue.vi"/>
+				<Item Name="QueueProperties.ctl" Type="VI" URL="/&lt;userlib&gt;/NIST/ModuleAdminLib/ModuleAdmin/TypeDefinitions/QueueProperties.ctl"/>
+				<Item Name="CloseQueue.vi" Type="VI" URL="/&lt;userlib&gt;/NIST/ModuleAdminLib/ModuleAdmin/CloseQueue.vi"/>
 			</Item>
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="8.6CompatibleGlobalVar.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/config.llb/8.6CompatibleGlobalVar.vi"/>
@@ -426,9 +428,6 @@
 				<Item Name="Read Lines From File.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Lines From File.vi"/>
 				<Item Name="Read From Spreadsheet File (I64).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read From Spreadsheet File (I64).vi"/>
 				<Item Name="Read From Spreadsheet File (string).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read From Spreadsheet File (string).vi"/>
-				<Item Name="System Directory Type.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/sysdir.llb/System Directory Type.ctl"/>
-				<Item Name="Get System Directory.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/sysdir.llb/Get System Directory.vi"/>
-				<Item Name="Compare Two Paths.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Compare Two Paths.vi"/>
 				<Item Name="Timestamp Subtract.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/TSOps.llb/Timestamp Subtract.vi"/>
 				<Item Name="I128 Timestamp.ctl" Type="VI" URL="/&lt;vilib&gt;/Waveform/TSOps.llb/I128 Timestamp.ctl"/>
 				<Item Name="DU64_U32SubtractWithBorrow.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/TSOps.llb/DU64_U32SubtractWithBorrow.vi"/>
@@ -481,6 +480,8 @@
 				<Item Name="ASCII Data Unit.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/NI/Modbus Library/Transmission Data Unit/ASCII/ASCII Data Unit.lvclass"/>
 				<Item Name="Application Directory.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Application Directory.vi"/>
 				<Item Name="Error to Warning.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Error to Warning.vi"/>
+				<Item Name="Get File Extension.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Get File Extension.vi"/>
+				<Item Name="High Resolution Polling Wait.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/High Resolution Polling Wait.vi"/>
 			</Item>
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="niSync Initialize.vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Initialize.vi"/>
@@ -558,7 +559,6 @@
 			<Item Name="ScopeModule.lvlib" Type="Library" URL="../../Scope/ScopeModule/ScopeModule.lvlib"/>
 			<Item Name="AcPwrModule.lvlib" Type="Library" URL="../../AcPwr/AcPwrModule/AcPwrModule.lvlib"/>
 			<Item Name="Comms.lvlib" Type="Library" URL="../../../LV_TestAutomation/Comms_lib/Comms.lvlib"/>
-			<Item Name="Config_class.lvlib" Type="Library" URL="../../../LV_Config_class/Config_class.lvlib"/>
 			<Item Name="ScopeShared.lvlib" Type="Library" URL="../../Scope/ScopeShared/ScopeShared.lvlib"/>
 			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
@@ -590,7 +590,19 @@
 			<Item Name="SNMP Build Set Request Packet.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Build Set Request Packet.vi"/>
 			<Item Name="SNMP Set Request.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Set Request.vi"/>
 			<Item Name="Set snmp Item(s).vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/Set snmp Item(s).vi"/>
-			<Item Name="IniFileArray.vi" Type="VI" URL="../../../LV_Ini/IniFileArray.vi"/>
+			<Item Name="matscript.dll" Type="Document"/>
+			<Item Name="Remove Empty Strings and White Spaces From a String Array.vi" Type="VI" URL="../../../SubVI/String/Remove Empty Strings and White Spaces From a String Array.vi"/>
+			<Item Name="OpenVisualizations.vi" Type="VI" URL="../../../SubVI/OpenVisualizations.vi"/>
+			<Item Name="Ini_lib.lvlib" Type="Library" URL="../../../LV_Ini/Ini_lib.lvlib"/>
+			<Item Name="ObtainUserEvents.vi" Type="VI" URL="../../../UserEvents/ObtainUserEvents.vi"/>
+			<Item Name="PopInOutButton.ctl" Type="VI" URL="../../../SubVI/VisulaizationManagement/PopInOutButton.ctl"/>
+			<Item Name="Enqueue.vi" Type="VI" URL="../../../Queue/Enqueue.vi"/>
+			<Item Name="GetSetConfigClass.vi" Type="VI" URL="../../../LV_Config_class/Public/GetSetConfigClass.vi"/>
+			<Item Name="Config.lvclass" Type="LVClass" URL="../../../LV_Config_class/Config.lvclass"/>
+			<Item Name="Create.vi" Type="VI" URL="../../../LV_Config_class/Public/Create.vi"/>
+			<Item Name="ExtractINIInfo.vi" Type="VI" URL="../../../SubVI/ExtractINIInfo.vi"/>
+			<Item Name="libsystem_kernel.dylib" Type="Document" URL="/usr/lib/system/libsystem_kernel.dylib"/>
+			<Item Name="Visualization.lvlib" Type="Library" URL="../../Visualization/Visualization.lvlib"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
