@@ -10,6 +10,7 @@
 	<Item Name="clStopArgument.ctl" Type="VI" URL="../clStopArgument.ctl"/>
 	<Item Name="DidInit.vi" Type="VI" URL="../DidInit.vi"/>
 	<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../ObtainBroadcastEvents.vi"/>
+	<Item Name="ObtainBroadcastForRegistration.vi" Type="VI" URL="../ObtainBroadcastForRegistration.vi"/>
 	<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../ObtainRequestEvents.vi"/>
 	<Item Name="StopClone.vi" Type="VI" URL="../StopClone.vi"/>
 	<Item Name="StopRequest.vi" Type="VI" URL="../StopRequest.vi"/>
