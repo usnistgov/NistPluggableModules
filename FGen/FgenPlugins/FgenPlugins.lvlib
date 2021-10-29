@@ -26,7 +26,7 @@
 		</Item>
 		<Item Name="DestroyClone.vi" Type="VI" URL="../Shared/DestroyClone.vi"/>
 		<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../Shared/DestroyRequestEvents.vi"/>
-		<Item Name="ErrorHandler.vi" Type="VI" URL="../../FgenModule/Protected/ErrorHandler.vi"/>
+		<Item Name="ErrorHandler.vi" Type="VI" URL="../Shared/ErrorHandler.vi"/>
 		<Item Name="HandleExit.vi" Type="VI" URL="../Shared/HandleExit.vi"/>
 	</Item>
 	<Item Name="TypeDefs" Type="Folder">
