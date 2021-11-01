@@ -93,7 +93,6 @@ end
 
 % Complex signals
 cSignal = (Ain.*exp(-1i.*Theta));
-%cSignal = (Ain.*exp(1i.*Theta));
 
 %-------------------------debug: frequency plot--------------------------
 % Theta = unwrap(angle(cSignal(1,:)));

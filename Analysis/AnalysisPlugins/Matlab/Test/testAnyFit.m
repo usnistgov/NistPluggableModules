@@ -312,7 +312,7 @@ classdef testAnyFit < matlab.unittest.TestCase
                 fprintf('Harmonic Phases: %f %f %f %f %f %f\n', angle(Synx(9:14))*180/pi)
             end
             self.verifyEqual(act,self.expect,'AbsTol',0.001)
-            %pause;
+            pause;
         end  
           
         %==========================================

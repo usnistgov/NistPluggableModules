@@ -22,3 +22,4 @@
 %     KxS = SignalParams(13,:);   % magnitude step index
 %     KfS = SignalParams(14,:);   % frequency step index
 %     KrS = SignalParams(15,:)    % ROCOF step index (same as Rf)
+%     KrS = SignalParams(15,:)    % ROCOF step index (same as Rf)

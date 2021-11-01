@@ -45,15 +45,37 @@ function window = getWindow(obj,offset,analysisCycles,varargin)
     % The timeseries userdata will contain a structure with the value at
     % time = 0 (the window center).  It will also hold the frequency and ROCOF
     % at that time.  
-    idx = floor(N/2)+1; % center of the window
-    vals = window.Data(idx-3:idx+3,:);
-    midVals = vals(4,:);
+    %   Since the window may be even or odd, the time t=0 may not acutuall
+    %   appear in the window.  If odd it does and we will need to
+    %   interplate the frequency and ROCOF from surrounding values.  If the
+    %   window is even, then the 0 value does not appear in the window and
+    %   we need to interpolate the complex value at 0.
+    idx = floor(N/2); % center of the window
+    % if the window is odd sized, then the 0 is at the center (idx+1), if
+    % not, then interpolate the center value
+    odd = ~rem(N,2)==1;
+    if odd;  % if true, the size is even, get 5 values for freq and ROCOF interpolation
+        vals = window.Data(idx-1:idx+3,:);
+        %tVals = window.Time(idx-1:idx+3,:); % time values for interpolaton
+        tVals = -1.5/obj.SampleRate:1/obj.SampleRate:1.5/obj.SampleRate; % time valuse for interpolation 
+        midVals = vals(3,:);
+    else
+        vals = window.Data(idx-1:idx+2,:);
+        tVals = window.Time(idx-1:idx+2,:); % time values for interpolaton
+        midVals = interp1(tVals,vals,0,'PCHIP');
+    end
     phi = angle(vals);
     freqs = diff(unwrap(phi))*obj.SampleRate/(2*pi);
-    ROCOFS = diff(freqs)*obj.SampleRate;
-    tVals = linspace(-3,3,6)/obj.SampleRate;
-    freqs = interp1(tVals,freqs,0,'PCHIP');
-    ROCOFS = ROCOFS(3,:);
+    ROCOFS = gradient(freqs);
+    
+    % if the window is odd, need to interpolate freqs and ROCOF
+    if odd
+        freqs = interp1(tVals,freqs,0,'PCHIP');
+        ROCOFS = interp1(tVals,ROCOFS,0,'PCHIP');
+    else
+        freqs = freqs(2,:);
+        ROCOFS = ROCOFS(2,:);
+    end
     
     window.UserData = struct('Vals',midVals,'Freqs',freqs,'ROCOFs',ROCOFS);
         
