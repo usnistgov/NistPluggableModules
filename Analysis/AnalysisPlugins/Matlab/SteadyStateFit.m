@@ -129,7 +129,7 @@ if ~(Ki(1)>0); Fi(1,:) = -1; end   % no interharmonics
 % Synx = (Ain/sqrt(2).*exp(-1i.*Theta)).';
 %% -------------------------------------------------------------------------
 
-[ Synx, Freqs, ROCOFs, iter, SynxH] = Fit4Param( F, 1/SampleRate, Samples, Fi);
+[ Synx, Freqs, ROCOFs, iter, SynxH] = Fit4Param( F, 1/SampleRate, Samples', Fi);
 if iter > 40
     warning ('4 parameter fit did not converge')
 end
