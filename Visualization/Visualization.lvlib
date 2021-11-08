@@ -12,7 +12,7 @@
 	<Item Name="dlgSelectVisApps.vi" Type="VI" URL="../dlgSelectVisApps.vi"/>
 	<Item Name="GetVisPaths.vi" Type="VI" URL="../GetVisPaths.vi"/>
 	<Item Name="VisualizeBase.lvclass" Type="LVClass" URL="../VisualizeBase/VisualizeBase_class/VisualizeBase.lvclass"/>
-	<Item Name="VisualizeStatus.lvclass" Type="LVClass" URL="../VisualizeStatus/VisualizeStatus.lvclass"/>
+	<Item Name="VisualizeStatus.lvclass" Type="LVClass" URL="../StatusAndLog/VisualizeStatus.lvclass"/>
 	<Item Name="VisualizeDigitizer.lvclass" Type="LVClass" URL="../Digitizer/VisualizeDigitizer.lvclass"/>
 	<Item Name="VisualizeAnalysis.lvclass" Type="LVClass" URL="../Analysis/VisualizeAnalysis.lvclass"/>
 	<Item Name="VisualizeScope.lvclass" Type="LVClass" URL="../VisualizeScope/VisualizeScope.lvclass"/>
