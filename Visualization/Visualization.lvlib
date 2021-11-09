@@ -15,8 +15,8 @@
 	<Item Name="VisualizeStatus.lvclass" Type="LVClass" URL="../StatusAndLog/VisualizeStatus.lvclass"/>
 	<Item Name="VisualizeDigitizer.lvclass" Type="LVClass" URL="../Digitizer/VisualizeDigitizer.lvclass"/>
 	<Item Name="VisualizeAnalysis.lvclass" Type="LVClass" URL="../Analysis/VisualizeAnalysis.lvclass"/>
-	<Item Name="VisualizeScope.lvclass" Type="LVClass" URL="../VisualizeScope/VisualizeScope.lvclass"/>
-	<Item Name="VisualizeAcPwr.lvclass" Type="LVClass" URL="../VisualizeAcPwr/VisualizeAcPwr.lvclass"/>
+	<Item Name="VisualizeScope.lvclass" Type="LVClass" URL="../Scope/VisualizeScope.lvclass"/>
+	<Item Name="VisualizeAcPwr.lvclass" Type="LVClass" URL="../AcPwr/VisualizeAcPwr.lvclass"/>
 	<Item Name="VisualizeSensor.lvclass" Type="LVClass" URL="../Sensor/VisualizeSensor.lvclass"/>
 	<Item Name="VisualizeFGen.lvclass" Type="LVClass" URL="../FGen/VisualizeFGen.lvclass"/>
 	<Item Name="VisualizeSync.lvclass" Type="LVClass" URL="../Sync/VisualizeSync.lvclass"/>

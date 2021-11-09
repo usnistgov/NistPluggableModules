@@ -27,7 +27,7 @@
 	<Item Name="VisualizeFGen.ctl" Type="Class Private Data" URL="VisualizeFGen.ctl">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 	</Item>
-	<Item Name="NiPxi6733.vi" Type="VI" URL="../NiPxi6733/NiPxi6733.vi">
+	<Item Name="NiPxi6733.vi" Type="VI" URL="../NiPxi6733.vi">
 		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!!?!!!!!A!%!!!!%A$Q!!%!!!-!!!!!!!!!!!!!!1!"!!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">1073742112</Property>

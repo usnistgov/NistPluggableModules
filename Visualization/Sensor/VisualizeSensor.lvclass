@@ -27,7 +27,7 @@
 	<Item Name="VisualizeSensor.ctl" Type="Class Private Data" URL="VisualizeSensor.ctl">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 	</Item>
-	<Item Name="C37.118 PMU.vi" Type="VI" URL="../C37.118 PMU/C37.118 PMU.vi">
+	<Item Name="C37.118 PMU.vi" Type="VI" URL="../C37.118 PMU.vi">
 		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!!?!!!!!A!%!!!!%A$Q!!%!!!-!!!!!!!!!!!!!!1!"!!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">1074004256</Property>
@@ -54,7 +54,7 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1082143248</Property>
 	</Item>
-	<Item Name="RoomAlert.vi" Type="VI" URL="../RoomAlert/RoomAlert.vi">
+	<Item Name="RoomAlert.vi" Type="VI" URL="../RoomAlert.vi">
 		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!!?!!!!!A!%!!!!%A$Q!!%!!!-!!!!!!!!!!!!!!1!"!!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">1090781440</Property>
@@ -63,7 +63,7 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1342714384</Property>
 	</Item>
-	<Item Name="SiemensDigitalEnergyMeter.vi" Type="VI" URL="../SiemensDigitalEnergyMeter/SiemensDigitalEnergyMeter.vi">
+	<Item Name="SiemensDigitalEnergyMeter.vi" Type="VI" URL="../SiemensDigitalEnergyMeter.vi">
 		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!!?!!!!!A!%!!!!%A$Q!!%!!!-!!!!!!!!!!!!!!1!"!!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
 		<Property Name="NI.ClassItem.Flags" Type="Int">1090781440</Property>
