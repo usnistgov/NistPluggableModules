@@ -56,7 +56,12 @@ mod_Phase = zeros(1,nPhases); % modulation phase assumed 0, BSA will find this
 V_norm = [];        % normalized eiganvector of the model
 invD_norm = [];     % normalized inverted eiganvalues of the model
 sigma = 0;          
-% 
+hi = zeros(nHarm,1); 
+
+% results
+Modulo_BSA = zeros(2,nPhases);      
+Phi_BSA = zeros(2,nPhases);
+
 
 % BSA of the modulated signal using results of the NLS of the modulated signal
 %
@@ -100,14 +105,14 @@ for phase = 1:nPhases
 
     % verbose status display ----------------------------------------------
     if verbose
-        fprintf('Grid Search: Phase start = %e, DF start = %e, funevals = %d\n',startpt(2),startpt(3),funEvals(1))
+        fprintf('\n==========\nPhase %d, Grid Search: Phase start = %e, DF start = %e, funevals = %d\n',phase,startpt(2),startpt(3),funEvals(1))
     end
     
     % debugging contour plots ---------------------------------------------
     if debug
         figure(fig), fig=fig+1;
-        dF = 2*pi*Delta_Freq*dT;
-        fcontour3([startpt(1),startpt(1);0,2*pi;0,2*dF(phase)],res)
+        dF = 2*pi*Delta_Freq(phase)*dT;
+        fcontour3([startpt(1),startpt(1);0,2*pi;0,2*dF],res)
         hold on
         for m = 1:k
             for n = 1:l
@@ -116,6 +121,91 @@ for phase = 1:nPhases
         end
         hold off
     end
+    % End vebose and debug ------------------------------------------------
+    
+    % Using fminsearch(problem)where problem is a structure.  see MATLAB "doc fminsearch"
+    funEvals(phase)=0;               % restart the function counter
+    opts = optimset(@fminsearch);    % configures NM options with default values
+    opts.TolX = 1e-8;
+    opts.TolFun = 1e8;
+    PROBLEM = struct('objective',[],'X0',[],'options',opts,'solver','fminsearch');
+    X0 = startpt;
+    PROBLEM.X0 = X0;
+    PROBLEM.objective = @(X0) f(X0);
+    
+    if debug
+        %figure(fig);fig=fig+1;
+        %PROBLEM.options.PlotFcns = 'optimplotfval';  % can plot val or x but not both
+        %PROBLEM.options.PlotFcns = 'optimplotx';     % bar chart of x but cannot also plot val
+        %PROBLEM.options.Display = 'iter'             % display info on a per-iteration basis
+        PROBLEM.options.OutputFcn = @out;             % plots the contour map and points
+        [endpt_BSA,fval,exitflag,outpoint] = fminsearch(PROBLEM);
+        hold off
+        %pause
+    else
+        [endpt_BSA] = fminsearch(PROBLEM);
+    end
+    
+    % endpt_BSA: [normalized modulation frequency, modulaton phase, delta frequency]
+    
+    % verbose status ------------------------------------------------------
+    if verbose
+        fprintf('Total iterations: %d\n',funEvals(phase))
+        nfun = (iFun-1)/2;
+        fList = '';
+        for m = 1:nfun
+            fItem = sprintf('%d: %f \n',m,endpt_BSA(m));
+            fList = sprintf('%s %s',fList,fItem);
+        end
+        fprintf('BSA Frequencies (rad/unit):\n%s',fList);
+    end
+    % end verbose ---------------------------------------------------------    
+    
+ 
+    % Calculates the Amplitude and Phase of the modulated signal after Freq_BSA() has been run
+    % Generated the "best fit" modulated signal and the residual.
+    %
+
+    % preallocate vectors a and b
+    nfun = (iFun-1)/2;
+    a = zeros((nfun+1)/2,1);
+    b = zeros((nfun+1)/2,1);
+    
+    B = V_norm*invD_norm;
+    bi = B*hi;
+    a(1) = bi(1);
+    k = 2;
+    while k <= nfun
+        if k < (nfun+1)/2+1
+            a(k) = bi(k);
+        else
+            b(k-(nfun-1)/2) = bi(k);
+        end
+        k = k+1;
+    end
+    
+    cBSA = complex(a,b);        % complex
+    Modulo_BSA(:,phase) = abs(cBSA);
+    Phi_BSA(:,phase) = -angle(cBSA);
+    
+    % debug: determine the best fit and residual then plot ----------------
+    if debug
+        % determine the best-fit signal
+        wm = 2*pi*Fm(phase);
+        n = double(0:nSamples-1)'*dT;   % time vector
+        Result = Modulo_BSA(2,phase).*cos(2*pi*Fin(phase).*n + Km(phase) * sin(wm.*n+endpt_BSA(2))+Phi_BSA(2,phase));
+        figure(fig);fig=fig+1;
+        subplot(2,1,1)
+        plot(n,Samples(:,phase),n,Result)
+        subplot(2,1,2)
+        plot(n,Samples(:,phase)-Result)
+    end
+    
+    
+    % end debug -----------------------------------------------------------
+    
+    
+    
 end
 
 %% ========================================================================
@@ -135,7 +225,7 @@ end
     end
 
     function stloge = prob(GIJ)
-        iNo = double(nSamples(:,phase));
+        iNo = double(nSamples);
         HIJ = ortho(GIJ);    % orthogonolize the objective function
         nFun = size(HIJ,2);
         hi = zeros(nFun,1);
@@ -177,7 +267,7 @@ end
 %% ========================================================================
 % contour plots for debugging
     function fcontour3(omega,resolution)
-            % plots a 3D contour map of the objective function obj.f(x)
+            % plots a 3D contour map of the objective function f(x)
             % fcontour3(omega,fun, res) 
             %
             %   omega:  
@@ -221,6 +311,22 @@ end
             contour3(x,y,zp,30,'-k')
             xlabel(xLbl),ylabel(yLbl),zlabel('f eval')                        
     end
-%% ========================================================================
-    
+
+
+    function stop = out(x, optimValue, state)
+        % fminsearch output function for ploting the trajectory during NM minimization
+        stop = false;
+        switch state
+            case 'init'
+                hold off
+                f = 2*pi*Fin(phase)*dT;
+                figure(fig);fig=fig+1;
+                fcontour3([f,f;0,2*pi;0,2*dF],30)
+                hold on;
+            case 'iter'
+                plot3(abs(x(2)),abs(x(3)),optimValue.fval,'.');
+                drawnow
+        end
+    end
+   
 end

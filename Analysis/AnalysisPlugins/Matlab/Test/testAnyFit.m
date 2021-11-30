@@ -405,10 +405,9 @@ classdef testAnyFit < matlab.unittest.TestCase
         
         function test50f0_2m0_2a5(self)
             % this is a very high rate FM modulation (peak frequency 5 Hz, peak ROCOF 62 Hz)
-            % the standard modulation fit cannot handle it so I am experimenting with an
-            % HHT fitter
             self.setTsDefaults();
             self.Duration = 2;
+            %self.AnalysisCycles=6;
             [ ~, ~, ~, ~, ~, ~, Fa, Ka, ~, ~] = self.getParamIndex();
             self.SignalParams(Fa,:) = 2.0;
             self.SignalParams(Ka,:) = 2.5;
