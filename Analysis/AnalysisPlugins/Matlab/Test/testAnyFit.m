@@ -31,6 +31,7 @@ classdef testAnyFit < matlab.unittest.TestCase
         expect     %expected values
         fig = 1 % figure numbers
         Window  % the window of data to be analysed
+        even = true;
     end
     
     % % Signal params.  Note that the labeling convention comes mostly from the
@@ -120,17 +121,18 @@ classdef testAnyFit < matlab.unittest.TestCase
     % These functions will be called on   >> "res = run(testCase);"
     methods (Test)
         function regressionTests (self)
+            self.fig = 1;
             %testWindowParamsEven(self);self.fig=self.fig+1;
             %testWindowParamsOdd(self);self.fig=self.fig+1;
             %test4P_50f2(self); self.fig=self.fig+1;
             %test50f0(self); self.fig=self.fig+1;      % test the nominal 50 Hz steady state fit
             %test50f0_100h0(self); self.fig=self.fig+1; 
             %testSSCapture (self); self.fig=self.fig+1; 
-            test50f0_5m0_0x1(self); self.fig=self.fig+1;
-            test50f0_0m9_0x1(self); self.fig=self.fig+1;
-            test50f0_5m0_0a1(self); self.fig=self.fig+1;
-            test50f0_0m9_0a1(self); self.fig=self.fig+1;
-            %test50f0_2m0_2k5(self); self.fig=self.fig+1;
+            %test50f0_5m0_0x1(self); self.fig=self.fig+1; % Amplitude modulation fm = 5, k = 0.1
+            %test50f0_0m9_0x1(self); self.fig=self.fig+1; % Amplitude modularion fm = 0.1, k = 0.1
+            %test50f0_5m0_0a1(self); self.fig=self.fig+1; % Phase modulation, fm = 5, k = 0.1
+            %test50f0_0m9_0a1(self); self.fig=self.fig+1; % Phase Modulation, fm = 5, k = 0.1
+            test50f0_2m0_2a5(self); self.fig=self.fig+1; % Phase Modulationm, fm = 2, k = 2.5
             %testModFitActualData(self);self.fig=self.fig+1;
             %AMcFitExperiment(self); self.fig=self.fig+1;
         end
@@ -366,7 +368,7 @@ classdef testAnyFit < matlab.unittest.TestCase
         end
         
         function test50f0_0m9_0x1(self)
-            self.setTsDefaults()
+            self.setTsDefaults();
             self.AnalysisCycles = 3;
             self.Duration = 2;  % need more than 1 second of data
             [ ~, ~, ~, ~, ~, ~, ~, ~, Fx, Kx] = self.getParamIndex();
@@ -378,7 +380,7 @@ classdef testAnyFit < matlab.unittest.TestCase
         end    
         
        function test50f0_5m0_0a1(self)
-            self.setTsDefaults()
+            self.setTsDefaults();
             self.AnalysisCycles = 3;
             [ ~, ~, ~, ~, ~, ~, Fa, Ka, ~, ~] = self.getParamIndex();
             self.SignalParams(Fa,:) = 5;
@@ -389,7 +391,7 @@ classdef testAnyFit < matlab.unittest.TestCase
         end
         
         function test50f0_0m9_0a1(self)
-            self.setTsDefaults()
+            self.setTsDefaults();
             self.AnalysisCycles = 3;
             %self.TS.N = self.Fs*2;  % need more than 1 second of data
             self.Duration = 2;
@@ -401,12 +403,11 @@ classdef testAnyFit < matlab.unittest.TestCase
             self.runMod1Second(true);           
         end
         
-        function test50f0_2m0_2k5(self)
-            % this is a very high rate modulation (peak frequency 5 Hz, peak ROCOF 62 Hz)
-            % the standard modulation fit cannot handle it so I am experimenting with an
-            % HHT fitter
+        function test50f0_2m0_2a5(self)
+            % this is a very high rate FM modulation (peak frequency 5 Hz, peak ROCOF 62 Hz)
             self.setTsDefaults();
             self.Duration = 2;
+            %self.AnalysisCycles=6;
             [ ~, ~, ~, ~, ~, ~, Fa, Ka, ~, ~] = self.getParamIndex();
             self.SignalParams(Fa,:) = 2.0;
             self.SignalParams(Ka,:) = 2.5;
@@ -503,10 +504,8 @@ classdef testAnyFit < matlab.unittest.TestCase
             expROCOF = actROCOF;
             
             % run a loop for 1 second of simulated data, comparing the fitted SynX against the center values of the window
-            for i = 1:self.F0
-                %self.getWindow(i*(self.Fs/self.F0));
-                
-                self.Window = self.TS.getWindow(i,self.AnalysisCycles,'even');
+            for i = 1:self.F0                
+                self.Window = self.TS.getWindow(i,self.AnalysisCycles,self.even);
                 [actSynx(:,i), actFreq(i), actROCOF(i), iter] = ModulationFit(...
                     self.SignalParams,...
                     self.DlyCorr,...
@@ -520,7 +519,7 @@ classdef testAnyFit < matlab.unittest.TestCase
                 expSynx(:,i) = self.calcSymComp(self.Window.UserData.Vals.')/sqrt(2);
                 expFreq(i) = mean(self.Window.UserData.Freqs(1:3));
                 expROCOF(i) = mean(self.Window.UserData.ROCOFs(1:3));
-                disp([i, iter]);
+                %disp([i, iter]);
             end
             
             act = struct('Synx',actSynx,'Freq',actFreq,'ROCOF',actROCOF);
