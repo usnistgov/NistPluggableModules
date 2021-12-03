@@ -8,7 +8,7 @@ function [Synx,Freq,ROCOF, iterations] = ModulationFit ( ...
     Samples ...
     )
 
-[~,Fin,~,~,~,~,Fa,Ka,Fx,Kx,~,~,~,~,~] = getParamVals(SignalParams);
+[~,Fin,~,~,~,~,Fa,Ka,Fx,Kx,] = getParamVals(SignalParams);
 
 Fm = Fa; Km = Ka;
 % Combined modulation assumes the same modulation frequency and index
