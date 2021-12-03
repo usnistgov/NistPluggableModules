@@ -1,5 +1,5 @@
 function [Synx,Freqs,ROCOFs, iterations] = ModFit2Sb(Fin,Fm,Km,Samples,dt,MagCorr,DelayCorr)
-%Fitter for modulated signals witn modulation index less than 0.3
+%Fitter for modulated signals witn modulation index less than 0.2
 %   Fits to a model with only 2 sidebands
 % inputs:
 %   Fin: Fundamental frequency
@@ -7,6 +7,10 @@ function [Synx,Freqs,ROCOFs, iterations] = ModFit2Sb(Fin,Fm,Km,Samples,dt,MagCor
 %   Km: Modulation Index
 %   Samples: Rows of samples, columns of phases
 %   dt = Sampling period (1/Sample Rate)
+%    
+% Citation: G. N. Stenbakken, "Calculating combined amplitude and phase
+% modulated power signal parameters," 2011 IEEE Power and Energy Society
+% General Meeting, Detroit, MI, USA, 2011, pp. 1-7, doi: 10.1109/PES.2011.6039442.
 
 [NSamples,NPhases] = size(Samples);
 
