@@ -11,12 +11,12 @@ function [Synx,Freqs,ROCOFs, iterations] = ModFitBSA(Fin,Fm,Km,Samples,dT,MagCor
 %
 % Citation:
 %Kyriazis G. A., “Estimating parameters of complex modulated signals from
-%prior information about their arbitrary waveform components,” IEEE Trans.
+%prior information about their arbitrary waveform components,�? IEEE Trans.
 %Instrum. Meas., v. 62, no. 6, pp. 1681-1686, June 2013.
 %
 % Citation:
 % Kyriazis G. A., “A Cartesian method to improve the results and
-% save computation time in Bayesian signal analysis,” in Advanced
+% save computation time in Bayesian signal analysis,�? in Advanced
 % Mathematical and Computational Tools in Metrology and Testing X (AMCTM
 % X), Series on Advances in Mathematics for Applied Sciences, vol. 86, F.
 % Pavese; W. Bremser; A.G. Chunovkina; N. Fischer; A.B. Forbes (eds.),
@@ -256,8 +256,9 @@ end
              M = (M+M.')/2; % The matlab eig function must recognize the matrix as symetrical
              [V,D_vector] = eig(M,'vector');         % eiganvalues and eiganvectors
              SqrSumCol = sum(V.^2);
-             norm = sqrt(SqrSumCol);
-             V_norm = V./norm;
+             norm = sqrt(SqrSumCol);                           
+             %V_norm = V./norm;                       % matlab 2015 has issues with elementwise divide 
+             V_norm = bsxfun(@rdivide,V,norm);       % this is the workaround
              D_vec = sqrt(abs(D_vector));
              D_norm = diag(D_vec);
              invD_norm = inv(D_norm);
