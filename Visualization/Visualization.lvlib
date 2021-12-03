@@ -9,15 +9,19 @@
 	<Item Name="QMH" Type="Folder">
 		<Item Name="Typedefs" Type="Folder"/>
 	</Item>
+	<Item Name="Private" Type="Folder">
+		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
+		<Item Name="PlotTve.vi" Type="VI" URL="../Private/PlotTve.vi"/>
+	</Item>
 	<Item Name="dlgSelectVisApps.vi" Type="VI" URL="../dlgSelectVisApps.vi"/>
 	<Item Name="GetVisPaths.vi" Type="VI" URL="../GetVisPaths.vi"/>
 	<Item Name="VisualizeBase.lvclass" Type="LVClass" URL="../VisualizeBase/VisualizeBase_class/VisualizeBase.lvclass"/>
-	<Item Name="VisualizeStatus.lvclass" Type="LVClass" URL="../VisualizeStatus/VisualizeStatus.lvclass"/>
-	<Item Name="VisualizeDigitizer.lvclass" Type="LVClass" URL="../VisualizeDigitizer/VisualizeDigitizer.lvclass"/>
-	<Item Name="VisualizeAnalysis.lvclass" Type="LVClass" URL="../VisualizeAnalysis/VisualizeAnalysis.lvclass"/>
-	<Item Name="VisualizeScope.lvclass" Type="LVClass" URL="../VisualizeScope/VisualizeScope.lvclass"/>
-	<Item Name="VisualizeAcPwr.lvclass" Type="LVClass" URL="../VisualizeAcPwr/VisualizeAcPwr.lvclass"/>
-	<Item Name="VisualizeSensor.lvclass" Type="LVClass" URL="../VisualizeSensor/VisualizeSensor.lvclass"/>
-	<Item Name="VisualizeFGen.lvclass" Type="LVClass" URL="../VisualizeFGen/VisualizeFGen.lvclass"/>
-	<Item Name="VisualizeSync.lvclass" Type="LVClass" URL="../VisualizeSync/VisualizeSync.lvclass"/>
+	<Item Name="VisualizeStatus.lvclass" Type="LVClass" URL="../StatusAndLog/VisualizeStatus.lvclass"/>
+	<Item Name="VisualizeDigitizer.lvclass" Type="LVClass" URL="../Digitizer/VisualizeDigitizer.lvclass"/>
+	<Item Name="VisualizeScope.lvclass" Type="LVClass" URL="../Scope/VisualizeScope.lvclass"/>
+	<Item Name="VisualizeAcPwr.lvclass" Type="LVClass" URL="../AcPwr/VisualizeAcPwr.lvclass"/>
+	<Item Name="VisualizeSensor.lvclass" Type="LVClass" URL="../Sensor/VisualizeSensor.lvclass"/>
+	<Item Name="VisualizeFGen.lvclass" Type="LVClass" URL="../FGen/VisualizeFGen.lvclass"/>
+	<Item Name="VisualizeSync.lvclass" Type="LVClass" URL="../Sync/VisualizeSync.lvclass"/>
+	<Item Name="VisualizeAnalysis.lvclass" Type="LVClass" URL="../Analysis/VisualizeAnalysis.lvclass"/>
 </Library>
