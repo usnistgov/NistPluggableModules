@@ -42,7 +42,7 @@ iterMax_BSA = 5000;
 epsilon_BSA = 1e-8;
 rho_BSA = [0.85, 0.85, 0.85];
 grid = 20;      % row length for the initial grid search (increase for higher delta-frequency)
-thresh = 1000;  % grid search function value threshold (increase for higher delta-frequency)
+thresh = 3000;  % grid search function value threshold (increase for higher delta-frequency)
 
 
 
