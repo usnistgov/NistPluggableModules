@@ -214,9 +214,11 @@ iterations = funEvals;
 % angle at the center of the window
 n = ceil(nSamples/2);
 wm = 2*pi*Fm;
-%Theta = mod((2*pi*Fin.*n) .* sin(2*pi*Fm.*n+endpt_BSA(2)) + Phi_BSA(2,:),2*pi);
-Theta = (2*pi*Fin.*n) + Km .* sin(2*pi*Fm.*n - Phim_BSA) + Phi_BSA(2,:);
-Synx = -(Modulo_BSA(2,:)/sqrt(2).*exp(-1i*Theta))';  % Why is there a sign inversion?
+wf = 2*pi*Fin;
+Af = (Modulo_BSA(2,:)/sqrt(2))*MagCorr;
+Theta = (wf.*n) + Km .* sin(wm.*n - Phim_BSA) + Phi_BSA(2,:);
+Theta = Theta + DelayCorr*1e-9*wF;
+Synx = -(Af.*exp(-1i*Theta))';  % Why is there a sign inversion?
 
 % Frequency at the center of the window
 Freqs = (Fin - Km .* Fm .* cos(2*pi*Fm.*n+Phim_BSA))';
