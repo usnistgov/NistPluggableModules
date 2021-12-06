@@ -26,8 +26,8 @@ function [Synx,Freqs,ROCOFs, iterations] = ModFitBSA(Fin,Fm,Km,Samples,dT,MagCor
 
 
 % for debugging and visualization
-verbose = true;
-debug = true;
+verbose = false;
+debug = false;
 fig = 1;
 res = 30;
 zp = zeros(res,res);
@@ -61,7 +61,7 @@ hi = zeros(nHarm,1);
 % results
 Modulo_BSA = zeros(2,nPhases);      
 Phi_BSA = zeros(2,nPhases);
-
+Phim_BSA = zeros(1,nPhases);
 
 % BSA of the modulated signal using results of the NLS of the modulated signal
 %
@@ -187,6 +187,7 @@ for phase = 1:nPhases
     cBSA = complex(a,b);        % complex
     Modulo_BSA(:,phase) = abs(cBSA);
     Phi_BSA(:,phase) = -angle(cBSA);
+    Phim_BSA(phase) = endpt_BSA(2);
     
     % debug: determine the best fit and residual then plot ----------------
     if debug
@@ -200,13 +201,29 @@ for phase = 1:nPhases
         subplot(2,1,2)
         plot(n,Samples(:,phase)-Result)
     end
-    
-    
     % end debug -----------------------------------------------------------
     
     
     
-end
+end % for phase = 1:nPhases
+
+
+% Calculate the results: Synx, Freqs, ROCOFS, iterations
+iterations = funEvals;
+
+% angle at the center of the window
+n = ceil(nSamples/2);
+wm = 2*pi*Fm;
+%Theta = mod((2*pi*Fin.*n) .* sin(2*pi*Fm.*n+endpt_BSA(2)) + Phi_BSA(2,:),2*pi);
+Theta = (2*pi*Fin.*n) + Km .* sin(2*pi*Fm.*n - Phim_BSA) + Phi_BSA(2,:);
+Synx = -(Modulo_BSA(2,:)/sqrt(2).*exp(-1i*Theta))';  % Why is there a sign inversion?
+
+% Frequency at the center of the window
+Freqs = (Fin - Km .* Fm .* cos(2*pi*Fm.*n+Phim_BSA))';
+ROCOFs = (Km .* Fm.^2.* sin(2*pi*Fm.*n+Phim_BSA)*2*pi)';
+
+%Freqs = (Fin - Km .* Fm .* cos(2*pi*Fm.*n+endpt_BSA(2)))';
+%ROCOFs = (Km .* Fm.^2.* sin(2*pi*Fm.*n+endpt_BSA(2))*2*pi)';
 
 %% ========================================================================
 % objective function
