@@ -42,7 +42,7 @@ iterMax_BSA = 5000;
 epsilon_BSA = 1e-8;
 rho_BSA = [0.85, 0.85, 0.85];
 grid = 20;      % row length for the initial grid search (increase for higher delta-frequency)
-thresh = 2000;  % grid search function value threshold (increase for higher delta-frequency)
+thresh = 20000;  % grid search function value threshold (increase for higher delta-frequency)
 
 
 % A-priori knowlege about the modulating signal
@@ -215,9 +215,9 @@ n = ceil(nSamples/2);
 wm = 2*pi*Fm;
 wf = 2*pi*Fin;
 Af = (Modulo_BSA(2,:)/sqrt(2)).*MagCorr;
-Theta = (wf.*n) + Km .* sin(wm.*n - Phim_BSA) + Phi_BSA(2,:);
+Theta = mod(wf.*n,2*pi) + Km .* sin(mod(wm.*n,2*pi) - Phim_BSA) + Phi_BSA(2,:);
 Theta = Theta + DelayCorr*1e-9.*wf;
-Synx = -(Af.*exp(-1i*Theta))';  % Why is there a sign inversion?
+Synx = (Af.*exp(-1i*Theta))';  % Why is there a sign inversion?
 
 % Frequency at the center of the window
 Freqs = (Fin - Km .* Fm .* cos(2*pi*Fm.*n+Phim_BSA))';
