@@ -159,14 +159,9 @@ end
     PROBLEM.objective = @(X0) f(X0);
     
     if debug
-        %figure(fig);fig=fig+1;
-        %PROBLEM.options.PlotFcns = 'optimplotfval';  % can plot val or x but not both
-        %PROBLEM.options.PlotFcns = 'optimplotx';     % bar chart of x but cannot also plot val
-        %PROBLEM.options.Display = 'iter'             % display info on a per-iteration basis
         PROBLEM.options.OutputFcn = @out;             % plots the contour map and points
         [endpt_BSA,fval,exitflag,outpoint] = fminsearch(PROBLEM);
         hold off
-        %pause
     else
         [endpt_BSA] = fminsearch(PROBLEM);
     end
@@ -241,9 +236,9 @@ n = ceil(nSamples/2);
 wm = 2*pi*Fm;
 wf = 2*pi*Fin;
 Af = (Modulo_BSA(2,:)/sqrt(2)).*MagCorr;
-Theta = (wf.*n) + Km .* sin(wm.*n - Phim_BSA) + Phi_BSA(2,:);
+Theta = mod(wf.*n,2*pi) + Km .* sin(mod(wm.*n,2*pi) - Phim_BSA) + Phi_BSA(2,:);
 Theta = Theta + DelayCorr*1e-9.*wf;
-Synx = -(Af.*exp(-1i*Theta))';  % Why is there a sign inversion?
+Synx = (Af.*exp(-1i*Theta))';  
 
 % Frequency at the center of the window
 Freqs = (Fin - Km .* Fm .* cos(2*pi*Fm.*n+Phim_BSA))';
