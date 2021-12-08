@@ -26,8 +26,8 @@ function [Synx,Freqs,ROCOFs, iterations] = ModFitBSA(Fin,Fm,Km,Samples,dT,MagCor
 
 
 % for debugging and visualization
-verbose = true;
-debug = true;
+verbose = false;
+debug = false;
 fig = 1;
 res = 30;
 zp = zeros(res,res);
