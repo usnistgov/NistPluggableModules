@@ -132,8 +132,8 @@ classdef testAnyFit < matlab.unittest.TestCase
             %test50f0_0m9_0x1(self); self.fig=self.fig+1; % Amplitude modularion fm = 0.1, k = 0.1
             %test50f0_5m0_0a1(self); self.fig=self.fig+1; % Phase modulation, fm = 5, k = 0.1
             %test50f0_0m9_0a1(self); self.fig=self.fig+1; % Phase Modulation, fm = 5, k = 0.1
-            test50f0_2m0_2a5(self); self.fig=self.fig+1; % Phase Modulationm, fm = 2, k = 2.5
-            %testModFitActualData(self);self.fig=self.fig+1;
+            %test50f0_2m0_2a5(self); self.fig=self.fig+1; % Phase Modulationm, fm = 2, k = 2.5
+            testModFitActualData(self);self.fig=self.fig+1;
             %AMcFitExperiment(self); self.fig=self.fig+1;
         end
     end
@@ -433,7 +433,7 @@ classdef testAnyFit < matlab.unittest.TestCase
         function testModFitActualData(self)
             % open the actual data file captured in PMUCal\output
             self.setTsDefaults();
-            name = fullfile(getenv('USERPROFILE'),'Documents','PMUCAL','Output','SavedModWindows.mat');
+            name = fullfile(getenv('USERPROFILE'),'Documents','PMUCAL','Output','SavedModFit.mat');
             if exist(name,'file')
                 A = open(name);
                 P = A.P;

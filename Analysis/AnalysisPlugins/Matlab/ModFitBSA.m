@@ -26,8 +26,8 @@ function [Synx,Freqs,ROCOFs, iterations] = ModFitBSA(Fin,Fm,Km,Samples,dT,MagCor
 
 
 % for debugging and visualization
-verbose = false;
-debug = false;
+verbose = true;
+debug = true;
 fig = 1;
 res = 30;
 zp = zeros(res,res);
@@ -42,7 +42,7 @@ iterMax_BSA = 5000;
 epsilon_BSA = 1e-8;
 rho_BSA = [0.85, 0.85, 0.85];
 grid = 20;      % row length for the initial grid search (increase for higher delta-frequency)
-thresh = 2000;  % grid search function value threshold (increase for higher delta-frequency)
+thresh = 5000;  % grid search function value threshold (increase for higher delta-frequency)
 
 
 % A-priori knowlege about the modulating signal
@@ -81,26 +81,52 @@ Phim_BSA = zeros(1,nPhases);
 % reach a threshold of the objective function, we know our
 % start value will be good enough.  Typically we get less than 36 fevals
 
-% look for a difference between zBest and zWorst to stop searching
-    funEvals = zeros(1,nPhases);               % count the function evaluations
 for phase = 1:nPhases
     startpt(1) = 2*pi*Fin(phase)*dT;   % carrier angular frequency normalized for samplerate
-    OMEGA2 = linspace(0,2*pi,grid);
+    OMEGA2 = linspace(-pi,pi,grid);
     OMEGA3 = linspace(0,4*2*pi*Delta_Freq(phase)*dT,grid);
     z = zeros(12,10);
-    zWorst = f([startpt(1),OMEGA2(1),OMEGA3(1)]);
-    zBest = zWorst;
-    for k = 1:grid
-        for l = 1:grid
-            z(k,l) =  f([startpt(1),OMEGA2(k),OMEGA3(l)]);
-            if z(k,l) < zBest, zBest = z(k,l); end
-            if z(k,l) > zWorst, zWorst = z(k,l);end
-            if abs(zWorst-zBest) > thresh,break,end
+    funEvals = zeros(1,nPhases);               % count the function evaluations
+    
+% ARG:  A simple threshold is not good enough to cover a wide range of modultaion frequencies and delts-freq. 
+% % look for a difference between zBest and zWorst to stop searching
+
+%     zWorst = f([startpt(1),OMEGA2(1),OMEGA3(1)]);
+%     zBest = zWorst;
+%     for k = 1:grid
+%         for l = 1:grid
+%             z(k,l) =  f([startpt(1),OMEGA2(k),OMEGA3(l)]);
+%             if z(k,l) < zBest, zBest = z(k,l); end
+%             if z(k,l) > zWorst, zWorst = z(k,l);end
+%             if abs(zWorst-zBest) > thresh,break,end
+%         end
+%         if abs(zWorst-zBest) > thresh,break,end
+%     end
+
+% ARG: This grid search finds a high gradient,
+if debug
+    figure(fig), fig=fig+1;
+    dF = 2*pi*Delta_Freq(phase)*dT;
+    fcontour3([startpt(1),startpt(1);-pi,pi;0,2*dF],res)
+    hold on
+end
+
+   for k = 1:grid
+    zLast = f([startpt(1),OMEGA2(1),OMEGA3(k)]);
+       for l = 1:grid
+            z(l,k) =  f([startpt(1),OMEGA2(l),OMEGA3(k)]);
+            if debug
+                plot3(OMEGA2(l),OMEGA3(k),z(l,k),'.')
+            end
+            zCurrent =  z(l,k);
+            if abs(zLast - zCurrent) > thresh,break,end
+            zLast = zCurrent;
         end
-        if abs(zWorst-zBest) > thresh,break,end
+        if abs(zLast - zCurrent) > thresh,break,end
     end
-    startpt(2) = OMEGA2(k);
-    startpt(3) = OMEGA3(l);
+        
+    startpt(2) = OMEGA2(l);
+    startpt(3) = OMEGA3(k);
 
     % verbose status display ----------------------------------------------
     if verbose
@@ -109,15 +135,15 @@ for phase = 1:nPhases
     
     % debugging contour plots ---------------------------------------------
     if debug
-        figure(fig), fig=fig+1;
-        dF = 2*pi*Delta_Freq(phase)*dT;
-        fcontour3([startpt(1),startpt(1);0,2*pi;0,2*dF],res)
-        hold on
-        for m = 1:k
-            for n = 1:l
-                plot3(OMEGA2(m),OMEGA3(n),z(m,n),'.')
-            end
-        end
+%         figure(fig), fig=fig+1;
+%         dF = 2*pi*Delta_Freq(phase)*dT;
+%         fcontour3([startpt(1),startpt(1);-pi,pi;0,2*dF],res)
+%         hold on
+%         for m = 1:k
+%             for n = 1:l
+%                 plot3(OMEGA2(m),OMEGA3(n),z(m,n),'.')
+%             end
+%         end
         hold off
     end
     % End vebose and debug ------------------------------------------------
@@ -340,10 +366,11 @@ ROCOFs = (Km .* Fm.^2.* sin(2*pi*Fm.*n+Phim_BSA)*2*pi)';
                 hold off
                 f = 2*pi*Fin(phase)*dT;
                 figure(fig);fig=fig+1;
-                fcontour3([f,f;0,2*pi;0,2*dF],30)
+                fcontour3([f,f;-pi,pi;0,2*dF],30)
                 hold on;
             case 'iter'
-                plot3(abs(x(2)),abs(x(3)),optimValue.fval,'.');
+                plot3((x(2)),abs(x(3)),optimValue.fval,'.');
+                
                 drawnow
         end
     end
