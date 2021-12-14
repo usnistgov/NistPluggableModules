@@ -27,7 +27,7 @@ function [Synx,Freqs,ROCOFs, iterations] = ModFitBSA(Fin,Fm,Km,Samples,dT,MagCor
 
 % for debugging and visualization
 verbose = false;
-debug = false;
+debug = true;
 fig = 1;
 res = 30;
 zp = zeros(res,res);
@@ -42,12 +42,28 @@ iterMax_BSA = 5000;
 epsilon_BSA = 1e-8;
 rho_BSA = [0.85, 0.85, 0.85];
 grid = 20;      % row length for the initial grid search (increase for higher delta-frequency)
-%thresh = 5000;  % grid search function value threshold (increase for higher delta-frequency)
-thresh = 800;
+%thresh = 10000;  % grid search function value threshold (increase for higher delta-frequency)
+%thresh = 800;
 
 
 % A-priori knowlege about the modulating signal
 Delta_Freq = Km.*Fm;
+
+% Grid search threshold is inversely proportional to delta-frequency
+
+threshMax = 5000;
+threshMin = 500;
+
+if Delta_Freq < 0.5
+        thresh = threshMax;
+    elseif Delta_Freq > 10
+            thresh = threshMin;
+    else
+        thresh = threshMax-Delta_Freq*((threshMax-threshMin)/10);
+    end
+    fprintf('dF = %f, thresh = %f',Delta_Freq,thresh)
+
+
 mod_Freq = 2*pi*Fm*dT;       % modulation angular frequency normalized for sample rate
 mod_Ampl = Km;               % modulation amplitude
 mod_Phase = zeros(1,nPhases); % modulation phase assumed 0, BSA will find this

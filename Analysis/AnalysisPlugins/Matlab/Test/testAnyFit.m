@@ -4,7 +4,8 @@ classdef testAnyFit < matlab.unittest.TestCase
     %   run these tests with two command-line commands:
     %   >> testCase = testAnyFit();
     %   >> res = run(testCase); OR
-    %   >> res = testCase.run();
+    %   >> res = testCase.run;
+    
     %
     %   List of optional Name. Value Parameters showing default parameters
     %       'F0', 50            default nominal frequency
@@ -128,11 +129,11 @@ classdef testAnyFit < matlab.unittest.TestCase
             %test50f0(self); self.fig=self.fig+1;      % test the nominal 50 Hz steady state fit
             %test50f0_100h0(self); self.fig=self.fig+1; 
             %testSSCapture (self); self.fig=self.fig+1; 
-            test50f0_5m0_0x1(self); self.fig=self.fig+1; % Amplitude modulation fm = 5, k = 0.1
-            test50f0_0m9_0x1(self); self.fig=self.fig+1; % Amplitude modularion fm = 0.1, k = 0.1
-            test50f0_5m0_0a1(self); self.fig=self.fig+1; % Phase modulation, fm = 5, k = 0.1
-            test50f0_0m9_0a1(self); self.fig=self.fig+1; % Phase Modulation, fm = 5, k = 0.1
-            test50f0_2m0_2a5(self); self.fig=self.fig+1; % Phase Modulationm, fm = 2, k = 2.5
+            %test50f0_5m0_0x1(self); self.fig=self.fig+1; % Amplitude modulation fm = 5, k = 0.1
+            %test50f0_0m9_0x1(self); self.fig=self.fig+1; % Amplitude modularion fm = 0.1, k = 0.1
+            %test50f0_5m0_0a1(self); self.fig=self.fig+1; % Phase modulation, fm = 5, k = 0.1
+            %test50f0_0m9_0a1(self); self.fig=self.fig+1; % Phase Modulation, fm = 5, k = 0.1
+            %test50f0_2m0_2a5(self); self.fig=self.fig+1; % Phase Modulationm, fm = 2, k = 2.5
             testModIndexRange(self);self.fig=self.fig+1; % Experiment to visualize constant modulation frequencies while the indices are incremented
             testModFreqRange(self); self.fig=self.fig+1; % Experiment to visualize constant modulation index while the frequencies are incremented
             %testModFitActualData(self);self.fig=self.fig+1;
@@ -554,9 +555,6 @@ classdef testAnyFit < matlab.unittest.TestCase
                 Fm = Fm+Fincr;
                 self.fig = self.fig+3;
             end
-                
-                
-         
         end
        
         function testModFitActualData(self)
