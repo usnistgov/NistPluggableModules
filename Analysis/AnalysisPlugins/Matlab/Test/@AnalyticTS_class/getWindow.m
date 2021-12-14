@@ -5,7 +5,7 @@ function window = getWindow(obj,offset,analysisCycles,varargin)
 % fetched. Think of the timeseries data as a circular buffer, the offset
 % can be multiples of the data that is in the ts.
     
-    nWindow = analysisCycles*obj.SampleRate/obj.F0;
+    nWindow = ceil(analysisCycles*obj.SampleRate/obj.F0);
     
     if nargin > 3
         if varargin{1} ~= true

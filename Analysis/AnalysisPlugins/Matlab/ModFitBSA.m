@@ -42,7 +42,8 @@ iterMax_BSA = 5000;
 epsilon_BSA = 1e-8;
 rho_BSA = [0.85, 0.85, 0.85];
 grid = 20;      % row length for the initial grid search (increase for higher delta-frequency)
-thresh = 5000;  % grid search function value threshold (increase for higher delta-frequency)
+%thresh = 5000;  % grid search function value threshold (increase for higher delta-frequency)
+thresh = 800;
 
 
 % A-priori knowlege about the modulating signal
@@ -88,7 +89,7 @@ for phase = 1:nPhases
     z = zeros(12,10);
     funEvals = zeros(1,nPhases);               % count the function evaluations
     
-% ARG:  A simple threshold is not good enough to cover a wide range of modultaion frequencies and delts-freq. 
+% ARG:  A simple threshold is not good enough to cover a wide range of modultaion frequencies and delta-freq. 
 % % look for a difference between zBest and zWorst to stop searching
 
 %     zWorst = f([startpt(1),OMEGA2(1),OMEGA3(1)]);
@@ -111,6 +112,11 @@ if debug
     hold on
 end
 
+if verbose
+    fprintf ('Grid Search Gradients for DeltaF = %f:\n', Delta_Freq)
+    zMin = 0;
+end
+
    for k = 1:grid
     zLast = f([startpt(1),OMEGA2(1),OMEGA3(k)]);
        for l = 1:grid
@@ -119,10 +125,14 @@ end
                 plot3(OMEGA2(l),OMEGA3(k),z(l,k),'.')
             end
             zCurrent =  z(l,k);
-            if abs(zLast - zCurrent) > thresh,break,end
+            zDelta = abs(zLast - zCurrent);
+            if verbose
+                if zCurrent < zMin, zMin = zCurrent; end
+            end
+            if zDelta > thresh,break,end            
             zLast = zCurrent;
         end
-        if abs(zLast - zCurrent) > thresh,break,end
+        if zDelta > thresh,break,end
     end
         
     startpt(2) = OMEGA2(l);
@@ -130,20 +140,12 @@ end
 
     % verbose status display ----------------------------------------------
     if verbose
+        fprintf('zMin = %e, zDelta = %e',zMin,zDelta)
         fprintf('\n==========\nPhase %d, Grid Search: Phase start = %e, DF start = %e, funevals = %d\n',phase,startpt(2),startpt(3),funEvals(1))
     end
     
     % debugging contour plots ---------------------------------------------
     if debug
-%         figure(fig), fig=fig+1;
-%         dF = 2*pi*Delta_Freq(phase)*dT;
-%         fcontour3([startpt(1),startpt(1);-pi,pi;0,2*dF],res)
-%         hold on
-%         for m = 1:k
-%             for n = 1:l
-%                 plot3(OMEGA2(m),OMEGA3(n),z(m,n),'.')
-%             end
-%         end
         hold off
     end
     % End vebose and debug ------------------------------------------------
@@ -207,14 +209,16 @@ end
     cBSA = complex(a,b);        % complex
     Modulo_BSA(:,phase) = abs(cBSA);
     Phi_BSA(:,phase) = -angle(cBSA);
+    Fcarr_BSA(phase) = endpt_BSA(1);
     Phim_BSA(phase) = endpt_BSA(2);
+    dF_BSA(phase) = endpt_BSA(3);
     
     % debug: determine the best fit and residual then plot ----------------
     if debug
         % determine the best-fit signal
         wm = 2*pi*Fm(phase);
         n = double(0:nSamples-1)'*dT;   % time vector
-        Result = Modulo_BSA(2,phase).*cos(2*pi*Fin(phase).*n + Km(phase) * sin(wm.*n+endpt_BSA(2))+Phi_BSA(2,phase));
+        Result = Modulo_BSA(2,phase).*cos(Fcarr_BSA(phase)/dT.*n + dF_BSA(phase)/mod_Freq(phase) * sin(mod_Freq(phase)/dT.*n+Phim_BSA(phase))+Phi_BSA(2,phase));        
         figure(fig);fig=fig+1;
         subplot(2,1,1)
         plot(n,Samples(:,phase),n,Result)
@@ -233,19 +237,16 @@ iterations = funEvals;
 
 % angle at the center of the window
 n = ceil(nSamples/2);
-wm = 2*pi*Fm;
+%wm = 2*pi*Fm;
 wf = 2*pi*Fin;
 Af = (Modulo_BSA(2,:)/sqrt(2)).*MagCorr;
-Theta = mod(wf.*n,2*pi) + Km .* sin(mod(wm.*n,2*pi) - Phim_BSA) + Phi_BSA(2,:);
+Theta = Fcarr_BSA.*n + (dF_BSA/mod_Freq) .* sin(mod_Freq.*n + Phim_BSA) + Phi_BSA(2,:);
 Theta = Theta + DelayCorr*1e-9.*wf;
 Synx = (Af.*exp(-1i*Theta))';  
 
 % Frequency at the center of the window
-Freqs = (Fin - Km .* Fm .* cos(2*pi*Fm.*n+Phim_BSA))';
-ROCOFs = (Km .* Fm.^2.* sin(2*pi*Fm.*n+Phim_BSA)*2*pi)';
-
-%Freqs = (Fin - Km .* Fm .* cos(2*pi*Fm.*n+endpt_BSA(2)))';
-%ROCOFs = (Km .* Fm.^2.* sin(2*pi*Fm.*n+endpt_BSA(2))*2*pi)';
+Freqs = (Fcarr_BSA/(2*pi*dT) - (dF_BSA/mod_Freq) .* Fm .* cos(2*pi*Fm.*n+Phim_BSA))';
+ROCOFs = ((dF_BSA/mod_Freq) .* Fm.^2.* sin(2*pi*Fm.*n+Phim_BSA)*2*pi)';
 
 %% ========================================================================
 % objective function
