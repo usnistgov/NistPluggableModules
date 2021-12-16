@@ -27,7 +27,7 @@ function [Synx,Freqs,ROCOFs, iterations] = ModFitBSA(Fin,Fm,Km,Samples,dT,MagCor
 
 % for debugging and visualization
 verbose = false;
-debug = true;
+debug = false;
 fig = 1;
 res = 30;
 zp = zeros(res,res);
@@ -51,15 +51,16 @@ Delta_Freq = Km.*Fm;
 
 % Grid search threshold is inversely proportional to delta-frequency
 
-threshMax = 5000;
+%threshMax = 5000;
+threshMax = 20000;
 threshMin = 500;
 
 if Delta_Freq < 0.5
         thresh = threshMax;
-    elseif Delta_Freq > 10
+    elseif Delta_Freq > 25
             thresh = threshMin;
     else
-        thresh = threshMax-Delta_Freq*((threshMax-threshMin)/10);
+        thresh = threshMax-Delta_Freq*((threshMax-threshMin)/25);
     end
     fprintf('dF = %f, thresh = %f',Delta_Freq,thresh)
 
@@ -133,24 +134,53 @@ if verbose
     zMin = 0;
 end
 
-   for k = 1:grid
-    zLast = f([startpt(1),OMEGA2(1),OMEGA3(k)]);
-       for l = 1:grid
-            z(l,k) =  f([startpt(1),OMEGA2(l),OMEGA3(k)]);
-            if debug
-                plot3(OMEGA2(l),OMEGA3(k),z(l,k),'.')
-            end
-            zCurrent =  z(l,k);
-            zDelta = abs(zLast - zCurrent);
-            if verbose
-                if zCurrent < zMin, zMin = zCurrent; end
-            end
-            if zDelta > thresh,break,end            
-            zLast = zCurrent;
-        end
-        if zDelta > thresh,break,end
+% Grid search is sensitive to the threshold related to the delta frequency
+% and the local minima.  too small a threshold could find a local minima
+% and fail, too large may miss the start point.  We can check for the
+% case of missing the start point by running the search in a while loop
+
+% loop = true;
+% while loop
+%     
+%     for k = 1:grid
+%         zLast = f([startpt(1),OMEGA2(1),OMEGA3(k)]);
+%         for l = 1:grid
+%             z(l,k) =  f([startpt(1),OMEGA2(l),OMEGA3(k)]);
+%             if debug
+%                 plot3(OMEGA2(l),OMEGA3(k),z(l,k),'.')
+%             end
+%             zCurrent =  z(l,k);
+%             zDelta = abs(zLast - zCurrent);
+%             if verbose
+%                 if zCurrent < zMin, zMin = zCurrent; end
+%             end
+%             if zDelta > thresh,break,end
+%             zLast = zCurrent;
+%         end
+%         if zDelta > thresh,break,end
+%     end
+%     
+%     if (k == grid && l == grid)
+%         thresh = thresh/2;
+%         warning('Grid search failed, retrying with thresh = %f',thresh)
+%     else
+%         loop = false;       
+%     end
+% end
+    
+
+% This is the slow brute force method used because it is difficult at this
+% time to determine the optimal threshold.  this methof just does all the
+% grid points then finds the lowest functioion value.
+for k = 1:grid
+    for l = 1: grid
+        z(l,k) =  f([startpt(1),OMEGA2(l),OMEGA3(k)]);                
     end
-        
+end
+
+minZ = min(z(:));
+[l,k] = find(z==minZ);
+   
     startpt(2) = OMEGA2(l);
     startpt(3) = OMEGA3(k);
 
