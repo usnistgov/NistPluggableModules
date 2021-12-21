@@ -26,8 +26,8 @@ function [Synx,Freqs,ROCOFs, iterations] = ModFitBSA(Fin,Fm,Km,Samples,dT,MagCor
 
 
 % for debugging and visualization
-verbose = true;
-debug = true;
+verbose = false;
+debug = false;
 fig = 1;
 res = 30;
 zp = zeros(res,res);
@@ -92,6 +92,11 @@ p02 = -0.1067;
 thrLog = p00 + p10.*Fm + p01.*Km + p20.*Fm.^2 + p11.*Fm.*Km + p02.*Km.^2;
 ePoint = exp(-thrLog);
 thresh = -0.5*ePoint;
+
+% The threshold is scaled by the number of samples.  The above was sampled
+% at 4800 samples per second.
+thresh = thresh * 1/(4800*dT);
+
 if verbose
     fprintf('Threshhold = %f, Fm = %f, Km = %f',thresh(1),Fm(1),Km(1))
 end
