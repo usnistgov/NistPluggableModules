@@ -36,7 +36,10 @@
 			<Item Name="StatusUpdate.vi" Type="VI" URL="../Protected/Broadcasts/StatusUpdate.vi"/>
 		</Item>
 		<Item Name="Queue" Type="Folder">
+			<Item Name="clAnalysisMsg.ctl" Type="VI" URL="../Protected/Queue/clAnalysisMsg.ctl"/>
+			<Item Name="DeQueue&amp;VTD.vi" Type="VI" URL="../Protected/Queue/DeQueue&amp;VTD.vi"/>
 			<Item Name="Dequeue.vi" Type="VI" URL="../Protected/Queue/Dequeue.vi"/>
+			<Item Name="DTV&amp;EnQueue.vi" Type="VI" URL="../Protected/Queue/DTV&amp;EnQueue.vi"/>
 			<Item Name="Enqueue.vi" Type="VI" URL="../Protected/Queue/Enqueue.vi"/>
 			<Item Name="ObtainQueue.vi" Type="VI" URL="../Protected/Queue/ObtainQueue.vi"/>
 		</Item>
