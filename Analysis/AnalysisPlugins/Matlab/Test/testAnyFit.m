@@ -132,11 +132,13 @@ classdef testAnyFit < matlab.unittest.TestCase
             %test50f0_5m0_0x1(self); self.fig=self.fig+1; % Amplitude modulation fm = 5, k = 0.1
             %test50f0_0m9_0x1(self); self.fig=self.fig+1; % Amplitude modularion fm = 0.1, k = 0.1
             %test50f0_5m0_0a1(self); self.fig=self.fig+1; % Phase modulation, fm = 5, k = 0.1
-            %test50f0_0m9_0a1(self); self.fig=self.fig+1; % Phase Modulation, fm = 5, k = 0.1
+            %test50f0_0m9_0a1(self); self.fig=self.fig+1; % Phase Modulation, fm = .9, k = 0.1
+            %test50f0_1m0_0a5(self); self.fig=self.fig+1; % Phase Modulation, fm = .9, k = 0.5            
+            %test50f0_1m0_5a0(self); self.fig=self.fig+1; % Phase Modulation, fm = 1, k = 0.1
             %test50f0_2m0_2a5(self); self.fig=self.fig+1; % Phase Modulationm, fm = 2, k = 2.5
-            testModIndexRange(self);self.fig=self.fig+1; % Experiment to visualize constant modulation frequencies while the indices are incremented
-            testModFreqRange(self); self.fig=self.fig+1; % Experiment to visualize constant modulation index while the frequencies are incremented
-            %testModFitActualData(self);self.fig=self.fig+1;
+            %testModIndexRange(self);self.fig=self.fig+1; % Experiment to visualize constant modulation frequencies while the indices are incremented
+            %testModFreqRange(self); self.fig=self.fig+1; % Experiment to visualize constant modulation index while the frequencies are incremented
+            testModFitActualData(self);self.fig=self.fig+1;
             %AMcFitExperiment(self); self.fig=self.fig+1;
         end
     end
@@ -406,6 +408,30 @@ classdef testAnyFit < matlab.unittest.TestCase
             self.runMod1Second(true);           
         end
         
+        function test50f0_1m0_0a5(self)
+            self.setTsDefaults();
+            self.AnalysisCycles = 50;
+            self.Duration = 2;
+            [ ~, ~, ~, ~, ~, ~, Fa, Ka, ~, ~] = self.getParamIndex();
+            self.SignalParams(Fa,:) = 1;
+            self.SignalParams(Ka,:) = .5;
+            self.getTimeSeries();
+            self.TS.Ts.Name = 'test50f0_1m0_0a.5';
+            self.runMod1Second(true);           
+        end
+        
+        function test50f0_1m0_5a0(self)
+            self.setTsDefaults();
+            self.AnalysisCycles = 50;
+            self.Duration = 2;
+            [ ~, ~, ~, ~, ~, ~, Fa, Ka, ~, ~] = self.getParamIndex();
+            self.SignalParams(Fa,:) = 1;
+            self.SignalParams(Ka,:) = 5;
+            self.getTimeSeries();
+            self.TS.Ts.Name = 'test50f0_1m0_5a0';
+            self.runMod1Second(true);           
+        end        
+        
         function test50f0_2m0_2a5(self)
             % this is a very high rate FM modulation (peak frequency 5 Hz, peak ROCOF 62 Hz)
             self.setTsDefaults();
@@ -518,7 +544,7 @@ classdef testAnyFit < matlab.unittest.TestCase
             while Fm <= Fmax
                 self.Duration = 1/Fm + 1;    % Need to generate one modulation cycle plus 1 second of data
                 %self.AnalysisCycles = 2*ceil((1/Fm) * self.F0);
-                self.AnalysisCycles = (1/Fm) * self.F0;
+                self.AnalysisCycles = ceil((1/Fm) * self.F0);
                 self.SignalParams(Fa,:) = Fm;
                 self.getTimeSeries();
                 % NAME THE TIME SERIES FOR THE TEST PARAMETERS
@@ -578,8 +604,8 @@ classdef testAnyFit < matlab.unittest.TestCase
             %expROCOF = actROCOF;
             
             
-            
-            for i = 1:numel(P)
+            for i = 8:9            
+            %for i = 1:numel(P)
                 self.SignalParams = P(i).SignalParams;
                 self.DlyCorr = P(i).DelayCorr;
                 self.MagCorr = P(i).MagCorr;

@@ -26,8 +26,8 @@ function [Synx,Freqs,ROCOFs, iterations] = ModFitBSA(Fin,Fm,Km,Samples,dT,MagCor
 
 
 % for debugging and visualization
-verbose = false;
-debug = false;
+verbose = true;
+debug = true;
 fig = 1;
 res = 30;
 zp = zeros(res,res);
@@ -91,20 +91,24 @@ p02 = -0.1067;
 
 thrLog = p00 + p10.*Fm + p01.*Km + p20.*Fm.^2 + p11.*Fm.*Km + p02.*Km.^2;
 ePoint = exp(-thrLog);
-thresh = -0.5*ePoint;
+%thresh = -0.5*ePoint;
 
 % The threshold is scaled by the number of samples.  The above was sampled
 % at 4800 samples per second.
-thresh = thresh * 1/(4800*dT);
+thresh = ePoint * (-.5/(4800*dT));
 
 if verbose
     fprintf('Threshhold = %f, Fm = %f, Km = %f',thresh(1),Fm(1),Km(1))
 end
 
 for phase = 1:nPhases
+    
+    % for each phase, set up the grid search parameters
     startpt(1) = 2*pi*Fin(phase)*dT;   % carrier angular frequency normalized for samplerate
     OMEGA2 = linspace(-pi,pi,grid);
-    OMEGA3 = linspace(0,4*2*pi*Delta_Freq(phase)*dT,grid);
+    %OMEGA3 = linspace(0,4*2*pi*Delta_Freq(phase)*dT,grid);
+    OMEGA3 = linspace(0,2*2*pi*Delta_Freq(phase)*dT,grid);
+    
     z = zeros(grid,grid);
     funEvals = zeros(1,nPhases);               % count the function evaluations
     
@@ -114,96 +118,41 @@ for phase = 1:nPhases
         fcontour3([startpt(1),startpt(1);-pi,pi;0,2*dF],res)
         hold on
     end
-    
-    
-%     zBest = 0;
-%     for l = 1:grid
-%         for k = 1:grid
-%             z(k,l) =  f([startpt(1),OMEGA2(k),OMEGA3(l)]);
-%             if debug
-%                 plot3(OMEGA2(k),OMEGA3(l),z(k,l),'.')
-%             end
-%             if z(k,l) < zBest, zBest = z(k,l); end
-%             if zBest < thresh(phase),break,end
-%         end
-%         if zBest < thresh(phase),break,end
-%     end
-    
-    
+     
+    % perform the grid search
     zWorst = f([startpt(1),OMEGA2(1),OMEGA3(1)]);
     zBest = zWorst;
-    for l = 1:grid
-        for k = 1:grid
-            z(k,l) =  f([startpt(1),OMEGA2(k),OMEGA3(l)]);
+    idxBest = [1,1];
+    idxWorst = [1,1];
+    for m = 1:grid        % Delta-Freq in columns
+        %zWorst = f([startpt(1),OMEGA2(1),OMEGA3(m)]);  % reset worst and best for each row
+        %zBest = zWorst;
+        for k = 1:grid    % Phi in rows
+            z(k,m) =  f([startpt(1),OMEGA2(k),OMEGA3(m)]);
             if debug
-                plot3(OMEGA2(k),OMEGA3(l),z(k,l),'.')
+                plot3(OMEGA2(k),OMEGA3(m),z(k,m),'.')
             end           
-            if z(k,l) < zBest, zBest = z(k,l); end
-            if z(k,l) > zWorst, zWorst = z(k,l);end
-            if abs(zWorst-zBest) > abs(thresh(phase)),break,end
+            if z(k,m) < zBest
+                zBest = z(k,m);
+                idxBest = [k,m];
+            end
+            if z(k,m) > zWorst, zWorst = z(k,m);end
+            %if abs(zWorst-zBest) > abs(thresh(phase)),break,end
+            if zBest-zWorst < thresh(phase),break,end
         end
-        if abs(zWorst-zBest) > abs(thresh(phase)),break,end
+        %if abs(zWorst-zBest) > abs(thresh(phase)),break,end
+        if zBest-zWorst < thresh(phase),break,end        
     end
-%     
-%     loop = true;
-%     while loop
-%         
-%         for k = 1:grid
-%             zLast = f([startpt(1),OMEGA2(1),OMEGA3(k)]);
-%             for l = 1:grid
-%                 z(l,k) =  f([startpt(1),OMEGA2(l),OMEGA3(k)]);
-%                 if debug
-%                     plot3(OMEGA2(l),OMEGA3(k),z(l,k),'.')
-%                 end
-%                 zCurrent =  z(l,k);
-%                 zDelta = abs(zLast - zCurrent);
-%                 if verbose
-%                     if zCurrent < zMin, zMin = zCurrent; end
-%                 end
-%                 if zDelta > thresh,break,end
-%                 zLast = zCurrent;
-%             end
-%             if zDelta > thresh,break,end
-%         end
-%         
-%         if (k == grid && l == grid)
-%             thresh = thresh/2;
-%             warning('Grid search failed, retrying with thresh = %f',thresh)
-%         else
-%             loop = false;
-%         end
-%     end
-    
 
-% if verbose
-%     fprintf ('Grid Search Gradients for DeltaF = %f:\n', Delta_Freq)
-%     zMin = 0;
-% end
-    % % This is the slow brute force method used because it is difficult at this
-    % % time to determine the optimal threshold.  this methof just does all the
-    % % grid points then finds the lowest functioion value.
-    % for k = 1:grid
-    %     for l = 1: grid
-    %         z(l,k) =  f([startpt(1),OMEGA2(l),OMEGA3(k)]);
-    %     end
-    % end
-    % minZ = min(z(:));
-    % [l,k] = find(z==minZ);
-    
-    startpt(2) = OMEGA2(k);
-    startpt(3) = OMEGA3(l);
-    
-%     % verbose status display ----------------------------------------------
-%     if verbose
-%         fprintf('zMin = %e, zDelta = %e',zMin,zDelta)
-%         fprintf('\n==========\nPhase %d, Grid Search: Phase start = %e, DF start = %e, funevals = %d\n',phase,startpt(2),startpt(3),funEvals(1))
-%     end
-    
+    % grid search found starting parameters
+    startpt(2) = OMEGA2(idxBest(1));
+    startpt(3) = OMEGA3(idxBest(2));
+        
     % debugging contour plots ---------------------------------------------
     if debug
         hold off
     end
-    % End vebose and debug ------------------------------------------------
+    % end debug ------------------------------------------------
     
     % Using fminsearch(problem)where problem is a structure.  see MATLAB "doc fminsearch"
     funEvals(phase)=0;               % restart the function counter
