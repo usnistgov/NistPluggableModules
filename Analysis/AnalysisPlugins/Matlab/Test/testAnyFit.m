@@ -4,7 +4,8 @@ classdef testAnyFit < matlab.unittest.TestCase
     %   run these tests with two command-line commands:
     %   >> testCase = testAnyFit();
     %   >> res = run(testCase); OR
-    %   >> res = testCase.run();
+    %   >> res = testCase.run;
+    
     %
     %   List of optional Name. Value Parameters showing default parameters
     %       'F0', 50            default nominal frequency
@@ -131,9 +132,13 @@ classdef testAnyFit < matlab.unittest.TestCase
             %test50f0_5m0_0x1(self); self.fig=self.fig+1; % Amplitude modulation fm = 5, k = 0.1
             %test50f0_0m9_0x1(self); self.fig=self.fig+1; % Amplitude modularion fm = 0.1, k = 0.1
             %test50f0_5m0_0a1(self); self.fig=self.fig+1; % Phase modulation, fm = 5, k = 0.1
-            %test50f0_0m9_0a1(self); self.fig=self.fig+1; % Phase Modulation, fm = 5, k = 0.1
-            test50f0_2m0_2a5(self); self.fig=self.fig+1; % Phase Modulationm, fm = 2, k = 2.5
-            %testModFitActualData(self);self.fig=self.fig+1;
+            %test50f0_0m9_0a1(self); self.fig=self.fig+1; % Phase Modulation, fm = .9, k = 0.1
+            %test50f0_1m0_0a5(self); self.fig=self.fig+1; % Phase Modulation, fm = .9, k = 0.5            
+            %test50f0_1m0_5a0(self); self.fig=self.fig+1; % Phase Modulation, fm = 1, k = 0.1
+            %test50f0_2m0_2a5(self); self.fig=self.fig+1; % Phase Modulationm, fm = 2, k = 2.5
+            %testModIndexRange(self);self.fig=self.fig+1; % Experiment to visualize constant modulation frequencies while the indices are incremented
+            %testModFreqRange(self); self.fig=self.fig+1; % Experiment to visualize constant modulation index while the frequencies are incremented
+            testModFitActualData(self);self.fig=self.fig+1;
             %AMcFitExperiment(self); self.fig=self.fig+1;
         end
     end
@@ -403,6 +408,30 @@ classdef testAnyFit < matlab.unittest.TestCase
             self.runMod1Second(true);           
         end
         
+        function test50f0_1m0_0a5(self)
+            self.setTsDefaults();
+            self.AnalysisCycles = 50;
+            self.Duration = 2;
+            [ ~, ~, ~, ~, ~, ~, Fa, Ka, ~, ~] = self.getParamIndex();
+            self.SignalParams(Fa,:) = 1;
+            self.SignalParams(Ka,:) = .5;
+            self.getTimeSeries();
+            self.TS.Ts.Name = 'test50f0_1m0_0a.5';
+            self.runMod1Second(true);           
+        end
+        
+        function test50f0_1m0_5a0(self)
+            self.setTsDefaults();
+            self.AnalysisCycles = 50;
+            self.Duration = 2;
+            [ ~, ~, ~, ~, ~, ~, Fa, Ka, ~, ~] = self.getParamIndex();
+            self.SignalParams(Fa,:) = 1;
+            self.SignalParams(Ka,:) = 5;
+            self.getTimeSeries();
+            self.TS.Ts.Name = 'test50f0_1m0_5a0';
+            self.runMod1Second(true);           
+        end        
+        
         function test50f0_2m0_2a5(self)
             % this is a very high rate FM modulation (peak frequency 5 Hz, peak ROCOF 62 Hz)
             self.setTsDefaults();
@@ -425,15 +454,139 @@ classdef testAnyFit < matlab.unittest.TestCase
             self.SignalParams(Fa,:) = 5;
             self.SignalParams(Ka,:) = 0.1;
             self.TS = self.getTimeSeries(); 
-            %self.getWindow(0);
-            %[x,y] = prepareCurveData(0:1/self.Fs:1,real(self.Window(1,:)));
             [x,y] = prepareCurveData(self.TS.Ts.Time,self.TS.Ts.Data);
         end
         
+         function testModIndexRange(self)
+         % Experiment to visualize constant modulation frequencies while the indices are incremented  
+         
+           % change the following to set up the important parameters for this experiment
+           self.F0 = 50;
+           % Fm = 5;        % 2.5 Hz to 25 Hz
+           Fm = 1;          % 0.5 Hz to 5 Hz
+           self.Duration = 1/Fm + 1;    % Need to generate one modulation cycle plus 1 second of data
+           self.AnalysisCycles = 1/Fm * self.F0;
+           Kstart = 0.5;
+           Kincr = .5;
+           Kmax = 5;
+           
+         
+            % default settings
+            self.Name = 'testModIndexRange';
+            self.SignalParams = zeros(15,1);        % Only one phase
+            [Xm, Fin, Ps,~,~,~,Fa,Ka] = self.getParamIndex();
+            self.SignalParams(Xm,:) = 1;
+            self.SignalParams(Fin,:) = self.F0;
+            self.SignalParams(Ps,:) = 0;
+            self.SignalParams(Fa,:) = Fm;
+            Km = Kstart;
+            
+            while Km <= Kmax
+                self.SignalParams(Ka,:) = Km;
+                self.getTimeSeries();
+                % NAME THE TIME SERIES FOR THE TEST PARAMETERS
+                qFm=floor(Fm-mod(Fm,1));rFm= floor(mod(Fm,1)*10);qKm=floor(Km-mod(Km,1));rKm= floor(mod(Km,1)*10);
+                self.TS.Ts.Name = sprintf('test%dF0_%dm%d_%da%d\n',self.F0,qFm,rFm,qKm,rKm);
+                %fprintf('%s',self.TS.Ts.Name)
+                
+                % get a window of data then fit the modulation
+                self.Window = self.TS.getWindow(0,self.AnalysisCycles,self.even);
+                [actSynx, actFreq, actROCOF, iter] = ModulationFit(...
+                    self.SignalParams,...
+                    0,...
+                    1,...
+                    self.F0,...
+                    self.AnalysisCycles,...
+                    self.Fs,...
+                    real(self.Window.Data.')...
+                    );
+
+                fprintf('%s: Fmax = %f, ROCOF = %f\n', self.TS.Ts.Name, Km*Fm,2*pi*Fm^2*Km)
+                                              
+                expSynx = self.Window.UserData.Vals/sqrt(2);
+                expFreq = self.Window.UserData.Freqs;
+                expROCOF = self.Window.UserData.ROCOFs;
+            
+                
+                act = struct('Synx',actSynx,'Freq',actFreq,'ROCOF',actROCOF);
+                exp = struct('Synx',expSynx,'Freq',expFreq,'ROCOF',expROCOF);
+                
+                self.verifyEqual(actSynx,expSynx,'AbsTol',1e-6)
+                self.verifyEqual(actFreq,expFreq,'AbsTol',1e-5)
+                self.verifyEqual(actROCOF,expROCOF,'AbsTol',1e-4)
+                                                
+                Km = Km+Kincr;
+                self.fig = self.fig+3;
+            end
+         end
+               
+ 
+         function testModFreqRange(self)
+         % Experiment to visualize constant modulation frequencies while the indices are incremented  
+         
+             % change the following to set up the important parameters for this experiment
+             self.F0 = 50;
+             Km = 5;
+             Fstart = .5;
+             Fincr = .5;
+             Fmax = 5;
+             Fm = Fstart;
+
+            % default settings
+            self.Name = 'testModFreqRange';
+            self.SignalParams = zeros(15,1);        % Only one phase
+            [Xm, Fin, Ps,~,~,~,Fa,Ka] = self.getParamIndex();
+            self.SignalParams(Xm,:) = 1;
+            self.SignalParams(Fin,:) = self.F0;
+            self.SignalParams(Ps,:) = 0;
+            self.SignalParams(Ka,:) = Km;
+            
+            while Fm <= Fmax
+                self.Duration = 1/Fm + 1;    % Need to generate one modulation cycle plus 1 second of data
+                %self.AnalysisCycles = 2*ceil((1/Fm) * self.F0);
+                self.AnalysisCycles = ceil((1/Fm) * self.F0);
+                self.SignalParams(Fa,:) = Fm;
+                self.getTimeSeries();
+                % NAME THE TIME SERIES FOR THE TEST PARAMETERS
+                qFm=floor(Fm-mod(Fm,1));rFm= floor(mod(Fm,1)*10);qKm=floor(Km-mod(Km,1));rKm= floor(mod(Km,1)*10);
+                self.TS.Ts.Name = sprintf('test%dF0_%dm%d_%da%d\n',self.F0,qFm,rFm,qKm,rKm);
+                %fprintf('%s',self.TS.Ts.Name)
+                
+                % get a window of data then fit the modulation
+                self.Window = self.TS.getWindow(0,self.AnalysisCycles,self.even);
+                [actSynx, actFreq, actROCOF, iter] = ModulationFit(...
+                    self.SignalParams,...
+                    0,...
+                    1,...
+                    self.F0,...
+                    self.AnalysisCycles,...
+                    self.Fs,...
+                    real(self.Window.Data.')...
+                    );
+                                              
+                 fprintf('%s: Fmax = %f, ROCOF = %f\n', self.TS.Ts.Name, Km*Fm,2*pi*Fm^2*Km)
+                 
+                expSynx = self.Window.UserData.Vals/sqrt(2);
+                expFreq = self.Window.UserData.Freqs;
+                expROCOF = self.Window.UserData.ROCOFs;
+            
+                
+                act = struct('Synx',actSynx,'Freq',actFreq,'ROCOF',actROCOF);
+                exp = struct('Synx',expSynx,'Freq',expFreq,'ROCOF',expROCOF);
+                
+                self.verifyEqual(actSynx,expSynx,'RelTol',5e-4)
+                self.verifyEqual(actFreq,expFreq,'RelTol',6e-4)
+                self.verifyEqual(actROCOF,expROCOF,'RelTol',3e-4)
+                                                
+                Fm = Fm+Fincr;
+                self.fig = self.fig+3;
+            end
+        end
+       
         function testModFitActualData(self)
             % open the actual data file captured in PMUCal\output
             self.setTsDefaults();
-            name = fullfile(getenv('USERPROFILE'),'Documents','PMUCAL','Output','SavedModWindows.mat');
+            name = fullfile(getenv('USERPROFILE'),'Documents','PMUCAL','Output','SavedModFit.mat');
             if exist(name,'file')
                 A = open(name);
                 P = A.P;
@@ -451,8 +604,8 @@ classdef testAnyFit < matlab.unittest.TestCase
             %expROCOF = actROCOF;
             
             
-            
-            for i = 1:numel(P)
+            for i = 8:9            
+            %for i = 1:numel(P)
                 self.SignalParams = P(i).SignalParams;
                 self.DlyCorr = P(i).DelayCorr;
                 self.MagCorr = P(i).MagCorr;
@@ -488,6 +641,7 @@ classdef testAnyFit < matlab.unittest.TestCase
             plot(actROCOF)
             title('ROCOF')                                     
         end
+        
         
         function runMod1Second(self,bDisplay)
             % run the modularon fitter for 1 second and verify the TVE, 

@@ -26,8 +26,8 @@ function [Synx,Freqs,ROCOFs, iterations] = ModFitBSA(Fin,Fm,Km,Samples,dT,MagCor
 
 
 % for debugging and visualization
-verbose = true;
-debug = true;
+verbose = false;
+debug = false;
 fig = 1;
 res = 30;
 zp = zeros(res,res);
@@ -42,11 +42,8 @@ iterMax_BSA = 5000;
 epsilon_BSA = 1e-8;
 rho_BSA = [0.85, 0.85, 0.85];
 grid = 20;      % row length for the initial grid search (increase for higher delta-frequency)
-thresh = 1000;  % grid search function value threshold (increase for higher delta-frequency)
 
-
-
-% A-priori knowlege about the modulating signal
+% A-priori knowledge about the modulating signal
 Delta_Freq = Km.*Fm;
 mod_Freq = 2*pi*Fm*dT;       % modulation angular frequency normalized for sample rate
 mod_Ampl = Km;               % modulation amplitude
@@ -55,13 +52,13 @@ mod_Phase = zeros(1,nPhases); % modulation phase assumed 0, BSA will find this
 % Function scope variables
 V_norm = [];        % normalized eiganvector of the model
 invD_norm = [];     % normalized inverted eiganvalues of the model
-sigma = 0;          
-hi = zeros(nHarm,1); 
+sigma = 0;
+hi = zeros(nHarm,1);
 
 % results
-Modulo_BSA = zeros(2,nPhases);      
+Modulo_BSA = zeros(2,nPhases);
 Phi_BSA = zeros(2,nPhases);
-
+Phim_BSA = zeros(1,nPhases);
 
 % BSA of the modulated signal using results of the NLS of the modulated signal
 %
@@ -82,46 +79,80 @@ Phi_BSA = zeros(2,nPhases);
 % reach a threshold of the objective function, we know our
 % start value will be good enough.  Typically we get less than 36 fevals
 
-% look for a difference between zBest and zWorst to stop searching
-    funEvals = zeros(1,nPhases);               % count the function evaluations
-for phase = 1:nPhases
-    startpt(1) = 2*pi*Fin(phase)*dT;   % carrier angular frequency normalized for samplerate
-    OMEGA2 = linspace(0,2*pi,grid);
-    OMEGA3 = linspace(0,4*2*pi*Delta_Freq(phase)*dT,grid);
-    z = zeros(12,10);
-    zWorst = f([startpt(1),OMEGA2(1),OMEGA3(1)]);
-    zBest = zWorst;
-    for k = 1:grid
-        for l = 1:grid
-            z(k,l) =  f([startpt(1),OMEGA2(k),OMEGA3(l)]);
-            if z(k,l) < zBest, zBest = z(k,l); end
-            if z(k,l) > zWorst, zWorst = z(k,l);end
-            if abs(zWorst-zBest) > thresh,break,end
-        end
-        if abs(zWorst-zBest) > thresh,break,end
-    end
-    startpt(2) = OMEGA2(k);
-    startpt(3) = OMEGA3(l);
 
-    % verbose status display ----------------------------------------------
-    if verbose
-        fprintf('\n==========\nPhase %d, Grid Search: Phase start = %e, DF start = %e, funevals = %d\n',phase,startpt(2),startpt(3),funEvals(1))
-    end
+% Grid search threshold prediction
+% The threshold for the grid search can be predicted using a function of Fm and Km
+p00 = -10.88;
+p10 = 0.3855;
+p01 = 1.038;
+p20 = -0.02687;
+p11 = -0.0004427;
+p02 = -0.1067;
+
+thrLog = p00 + p10.*Fm + p01.*Km + p20.*Fm.^2 + p11.*Fm.*Km + p02.*Km.^2;
+ePoint = exp(-thrLog);
+%thresh = -0.5*ePoint;
+
+% The threshold is scaled by the number of samples.  The above was sampled
+% at 4800 samples per second.
+thresh = ePoint * (-.5/(4800*dT));
+
+if verbose
+    fprintf('Threshhold = %f, Fm = %f, Km = %f',thresh(1),Fm(1),Km(1))
+end
+
+for phase = 1:nPhases
     
-    % debugging contour plots ---------------------------------------------
+    % for each phase, set up the grid search parameters
+    startpt(1) = 2*pi*Fin(phase)*dT;   % carrier angular frequency normalized for samplerate
+    OMEGA2 = linspace(-pi,pi,grid);
+    %OMEGA3 = linspace(0,4*2*pi*Delta_Freq(phase)*dT,grid);
+    OMEGA3 = linspace(0,2*2*pi*Delta_Freq(phase)*dT,grid);
+    
+    z = zeros(grid,grid);
+    funEvals = zeros(1,nPhases);               % count the function evaluations
+    
     if debug
         figure(fig), fig=fig+1;
         dF = 2*pi*Delta_Freq(phase)*dT;
-        fcontour3([startpt(1),startpt(1);0,2*pi;0,2*dF],res)
+        fcontour3([startpt(1),startpt(1);-pi,pi;0,2*dF],res)
         hold on
-        for m = 1:k
-            for n = 1:l
-                plot3(OMEGA2(m),OMEGA3(n),z(m,n),'.')
+    end
+     
+    % perform the grid search
+    zWorst = f([startpt(1),OMEGA2(1),OMEGA3(1)]);
+    zBest = zWorst;
+    idxBest = [1,1];
+    idxWorst = [1,1];
+    for m = 1:grid        % Delta-Freq in columns
+        %zWorst = f([startpt(1),OMEGA2(1),OMEGA3(m)]);  % reset worst and best for each row
+        %zBest = zWorst;
+        for k = 1:grid    % Phi in rows
+            z(k,m) =  f([startpt(1),OMEGA2(k),OMEGA3(m)]);
+            if debug
+                plot3(OMEGA2(k),OMEGA3(m),z(k,m),'.')
+            end           
+            if z(k,m) < zBest
+                zBest = z(k,m);
+                idxBest = [k,m];
             end
+            if z(k,m) > zWorst, zWorst = z(k,m);end
+            %if abs(zWorst-zBest) > abs(thresh(phase)),break,end
+            if zBest-zWorst < thresh(phase),break,end
         end
+        %if abs(zWorst-zBest) > abs(thresh(phase)),break,end
+        if zBest-zWorst < thresh(phase),break,end        
+    end
+
+    % grid search found starting parameters
+    startpt(2) = OMEGA2(idxBest(1));
+    startpt(3) = OMEGA3(idxBest(2));
+        
+    % debugging contour plots ---------------------------------------------
+    if debug
         hold off
     end
-    % End vebose and debug ------------------------------------------------
+    % end debug ------------------------------------------------
     
     % Using fminsearch(problem)where problem is a structure.  see MATLAB "doc fminsearch"
     funEvals(phase)=0;               % restart the function counter
@@ -134,14 +165,9 @@ for phase = 1:nPhases
     PROBLEM.objective = @(X0) f(X0);
     
     if debug
-        %figure(fig);fig=fig+1;
-        %PROBLEM.options.PlotFcns = 'optimplotfval';  % can plot val or x but not both
-        %PROBLEM.options.PlotFcns = 'optimplotx';     % bar chart of x but cannot also plot val
-        %PROBLEM.options.Display = 'iter'             % display info on a per-iteration basis
         PROBLEM.options.OutputFcn = @out;             % plots the contour map and points
         [endpt_BSA,fval,exitflag,outpoint] = fminsearch(PROBLEM);
         hold off
-        %pause
     else
         [endpt_BSA] = fminsearch(PROBLEM);
     end
@@ -159,13 +185,13 @@ for phase = 1:nPhases
         end
         fprintf('BSA Frequencies (rad/unit):\n%s',fList);
     end
-    % end verbose ---------------------------------------------------------    
+    % end verbose ---------------------------------------------------------
     
- 
+    
     % Calculates the Amplitude and Phase of the modulated signal after Freq_BSA() has been run
     % Generated the "best fit" modulated signal and the residual.
     %
-
+    
     % preallocate vectors a and b
     nfun = (iFun-1)/2;
     a = zeros((nfun+1)/2,1);
@@ -187,26 +213,44 @@ for phase = 1:nPhases
     cBSA = complex(a,b);        % complex
     Modulo_BSA(:,phase) = abs(cBSA);
     Phi_BSA(:,phase) = -angle(cBSA);
+    Fcarr_BSA(phase) = endpt_BSA(1);
+    Phim_BSA(phase) = endpt_BSA(2);
+    dF_BSA(phase) = endpt_BSA(3);
     
     % debug: determine the best fit and residual then plot ----------------
     if debug
         % determine the best-fit signal
         wm = 2*pi*Fm(phase);
         n = double(0:nSamples-1)'*dT;   % time vector
-        Result = Modulo_BSA(2,phase).*cos(2*pi*Fin(phase).*n + Km(phase) * sin(wm.*n+endpt_BSA(2))+Phi_BSA(2,phase));
+        Result = Modulo_BSA(2,phase).*cos(Fcarr_BSA(phase)/dT.*n + dF_BSA(phase)/mod_Freq(phase) * sin(mod_Freq(phase)/dT.*n+Phim_BSA(phase))+Phi_BSA(2,phase));
         figure(fig);fig=fig+1;
         subplot(2,1,1)
         plot(n,Samples(:,phase),n,Result)
         subplot(2,1,2)
         plot(n,Samples(:,phase)-Result)
     end
-    
-    
     % end debug -----------------------------------------------------------
     
     
     
-end
+end % for phase = 1:nPhases
+
+
+% Calculate the results: Synx, Freqs, ROCOFS, iterations
+iterations = funEvals;
+
+% angle at the center of the window
+n = ceil(nSamples/2);
+%wm = 2*pi*Fm;
+wf = 2*pi*Fin;
+Af = (Modulo_BSA(2,:)/sqrt(2)).*MagCorr;
+Theta = Fcarr_BSA.*n + (dF_BSA/mod_Freq) .* sin(mod_Freq.*n + Phim_BSA) + Phi_BSA(2,:);
+Theta = Theta + DelayCorr*1e-9.*wf;
+Synx = (Af.*exp(-1i*Theta))';
+
+% Frequency at the center of the window
+Freqs = (Fcarr_BSA/(2*pi*dT) - (dF_BSA/mod_Freq) .* Fm .* cos(2*pi*Fm.*n+Phim_BSA))';
+ROCOFs = ((dF_BSA/mod_Freq) .* Fm.^2.* sin(2*pi*Fm.*n+Phim_BSA)*2*pi)';
 
 %% ========================================================================
 % objective function
@@ -247,70 +291,70 @@ end
         
         stloge = log(qq)*(nFun-iNo)/2;
         dif = y2bar-nFun*h2bar/iNo;
-        sigma = sqrt(abs(dif)*iNo/(iNo-nFun-2));                
+        sigma = sqrt(abs(dif)*iNo/(iNo-nFun-2));
     end
 
     function HIJ = ortho(GIJ)
-            % Orthogonalizes the hypothesis function
-             M = GIJ'*GIJ;
-             M = (M+M.')/2; % The matlab eig function must recognize the matrix as symetrical
-             [V,D_vector] = eig(M,'vector');         % eiganvalues and eiganvectors
-             SqrSumCol = sum(V.^2);
-             norm = sqrt(SqrSumCol);                           
-             %V_norm = V./norm;                       % matlab 2015 has issues with elementwise divide 
-             V_norm = bsxfun(@rdivide,V,norm);       % this is the workaround
-             D_vec = sqrt(abs(D_vector));
-             D_norm = diag(D_vec);
-             invD_norm = inv(D_norm);
-             A = GIJ*V_norm;
-             HIJ = A*invD_norm;         
+        % Orthogonalizes the hypothesis function
+        M = GIJ'*GIJ;
+        M = (M+M.')/2; % The matlab eig function must recognize the matrix as symetrical
+        [V,D_vector] = eig(M,'vector');         % eiganvalues and eiganvectors
+        SqrSumCol = sum(V.^2);
+        norm = sqrt(SqrSumCol);
+        %V_norm = V./norm;                       % matlab 2015 has issues with elementwise divide
+        V_norm = bsxfun(@rdivide,V,norm);       % this is the workaround
+        D_vec = sqrt(abs(D_vector));
+        D_norm = diag(D_vec);
+        invD_norm = inv(D_norm);
+        A = GIJ*V_norm;
+        HIJ = A*invD_norm;
     end
 %% ========================================================================
 % contour plots for debugging
     function fcontour3(omega,resolution)
-            % plots a 3D contour map of the objective function f(x)
-            % fcontour3(omega,fun, res) 
-            %
-            %   omega:  
-            % an N x 2 matrix with N dimensions and the columns being the begin and
-            % end points for each dimension.  All dimensions except 2 of
-            % them must be the same begin and end point.
-            %
-            %   res:
-            % The number f points to plot in the x and y axis.  The Z axis
-            % will have resolution^2 points           
-            % 
-            %   fun:
-            % Handle to the objective function 
-            % Create vectors of omega values to check.  Also x and y will be the
-            % values to be plotted
-            colOMEGA = size(omega,1);
-            x = []; y = [];
-            OMEGA = [];
-            for ip = 1 : colOMEGA
-                OMEGA = horzcat(OMEGA,linspace(omega(ip,1),omega(ip,2),resolution)');
-                if omega(ip,1)~=omega(ip,2)
-                    if isempty(x)
-                        x = OMEGA(:,ip);
-                        if ip==1,xLbl='Carrier Freq (Hz)';else,xLbl='Phase (rad)';end
-                    else
-                        y = OMEGA(:,ip);
-                        if ip==2,yLbl='Phase (rad)';else,yLbl='Delta Freq (Hz/s)';end                        
-                    end
+        % plots a 3D contour map of the objective function f(x)
+        % fcontour3(omega,fun, res)
+        %
+        %   omega:
+        % an N x 2 matrix with N dimensions and the columns being the begin and
+        % end points for each dimension.  All dimensions except 2 of
+        % them must be the same begin and end point.
+        %
+        %   res:
+        % The number f points to plot in the x and y axis.  The Z axis
+        % will have resolution^2 points
+        %
+        %   fun:
+        % Handle to the objective function
+        % Create vectors of omega values to check.  Also x and y will be the
+        % values to be plotted
+        colOMEGA = size(omega,1);
+        x = []; y = [];
+        OMEGA = [];
+        for ip = 1 : colOMEGA
+            OMEGA = horzcat(OMEGA,linspace(omega(ip,1),omega(ip,2),resolution)');
+            if omega(ip,1)~=omega(ip,2)
+                if isempty(x)
+                    x = OMEGA(:,ip);
+                    if ip==1,xLbl='Carrier Freq (Hz)';else,xLbl='Phase (rad)';end
+                else
+                    y = OMEGA(:,ip);
+                    if ip==2,yLbl='Phase (rad)';else,yLbl='Delta Freq (Hz/s)';end
                 end
             end
-            count = 0;
-            wb=waitbar(count,'Drawing Contour');
-            for ip = 1:resolution
-                for jp = 1:resolution
-                    zp(ip,jp) = f([OMEGA(ip,1),OMEGA(jp,2),OMEGA(ip,3)]);
-                    count = count+1;
-                    waitbar(count/resolution^2)
-                end
+        end
+        count = 0;
+        wb=waitbar(count,'Drawing Contour');
+        for ip = 1:resolution
+            for jp = 1:resolution
+                zp(ip,jp) = f([OMEGA(ip,1),OMEGA(jp,2),OMEGA(ip,3)]);
+                count = count+1;
+                waitbar(count/resolution^2)
             end
-            close(wb)
-            contour3(x,y,zp,30,'-k')
-            xlabel(xLbl),ylabel(yLbl),zlabel('f eval')                        
+        end
+        close(wb)
+        contour3(x,y,zp,30,'-k')
+        xlabel(xLbl),ylabel(yLbl),zlabel('f eval')
     end
 
 
@@ -322,12 +366,13 @@ end
                 hold off
                 f = 2*pi*Fin(phase)*dT;
                 figure(fig);fig=fig+1;
-                fcontour3([f,f;0,2*pi;0,2*dF],30)
+                fcontour3([f,f;-pi,pi;0,2*dF],30)
                 hold on;
             case 'iter'
-                plot3(abs(x(2)),abs(x(3)),optimValue.fval,'.');
+                plot3((x(2)),abs(x(3)),optimValue.fval,'.');
+                
                 drawnow
         end
     end
-   
+
 end

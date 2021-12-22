@@ -46,19 +46,26 @@ else                % Baysian Spectrum Analysis method for wide-bandwidth FM
     [Synx,Freqs,ROCOFs, iterations] = ModFitBSA(Fin,Fm,Km,Samples',1/SampleRate,MagCorr,DelayCorr);
 end % if Km > 0.2
 
-%Calculating symmetrical components
-alfa = exp(2*pi*1i/3);
-Ai = (1/3)*[1 1 1; 1 alfa alfa^2; 1 alfa^2 alfa];
-Vabc = Synx(1:3,:);
-Iabc = Synx(4:6,:);
-Vzpn = Ai*Vabc; %voltage: zero, positive and negative
-Izpn = Ai*Iabc;
-
-%Synx output:
-Synx = [ Vabc.' Vzpn(2) Iabc.' Izpn(2)];
-
-%Freq and ROCOF outputs:
-Freq = mean(Freqs(1:3));
-ROCOF = mean(ROCOFs(1:3));
-
+%If 3 phases of voltage
+nPhases = size(Samples,1);
+if nPhases > 2
+    %Calculating symmetrical components
+    alfa = exp(2*pi*1i/3);
+    Ai = (1/3)*[1 1 1; 1 alfa alfa^2; 1 alfa^2 alfa];
+    Vabc = Synx(1:3,:);
+    Vzpn = Ai*Vabc; %voltage: zero, positive and negative
+    %Freq and ROCOF outputs:
+    Freq = mean(Freqs(1:3));
+    ROCOF = mean(ROCOFs(1:3));
+    if nPhases > 5
+        Iabc = Synx(4:6,:);
+     Izpn = Ai*Iabc;
+     Synx = [ Vabc.' Vzpn(2) Iabc.' Izpn(2)];
+    else
+     Synx = [ Vabc.' Vzpn(2) Synx(4:nPhases,:);];
+    end
+else
+    Freq = Freqs;
+    ROCOF = ROCOFs;
+        
 end

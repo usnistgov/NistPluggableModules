@@ -109,7 +109,7 @@ for i = 1:length(Wh)
     cSignal(i,:) = cSignal(i,:) + ((Kh(i) * (Xm(i))) * (cos(ThetaH(i,:)) + 1i*sin(ThetaH(i,:))));
 end
 
-obj.Ts.Data = cSignal';
+obj.Ts = timeseries(cSignal');
 obj.Ts.Time=t;
 obj.Ts = setuniformtime(obj.Ts,'StartTime',t0,'Interval',1/FSamp); 
 
