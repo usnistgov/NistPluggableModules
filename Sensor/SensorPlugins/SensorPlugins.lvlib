@@ -44,6 +44,7 @@
 			<Item Name="PathToINIBroadcast.vi" Type="VI" URL="../Shared/PathToINIBroadcast.vi"/>
 			<Item Name="SensorConfig.vi" Type="VI" URL="../Shared/SensorConfig.vi"/>
 			<Item Name="SensorReport.vi" Type="VI" URL="../Shared/SensorReport.vi"/>
+			<Item Name="StatusUpdateByModID.vi" Type="VI" URL="../Shared/StatusUpdateByModID.vi"/>
 			<Item Name="StatusUpdate.vi" Type="VI" URL="../Shared/StatusUpdate.vi"/>
 		</Item>
 		<Item Name="clMessage.ctl" Type="VI" URL="../Shared/clMessage.ctl"/>

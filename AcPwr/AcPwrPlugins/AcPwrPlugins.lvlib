@@ -39,6 +39,7 @@
 		<Item Name="Measurements.vi" Type="VI" URL="../Common/Measurements.vi"/>
 		<Item Name="PathToINI.vi" Type="VI" URL="../Common/PathToINI.vi"/>
 		<Item Name="ReloadConfigurationFile.vi" Type="VI" URL="../Common/ReloadConfigurationFile.vi"/>
+		<Item Name="StatusUpdateByModID.vi" Type="VI" URL="../Common/StatusUpdateByModID.vi"/>
 		<Item Name="StatusUpdate.vi" Type="VI" URL="../Common/StatusUpdate.vi"/>
 	</Item>
 	<Item Name="Main.vi" Type="VI" URL="../Common/Main.vi"/>
@@ -48,4 +49,5 @@
 	<Item Name="NHRGridSim.lvclass" Type="LVClass" URL="../NhRegenGridSim/NHRGridSim.lvclass"/>
 	<Item Name="PacificPowerSource.lvclass" Type="LVClass" URL="../PacificPowerSource/PacificPowerSource.lvclass"/>
 	<Item Name="ChromaPowerSupply.lvclass" Type="LVClass" URL="../ChromaPowerSupply/ChromaPowerSupply.lvclass"/>
+	<Item Name="SettingsLV.vi" Type="VI" URL="../Common/SettingsLV.vi"/>
 </Library>
