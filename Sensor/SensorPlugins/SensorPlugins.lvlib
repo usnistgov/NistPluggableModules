@@ -57,10 +57,10 @@
 	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 	<Item Name="SensorBase.lvclass" Type="LVClass" URL="../SensorBaseClass/SensorBase.lvclass"/>
 	<Item Name="PmuBase.lvclass" Type="LVClass" URL="../PmuBaseClass/PmuBase.lvclass"/>
-	<Item Name="C37.118 Sim.lvclass" Type="LVClass" URL="../C37.118_SimClass/C37.118 Sim.lvclass"/>
-	<Item Name="C37.118 PMU.lvclass" Type="LVClass" URL="../C37.118_PmuClass/C37.118 PMU.lvclass"/>
-	<Item Name="Sim_Ideal_PMU.lvclass" Type="LVClass" URL="../Sim_Ideal_PMU/Sim_Ideal_PMU.lvclass"/>
-	<Item Name="SiemensDigitalEnergyMeter.lvclass" Type="LVClass" URL="../SiemensDigitalEnergyMeter/SiemensDigitalEnergyMeter.lvclass"/>
+	<Item Name="C37.118 Sim.lvclass" Type="LVClass" URL="../C37.118 SimClass/C37.118 Sim.lvclass"/>
+	<Item Name="C37.118 PMU.lvclass" Type="LVClass" URL="../C37.118 PMUClass/C37.118 PMU.lvclass"/>
+	<Item Name="Sim_Ideal_PMU.lvclass" Type="LVClass" URL="../Sim_Ideal_PMUClass/Sim_Ideal_PMU.lvclass"/>
+	<Item Name="SiemensDigitalEnergyMeter.lvclass" Type="LVClass" URL="../SiemensDigitalEnergyMeterClass/SiemensDigitalEnergyMeter.lvclass"/>
 	<Item Name="PmuCalCal.lvclass" Type="LVClass" URL="../PmuCalCal/PmuCalCal.lvclass"/>
-	<Item Name="RoomAlert.lvclass" Type="LVClass" URL="../RoomAlert/RoomAlert.lvclass"/>
+	<Item Name="RoomAlert.lvclass" Type="LVClass" URL="../RoomAlertClass/RoomAlert.lvclass"/>
 </Library>
