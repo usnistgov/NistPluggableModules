@@ -15,31 +15,9 @@
 	</Item>
 	<Item Name="Protected" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-		<Item Name="Broadcast" Type="Folder">
-			<Item Name="clBroadcastEvents.ctl" Type="VI" URL="../Protected/Broadcasts/clBroadcastEvents.ctl"/>
-			<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../Protected/Broadcasts/DestroyBroadcastEvents.vi"/>
-			<Item Name="DidInit.vi" Type="VI" URL="../Protected/Broadcasts/DidInit.vi"/>
-			<Item Name="DidStop.vi" Type="VI" URL="../Protected/Broadcasts/DidStop.vi"/>
-			<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../Protected/Broadcasts/ObtainBroadcastEvents.vi"/>
-			<Item Name="ReportError.vi" Type="VI" URL="../Protected/Broadcasts/ReportError.vi"/>
-			<Item Name="StatusUpdate.vi" Type="VI" URL="../Protected/Broadcasts/StatusUpdate.vi"/>
-		</Item>
-		<Item Name="Queue" Type="Folder">
-			<Item Name="Dequeue.vi" Type="VI" URL="../Protected/Queue/Dequeue.vi"/>
-			<Item Name="Enqueue.vi" Type="VI" URL="../Protected/Queue/Enqueue.vi"/>
-			<Item Name="ObtainQueue.vi" Type="VI" URL="../Protected/Queue/ObtainQueue.vi"/>
-		</Item>
 		<Item Name="Requests" Type="Folder">
-			<Item Name="clRequestEvents.ctl" Type="VI" URL="../Protected/Requests/clRequestEvents.ctl"/>
-			<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../Protected/Requests/DestroyRequestEvents.vi"/>
-			<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../Protected/Requests/ObtainRequestEvents.vi"/>
 			<Item Name="ShowPanelRequest.vi" Type="VI" URL="../Protected/Requests/ShowPanelRequest.vi"/>
-			<Item Name="StopRequest.vi" Type="VI" URL="../Protected/Requests/StopRequest.vi"/>
 		</Item>
-		<Item Name="clEventType.ctl" Type="VI" URL="../Protected/clEventType.ctl"/>
-		<Item Name="DestroyClone.vi" Type="VI" URL="../Protected/DestroyClone.vi"/>
-		<Item Name="ErrorHandler.vi" Type="VI" URL="../Protected/ErrorHandler.vi"/>
-		<Item Name="HandleExit.vi" Type="VI" URL="../Protected/HandleExit.vi"/>
 	</Item>
 	<Item Name="PublicAPI" Type="Folder">
 		<Item Name="Arguments" Type="Folder">
@@ -51,15 +29,10 @@
 			<Item Name="Messages" Type="Folder">
 				<Item Name="clMessage.ctl" Type="VI" URL="../PublicAPI/Arguments/Messages/clMessage.ctl"/>
 			</Item>
-			<Item Name="Requests" Type="Folder">
-				<Item Name="clStopArgument.ctl" Type="VI" URL="../PublicAPI/Arguments/Requests/clStopArgument.ctl"/>
-			</Item>
+			<Item Name="Requests" Type="Folder"/>
 		</Item>
-		<Item Name="Broadcasts" Type="Folder">
-			<Item Name="ObtainBroadcastForRegistration.vi" Type="VI" URL="../PublicAPI/Broadcasts/ObtainBroadcastForRegistration.vi"/>
-		</Item>
+		<Item Name="Broadcasts" Type="Folder"/>
 		<Item Name="StartClone.vi" Type="VI" URL="../PublicAPI/StartClone.vi"/>
-		<Item Name="StopClone.vi" Type="VI" URL="../PublicAPI/StopClone.vi"/>
 	</Item>
 	<Item Name="Test" Type="Folder">
 		<Item Name="IniFiles.vi" Type="VI" URL="../Test/IniFiles.vi"/>
@@ -69,6 +42,5 @@
 		<Item Name="TestWriteOneSamp.vi" Type="VI" URL="../Test/TestWriteOneSamp.vi"/>
 		<Item Name="UpdateSelectRing.vi" Type="VI" URL="../Test/UpdateSelectRing.vi"/>
 	</Item>
-	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 	<Item Name="TestCloneAPI.vi" Type="VI" URL="../Test/TestCloneAPI.vi"/>
 </Library>

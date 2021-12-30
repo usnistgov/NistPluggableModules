@@ -29,10 +29,13 @@
 		<Item Name="Queue" Type="Folder">
 			<Item Name="EnqueueType.ctl" Type="VI" URL="../Shared/EnqueueType.ctl"/>
 			<Item Name="DequeueType.ctl" Type="VI" URL="../Shared/DequeueType.ctl"/>
+			<Item Name="QueueType.ctl" Type="VI" URL="../Shared/QueueType.ctl"/>
 			<Item Name="CreateQueueNames.vi" Type="VI" URL="../Shared/CreateQueueNames.vi"/>
 			<Item Name="Dequeue.vi" Type="VI" URL="../Shared/Dequeue.vi"/>
 			<Item Name="Enqueue.vi" Type="VI" URL="../Shared/Enqueue.vi"/>
 			<Item Name="ObtainQueue.vi" Type="VI" URL="../Shared/ObtainQueue.vi"/>
+			<Item Name="DeQueue&amp;VTD.vi" Type="VI" URL="../Shared/DeQueue&amp;VTD.vi"/>
+			<Item Name="DTV&amp;EnQueue.vi" Type="VI" URL="../Shared/DTV&amp;EnQueue.vi"/>
 		</Item>
 		<Item Name="Broadcasts" Type="Folder">
 			<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../Shared/DestroyBroadcastEvents.vi"/>
@@ -41,6 +44,7 @@
 			<Item Name="PathToINIBroadcast.vi" Type="VI" URL="../Shared/PathToINIBroadcast.vi"/>
 			<Item Name="SensorConfig.vi" Type="VI" URL="../Shared/SensorConfig.vi"/>
 			<Item Name="SensorReport.vi" Type="VI" URL="../Shared/SensorReport.vi"/>
+			<Item Name="StatusUpdateByModID.vi" Type="VI" URL="../Shared/StatusUpdateByModID.vi"/>
 			<Item Name="StatusUpdate.vi" Type="VI" URL="../Shared/StatusUpdate.vi"/>
 		</Item>
 		<Item Name="clMessage.ctl" Type="VI" URL="../Shared/clMessage.ctl"/>
@@ -53,8 +57,10 @@
 	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 	<Item Name="SensorBase.lvclass" Type="LVClass" URL="../SensorBaseClass/SensorBase.lvclass"/>
 	<Item Name="PmuBase.lvclass" Type="LVClass" URL="../PmuBaseClass/PmuBase.lvclass"/>
-	<Item Name="C37.118 Sim.lvclass" Type="LVClass" URL="../C37.118_SimClass/C37.118 Sim.lvclass"/>
-	<Item Name="C37.118 PMU.lvclass" Type="LVClass" URL="../C37.118_PmuClass/C37.118 PMU.lvclass"/>
-	<Item Name="Sim_Ideal_PMU.lvclass" Type="LVClass" URL="../Sim_Ideal_PMU/Sim_Ideal_PMU.lvclass"/>
-	<Item Name="SiemensDigitalEnergyMeter.lvclass" Type="LVClass" URL="../SiemensDigitalEnergyMeter/SiemensDigitalEnergyMeter.lvclass"/>
+	<Item Name="C37.118 Sim.lvclass" Type="LVClass" URL="../C37.118 SimClass/C37.118 Sim.lvclass"/>
+	<Item Name="C37.118 PMU.lvclass" Type="LVClass" URL="../C37.118 PMUClass/C37.118 PMU.lvclass"/>
+	<Item Name="Sim_Ideal_PMU.lvclass" Type="LVClass" URL="../Sim_Ideal_PMUClass/Sim_Ideal_PMU.lvclass"/>
+	<Item Name="SiemensDigitalEnergyMeter.lvclass" Type="LVClass" URL="../SiemensDigitalEnergyMeterClass/SiemensDigitalEnergyMeter.lvclass"/>
+	<Item Name="PmuCalCal.lvclass" Type="LVClass" URL="../PmuCalCal/PmuCalCal.lvclass"/>
+	<Item Name="RoomAlert.lvclass" Type="LVClass" URL="../RoomAlertClass/RoomAlert.lvclass"/>
 </Library>

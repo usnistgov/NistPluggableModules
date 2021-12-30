@@ -20,6 +20,7 @@
 		<Item Name="StopClone.vi" Type="VI" URL="../PublicAPI/StopClone.vi"/>
 	</Item>
 	<Item Name="Requests" Type="Folder">
+		<Item Name="AbortRequest.vi" Type="VI" URL="../Requests/AbortRequest.vi"/>
 		<Item Name="CloseRequest.vi" Type="VI" URL="../Requests/CloseRequest.vi"/>
 		<Item Name="ConfigDeviceRequest.vi" Type="VI" URL="../Requests/ConfigDeviceRequest.vi"/>
 		<Item Name="DeviceOffRequest.vi" Type="VI" URL="../Requests/DeviceOffRequest.vi"/>
@@ -30,6 +31,7 @@
 		<Item Name="PathToINIRequest.vi" Type="VI" URL="../Requests/PathToINIRequest.vi"/>
 		<Item Name="PrefDlgRequest.vi" Type="VI" URL="../Requests/PrefDlgRequest.vi"/>
 		<Item Name="ResetRequest.vi" Type="VI" URL="../Requests/ResetRequest.vi"/>
+		<Item Name="SetParameter.vi" Type="VI" URL="../Requests/SetParameter.vi"/>
 		<Item Name="SetSettingsRequest.vi" Type="VI" URL="../Requests/SetSettingsRequest.vi"/>
 		<Item Name="ShowPanelRequest.vi" Type="VI" URL="../Requests/ShowPanelRequest.vi"/>
 		<Item Name="StartMeasurementRequest.vi" Type="VI" URL="../Requests/StartMeasurementRequest.vi"/>
@@ -43,5 +45,6 @@
 		<Item Name="TestInfo.vi" Type="VI" URL="../Test/TestInfo.vi"/>
 		<Item Name="UpdateSelectRing.vi" Type="VI" URL="../Test/UpdateSelectRing.vi"/>
 	</Item>
+	<Item Name="GetSettingsRequestLV.vi" Type="VI" URL="../Requests/GetSettingsRequestLV.vi"/>
 	<Item Name="TestCloneAPI.vi" Type="VI" URL="../Test/TestCloneAPI.vi"/>
 </Library>

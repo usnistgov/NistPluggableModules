@@ -44,7 +44,6 @@
 		<Property Name="NI.SortType" Type="Int">3</Property>
 		<Item Name="Requests" Type="Folder">
 			<Item Name="ConfigureRequest.vi" Type="VI" URL="../Protected/Requests/ConfigureRequest.vi"/>
-			<Item Name="LoadPluginRequest.vi" Type="VI" URL="../Protected/Requests/LoadPluginRequest.vi"/>
 			<Item Name="PathToINIRequest.vi" Type="VI" URL="../Protected/Requests/PathToINIRequest.vi"/>
 			<Item Name="ReadConfigRequest.vi" Type="VI" URL="../Protected/Requests/ReadConfigRequest.vi"/>
 			<Item Name="ShowPanelRequest.vi" Type="VI" URL="../Protected/Requests/ShowPanelRequest.vi"/>
@@ -65,6 +64,7 @@
 		<Item Name="Broadcasts" Type="Folder">
 			<Item Name="ObtainBroadcastForRegistration.vi" Type="VI" URL="../PublicAPI/Broadcasts/ObtainBroadcastForRegistration.vi"/>
 		</Item>
+		<Item Name="LoadPluginRequest.vi" Type="VI" URL="../Protected/Requests/LoadPluginRequest.vi"/>
 		<Item Name="StartClone.vi" Type="VI" URL="../PublicAPI/StartClone.vi"/>
 	</Item>
 	<Item Name="Test" Type="Folder">
@@ -73,6 +73,9 @@
 		<Item Name="TestInfo.ctl" Type="VI" URL="../Test/TestInfo.ctl"/>
 		<Item Name="TestInfo.vi" Type="VI" URL="../Test/TestInfo.vi"/>
 		<Item Name="UpdateSelectRing.vi" Type="VI" URL="../Test/UpdateSelectRing.vi"/>
+	</Item>
+	<Item Name="SetT0Request.vi" Type="VI" URL="../Protected/Requests/SetT0Request.vi">
+		<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
 	</Item>
 	<Item Name="TestCloneAPI.vi" Type="VI" URL="../Test/TestCloneAPI.vi"/>
 </Library>

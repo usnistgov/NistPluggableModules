@@ -26,7 +26,8 @@ function [Synx,Freq,ROCOF,iterations] = RampFit ( ...
 %     KxS = signalparams(13,:);   % magnitude step index
 
 % Freq and ROCOF must be the same for all channels
-fGuess = SignalParams(2,1);
+%fGuess = SignalParams(2,1);
+fGuess = F0;
 dfGuess = SignalParams(11,1);
 
 fitCrit = 1e-5;
@@ -79,28 +80,28 @@ for p = 1:NPhases
     end
     
     iterations(p) = k;
-    Ain(p) = sqrt(A^2+B^2); %TODO: Multiply by MagCorr(p)
-    phi(p) = atan2(B,A);    %TODO: Add DelayCorr(p)*1e-9*2*pi*fh;
+    Ain(p) = sqrt(A^2+B^2)*MagCorr(p); %TODO: Multiply by MagCorr(p)
+    phi(p) = atan2(B,A) + DelayCorr(p)*1e-9*2*pi*Freqs(p);    %TODO: Add DelayCorr(p)*1e-9*2*pi*fh;
     Freqs(p) = f;
     dFreqs(p) = dfGuess;    %TODO: Assumes that dfGuess is correct.  
 end
 
-Synx = Ain/sqrt(2).*exp(-1i.*phi);
+Synx = (Ain/sqrt(2).*exp(-1i.*phi)).';
 
 %Calculating symmetrical components
 if NPhases > 2
     alfa = exp(2*pi*1i/3);
     Ai = (1/3)*[1 1 1; 1 alfa alfa^2; 1 alfa^2 alfa];
     
-    Vabc = Synx(1:3);
-    Vzpn = Ai*Vabc'; %voltage: zero, positive and negative sequence
+    Vabc = Synx(1:3,:);
+    Vzpn = Ai*Vabc; %voltage: zero, positive and negative sequence
     
     if NPhases > 5
-        Iabc = Synx(4:6);
-        Izpn = Ai*Iabc'; %curren: zero, positive and negative sequence
+        Iabc = Synx(4:6,:);
+        Izpn = Ai*Iabc; %curren: zero, positive and negative sequence
         
         %Synx output:
-        Synx = [ Vabc Vzpn(2) Iabc Izpn(2)];
+        Synx = [ Vabc.' Vzpn(2) Iabc.' Izpn(2)];
     else
         Synx = [Vabc.' Vzpn(2)];
     end
