@@ -34,6 +34,7 @@
 			<Item Name="StatusUpdate.vi" Type="VI" URL="../Protected/Broadcasts/StatusUpdate.vi"/>
 			<Item Name="SyncBroadcastEvents.ctl" Type="VI" URL="../Protected/Broadcasts/SyncBroadcastEvents.ctl"/>
 			<Item Name="SyncData.vi" Type="VI" URL="../Protected/Broadcasts/SyncData.vi"/>
+			<Item Name="TimingSession.vi" Type="VI" URL="../Protected/Broadcasts/TimingSession.vi"/>
 			<Item Name="TriggerTime.vi" Type="VI" URL="../Protected/Broadcasts/TriggerTime.vi"/>
 		</Item>
 		<Item Name="Queue" Type="Folder">
