@@ -51,7 +51,9 @@
 			<Item Name="CloseSessionRequest.vi" Type="VI" URL="../Protected/Requests/CloseSessionRequest.vi"/>
 			<Item Name="StartDataRequest.vi" Type="VI" URL="../Protected/Requests/StartDataRequest.vi"/>
 			<Item Name="StopDataRequest.vi" Type="VI" URL="../Protected/Requests/StopDataRequest.vi"/>
+			<Item Name="SetT0Request.vi" Type="VI" URL="../Protected/Requests/SetT0Request.vi"/>
 			<Item Name="WriteConfigRequest.vi" Type="VI" URL="../Protected/Requests/WriteConfigRequest.vi"/>
+			<Item Name="WriteClkHandleRequest.vi" Type="VI" URL="../Protected/Requests/WriteClkHandleRequest.vi"/>
 		</Item>
 	</Item>
 	<Item Name="PublicAPI" Type="Folder">
@@ -73,9 +75,6 @@
 		<Item Name="TestInfo.ctl" Type="VI" URL="../Test/TestInfo.ctl"/>
 		<Item Name="TestInfo.vi" Type="VI" URL="../Test/TestInfo.vi"/>
 		<Item Name="UpdateSelectRing.vi" Type="VI" URL="../Test/UpdateSelectRing.vi"/>
-	</Item>
-	<Item Name="SetT0Request.vi" Type="VI" URL="../Protected/Requests/SetT0Request.vi">
-		<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
 	</Item>
 	<Item Name="TestCloneAPI.vi" Type="VI" URL="../Test/TestCloneAPI.vi"/>
 </Library>
