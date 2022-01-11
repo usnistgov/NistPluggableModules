@@ -29,6 +29,6 @@
 	<Item Name="FFT.lvclass" Type="LVClass" URL="../FftClass/FFT.lvclass"/>
 	<Item Name="FitterBase.lvclass" Type="LVClass" URL="../FitterBaseClass/FitterBase.lvclass"/>
 	<Item Name="PmuAnalysis.lvclass" Type="LVClass" URL="../PmuAnalysisClass/PmuAnalysis.lvclass"/>
-	<Item Name="PmuDelayClass.lvclass" Type="LVClass" URL="../PmuDelayClass/PmuDelayClass.lvclass"/>
+	<Item Name="PmuDelay.lvclass" Type="LVClass" URL="../PmuDelayClass/PmuDelay.lvclass"/>
 	<Item Name="SaveWaveforms.lvclass" Type="LVClass" URL="../SaveWaveformsClass/SaveWaveforms.lvclass"/>
 </Library>

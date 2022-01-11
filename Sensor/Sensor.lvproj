@@ -74,13 +74,10 @@
 				<Item Name="Waveform Subtype Enum__ogtk.ctl" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Waveform Subtype Enum__ogtk.ctl"/>
 				<Item Name="Write Key (Variant)__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/variantconfig/variantconfig.llb/Write Key (Variant)__ogtk.vi"/>
 				<Item Name="Write Section Cluster__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/variantconfig/variantconfig.llb/Write Section Cluster__ogtk.vi"/>
-				<Item Name="DeQueueType.ctl" Type="VI" URL="/&lt;userlib&gt;/NIST/ModuleAdminLib/ModuleAdmin/TypeDefinitions/DeQueueType.ctl"/>
-				<Item Name="QueueEntry.ctl" Type="VI" URL="/&lt;userlib&gt;/NIST/ModuleAdminLib/ModuleAdmin/TypeDefinitions/QueueEntry.ctl"/>
-				<Item Name="QueueType.ctl" Type="VI" URL="/&lt;userlib&gt;/NIST/ModuleAdminLib/ModuleAdmin/TypeDefinitions/QueueType.ctl"/>
-				<Item Name="Dequeue.vi" Type="VI" URL="/&lt;userlib&gt;/NIST/ModuleAdminLib/ModuleAdmin/Dequeue.vi"/>
-				<Item Name="Enqueue.vi" Type="VI" URL="/&lt;userlib&gt;/NIST/ModuleAdminLib/ModuleAdmin/Enqueue.vi"/>
-				<Item Name="QueueProperties.ctl" Type="VI" URL="/&lt;userlib&gt;/NIST/ModuleAdminLib/ModuleAdmin/TypeDefinitions/QueueProperties.ctl"/>
-				<Item Name="CloseQueue.vi" Type="VI" URL="/&lt;userlib&gt;/NIST/ModuleAdminLib/ModuleAdmin/CloseQueue.vi"/>
+				<Item Name="Write INI Cluster__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/variantconfig/variantconfig.llb/Write INI Cluster__ogtk.vi"/>
+				<Item Name="Get Cluster Element Names__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Get Cluster Element Names__ogtk.vi"/>
+				<Item Name="Get Cluster Elements TDs__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/lvdata/lvdata.llb/Get Cluster Elements TDs__ogtk.vi"/>
+				<Item Name="Read INI Cluster__ogtk.vi" Type="VI" URL="/&lt;userlib&gt;/_OpenG.lib/variantconfig/variantconfig.llb/Read INI Cluster__ogtk.vi"/>
 			</Item>
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="8.6CompatibleGlobalVar.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/config.llb/8.6CompatibleGlobalVar.vi"/>
@@ -482,6 +479,49 @@
 				<Item Name="Error to Warning.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Error to Warning.vi"/>
 				<Item Name="Get File Extension.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Get File Extension.vi"/>
 				<Item Name="High Resolution Polling Wait.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/High Resolution Polling Wait.vi"/>
+				<Item Name="System Directory Type.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/sysdir.llb/System Directory Type.ctl"/>
+				<Item Name="Get System Directory.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/sysdir.llb/Get System Directory.vi"/>
+				<Item Name="Compare Two Paths.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Compare Two Paths.vi"/>
+				<Item Name="IviACPwr Configure Output Enabled.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviacpwr/_IviACPwr.llb/IviACPwr Configure Output Enabled.vi"/>
+				<Item Name="IviACPwr IVI Error Converter.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviacpwr/_IviACPwr.llb/IviACPwr IVI Error Converter.vi"/>
+				<Item Name="subTimeDelay.vi" Type="VI" URL="/&lt;vilib&gt;/express/express execution control/TimeDelayBlock.llb/subTimeDelay.vi"/>
+				<Item Name="Get Project Library Version.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/Get Project Library Version.vi"/>
+				<Item Name="LVDateTimeRec.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVDateTimeRec.ctl"/>
+				<Item Name="TRef Traverse for References.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/traverseref.llb/TRef Traverse for References.vi"/>
+				<Item Name="TRef TravTarget.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/traverseref.llb/TRef TravTarget.ctl"/>
+				<Item Name="VI Scripting - Traverse.lvlib" Type="Library" URL="/&lt;vilib&gt;/Utility/traverseref.llb/VI Scripting - Traverse.lvlib"/>
+				<Item Name="High Resolution Relative Seconds.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/High Resolution Relative Seconds.vi"/>
+				<Item Name="Binary to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDT.llb/Binary to Digital.vi"/>
+				<Item Name="DWDT Binary U32 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Binary U32 to Digital.vi"/>
+				<Item Name="DTbl Binary U32 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Binary U32 to Digital.vi"/>
+				<Item Name="Compress Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDT.llb/Compress Digital.vi"/>
+				<Item Name="DTbl Compress Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Compress Digital.vi"/>
+				<Item Name="DWDT Compress Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Compress Digital.vi"/>
+				<Item Name="DWDT Binary U16 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Binary U16 to Digital.vi"/>
+				<Item Name="DTbl Binary U16 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Binary U16 to Digital.vi"/>
+				<Item Name="DWDT Binary U8 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DWDTOps.llb/DWDT Binary U8 to Digital.vi"/>
+				<Item Name="DTbl Binary U8 to Digital.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/DTblOps.llb/DTbl Binary U8 to Digital.vi"/>
+				<Item Name="IviScope Close.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Close.vi"/>
+				<Item Name="IviScope Configure Acquisition Type.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure Acquisition Type.vi"/>
+				<Item Name="IviScope IVI Error Converter.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope IVI Error Converter.vi"/>
+				<Item Name="IviScope Configure Acquisition Record.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure Acquisition Record.vi"/>
+				<Item Name="IviScope Configure Number of Averages [AA].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure Number of Averages [AA].vi"/>
+				<Item Name="IviScope Configure Interpolation [I].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure Interpolation [I].vi"/>
+				<Item Name="IviScope Configure Channel.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure Channel.vi"/>
+				<Item Name="IviScope Configure Channel Characteristics.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure Channel Characteristics.vi"/>
+				<Item Name="IviScope Configure Trigger.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure Trigger.vi"/>
+				<Item Name="IviScope Configure Trigger Coupling.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure Trigger Coupling.vi"/>
+				<Item Name="IviScope Configure Edge Trigger Source.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure Edge Trigger Source.vi"/>
+				<Item Name="IviScope Configure Width Trigger Source [WT].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure Width Trigger Source [WT].vi"/>
+				<Item Name="IviScope Configure Runt Trigger Source [RT].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure Runt Trigger Source [RT].vi"/>
+				<Item Name="IviScope Configure Glitch Trigger Source [GT].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure Glitch Trigger Source [GT].vi"/>
+				<Item Name="IviScope Configure TV Trigger Source [TV].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure TV Trigger Source [TV].vi"/>
+				<Item Name="IviScope Configure AC Line Trigger Slope [AT].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure AC Line Trigger Slope [AT].vi"/>
+				<Item Name="IviScope Initialize With Options.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Initialize With Options.vi"/>
+				<Item Name="IviScope Configure Initiate Continuous [CA].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure Initiate Continuous [CA].vi"/>
+				<Item Name="IviScope Actual Record Length.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Actual Record Length.vi"/>
+				<Item Name="IviScope Read Waveform.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Read Waveform.vi"/>
+				<Item Name="TRef Traverse.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/traverseref.llb/TRef Traverse.vi"/>
 			</Item>
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="niSync Initialize.vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Initialize.vi"/>
@@ -520,6 +560,162 @@
 				<Item Name="niSync Send Software Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Send Software Trigger.vi"/>
 				<Item Name="niSync Create Future Time Event.vi" Type="VI" URL="/&lt;instrlib&gt;/niSync/niSync.llb/niSync Create Future Time Event.vi"/>
 				<Item Name="Agilent 3458.lvlib" Type="Library" URL="/&lt;instrlib&gt;/Agilent 3458/Agilent 3458.lvlib"/>
+				<Item Name="C63800 Get RL Programmable Range.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get RL Programmable Range.vi"/>
+				<Item Name="C63800.dll" Type="Document" URL="/&lt;instrlib&gt;/C63800/C63800.dll"/>
+				<Item Name="C63800 IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 IVI Error Converter.vi"/>
+				<Item Name="C63800 Get CF Programmable Range.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get CF Programmable Range.vi"/>
+				<Item Name="C63800 Get PF Programmable Range.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get PF Programmable Range.vi"/>
+				<Item Name="C63800 Get Protect Status.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get Protect Status.vi"/>
+				<Item Name="C63800 Set Load State.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Load State.vi"/>
+				<Item Name="C63800 Close.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Close.vi"/>
+				<Item Name="C63800 Set Load Mode.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Load Mode.vi"/>
+				<Item Name="C63800 Set AC or DC Mode.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set AC or DC Mode.vi"/>
+				<Item Name="C63800 Set Load Short Circuited.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Load Short Circuited.vi"/>
+				<Item Name="C63800 Set Ip(max) of DC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Ip(max) of DC.vi"/>
+				<Item Name="C63800 Set DC Voltage of CV.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set DC Voltage of CV.vi"/>
+				<Item Name="C63800 Set Maximum AC Power Loading.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Maximum AC Power Loading.vi"/>
+				<Item Name="C63800 Set DC Power Loading.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set DC Power Loading.vi"/>
+				<Item Name="C63800 Set Ip(max) of AC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Ip(max) of AC.vi"/>
+				<Item Name="C63800 Set AC Power Loading.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set AC Power Loading.vi"/>
+				<Item Name="C63800 Set CF of AC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set CF of AC.vi"/>
+				<Item Name="C63800 Set PF of AC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set PF of AC.vi"/>
+				<Item Name="C63800 Set CF PF Mode.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set CF PF Mode.vi"/>
+				<Item Name="C63800 Set CF PF Priority.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set CF PF Priority.vi"/>
+				<Item Name="C63800 Set Fall Slew Rate of CC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Fall Slew Rate of CC.vi"/>
+				<Item Name="C63800 Set Rise Slew Rate of CC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Rise Slew Rate of CC.vi"/>
+				<Item Name="C63800 Set DC Current.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set DC Current.vi"/>
+				<Item Name="C63800 Set Maximum RMS Current.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Maximum RMS Current.vi"/>
+				<Item Name="C63800 Set RMS Current.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set RMS Current.vi"/>
+				<Item Name="C63800 Set DC Resistance Loading.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set DC Resistance Loading.vi"/>
+				<Item Name="C63800 Set Rise Slew Rate of CR.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Rise Slew Rate of CR.vi"/>
+				<Item Name="C63800 Set Fall Slew Rate of CR.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Fall Slew Rate of CR.vi"/>
+				<Item Name="C63800 Set Irms(max) In AC CR.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Irms(max) In AC CR.vi"/>
+				<Item Name="C63800 Set Resistance Loading.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Resistance Loading.vi"/>
+				<Item Name="C63800 Set SYNC State of DC Rectified.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set SYNC State of DC Rectified.vi"/>
+				<Item Name="C63800 Set Frequency of DC Rectified.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Frequency of DC Rectified.vi"/>
+				<Item Name="C63800 Set RS of AC Inrush.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set RS of AC Inrush.vi"/>
+				<Item Name="C63800 Set RL of AC Inrush.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set RL of AC Inrush.vi"/>
+				<Item Name="C63800 Set LS of AC Inrush.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set LS of AC Inrush.vi"/>
+				<Item Name="C63800 Set C of AC Inrush.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set C of AC Inrush.vi"/>
+				<Item Name="C63800 Set Power of AC RLC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Power of AC RLC.vi"/>
+				<Item Name="C63800 Set PF of AC RLC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set PF of AC RLC.vi"/>
+				<Item Name="C63800 Set RS of AC RLC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set RS of AC RLC.vi"/>
+				<Item Name="C63800 Set RL of AC RLC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set RL of AC RLC.vi"/>
+				<Item Name="C63800 Set Ls of AC RLC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Ls of AC RLC.vi"/>
+				<Item Name="C63800 Set C of AC RLC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set C of AC RLC.vi"/>
+				<Item Name="C63800 Set CF of DC.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set CF of DC.vi"/>
+				<Item Name="C63800 Phase Select.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Phase Select.vi"/>
+				<Item Name="C63800 Initialize With Options.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Initialize With Options.vi"/>
+				<Item Name="C63800 Reset.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Reset.vi"/>
+				<Item Name="C63800 Measure Or Fetch Voltage.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Voltage.vi"/>
+				<Item Name="C63800 Measure Or Fetch Current.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Current.vi"/>
+				<Item Name="C63800 Measure Or Fetch Power.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Power.vi"/>
+				<Item Name="C63800 Measure Or Fetch Peak Voltage.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Peak Voltage.vi"/>
+				<Item Name="C63800 Set Peak Current Meas Hold.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Set Peak Current Meas Hold.vi"/>
+				<Item Name="C63800 Measure Or Fetch Peak Current.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Peak Current.vi"/>
+				<Item Name="C63800 Measure Or Fetch Peak Power.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Peak Power.vi"/>
+				<Item Name="C63800 Measure Or Fetch Frequency.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Frequency.vi"/>
+				<Item Name="C63800 Measure Or Fetch Resistance.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Resistance.vi"/>
+				<Item Name="C63800 M/F Overshoot Voltage.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 M/F Overshoot Voltage.vi"/>
+				<Item Name="C63800 M/F Negative Peak Current.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 M/F Negative Peak Current.vi"/>
+				<Item Name="C63800 M/F Undershoot Voltage.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 M/F Undershoot Voltage.vi"/>
+				<Item Name="C63800 M/F Apparent Power.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 M/F Apparent Power.vi"/>
+				<Item Name="C63800 M/F Power Reactive.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 M/F Power Reactive.vi"/>
+				<Item Name="C63800 Measure Or Fetch Voltage THD.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch Voltage THD.vi"/>
+				<Item Name="C63800 M/F Power Factor.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 M/F Power Factor.vi"/>
+				<Item Name="C63800 Measure Or Fetch CF of Current.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Measure Or Fetch CF of Current.vi"/>
+				<Item Name="NHRDCPowerModule.lvlib" Type="Library" URL="/&lt;instrlib&gt;/NHRDCPowerModule/NHRDCPowerModule/NHRDCPowerModule.lvlib"/>
+				<Item Name="NH Research 9400 Series.lvlib" Type="Library" URL="/&lt;instrlib&gt;/NH Research 9400 Series/NH Research 9400 Series.lvlib"/>
+				<Item Name="Fetch Extended Background Measurements.vi" Type="VI" URL="/&lt;instrlib&gt;/NH Research 9400 Series/Public/Data/Fetch Extended Background Measurements.vi"/>
+				<Item Name="Pacific Power UPC Series.lvlib" Type="Library" URL="/&lt;instrlib&gt;/Pacific Power UPC Series/Pacific Power UPC Series.lvlib"/>
+				<Item Name="PPS_UPC SOURce Steady State Ouput.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC SOURce Steady State Ouput.vi"/>
+				<Item Name="PPS_UPC PROGram Steady State Ouput.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC PROGram Steady State Ouput.vi"/>
+				<Item Name="PPS_UPC PROGram a WaveForm.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC PROGram a WaveForm.vi"/>
+				<Item Name="PPS_UPC EXECute PROGram.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC EXECute PROGram.vi"/>
+				<Item Name="PPS_UPC Config Output FREQuency Parameters.vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC Config Output FREQuency Parameters.vi"/>
+				<Item Name="PPS_UPC MEASure (all data values).vi" Type="VI" URL="/&lt;instrlib&gt;/PPSUPC/PPSUPC.llb/PPS_UPC MEASure (all data values).vi"/>
+				<Item Name="chr62000P Abort.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Abort.vi"/>
+				<Item Name="chr62000P Set Output.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Output.vi"/>
+				<Item Name="chr62000P Close.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Close.vi"/>
+				<Item Name="chr62000P Set Current Limit.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Current Limit.vi"/>
+				<Item Name="chr62000P Set Voltage Limit.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Voltage Limit.vi"/>
+				<Item Name="chr62000P Set Voltage.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Voltage.vi"/>
+				<Item Name="chr62000P Set Current.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Current.vi"/>
+				<Item Name="chr62000P Set Power Protect.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Power Protect.vi"/>
+				<Item Name="chr62000P Set Current Protect.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Current Protect.vi"/>
+				<Item Name="chr62000P Set Voltage Protect.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Set Voltage Protect.vi"/>
+				<Item Name="chr62000P Initialize With Options.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Initialize With Options.vi"/>
+				<Item Name="chr62000P Reset.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Reset.vi"/>
+				<Item Name="chr62000P Measure.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Measure.vi"/>
+				<Item Name="chr62000P Fetch.vi" Type="VI" URL="/&lt;instrlib&gt;/chr62000P/chr62000P.llb/chr62000P Fetch.vi"/>
+				<Item Name="Agilent 90000 Series.lvlib" Type="Library" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Agilent 90000 Series.lvlib"/>
+				<Item Name="niScope Close.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/niScope Close.vi"/>
+				<Item Name="niScope Get Session Reference.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Utility/niScope Get Session Reference.vi"/>
+				<Item Name="niScope acquisition type.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope acquisition type.ctl"/>
+				<Item Name="niScope Configure Acquisition.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/niScope Configure Acquisition.vi"/>
+				<Item Name="niScope LabVIEW Error.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Utility/niScope LabVIEW Error.vi"/>
+				<Item Name="niScope Configure Horizontal Timing.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Horizontal/niScope Configure Horizontal Timing.vi"/>
+				<Item Name="niScope Auto Setup.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/niScope Auto Setup.vi"/>
+				<Item Name="niScope vertical coupling.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope vertical coupling.ctl"/>
+				<Item Name="niScope Configure Vertical.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Vertical/niScope Configure Vertical.vi"/>
+				<Item Name="niScope Configure Chan Characteristics.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Vertical/niScope Configure Chan Characteristics.vi"/>
+				<Item Name="niScope trigger slope.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope trigger slope.ctl"/>
+				<Item Name="niScope Configure Trigger (poly).vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger (poly).vi"/>
+				<Item Name="niScope Configure Trigger Digital.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Digital.vi"/>
+				<Item Name="niScope trigger source digital.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope trigger source digital.ctl"/>
+				<Item Name="niScope Configure Trigger Edge.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Edge.vi"/>
+				<Item Name="niScope trigger coupling.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope trigger coupling.ctl"/>
+				<Item Name="niScope trigger source.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope trigger source.ctl"/>
+				<Item Name="niScope Configure Trigger Hysteresis.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Hysteresis.vi"/>
+				<Item Name="niScope Configure Trigger Immediate.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Immediate.vi"/>
+				<Item Name="niScope Configure Trigger Software.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Software.vi"/>
+				<Item Name="niScope Configure Trigger Window.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Window.vi"/>
+				<Item Name="niScope trigger window mode.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope trigger window mode.ctl"/>
+				<Item Name="niScope Configure Video Trigger.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Video Trigger.vi"/>
+				<Item Name="niScope tv event.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope tv event.ctl"/>
+				<Item Name="niScope polarity.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope polarity.ctl"/>
+				<Item Name="niScope signal format.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope signal format.ctl"/>
+				<Item Name="niScope Configure Trigger Glitch.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Glitch.vi"/>
+				<Item Name="niScope trigger polarity.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope trigger polarity.ctl"/>
+				<Item Name="niScope glitch condition.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope glitch condition.ctl"/>
+				<Item Name="niScope Configure Trigger Runt.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Runt.vi"/>
+				<Item Name="niScope Configure Trigger Width.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Trigger/niScope Configure Trigger Width.vi"/>
+				<Item Name="niScope Initialize With Options.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/niScope Initialize With Options.vi"/>
+				<Item Name="niScope Fetch (poly).vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Fetch (poly).vi"/>
+				<Item Name="niScope Fetch Binary 8.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Fetch Binary 8.vi"/>
+				<Item Name="niScope Fetch Error Chain.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Fetch Error Chain.vi"/>
+				<Item Name="niScope Multi Fetch Binary 16.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Multi Fetch Binary 16.vi"/>
+				<Item Name="niScope Fetch Binary 16.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Fetch Binary 16.vi"/>
+				<Item Name="niScope Multi Fetch Binary 32.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Multi Fetch Binary 32.vi"/>
+				<Item Name="niScope Fetch Binary 32.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Fetch Binary 32.vi"/>
+				<Item Name="niScope Multi Fetch Binary 8.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Multi Fetch Binary 8.vi"/>
+				<Item Name="niScope Fetch Cluster.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Fetch Cluster.vi"/>
+				<Item Name="niScope Multi Fetch Cluster.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Multi Fetch Cluster.vi"/>
+				<Item Name="niScope Fetch.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Fetch.vi"/>
+				<Item Name="niScope Multi Fetch.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Multi Fetch.vi"/>
+				<Item Name="niScope Fetch WDT.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Fetch WDT.vi"/>
+				<Item Name="niScope timestamp type.ctl" Type="VI" URL="/&lt;instrlib&gt;/niScope/Controls/niScope timestamp type.ctl"/>
+				<Item Name="niScope Multi Fetch WDT.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Multi Fetch WDT.vi"/>
+				<Item Name="niScope Fetch Complex Double.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Fetch Complex Double.vi"/>
+				<Item Name="niScope Multi Fetch Complex Double.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Multi Fetch Complex Double.vi"/>
+				<Item Name="niScope Fetch Cluster Complex Double.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Fetch Cluster Complex Double.vi"/>
+				<Item Name="niScope Multi Fetch Cluster Complex Double.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Multi Fetch Cluster Complex Double.vi"/>
+				<Item Name="niScope Fetch Complex WDT.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Fetch Complex WDT.vi"/>
+				<Item Name="niScope Multi Fetch Complex WDT.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Multi Fetch Complex WDT.vi"/>
+				<Item Name="niTClk Initiate.vi" Type="VI" URL="/&lt;instrlib&gt;/niTClk/niTClk.llb/niTClk Initiate.vi"/>
+				<Item Name="niTClk Fill In Error Info.vi" Type="VI" URL="/&lt;instrlib&gt;/niTClk/niTClk.llb/niTClk Fill In Error Info.vi"/>
+				<Item Name="niScope Initiate Acquisition.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Initiate Acquisition.vi"/>
+				<Item Name="niScope Commit.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Utility/niScope Commit.vi"/>
+				<Item Name="niTClk Configure For Homogeneous Triggers.vi" Type="VI" URL="/&lt;instrlib&gt;/niTClk/niTClk.llb/niTClk Configure For Homogeneous Triggers.vi"/>
+				<Item Name="niTClk Synchronize.vi" Type="VI" URL="/&lt;instrlib&gt;/niTClk/niTClk.llb/niTClk Synchronize.vi"/>
+				<Item Name="niScope Abort.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Abort.vi"/>
+				<Item Name="niScope Read (poly).vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/niScope Read (poly).vi"/>
+				<Item Name="niScope Read Cluster.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/niScope Read Cluster.vi"/>
+				<Item Name="niScope Actual Record Length.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Horizontal/niScope Actual Record Length.vi"/>
+				<Item Name="niScope Multi Read Cluster.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/niScope Multi Read Cluster.vi"/>
+				<Item Name="niScope Actual Num Wfms.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Utility/niScope Actual Num Wfms.vi"/>
+				<Item Name="niScope Read WDT.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/niScope Read WDT.vi"/>
+				<Item Name="niScope Multi Read WDT.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/niScope Multi Read WDT.vi"/>
 			</Item>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
 			<Item Name="SyncModule.lvlib" Type="Library" URL="../../Sync/SyncModule/SyncModule.lvlib"/>
@@ -563,46 +759,66 @@
 			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="SNMP Open Port.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Open Port.vi"/>
-			<Item Name="SNMP Close Port.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Close Port.vi"/>
-			<Item Name="SNMP OID to String.VI" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP OID to String.VI"/>
-			<Item Name="SNMP Byte Array to Int32.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Byte Array to Int32.vi"/>
-			<Item Name="SNMP Type to String.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Type to String.vi"/>
-			<Item Name="byte array to number.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/byte array to number.vi"/>
-			<Item Name="Sequence length convert.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/Sequence length convert.vi"/>
-			<Item Name="SNMP Encode SubID.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Encode SubID.vi"/>
-			<Item Name="SNMP Build OID.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Build OID.vi"/>
-			<Item Name="CTL - SNMP Types.ctl" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/CTL - SNMP Types.ctl"/>
-			<Item Name="Parse SNMP Tuple.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/Parse SNMP Tuple.vi"/>
-			<Item Name="SNMP Type Num to Type String.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Type Num to Type String.vi"/>
-			<Item Name="SNMP Parse Sequence Data.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Parse Sequence Data.vi"/>
-			<Item Name="Parse SNMP Packet Header.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/Parse SNMP Packet Header.vi"/>
-			<Item Name="SNMP Parse SNMP Packet.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Parse SNMP Packet.vi"/>
-			<Item Name="SNMP Get Response.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Get Response.vi"/>
-			<Item Name="SNMP Build Get Sequence.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Build Get Sequence.vi"/>
-			<Item Name="SNMP Build Get Request Packet.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Build Get Request Packet.vi"/>
-			<Item Name="SNMP Get Request.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Get Request.vi"/>
-			<Item Name="Get snmp Item(s).vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/Get snmp Item(s).vi"/>
-			<Item Name="SNMP ASCII Hex String To Binary String.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP ASCII Hex String To Binary String.vi"/>
-			<Item Name="SNMP String to Smallest Int Array.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP String to Smallest Int Array.vi"/>
-			<Item Name="SNMP String to Type.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP String to Type.vi"/>
-			<Item Name="SNMP Build Set Sequence.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Build Set Sequence.vi"/>
-			<Item Name="SNMP Build Set Request Packet.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Build Set Request Packet.vi"/>
-			<Item Name="SNMP Set Request.vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/SNMP Set Request.vi"/>
-			<Item Name="Set snmp Item(s).vi" Type="VI" URL="../SensorPlugins/RoomAlert/snmp communication.llb/Set snmp Item(s).vi"/>
-			<Item Name="matscript.dll" Type="Document"/>
-			<Item Name="Remove Empty Strings and White Spaces From a String Array.vi" Type="VI" URL="../../../SubVI/String/Remove Empty Strings and White Spaces From a String Array.vi"/>
-			<Item Name="OpenVisualizations.vi" Type="VI" URL="../../../SubVI/OpenVisualizations.vi"/>
+			<Item Name="SNMP Open Port.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Open Port.vi"/>
+			<Item Name="SNMP Close Port.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Close Port.vi"/>
+			<Item Name="SNMP OID to String.VI" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP OID to String.VI"/>
+			<Item Name="SNMP Byte Array to Int32.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Byte Array to Int32.vi"/>
+			<Item Name="SNMP Type to String.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Type to String.vi"/>
+			<Item Name="byte array to number.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/byte array to number.vi"/>
+			<Item Name="Sequence length convert.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/Sequence length convert.vi"/>
+			<Item Name="SNMP Encode SubID.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Encode SubID.vi"/>
+			<Item Name="SNMP Build OID.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Build OID.vi"/>
+			<Item Name="CTL - SNMP Types.ctl" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/CTL - SNMP Types.ctl"/>
+			<Item Name="Parse SNMP Tuple.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/Parse SNMP Tuple.vi"/>
+			<Item Name="SNMP Type Num to Type String.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Type Num to Type String.vi"/>
+			<Item Name="SNMP Parse Sequence Data.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Parse Sequence Data.vi"/>
+			<Item Name="Parse SNMP Packet Header.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/Parse SNMP Packet Header.vi"/>
+			<Item Name="SNMP Parse SNMP Packet.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Parse SNMP Packet.vi"/>
+			<Item Name="SNMP Get Response.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Get Response.vi"/>
+			<Item Name="SNMP Build Get Sequence.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Build Get Sequence.vi"/>
+			<Item Name="SNMP Build Get Request Packet.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Build Get Request Packet.vi"/>
+			<Item Name="SNMP Get Request.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Get Request.vi"/>
+			<Item Name="Get snmp Item(s).vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/Get snmp Item(s).vi"/>
+			<Item Name="SNMP ASCII Hex String To Binary String.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP ASCII Hex String To Binary String.vi"/>
+			<Item Name="SNMP String to Smallest Int Array.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP String to Smallest Int Array.vi"/>
+			<Item Name="SNMP String to Type.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP String to Type.vi"/>
+			<Item Name="SNMP Build Set Sequence.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Build Set Sequence.vi"/>
+			<Item Name="SNMP Build Set Request Packet.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Build Set Request Packet.vi"/>
+			<Item Name="SNMP Set Request.vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Set Request.vi"/>
+			<Item Name="Set snmp Item(s).vi" Type="VI" URL="../SensorPlugins/RoomAlertClass/snmp communication.llb/Set snmp Item(s).vi"/>
 			<Item Name="Ini_lib.lvlib" Type="Library" URL="../../../LV_Ini/Ini_lib.lvlib"/>
-			<Item Name="ObtainUserEvents.vi" Type="VI" URL="../../../UserEvents/ObtainUserEvents.vi"/>
-			<Item Name="PopInOutButton.ctl" Type="VI" URL="../../../SubVI/VisulaizationManagement/PopInOutButton.ctl"/>
-			<Item Name="Enqueue.vi" Type="VI" URL="../../../Queue/Enqueue.vi"/>
-			<Item Name="GetSetConfigClass.vi" Type="VI" URL="../../../LV_Config_class/Public/GetSetConfigClass.vi"/>
-			<Item Name="Config.lvclass" Type="LVClass" URL="../../../LV_Config_class/Config.lvclass"/>
-			<Item Name="Create.vi" Type="VI" URL="../../../LV_Config_class/Public/Create.vi"/>
-			<Item Name="ExtractINIInfo.vi" Type="VI" URL="../../../SubVI/ExtractINIInfo.vi"/>
 			<Item Name="libsystem_kernel.dylib" Type="Document" URL="/usr/lib/system/libsystem_kernel.dylib"/>
 			<Item Name="Visualization.lvlib" Type="Library" URL="../../Visualization/Visualization.lvlib"/>
+			<Item Name="VisualizationManagerActions.ctl" Type="VI" URL="../../../SubVI/VisualizationManagement/VisualizationManagerActions.ctl"/>
+			<Item Name="VisualizationManager.vi" Type="VI" URL="../../../SubVI/VisualizationManagement/VisualizationManager.vi"/>
+			<Item Name="OpenVisualizationVIs.ctl" Type="VI" URL="../../../SubVI/VisualizationManagement/OpenVisualizationVIs.ctl"/>
+			<Item Name="cntlRefs.vi" Type="VI" URL="../../../Framework/cntlRefs.vi"/>
+			<Item Name="cntlRefs.ctl" Type="VI" URL="../../../TypeDefs/cntlRefs.ctl"/>
+			<Item Name="Message Queue.lvlib" Type="Library" URL="../../../SubVI/Message Queue/Message Queue.lvlib"/>
+			<Item Name="SortVisuualizationModuleInfoArray.vi" Type="VI" URL="../../../SubVI/VisualizationManagement/SortVisuualizationModuleInfoArray.vi"/>
+			<Item Name="Config_class.lvlib" Type="Library" URL="../../../LV_Config_class/Config_class.lvlib"/>
+			<Item Name="SensorQueue.ctl" Type="VI" URL="../../Analysis/AnalysisPlugins/AnalysisPluginBaseClass/Typedefs/SensorQueue.ctl"/>
+			<Item Name="FgenShared.lvlib" Type="Library" URL="../../FGen/FgenShared/FgenShared.lvlib"/>
+			<Item Name="AcPwrPlugins.lvlib" Type="Library" URL="../../AcPwr/AcPwrPlugins/AcPwrPlugins.lvlib"/>
+			<Item Name="GetParamAndUnitFromCommand.vi" Type="VI" URL="../../AcPwr/AcPwrPlugins/AcPwrBaseClass/PublicMethods/GetParamAndUnitFromCommand.vi"/>
+			<Item Name="IviACPwr_ni.dll" Type="Document" URL="IviACPwr_ni.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="NHRDCPowerModule.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="NHRDCPowerModule.dll" Type="Document" URL="../../../../../Program Files/IVI Foundation/IVI/Bin/NHRDCPowerModule.dll"/>
+			<Item Name="ScopePlugins.lvlib" Type="Library" URL="../../Scope/ScopePlugins/ScopePlugins.lvlib"/>
+			<Item Name="niScope_32.dll" Type="Document" URL="niScope_32.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="niTClk.dll" Type="Document" URL="niTClk.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="IviScope.dll" Type="Document" URL="IviScope.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="matscript.dll" Type="Document"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
