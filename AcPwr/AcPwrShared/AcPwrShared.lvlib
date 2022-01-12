@@ -20,4 +20,6 @@
 	<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../ObtainRequestEvents.vi"/>
 	<Item Name="PathToMain.vi" Type="VI" URL="../PathToMain.vi"/>
 	<Item Name="RetrieveAcPwrMeasurementData.vi" Type="VI" URL="../RetrieveAcPwrMeasurementData.vi"/>
+	<Item Name="StartClone.vi" Type="VI" URL="../../AcPwrModule/PublicAPI/StartClone.vi"/>
+	<Item Name="StopClone.vi" Type="VI" URL="../../AcPwrModule/PublicAPI/StopClone.vi"/>
 </Library>

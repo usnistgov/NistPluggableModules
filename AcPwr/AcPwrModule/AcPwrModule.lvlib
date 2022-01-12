@@ -16,8 +16,7 @@
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
 	</Item>
 	<Item Name="PublicAPI" Type="Folder">
-		<Item Name="StartClone.vi" Type="VI" URL="../PublicAPI/StartClone.vi"/>
-		<Item Name="StopClone.vi" Type="VI" URL="../PublicAPI/StopClone.vi"/>
+		<Item Name="GetSettingsRequestLV.vi" Type="VI" URL="../Requests/GetSettingsRequestLV.vi"/>
 	</Item>
 	<Item Name="Requests" Type="Folder">
 		<Item Name="AbortRequest.vi" Type="VI" URL="../Requests/AbortRequest.vi"/>
@@ -45,6 +44,5 @@
 		<Item Name="TestInfo.vi" Type="VI" URL="../Test/TestInfo.vi"/>
 		<Item Name="UpdateSelectRing.vi" Type="VI" URL="../Test/UpdateSelectRing.vi"/>
 	</Item>
-	<Item Name="GetSettingsRequestLV.vi" Type="VI" URL="../Requests/GetSettingsRequestLV.vi"/>
 	<Item Name="TestCloneAPI.vi" Type="VI" URL="../Test/TestCloneAPI.vi"/>
 </Library>

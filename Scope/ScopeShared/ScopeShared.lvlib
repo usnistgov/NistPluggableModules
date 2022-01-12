@@ -21,4 +21,6 @@
 	<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../ObtainBroadcastEvents.vi"/>
 	<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../ObtainRequestEvents.vi"/>
 	<Item Name="PathToMain.vi" Type="VI" URL="../PathToMain.vi"/>
+	<Item Name="StartClone.vi" Type="VI" URL="../../ScopeModule/PublicAPI/StartClone.vi"/>
+	<Item Name="StopClone.vi" Type="VI" URL="../../ScopeModule/PublicAPI/StopClone.vi"/>
 </Library>
