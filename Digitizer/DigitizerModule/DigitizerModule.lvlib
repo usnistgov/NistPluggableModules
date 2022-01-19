@@ -33,7 +33,6 @@
 		<Item Name="Broadcasts" Type="Folder">
 			<Item Name="ObtainBroadcastForRegistration.vi" Type="VI" URL="../PublicAPI/Broadcasts/ObtainBroadcastForRegistration.vi"/>
 		</Item>
-		<Item Name="StartClone.vi" Type="VI" URL="../PublicAPI/StartClone.vi"/>
 	</Item>
 	<Item Name="Test" Type="Folder">
 		<Item Name="IniFiles.vi" Type="VI" URL="../Test/IniFiles.vi"/>

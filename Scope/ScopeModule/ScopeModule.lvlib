@@ -53,8 +53,6 @@
 		<Item Name="Broadcasts" Type="Folder">
 			<Item Name="ObtainBroadcastForRegistration.vi" Type="VI" URL="../PublicAPI/Broadcasts/ObtainBroadcastForRegistration.vi"/>
 		</Item>
-		<Item Name="StartClone.vi" Type="VI" URL="../PublicAPI/StartClone.vi"/>
-		<Item Name="StopClone.vi" Type="VI" URL="../PublicAPI/StopClone.vi"/>
 	</Item>
 	<Item Name="Test" Type="Folder">
 		<Property Name="NI.SortType" Type="Int">3</Property>
