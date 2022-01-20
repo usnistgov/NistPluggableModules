@@ -123,12 +123,17 @@ classdef testAnyFit < matlab.unittest.TestCase
     methods (Test)
         function regressionTests (self)
             self.fig = 1;
+            
             %testWindowParamsEven(self);self.fig=self.fig+1;
             %testWindowParamsOdd(self);self.fig=self.fig+1;
+            
+            % Steady State
             %test4P_50f2(self); self.fig=self.fig+1;
             %test50f0(self); self.fig=self.fig+1;      % test the nominal 50 Hz steady state fit
             %test50f0_100h0(self); self.fig=self.fig+1; 
             %testSSCapture (self); self.fig=self.fig+1; 
+            
+            % Modulation
             %test50f0_5m0_0x1(self); self.fig=self.fig+1; % Amplitude modulation fm = 5, k = 0.1
             %test50f0_0m9_0x1(self); self.fig=self.fig+1; % Amplitude modularion fm = 0.1, k = 0.1
             %test50f0_5m0_0a1(self); self.fig=self.fig+1; % Phase modulation, fm = 5, k = 0.1
@@ -138,8 +143,11 @@ classdef testAnyFit < matlab.unittest.TestCase
             %test50f0_2m0_2a5(self); self.fig=self.fig+1; % Phase Modulationm, fm = 2, k = 2.5
             %testModIndexRange(self);self.fig=self.fig+1; % Experiment to visualize constant modulation frequencies while the indices are incremented
             %testModFreqRange(self); self.fig=self.fig+1; % Experiment to visualize constant modulation index while the frequencies are incremented
-            testModFitActualData(self);self.fig=self.fig+1;
+            %testModFitActualData(self);self.fig=self.fig+1;
             %AMcFitExperiment(self); self.fig=self.fig+1;
+            
+            % Frequency Step
+            testStepPosAmplDefault(self); self.fig=self.fig+1;
         end
     end
 
@@ -686,10 +694,51 @@ classdef testAnyFit < matlab.unittest.TestCase
             
         end
 
+        %% ================================================================
+        % Tests for Step Fitter
+        function testStepPosAmplDefault(self)
+            disp('testStepPosAmplDefault')
+            self.setTsDefaults;
+            [~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KaS, KxS] = self.getParamIndex();
+            self.SignalParams(KxS,:) = 0.0;
+            self.SignalParams(KaS,:) = 0; 
+            self.SettlingTime = 7/self.F0;
+            self.T0 = 1;
+            self.getTimeSeries();
+            Samples = self.TS.getWindow(0,6,'even');
+            self.runOneStepFit(0)
+        end
+        
+        function runOneStepFit(self,idx)
+            Samples = self.TS.getWindow(idx,self.AnalysisCycles,'even');
+            [Synx,Freq,ROCOF] = StepFit (...
+                self.SignalParams, ...
+                self.DlyCorr, ...
+                self.MagCorr, ...
+                self.F0, ...
+                self.AnalysisCycles, ...
+                self.Fs, ...
+                Samples ...
+                );
+            expSynx = self.calcSymComp(self.Window.UserData.Vals.')/sqrt(2);
+            expFreq = mean(self.Window.UserData.Freqs(1:3));                
+            expROCOF = mean(self.Window.UserData.ROCOFs(1:3));
             
+            act = struct('Synx',actSynx,'Freq',actFreq,'ROCOF',actROCOF);
+            exp = struct('Synx',expSynx,'Freq',expFreq,'ROCOF',expROCOF);
+            %if bDisplay == true, self.dispErrors(act,exp,self.fig),end
+            
+            self.verifyEqual(actSynx,expSynx,'AbsTol',1e-6)
+            self.verifyEqual(actFreq,expFreq,'AbsTol',1e-5)
+            self.verifyEqual(actROCOF,expROCOF,'AbsTol',1e-4)            
+            
+        end
             
         
     end
+    
+    
+    
     %----------------------------------------------------------------------
     %% private methods
     methods (Access = private)

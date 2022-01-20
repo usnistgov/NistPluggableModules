@@ -20,6 +20,8 @@ classdef TestStepFit < matlab.unittest.TestCase
         Ignore          % percent of the beggining and end hilbert gradients that will be ignored by stepLocate
         MagCorr         % Magnitude Correction Valuse
         DelayCorr       % Delay Correction Values
+        
+        TS              % Time series
     end
     
 %%
@@ -93,7 +95,7 @@ classdef TestStepFit < matlab.unittest.TestCase
 %   The functions in this method list are run automatically when "res=run(testCase)" is called.
     methods (Test)
         function regressionTests (testCase)
-%             testCase.test_LocateDefaultPosAmpl
+             testCase.test_LocateDefaultPosAmpl
 %             testCase.test_LocateDefaultNegAmpl
 %             testCase.test_LocateDefaultPosPhase
 %             testCase.test_LocateDefaultNegPhase
@@ -111,7 +113,7 @@ classdef TestStepFit < matlab.unittest.TestCase
 %             testCase.test_FitNegPhaseSweep
 %             testCase.test_FitPosAmplEarly
 %             testCase.test_FitPosAmplLate
-              testCase.test_CapturedStep
+%              testCase.test_CapturedStep
 
         end
     end
