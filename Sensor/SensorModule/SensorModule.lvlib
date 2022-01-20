@@ -67,7 +67,6 @@
 			<Item Name="ObtainBroadcastForRegistration.vi" Type="VI" URL="../PublicAPI/Broadcasts/ObtainBroadcastForRegistration.vi"/>
 		</Item>
 		<Item Name="LoadPluginRequest.vi" Type="VI" URL="../Protected/Requests/LoadPluginRequest.vi"/>
-		<Item Name="StartClone.vi" Type="VI" URL="../PublicAPI/StartClone.vi"/>
 	</Item>
 	<Item Name="Test" Type="Folder">
 		<Item Name="IniFiles.vi" Type="VI" URL="../Test/IniFiles.vi"/>
