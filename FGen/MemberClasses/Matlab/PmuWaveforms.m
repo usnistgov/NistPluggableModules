@@ -73,7 +73,7 @@ end
 Wf = 2*pi*Fin;  % fundamental frequency
 Wa = 2*pi*Fa;   % phase (angle) modulation frequency
 Wx = 2*pi*Fx;   % amplitude modulation frequency
-Wh = 2*pi*Fh;
+Wh = 2*pi*Fh;   % single harmonic frequency
 
 % create the time array.  Add the settling time to both ends of the size
 %t = t0-SettlingTime:1/FSamp:((size-1)/FSamp)+t0+SettlingTime;
@@ -81,6 +81,7 @@ t = -SettlingTime:1/FSamp:((wfSize-1)/FSamp)+SettlingTime;
 % Amplitude, AM and magnitude step
 Ain = zeros(length(Xm),length(t));
 for i = 1:length(Xm)
+    % Amplitudes and amplitude modulation if Kx>0
     Ain(i,:) = Xm(i) *(1+Kx(i)*cos((Wx(i)*t)));
     % Amplitude Step: applied after time passes 0
     Ain(i,t >= 0+t0) = Ain(i,t >= 0+t0) * (1 + KxS(i));
@@ -123,8 +124,7 @@ if ~(all(rampIdx == 0))
         if Rf(i)~=0
             endRamp = (wfSize/FSamp);
             Theta(i,t>=(0+t0) & t<=endRamp) = Theta(i,t>=(0+t0) & t<=endRamp) + (pi*Rf(i)*t(t>=(0+t0) & t<=endRamp).^2);
-            %Theta(i,t>(endRamp+t0)) = Theta(i,t>(endRamp+t0)) + (pi*Rf(i)*(endRamp+t0)*t(t>(endRamp+t0)))+ (pi*Rf(i)*(endRamp+t0))^2;
-            Theta(i,t>(endRamp+t0)) = Theta(i,t>(endRamp+t0)) + (2*pi*Rf(i)*t(t==(endRamp+t0))*t(t>(endRamp+t0)));
+            Theta(i,t>(endRamp+t0)) = Theta(i,t>(endRamp+t0)) + (pi*Rf(i)*((endRamp+t0)^2)*t(t>(endRamp+t0))) + (pi*Rf(i))*(t(t>(endRamp+t0))-(endRamp+t0));
          end
     end
 end

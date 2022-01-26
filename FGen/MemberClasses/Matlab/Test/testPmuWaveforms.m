@@ -11,7 +11,7 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
         Fs
         signalParams
         sizeMax
-        fig = 0;
+        fig = 1;
     end
     
     
@@ -48,7 +48,6 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
  %%   res = run(testCase) runs the below
  methods (Test)
      function regressionTests (testCase)
-         %testCase.fig = testCase.fig + 1;
          %testDefault(testCase); testCase.fig = testCase.fig + 1;
          %test_50f1(testCase); testCase.fig = testCase.fig + 1;
          %test_50f0_75i0(testCase); testCase.fig = testCase.fig + 1;
@@ -57,8 +56,8 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
          %test_70f0(testCase); testCase.fig = testCase.fig + 1;
          %test_ampl_step(testCase); testCase.fig = testCase.fig + 1;
          %test_freq_step(testCase); testCase.fig = testCase.fig + 1;
-         test_ramp(testCase); testCase.fig = testCase.fig + 1;
-         %test_rocof_step(testCase); testCase.fig = testCase.fig + 1;
+         %test_ramp(testCase); testCase.fig = testCase.fig + 1;
+         test_rocof_step(testCase); testCase.fig = testCase.fig + 1;
          %test_ampl_modulation(testCase); testCase.fig = testCase.fig + 1;
 
      end
@@ -80,7 +79,7 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
             %t = testCase.t0-testCase.SettlingTime:1/testCase.Fs:((size-1)/testCase.Fs)+testCase.t0+testCase.SettlingTime;
             t = -testCase.SettlingTime:1/testCase.Fs:((size-1)/testCase.Fs)+testCase.SettlingTime;
             
-            plot(t,Signal(1,:))
+            plot(t,Signal(:,:))
             % saveWaveforms(testCase,Signal,size);
         end
         
@@ -154,19 +153,21 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
            [~, Fin, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KrS] = testCase.getParamIndex();
            testCase.sizeMax = testCase.Fs * 1;     % 10 seconds max size
            testCase.SettlingTime = 1;             % 1 second of settling on each side of the ramp
-           testCase.signalParams(Fin,:)= 49.0;
-           testCase.signalParams(KrS,:) = 1;
+           testCase.signalParams(Fin,:)= 45.0;
+           testCase.signalParams(KrS,:) = 100;
            runOnce(testCase);
          end
         
          function test_freq_step(testCase)
            setDefaults(testCase);
            [~, Fin, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KfS, ~] = testCase.getParamIndex();
+           F0 = 50;
            testCase.Fs = 4800;
-           testCase.sizeMax = testCase.Fs * 1;     % 10 seconds max size
-           testCase.SettlingTime = 1;             % 1 second of settling on each side of the ramp
-           testCase.signalParams(Fin,:)= 50.0;
-           testCase.signalParams(KfS,:) = 1;
+           testCase.sizeMax = testCase.Fs * 3;     % 10 seconds max size
+           testCase.SettlingTime = 14/F0;             % 1 second of settling on each side of the ramp
+           testCase.signalParams(Fin,:)= F0-2.5;
+           testCase.signalParams(KfS,:) = 5;
+           testCase.t0 = 1 + 6*(0.1/F0);        % step occurs at .6 of a reporting interval 
            runOnce(testCase);
          end   
         
