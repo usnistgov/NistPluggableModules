@@ -147,7 +147,7 @@ classdef testAnyFit < matlab.unittest.TestCase
             %AMcFitExperiment(self); self.fig=self.fig+1;
             
             % Frequency Step
-            testStepPosAmplDefault(self); self.fig=self.fig+1;
+            %testStepPosAmplDefault(self); self.fig=self.fig+1;
         end
     end
 

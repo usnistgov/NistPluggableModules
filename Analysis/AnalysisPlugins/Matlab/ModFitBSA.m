@@ -10,13 +10,13 @@ function [Synx,Freqs,ROCOFs, iterations] = ModFitBSA(Fin,Fm,Km,Samples,dT,MagCor
 %   dt = Sampling period (1/Sample Rate)
 %
 % Citation:
-%Kyriazis G. A., â€œEstimating parameters of complex modulated signals from
-%prior information about their arbitrary waveform components,â€? IEEE Trans.
+%Kyriazis G. A., "Estimating parameters of complex modulated signals from
+%prior information about their arbitrary waveform components," IEEE Trans.
 %Instrum. Meas., v. 62, no. 6, pp. 1681-1686, June 2013.
 %
 % Citation:
-% Kyriazis G. A., â€œA Cartesian method to improve the results and
-% save computation time in Bayesian signal analysis,â€? in Advanced
+% Kyriazis G. A., "Cartesian method to improve the results and
+% save computation time in Bayesian signal analysis,"? in Advanced
 % Mathematical and Computational Tools in Metrology and Testing X (AMCTM
 % X), Series on Advances in Mathematics for Applied Sciences, vol. 86, F.
 % Pavese; W. Bremser; A.G. Chunovkina; N. Fischer; A.B. Forbes (eds.),
@@ -30,7 +30,7 @@ verbose = false;
 debug = false;
 fig = 1;
 res = 30;
-zp = zeros(res,res);
+zp = zeros(res,res);  
 
 % Basic configuration
 [nSamples,nPhases] = size(Samples);
@@ -38,9 +38,9 @@ nHarm = 3;          % the number of harmonics to analyse
 iFun = 2*nHarm+1;   % number of orthogonal vectors in the hypothesis
 
 
-iterMax_BSA = 5000;
-epsilon_BSA = 1e-8;
-rho_BSA = [0.85, 0.85, 0.85];
+% iterMax_BSA = 5000;
+% epsilon_BSA = 1e-8;
+% rho_BSA = [0.85, 0.85, 0.85];
 grid = 20;      % row length for the initial grid search (increase for higher delta-frequency)
 
 % A-priori knowledge about the modulating signal
@@ -82,20 +82,20 @@ Phim_BSA = zeros(1,nPhases);
 
 % Grid search threshold prediction
 % The threshold for the grid search can be predicted using a function of Fm and Km
-p00 = -10.88;
-p10 = 0.3855;
-p01 = 1.038;
-p20 = -0.02687;
-p11 = -0.0004427;
-p02 = -0.1067;
+% log 10 values
+p00 = 4.723;
+p10 = -0.1674;
+p01 = -0.4506; 
+p20 = 0.01167;
+p11 = 0.0001923; 
+p02 = 0.04632;
 
-thrLog = p00 + p10.*Fm + p01.*Km + p20.*Fm.^2 + p11.*Fm.*Km + p02.*Km.^2;
-ePoint = exp(-thrLog);
-%thresh = -0.5*ePoint;
+thrLog = p00 + p10.*Km + p01.*Fm + p20.*Km.^2 + p11.*Km.*Fm + p02.*Fm.^2;
+ePoint = 10.^(thrLog) * -1; %10^(thrLog + 1i*(pi/log(10)));
 
 % The threshold is scaled by the number of samples.  The above was sampled
 % at 4800 samples per second.
-thresh = ePoint * (-.5/(4800*dT));
+thresh = ePoint .* (0.5/(4800*dT));
 
 if verbose
     fprintf('Threshhold = %f, Fm = %f, Km = %f',thresh(1),Fm(1),Km(1))
@@ -114,6 +114,7 @@ for phase = 1:nPhases
     
     if debug
         figure(fig), fig=fig+1;
+        movegui('north')
         dF = 2*pi*Delta_Freq(phase)*dT;
         fcontour3([startpt(1),startpt(1);-pi,pi;0,2*dF],res)
         hold on
@@ -224,6 +225,7 @@ for phase = 1:nPhases
         n = double(0:nSamples-1)'*dT;   % time vector
         Result = Modulo_BSA(2,phase).*cos(Fcarr_BSA(phase)/dT.*n + dF_BSA(phase)/mod_Freq(phase) * sin(mod_Freq(phase)/dT.*n+Phim_BSA(phase))+Phi_BSA(2,phase));
         figure(fig);fig=fig+1;
+        movegui('south')
         subplot(2,1,1)
         plot(n,Samples(:,phase),n,Result)
         subplot(2,1,2)
@@ -366,6 +368,7 @@ ROCOFs = ((dF_BSA/mod_Freq) .* Fm.^2.* sin(2*pi*Fm.*n+Phim_BSA)*2*pi)';
                 hold off
                 f = 2*pi*Fin(phase)*dT;
                 figure(fig);fig=fig+1;
+                movegui('center')
                 fcontour3([f,f;-pi,pi;0,2*dF],30)
                 hold on;
             case 'iter'
