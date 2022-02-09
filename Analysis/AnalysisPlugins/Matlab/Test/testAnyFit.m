@@ -140,7 +140,7 @@ classdef testAnyFit < matlab.unittest.TestCase
             %test50f0_0m9_0a1(self); self.fig=self.fig+1; % Phase Modulation, fm = .9, k = 0.1
             %test50f0_1m0_0a5(self); self.fig=self.fig+1; % Phase Modulation, fm = .9, k = 0.5            
             %test50f0_1m0_5a0(self); self.fig=self.fig+1; % Phase Modulation, fm = 1, k = 0.1
-            %test50f0_2m0_2a5(self); self.fig=self.fig+1; % Phase Modulationm, fm = 2, k = 2.5
+            test50f0_2m0_2a5(self); self.fig=self.fig+1; % Phase Modulationm, fm = 2, k = 2.5
             %testModIndexRange(self);self.fig=self.fig+1; % Experiment to visualize constant modulation frequencies while the indices are incremented
             %testModFreqRange(self); self.fig=self.fig+1; % Experiment to visualize constant modulation index while the frequencies are incremented
             %testModFitActualData(self);self.fig=self.fig+1;

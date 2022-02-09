@@ -36,11 +36,6 @@ zp = zeros(res,res);
 [nSamples,nPhases] = size(Samples);
 nHarm = 3;          % the number of harmonics to analyse
 iFun = 2*nHarm+1;   % number of orthogonal vectors in the hypothesis
-
-
-% iterMax_BSA = 5000;
-% epsilon_BSA = 1e-8;
-% rho_BSA = [0.85, 0.85, 0.85];
 grid = 20;      % row length for the initial grid search (increase for higher delta-frequency)
 
 % A-priori knowledge about the modulating signal
@@ -72,7 +67,7 @@ Phim_BSA = zeros(1,nPhases);
 % same values as those used to generate.
 
 % Observation of the objective function contour shows us that a
-% grid of 20 points across 0 to 2 pi and from 0 to 4DF
+% grid of 20 points across 0 to 2 pi and from 0 to 2DF
 % will have at least one or two good initial guesses up to DF of about 50.
 % This would be 400 function evals if allowed to search all points.
 % But we also know that there are no local minima, so once we
@@ -95,7 +90,8 @@ ePoint = 10.^(thrLog) * -1; %10^(thrLog + 1i*(pi/log(10)));
 
 % The threshold is scaled by the number of samples.  The above was sampled
 % at 4800 samples per second.
-thresh = ePoint .* (0.5/(4800*dT));
+modCycles = length(Samples(:,1))*Fm*dT;
+thresh = ePoint .* (0.5/(4800*dT)).*modCycles;
 
 if verbose
     fprintf('Threshhold = %f, Fm = %f, Km = %f',thresh(1),Fm(1),Km(1))
@@ -121,13 +117,11 @@ for phase = 1:nPhases
     end
      
     % perform the grid search
-    zWorst = f([startpt(1),OMEGA2(1),OMEGA3(1)]);
-    zBest = zWorst;
+    zBest = f([startpt(1),OMEGA2(1),OMEGA3(1)]);
+    %zWorst = zBest;
     idxBest = [1,1];
-    idxWorst = [1,1];
+    %idxWorst = [1,1];
     for m = 1:grid        % Delta-Freq in columns
-        %zWorst = f([startpt(1),OMEGA2(1),OMEGA3(m)]);  % reset worst and best for each row
-        %zBest = zWorst;
         for k = 1:grid    % Phi in rows
             z(k,m) =  f([startpt(1),OMEGA2(k),OMEGA3(m)]);
             if debug
@@ -137,12 +131,12 @@ for phase = 1:nPhases
                 zBest = z(k,m);
                 idxBest = [k,m];
             end
-            if z(k,m) > zWorst, zWorst = z(k,m);end
-            %if abs(zWorst-zBest) > abs(thresh(phase)),break,end
-            if zBest-zWorst < thresh(phase),break,end
+            %if z(k,m) > zWorst, zWorst = z(k,m);end
+            %if zBest-zWorst < thresh(phase),break,end
+            if zBest < thresh(phase),break,end
         end
-        %if abs(zWorst-zBest) > abs(thresh(phase)),break,end
-        if zBest-zWorst < thresh(phase),break,end        
+        %if zBest-zWorst < thresh(phase),break,end     
+        if zBest < thresh(phase),break,end
     end
 
     % grid search found starting parameters
