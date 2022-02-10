@@ -51,15 +51,15 @@ if wfSize > sizeMax; wfSize = sizeMax; end
 
 % SettlingTime is ignored
 t = (0:1/FSamp:(wfSize-1)/FSamp)';
-Ain = ones(length(t),length(Xm)).*Xm;
-Theta = (ones(length(t),nPhases).*(2*pi*Fin).*t)+Ps*(pi/180);
+Ain = bsxfun(@times,ones(length(t),length(Xm)),Xm);
+Theta = bsxfun(@times,ones(length(t),nPhases),bsxfun(@times,(2*pi*Fin),t))+Ps*(pi/180);
 
 cSignal = (Ain.*exp(1i.*Theta));
 
 % loop through all the frequencies
 for i = 1:length(Fn)
-    Theta = (ones(length(t),nPhases).*(2*pi*Fn(i,:).*t))+Pn(i,:).*(Fn(i,:)/Fin)*(pi/180);
+    Theta = bsxfun(@times,ones(length(t),nPhases),bsxfun(@times,2*pi*Fn(i,:),t))+Pn(i,:).*(Fn(i,:)/Fin)*(pi/180);
     cSignal = cSignal + (Kn(i,:).*Ain).*exp(1i.*Theta);
 end
-plot(real(cSignal))
+Signal = real(cSignal);
 end
