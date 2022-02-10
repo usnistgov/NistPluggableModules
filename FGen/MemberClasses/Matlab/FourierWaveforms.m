@@ -6,7 +6,7 @@ function [Signal,wfSize] = FourierWaveforms( ...
     signalparams ...
     )
 
-nPhases = size(signalparams,2)
+nPhases = size(signalparams,2);
 
 % Waveforms described as a series of cosine waves.
 Xm = signalparams(1,:)*sqrt(2);     % phase amplitude (given by the user in RMS)
@@ -36,7 +36,7 @@ Kn = Fn;
 % while loop gets all the cosine wave parameters
 idx = 1;
 for i = 1:n
-    Fn(i) = signalparams(5+((i-1)*3),:);
+    Fn(i,:) = signalparams(5+((i-1)*3),:);
     Pn(i,:) = signalparams(6+((i-1)*3),:);
     Kn(i,:) = signalparams(7+((i-1)*3),:);
     if signalparams(idx,:) < 0, loop = false; end    
@@ -58,8 +58,8 @@ cSignal = (Ain.*exp(1i.*Theta));
 
 % loop through all the frequencies
 for i = 1:length(Fn)
-    Theta = (ones(length(t),nPhases).*(2*pi*Fn(i).*t))+Pn(i)*(pi/180);
-    cSignal = cSignal + Kn(i,:)*Xm*exp(1i.*Theta);
+    Theta = (ones(length(t),nPhases).*(2*pi*Fn(i,:).*t))+Pn(i,:).*(Fn(i,:)/Fin)*(pi/180);
+    cSignal = cSignal + (Kn(i,:).*Ain).*exp(1i.*Theta);
 end
 plot(real(cSignal))
 end
