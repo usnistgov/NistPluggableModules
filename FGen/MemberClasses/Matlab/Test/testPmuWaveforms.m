@@ -59,8 +59,8 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
          %test_ramp(testCase); testCase.fig = testCase.fig + 1;
          %test_rocof_step(testCase); testCase.fig = testCase.fig + 1;
          %test_ampl_modulation(testCase); testCase.fig = testCase.fig + 1;
-         test_13_harmonics(testCase); testCase.fig = testCase.fig + 1;
-
+         test_13_harmonics(testCase); hold on %testCase.fig = testCase.fig + 1;
+         test_13_harmonics_180(testCase); hold off, testCase.fig = testCase.fig + 1;
      end
  end
  
@@ -183,15 +183,34 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
          function test_13_harmonics(testCase)
              F0 = 50;
              setDefaults(testCase)
-             testCase.signalParams = zeros(4+(12*3)+1,2);
+             testCase.signalParams = zeros(4+(12*3)+1,1);
              testCase.signalParams(1,:) = 70;   % Xm
              testCase.signalParams(2,:) = F0;   % Fin
-             testCase.signalParams(3,:) = [0,-120];    % Ps
+             testCase.signalParams(3,:) = -90;    % Ps
              testCase.signalParams(4,:) = -1;   % delimiter
              mags = [2.0,5.0,1.0,6.0,0.5,5.0,1.5,0.5,3.5,0.5,3.0,10.7];
              for i = 1:12
                  testCase.signalParams(5+((i-1)*3),:) = F0*(i+1);
-                 testCase.signalParams(6+((i-1)*3),:) = [0,-120];
+                 testCase.signalParams(6+((i-1)*3),:) = -90;
+                 testCase.signalParams(7+((i-1)*3),:) = mags(i)/100;
+             end
+             testCase.signalParams(4+(12*3)+1,:) = -1;  % delimiter
+             runOnce(testCase);
+             
+         end
+         
+         function test_13_harmonics_180(testCase)
+             F0 = 50;
+             setDefaults(testCase)
+             testCase.signalParams = zeros(4+(12*3)+1,1);
+             testCase.signalParams(1,:) = 70;   % Xm
+             testCase.signalParams(2,:) = F0;   % Fin
+             testCase.signalParams(3,:) = -90;    % Ps
+             testCase.signalParams(4,:) = -1;   % delimiter
+             mags = [2.0,5.0,1.0,6.0,0.5,5.0,1.5,0.5,3.5,0.5,3.0,10.7];
+             for i = 1:12
+                 testCase.signalParams(5+((i-1)*3),:) = F0*(i+1);
+                 testCase.signalParams(6+((i-1)*3),:) = 90;
                  testCase.signalParams(7+((i-1)*3),:) = mags(i)/100;
              end
              testCase.signalParams(4+(12*3)+1,:) = -1;  % delimiter
