@@ -133,6 +133,9 @@ classdef testAnyFit < matlab.unittest.TestCase
             %test50f0_100h0(self); self.fig=self.fig+1; 
             %testSSCapture (self); self.fig=self.fig+1; 
             
+            % Fourier Series signals (such as multi-harmonics)
+            test50F0_13_Harmonic(self); self.fig=self.fig+1;
+            
             % Modulation
             %test50f0_5m0_0x1(self); self.fig=self.fig+1; % Amplitude modulation fm = 5, k = 0.1
             %test50f0_0m9_0x1(self); self.fig=self.fig+1; % Amplitude modularion fm = 0.1, k = 0.1
@@ -364,6 +367,42 @@ classdef testAnyFit < matlab.unittest.TestCase
             end
         end        
 
+    
+    
+    %% --------------------------------------------------------------------
+    % Tests for the Fourier waveform fitter
+    function test50F0_13_Harmonic(self)
+        self.Name = 'test50F0_13_Harmonic';
+        self.SignalParams = zeros(4+(3*12)+1,1);
+        [Xm, Fin, Ps, delim] = self.getParamIndex();
+        self.SignalParams(Xm,:) = 1;
+        self.SignalParams(Fin,:) = self.F0;
+        self.SignalParams(Ps,:) = 0;
+        self.SignalParams(delim,:) = -1;
+        
+        % 12 harmonics from the frequency standard
+        mags = [2.0,5.0,1.0,6.0,0.5,5.0,0.5,1.5,0.5,3.5,0.5,3.0];
+        for i = 1:length(mags)
+            self.SignalParams(5+(3*(i-1))) = (i+1)*self.F0;
+            self.SignalParams(6+(3*(i-1))) = 0;
+            self.SignalParams(7+(3*(i-1))) = mags(i)/100;
+        end
+        self.SignalParams(4+(12*3)+1,:) = -1;  % delimiter
+        
+        self.Fs = 48000;
+        self.AnalysisCycles = 6;
+        
+        % instantiate the AnalyticTS class with these parameters
+        self.TS = AnalyticTS_class(...
+            'SignalParams',self.SignalParams,...
+            'SampleRate', self.Fs,...
+            'F0', self.F0...
+            );
+        self.Window = self.TS.getWindow(0,self.AnalysisCycles,'odd');
+        [Synx, Freqs, ROCOFs, iter, SynxH] =  Fit4PFourier( self.SignalParams, 1/self.Fs, real(self.Window.Data));
+
+        
+    end
     end
     
     %----------------------------------------------------------------------
