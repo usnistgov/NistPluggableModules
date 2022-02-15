@@ -191,7 +191,7 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
              testCase.signalParams(2,:) = F0;   % Fin
              testCase.signalParams(3,:) = [0  -120 120];    % Ps
              testCase.signalParams(4,:) = -1;   % delimiter
-             mags = [2.0,5.0,1.0,6.0,0.5,5.0,5.0,1.5,0.5,3.5,0.5,3.0];             
+             mags = [2.0,5.0,1.0,6.0,0.5,5.0,0.5,1.5,0.5,3.5,0.5,3.0];             
              for i = 1:12
                  testCase.signalParams(5+((i-1)*3),:) = F0*(i+1);
                  testCase.signalParams(6+((i-1)*3),:) = 0;
@@ -199,6 +199,7 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
              end
              testCase.signalParams(4+(12*3)+1,:) = -1;  % delimiter
              figure(testCase.fig)
+             grid on
              runOnce(testCase);
              
          end
@@ -214,14 +215,15 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
              testCase.signalParams(2,:) = F0;   % Fin
              testCase.signalParams(3,:) = [0 0-120 120];    % Ps
              testCase.signalParams(4,:) = -1;   % delimiter
-             mags = [2.0,5.0,1.0,6.0,0.5,5.0,5.0,1.5,0.5,3.5,0.5,3.0];             
+             mags = [2.0,5.0,1.0,6.0,0.5,5.0,0.5,1.5,0.5,3.5,0.5,3.0];             
              for i = 1:12
                  testCase.signalParams(5+((i-1)*3),:) = F0*(i+1);
-                 testCase.signalParams(6+((i-1)*3),:) = 90;
+                 testCase.signalParams(6+((i-1)*3),:) = 180;
                  testCase.signalParams(7+((i-1)*3),:) = mags(i)/100;
              end
              testCase.signalParams(4+(12*3)+1,:) = -1;  % delimiter
              runOnce(testCase);
+             grid on
              
          end
 
