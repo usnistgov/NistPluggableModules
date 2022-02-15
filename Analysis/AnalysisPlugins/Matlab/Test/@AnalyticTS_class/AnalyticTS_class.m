@@ -61,7 +61,8 @@ classdef AnalyticTS_class
             validScalar = @(x) isnumeric(x) && isscalar(x);
             validScalarPosNum = @(x) isnumeric(x) && isscalar(x) && (x > 0);
             validScalarPosInt = @(x) isnumeric(x) && isscalar(x) && isinteger(x) && (x > 0);
-            validateSignalParams = @(x) validateattributes(x,{'double'},{'nrows',15});
+            %validateSignalParams = @(x) validateattributes(x,{'double'},('nRows',15));
+            validateSignalParams = @(x) isnumeric(x);
             
             addParameter(p,'Name',defaultName,@ischar);
             addParameter(p,'T0',defaultT0,validScalar);
