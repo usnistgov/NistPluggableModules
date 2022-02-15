@@ -26,9 +26,9 @@ classdef test_AnalyticTS_class < matlab.unittest.TestCase
     methods (Test)
         
         function regressionTests (testCase)
-            testDefault(testCase); testCase.fig = testCase.fig+1;
+            %testDefault(testCase); testCase.fig = testCase.fig+1;
             test_13_Harmonics(testCase);testCase.fig = testCase.fig+1;
-            test_13_Harmonics_180(testCase);testCase.fig = testCase.fig+1;
+            %test_13_Harmonics_180(testCase);testCase.fig = testCase.fig+1;
             
         end
     end
@@ -47,7 +47,7 @@ classdef test_AnalyticTS_class < matlab.unittest.TestCase
             F0 = 50;
             
             SignalParams = zeros(4+(12*3)+1,3);
-            SignalParams(1,:) = 1/sqrt(2);   % Xm
+            SignalParams(1,:) = 1;   % Xm
             SignalParams(2,:) = F0;   % Fin
             SignalParams(3,:) = [0 -120 120];    % Ps
             SignalParams(4,:) = -1;   % delimiter
@@ -66,15 +66,27 @@ classdef test_AnalyticTS_class < matlab.unittest.TestCase
                 'F0', F0...
                 );
             
-            figure(testCase.fig)
+            figure(testCase.fig), testCase.fig=testCase.fig+1;
             grid on
             plot(real(testCase.TS.Ts.Data))
+            
+            % now get 50 windows and look at the expected values
+            
+            figure(testCase.fig), testCase.fig=testCase.fig+1;                        
+            window = testCase.TS.getWindow(i-1,6,'odd');
+            plot(real(window.Data))
+            disp(window.UserData.Vals)
+            disp(window.UserData.Freqs)
+            disp(window.UserData.ROCOFs)
+            
+                
+            
         end
         
         function test_13_Harmonics_180(testCase)
             F0 = 50;
             SignalParams = zeros(4+(12*3)+1,3);
-            SignalParams(1,:) = 1/sqrt(2);   % Xm
+            SignalParams(1,:) = 1;   % Xm
             SignalParams(2,:) = F0;   % Fin
             SignalParams(3,:) = [0 -120 120];    % Ps
             SignalParams(4,:) = -1;   % delimiter
