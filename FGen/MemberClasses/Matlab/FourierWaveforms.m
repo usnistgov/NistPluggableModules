@@ -68,11 +68,8 @@ cSignal = (Ain.*exp(1i.*Theta));
 %figure(100),hold on
 Wn = 2*pi*Fn;
 for i = 1:size(Fn,1)
-    phi = wrapToPi((i+1)*(Pn(i,:)+Ps));
-    %phi = Ps+Pn(i,:);
-    %phi = wrapToPi(bsxfun(@times,(i+1)*pi/180,Pn(i,:)));
-    %phi = bsxfun(@times,pi/180,Pn(i,:));
-    Theta = ones(length(t),nPhases).*Wn(i,:).*t + phi -pi/2;
+ 
+    Theta = ones(length(t),nPhases).*Wn(i,:).*t + ((i+1)*Ps)+ Pn(i,:) - pi/2;
     
 %     Theta = bsxfun(@plus,...
 %                          bsxfun(@times,ones(length(t),nPhases),...
