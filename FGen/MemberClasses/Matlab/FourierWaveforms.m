@@ -39,7 +39,7 @@ for i = 1:n
     Fn(i,:) = signalparams(5+((i-1)*3),:);
     Pn(i,:) = signalparams(6+((i-1)*3),:)*pi/180;
     Kn(i,:) = signalparams(7+((i-1)*3),:);
-    if signalparams(idx,:) < 0, loop = false; end    
+    %if signalparams(idx,:) < 0, loop = false; end    
 end
 
 % We want to make a signal that can loop without discontinuities.  Up to

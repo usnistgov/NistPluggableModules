@@ -143,7 +143,7 @@ classdef testAnyFit < matlab.unittest.TestCase
             %test50f0_0m9_0a1(self); self.fig=self.fig+1; % Phase Modulation, fm = .9, k = 0.1
             %test50f0_1m0_0a5(self); self.fig=self.fig+1; % Phase Modulation, fm = .9, k = 0.5            
             %test50f0_1m0_5a0(self); self.fig=self.fig+1; % Phase Modulation, fm = 1, k = 0.1
-            test50f0_2m0_2a5(self); self.fig=self.fig+1; % Phase Modulationm, fm = 2, k = 2.5
+            %test50f0_2m0_2a5(self); self.fig=self.fig+1; % Phase Modulationm, fm = 2, k = 2.5
             %testModIndexRange(self);self.fig=self.fig+1; % Experiment to visualize constant modulation frequencies while the indices are incremented
             %testModFreqRange(self); self.fig=self.fig+1; % Experiment to visualize constant modulation index while the frequencies are incremented
             %testModFitActualData(self);self.fig=self.fig+1;
@@ -373,6 +373,7 @@ classdef testAnyFit < matlab.unittest.TestCase
     % Tests for the Fourier waveform fitter
     function test50F0_13_Harmonic(self)
         self.Name = 'test50F0_13_Harmonic';
+        
         self.SignalParams = zeros(4+(3*12)+1,1);
         [Xm, Fin, Ps, delim] = self.getParamIndex();
         self.SignalParams(Xm,:) = 1;
@@ -382,9 +383,10 @@ classdef testAnyFit < matlab.unittest.TestCase
         
         % 12 harmonics from the frequency standard
         mags = [2.0,5.0,1.0,6.0,0.5,5.0,0.5,1.5,0.5,3.5,0.5,3.0];
+        pH = 0;
         for i = 1:length(mags)
             self.SignalParams(5+(3*(i-1))) = (i+1)*self.F0;
-            self.SignalParams(6+(3*(i-1))) = 0;
+            self.SignalParams(6+(3*(i-1))) = pH;
             self.SignalParams(7+(3*(i-1))) = mags(i)/100;
         end
         self.SignalParams(4+(12*3)+1,:) = -1;  % delimiter
@@ -400,7 +402,23 @@ classdef testAnyFit < matlab.unittest.TestCase
             );
         self.Window = self.TS.getWindow(0,self.AnalysisCycles,'odd');
         [Synx, Freqs, ROCOFs, iter, SynxH] =  Fit4PFourier( self.SignalParams, 1/self.Fs, real(self.Window.Data));
-
+        act = [Synx, Freqs, ROCOFs, SynxH.'];
+        
+        % expected values
+        Ah = mags/100.* self.SignalParams(Xm,:);
+        w0 = 2*pi*self.F0;
+        t = (length(self.Window.Data)/2)/self.Fs;
+        for k = 1:length(Ah)            
+            self.expect(k) = Ah(k)*exp(-1i*((k*w0*t)+(self.SignalParams(Ps,:)+pH-90)*pi/180));
+        end
+        self.expect = [...
+                        self.SignalParams(Xm,:)*exp(-1i*((w0*t)+((self.SignalParams(Ps,:)-90)*pi/180))),...
+                        self.F0,...
+                        0,...
+                        self.expect...
+                        ];
+      self.verifyEqual(act,self.expect,'AbsTol',0.001) 
+                    
         
     end
     end

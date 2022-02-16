@@ -6,13 +6,13 @@ function [Synx, Freqs, ROCOFs, iter, SynxH] =  Fit4PFourier( SignalParams, dT, S
 [nSamples, nPhases] = size(Samples);
 
 % Waveforms described as a series of cosine waves.
-Xm = SignalParams(1,:)*sqrt(2);     % phase amplitude (given by the user in RMS)
+%Xm = SignalParams(1,:)*sqrt(2);     % phase amplitude (given by the user in RMS)
 Fin = SignalParams(2,:);    % frequency (must be the same for all 6 channels or an error will be thrown
-Ps = SignalParams(3,:)*pi/180;     % phase
+%Ps = SignalParams(3,:)*pi/180;     % phase
 
 % signalparams(4,:); is the delimiter, the first element is negative (or we should not be here)
 if SignalParams(4,:) >= 0
-    error ('Fit4PpFourier was called by mistake.  Always call SteadyStateFit().')    
+    error ('Fit4PpFourier was called by mistake.  Always call SteadyStateFit().')
 end
 
 % pre-allocate the component parameters
@@ -35,11 +35,15 @@ FitCrit = 1e-7;
 t = (linspace(-(nSamples/2),(nSamples/2)-1,nSamples)*dT)';  % time vector with 0 at the center
 Win = Fin*2*pi;
 
+% pre-allocate
 H = ones(nSamples,(3+(2*nFreqs)));
+Synx = zeros(1,nPhases); Freqs = Synx; ROCOFs=Synx;
+SynxH = zeros(nFreqs,nPhases);
+
 % for each phase
 for p = 1:nPhases
     w = Win(p);         % This is what will be fitted during the regression loop
-    H(:,1:2) = [cos(w(p)*t) sin(w(p)*t)]; 
+    H(:,1:2) = [cos(w(p)*t) sin(w(p)*t)];
     
     for i = 1:nFreqs
         j = 4+(2*(i-1));
@@ -56,16 +60,25 @@ for p = 1:nPhases
         S = (G'*G)\(G'*Samples(:,p));
         A = S(1); B = S(2); % Note DC offset is ignored
         
-       dw = S(size(S,1));   % change in frequency is the amplitude of the sine term
+        dw = S(size(S,1));   % change in frequency is the amplitude of the sine term
         w = w + dw;
         if dw < FitCrit
             break
         end
         % Replace the fundamental model with the new frequency
-        H(:,1:2) = [cos(w(p)*t) sin(w(p)*t)]; 
-
-    end        
+        H(:,1:2) = [cos(w(p)*t) sin(w(p)*t)];
+        
+    end
+    Synx(p) = complex(A,B);
+    Freqs(p) = w/(2*pi);
+    ROCOFs(p) = dw/(2*pi);
+    iter(p)=k;
+    
+    for i = 1:nFreqs
+        SynxH(i,p) = complex(S(4+(i-1)*2),S(5+(i-1)*2));
+    end
     
 end
+
 
 end
