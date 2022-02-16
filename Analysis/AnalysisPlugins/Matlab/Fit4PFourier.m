@@ -43,7 +43,7 @@ SynxH = zeros(nFreqs,nPhases);
 % for each phase
 for p = 1:nPhases
     w = Win(p);         % This is what will be fitted during the regression loop
-    H(:,1:2) = [cos(w(p)*t) sin(w(p)*t)];
+    H(:,1:2) = [cos(w*t) sin(w*t)];
     
     for i = 1:nFreqs
         j = 4+(2*(i-1));
@@ -66,7 +66,7 @@ for p = 1:nPhases
             break
         end
         % Replace the fundamental model with the new frequency
-        H(:,1:2) = [cos(w(p)*t) sin(w(p)*t)];
+        H(:,1:2) = [cos(w*t) sin(w*t)];
         
     end
     Synx(p) = complex(A,B);
