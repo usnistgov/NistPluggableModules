@@ -42,7 +42,7 @@ if SignalParams(4,1) >= 0
     end
     
 else
-    [Synx, Freqs, ROCOFs, iter, SynxH] =  Fit4PpFourier( SignalParams, 1/SampleRate, Samples);
+    [Synx, Freqs, ROCOFs, iter, SynxH] =  Fit4PFourier( SignalParams, 1/SampleRate, Samples);
     
 end
 
