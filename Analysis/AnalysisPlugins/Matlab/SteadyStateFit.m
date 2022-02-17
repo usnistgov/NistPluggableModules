@@ -67,15 +67,15 @@ Izpn = Ai*Iabc; %curren: zero, positive and negative sequence
 Synx = [ Vabc.' Vzpn(2) Iabc.' Izpn(2)];
 
 
-if SignalParams(4,1) >= 0
+if SignalParams(4,1) < 0
 % For sum of waveforms, we will only be reporting the first phase of sinewaves  
     SineParams = SignalParams(5:end-1,1);
     SineParams = reshape(SineParams,[3,length(SineParams)/3]);
     F = SineParams(1,:);      
-    Ain = abs(SynxH(:,1)).*MagCorr;
-    Theta = angle(SynxH(:,1))+ DelayCorr*1e-9*2*pi.*F;
+    Ain = abs(SynxH(:,1))*MagCorr(1);   % we only look at the first phase
+    Theta = angle(SynxH(:,1))+ (DelayCorr(1)*1e-9*2*pi.*F)';
     SynxH = (Ain/sqrt(2).*exp(-1i.*Theta));
-    Synx = horzcat(Synx, SynxH);    
+    Synx = horzcat(Synx, SynxH');    
 
 %Harmonics or interharmonics are output to verify a calibrator
 elseif Ki(1) > 0
