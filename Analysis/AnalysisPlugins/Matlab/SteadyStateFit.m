@@ -31,8 +31,8 @@ function [Synx,Freq,ROCOF] = SteadyStateFit ( ...
 %*********************DEBUGGING*****************************************
 % ARG: 2022/02/15:  Added support for Fourier series type signals
 
-if SignalParams(4,1) >= 0
-    
+if SignalParams(4,1) >= 0       % check the delimiter is negative
+    % This is a sum of sinewaves signal
     [~,F,~,Fi,~,Ki] = getParamVals(SignalParams);
     if ~(Ki(1)>0); Fi(1,:) = -1; end   % no interharmonics
     
@@ -42,6 +42,7 @@ if SignalParams(4,1) >= 0
     end
     
 else
+    % This is the classic PMU Calibration waveform type
     [Synx, Freqs, ROCOFs, iter, SynxH] =  Fit4PFourier( SignalParams, 1/SampleRate, Samples');
     
 end
@@ -64,13 +65,22 @@ Izpn = Ai*Iabc; %curren: zero, positive and negative sequence
 %Synx output:
 Synx = [ Vabc.' Vzpn(2) Iabc.' Izpn(2)];
 
+
+if SignalParams(4,1) >= 0
+% For sum of waveforms, we will only be reporting the first phase of sinewaves    
+    Ain = abs(SynxH(:,1).*MagCorr;
+    Theta = angle(SynxH(:,1))+ DelayCorr*1e-9*2*pi.*F;
+    SynxH = (Ain/sqrt(2).*exp(-1i.*Theta));
+    Synx = horzcat(Synx, SynxH);    
+
 %Harmonics or interharmonics are output to verify a calibrator
-if Ki(1) > 0
+elseif Ki(1) > 0
     Ain = abs(SynxH).*MagCorr;
     Theta = angle(SynxH)+ DelayCorr*1e-9*2*pi.*F;
     SynxH = (Ain/sqrt(2).*exp(-1i.*Theta));
     Synx = horzcat(Synx, SynxH);    
 end
+
 
 Freq = mean(Freqs(1:3)); % average of the voltage frequencies 
 ROCOF = mean(ROCOFs(1:3));
