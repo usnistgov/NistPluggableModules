@@ -39,6 +39,10 @@ if SignalParams(4,1) >= 0       % check the delimiter is negative
 else
     % This is the classic PMU Calibration waveform type
     [Synx, Freqs, ROCOFs, iter, SynxH] =  Fit4PFourier( SignalParams, 1/SampleRate, Samples');
+    
+    % For delay corrections we need a vector of frequencies
+    [~,F] = getParamVals(SignalParams);
+    Ki = -1; %  so we don't get hugg up on the elseif statement    
 end
 if iter > 40
     warning ('4 parameter fit did not converge')
@@ -64,7 +68,10 @@ Synx = [ Vabc.' Vzpn(2) Iabc.' Izpn(2)];
 
 
 if SignalParams(4,1) >= 0
-% For sum of waveforms, we will only be reporting the first phase of sinewaves    
+% For sum of waveforms, we will only be reporting the first phase of sinewaves  
+    SineParams = SignalParams(5:end-1,1);
+    SineParams = reshape(SineParams,[3,length(SineParams)/3]);
+    F = SineParams(1,:);      
     Ain = abs(SynxH(:,1)).*MagCorr;
     Theta = angle(SynxH(:,1))+ DelayCorr*1e-9*2*pi.*F;
     SynxH = (Ain/sqrt(2).*exp(-1i.*Theta));
