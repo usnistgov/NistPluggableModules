@@ -2,8 +2,8 @@ function [Synx,Freq,ROCOF] = SteadyStateFit ( ...
 	SignalParams, ...
 	DelayCorr, ...
 	MagCorr, ...
-	F0, ...
-	AnalysisCycles, ...
+	~, ...
+	~, ...
 	SampleRate, ...
 	Samples ...
 )
@@ -34,17 +34,14 @@ function [Synx,Freq,ROCOF] = SteadyStateFit ( ...
 if SignalParams(4,1) >= 0       % check the delimiter is negative
     % This is a sum of sinewaves signal
     [~,F,~,Fi,~,Ki] = getParamVals(SignalParams);
-    if ~(Ki(1)>0); Fi(1,:) = -1; end   % no interharmonics
-    
-    [ Synx, Freqs, ROCOFs, iter, SynxH] = Fit4Param( F, 1/SampleRate, Samples', Fi);
-    if iter > 40
-        warning ('4 parameter fit did not converge')
-    end
-    
+    if ~(Ki(1)>0); Fi(1,:) = -1; end   % no interharmonics    
+    [ Synx, Freqs, ROCOFs, iter, SynxH] = Fit4Param( F, 1/SampleRate, Samples', Fi);    
 else
     % This is the classic PMU Calibration waveform type
     [Synx, Freqs, ROCOFs, iter, SynxH] =  Fit4PFourier( SignalParams, 1/SampleRate, Samples');
-    
+end
+if iter > 40
+    warning ('4 parameter fit did not converge')
 end
 
 
@@ -68,7 +65,7 @@ Synx = [ Vabc.' Vzpn(2) Iabc.' Izpn(2)];
 
 if SignalParams(4,1) >= 0
 % For sum of waveforms, we will only be reporting the first phase of sinewaves    
-    Ain = abs(SynxH(:,1).*MagCorr;
+    Ain = abs(SynxH(:,1)).*MagCorr;
     Theta = angle(SynxH(:,1))+ DelayCorr*1e-9*2*pi.*F;
     SynxH = (Ain/sqrt(2).*exp(-1i.*Theta));
     Synx = horzcat(Synx, SynxH);    
