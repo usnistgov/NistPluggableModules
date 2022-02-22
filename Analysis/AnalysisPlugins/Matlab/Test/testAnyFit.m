@@ -374,25 +374,28 @@ classdef testAnyFit < matlab.unittest.TestCase
     function test50F0_13_Harmonic(self)
         self.Name = 'test50F0_13_Harmonic';
         
-        self.SignalParams = zeros(4+(3*12)+1,1);
-        [Xm, Fin, Ps, delim] = self.getParamIndex();
-        self.SignalParams(Xm,:) = 1;
-        self.SignalParams(Fin,:) = self.F0;
-        self.SignalParams(Ps,:) = 0;
-        self.SignalParams(delim,:) = -1;
-        
+        fFund = 52;
         % 12 harmonics from the frequency standard
         mags = [2.0,5.0,1.0,6.0,0.5,5.0,0.5,1.5,0.5,3.5,0.5,3.0];
+        %mags = 0;
+        nHarm = length(mags);
+        self.SignalParams = zeros(4+(3*nHarm)+1,1);
+        [Xm, Fin, Ps, delim] = self.getParamIndex();
+        self.SignalParams(Xm,:) = 1;
+        self.SignalParams(Fin,:) = fFund;
+        self.SignalParams(Ps,:) = -120;
+        self.SignalParams(delim,:) = -1;
+        
         pH = 0;
         for i = 1:length(mags)
-            self.SignalParams(5+(3*(i-1))) = (i+1)*self.F0;
+            self.SignalParams(5+(3*(i-1))) = (i+1)*fFund;
             self.SignalParams(6+(3*(i-1))) = pH;
             self.SignalParams(7+(3*(i-1))) = mags(i)/100;
         end
-        self.SignalParams(4+(12*3)+1,:) = -1;  % delimiter
+        self.SignalParams(4+(nHarm*3)+1,:) = -1;  % delimiter
         
         self.Fs = 48000;
-        self.AnalysisCycles = 6;
+        self.AnalysisCycles = 10;
         
         % instantiate the AnalyticTS class with these parameters
         self.TS = AnalyticTS_class(...
@@ -400,28 +403,60 @@ classdef testAnyFit < matlab.unittest.TestCase
             'SampleRate', self.Fs,...
             'F0', self.F0...
             );
-        self.Window = self.TS.getWindow(0,self.AnalysisCycles,'odd');
-        [Synx, Freqs, ROCOFs, iter, SynxH] =  Fit4PFourier( self.SignalParams, 1/self.Fs, real(self.Window.Data));
+        winOffset = 3;
+        self.Window = self.TS.getWindow(winOffset,self.AnalysisCycles,'odd'); % plot(real(self.Window.Data))
+        [Synx, Freqs, ROCOFs, ~, SynxH] =  Fit4PFourier( self.SignalParams, 1/self.Fs, real(self.Window.Data));
         act = [Synx, Freqs, ROCOFs, SynxH.'];
         
         % expected values
         Ah = mags/100.* self.SignalParams(Xm,:);
-        w0 = 2*pi*self.F0;
+        w0 = 2*pi*fFund;
         t = (length(self.Window.Data)/2)/self.Fs;
-        for k = 1:length(Ah)            
-            self.expect(k) = Ah(k)*exp(-1i*((k*w0*t)+(self.SignalParams(Ps,:)+pH-90)*pi/180));
+        self.expect = [];
+        for k = 1:length(Ah) 
+            h = k+1;
+            Theta = h*(self.SignalParams(Ps,:)*pi/180+ 2*pi*fFund/self.F0*winOffset) - pi/2 ;
+            phi = pH*pi/180;
+            %self.expect(k) = Ah(k)*exp(1i*((h*w0*t) + ((h*self.SignalParams(Ps,:))+pH+90)*pi/180));
+            self.expect(k) = Ah(k)*exp(-1i*((h*w0*t) + (Theta + phi)));
         end
         self.expect = [...
-                        self.SignalParams(Xm,:)*exp(-1i*((w0*t)+((self.SignalParams(Ps,:)-90)*pi/180))),...
-                        self.F0,...
+                        %self.SignalParams(Xm,:)*exp(1i*((w0*t)+((self.SignalParams(Ps,:)+90)*pi/180))),...
+                        self.SignalParams(Xm,:)*exp(-1i*((w0*t) + ((self.SignalParams(Ps,:)*pi/180) - pi/2 + + 2*pi*fFund/self.F0*winOffset))),...
+                        fFund,...
                         0,...
                         self.expect...
                         ];
       self.verifyEqual(act,self.expect,'AbsTol',0.001) 
                     
+% %===================== DEBUG PLOTS ========================================
+% % Plot the signal and the residual 
+dT = 1/self.Fs;
+nSamples = size(self.Window.Data,1);
+t = (linspace(-(nSamples/2),(nSamples/2)-1,nSamples)*dT)';  % time vector with 0 at the center
+
+Af = abs(self.expect(1));
+Theta = angle(self.expect(1));
+w0 = 2*pi*self.expect(2);
+bestFit = Af*exp(-1i*((w0*t) - Theta));
+ 
+for i = 4:size(self.expect,2)
+    Ah = abs(self.expect(i));
+    phiH = angle(self.expect(i));
+    Wh = 2*pi*(i-2)*fFund;
+    bestFit = bestFit + Ah*exp(-1i*((Wh*t) - phiH));
+end
+figure(self.fig); self.fig=self.fig+1;
+subplot(2,1,1)
+plot(t,real(self.Window.Data),'b',t,real(bestFit),'r')
+subplot(2,1,2)
+plot(t,real(self.Window.Data)-real(bestFit));
+% %==========================================================================
         
     end
     end
+    
+
     
     %----------------------------------------------------------------------
     %% Methods for the Modulation Fitter
