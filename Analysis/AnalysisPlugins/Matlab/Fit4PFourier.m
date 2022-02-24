@@ -80,24 +80,24 @@ for p = 1:nPhases
     
 end
 
-%===================== DEBUG PLOTS ========================================
-% Plot the signal and the residual
-figure(100)
-Af = abs(Synx);
-Theta = angle(Synx);
-w0 = 2*pi*Freqs;
-bestFit = Af*exp(1i*((w0*t)-Theta));
-
-for i = 1:size(SynxH,1)
-    Ah = abs(SynxH(i,:));
-    phiH = angle(SynxH(i,:));
-    bestFit = bestFit + Ah*exp(1i*((Wn(i)*t)-phiH));
-end
-subplot(2,1,1)
-plot(t,Samples,'b',t,real(bestFit),'r')
-subplot(2,1,2)
-plot(t,Samples-real(bestFit));
-%==========================================================================
+% %===================== DEBUG PLOTS ========================================
+% % Plot the signal and the residual
+% figure(100)
+% Af = abs(Synx);
+% Theta = angle(Synx);
+% w0 = 2*pi*Freqs;
+% bestFit = Af*exp(1i*((w0*t)-Theta));
+% 
+% for i = 1:size(SynxH,1)
+%     Ah = abs(SynxH(i,:));
+%     phiH = angle(SynxH(i,:));
+%     bestFit = bestFit + Ah*exp(1i*((Wn(i)*t)-phiH));
+% end
+% subplot(2,1,1)
+% plot(t,Samples,'b',t,real(bestFit),'r')
+% subplot(2,1,2)
+% plot(t,Samples-real(bestFit));
+% %==========================================================================
 
 
 end
