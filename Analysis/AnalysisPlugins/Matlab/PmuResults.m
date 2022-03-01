@@ -57,12 +57,13 @@ nPhases = length(PmuSynx);
 numCol = 1 + (nPhases*3) + 2 ...
         + 1 + (nPhases*2) + 2 ...
         + 1 + (nPhases*2) + 2 ;
-if Kh ~= 0
-    % If there are harmonics or interharmonics, there will be a frequency and real and
-    % imaginary for each phase
+
+if Fh < 0 || Kh ~= 0
+    % here the signal is a sum of sinewaves or a single harmonic    
     ISynx = RefSynx(nPhases+1:end);
     RefSynx = RefSynx(1:nPhases);
-    numCol = numCol + 1 + (length(ISynx)*2);   
+    numCol = numCol + (length(ISynx)*2);
+    if Fh >= 0, numCol = numCol + 1; end  
 end
 Results = zeros(1,numCol);
 
@@ -117,10 +118,12 @@ loc = loc+(2*nPhases);
 Results(1,loc) = RefFreq;
 loc = loc+1;
 Results(1,loc) =  RefROCOF;
-
-if Kh ~= 0
-   loc = loc+1;
-   Results(1,loc)=Fh; 
+    
+if Fh < 0 || Kh ~= 0
+   if Fh >= 0
+       loc = loc+1;
+       Results(1,loc)=Fh;
+   end
    Synx = zeros(2,length(ISynx)); 
    Synx(1,:) = real(ISynx);
    Synx(2,:) = imag(ISynx);

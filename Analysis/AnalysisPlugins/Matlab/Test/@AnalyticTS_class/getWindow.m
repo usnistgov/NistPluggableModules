@@ -14,7 +14,7 @@ function window = getWindow(obj,offset,analysisCycles,varargin)
     end
     
     nData = size(obj.Ts.Data,1);
-    startIndex = mod(offset*obj.SampleRate/obj.F0,nData)+1; 
+    startIndex = round(mod(offset*obj.SampleRate/obj.F0,nData)+1); 
     
     % If the time series contains enough data:
     if (nData-(startIndex-1)) >= nWindow

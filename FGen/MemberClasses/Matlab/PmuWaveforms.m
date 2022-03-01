@@ -48,6 +48,17 @@ function [Signal,wfSize] = PmuWaveforms( ...
         KrS = signalparams(15,:);
     end
     
+    
+   % ARG 20220906 adding the ability to create a signal from a set of individual sinewaves
+   % If Fh is negative, then the signalparams will be sets of sine wave parameters as follows:
+   %signalparams(4,:)  % all negatives
+   %signalparams(5,:)  % second sine wave frequency
+   %signalparams(6,:)  % second sine wave phase
+   %signalparams(7,:)  % second sine wave index (fraction of Xm)
+   ...
+   %signalparams(5+n,:)  % nth sine wave frequency
+   %signalparams(6+n,:)  % nth sine wave phase
+   %signalparams(7+n,:)  % nth sine wave index (fraction of Xm)
 
 %%    
 wfSize = sizeMax;    % this is the waveform NOT INCLUDING the settling time added to both ends
@@ -60,11 +71,11 @@ wfSize = sizeMax;    % this is the waveform NOT INCLUDING the settling time adde
 stepIdx = all([Rf; KaS; KxS; KfS; KrS]');
 noSteps = all(stepIdx == 0);
 Freqs = [Fin(1,1)];
-if Kh(1) > 0; Freqs = [Freqs, Fh(1,1)]; end;
-if Ka(1) > 0; Freqs = [Freqs, Fa(1,1)]; end;
-if Kx(1) > 0; Freqs = [Freqs, Fx(1,1)]; end;
+if Kh(1) > 0; Freqs = [Freqs, Fh(1,1)]; end
+if Ka(1) > 0; Freqs = [Freqs, Fa(1,1)]; end
+if Kx(1) > 0; Freqs = [Freqs, Fx(1,1)]; end
     
-if (SettlingTime <= 0 && noSteps);
+if (SettlingTime <= 0 && noSteps)
     wfSize = SizeLcmPeriods(Freqs, FSamp);
     if wfSize > sizeMax; wfSize = sizeMax; end
 end

@@ -57,9 +57,10 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
          %test_ampl_step(testCase); testCase.fig = testCase.fig + 1;
          %test_freq_step(testCase); testCase.fig = testCase.fig + 1;
          %test_ramp(testCase); testCase.fig = testCase.fig + 1;
-         test_rocof_step(testCase); testCase.fig = testCase.fig + 1;
+         %test_rocof_step(testCase); testCase.fig = testCase.fig + 1;
          %test_ampl_modulation(testCase); testCase.fig = testCase.fig + 1;
-
+         test_13_harmonics(testCase); hold on %testCase.fig = testCase.fig + 1;
+         test_13_harmonics_180(testCase); hold off, testCase.fig = testCase.fig + 1;
      end
  end
  
@@ -68,7 +69,7 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
     methods (Access=private)
         
         function runOnce(testCase)
-            [Signal,size] = PmuWaveforms(...
+            [Signal,size] = Waveforms(...
                 testCase.t0,...
                 testCase.SettlingTime,...
                 testCase.sizeMax,...
@@ -177,6 +178,53 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
              testCase.signalParams(Fx,:) = 1;
              testCase.signalParams(Kx,:) = 0.1;
              runOnce(testCase);
+         end
+         
+         function test_13_harmonics(testCase)
+             F0 = 50;
+             setDefaults(testCase)
+             testCase.Fs = 50000;
+             testCase.sizeMax = 50000;
+
+             testCase.signalParams = zeros(4+(12*3)+1,3);
+             testCase.signalParams(1,:) = 1/sqrt(2);   % Xm
+             testCase.signalParams(2,:) = F0;   % Fin
+             testCase.signalParams(3,:) = [0  -120 120];    % Ps
+             testCase.signalParams(4,:) = -1;   % delimiter
+             mags = [2.0,5.0,1.0,6.0,0.5,5.0,0.5,1.5,0.5,3.5,0.5,3.0];             
+             for i = 1:12
+                 testCase.signalParams(5+((i-1)*3),:) = F0*(i+1);
+                 testCase.signalParams(6+((i-1)*3),:) = 0;
+                 testCase.signalParams(7+((i-1)*3),:) = mags(i)/100;
+             end
+             testCase.signalParams(4+(12*3)+1,:) = -1;  % delimiter
+             figure(testCase.fig)
+             grid on
+             runOnce(testCase);
+             
+         end
+         
+         function test_13_harmonics_180(testCase)
+             F0 = 50;
+             setDefaults(testCase)
+             testCase.Fs = 50000;
+             testCase.sizeMax = 50000;
+             
+             testCase.signalParams = zeros(4+(12*3)+1,3);
+             testCase.signalParams(1,:) = 1/sqrt(2);   % Xm
+             testCase.signalParams(2,:) = F0;   % Fin
+             testCase.signalParams(3,:) = [0 0-120 120];    % Ps
+             testCase.signalParams(4,:) = -1;   % delimiter
+             mags = [2.0,5.0,1.0,6.0,0.5,5.0,0.5,1.5,0.5,3.5,0.5,3.0];             
+             for i = 1:12
+                 testCase.signalParams(5+((i-1)*3),:) = F0*(i+1);
+                 testCase.signalParams(6+((i-1)*3),:) = 180;
+                 testCase.signalParams(7+((i-1)*3),:) = mags(i)/100;
+             end
+             testCase.signalParams(4+(12*3)+1,:) = -1;  % delimiter
+             runOnce(testCase);
+             grid on
+             
          end
 
         

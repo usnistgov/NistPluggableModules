@@ -46,3 +46,4 @@ build
 /SpecAn/SpecAnPlugins/Main2.vi
 /Analysis/AnalysisPlugins/Matlab/*.asv
 /Analysis/AnalysisPlugins/Matlab/Test/*.asv
+*.asv
