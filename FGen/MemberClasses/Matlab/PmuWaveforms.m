@@ -95,7 +95,9 @@ for i = 1:length(Xm)
     % Amplitudes and amplitude modulation if Kx>0
     Ain(i,:) = Xm(i) *(1+Kx(i)*cos((Wx(i)*t)));
     % Amplitude Step: applied after time passes 0
-    Ain(i,t >= 0+t0) = Ain(i,t >= 0+t0) * (1 + KxS(i));
+    %Ain(i,t >= 0+t0) = Ain(i,t >= 0+t0) * (1 + KxS(i));
+    %Ain(i,(t >= (0+SettlingTime))&(t <= (SettlingTime+t0))) = Ain(i,(t >= (0+SettlingTime))&(t <= (SettlingTime+t0)))* (1 + KxS(i));
+    Ain(i,(t >= t0)&(t <= SettlingTime+t0)) = Ain(i,(t >= t0)&(t <= SettlingTime+t0))* (1 + KxS(i));
 end
 
 % Phase
@@ -109,9 +111,11 @@ for i = 1:length(Ps)
 end
 
 % Phase Step
-if KaS(1) ~= 0;
+if KaS(1) ~= 0
     for i = 1:length(KaS)
-Theta(i,t >= (0+t0)) = Theta(i,t >= (0+t0)) + (KaS(i) * pi/180);
+        %Theta(i,t >= (0+t0)) = Theta(i,t >= (0+t0)) + (KaS(i) * pi/180);
+        %Theta(i,(t >= (SettlingTime))&(t <= (SettlingTime+t0))) = Theta(i,(t >= (0+SettlingTime))&(t <= (SettlingTime+t0))) + (KaS(i) * pi/180);
+        Theta(i,(t >= t0)&(t <= SettlingTime+t0)) = Theta(i,(t >= t0)&(t <= SettlingTime+t0)) + (KaS(i) * pi/180);
     end
 end
 
