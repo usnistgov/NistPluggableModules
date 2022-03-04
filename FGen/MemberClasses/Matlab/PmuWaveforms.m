@@ -119,17 +119,6 @@ if KaS(1) ~= 0
     end
 end
 
-% % frequency ramp
-% if Rf(1) ~= 0;
-%     for i = 1:length(Rf)
-%         Theta(i,t>=0 & t<SettlingTime) = Theta(i,t>=0 & t<SettlingTime) + (Rf(i) * 2 *pi * t(t>=0 & t<SettlingTime).^2);
-%     end
-%     
-%     % % last frequency hold for settling time
-%     for i = 1:length(Rf)
-%         Theta(i,t>=SettlingTime) = Theta(i,t>=SettlingTime) + (2*pi*Rf(i)*SettlingTime*t(t>=SettlingTime));
-%     end
-% end
 
 % frequency ramp
 rampIdx = all([Rf; KrS]');
@@ -147,7 +136,14 @@ end
 % frequency step
 if ~(all(KfS == 0))
     for i = 1:length(KfS)
-       Theta(i,t>=(0+t0)) = Theta(i,t>=(0+t0)) + ((2*pi*KfS(i))*(t(t>=(0+t0))-t0));
+        if ~(KxS(i) == -1.0)
+            %Theta(i,t>=(0+t0)) = Theta(i,t>=(0+t0)) + ((2*pi*KfS(i))*(t(t>=(0+t0))-t0));
+            Theta(i,(t >= t0)&(t <= SettlingTime+t0)) = Theta(i,(t >= t0)&(t <= SettlingTime+t0)) + ((2*pi*KfS(i))*(t(t>=(0+t0))-t0));
+        else
+            % ARG 03/04/2022: Special test for frequency drop and restoration, frequency change after restoration
+            Theta(i,t>=(SettlingTime+t0)) = Theta(i,t>=(SettlingTime+t0)) + ((2*pi*KfS(i))*(t(t>=(0+t0))-t0));
+        end
+            
     end  
 end
 
