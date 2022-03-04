@@ -59,8 +59,9 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
          %test_ramp(testCase); testCase.fig = testCase.fig + 1;
          %test_rocof_step(testCase); testCase.fig = testCase.fig + 1;
          %test_ampl_modulation(testCase); testCase.fig = testCase.fig + 1;
-         test_13_harmonics(testCase); hold on %testCase.fig = testCase.fig + 1;
-         test_13_harmonics_180(testCase); hold off, testCase.fig = testCase.fig + 1;
+         %test_13_harmonics(testCase); hold on %testCase.fig = testCase.fig + 1;
+         %test_13_harmonics_180(testCase); hold off, testCase.fig = testCase.fig + 1;
+         test_Step (testCase); testCase.fig = testCase.fig+1;
      end
  end
  
@@ -227,6 +228,23 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
              
          end
 
+        function test_Step (testCase)
+            setDefaults(testCase)
+            testCase.SettlingTime = 0.5;
+            testCase.t0 = 0.5;
+            testCase.sizeMax = 1.5*testCase.Fs;
+            [~,Fin,~,~,~,~,~,~,~,~,~,KaS,KxS]  = testCase.getParamIndex;
+            %testCase.signalParams(KxS,:) = .1;
+            testCase.signalParams(KaS,:) = 45;
+            runOnce(testCase)
+            hold on
+            testCase.t0 = testCase.t0 - .1/testCase.signalParams(Fin,1);
+            runOnce(testCase)
+            %testCase.t0 = testCase.t0 - .2/testCase.signalParams(Fin,1);
+            %runOnce(testCase)
+            hold off
+            
+        end         
         
         function saveWaveforms(testCase,Signal,size)
             % cd to the working directory
