@@ -141,7 +141,7 @@ if ~(all(KfS == 0))
             Theta(i,(t >= t0)&(t <= SettlingTime+t0)) = Theta(i,(t >= t0)&(t <= SettlingTime+t0)) + ((2*pi*KfS(i))*(t(t>=(0+t0))-t0));
         else
             % ARG 03/04/2022: Special test for frequency drop and restoration, frequency change after restoration
-            Theta(i,t>=(SettlingTime+t0)) = Theta(i,t>=(SettlingTime+t0)) + ((2*pi*KfS(i))*(t(t>=(0+t0))-t0));
+            Theta(i,t>=(SettlingTime+t0)) = Theta(i,t>=(SettlingTime+t0)) + ((2*pi*KfS(i))*(t(t>=(SettlingTime+t0))-t0));
         end
             
     end  
