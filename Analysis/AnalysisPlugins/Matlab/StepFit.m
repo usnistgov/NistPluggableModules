@@ -111,7 +111,7 @@ for i = 1:NPhases
 %     end
 %     disp(msg);
 %     
-%     figure(i)
+%     figure(i+99)
 %     %sgtitle(sprintf('Phase%d ',i)) does not work for Matlab 2015
 %     subplot(2,1,1)
 %     plot(fitresult{i},x,Samples(i,:))
