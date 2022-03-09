@@ -17,7 +17,7 @@ dimY = size(Samples); nPhases = dimY(1);
 
 N = dimY(2);
 t = (-(N/2):(N/2)-1)/SampleRate;     % time vector centered on the window
-br = N*ignore;                   % may be removed later
+br = floor(N*ignore);                   % may be removed later
 tbr = t(br:end-br);                    % limited time vector with ignored values removed
 
 %% this section gets a first guess at the step location
@@ -48,19 +48,33 @@ detA = abs(dAi(:,br:end-br)-am(1,:));    % amplitude detection signal limited by
 critF = MF./(kf*fm);
 critA = MA./(km*am);
 
-% test for no step and get tau values
+% % test for no step and get tau values
+% tau = NaN(nPhases,1);
+% if ~(any(critF<1) && any(critA<1))     
+%     cf = critF>=critA;
+%     ca = critF<critA;
+%     idx = cf.*IF+ca.*IA;
+%     tau = tbr(idx);
+% end
 tau = NaN(nPhases,1);
-if ~(any(critF<1) && any(critA<1))     
-    cf = critF>=critA;
-    ca = critF<critA;
-    idx = cf.*IF+ca.*IA;
-    tau = tbr(idx);
-end
+if ~(any(am == 0)|| any(fm == 0))  
+    % Threshold detection
+    critF = MF./(kf*fm);
+    critA = MA./(km*am);
     
-%    disp(tau);
+    % test for no step and get tau values
+    tau = NaN(nPhases,1);
+    if ~(any(critF<1) && any(critA<1))
+        cf = critF>=critA;
+        ca = critF<critA;
+        idx = cf.*IF+ca.*IA;
+        tau = tbr(idx);
+    end
+end    
     
 %%---------------------Visualization---------------------------------------
-% fig = 0;
+% disp(tau);
+% fig = 99;
 % 
 % %% Plot the analytic signal
 % fig = fig+1;
