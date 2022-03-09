@@ -48,6 +48,13 @@ function [Signal,wfSize] = PmuWaveforms( ...
         KrS = signalparams(15,:);
     end
     
+    % ARG 20220309 added band limited normally distributed noise
+    Kn = zeros(1,c); Fn = Kn;
+    if r > 15
+        Kn = signalparams(16,:);
+        Fn = signalparams(17,:);
+    end 
+    
     
    % ARG 20220906 adding the ability to create a signal from a set of individual sinewaves
    % If Fh is negative, then the signalparams will be sets of sine wave parameters as follows:
@@ -89,9 +96,13 @@ Wh = 2*pi*Fh;   % single harmonic frequency
 % create the time array.  Add the settling time to both ends of the size
 %t = t0-SettlingTime:1/FSamp:((size-1)/FSamp)+t0+SettlingTime;
 t = -SettlingTime:1/FSamp:((wfSize-1)/FSamp)+SettlingTime;
+nSamples = length(t);
+nPhases = length(Xm);
+
+
 % Amplitude, AM and magnitude step
-Ain = zeros(length(Xm),length(t));
-for i = 1:length(Xm)
+Ain = zeros(nPhases,nSamples);
+for i = 1:nPhases
     % Amplitudes and amplitude modulation if Kx>0
     Ain(i,:) = Xm(i) *(1+Kx(i)*cos((Wx(i)*t)));
     % Amplitude Step: applied after time passes 0
@@ -101,8 +112,8 @@ for i = 1:length(Xm)
 end
 
 % Phase
-Theta = zeros(length(Ps),length(t));
-for i = 1:length(Ps)
+Theta = zeros(nPhases,nSamples);
+for i = 1:nPhases
     Theta(i,:) = (Wf(i)*t) ...                         % Fundamental
                  + Ps(i)*(pi/180) ...               % phase shift
                  - ( ...                 
@@ -112,7 +123,7 @@ end
 
 % Phase Step
 if KaS(1) ~= 0
-    for i = 1:length(KaS)
+    for i = 1:nPhases
         %Theta(i,t >= (0+t0)) = Theta(i,t >= (0+t0)) + (KaS(i) * pi/180);
         %Theta(i,(t >= (SettlingTime))&(t <= (SettlingTime+t0))) = Theta(i,(t >= (0+SettlingTime))&(t <= (SettlingTime+t0))) + (KaS(i) * pi/180);
         Theta(i,(t >= t0)&(t <= SettlingTime+t0)) = Theta(i,(t >= t0)&(t <= SettlingTime+t0)) + (KaS(i) * pi/180);
@@ -124,7 +135,7 @@ end
 rampIdx = all([Rf; KrS]');
 if ~(all(rampIdx == 0))
     if all(Rf == 0); Rf = KrS; end  % prefer Rf over KrS
-    for i = 1:length(Rf)
+    for i = 1:nPhases
         if Rf(i)~=0
             endRamp = (wfSize/FSamp);
             Theta(i,t>=(0+t0) & t<=endRamp) = Theta(i,t>=(0+t0) & t<=endRamp) + (pi*Rf(i)*t(t>=(0+t0) & t<=endRamp).^2);
@@ -135,7 +146,7 @@ end
 
 % frequency step
 if ~(all(KfS == 0))
-    for i = 1:length(KfS)
+    for i = 1:nPhases
         if ~(KxS(i) == -1.0)
             %Theta(i,t>=(0+t0)) = Theta(i,t>=(0+t0)) + ((2*pi*KfS(i))*(t(t>=(0+t0))-t0));
             Theta(i,(t >= t0)&(t <= SettlingTime+t0)) = Theta(i,(t >= t0)&(t <= SettlingTime+t0)) + ((2*pi*KfS(i))*(t(t>=(0+t0))-t0));
@@ -160,10 +171,27 @@ if (Fh > FSamp/2)
     error('Interfering signal frequency is above FGen Nyquist frequency.  Can not generate');
 end % if
 
-for i = 1:length(Wh)
+for i = 1:nPhases
     ThetaH(i,:) = (Wh(i)*t) + Ph(i)*(pi/180);
     cSignal(i,:) = cSignal(i,:) + ((Kh(i) * (Xm(i))) * (cos(ThetaH(i,:)) + 1i*sin(ThetaH(i,:))));
 end
+
+
+% Add band-limited normally distributed noise
+if any(Kn > 0)
+    cNoise = zeros(nPhases,nSamples);
+    freqBins = (0:nSamples/2)'/nSamples*FSamp; % the frequency bins if the signal is to be band limited
+    for i = 1:nPhases
+        X = [1; exp(1i*2*pi*randn(nSamples/2-1,1));1]; % this is the full bandwidth noise in the frequency domain
+        if Fn > 0
+            X(find(freqBins > Fn(i))) = 0; % sets all frequency bins above the cutoff to 0
+        end
+        X = [X;conj(flipud(X(2:end-1)))];
+        iF = ifft(X);
+        cNoise(i,:) = Xm(i)*Kn(i)*iF/rms(iF); % RMS Noise power                
+    end
+    cSignal = cSignal+cNoise;
+end        
 
 Signal = real(cSignal);
 
