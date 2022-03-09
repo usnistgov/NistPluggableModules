@@ -188,7 +188,8 @@ if any(Kn > 0)
         end
         X = [X;conj(flipud(X(2:end-1)))];
         iF = ifft(X);
-        cNoise(i,:) = Xm(i)*Kn(i)*iF/rms(iF); % RMS Noise power                
+        iFrms = sqrt(mean(iF.*iF));
+        cNoise(i,:) = Xm(i)*Kn(i)*iF/iFrms; % RMS Noise power                
     end
     cSignal = cSignal+cNoise;
 end        
