@@ -250,10 +250,31 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
         function test_Noise (testCase)
             setDefaults(testCase)
             testCase.SettlingTime = 1;
-            [~,~,~,~,~,~,~,~,~,~,~,~,~,~,~,Kn,Fn] = testCase.getParamIndex;
+            [Xm,~,~,~,~,~,~,~,~,~,~,~,~,~,~,Kn,Fn] = testCase.getParamIndex;
+            testCase.signalParams(Kn,:) = 70;
             testCase.signalParams(Kn,:) = 0.03;
             testCase.signalParams(Fn,:) = 2000;
             runOnce(testCase)
+            
+%             [Signal,size] = Waveforms(...
+%                 testCase.t0,...
+%                 testCase.SettlingTime,...
+%                 testCase.sizeMax,...
+%                 testCase.Fs,...
+%                 testCase.signalParams...
+%                 );
+%             
+%             %t = testCase.t0-testCase.SettlingTime:1/testCase.Fs:((size-1)/testCase.Fs)+testCase.t0+testCase.SettlingTime;
+%             t = -testCase.SettlingTime:1/testCase.Fs:((size-1)/testCase.Fs)+testCase.SettlingTime;
+%             
+%             plot(t,Signal(:,:))
+%             % saveWaveforms(testCase,Signal,size);
+%             
+%             % calculate SINAD
+%             r = sinad(Signal(1,:),testCase.Fs);
+%             thdn = 10^-(r/20);
+%             disp(thdn)
+%             
         end
         
         function saveWaveforms(testCase,Signal,size)
