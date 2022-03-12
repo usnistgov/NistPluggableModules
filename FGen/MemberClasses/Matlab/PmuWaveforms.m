@@ -184,7 +184,7 @@ if any(Kn > 0)
     for i = 1:nPhases
         X = [1; exp(1i*2*pi*randn(nSamples/2-1,1));1]; % this is the full bandwidth noise in the frequency domain
         if Fn > 0
-            X(find(freqBins > Fn(i))) = 0; % sets all frequency bins above the cutoff to 0
+            X(find((freqBins < 100)|(freqBins > Fn(i)))) = 0; % sets all frequency bins above the cutoff to 0
         end
         X = [X;conj(flipud(X(2:end-1)))];
         iF = ifft(X);
