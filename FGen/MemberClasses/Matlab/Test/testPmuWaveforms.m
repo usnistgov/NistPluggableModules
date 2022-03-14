@@ -56,7 +56,8 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
          %test_70f0(testCase); testCase.fig = testCase.fig + 1;
          %test_ampl_step(testCase); testCase.fig = testCase.fig + 1;
          %test_freq_step(testCase); testCase.fig = testCase.fig + 1;
-         test_ramp(testCase); testCase.fig = testCase.fig + 1;
+         test_ramp(testCase,'single'); figure(testCase.fig),testCase.fig = testCase.fig + 1;
+         test_ramp(testCase,'double'); figure(testCase.fig),testCase.fig = testCase.fig + 1;
          %test_rocof_step(testCase); testCase.fig = testCase.fig + 1;
          %test_ampl_modulation(testCase); testCase.fig = testCase.fig + 1;
          %test_13_harmonics(testCase); hold on %testCase.fig = testCase.fig + 1;
@@ -141,15 +142,18 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
             runOnce(testCase);
         end        
         
-        function test_ramp(testCase)
+        function test_ramp(testCase,sides)
             setDefaults(testCase);
             [~, Fin, ~, ~, ~, ~, ~, ~, ~, ~, Rf] = testCase.getParamIndex();
             rampRng = 10;   % Frequency range of the ramp
             testCase.signalParams(Fin,:)= 45.0;
             testCase.signalParams(Rf,:) = 1;
             testCase.t0 = (rampRng/testCase.signalParams(Rf,1));
-            testCase.SettlingTime = 0.25;             % 1 second of settling on each side of the ramp
+            testCase.SettlingTime = 0.5;             % 1 second of settling on each side of the ramp
             testCase.sizeMax =  round(((2*testCase.t0)+testCase.SettlingTime)*testCase.Fs);     % 10 seconds max size
+            if sides == 'single'
+              testCase.sizeMax = round(((testCase.t0))*testCase.Fs);
+            end
             runOnce(testCase);
         end
         
