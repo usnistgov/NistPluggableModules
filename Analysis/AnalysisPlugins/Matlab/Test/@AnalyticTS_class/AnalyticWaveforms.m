@@ -81,7 +81,7 @@ if obj.SignalParams(4,1) >= 0
     rampIdx = any([Rf; KrS]');
     if ~(all(rampIdx == 0))
         if all(Rf == 0); Rf = KrS; end  % prefer Rf over KrS
-        Wf = pi*Rf;
+        Wr = pi*Rf;
         for i = 1:nPhases
             if Rf(i)~=0
                 % five phases of ramping: 
@@ -91,14 +91,15 @@ if obj.SignalParams(4,1) >= 0
                 %   from SettlingTime+t0 to SettlingTime+2*t0: ramp at -Rf
                 %   from SettlingTime+2*t0 to 2*(SettlingTime+t0): no ramp
                 
-                Theta(i,t>=0 & t<=t0) = Theta(i,t>=0 & t<=t0) + (Wf(i)*t(t>=0 & t<=t0).^2);%plot(t,Theta,'b'), hold on % First ramping period                
-                Theta(i,t>t0) = Theta(i,t>t0) + Wf(i)*( (t0^2) + (t(t>t0)-t0) ); %plot(t,Theta,'r');  % set the remaining to the new frequency
-                Theta(i,t>=t0+SettlingTime & t<= 2*t0+SettlingTime) = Theta(i,t>=t0+SettlingTime & t<= 2*t0+SettlingTime) - (Wf(i)*(t(t>=t0+SettlingTime & t<= 2*t0+SettlingTime)-(t0+SettlingTime)).^2);%plot(t,Theta,'g') %second ramping period
-                Theta(i,t>2*t0+SettlingTime) = Theta(i,t>2*t0+SettlingTime) - Wf(i)*( t0^2 + t(t>(2*t0+SettlingTime))-(2*t0+SettlingTime));%plot(t,Theta,'k') % final non-ramping period                
-                
+                Theta(i,t>=0 & t<=t0) = Theta(i,t>=0 & t<=t0) + (Wr(i)*t(t>=0 & t<=t0).^2); figure(100), plotThetaGradient(t,Theta,FSamp,'b') % First ramping period    
+                Theta(i,t>t0) = Theta(i,t>t0) + Wr(i)*( (t0^2) + 2*t0*(t(t>t0)-t0) ); hold on, plotThetaGradient(t,Theta,FSamp,'r');  % set the remaining to the new frequency                
+                Theta(i,t>=t0+SettlingTime & t<= 2*t0+SettlingTime) = Theta(i,t>=t0+SettlingTime & t<= 2*t0+SettlingTime) - (Wr(i)*(t(t>=t0+SettlingTime & t<= 2*t0+SettlingTime)-(t0+SettlingTime)).^2); plotThetaGradient(t,Theta,FSamp,'g') %second ramping period
+                Theta(i,t>2*t0+SettlingTime) = Theta(i,t>2*t0+SettlingTime) - Wr(i)*( t0^2 + 2*(t0)*(t(t>(2*t0+SettlingTime))-(2*t0+SettlingTime))); plotThetaGradient(t,Theta,FSamp,'k'),hold off % final non-ramping period
+
+% Old single ramp code                
 %                 endRamp = (wfSize/FSamp);
 %                 Theta(i,t>=(0+t0) & t<=endRamp) = Theta(i,t>=(0+t0) & t<=endRamp) + (pi*Rf(i)*t(t>=(0+t0) & t<=endRamp).^2);
-%                 Theta(i,t>(endRamp+t0)) = Theta(i,t>(endRamp+t0)) + (pi*Rf(i)*(endRamp+t0)*t(t>(endRamp+t0)));
+%                 Theta(i,t>(endRamp+t0)) = Theta(i,t>(endRamp+t0)) + (pi*Rf(i)*((endRamp+t0)^2)*t(t>(endRamp+t0))) + (pi*Rf(i))*(t(t>(endRamp+t0))-(endRamp+t0));
             end
         end
     end
@@ -116,7 +117,7 @@ if obj.SignalParams(4,1) >= 0
             end
         end
     end
-    
+        
     % Complex signals
     cSignal = (Ain.*exp(-1i.*Theta));
     
@@ -271,6 +272,17 @@ obj.Ts.Time=t;
 %
 % plot(Fi(1,:));
 %%------------------------------------------------------------------------
-
 end
+
+%======================== DEBUG Plot Frequency ========================
+% Gradient of Theta is the frequency
+function plotThetaGradient(t,Theta,FSamp,spec)
+subplot(2,1,1)
+plot(t,Theta,spec)
+subplot(2,1,2)
+plot(t,gradient(Theta)*FSamp/(2*pi),spec)
+ylim([40,60])
+end
+% =====================================================================
+
 
