@@ -46,29 +46,35 @@ for p = 1:nPhases
         C = S(4); D = S(5);
     end
         
-    % regression loop finds the frequency.  This is the classic 4-parameter
-    % cosine fit.
-    for k = 1:MaxIter
-        H = [cos(w*tn), sin(w*tn), ones(nSamples,1)];
-        if Fi(p)>0
-            H = [H cos(wi*tn) sin(wi*tn)];
-        end
-        G = [H (-A*tn.*sin(w*tn) + B*tn.*cos(w*tn))];
-        S = (G'*G)\(G'*Samples(:,p));
-        A = S(1); B = S(2); % Note DC offset is ignored
-        if Fi(p)>0
-            C = S(4); D = S(5);
-        end
+    if (abs(complex(A,B))< 5e-3) % check for signals close to 0;
+        A = 0; B = 0;
+        w = 0;
+        dw = 0;
+        k = 1;
+    else
         
-        dw = S(size(S,1));   % change in frequency is the amplitude of the sine term
-        w = w + dw;
-        if dw < FitCrit
-            break
+        % regression loop finds the frequency.  This is the classic 4-parameter
+        % cosine fit.
+        for k = 1:MaxIter
+            H = [cos(w*tn), sin(w*tn), ones(nSamples,1)];
+            if Fi(p)>0
+                H = [H cos(wi*tn) sin(wi*tn)];
+            end
+            G = [H (-A*tn.*sin(w*tn) + B*tn.*cos(w*tn))];
+            S = (G'*G)\(G'*Samples(:,p));
+            A = S(1); B = S(2); % Note DC offset is ignored
+            if Fi(p)>0
+                C = S(4); D = S(5);
+            end
+            
+            dw = S(size(S,1));   % change in frequency is the amplitude of the sine term
+            w = w + dw;
+            if dw < FitCrit
+                break
+            end
         end
     end
     
-    %Ain(p) = sqrt(A^2+B^2);
-    %Theta(p) = atan2(B,A);
     Phasors(p) = complex(A,B);
     Freqs(p) = w/(2*pi);
     ROCOFs(p) = dw/(2*pi);
@@ -77,8 +83,6 @@ for p = 1:nPhases
     % Harmonics or interharmonics
     if Fi>0
         PhasorsH(p) = complex(C,D);
-        %AinH(p) = sqrt(C^2 + D^2)*MagCorr(p);
-        %ThetaH(p) = atan2(D,C);        
     end
 %     %**********************DEBUGGING*******************************************
 %     %residuals

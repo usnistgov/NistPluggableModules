@@ -134,7 +134,7 @@ classdef testAnyFit < matlab.unittest.TestCase
             %testSSCapture (self); self.fig=self.fig+1; 
             
             % Fourier Series signals (such as multi-harmonics)
-            test50F0_13_Harmonic(self); self.fig=self.fig+1;
+            %test50F0_13_Harmonic(self); self.fig=self.fig+1;
             
             % Modulation
             %test50f0_5m0_0x1(self); self.fig=self.fig+1; % Amplitude modulation fm = 5, k = 0.1
@@ -149,8 +149,9 @@ classdef testAnyFit < matlab.unittest.TestCase
             %testModFitActualData(self);self.fig=self.fig+1;
             %AMcFitExperiment(self); self.fig=self.fig+1;
             
-            % Frequency Step
-            %testStepPosAmplDefault(self); self.fig=self.fig+1;
+            % Step
+            %testStepPosAmplDefault(self); self.fig=self.fig+1; % frequency step test
+            testDropandRestore(self) % drop and restore test
         end
     end
 
@@ -801,16 +802,39 @@ plot(t,real(self.Window.Data)-real(bestFit));
             self.runOneStepFit(0)
         end
         
+          function testDropandRestore(self)
+           disp('testStepPosAmplDefault')
+            self.AnalysisCycles = 3;
+            self.Fs = 48000;
+            self.setTsDefaults;
+            [~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, ~, KxS,KfS] = self.getParamIndex();
+            self.SignalParams(KxS,:) = -1;
+            self.SignalParams(KfS,:) = 0.4;
+            self.SettlingTime = 0.5;
+            self.T0 = 0.5;
+            self.getTimeSeries();
+            for i = 47:50
+                self.runOneStepFit(i)
+                disp(i)
+            end  
+            for i = 72:77
+                self.runOneStepFit(i)
+                disp(i)
+            end  
+            
+        end
+             
+        
         function runOneStepFit(self,idx)
-            Samples = self.TS.getWindow(idx,self.AnalysisCycles,'even');
-            [Synx,Freq,ROCOF] = StepFit (...
+            self.Window = self.TS.getWindow(idx,self.AnalysisCycles,'even');
+            [actSynx,actFreq,actROCOF] = StepFit (...
                 self.SignalParams, ...
                 self.DlyCorr, ...
                 self.MagCorr, ...
                 self.F0, ...
                 self.AnalysisCycles, ...
                 self.Fs, ...
-                Samples ...
+                real(self.Window.Data)' ...
                 );
             expSynx = self.calcSymComp(self.Window.UserData.Vals.')/sqrt(2);
             expFreq = mean(self.Window.UserData.Freqs(1:3));                
@@ -818,7 +842,7 @@ plot(t,real(self.Window.Data)-real(bestFit));
             
             act = struct('Synx',actSynx,'Freq',actFreq,'ROCOF',actROCOF);
             exp = struct('Synx',expSynx,'Freq',expFreq,'ROCOF',expROCOF);
-            %if bDisplay == true, self.dispErrors(act,exp,self.fig),end
+            self.dispErrors(act,exp,self.fig)
             
             self.verifyEqual(actSynx,expSynx,'AbsTol',1e-6)
             self.verifyEqual(actFreq,expFreq,'AbsTol',1e-5)
