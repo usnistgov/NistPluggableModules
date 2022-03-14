@@ -56,13 +56,13 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
          %test_70f0(testCase); testCase.fig = testCase.fig + 1;
          %test_ampl_step(testCase); testCase.fig = testCase.fig + 1;
          %test_freq_step(testCase); testCase.fig = testCase.fig + 1;
-         %test_ramp(testCase); testCase.fig = testCase.fig + 1;
+         test_ramp(testCase); testCase.fig = testCase.fig + 1;
          %test_rocof_step(testCase); testCase.fig = testCase.fig + 1;
          %test_ampl_modulation(testCase); testCase.fig = testCase.fig + 1;
          %test_13_harmonics(testCase); hold on %testCase.fig = testCase.fig + 1;
          %test_13_harmonics_180(testCase); hold off, testCase.fig = testCase.fig + 1;
          %test_Step (testCase); testCase.fig = testCase.fig+1;
-         test_Noise (testCase); testCase.fig = testCase.fig+1;
+         %test_Noise (testCase); testCase.fig = testCase.fig+1;
      end
  end
  
@@ -142,13 +142,15 @@ classdef testPmuWaveforms < matlab.unittest.TestCase
         end        
         
         function test_ramp(testCase)
-           setDefaults(testCase);
-           [~, Fin, ~, ~, ~, ~, ~, ~, ~, ~, Rf] = testCase.getParamIndex();
-           testCase.sizeMax = testCase.Fs * 10;     % 10 seconds max size
-           testCase.SettlingTime = 1;             % 1 second of settling on each side of the ramp
-           testCase.signalParams(Fin,:)= 45.0;
-           testCase.signalParams(Rf,:) = 1;
-           runOnce(testCase);
+            setDefaults(testCase);
+            [~, Fin, ~, ~, ~, ~, ~, ~, ~, ~, Rf] = testCase.getParamIndex();
+            rampRng = 10;   % Frequency range of the ramp
+            testCase.signalParams(Fin,:)= 45.0;
+            testCase.signalParams(Rf,:) = 1;
+            testCase.t0 = (rampRng/testCase.signalParams(Rf,1));
+            testCase.SettlingTime = 0.25;             % 1 second of settling on each side of the ramp
+            testCase.sizeMax =  round(((2*testCase.t0)+testCase.SettlingTime)*testCase.Fs);     % 10 seconds max size
+            runOnce(testCase);
         end
         
          function test_rocof_step(testCase)
