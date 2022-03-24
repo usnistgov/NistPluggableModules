@@ -42,6 +42,7 @@
 		<Item Name="StatusUpdateByModID.vi" Type="VI" URL="../Common/StatusUpdateByModID.vi"/>
 		<Item Name="StatusUpdate.vi" Type="VI" URL="../Common/StatusUpdate.vi"/>
 		<Item Name="SettingsLV.vi" Type="VI" URL="../Common/SettingsLV.vi"/>
+		<Item Name="ParameterSet.vi" Type="VI" URL="../Common/ParameterSet.vi"/>
 	</Item>
 	<Item Name="Main.vi" Type="VI" URL="../Common/Main.vi"/>
 	<Item Name="AcPwrBase.lvclass" Type="LVClass" URL="../AcPwrBaseClass/AcPwrBase.lvclass"/>
