@@ -36,15 +36,6 @@
 		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 		<Property Name="NI.ClassItem.State" Type="Int">1074278928</Property>
 	</Item>
-	<Item Name="Initialize MeasIndices in Visulaization Properties Control.vi" Type="VI" URL="../../VisualizeBase/VisualizeBase_class/SubVIs/Initialize MeasIndices in Visulaization Properties Control.vi">
-		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!,8!!!!&amp;Q!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"!!!!"2!)1Z1986T:5&amp;U5X2B=H2V=!!!$%!B"URP:U2B&gt;'%!&amp;E!B%%RB&gt;7ZD;%FO5X6C5'&amp;O:7Q!!!^!"A!*2F".&lt;WZJ&gt;'^S!!N!!A!%4'6G&gt;!!!#5!#!!.5&lt;X!!#U!#!!63;7&gt;I&gt;!!.1!)!"E*P&gt;(2P&lt;1!!0!$R!!!!!!!!!!%24&amp;:3:7.U6(FQ:52F:CZD&gt;'Q!)E"1!!1!#1!+!!M!$!Z'5&amp;&gt;J&lt;G2P&gt;U*P&gt;7ZE=Q!!(%"1!!1!#1!+!!M!$!V.&lt;WZJ&gt;'^S1G^V&lt;G2T!"6!!Q!04H6N:8*J9S"$&lt;WZU=G^M!"B!1!!"`````Q!0#UVF98.*&lt;G2J9W6T!(]!]&gt;Z^+']!!!!$%V:J=X6B&lt;'F[982J&lt;WYO&lt;(:M;7)66GFT&gt;7&amp;M;8JF1G&amp;T:3ZM&gt;G.M98.T'&amp;:J=X6B&lt;'F[982J&lt;WZ0=(2J&lt;WZT,G.U&lt;!!U1&amp;!!"Q!&amp;!!9!"Q!)!!U!$A!1'V:J=X6B&lt;'F[982J&lt;WZ1=G^Q:8*U;76T)'^V&gt;!!A1&amp;!!!Q!!!!%!!B.F=H*P=C"J&lt;C!I&lt;G]A:8*S&lt;X)J!""!-0````]'5X2S;7ZH!!!;1%!!!@````]!%QR.:7&amp;T1WBB&lt;GZF&lt;(-!!(M!]&gt;Z^+']!!!!$%V:J=X6B&lt;'F[982J&lt;WYO&lt;(:M;7)66GFT&gt;7&amp;M;8JF1G&amp;T:3ZM&gt;G.M98.T'&amp;:J=X6B&lt;'F[982J&lt;WZ0=(2J&lt;WZT,G.U&lt;!!Q1&amp;!!"Q!&amp;!!9!"Q!)!!U!$A!1&amp;V:J=X6B&lt;'F[982J&lt;WZ1=G^Q:8*U;76T!&amp;1!]!!-!!-!"!!%!"%!"!!%!!1!"!!3!!1!&amp;!!6!Q!!?!!!$1A!!!!!!!!!!!!!$1M!!!!!!!!!!!!!!!!!!!!!!!!)!!!!!!!!!2)!!!!3!!!!!!%!&amp;A!!!!!</Property>
-		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
-		<Property Name="NI.ClassItem.Flags" Type="Int">16777216</Property>
-		<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
-		<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
-		<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
-		<Property Name="NI.ClassItem.State" Type="Int">1107821072</Property>
-	</Item>
 	<Item Name="PrepareWaveformDataForTDMS.vi" Type="VI" URL="../SubVIs/PrepareWaveformDataForTDMS.vi">
 		<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!&amp;+!!!!$A!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AFF=H*P=C"P&gt;81!"1!+!!!C1%!!!P``````````!!11476B=X6S:7VF&lt;H1A2'&amp;U91!!$E!Q`````Q2O97VF!!!;1%!!!@````]!"AV$;'&amp;O&lt;G6M)%ZB&lt;76T!""!6!!'#62J&lt;764&gt;'&amp;N=!!%!!!!)%"1!!-!!!!"!!)4:8*S&lt;X)A;7YA+'ZP)'6S=G^S+1!11&amp;1!!QB898:F:G^S&lt;1!!(E"!!!(`````!!M16W&amp;W:7:P=GV"=H*B?3"J&lt;A!!6!$Q!!Q!!Q!&amp;!!=!#!!*!!E!#1!*!!I!#1!*!!Q$!!"Y!!!.#!!!#1!!!!E!!!!*!!!!!!!!!!!!!!!!!!!!!!!!!!I!!!!!!!!!!!!!!AA!!!!!!1!.!!!!!!</Property>
 		<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
