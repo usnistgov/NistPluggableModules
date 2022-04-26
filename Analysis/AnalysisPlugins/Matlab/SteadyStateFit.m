@@ -61,12 +61,12 @@ if nPhases >= 3
     
     Vabc = Synx(1:3,:);
     Vzpn = Ai*Vabc; %voltage: zero, positive and negative sequence
-    Synx = [ Vabc.' Vzpn(2)];    
+    vSynx = [ Vabc.' Vzpn(2)];    
     
     if nPhases >= 6
         Iabc = Synx(4:6,:);
         Izpn = Ai*Iabc; %curren: zero, positive and negative sequence
-        Synx = [Synx, Iabc.' Izpn(2)];
+        Synx = [vSynx, Iabc.' Izpn(2)];
     end
 end
 
