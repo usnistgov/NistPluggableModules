@@ -11,8 +11,28 @@
 	<Item Name="Friends List" Type="Friends List">
 		<Item Name="DigitizerModule.lvlib" Type="Friended Library" URL="../../DigitizerModule/DigitizerModule.lvlib"/>
 	</Item>
+	<Item Name="Shared" Type="Folder">
+		<Item Name="Broadcasts" Type="Folder">
+			<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../Shared/Broadcasts/DestroyBroadcastEvents.vi"/>
+			<Item Name="DidInit.vi" Type="VI" URL="../Shared/Broadcasts/DidInit.vi"/>
+			<Item Name="DidStop.vi" Type="VI" URL="../Shared/Broadcasts/DidStop.vi"/>
+			<Item Name="ReportError.vi" Type="VI" URL="../Shared/Broadcasts/ReportError.vi"/>
+			<Item Name="StatusUpdate.vi" Type="VI" URL="../Shared/Broadcasts/StatusUpdate.vi"/>
+		</Item>
+		<Item Name="Queue" Type="Folder">
+			<Item Name="Dequeue.vi" Type="VI" URL="../Shared/Queue/Dequeue.vi"/>
+			<Item Name="Enqueue.vi" Type="VI" URL="../Shared/Queue/Enqueue.vi"/>
+			<Item Name="ObtainQueue.vi" Type="VI" URL="../Shared/Queue/ObtainQueue.vi"/>
+		</Item>
+		<Item Name="DestroyClone.vi" Type="VI" URL="../Shared/DestroyClone.vi"/>
+		<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../Shared/DestroyRequestEvents.vi"/>
+		<Item Name="ErrorHandler.vi" Type="VI" URL="../Shared/ErrorHandler.vi"/>
+		<Item Name="HandleExit.vi" Type="VI" URL="../Shared/HandleExit.vi"/>
+		<Item Name="PathToINIBroadcast.vi" Type="VI" URL="../Shared/PathToINIBroadcast.vi"/>
+	</Item>
 	<Item Name="Agilent_3458A.lvclass" Type="LVClass" URL="../Agilent_3458/Agilent_3458A.lvclass"/>
 	<Item Name="DigitizerBase.lvclass" Type="LVClass" URL="../DigitizerBaseClass/DigitizerBase.lvclass"/>
+	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 	<Item Name="NiDaqMx.lvclass" Type="LVClass" URL="../NiDaqMxClass/NiDaqMx.lvclass"/>
 	<Item Name="Simulation.lvclass" Type="LVClass" URL="../SimulationClass/Simulation.lvclass"/>
 </Library>

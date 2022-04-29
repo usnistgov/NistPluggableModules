@@ -102,7 +102,7 @@ ti = 3;     % change ti to control the tau parameter:
             noise = std_noise*randn(1,length(rSignal));
             
             Signal = rSignal + noise;
-            SNR_hist = snr(Signal,noise);  %just to check the SNR, if you want
+            %SNR_hist = snr(Signal,noise);  %just to check the SNR, if you want
             
          %y0: signal generated with the nominal parameters, without noise
          y0 = f(xnom);

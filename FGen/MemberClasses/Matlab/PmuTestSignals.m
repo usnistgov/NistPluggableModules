@@ -89,9 +89,9 @@ end
 % Complex signals
 cSignal = (Ain.*exp(-1i.*Theta));
 
-% Add a single harmonic
+% Add a single harmonic or interharmonic
 if (Fh > FSamp/2)
-    error('Interfering signal frequency is above PMU Nyquist frequency.  Can not generate');
+    error('Interfering signal frequency is above FGen Nyquist frequency.  Can not generate');
 end % if
 
 for i = 1:length(Wh)

@@ -1,0 +1,1 @@
+C:\Users\Public\Projects\sbtbcntl\NistPluggableModules\Scope\ScopePlugins\Main.vi

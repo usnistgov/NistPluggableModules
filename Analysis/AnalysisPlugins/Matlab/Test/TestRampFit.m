@@ -8,18 +8,22 @@ classdef TestRampFit < matlab.unittest.TestCase
     
     properties
         Name    % Test name
-        TS      %Time series to be analysed
-        exp     %expected values
         SignalParams    % Parameters input to PmuTestSignals
-        N       % signal size
-        t0      % signal start time
+        F0
+        t0              % signal start time
+        AnalysisCycles
         SettlingTime
+        sizeMax         % signal size
         Fs      % sample rate
-        X       % signal vectors
+        TS      %Time series to be analysed
+        exp     %expected values    
+        
+        MagCorr
+        DelayCorr
     end
     
-% % Signal params.  Note that the labeling convention comes mostly from the
-% % standard
+%% Signal params.  Note that the labeling convention comes mostly from the
+%  standard
 %     Xm = signalparams(1,:)*sqrt(2);     % phase amplitude (given by the user in RMS
 %     Fin = signalparams(2,:);    % frequency (must be the same for all 6 channels or an error will be thrown
 %     Ps = signalparams(3,:);     % phase 
@@ -34,81 +38,99 @@ classdef TestRampFit < matlab.unittest.TestCase
 %     KaS = signalparams(12,:);   % phase (angle) step index
 %     KxS = signalparams(13,:);   % magnitude step index
     
-    
-    
-    
-    % Test Methods
+% Static method to get indexes into the signalParams matrix    
+    methods(Static)
+        function [Xm,Fin,Ps,Fh,Ph,Kh,Fa,Ka,Fx,Kx,Rf,KaS,KxS] = getParamIndex()
+            Xm=1;Fin=2;Ps=3;Fh=4;Ph=5;Kh=6;Fa=7;Ka=8;Fx=9;Kx=10;Rf=11;KaS=12;KxS=13;
+        end
+    end
+          
+%% Test Methods
     methods (Test)
         function regressionTests (testCase) 
-            setTsDefaults(testCase)
             %testArt (testCase)
             %testLab (testCase)
-            %testCapture (testCase)
-            testSignal (testCase)
+            testCapture (testCase)
+            %testDefaults (testCase)
         end
     end
     
     
-    %----------------------------------------------------------------------
+%% Private Methods
     methods (Access = private)
-        function testConstructor (testCase)
-        end
         
-        function setTsDefaults(testCase)
-            testCase.Name = 'Default';
-            testCase.N = 96; % size of the time series (3 cycles of F0 = 50)
+        function setDefaults(testCase)
+            testCase.F0 = 50;
             testCase.t0 = 0; % beginning of the time series
-            testCase.Fs = 4800;
+            testCase.Fs =48000;
+            testCase.SettlingTime = 1.0;
+            testCase.sizeMax = testCase.Fs * 10;
+            testCase.AnalysisCycles = 6;
+            
+            
             testCase.SignalParams = zeros (13,6);
-            testCase.SignalParams(1,:) = 1;
-            testCase.SignalParams(2,:) = 50;
-            testCase.SignalParams(3,:) = [0,-120,120,0,-120,120];
-            testCase.SignalParams(11,:) = 1;
+            [Xm,Fin,Ps,Fh,Ph,Kh,Fa,Ka,Fx,Kx,Rf,KaS,KxS] = testCase.getParamIndex();
+            
+            testCase.SignalParams(Xm,:) = [70, 70, 70, 5, 5, 5];
+            testCase.SignalParams(Fin,:) = 45;
+            testCase.SignalParams(Ps,:) = [0,-120,120,0,-120,120];
+            testCase.SignalParams(Rf,:) = 1;
+            
+            testCase.MagCorr = [21.000557, 21.000932, 21.000614, 10.00427, 10.00351, 10.00485];        %Unused (for now)
+            testCase.DelayCorr = [1501, 1555, 1926, 482, 506, 534];      %Unused (for now)
+            
         end
         
         %======================================
         % One of the series of tests
         function testOne(testCase)
-            testCase.X = PmuTestSignals (...
+            testCase.TS = PmuWaveforms (...
                 testCase.t0,...
                 testCase.SettlingTime, ...
-                testCase.N, ...
+                testCase.sizeMax, ...
                 testCase.Fs,...
                 testCase.SignalParams...
                 );
-            t = testCase.t0-testCase.SettlingTime:1/testCase.Fs:((testCase.N-1)/testCase.Fs)+testCase.t0+testCase.SettlingTime;
-            figure(1)
-            plot(t,testCase.X(1,:))
+            t = testCase.t0-testCase.SettlingTime:1/testCase.Fs:((testCase.sizeMax-1)/testCase.Fs)+testCase.t0+testCase.SettlingTime;
+            %figure(1)
+            %plot(t,testCase.TS(1,:))
             
-%             SignalParams = [testCase.TS.f0 testCase.TS.df];
-%             SampleRate = 1/testCase.TS.dt;
-%             Samples = real(testCase.TS.TS);
-%             MagCorr = 1;        %Unused (for now)
-%             DelayCorr = 0;      %Unused (for now)
-%             F0 = 0;             %Unused
-%             AnalysisCycles=0;   %Unused
-%             
-%                         
-%             [Synx,Freq,ROCOF,iterations] = RampFit(...
-%                 SignalParams,...
-%                 DelayCorr, ...
-%                 MagCorr, ...
-%                 F0, ...
-%                 AnalysisCycles, ...
-%                 SampleRate, ...
-%                 Samples ...
-%                 );
-%             act = [abs(Synx),Freq,ROCOF];
-%             
-%             disp(testCase.TS.Name)            
-%             msg = sprintf('actual: %f %f %f %f',act);
-%             disp(msg);
-%             msg = sprintf('expected: %f %f %f %f',testCase.exp);
-%             disp(msg);
-%             
-            %testCase.verifyEqual(act,testCase.exp,'AbsTol',0.001)
-            %pause;
-        end        
+            
+            MagCorr = [1,1,1,1,1,1,1];        %Unused (for now)
+            DelayCorr = [0,0,0,0,0,0];      %Unused (for now)
+            %
+            % Loop through the time series and analyse AnalysisCycle windows
+            N = length(testCase.TS);
+            dur = N/testCase.Fs;
+            numReports = dur*testCase.F0;      % assumes the reporting rate is equal to the nominal frequency
+            sampPerCyc = testCase.Fs/testCase.F0;
+            winSize = ceil((testCase.AnalysisCycles / testCase.F0) * testCase.Fs);    %window size
+            act = cell(numReports-testCase.AnalysisCycles+1,4);
+            act(1,:)={'Synx';'Freq';'ROCOF';'iterations'};
+            %results = {numReports-testCase.AnalysisCycles};
+            
+            idx = 1;
+            for i = 1 : numReports-testCase.AnalysisCycles
+                %if idx+winSize-1 > N;break;end
+                Y =  testCase.TS(:,idx:idx+winSize-1);  
+                %plot(Y(1,:));drawnow    
+                
+                [Synx,Freq,ROCOF,iterations] = RampFit(...
+                    testCase.SignalParams,...
+                    testCase.DelayCorr, ...
+                    testCase.MagCorr, ...
+                    testCase.F0, ...
+                    testCase.AnalysisCycles, ...
+                    testCase.Fs, ...
+                    Y ...
+                    );
+                act(i+1,:) = {Synx;Freq;ROCOF;iterations};
+                 idx = idx + sampPerCyc;
+            end
+           
+            
+            
+        end
         
         %-------------------------------
         function testLab (testCase)
@@ -125,35 +147,29 @@ classdef TestRampFit < matlab.unittest.TestCase
         end
         %--------------------------------
         function testCapture (testCase)
-            path = 'C:\Users\PowerLabNI3\Documents\PMUCAL\Output\';
-            name = 'SavedRamp.mat';
-            name = strcat(path,name);
-            
-            A = open(name);
+            path = fullfile(getenv('USERPROFILE'),'Documents','PMUCAL','Output','SavedWindow.mat');            
+            A = open(path);
             P = A.P;
             clear A;
             
+            testCase.setDefaults()  % the defaults need to be set up for the data capture
+            
             for i = 1:length(P)
-               SignalParams = P(i).SignalParams;
-               DelayCorr = P(i).DelayCorr;
-               MagCorr = P(i).MagCorr;
-               F0 = P(i).F0;
-               AnalysisCycles = P(i).AnalysisCycles;
-               SampleRate = P(i).SampleRate;
-               Samples = P(i).Samples;
+               Samples = P(i).Window;
+               if isempty(Samples); continue; end;
                
                    
                
                [Synx,Freq,ROCOF,iterations] = RampFit ( ...
-                   SignalParams, ...
-                   DelayCorr, ...
-                   MagCorr, ...
-                   F0, ...
-                   AnalysisCycles, ...
-                   SampleRate, ...
+                   testCase.SignalParams, ...
+                   testCase.DelayCorr, ...
+                   testCase.MagCorr, ...
+                   testCase.F0, ...
+                   testCase.AnalysisCycles, ...
+                   testCase.Fs, ...
                    Samples ...
                    )
-               pause
+               %pause
                
             end
 
@@ -161,11 +177,8 @@ classdef TestRampFit < matlab.unittest.TestCase
         
         %--------------------------------
         % test the signal generator
-        function testSignal (testCase)
-            testCase.N = 48000;     % 10 seconds
-            testCase.SettlingTime = 2;
-            testCase.SignalParams(2,:) = 1;
-            %testCase.t0 = -1;
+        function testDefaults (testCase)
+            setDefaults (testCase);
             testOne (testCase)
         end
             

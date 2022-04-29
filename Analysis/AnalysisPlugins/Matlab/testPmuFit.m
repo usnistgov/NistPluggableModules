@@ -1,9 +1,6 @@
-clear all
+%clear all
 
-path = 'C:\Users\PowerLabNI3\Documents\PMUCAL\Output\';
-name = 'SavedFit.mat';
-name = strcat(path,name);
-
+name = fullfile(getenv('USERPROFILE'),'Documents','PMUCAL','Output','Saved4PFit.mat');
 A = open(name);
 P = A.P;
 clear A;

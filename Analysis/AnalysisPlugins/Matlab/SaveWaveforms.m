@@ -2,7 +2,7 @@ function [] = SaveWaveforms( Y, Timestamp, dt, ActualPts )
 %Saves input waveforms in a file names for the timestamp
 
 
-cd('C:\Users\PowerLabNI3\Documents\PMUCAL\Output')
+cd (fullfile(getenv('USERPROFILE'),'Documents','PMUCAL','Output','prs_sine'))
 
 % convert time in seconds to file name
 for i = 1:length(Timestamp)

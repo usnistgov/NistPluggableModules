@@ -12,6 +12,6 @@
 		<Item Name="SyncModule.lvlib" Type="Friended Library" URL="../../SyncModule/SyncModule.lvlib"/>
 	</Item>
 	<Item Name="Local.lvclass" Type="LVClass" URL="../Local/Local.lvclass"/>
-	<Item Name="PXI_MultiTrig.lvclass" Type="LVClass" URL="../PXI_MultiTrig/PXI_MultiTrig.lvclass"/>
+	<Item Name="PXI_MultiTrig.lvclass" Type="LVClass" URL="../PXI_MultiTrigClass/PXI_MultiTrig.lvclass"/>
 	<Item Name="SyncPluginBase.lvclass" Type="LVClass" URL="../SyncPluginBase/SyncPluginBase.lvclass"/>
 </Library>

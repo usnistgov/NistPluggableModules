@@ -1,6 +1,8 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
 <Library LVVersion="18008000">
+	<Property Name="NI.Lib.Description" Type="Str">This library contains functions that send requests to Main.vi (located within the AcPwrPlugins.lvlib). There are numerous requests that could be made (see the Request folder under AcPwrModule.lvlib) such as turn an instrument on, or stop the instrument from taking further measurements. The intent of this library is to further abstract a user from AcPwrPlugins.lvlib. It also has an application named TestCloneAPI.vi to enable a developer to test specific plugins.</Property>
 	<Property Name="NI.Lib.FriendGUID" Type="Str">962a5118-81e5-476a-86d9-c58e933cfe7e</Property>
+	<Property Name="NI.Lib.HelpPath" Type="Str"></Property>
 	<Property Name="NI.Lib.Icon" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!)G!!!*Q(C=\&gt;4,&lt;3*2%)8BY^%M:EM')V+I&amp;%C"&amp;#I&amp;NF[3QEG"&amp;*!=1;6!#K4!`"2FOW6J9":DS1NX=XG=_`L[^K7F0HZ*0X6Z&gt;,T=0;;_0_&lt;N]J@[Z?N$@9?P,6]&lt;P9`ZUIZ&amp;Z`@WC`\49&gt;H_&lt;@Y\`E?(\B\@^&gt;`V8\P_]@:_@PQH_.R$?GIJJ3CG*#8[[CZ&amp;8O2&amp;8O2&amp;8O1G.\H*47ZSES&gt;ZEC&gt;ZEC&gt;ZEA&gt;ZE!&gt;ZE!&gt;ZE0&gt;*,H+2CZR6+39P*CI',19I'E.2]6:Y#E`B+4T]6/%J0)7H]"1?GKDQ&amp;*\#5XA+$^V5?!J0Y3E]B9?B7F*^EO-J0!QPYT%?YT%?YW&amp;+'9]"G-H-Q'91'$+6ZIPR')`R]&amp;8'9TT'9TT'1\7-RXC-RXC-BS[^+G\.^34(QT"+0)EH]33?R-013DS**`%EHM4$&gt;%I]C3&gt;"*"-GAU.1UCFJE0R)0)G($S7?R*.Y%E`CI;LP50&lt;+8$88ERR0Y!E]A3@Q""['5/!*0)%H]!1?BF8A#4S"*`!%(K:3Y!E]A3?!"*-SP9,"AIZ"IS!)0,R[NU4@*&lt;=E_JS`ZGWD;D;A:G.J.IRG)WBOM/&lt;';7[):K%V#[B:'-U&amp;;SZ%!^2-L"F1UV"HXE_5)_6!W6.WF#VF1VF46N?O`\HB_8T7[843]8D5Y8$1@L`8&lt;L@4&gt;LP6:L02?LX7;L6[?VL^ZLQ&gt;4``[8(KG\7?5WX0J+TQ&lt;^5/8R7/?.@I$V^H8^!!!!!!</Property>
 	<Property Name="NI.Lib.SourceVersion" Type="Int">402685952</Property>
 	<Property Name="NI.Lib.Version" Type="Str">2.0.0.1</Property>
@@ -9,146 +11,38 @@
 
 </Property>
 	<Item Name="Friends List" Type="Friends List">
-		<Item Name="AcPwrPlugins.lvlib:AcPwrBase.lvclass" Type="Friended Library" URL="../../AcPwrPlugins/AcPwrBaseClass/AcPwrBase.lvclass"/>
 		<Item Name="Visualization.lvlib" Type="Friended Library" URL="../../../Visualization/Visualization.lvlib"/>
 		<Item Name="Bus.lvclass" Type="Friended Library" URL="../../../BusClass/Bus.lvclass"/>
 		<Item Name="Test.lvclass" Type="Friended Library" URL="../../../TestClass/Test.lvclass"/>
-		<Item Name="AcPwrPlugins.lvlib" Type="Friended Library" URL="../../AcPwrPlugins/AcPwrPlugins.lvlib"/>
-		<Item Name="AcPwrPlugins.lvlib:ChromaAcLoad.lvclass" Type="Friended Library" URL="../../AcPwrPlugins/ChromaAcLoad/ChromaAcLoad.lvclass"/>
-		<Item Name="AcPwrPlugins.lvlib:NHRDCPower.lvclass" Type="Friended Library" URL="../../AcPwrPlugins/NHRDCPower/NHRDCPower.lvclass"/>
-		<Item Name="AcPwrPlugins.lvlib:NHRGridSim.lvclass" Type="Friended Library" URL="../../AcPwrPlugins/NhRegenGridSim/NHRGridSim.lvclass"/>
-		<Item Name="AcPwrPlugins.lvlib:PacificPowerSource.lvclass" Type="Friended Library" URL="../../AcPwrPlugins/PacificPowerSource/PacificPowerSource.lvclass"/>
-	</Item>
-	<Item Name="Private" Type="Folder">
-		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
-		<Item Name="AcPwrClass.vi" Type="VI" URL="../Private/AcPwrClass.vi"/>
-		<Item Name="AcPwrState.vi" Type="VI" URL="../Private/AcPwrState.vi"/>
-		<Item Name="CheckonIdle.vi" Type="VI" URL="../Private/CheckonIdle.vi"/>
-		<Item Name="CheckOnIdleEnum.ctl" Type="VI" URL="../Protected/CheckOnIdleEnum.ctl"/>
-	</Item>
-	<Item Name="Protected" Type="Folder">
-		<Item Name="Broadcast" Type="Folder">
-			<Item Name="clBroadcastEvents.ctl" Type="VI" URL="../Protected/Broadcasts/clBroadcastEvents.ctl">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="DestroyBroadcastEvents.vi" Type="VI" URL="../Protected/Broadcasts/DestroyBroadcastEvents.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="DidInit.vi" Type="VI" URL="../Protected/Broadcasts/DidInit.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="DidStop.vi" Type="VI" URL="../Protected/Broadcasts/DidStop.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="Measurements.vi" Type="VI" URL="../Protected/Broadcasts/Measurements.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../Protected/Broadcasts/ObtainBroadcastEvents.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="ReportError.vi" Type="VI" URL="../Protected/Broadcasts/ReportError.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="Settings.vi" Type="VI" URL="../Protected/Broadcasts/Settings.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="StatusUpdate.vi" Type="VI" URL="../Protected/Broadcasts/StatusUpdate.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-		</Item>
-		<Item Name="Queue" Type="Folder">
-			<Item Name="Dequeue.vi" Type="VI" URL="../Protected/Queue/Dequeue.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="Enqueue.vi" Type="VI" URL="../Protected/Queue/Enqueue.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="ObtainQueue.vi" Type="VI" URL="../Protected/Queue/ObtainQueue.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-		</Item>
-		<Item Name="Requests" Type="Folder">
-			<Item Name="clRequestEvents.ctl" Type="VI" URL="../Protected/Requests/clRequestEvents.ctl">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="ConfigDeviceRequest.vi" Type="VI" URL="../Protected/Requests/ConfigDeviceRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="DestroyRequestEvents.vi" Type="VI" URL="../Protected/Requests/DestroyRequestEvents.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="DeviceOffRequest.vi" Type="VI" URL="../Protected/Requests/DeviceOffRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="DeviceOnRequest.vi" Type="VI" URL="../Protected/Requests/DeviceOnRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="GetSettingsRequest.vi" Type="VI" URL="../Protected/Requests/GetSettingsRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../Protected/Requests/ObtainRequestEvents.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="SetSettingsRequest.vi" Type="VI" URL="../Protected/Requests/SetSettingsRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="ShowPanelRequest.vi" Type="VI" URL="../Protected/Requests/ShowPanelRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="StartMeasRequest.vi" Type="VI" URL="../Protected/Requests/StartMeasRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="StopMeasRequest.vi" Type="VI" URL="../Protected/Requests/StopMeasRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-			<Item Name="StopRequest.vi" Type="VI" URL="../Protected/Requests/StopRequest.vi">
-				<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-			</Item>
-		</Item>
-		<Item Name="clEventType.ctl" Type="VI" URL="../Protected/clEventType.ctl">
-			<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-		</Item>
-		<Item Name="DestroyClone.vi" Type="VI" URL="../Protected/DestroyClone.vi">
-			<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-		</Item>
-		<Item Name="ErrorHandler.vi" Type="VI" URL="../Protected/ErrorHandler.vi">
-			<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-		</Item>
-		<Item Name="HandleExit.vi" Type="VI" URL="../Protected/HandleExit.vi">
-			<Property Name="NI.LibItem.Scope" Type="Int">4</Property>
-		</Item>
 	</Item>
 	<Item Name="PublicAPI" Type="Folder">
-		<Item Name="Arguments" Type="Folder">
-			<Item Name="Broadcasts" Type="Folder">
-				<Item Name="clDidInit.ctl" Type="VI" URL="../PublicAPI/Arguments/Broadcasts/clDidInit.ctl"/>
-			</Item>
-			<Item Name="Messages" Type="Folder">
-				<Item Name="clMessage.ctl" Type="VI" URL="../PublicAPI/Arguments/Messages/clMessage.ctl"/>
-			</Item>
-			<Item Name="Requests" Type="Folder">
-				<Item Name="clStopArgument.ctl" Type="VI" URL="../PublicAPI/Arguments/Requests/clStopArgument.ctl"/>
-			</Item>
-		</Item>
-		<Item Name="Broadcasts" Type="Folder">
-			<Item Name="ObtainBroadcastForRegistration.vi" Type="VI" URL="../PublicAPI/Broadcasts/ObtainBroadcastForRegistration.vi"/>
-		</Item>
-		<Item Name="StartClone.vi" Type="VI" URL="../PublicAPI/StartClone.vi"/>
-		<Item Name="StopClone.vi" Type="VI" URL="../PublicAPI/StopClone.vi"/>
+		<Item Name="GetSettingsRequestLV.vi" Type="VI" URL="../Requests/GetSettingsRequestLV.vi"/>
+	</Item>
+	<Item Name="Requests" Type="Folder">
+		<Item Name="AbortRequest.vi" Type="VI" URL="../Requests/AbortRequest.vi"/>
+		<Item Name="CloseRequest.vi" Type="VI" URL="../Requests/CloseRequest.vi"/>
+		<Item Name="ConfigDeviceRequest.vi" Type="VI" URL="../Requests/ConfigDeviceRequest.vi"/>
+		<Item Name="DeviceOffRequest.vi" Type="VI" URL="../Requests/DeviceOffRequest.vi"/>
+		<Item Name="DeviceOnRequest.vi" Type="VI" URL="../Requests/DeviceOnRequest.vi"/>
+		<Item Name="GetSettingsRequest.vi" Type="VI" URL="../Requests/GetSettingsRequest.vi"/>
+		<Item Name="InitializeRequest.vi" Type="VI" URL="../Requests/InitializeRequest.vi"/>
+		<Item Name="LoadPluginRequest.vi" Type="VI" URL="../Requests/LoadPluginRequest.vi"/>
+		<Item Name="PathToINIRequest.vi" Type="VI" URL="../Requests/PathToINIRequest.vi"/>
+		<Item Name="PrefDlgRequest.vi" Type="VI" URL="../Requests/PrefDlgRequest.vi"/>
+		<Item Name="ResetRequest.vi" Type="VI" URL="../Requests/ResetRequest.vi"/>
+		<Item Name="SetParameter.vi" Type="VI" URL="../Requests/SetParameter.vi"/>
+		<Item Name="SetSettingsRequest.vi" Type="VI" URL="../Requests/SetSettingsRequest.vi"/>
+		<Item Name="ShowPanelRequest.vi" Type="VI" URL="../Requests/ShowPanelRequest.vi"/>
+		<Item Name="StartMeasurementRequest.vi" Type="VI" URL="../Requests/StartMeasurementRequest.vi"/>
+		<Item Name="StopMeasurementRequest.vi" Type="VI" URL="../Requests/StopMeasurementRequest.vi"/>
+		<Item Name="StopRequest.vi" Type="VI" URL="../Requests/StopRequest.vi"/>
 	</Item>
 	<Item Name="Test" Type="Folder">
-		<Item Name="DatatoGraph.vi" Type="VI" URL="../Test/DatatoGraph.vi"/>
-		<Item Name="DatatoGraphChroma.vi" Type="VI" URL="../Test/DatatoGraphChroma.vi"/>
-		<Item Name="DatatoGraphNHRDC.vi" Type="VI" URL="../Test/DatatoGraphNHRDC.vi"/>
-		<Item Name="DatatoGraphNHRRGS.vi" Type="VI" URL="../Test/DatatoGraphNHRRGS.vi"/>
-		<Item Name="DatatoGraphPP.vi" Type="VI" URL="../Test/DatatoGraphPP.vi"/>
-		<Item Name="IniFiles.vi" Type="VI" URL="../Test/IniFiles.vi"/>
+		<Item Name="GetINIFiles.vi" Type="VI" URL="../Test/GetINIFiles.vi"/>
 		<Item Name="InitSelectRing.vi" Type="VI" URL="../Test/InitSelectRing.vi"/>
-		<Item Name="OutputChromaError.vi" Type="VI" URL="../Test/OutputChromaError.vi"/>
 		<Item Name="TestInfo.ctl" Type="VI" URL="../Test/TestInfo.ctl"/>
 		<Item Name="TestInfo.vi" Type="VI" URL="../Test/TestInfo.vi"/>
 		<Item Name="UpdateSelectRing.vi" Type="VI" URL="../Test/UpdateSelectRing.vi"/>
 	</Item>
-	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 	<Item Name="TestCloneAPI.vi" Type="VI" URL="../Test/TestCloneAPI.vi"/>
 </Library>
