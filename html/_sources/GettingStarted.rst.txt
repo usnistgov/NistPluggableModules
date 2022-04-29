@@ -96,3 +96,18 @@ And upon the multi device clock disciplining software `mdevClkDesc`_
 
 	.. _`mdevClkDesc`: http://www.ni.com/download/multi-device-pxi-clk10-disciplining-1.0/2052/en/
 
+ACPower Module
+~~~~~~~~~~~~
+The ACPower Module depends on the following drivers:
+
+`NI Modbus Library Toolkit for LabVIEW`_
+	.. _`NI Modbus Library Toolkit for LabVIEW`: https://www.vipm.io/package/ni_lib_modbus_library/
+
+`NH Research 81210 VXI Load Instrument Driver`_
+	.. _`NH Research 81210 VXI Load Instrument Driver`: http://sine.ni.com/apps/utf8/niid_web_display.model_page?p_model_id=1122
+	
+`Pacific Power Source UPC1 AC Power Source Instrument Driver`_
+	.. _`Pacific Power Source UPC1 AC Power Source Instrument Driver`: http://sine.ni.com/apps/utf8/niid_web_display.model_page?p_model_id=14444
+
+`Pacific Power Source UPC3 AC Power Source Instrument Driver`_
+	.. _`Pacific Power Source UPC3 AC Power Source Instrument Driver`: http://sine.ni.com/apps/utf8/niid_web_display.model_page?p_model_id=14445
