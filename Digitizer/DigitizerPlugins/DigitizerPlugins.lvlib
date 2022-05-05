@@ -30,7 +30,7 @@
 		<Item Name="HandleExit.vi" Type="VI" URL="../Shared/HandleExit.vi"/>
 		<Item Name="PathToINIBroadcast.vi" Type="VI" URL="../Shared/PathToINIBroadcast.vi"/>
 	</Item>
-	<Item Name="Agilent_3458A.lvclass" Type="LVClass" URL="../Agilent_3458/Agilent_3458A.lvclass"/>
+	<Item Name="Agilent_3458.lvclass" Type="LVClass" URL="../Agilent_3458Class/Agilent_3458.lvclass"/>
 	<Item Name="DigitizerBase.lvclass" Type="LVClass" URL="../DigitizerBaseClass/DigitizerBase.lvclass"/>
 	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 	<Item Name="NiDaqMx.lvclass" Type="LVClass" URL="../NiDaqMxClass/NiDaqMx.lvclass"/>
