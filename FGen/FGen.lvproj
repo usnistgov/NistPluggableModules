@@ -19,6 +19,9 @@
 			<Item Name="33500-90901.pdf" Type="Document" URL="../../FunctionGenerator/documentation/33500-90901.pdf"/>
 			<Item Name="errors.rst" Type="Document" URL="../../doc/sphinx/source/errors.rst"/>
 		</Item>
+		<Item Name="Shared" Type="Folder" URL="../../Shared">
+			<Property Name="NI.DISK" Type="Bool">true</Property>
+		</Item>
 		<Item Name="FgenModule.lvlib" Type="Library" URL="../FgenModule/FgenModule.lvlib"/>
 		<Item Name="FgenPlugins.lvlib" Type="Library" URL="../FgenPlugins/FgenPlugins.lvlib"/>
 		<Item Name="SimpleTest.vi" Type="VI" URL="../FgenPlugins/IviFgenClass/SimpleTest.vi"/>
@@ -326,6 +329,7 @@
 				<Item Name="LVBoundsTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVBoundsTypeDef.ctl"/>
 				<Item Name="BuildHelpPath.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/BuildHelpPath.vi"/>
 				<Item Name="GetHelpDir.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/GetHelpDir.vi"/>
+				<Item Name="Get File Extension.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Get File Extension.vi"/>
 			</Item>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
 			<Item Name="nilvaiu.dll" Type="Document" URL="nilvaiu.dll">
@@ -341,7 +345,6 @@
 			<Item Name="_ChannelSupport.lvlib" Type="Library" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/_ChannelSupport.lvlib"/>
 			<Item Name="ChannelProbePositionAndTitle.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbePositionAndTitle.vi"/>
 			<Item Name="ChannelProbeWindowStagger.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbeWindowStagger.vi"/>
-			<Item Name="ErrorHandler.vi" Type="VI" URL="../FgenPlugins/Shared/ErrorHandler.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>

@@ -15,6 +15,9 @@
 		<Item Name="Documentation" Type="Folder">
 			<Item Name="errors.docx" Type="Document" URL="../../documentation/errors.docx"/>
 		</Item>
+		<Item Name="Shared" Type="Folder" URL="../../Shared">
+			<Property Name="NI.DISK" Type="Bool">true</Property>
+		</Item>
 		<Item Name="AnalysisModule.lvlib" Type="Library" URL="../AnalysisModule/AnalysisModule.lvlib"/>
 		<Item Name="AnalysisPlugins.lvlib" Type="Library" URL="../AnalysisPlugins/AnalysisPlugins.lvlib"/>
 		<Item Name="Functions.lvlib" Type="Library" URL="../../FGen/MemberClasses/Functions.lvlib"/>
@@ -29,6 +32,7 @@
 				<Item Name="Add Operation Standby.vi" Type="VI" URL="/&lt;instrlib&gt;/NHRDCPowerModule/NHRDCPowerModule/Add Operation Standby.vi"/>
 				<Item Name="Add Slew Rates.vi" Type="VI" URL="/&lt;instrlib&gt;/NHRDCPowerModule/NHRDCPowerModule/Add Slew Rates.vi"/>
 				<Item Name="Add Wait Value.vi" Type="VI" URL="/&lt;instrlib&gt;/NHRDCPowerModule/NHRDCPowerModule/Add Wait Value.vi"/>
+				<Item Name="Agilent 3458.lvlib" Type="Library" URL="/&lt;instrlib&gt;/Agilent 3458/Agilent 3458.lvlib"/>
 				<Item Name="C63800 Close.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Close.vi"/>
 				<Item Name="C63800 Get CF Programmable Range.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get CF Programmable Range.vi"/>
 				<Item Name="C63800 Get PF Programmable Range.vi" Type="VI" URL="/&lt;instrlib&gt;/C63800/C63800.llb/C63800 Get PF Programmable Range.vi"/>
@@ -110,7 +114,6 @@
 				<Item Name="Close.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Close.vi"/>
 				<Item Name="Close.vi" Type="VI" URL="/&lt;instrlib&gt;/NH Research 9400 Series/Public/Close.vi"/>
 				<Item Name="Close.vi" Type="VI" URL="/&lt;instrlib&gt;/Pacific Power UPC Series/Public/Close.vi"/>
-				<Item Name="Configure Aperture.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 3458/Public/Configure/Configure Aperture.vi"/>
 				<Item Name="Configure Channel.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Configure/Configure Channel.vi"/>
 				<Item Name="Configure Frequency.vi" Type="VI" URL="/&lt;instrlib&gt;/Pacific Power UPC Series/Public/Configure/Configure Frequency.vi"/>
 				<Item Name="Configure Hardware Mode.vi" Type="VI" URL="/&lt;instrlib&gt;/NH Research 9400 Series/Public/Configure/Low Level/Configure Hardware Mode.vi"/>
@@ -169,7 +172,6 @@
 				<Item Name="Get Voltage Slew Rate Min.vi" Type="VI" URL="/&lt;instrlib&gt;/NHRDCPowerModule/NHRDCPowerModule/Get Voltage Slew Rate Min.vi"/>
 				<Item Name="In Progress.vi" Type="VI" URL="/&lt;instrlib&gt;/NHRDCPowerModule/NHRDCPowerModule/In Progress.vi"/>
 				<Item Name="Initialize NHRDCPowerModule With Options.vi" Type="VI" URL="/&lt;instrlib&gt;/NHRDCPowerModule/NHRDCPowerModule/Initialize NHRDCPowerModule With Options.vi"/>
-				<Item Name="Initialize.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 3458/Public/Initialize.vi"/>
 				<Item Name="Initialize.vi" Type="VI" URL="/&lt;instrlib&gt;/Agilent 90000 Series/Public/Initialize.vi"/>
 				<Item Name="Initialize.vi" Type="VI" URL="/&lt;instrlib&gt;/NH Research 9400 Series/Public/Initialize.vi"/>
 				<Item Name="Initialize.vi" Type="VI" URL="/&lt;instrlib&gt;/Pacific Power UPC Series/Public/Initialize.vi"/>
@@ -621,6 +623,7 @@
 				<Item Name="IP Data Unit.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/NI/Modbus Library/Transmission Data Unit/IP/IP Data Unit.lvclass"/>
 				<Item Name="IVI Error Message Builder.vi" Type="VI" URL="/&lt;vilib&gt;/errclust.llb/IVI Error Message Builder.vi"/>
 				<Item Name="IviACPwr Configure Output Enabled.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviacpwr/_IviACPwr.llb/IviACPwr Configure Output Enabled.vi"/>
+				<Item Name="IviACPwr IVI Error Converter.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviacpwr/_IviACPwr.llb/IviACPwr IVI Error Converter.vi"/>
 				<Item Name="IviDigitizer Configure Acquisition.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ividigitizer/_IviDigitizer.llb/IviDigitizer Configure Acquisition.vi"/>
 				<Item Name="IviDigitizer Configure Active Trigger Source.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ividigitizer/_IviDigitizer.llb/IviDigitizer Configure Active Trigger Source.vi"/>
 				<Item Name="IviDigitizer Configure Channel.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ividigitizer/_IviDigitizer.llb/IviDigitizer Configure Channel.vi"/>
@@ -632,7 +635,9 @@
 				<Item Name="IviDigitizer Configure TV Trigger Source [TVT].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ividigitizer/_IviDigitizer.llb/IviDigitizer Configure TV Trigger Source [TVT].vi"/>
 				<Item Name="IviDigitizer Configure Width Trigger Source [WT].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ividigitizer/_IviDigitizer.llb/IviDigitizer Configure Width Trigger Source [WT].vi"/>
 				<Item Name="IviDigitizer Configure Window Trigger Source [WINT].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ividigitizer/_IviDigitizer.llb/IviDigitizer Configure Window Trigger Source [WINT].vi"/>
+				<Item Name="IviDigitizer Initialize With Options.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ividigitizer/_IviDigitizer.llb/IviDigitizer Initialize With Options.vi"/>
 				<Item Name="IviDigitizer Initialize.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ividigitizer/_IviDigitizer.llb/IviDigitizer Initialize.vi"/>
+				<Item Name="IviDigitizer IVI Error Converter.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ividigitizer/_IviDigitizer.llb/IviDigitizer IVI Error Converter.vi"/>
 				<Item Name="IviDigitizer Read Waveform Real64.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ividigitizer/_IviDigitizer.llb/IviDigitizer Read Waveform Real64.vi"/>
 				<Item Name="IviDmm Close.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ividmm/_ividmm.llb/IviDmm Close.vi"/>
 				<Item Name="IviFgen Abort Generation.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ivifgen/_ivifgen.llb/IviFgen Abort Generation.vi"/>
@@ -641,8 +646,10 @@
 				<Item Name="IviFgen Configure Standard Waveform [STD].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ivifgen/_ivifgen.llb/IviFgen Configure Standard Waveform [STD].vi"/>
 				<Item Name="IviFgen Create Arbitrary Waveform [ARB].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ivifgen/_ivifgen.llb/IviFgen Create Arbitrary Waveform [ARB].vi"/>
 				<Item Name="IviFgen Get Channel Name.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ivifgen/_ivifgen.llb/IviFgen Get Channel Name.vi"/>
+				<Item Name="IviFgen Initialize With Options.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ivifgen/_ivifgen.llb/IviFgen Initialize With Options.vi"/>
 				<Item Name="IviFgen Initialize.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ivifgen/_ivifgen.llb/IviFgen Initialize.vi"/>
 				<Item Name="IviFgen Initiate Generation.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ivifgen/_ivifgen.llb/IviFgen Initiate Generation.vi"/>
+				<Item Name="IviFgen IVI Error Converter.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/ivifgen/_ivifgen.llb/IviFgen IVI Error Converter.vi"/>
 				<Item Name="IviScope Actual Record Length.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Actual Record Length.vi"/>
 				<Item Name="IviScope Close.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Close.vi"/>
 				<Item Name="IviScope Configure AC Line Trigger Slope [AT].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure AC Line Trigger Slope [AT].vi"/>
@@ -661,6 +668,7 @@
 				<Item Name="IviScope Configure TV Trigger Source [TV].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure TV Trigger Source [TV].vi"/>
 				<Item Name="IviScope Configure Width Trigger Source [WT].vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Configure Width Trigger Source [WT].vi"/>
 				<Item Name="IviScope Initialize With Options.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Initialize With Options.vi"/>
+				<Item Name="IviScope IVI Error Converter.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope IVI Error Converter.vi"/>
 				<Item Name="IviScope Read Waveform.vi" Type="VI" URL="/&lt;vilib&gt;/ivi/iviscope/_iviscope.llb/IviScope Read Waveform.vi"/>
 				<Item Name="Longest Line Length in Pixels.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Longest Line Length in Pixels.vi"/>
 				<Item Name="LVBoundsTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVBoundsTypeDef.ctl"/>
@@ -670,7 +678,7 @@
 				<Item Name="Master Function Definition.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/NI/Modbus Library/Master Function Definition/Master Function Definition.lvclass"/>
 				<Item Name="Modbus API.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/NI/Modbus Library/API/Modbus API.lvclass"/>
 				<Item Name="Modbus Data Unit.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/NI/Modbus Library/Modbus Data Unit/Modbus Data Unit.lvclass"/>
-				<Item Name="Modbus Master.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/Modbus/master/Modbus Master.lvclass"/>
+				<Item Name="Modbus Master.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/NI/Modbus Library/API/Master/Modbus Master.lvclass"/>
 				<Item Name="Modbus Slave.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/NI/Modbus Library/API/Slave/Modbus Slave.lvclass"/>
 				<Item Name="Network Master.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/NI/Modbus Library/Network Protocol/Network Master/Network Master.lvclass"/>
 				<Item Name="Network Protocol.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/NI/Modbus Library/Network Protocol/Network Protocol.lvclass"/>
@@ -718,7 +726,6 @@
 				<Item Name="Space Constant.vi" Type="VI" URL="/&lt;vilib&gt;/dlg_ctls.llb/Space Constant.vi"/>
 				<Item Name="Standard Data Model.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/NI/Modbus Library/Data Model/Standard Data Model/Standard Data Model.lvclass"/>
 				<Item Name="subFile Dialog.vi" Type="VI" URL="/&lt;vilib&gt;/express/express input/FileDialogBlock.llb/subFile Dialog.vi"/>
-				<Item Name="SubVIs.lvlib" Type="Library" URL="/&lt;vilib&gt;/Modbus/subvis/SubVIs.lvlib"/>
 				<Item Name="System Directory Type.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/sysdir.llb/System Directory Type.ctl"/>
 				<Item Name="TagReturnType.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/TagReturnType.ctl"/>
 				<Item Name="TCP Listen Internal List.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/tcp.llb/TCP Listen Internal List.vi"/>
@@ -759,7 +766,6 @@
 				<Item Name="Write Delimited Spreadsheet (I64).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write Delimited Spreadsheet (I64).vi"/>
 				<Item Name="Write Delimited Spreadsheet (string).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write Delimited Spreadsheet (string).vi"/>
 				<Item Name="Write Delimited Spreadsheet.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write Delimited Spreadsheet.vi"/>
-				<Item Name="Write Function Definition.vi" Type="VI" URL="/&lt;vilib&gt;/NI/Modbus Library/API/Master/Write Function Definition.vi"/>
 				<Item Name="Write Spreadsheet String.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write Spreadsheet String.vi"/>
 				<Item Name="Write To Spreadsheet File (DBL).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write To Spreadsheet File (DBL).vi"/>
 				<Item Name="Write To Spreadsheet File (I64).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write To Spreadsheet File (I64).vi"/>
@@ -774,29 +780,53 @@
 			<Item Name="byte array to number.vi" Type="VI" URL="../../Sensor/SensorPlugins/RoomAlertClass/snmp communication.llb/byte array to number.vi"/>
 			<Item Name="ChannelProbePositionAndTitle.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbePositionAndTitle.vi"/>
 			<Item Name="ChannelProbeWindowStagger.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbeWindowStagger.vi"/>
+			<Item Name="cntlRefs.ctl" Type="VI" URL="../../../TypeDefs/cntlRefs.ctl"/>
+			<Item Name="cntlRefs.vi" Type="VI" URL="../../../Framework/cntlRefs.vi"/>
+			<Item Name="Comms.lvlib" Type="Library" URL="../../../LV_TestAutomation/Comms_lib/Comms.lvlib"/>
 			<Item Name="Config_class.lvlib" Type="Library" URL="../../../LV_Config_class/Config_class.lvlib"/>
 			<Item Name="CTL - SNMP Types.ctl" Type="VI" URL="../../Sensor/SensorPlugins/RoomAlertClass/snmp communication.llb/CTL - SNMP Types.ctl"/>
 			<Item Name="DigitizerModule.lvlib" Type="Library" URL="../../Digitizer/DigitizerModule/DigitizerModule.lvlib"/>
 			<Item Name="DigitizerPlugins.lvlib" Type="Library" URL="../../Digitizer/DigitizerPlugins/DigitizerPlugins.lvlib"/>
 			<Item Name="DigitizerShared.lvlib" Type="Library" URL="../../Digitizer/DigitizerShared/DigitizerShared.lvlib"/>
+			<Item Name="ExtractINIInfo.vi" Type="VI" URL="../../TestClass/PublicMethods/ExtractINIInfo.vi"/>
 			<Item Name="FgenModule.lvlib" Type="Library" URL="../../FGen/FgenModule/FgenModule.lvlib"/>
 			<Item Name="FgenPlugins.lvlib" Type="Library" URL="../../FGen/FgenPlugins/FgenPlugins.lvlib"/>
 			<Item Name="FgenShared.lvlib" Type="Library" URL="../../FGen/FgenShared/FgenShared.lvlib"/>
 			<Item Name="Get snmp Item(s).vi" Type="VI" URL="../../Sensor/SensorPlugins/RoomAlertClass/snmp communication.llb/Get snmp Item(s).vi"/>
 			<Item Name="GetParamAndUnitFromCommand.vi" Type="VI" URL="../../AcPwr/AcPwrPlugins/AcPwrBaseClass/PublicMethods/GetParamAndUnitFromCommand.vi"/>
-			<Item Name="IniFileArray.vi" Type="VI" URL="../../../LV_Ini/IniFileArray.vi"/>
+			<Item Name="Ini_lib.lvlib" Type="Library" URL="../../../LV_Ini/Ini_lib.lvlib"/>
+			<Item Name="ivi.dll" Type="Document" URL="ivi.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="IviACPwr_ni.dll" Type="Document" URL="IviACPwr_ni.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="IviDigitizer_ni.dll" Type="Document" URL="IviDigitizer_ni.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="IviFgen.dll" Type="Document" URL="IviFgen.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="IviScope.dll" Type="Document" URL="IviScope.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
 			<Item Name="kernel32.dll" Type="Document" URL="kernel32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="libsystem_kernel.dylib" Type="Document" URL="/usr/lib/system/libsystem_kernel.dylib"/>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
 			<Item Name="matscript.dll" Type="Document"/>
+			<Item Name="Message Queue.lvlib" Type="Library" URL="../../../SubVI/Message Queue/Message Queue.lvlib"/>
 			<Item Name="nilvaiu.dll" Type="Document" URL="nilvaiu.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="nisync.dll" Type="Document" URL="nisync.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
+			<Item Name="nisyscfg.dll" Type="Document" URL="nisyscfg.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="OpenVisualizationVIs.ctl" Type="VI" URL="../../../SubVI/VisualizationManagement/OpenVisualizationVIs.ctl"/>
 			<Item Name="Parse SNMP Packet Header.vi" Type="VI" URL="../../Sensor/SensorPlugins/RoomAlertClass/snmp communication.llb/Parse SNMP Packet Header.vi"/>
 			<Item Name="Parse SNMP Tuple.vi" Type="VI" URL="../../Sensor/SensorPlugins/RoomAlertClass/snmp communication.llb/Parse SNMP Tuple.vi"/>
 			<Item Name="ScopeModule.lvlib" Type="Library" URL="../../Scope/ScopeModule/ScopeModule.lvlib"/>
@@ -828,11 +858,11 @@
 			<Item Name="SNMP String to Type.vi" Type="VI" URL="../../Sensor/SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP String to Type.vi"/>
 			<Item Name="SNMP Type Num to Type String.vi" Type="VI" URL="../../Sensor/SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Type Num to Type String.vi"/>
 			<Item Name="SNMP Type to String.vi" Type="VI" URL="../../Sensor/SensorPlugins/RoomAlertClass/snmp communication.llb/SNMP Type to String.vi"/>
+			<Item Name="SortVisuualizationModuleInfoArray.vi" Type="VI" URL="../../../SubVI/VisualizationManagement/SortVisuualizationModuleInfoArray.vi"/>
 			<Item Name="SyncModule.lvlib" Type="Library" URL="../../Sync/SyncModule/SyncModule.lvlib"/>
 			<Item Name="SyncPlugins.lvlib" Type="Library" URL="../../Sync/SyncPlugins/SyncPlugins.lvlib"/>
 			<Item Name="Tag-bool.lvlib" Type="Library" URL="/&lt;extravilib&gt;/ChannelInstances/Tag-bool.lvlib"/>
 			<Item Name="Test.lvclass" Type="LVClass" URL="../../TestClass/Test.lvclass"/>
-			<Item Name="Transmitter.vi" Type="VI" URL="../../../LV_TestAutomation/Comms_lib/Transmitter.vi"/>
 			<Item Name="Visualization.lvlib" Type="Library" URL="../../Visualization/Visualization.lvlib"/>
 			<Item Name="VisualizationManager.vi" Type="VI" URL="../../../SubVI/VisualizationManagement/VisualizationManager.vi"/>
 			<Item Name="VisualizationManagerActions.ctl" Type="VI" URL="../../../SubVI/VisualizationManagement/VisualizationManagerActions.ctl"/>
