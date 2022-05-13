@@ -29,7 +29,6 @@
 		<Item Name="ErrorHandler.vi" Type="VI" URL="../Shared/ErrorHandler.vi"/>
 		<Item Name="HandleExit.vi" Type="VI" URL="../Shared/HandleExit.vi"/>
 		<Item Name="PathToINIBroadcast.vi" Type="VI" URL="../Shared/PathToINIBroadcast.vi"/>
-		<Item Name="SaveAs.vi" Type="VI" URL="../Shared/SaveAs.vi"/>
 	</Item>
 	<Item Name="Agilent_3458.lvclass" Type="LVClass" URL="../Agilent_3458Class/Agilent_3458.lvclass"/>
 	<Item Name="DigitizerBase.lvclass" Type="LVClass" URL="../DigitizerBaseClass/DigitizerBase.lvclass"/>
