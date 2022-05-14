@@ -15,6 +15,9 @@
 		<Item Name="Documentation" Type="Folder">
 			<Item Name="errors.docx" Type="Document" URL="../../documentation/errors.docx"/>
 		</Item>
+		<Item Name="Libraries" Type="Folder" URL="../AnalysisPlugins/Libraries">
+			<Property Name="NI.DISK" Type="Bool">true</Property>
+		</Item>
 		<Item Name="Shared" Type="Folder" URL="../../Shared">
 			<Property Name="NI.DISK" Type="Bool">true</Property>
 		</Item>
@@ -370,12 +373,6 @@
 			<Item Name="DigitizerModule.lvlib" Type="Library" URL="../../Digitizer/DigitizerModule/DigitizerModule.lvlib"/>
 			<Item Name="DigitizerPlugins.lvlib" Type="Library" URL="../../Digitizer/DigitizerPlugins/DigitizerPlugins.lvlib"/>
 			<Item Name="DigitizerShared.lvlib" Type="Library" URL="../../Digitizer/DigitizerShared/DigitizerShared.lvlib"/>
-			<Item Name="dSineCosine dw1.vi" Type="VI" URL="/X/Projects/corrfactor/Libraries/NIST_hp3458_sampling_distribution.llb/dSineCosine dw1.vi"/>
-			<Item Name="dSineCosine dw2.vi" Type="VI" URL="/X/Projects/corrfactor/Libraries/NIST_hp3458_sampling_distribution.llb/dSineCosine dw2.vi"/>
-			<Item Name="Gen Model Single.vi" Type="VI" URL="/X/Projects/corrfactor/Libraries/NIST_hp3458_sampling_distribution.llb/Gen Model Single.vi"/>
-			<Item Name="Gen model2.vi" Type="VI" URL="/X/Projects/corrfactor/Libraries/NIST_hp3458_sampling_distribution.llb/Gen model2.vi"/>
-			<Item Name="General LS Linear Fit2.vi" Type="VI" URL="/X/Projects/corrfactor/Libraries/NIST_hp3458_sampling_distribution.llb/General LS Linear Fit2.vi"/>
-			<Item Name="hp3458_dcv_bw_correction.vi" Type="VI" URL="/X/Projects/corrfactor/Libraries/NIST_hp3458_sampling_distribution.llb/hp3458_dcv_bw_correction.vi"/>
 			<Item Name="hp3458a_32.dll" Type="Document" URL="hp3458a_32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
@@ -385,23 +382,17 @@
 			<Item Name="IviDigitizer_ni.dll" Type="Document" URL="IviDigitizer_ni.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="lockin_simulate.vi" Type="VI" URL="/X/Projects/corrfactor/Libraries/NIST_hp3458_sampling_distribution.llb/lockin_simulate.vi"/>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
 			<Item Name="matscript.dll" Type="Document"/>
 			<Item Name="nilvaiu.dll" Type="Document" URL="nilvaiu.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="NIST_HP3458_Multiple_Sampling.vi" Type="VI" URL="/X/Projects/corrfactor/Libraries/NIST_hp3458_sampling_distribution.llb/NIST_HP3458_Multiple_Sampling.vi"/>
 			<Item Name="nisync.dll" Type="Document" URL="nisync.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="phase_diff.vi" Type="VI" URL="/X/Projects/corrfactor/Libraries/NIST_hp3458_sampling_distribution.llb/phase_diff.vi"/>
 			<Item Name="SensorModule.lvlib" Type="Library" URL="../../Sensor/SensorModule/SensorModule.lvlib"/>
 			<Item Name="SensorQueue.ctl" Type="VI" URL="../AnalysisPlugins/AnalysisPluginBaseClass/Typedefs/SensorQueue.ctl"/>
 			<Item Name="SensorShared.lvlib" Type="Library" URL="../../Sensor/SensorShared/SensorShared.lvlib"/>
-			<Item Name="Single 4 P Harm Anal Full.vi" Type="VI" URL="/X/Projects/corrfactor/Libraries/NIST_hp3458_sampling_distribution.llb/Single 4 P Harm Anal Full.vi"/>
-			<Item Name="Single 4 P Harm Anal Subset.vi" Type="VI" URL="/X/Projects/corrfactor/Libraries/NIST_hp3458_sampling_distribution.llb/Single 4 P Harm Anal Subset.vi"/>
-			<Item Name="string_to_integers.vi" Type="VI" URL="/X/Projects/corrfactor/Libraries/NIST_hp3458_sampling_distribution.llb/string_to_integers.vi"/>
 			<Item Name="Tag-bool.lvlib" Type="Library" URL="/&lt;extravilib&gt;/ChannelInstances/Tag-bool.lvlib"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
