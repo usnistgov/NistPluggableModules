@@ -369,7 +369,6 @@
 			<Item Name="ChannelProbeWindowStagger.vi" Type="VI" URL="/&lt;resource&gt;/ChannelSupport/_ChannelSupport/ChannelProbeWindowStagger.vi"/>
 			<Item Name="DigitizerModule.lvlib" Type="Library" URL="../../Digitizer/DigitizerModule/DigitizerModule.lvlib"/>
 			<Item Name="DigitizerPlugins.lvlib" Type="Library" URL="../../Digitizer/DigitizerPlugins/DigitizerPlugins.lvlib"/>
-			<Item Name="DigitizerPlugins.lvlib" Type="Library" URL="../../Shared/DigitizerPlugins.lvlib"/>
 			<Item Name="DigitizerShared.lvlib" Type="Library" URL="../../Digitizer/DigitizerShared/DigitizerShared.lvlib"/>
 			<Item Name="dSineCosine dw1.vi" Type="VI" URL="/X/Projects/corrfactor/Libraries/NIST_hp3458_sampling_distribution.llb/dSineCosine dw1.vi"/>
 			<Item Name="dSineCosine dw2.vi" Type="VI" URL="/X/Projects/corrfactor/Libraries/NIST_hp3458_sampling_distribution.llb/dSineCosine dw2.vi"/>
