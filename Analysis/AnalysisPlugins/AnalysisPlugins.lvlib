@@ -26,6 +26,7 @@
 		<Item Name="WindowSave.m" Type="Document" URL="../Matlab/WindowSave.m"/>
 	</Item>
 	<Item Name="AnalysisPluginsBase.lvclass" Type="LVClass" URL="../AnalysisPluginBaseClass/AnalysisPluginsBase.lvclass"/>
+	<Item Name="CorrFactor.lvclass" Type="LVClass" URL="../CorrFactorClass/CorrFactor.lvclass"/>
 	<Item Name="FFT.lvclass" Type="LVClass" URL="../FftClass/FFT.lvclass"/>
 	<Item Name="FitterBase.lvclass" Type="LVClass" URL="../FitterBaseClass/FitterBase.lvclass"/>
 	<Item Name="FreqAnalysis.lvclass" Type="LVClass" URL="../FreqAnalysisClass/FreqAnalysis.lvclass"/>
