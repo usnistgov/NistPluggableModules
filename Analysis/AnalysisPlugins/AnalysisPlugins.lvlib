@@ -16,6 +16,7 @@
 			<Item Name="TestRampFit.m" Type="Document" URL="../Matlab/Test/TestRampFit.m"/>
 			<Item Name="TestSSFit.m" Type="Document" URL="../Matlab/Test/TestSSFit.m"/>
 		</Item>
+		<Item Name="CorrFactor.m" Type="Document" URL="../Matlab/CorrFactor.m"/>
 		<Item Name="ModulationFit.m" Type="Document" URL="../Matlab/ModulationFit.m"/>
 		<Item Name="PmuFitSave.m" Type="Document" URL="../Matlab/PmuFitSave.m"/>
 		<Item Name="SaveWaveforms.m" Type="Document" URL="../Matlab/SaveWaveforms.m"/>
