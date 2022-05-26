@@ -14,7 +14,7 @@ classdef AnalyticTS_class
 %     Xm = signalparams(1,:)*sqrt(2);     % phase amplitude (given by the user in RMS)
 %     Fin = signalparams(2,:);    % frequency (must be the same for all 6 channels or an error will be thrown
 %     Ps = signalparams(3,:);     % phase 
-%     Fh = signalparams(4,:);     % Frequency of the interfering signal
+%     Fh = signalparams(4,:);     % Frequency of the interfering signal, if -1 there will be a series of sinewaves
 %     Ph = signalparams(5,:);     % Phase of the interfering signal
 %     Kh = signalparams(6,:);     % index of the interfering signal    
 %     Fa = signalparams(7,:);     % phase (angle) moduation frequency
@@ -26,7 +26,8 @@ classdef AnalyticTS_class
 %     KxS = signalparams(13,:);   % magnitude step index
 %     KfS = signalparams(14,:);   % frequency step index
 %     KrS = signalparams(15,:);   % ROCOF step index (another way to create a frequency ramp)
-%        
+%     Kn =  signalparams(16,:);   % noise amplitude as a fraction of Xm
+%     Fn =  signalparams(17,:);   % noise frequency cutoff (full band if == 0)
     
     properties
         Ts = timeseries()   % a single timeseries instance (see MATLAB timeseries object)

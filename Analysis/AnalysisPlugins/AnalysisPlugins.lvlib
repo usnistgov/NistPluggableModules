@@ -16,6 +16,7 @@
 			<Item Name="TestRampFit.m" Type="Document" URL="../Matlab/Test/TestRampFit.m"/>
 			<Item Name="TestSSFit.m" Type="Document" URL="../Matlab/Test/TestSSFit.m"/>
 		</Item>
+		<Item Name="CorrFactor.m" Type="Document" URL="../Matlab/CorrFactor.m"/>
 		<Item Name="ModulationFit.m" Type="Document" URL="../Matlab/ModulationFit.m"/>
 		<Item Name="PmuFitSave.m" Type="Document" URL="../Matlab/PmuFitSave.m"/>
 		<Item Name="SaveWaveforms.m" Type="Document" URL="../Matlab/SaveWaveforms.m"/>
@@ -26,6 +27,7 @@
 		<Item Name="WindowSave.m" Type="Document" URL="../Matlab/WindowSave.m"/>
 	</Item>
 	<Item Name="AnalysisPluginsBase.lvclass" Type="LVClass" URL="../AnalysisPluginBaseClass/AnalysisPluginsBase.lvclass"/>
+	<Item Name="CorrFactor.lvclass" Type="LVClass" URL="../CorrFactorClass/CorrFactor.lvclass"/>
 	<Item Name="FFT.lvclass" Type="LVClass" URL="../FftClass/FFT.lvclass"/>
 	<Item Name="FitterBase.lvclass" Type="LVClass" URL="../FitterBaseClass/FitterBase.lvclass"/>
 	<Item Name="FreqAnalysis.lvclass" Type="LVClass" URL="../FreqAnalysisClass/FreqAnalysis.lvclass"/>

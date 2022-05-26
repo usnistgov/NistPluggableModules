@@ -40,7 +40,14 @@ function [Results] = PmuResults (...
 Fh = SignalParams(4,1);
 Kh = SignalParams(6,1);
 
+template = zeros(1,8); template = complex(template,0);
 nPhases = length(PmuSynx);
+
+% We always deal with 8 phases, even if the last of them is 0.
+template(1,1:nPhases) = PmuSynx; PmuSynx = template;
+template(1,1:length(RefSynx)) = RefSynx; RefSynx = template;
+nPhases = 8;
+
 % timestamp at the start 
 % for each phase (including positive sequence), there will be TVE,Me,Pe.
 %  FE and RFe
