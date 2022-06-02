@@ -54,18 +54,21 @@ Theta = angle(Synx)+ DelayCorr*1e-9*2*pi.*F;
 Synx = (Ain/sqrt(2).*exp(-1i.*Theta)).';
 
 %Calculating symmetrical components
-alfa = exp(2*pi*1i/3);
-Ai = (1/3)*[1 1 1; 1 alfa alfa^2; 1 alfa^2 alfa];
-
-Vabc = Synx(1:3,:);
-Vzpn = Ai*Vabc; %voltage: zero, positive and negative sequence
-
-Iabc = Synx(4:6,:);
-Izpn = Ai*Iabc; %curren: zero, positive and negative sequence
-
-%Synx output:
-Synx = [ Vabc.' Vzpn(2) Iabc.' Izpn(2)];
-
+nPhases = size(Synx,1);
+if nPhases >= 3
+    alfa = exp(2*pi*1i/3);
+    Ai = (1/3)*[1 1 1; 1 alfa alfa^2; 1 alfa^2 alfa];
+    
+    Vabc = Synx(1:3,:);
+    Vzpn = Ai*Vabc; %voltage: zero, positive and negative sequence
+    vSynx = [ Vabc.' Vzpn(2)];    
+    
+    if nPhases >= 6
+        Iabc = Synx(4:6,:);
+        Izpn = Ai*Iabc; %curren: zero, positive and negative sequence
+        Synx = [vSynx, Iabc.' Izpn(2)];
+    end
+end
 
 if SignalParams(4,1) < 0
 % For sum of waveforms, we will only be reporting the first phase of sinewaves  

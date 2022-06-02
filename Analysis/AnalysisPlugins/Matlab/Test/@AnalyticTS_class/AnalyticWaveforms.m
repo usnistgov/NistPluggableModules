@@ -47,10 +47,12 @@ if obj.SignalParams(4,1) >= 0
     
     %t = linspace(-SettlingTime,SettlingTime+((wfSize-1)),wfSize)/FSamp;
     t = linspace(-SettlingTime,SettlingTime+((wfSize-1)/FSamp),wfSize+(2*SettlingTime*FSamp));%/FSamp;
+    nSamples = length(t);
+    nPhases = length(Xm);
     
     % Amplitude, AM and magnitude step
-    Ain = zeros(length(Xm),length(t));
-    for i = 1:length(Xm)
+    Ain = zeros(nPhases,nSamples);
+    for i = 1:nPhases
         Ain(i,:) = Xm(i) *(1+Kx(i)*cos((Wx(i)*t)));
         % Amplitude Step: applied after time passes 0
         %Ain(i,t >= 0+t0) = Ain(i,t >= 0+t0) * (1 + KxS(i));
@@ -58,8 +60,8 @@ if obj.SignalParams(4,1) >= 0
     end
     
     % Phase
-    Theta = zeros(length(Ps),length(t));
-    for i = 1:length(Ps)
+    Theta = zeros(nPhases,nSamples);
+    for i = 1:nPhases
         Theta(i,:) = (Wf(i)*t) ...                         % Fundamental
             + Ps(i)*(pi/180) ...               % phase shift
             - ( ...
@@ -69,29 +71,42 @@ if obj.SignalParams(4,1) >= 0
     
     % Phase Step
     if KaS(1) ~= 0
-        for i = 1:length(KaS)
+        for i = 1:nPhases
             %Theta(i,t >= (0+t0)) = Theta(i,t >= (0+t0)) + (KaS(i) * pi/180);
             Theta(i,(t >= t0)&(t <= SettlingTime+t0)) = Theta(i,(t >= t0)&(t <= SettlingTime+t0)) + (KaS(i) * pi/180);
         end
     end
     
     % frequency ramp
-    rampIdx = all([Rf; KrS]');
+    rampIdx = any([Rf; KrS]');
     if ~(all(rampIdx == 0))
         if all(Rf == 0); Rf = KrS; end  % prefer Rf over KrS
-        for i = 1:length(Rf)
+        Wr = pi*Rf;
+        for i = 1:nPhases
             if Rf(i)~=0
-                endRamp = (wfSize/FSamp);
-                Theta(i,t>=(0+t0) & t<=endRamp) = Theta(i,t>=(0+t0) & t<=endRamp) + (pi*Rf(i)*t(t>=(0+t0) & t<=endRamp).^2);
-                %Theta(i,t>(endRamp+t0)) = Theta(i,t>(endRamp+t0)) + (pi*Rf(i)*(endRamp+t0)*t(t>(endRamp+t0)))+ (pi*Rf(i)*(endRamp+t0))^2;
-                Theta(i,t>(endRamp+t0)) = Theta(i,t>(endRamp+t0)) + (pi*Rf(i)*(endRamp+t0)*t(t>(endRamp+t0)));
+                % five phases of ramping: 
+                %   from -settlingTime to t=0: no ramp, 
+                %   from t=0 to t0: ramp at Rf, 
+                %   from t0 to SettlingTime: no ramp
+                %   from SettlingTime+t0 to SettlingTime+2*t0: ramp at -Rf
+                %   from SettlingTime+2*t0 to 2*(SettlingTime+t0): no ramp
+                
+                Theta(i,t>=0 & t<=t0) = Theta(i,t>=0 & t<=t0) + (Wr(i)*t(t>=0 & t<=t0).^2); figure(100), plotThetaGradient(t,Theta,FSamp,'b') % First ramping period    
+                Theta(i,t>t0) = Theta(i,t>t0) + Wr(i)*( (t0^2) + 2*t0*(t(t>t0)-t0) ); hold on, plotThetaGradient(t,Theta,FSamp,'r');  % set the remaining to the new frequency                
+                Theta(i,t>=t0+SettlingTime & t<= 2*t0+SettlingTime) = Theta(i,t>=t0+SettlingTime & t<= 2*t0+SettlingTime) - (Wr(i)*(t(t>=t0+SettlingTime & t<= 2*t0+SettlingTime)-(t0+SettlingTime)).^2); plotThetaGradient(t,Theta,FSamp,'g') %second ramping period
+                Theta(i,t>2*t0+SettlingTime) = Theta(i,t>2*t0+SettlingTime) - Wr(i)*( t0^2 + 2*(t0)*(t(t>(2*t0+SettlingTime))-(2*t0+SettlingTime))); plotThetaGradient(t,Theta,FSamp,'k'),hold off % final non-ramping period
+
+% Old single ramp code                
+%                 endRamp = (wfSize/FSamp);
+%                 Theta(i,t>=(0+t0) & t<=endRamp) = Theta(i,t>=(0+t0) & t<=endRamp) + (pi*Rf(i)*t(t>=(0+t0) & t<=endRamp).^2);
+%                 Theta(i,t>(endRamp+t0)) = Theta(i,t>(endRamp+t0)) + (pi*Rf(i)*((endRamp+t0)^2)*t(t>(endRamp+t0))) + (pi*Rf(i))*(t(t>(endRamp+t0))-(endRamp+t0));
             end
         end
     end
     
     % frequency step
     if ~(all(KfS == 0))
-        for i = 1:length(KfS)
+        for i = 1:nPhases
             %Theta(i,t>=(0+t0)) = Theta(i,t>=(0+t0)) + ((2*pi*KfS(i))*(t(t>=(0+t0))-t0));
             if ~(KxS(i) == -1.0)
                 %Theta(i,t>=(0+t0)) = Theta(i,t>=(0+t0)) + ((2*pi*KfS(i))*(t(t>=(0+t0))-t0));
@@ -102,7 +117,7 @@ if obj.SignalParams(4,1) >= 0
             end
         end
     end
-    
+        
     % Complex signals
     cSignal = (Ain.*exp(-1i.*Theta));
     
@@ -116,12 +131,42 @@ if obj.SignalParams(4,1) >= 0
         error('Interfering signal frequency is above FGen Nyquist frequency.  Can not generate');
     end % if
     
-    for i = 1:length(Wh)
+    for i = 1:nPhases
         ThetaH(i,:) = (Wh(i)*t) + Ph(i)*(pi/180);
         cSignal(i,:) = cSignal(i,:) + ((Kh(i) * (Xm(i))) * (cos(ThetaH(i,:)) + 1i*sin(ThetaH(i,:))));
     end
     
-else
+    % Add a band-limited noise signal
+    if (size(obj.SignalParams,1)>15)
+        Kn = obj.SignalParams(16,:);
+        if any(Kn > 0)
+            if(size(obj.SignalParams,1)>16),Fn = obj.SignalParams(17,:);else,Fn = 0;end
+            cNoise = zeros(nPhases,nSamples);
+            freqbins = (0:nSamples/2)'/nSamples*FSamp; % the frequency bins if the signal is to be band limited
+            
+            for i = 1:nPhases
+                X = [1; exp(1i*2*pi*randn(nSamples/2-1,1));1]; % this is the full bandwidth noise in the frequency domain
+                % if the noise is band-limited
+                if Fn > 0
+                    X(find(freqbins < 100|freqbins > Fn(i))) = 0; % sets all frequency bins above the cutoff to 0
+                end
+                X = [X;conj(flipud(X(2:end-1)))];
+                iF = ifft(X);
+                cNoise(i,:) = Xm(i)*Kn(i)*iF/rms(iF); % RMS Noise power
+                
+            end
+            cSignal = cSignal+cNoise;
+        end
+    end
+            
+    
+    % done here
+ 
+
+else  % if obj.SignalParams(4,1) >= 0
+    
+    
+    % Here, the signal will be a sum of sine waves
     
     % pre-allocate the component parameters
     nPhases = size(obj.SignalParams,2);
@@ -152,12 +197,14 @@ else
     
     % SettlingTime is ignored
     t = (0:1/FSamp:(wfSize-1)/FSamp)';
-    Ain = bsxfun(@times,ones(length(t),length(Xm)),Xm);
-    Theta = ones(length(t),nPhases).*(2*pi*Fin).*t + Ps - pi/2;
+    nSamples = length(t);
+    nPhases = length(Xm);
+    Ain = bsxfun(@times,ones(nSamples,nPhases),Xm);
+    Theta = ones(nSamples,nPhases).*(2*pi*Fin).*t + Ps - pi/2;
     
 % The below replaces the above for MATLAB 2015 or older    
 %     Theta = bsxfun (@plus,...
-%         bsxfun(@times,ones(length(t),nPhases),...
+%         bsxfun(@times,ones(nSamples,nPhases),...
 %         bsxfun(@times,(2*pi*Fin),t)...
 %         ),...
 %         Ps-pi/2)...
@@ -172,11 +219,11 @@ else
     Wn = 2*pi*Fn;
     for i = 1:size(Fn,1)
         
-        Theta = ones(length(t),nPhases).*Wn(i,:).*t + ((i+1)*Ps)+ Pn(i,:) - pi/2;
+        Theta = ones(nSamples,nPhases).*Wn(i,:).*t + ((i+1)*Ps)+ Pn(i,:) - pi/2;
         
 % The below replaces the above for MATLAB 2015 or older            
 %         Theta = bsxfun(@plus,...
-%             bsxfun(@times,ones(length(t),nPhases),...
+%             bsxfun(@times,ones(nSamples,nPhases),...
 %             bsxfun(@times,Wn(i,:),t)...
 %             ),...
 %             ((i+1)*Ps)+ Pn(i,:) - pi/2);...
@@ -196,7 +243,7 @@ end
 
 obj.Ts = timeseries(cSignal');
 obj.Ts.Time=t;
-obj.Ts = setuniformtime(obj.Ts,'StartTime',t0,'Interval',1/FSamp);
+%obj.Ts = setuniformtime(obj.Ts,'StartTime',t0,'Interval',1/FSamp);
 
 %%-------------DEBUGGING-------------------------------------------------
 % In the step test, I learned from the below that unwrapping is needed when determining frequency!
@@ -225,6 +272,17 @@ obj.Ts = setuniformtime(obj.Ts,'StartTime',t0,'Interval',1/FSamp);
 %
 % plot(Fi(1,:));
 %%------------------------------------------------------------------------
-
 end
+
+%======================== DEBUG Plot Frequency ========================
+% Gradient of Theta is the frequency
+function plotThetaGradient(t,Theta,FSamp,spec)
+subplot(2,1,1)
+plot(t,Theta,spec)
+subplot(2,1,2)
+plot(t,gradient(Theta)*FSamp/(2*pi),spec)
+ylim([40,60])
+end
+% =====================================================================
+
 

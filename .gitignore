@@ -47,3 +47,4 @@ build
 /Analysis/AnalysisPlugins/Matlab/*.asv
 /Analysis/AnalysisPlugins/Matlab/Test/*.asv
 *.asv
+doc/doctrees
