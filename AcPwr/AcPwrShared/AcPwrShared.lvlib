@@ -10,6 +10,7 @@
 
 </Property>
 	<Item Name="AcPwrBroadcastEvents.ctl" Type="VI" URL="../AcPwrBroadcastEvents.ctl"/>
+	<Item Name="CheckAcPwrParamLoopCondition.vi" Type="VI" URL="../CheckAcPwrParamLoopCondition.vi"/>
 	<Item Name="clAcPwrAttributes.ctl" Type="VI" URL="../clAcPwrAttributes.ctl"/>
 	<Item Name="clDidInit.ctl" Type="VI" URL="../clDidInit.ctl"/>
 	<Item Name="clEventType.ctl" Type="VI" URL="../clEventType.ctl"/>
