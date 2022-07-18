@@ -79,6 +79,7 @@ Error Codes
 	"26014", "The %s cannot be zero.",""
 	"26015", "The %s cannot be zero.",""
 	"26016", "The configured fetch time %g seconds must be greater than the set aperture time of %g seconds.",""
+	"26017", "Macros can only be edited if the NHR DC is connected and the visible Modules Element has a valid handle.",""
 
 .. csv-table:: SpecAn Error Codes
 	:header: "CODE", "ERROR", "COMMENT"
