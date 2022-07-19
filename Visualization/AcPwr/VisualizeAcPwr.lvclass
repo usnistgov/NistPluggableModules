@@ -27,6 +27,15 @@
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 	</Item>
 	<Item Name="SubVIs" Type="Folder">
+		<Item Name="GetPressedButton.vi" Type="VI" URL="../../SubVIs/GetPressedButton.vi">
+			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!$0!!!!#!!%!!!!&amp;%!B$U*V&gt;(2P&lt;C"$;'&amp;O:W6E0Q!31$$`````#6"B=G&amp;N:82F=A!,1!=!"5FO:'6Y!"2!-0````]+5'BB=W5A4G&amp;N:1!!&amp;%"Q!!A!!!!?!!!(1WRV=X2F=A!71(!!#!!!!!Y!!!B"=H*B?3"J&lt;A!!6!$Q!!Q!!!!"!!)!!Q!!!!1!!!!!!!!!!!!&amp;!!9$!!"Y!!!!!!!!#1!!!!E!!!!*!!!!!!!!!!E!!!!!!!!!!!!!!!!!!!!!!!!!%!!!!"!!!!!!!1!(!!!!!!</Property>
+			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
+			<Property Name="NI.ClassItem.Flags" Type="Int">16777216</Property>
+			<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
+			<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
+			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
+			<Property Name="NI.ClassItem.State" Type="Int">1342710288</Property>
+		</Item>
 		<Item Name="XYGraphwithMemory.vi" Type="VI" URL="../SubVIs/XYGraphwithMemory.vi">
 			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!&amp;/!!!!%!!-1#%'=X2B&gt;(6T!!!,1!-!"'.P:'5!!""!-0````]'=W^V=G.F!!!71&amp;!!!Q!!!!%!!AF&amp;=H*P=C"0&gt;81!"!!!!!N!#A!%&lt;76B&lt;A!!&amp;%"!!!(`````!!5(1X6S=G6O&gt;!!51%!!!@````]!"1&gt;7&lt;WRU97&gt;F!"J!5!!#!!9!"QZP&gt;82Q&gt;81A9WRV=X2F=A!!%E"!!!(`````!!5&amp;18*S98E!%E"1!!)!#1!*"U.M&gt;8.U:8)!&amp;E"1!!-!!!!"!!))28*S&lt;X)A37Y!!""!)1N$&lt;'6B=C"(=G&amp;Q;!!.1!I!"U.V=H*F&lt;H1!$5!+!!&gt;7&lt;WRU97&gt;F!&amp;1!]!!-!!-!"!!)!!I!"!!%!!1!"!!,!!Q!$1!/!Q!!?!!!$1A!!!!!!!!*!!!!#1!!!!!!!!!!!!!!!!!!!!!!!!!)!!!!#A!!!!I!!!!+!!!!!!%!$Q!!!!!</Property>
 			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
