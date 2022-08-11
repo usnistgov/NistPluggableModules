@@ -17,6 +17,7 @@
 	<Item Name="clMeasurmentData.ctl" Type="VI" URL="../clMeasurmentData.ctl"/>
 	<Item Name="clRequestEvents.ctl" Type="VI" URL="../clRequestEvents.ctl"/>
 	<Item Name="clStopArgument.ctl" Type="VI" URL="../clStopArgument.ctl"/>
+	<Item Name="Database Settings.ctl" Type="VI" URL="../Database Settings.ctl"/>
 	<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../ObtainBroadcastEvents.vi"/>
 	<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../ObtainRequestEvents.vi"/>
 	<Item Name="PathToMain.vi" Type="VI" URL="../PathToMain.vi"/>
