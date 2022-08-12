@@ -48,7 +48,7 @@
 	<Item Name="AcPwrBase.lvclass" Type="LVClass" URL="../AcPwrBaseClass/AcPwrBase.lvclass"/>
 	<Item Name="ChromaAcLoad.lvclass" Type="LVClass" URL="../ChromaAcLoadClass/ChromaAcLoad.lvclass"/>
 	<Item Name="NHRDCPower.lvclass" Type="LVClass" URL="../NHRDCPowerClass/NHRDCPower.lvclass"/>
-	<Item Name="NHRDCPowerModel.lvclass" Type="LVClass" URL="../NHRDCModelClass/NHRDCPowerModel.lvclass"/>
+	<Item Name="NHRDCPowerModel.lvclass" Type="LVClass" URL="../NHRDCPowerModelClass/NHRDCPowerModel.lvclass"/>
 	<Item Name="NHRGridSim.lvclass" Type="LVClass" URL="../NHRGridSimClass/NHRGridSim.lvclass"/>
 	<Item Name="PacificPowerSource.lvclass" Type="LVClass" URL="../PacificPowerSourceClass/PacificPowerSource.lvclass"/>
 	<Item Name="ChromaPowerSupply.lvclass" Type="LVClass" URL="../ChromaPowerSupplyClass/ChromaPowerSupply.lvclass"/>
