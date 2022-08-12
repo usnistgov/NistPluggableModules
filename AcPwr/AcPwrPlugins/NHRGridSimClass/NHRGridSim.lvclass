@@ -327,15 +327,6 @@
 			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
 			<Property Name="NI.ClassItem.State" Type="Int">1074541056</Property>
 		</Item>
-		<Item Name="ConfigMode.ctl" Type="VI" URL="../../ChromaAcLoadClass/TypeDefs/ConfigMode.ctl">
-			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!%W!!!!!1%O!0%!!!!!!!!!!R*"9V"X=F"M&gt;7&gt;J&lt;H-O&lt;(:M;7)34EB32X*J:&amp;.J&lt;3ZM&gt;G.M98.T$E.P&lt;G:J:UVP:'5O9X2M!0&amp;!&amp;A!,&amp;5.P&lt;H.U97ZU)&amp;:P&lt;(2B:W5A+%2$+2.$&lt;WZT&gt;'&amp;O&gt;#"1&lt;X&gt;F=C!I2%-J%U.P&lt;H.U97ZU)&amp;"P&gt;W6S)#B"1SE61W^O=X2B&lt;H1A1X6S=G6O&gt;#!I2%-J&amp;5.P&lt;H.U97ZU)%.V=H*F&lt;H1A+%&amp;$+2B$&lt;WZT&gt;'&amp;O&gt;#"3:8.J=X2B&lt;G.F)#B%1SE91W^O=X2B&lt;H1A5G6T;8.U97ZD:3!I15-J%V*F9X2J:GFF:#".&lt;W2F)#B%1SE,37ZS&gt;8.I)#B"1SE,5ER$)%.1)#B"1SE)5ER$)#B"1SE!!"*$&lt;WZG;7&gt;V=G&amp;U;7^O)%VP:'5!!!%!!!!!!!!</Property>
-			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
-			<Property Name="NI.ClassItem.Flags" Type="Int">1048576</Property>
-			<Property Name="NI.ClassItem.IsStaticMethod" Type="Bool">true</Property>
-			<Property Name="NI.ClassItem.MethodScope" Type="UInt">1</Property>
-			<Property Name="NI.ClassItem.Priority" Type="Int">1</Property>
-			<Property Name="NI.ClassItem.State" Type="Int">1082143232</Property>
-		</Item>
 		<Item Name="Device(s)Settings_old.ctl" Type="VI" URL="../TypeDefs/Device(s)Settings_old.ctl">
 			<Property Name="NI.ClassItem.ConnectorPane" Type="Bin">'!#!!!!!!!)!"1!&amp;!!!-!%!!!@````]!!!!"!!%!!!!-!!!!!1!%!!!!!1!!!!!!!!</Property>
 			<Property Name="NI.ClassItem.ExecutionSystem" Type="Int">-1</Property>
