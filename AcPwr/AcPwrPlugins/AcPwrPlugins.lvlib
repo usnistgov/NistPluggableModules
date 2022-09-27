@@ -46,6 +46,7 @@
 	</Item>
 	<Item Name="Main.vi" Type="VI" URL="../Common/Main.vi"/>
 	<Item Name="AcPwrBase.lvclass" Type="LVClass" URL="../AcPwrBaseClass/AcPwrBase.lvclass"/>
+	<Item Name="AcPwrSimBase.lvclass" Type="LVClass" URL="../AcPwrSimBaseClass/AcPwrSimBase.lvclass"/>
 	<Item Name="ChromaAcLoad.lvclass" Type="LVClass" URL="../ChromaAcLoadClass/ChromaAcLoad.lvclass"/>
 	<Item Name="NHRDCPower.lvclass" Type="LVClass" URL="../NHRDCPowerClass/NHRDCPower.lvclass"/>
 	<Item Name="NHRDCPowerModel.lvclass" Type="LVClass" URL="../NHRDCPowerModelClass/NHRDCPowerModel.lvclass"/>
