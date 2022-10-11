@@ -10,12 +10,14 @@
 
 </Property>
 	<Item Name="AcPwrBroadcastEvents.ctl" Type="VI" URL="../AcPwrBroadcastEvents.ctl"/>
+	<Item Name="CheckAcPwrParamLoopCondition.vi" Type="VI" URL="../CheckAcPwrParamLoopCondition.vi"/>
 	<Item Name="clAcPwrAttributes.ctl" Type="VI" URL="../clAcPwrAttributes.ctl"/>
 	<Item Name="clDidInit.ctl" Type="VI" URL="../clDidInit.ctl"/>
 	<Item Name="clEventType.ctl" Type="VI" URL="../clEventType.ctl"/>
 	<Item Name="clMeasurmentData.ctl" Type="VI" URL="../clMeasurmentData.ctl"/>
 	<Item Name="clRequestEvents.ctl" Type="VI" URL="../clRequestEvents.ctl"/>
 	<Item Name="clStopArgument.ctl" Type="VI" URL="../clStopArgument.ctl"/>
+	<Item Name="Database Settings.ctl" Type="VI" URL="../Database Settings.ctl"/>
 	<Item Name="ObtainBroadcastEvents.vi" Type="VI" URL="../ObtainBroadcastEvents.vi"/>
 	<Item Name="ObtainRequestEvents.vi" Type="VI" URL="../ObtainRequestEvents.vi"/>
 	<Item Name="PathToMain.vi" Type="VI" URL="../PathToMain.vi"/>

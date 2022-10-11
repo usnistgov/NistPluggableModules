@@ -41,13 +41,16 @@
 		<Item Name="ReloadConfigurationFile.vi" Type="VI" URL="../Common/ReloadConfigurationFile.vi"/>
 		<Item Name="StatusUpdateByModID.vi" Type="VI" URL="../Common/StatusUpdateByModID.vi"/>
 		<Item Name="StatusUpdate.vi" Type="VI" URL="../Common/StatusUpdate.vi"/>
+		<Item Name="SettingsLV.vi" Type="VI" URL="../Common/SettingsLV.vi"/>
+		<Item Name="ParameterSet.vi" Type="VI" URL="../Common/ParameterSet.vi"/>
 	</Item>
 	<Item Name="Main.vi" Type="VI" URL="../Common/Main.vi"/>
 	<Item Name="AcPwrBase.lvclass" Type="LVClass" URL="../AcPwrBaseClass/AcPwrBase.lvclass"/>
 	<Item Name="ChromaAcLoad.lvclass" Type="LVClass" URL="../ChromaAcLoadClass/ChromaAcLoad.lvclass"/>
 	<Item Name="NHRDCPower.lvclass" Type="LVClass" URL="../NHRDCPowerClass/NHRDCPower.lvclass"/>
+	<Item Name="NHRDCModel.lvclass" Type="LVClass" URL="../NHRDCModelClass/NHRDCModel.lvclass"/>
 	<Item Name="NHRGridSim.lvclass" Type="LVClass" URL="../NHRGridSimClass/NHRGridSim.lvclass"/>
 	<Item Name="PacificPowerSource.lvclass" Type="LVClass" URL="../PacificPowerSourceClass/PacificPowerSource.lvclass"/>
 	<Item Name="ChromaPowerSupply.lvclass" Type="LVClass" URL="../ChromaPowerSupplyClass/ChromaPowerSupply.lvclass"/>
-	<Item Name="SettingsLV.vi" Type="VI" URL="../Common/SettingsLV.vi"/>
+	<Item Name="ChromaPowerSupplyModel.lvclass" Type="LVClass" URL="../ChromaPowerSupplyModelClass/ChromaPowerSupplyModel.lvclass"/>
 </Library>

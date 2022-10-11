@@ -58,7 +58,6 @@
 		<Property Name="NI.SortType" Type="Int">3</Property>
 		<Item Name="TestInfo.ctl" Type="VI" URL="../Test/TestInfo.ctl"/>
 		<Item Name="IniFiles.vi" Type="VI" URL="../Test/IniFiles.vi"/>
-		<Item Name="InitSelectRing.vi" Type="VI" URL="../Test/InitSelectRing.vi"/>
 		<Item Name="TestInfo.vi" Type="VI" URL="../Test/TestInfo.vi"/>
 		<Item Name="UpdateSelectRing.vi" Type="VI" URL="../Test/UpdateSelectRing.vi"/>
 	</Item>

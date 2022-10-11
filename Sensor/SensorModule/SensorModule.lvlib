@@ -45,7 +45,6 @@
 		<Item Name="Requests" Type="Folder">
 			<Item Name="ConfigureRequest.vi" Type="VI" URL="../Protected/Requests/ConfigureRequest.vi"/>
 			<Item Name="PathToINIRequest.vi" Type="VI" URL="../Protected/Requests/PathToINIRequest.vi"/>
-			<Item Name="ReadConfigRequest.vi" Type="VI" URL="../Protected/Requests/ReadConfigRequest.vi"/>
 			<Item Name="ShowPanelRequest.vi" Type="VI" URL="../Protected/Requests/ShowPanelRequest.vi"/>
 			<Item Name="CreateSessionRequest.vi" Type="VI" URL="../Protected/Requests/CreateSessionRequest.vi"/>
 			<Item Name="CloseSessionRequest.vi" Type="VI" URL="../Protected/Requests/CloseSessionRequest.vi"/>
@@ -65,6 +64,9 @@
 		</Item>
 		<Item Name="Broadcasts" Type="Folder">
 			<Item Name="ObtainBroadcastForRegistration.vi" Type="VI" URL="../PublicAPI/Broadcasts/ObtainBroadcastForRegistration.vi"/>
+		</Item>
+		<Item Name="Requests" Type="Folder">
+			<Item Name="ReadConfigRequest.vi" Type="VI" URL="../Protected/Requests/ReadConfigRequest.vi"/>
 		</Item>
 		<Item Name="LoadPluginRequest.vi" Type="VI" URL="../Protected/Requests/LoadPluginRequest.vi"/>
 	</Item>
