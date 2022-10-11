@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>3. AC Power Module &#8212; NistPluggableModules 0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
@@ -12,7 +13,9 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,12 +44,12 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="ac-power-module">
-<h1><span class="section-number">3. </span>AC Power Module<a class="headerlink" href="#ac-power-module" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="class-specification">
-<h2><span class="section-number">3.1. </span>Class Specification<a class="headerlink" href="#class-specification" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="baseclass">
-<h3><span class="section-number">3.1.1. </span>BaseClass<a class="headerlink" href="#baseclass" title="Permalink to this headline">¶</a></h3>
+  <section id="ac-power-module">
+<h1><span class="section-number">3. </span>AC Power Module<a class="headerlink" href="#ac-power-module" title="Permalink to this heading">¶</a></h1>
+<section id="class-specification">
+<h2><span class="section-number">3.1. </span>Class Specification<a class="headerlink" href="#class-specification" title="Permalink to this heading">¶</a></h2>
+<section id="baseclass">
+<h3><span class="section-number">3.1.1. </span>BaseClass<a class="headerlink" href="#baseclass" title="Permalink to this heading">¶</a></h3>
 <p>This document describes the properties and methods of a single or multi-phase
 AC Power instrument and additional features of more complex instruments.
 These properites and methods are based upon the IviACPwr Specification
@@ -56,15 +59,15 @@ If a plugin simply inherits the method or property from the base class then this
 Unique properties and methods will be mentioned and properties and methods that are unused by the plugins will aslo be mentioned (work needed here).</p>
 <p><a class="reference internal" href="_images/image12.png"><img alt="image12" src="_images/image12.png" style="width: 3in;" /></a></p>
 <p>Figure : AcPwrBaseClass UML specification</p>
-<div class="section" id="properties">
-<h4><span class="section-number">3.1.1.1. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h4>
+<section id="properties">
+<h4><span class="section-number">3.1.1.1. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">¶</a></h4>
 <dl class="simple">
 <dt>Frequency : double</dt><dd><p>The frequency setpoint for all phases.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="methods">
-<h4><span class="section-number">3.1.1.2. </span>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="methods">
+<h4><span class="section-number">3.1.1.2. </span>Methods<a class="headerlink" href="#methods" title="Permalink to this heading">¶</a></h4>
 <dl class="simple">
 <dt>Initialize()</dt><dd><p>Opens a connection to all phases.  optionally reset the phase or check that the phase ID is valid.</p>
 </dd>
@@ -81,15 +84,15 @@ Unique properties and methods will be mentioned and properties and methods that 
 <dt>Reset()</dt><dd><p>Disable all phases and return all properties to default values.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="measurement-extension-group">
-<h3><span class="section-number">3.1.2. </span>Measurement Extension Group<a class="headerlink" href="#measurement-extension-group" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="measurement-extension-group">
+<h3><span class="section-number">3.1.2. </span>Measurement Extension Group<a class="headerlink" href="#measurement-extension-group" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference internal" href="_images/image13.png"><img alt="image13" src="_images/image13.png" style="width: 3in;" /></a></p>
 <p>Figure : AcPwrMeasurement Extension Group UML specification</p>
 <p>This extension group provides the ability to measure AC power source output signals such as voltage and current.</p>
-<div class="section" id="id1">
-<h4><span class="section-number">3.1.2.1. </span>Methods<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<section id="id1">
+<h4><span class="section-number">3.1.2.1. </span>Methods<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
 <dl class="simple">
 <dt>Initiate Measurement()</dt><dd><p>Initiates a measurement of one or more measurement groups for all output phases. You can specify multiple groups.</p>
 </dd>
@@ -98,9 +101,9 @@ Unique properties and methods will be mentioned and properties and methods that 
 <dt>FetchMeasurementArray()</dt><dd><p>Returns the values measured by a previous call to the Initiate Measurement function. The Fetch Measurement Array function returns an array of measured values of the requested measurement type. Call this function multiple times to retrieve the available measurement types and output phases. The available measurement type are divided into measurement groups. Use the Initiate Measurement function to measure fresh values for that group</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="id2">
-<h4><span class="section-number">3.1.2.2. </span>Properties<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="id2">
+<h4><span class="section-number">3.1.2.2. </span>Properties<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
 <blockquote>
 <div><dl>
 <dt>Handle : string</dt><dd><p>A unique identifier of the hardware supporting the phase.</p>
@@ -130,38 +133,38 @@ Unique properties and methods will be mentioned and properties and methods that 
 </dd>
 </dl>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="phase-extension-group">
-<h3><span class="section-number">3.1.3. </span>Phase Extension Group<a class="headerlink" href="#phase-extension-group" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="phase-extension-group">
+<h3><span class="section-number">3.1.3. </span>Phase Extension Group<a class="headerlink" href="#phase-extension-group" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference internal" href="_images/image14.png"><img alt="image14" src="_images/image14.png" style="width: 3in;" /></a></p>
 <p>Figure : AcPwrPhase Extension Group UML specification</p>
-</div>
-<div class="section" id="current-protection-extension-group">
-<h3><span class="section-number">3.1.4. </span>Current Protection Extension Group<a class="headerlink" href="#current-protection-extension-group" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="current-protection-extension-group">
+<h3><span class="section-number">3.1.4. </span>Current Protection Extension Group<a class="headerlink" href="#current-protection-extension-group" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference internal" href="_images/image15.png"><img alt="image15" src="_images/image15.png" style="width: 3in;" /></a></p>
 <p>Figure : AcPwrCurrent Protection Extension Group UML specification</p>
-</div>
-<div class="section" id="voltage-protection-extension-group">
-<h3><span class="section-number">3.1.5. </span>Voltage Protection Extension Group<a class="headerlink" href="#voltage-protection-extension-group" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="voltage-protection-extension-group">
+<h3><span class="section-number">3.1.5. </span>Voltage Protection Extension Group<a class="headerlink" href="#voltage-protection-extension-group" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference internal" href="_images/image16.png"><img alt="image16" src="_images/image16.png" style="width: 3in;" /></a></p>
 <p>Figure : AcPwrVoltage Protection Extension Group UML specification</p>
-</div>
-<div class="section" id="impedance-extension-group">
-<h3><span class="section-number">3.1.6. </span>Impedance Extension Group<a class="headerlink" href="#impedance-extension-group" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="impedance-extension-group">
+<h3><span class="section-number">3.1.6. </span>Impedance Extension Group<a class="headerlink" href="#impedance-extension-group" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference internal" href="_images/image17.png"><img alt="image17" src="_images/image17.png" style="width: 3in;" /></a></p>
 <p>Figure : AcPwrImpedance Extension Group UML specification</p>
-</div>
-<div class="section" id="dcgeneration-extension-group">
-<h3><span class="section-number">3.1.7. </span>DCGeneration Extension Group<a class="headerlink" href="#dcgeneration-extension-group" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="dcgeneration-extension-group">
+<h3><span class="section-number">3.1.7. </span>DCGeneration Extension Group<a class="headerlink" href="#dcgeneration-extension-group" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference internal" href="_images/image18.png"><img alt="image18" src="_images/image18.png" style="width: 3in;" /></a></p>
 <p>Figure : AcPwrDCGeneration Extension Group UML specification</p>
-</div>
-<div class="section" id="non-ivi-extension-group">
-<h3><span class="section-number">3.1.8. </span>NON-IVI Extension Group<a class="headerlink" href="#non-ivi-extension-group" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="non-ivi-extension-group">
+<h3><span class="section-number">3.1.8. </span>NON-IVI Extension Group<a class="headerlink" href="#non-ivi-extension-group" title="Permalink to this heading">¶</a></h3>
 <p>In order to get full functionality of each plugin and allow plugin interoperability additional base methods and properties were needed and are discussed below.</p>
-<div class="section" id="id3">
-<h4><span class="section-number">3.1.8.1. </span>Properties<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<section id="id3">
+<h4><span class="section-number">3.1.8.1. </span>Properties<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
 <dl>
 <dt>Measurement : [struct]</dt><dd><p>An array of structures containing properties of each measurement to be made</p>
 <dl class="simple">
@@ -178,9 +181,9 @@ Unique properties and methods will be mentioned and properties and methods that 
 <dt>RefreshTime : double</dt><dd><p>The time delay between fetching individual measurements</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="id4">
-<h4><span class="section-number">3.1.8.2. </span>Methods<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="id4">
+<h4><span class="section-number">3.1.8.2. </span>Methods<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h4>
 <dl class="simple">
 <dt>StartMeas ()</dt><dd><p>Starts the instruments acquistion of measurements.</p>
 </dd>
@@ -203,16 +206,16 @@ Unique properties and methods will be mentioned and properties and methods that 
 <dt>SetSettings ()</dt><dd><p>This function sets the instruments properties.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="chroma-acload-class">
-<h3><span class="section-number">3.1.9. </span>Chroma AcLoad Class<a class="headerlink" href="#chroma-acload-class" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="chroma-acload-class">
+<h3><span class="section-number">3.1.9. </span>Chroma AcLoad Class<a class="headerlink" href="#chroma-acload-class" title="Permalink to this heading">¶</a></h3>
 <p>The Chroma AC Load is a one channel instrument capable of simulating various AC and DC loads based upon power, resistance, or current. This device support one phase per device so multiple devises must be used to create multiple phases. One Module can support up to three devices
 so with a single module all three phases can be emulated. The IVI AC Power specification does not (yet) peovide an extension group for AC Loads but it seems to make sense to extend it.  Eventually this child class may become a base class for generic AC loads. The following sections detail additional
 properties and methods that are unique from the base class and Property Dialog window that will allow an operator to configure the instrument.</p>
 <p><a class="reference internal" href="_images/image8.png"><img alt="image8" src="_images/image8.png" style="width: 9in;" /></a></p>
-<div class="section" id="configuration-dialog-properties-and-operation-modes">
-<h4><span class="section-number">3.1.9.1. </span>Configuration Dialog Properties and Operation Modes<a class="headerlink" href="#configuration-dialog-properties-and-operation-modes" title="Permalink to this headline">¶</a></h4>
+<section id="configuration-dialog-properties-and-operation-modes">
+<h4><span class="section-number">3.1.9.1. </span>Configuration Dialog Properties and Operation Modes<a class="headerlink" href="#configuration-dialog-properties-and-operation-modes" title="Permalink to this heading">¶</a></h4>
 <p><em>The following section lists the properties and operational mode of the AC/DC Chroma Load (638xx). Each mode uses a set of properties that are similar and distinct from the rest. If a variable is listed under an operation mode, it must be configured in order for the Chroma to operate. **The load should be appropriately configured for the physically wiring and the source connected*</em>.</p>
 <p><a class="reference internal" href="_images/image2.png"><img alt="image2" src="_images/image2.png" style="width: 9in;" /></a></p>
 <p><em>This is the preference dialogue screen that allows the user to configure the device.</em></p>
@@ -306,9 +309,9 @@ properties and methods that are unique from the base class and Property Dialog w
 <li><p>Save As: Closes the panel and saves these settings to a different INI file in the same file location.</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="unique-methods">
-<h4><span class="section-number">3.1.9.2. </span>Unique Methods<a class="headerlink" href="#unique-methods" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="unique-methods">
+<h4><span class="section-number">3.1.9.2. </span>Unique Methods<a class="headerlink" href="#unique-methods" title="Permalink to this heading">¶</a></h4>
 <dl class="simple">
 <dt>CheckHandle()</dt><dd><p>Check to see if the input handle is already connected.</p>
 </dd>
@@ -329,17 +332,17 @@ properties and methods that are unique from the base class and Property Dialog w
 <dt>WriteToBaseConfigVariant</dt><dd><p>Writes to the PluginConfigVariant and the PluginMeasVariant properties.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="nhrdc-power-class">
-<h3><span class="section-number">3.1.10. </span>NHRDC Power Class<a class="headerlink" href="#nhrdc-power-class" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="nhrdc-power-class">
+<h3><span class="section-number">3.1.10. </span>NHRDC Power Class<a class="headerlink" href="#nhrdc-power-class" title="Permalink to this heading">¶</a></h3>
 <p><em>The NHR 9200 is a Battery Test Simulator. Within each NHR 9200 are three
 NHR 4960 that serave as DC output, DC Load, or a Battery. Each NHR 4860 has one single channel.
 The following section lists the user accessible properties, operation mode,
 and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 <p><a class="reference internal" href="_images/image9.png"><img alt="image9" src="_images/image9.png" style="width: 9in;" /></a></p>
-<div class="section" id="configuration-dialog-properties-and-operation-mode">
-<h4><span class="section-number">3.1.10.1. </span>Configuration Dialog Properties and Operation Mode<a class="headerlink" href="#configuration-dialog-properties-and-operation-mode" title="Permalink to this headline">¶</a></h4>
+<section id="configuration-dialog-properties-and-operation-mode">
+<h4><span class="section-number">3.1.10.1. </span>Configuration Dialog Properties and Operation Mode<a class="headerlink" href="#configuration-dialog-properties-and-operation-mode" title="Permalink to this heading">¶</a></h4>
 <p><a class="reference internal" href="_images/image3.png"><img alt="image3" src="_images/image3.png" style="width: 9in;" /></a></p>
 <p><em>This is the preference dialogue screen that allows the user to configure the device.</em></p>
 <blockquote>
@@ -451,9 +454,9 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 <li><p>Save As:Closes the panel and saves these settings to a different INI file in the same file location.</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="id5">
-<h4><span class="section-number">3.1.10.2. </span>Unique Methods<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="id5">
+<h4><span class="section-number">3.1.10.2. </span>Unique Methods<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h4>
 <dl class="simple">
 <dt>CheckHandle()</dt><dd><p>Check to see if the input handle is already connected.</p>
 </dd>
@@ -474,14 +477,14 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 <dt>WriteToBaseConfigVariant</dt><dd><p>Writes to the PluginConfigVariant and the PluginMeasVariant properties.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="nhr-regenerative-grid-simulator">
-<h3><span class="section-number">3.1.11. </span>NHR Regenerative Grid Simulator<a class="headerlink" href="#nhr-regenerative-grid-simulator" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="nhr-regenerative-grid-simulator">
+<h3><span class="section-number">3.1.11. </span>NHR Regenerative Grid Simulator<a class="headerlink" href="#nhr-regenerative-grid-simulator" title="Permalink to this heading">¶</a></h3>
 <p>The NHR Regenerative Grid Simulator is a three channel AC or DC Output that can be combined into any combination between one and three channels. A single module can</p>
 <p><a class="reference internal" href="_images/image10.png"><img alt="image10" src="_images/image10.png" style="width: 9in;" /></a></p>
-<div class="section" id="id6">
-<h4><span class="section-number">3.1.11.1. </span>Configuration Dialog Properties and Operation Modes<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<section id="id6">
+<h4><span class="section-number">3.1.11.1. </span>Configuration Dialog Properties and Operation Modes<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h4>
 <p>The following section lists every user accesible property of the NHR 9210 AC/DC RegenerativeGrid Simulator.</p>
 <p><a class="reference internal" href="_images/image4.png"><img alt="image4" src="_images/image4.png" style="width: 9in;" /></a></p>
 <p><em>This is the preference dialogue screen that allows the user to configure the device.</em></p>
@@ -595,8 +598,8 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 <li><p>Save As:Closes the panel and saves these settings to a different INI file in the same file location.</p></li>
 </ul>
 </div></blockquote>
-<div class="section" id="mode">
-<h5><span class="section-number">3.1.11.1.1. </span>Mode<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h5>
+<section id="mode">
+<h5><span class="section-number">3.1.11.1.1. </span>Mode<a class="headerlink" href="#mode" title="Permalink to this heading">¶</a></h5>
 <p><em>The following variables are used by every operation mode</em></p>
 <blockquote>
 <div><ul class="simple">
@@ -605,10 +608,10 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 </div></blockquote>
 <p><a class="reference internal" href="_images/image6.png"><img alt="image6" src="_images/image6.png" style="width: 9in;" /></a></p>
 <p><em>These are the various modes of the NI 9410 Regenrative Grid Simulator.</em></p>
-</div>
-</div>
-<div class="section" id="id7">
-<h4><span class="section-number">3.1.11.2. </span>Unique Methods<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+</section>
+</section>
+<section id="id7">
+<h4><span class="section-number">3.1.11.2. </span>Unique Methods<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h4>
 <dl class="simple">
 <dt>CheckHandle()</dt><dd><p>Check to see if the input handle is already connected.</p>
 </dd>
@@ -629,14 +632,14 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 <dt>WriteToBaseConfigVariant</dt><dd><p>Writes to the PluginConfigVariant and the PluginMeasVariant properties.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="pacific-power-source">
-<h3><span class="section-number">3.1.12. </span>Pacific Power Source<a class="headerlink" href="#pacific-power-source" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="pacific-power-source">
+<h3><span class="section-number">3.1.12. </span>Pacific Power Source<a class="headerlink" href="#pacific-power-source" title="Permalink to this heading">¶</a></h3>
 <p>The Pacific Power 360AMXT is a three channel AC Souurce that supports combining all three channels into one channel or being combined into a split phase operation.</p>
 <p><a class="reference internal" href="_images/image11.png"><img alt="image11" src="_images/image11.png" style="width: 9in;" /></a></p>
-<div class="section" id="id8">
-<h4><span class="section-number">3.1.12.1. </span>Configuration Dialog Properties and Operation Modes<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<section id="id8">
+<h4><span class="section-number">3.1.12.1. </span>Configuration Dialog Properties and Operation Modes<a class="headerlink" href="#id8" title="Permalink to this heading">¶</a></h4>
 <p><em>The following section lists every user accesible property of the PPS360AMXT Pacific Power Supply.</em></p>
 <p><a class="reference internal" href="_images/image5.png"><img alt="image5" src="_images/image5.png" style="width: 9in;" /></a></p>
 <p><em>This is the preference dialogue screen that allows the user to configure the device.</em></p>
@@ -817,8 +820,8 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 <li><p>Save As: Closes the panel and saves these settings to a different INI file in the same file location.</p></li>
 </ul>
 </div></blockquote>
-<div class="section" id="form">
-<h5><span class="section-number">3.1.12.1.1. </span>Form<a class="headerlink" href="#form" title="Permalink to this headline">¶</a></h5>
+<section id="form">
+<h5><span class="section-number">3.1.12.1.1. </span>Form<a class="headerlink" href="#form" title="Permalink to this heading">¶</a></h5>
 <p><em>The following variables are used by every operation mode</em></p>
 <blockquote>
 <div><ul class="simple">
@@ -828,10 +831,10 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 </ul>
 </div></blockquote>
 <p><a class="reference internal" href="_images/image7.png"><img alt="image7" src="_images/image7.png" style="width: 9in;" /></a></p>
-</div>
-</div>
-<div class="section" id="id9">
-<h4><span class="section-number">3.1.12.2. </span>Unique Methods<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+</section>
+</section>
+<section id="id9">
+<h4><span class="section-number">3.1.12.2. </span>Unique Methods<a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h4>
 <dl class="simple">
 <dt>CheckHandle()</dt><dd><p>Check to see if the input handle is already connected.</p>
 </dd>
@@ -852,39 +855,35 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 <dt>WriteToBaseConfigVariant</dt><dd><p>Writes to the PluginConfigVariant and the PluginMeasVariant properties.</p>
 </dd>
 </dl>
-</div>
-</div>
-</div>
-<div class="section" id="code-design">
-<h2><span class="section-number">3.2. </span>Code Design<a class="headerlink" href="#code-design" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="miscellaneous">
-<h3><span class="section-number">3.2.1. </span>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+</section>
+<section id="code-design">
+<h2><span class="section-number">3.2. </span>Code Design<a class="headerlink" href="#code-design" title="Permalink to this heading">¶</a></h2>
+<section id="miscellaneous">
+<h3><span class="section-number">3.2.1. </span>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this heading">¶</a></h3>
 <p><em>Properties are inhereted by the IVI Instrument Driver Class Specification. All Instrument drivers must have this method and property.</em></p>
-<div class="section" id="recommended-improvements">
-<h4><span class="section-number">3.2.1.1. </span>Recommended Improvements<a class="headerlink" href="#recommended-improvements" title="Permalink to this headline">¶</a></h4>
+<section id="recommended-improvements">
+<h4><span class="section-number">3.2.1.1. </span>Recommended Improvements<a class="headerlink" href="#recommended-improvements" title="Permalink to this heading">¶</a></h4>
 <p>-description of properties for the base extension groups
 -Verify that properties/methods inhereted from the base class and used in the children class aren’t repeated.
 -Note which properties/methods inhereted from the base class and are unused in the children class.
 -Group children class properties based on the IVI guidlines (significant change requiring a change to the module code)
 -edit the Code Almanac below</p>
-</div>
-</div>
-</div>
-<div class="section" id="code-almanac">
-<h2><span class="section-number">3.3. </span>Code Almanac<a class="headerlink" href="#code-almanac" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="acpwrmodule-lvlib">
-<h3><span class="section-number">3.3.1. </span>AcPwrModule.lvlib<a class="headerlink" href="#acpwrmodule-lvlib" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="private">
-<h4><span class="section-number">3.3.1.1. </span>Private<a class="headerlink" href="#private" title="Permalink to this headline">¶</a></h4>
-<div class="section" id="acpwrclass-vi">
-<h5><span class="section-number">3.3.1.1.1. </span>AcPwrClass vi<a class="headerlink" href="#acpwrclass-vi" title="Permalink to this headline">¶</a></h5>
+</section>
+</section>
+</section>
+<section id="code-almanac">
+<h2><span class="section-number">3.3. </span>Code Almanac<a class="headerlink" href="#code-almanac" title="Permalink to this heading">¶</a></h2>
+<section id="acpwrmodule-lvlib">
+<h3><span class="section-number">3.3.1. </span>AcPwrModule.lvlib<a class="headerlink" href="#acpwrmodule-lvlib" title="Permalink to this heading">¶</a></h3>
+<section id="private">
+<h4><span class="section-number">3.3.1.1. </span>Private<a class="headerlink" href="#private" title="Permalink to this heading">¶</a></h4>
+<section id="acpwrclass-vi">
+<h5><span class="section-number">3.3.1.1.1. </span>AcPwrClass vi<a class="headerlink" href="#acpwrclass-vi" title="Permalink to this heading">¶</a></h5>
 <p>The AcPwrClass vi acts as a general control for the “Main” module.</p>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 3%" />
-<col style="width: 97%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>TERMINAL</strong></p></td>
 <td><p><strong>PURPOSE</strong></p></td>
@@ -901,16 +900,12 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 </tbody>
 </table>
 </div></blockquote>
-</div>
-<div class="section" id="acpwrstate-vi">
-<h5><span class="section-number">3.3.1.1.2. </span>AcPwrState.vi<a class="headerlink" href="#acpwrstate-vi" title="Permalink to this headline">¶</a></h5>
+</section>
+<section id="acpwrstate-vi">
+<h5><span class="section-number">3.3.1.1.2. </span>AcPwrState.vi<a class="headerlink" href="#acpwrstate-vi" title="Permalink to this heading">¶</a></h5>
 <p>The AcPwrState vi acts as a way to control the measurements of the device.</p>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 3%" />
-<col style="width: 97%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>TERMINAL</strong></p></td>
 <td><p><strong>PURPOSE</strong></p></td>
@@ -927,11 +922,11 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
 </tbody>
 </table>
 </div></blockquote>
-</div>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -1042,7 +1037,7 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -1065,7 +1060,7 @@ and unique methods of the NHR 9200 DC Battery Test System.</em></p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Allen Goldstein.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.2.3.
     </div>
   </body>
 </html>

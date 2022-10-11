@@ -111,4 +111,16 @@ The ACPower Module depends on the following drivers:
 
 `Pacific Power Source UPC3 AC Power Source Instrument Driver`_
 	.. _`Pacific Power Source UPC3 AC Power Source Instrument Driver`: http://sine.ni.com/apps/utf8/niid_web_display.model_page?p_model_id=14445
+
+
+Python
+~~~~~~
+Note:  If python is installed for all users, then pip must be run from inside an admin level console.
+The LV_TestAutomation code  has been updated to use Python 3.9 or later.  An older version used Python 2.7.
+
+Afyter installing Python, the following modules must be installed:
+	lxml, numpy
+ 
+ If using the NIST Solar Array Simulation Python code, install the package using::
 	
+	"python -m pip install git+https://github.com/usnistgov/NIST_SG_SolarSim"

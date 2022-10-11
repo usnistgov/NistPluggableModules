@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>4. Appendix A Pluggable Module Reference &#8212; NistPluggableModules 0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
@@ -12,7 +13,9 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -37,8 +40,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="appendix-a-pluggable-module-reference">
-<h1><span class="section-number">4. </span>Appendix A Pluggable Module Reference<a class="headerlink" href="#appendix-a-pluggable-module-reference" title="Permalink to this headline">¶</a></h1>
+  <section id="appendix-a-pluggable-module-reference">
+<h1><span class="section-number">4. </span>Appendix A Pluggable Module Reference<a class="headerlink" href="#appendix-a-pluggable-module-reference" title="Permalink to this heading">¶</a></h1>
 <p>A pluggable module is a stand-alone module that can be launched by a
 framework or other application then runs independent of the launching
 application. Multiple clones of the same module type may be launched and
@@ -157,10 +160,6 @@ appropriate datatype.</p>
 <p>To create a new request type, begin by editing the clRequestEvents.ctl
 typedef:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="_images/image81.png"><img alt="image7" src="_images/image81.png" style="width: 1.71528in; height: 3.21079in;" /></a></p></td>
 <td><p><a class="reference internal" href="_images/image91.png"><img alt="image8" src="_images/image91.png" style="width: 1.84677in; height: 3.18750in;" /></a></p></td>
@@ -199,10 +198,6 @@ did not need to make a typedef.)</p>
 or other app to generate the new request. Typically, you can start from
 an existing request method such as the ShowPanelRequest shown below:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="_images/image121.png"><img alt="image11" src="_images/image121.png" style="width: 1.27872in; height: 2.29861in;" /></a></p></td>
 <td><p><a class="reference internal" href="_images/image131.png"><img alt="image12" src="_images/image131.png" style="width: 4.11103in; height: 2.29708in;" /></a></p></td>
@@ -242,10 +237,6 @@ queue for each application that is registered to receive the broadcast.</p>
 <p>To create a new broadcast type, begin by editing the
 clBroadcastEvents.ctl typedef:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="_images/image151.png"><img alt="image14" src="_images/image151.png" style="width: 1.52083in; height: 2.73382in;" /></a></p></td>
 <td><p><a class="reference internal" href="_images/image161.png"><img alt="image15" src="_images/image161.png" style="width: 1.49158in; height: 2.68750in;" /></a></p></td>
@@ -263,10 +254,6 @@ be in PublicAPI/Arguments/Broadcasts.</p>
 <p>Next, create a new broadcast method. The best thing to do is to make a
 copy of an existing broadcast method:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="_images/image171.png"><img alt="image16" src="_images/image171.png" style="width: 1.51052in; height: 2.71528in;" /></a></p></td>
 <td><p><a class="reference internal" href="_images/image181.png"><img alt="image17" src="_images/image181.png" style="width: 3.72917in; height: 1.70126in;" /></a></p></td>
@@ -334,10 +321,6 @@ BasePlugin. You will likely add other parameter and configuration
 properties to the BasePlugin based on the typedefs you create for those
 data types.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="_images/image20.png"><img alt="image19" src="_images/image20.png" style="width: 1.70833in; height: 2.27778in;" /></a></p></td>
 <td><p><a class="reference internal" href="_images/image211.png"><img alt="image20" src="_images/image211.png" style="width: 1.72351in; height: 2.20139in;" /></a></p></td>
@@ -358,10 +341,6 @@ methods will be evoked by a request and will generate a broadcast, so
 begin by creating new requests and broadcasts per sections 4.2.2 and
 4.3.1:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="_images/image221.png"><img alt="image21" src="_images/image221.png" style="width: 1.62232in; height: 2.85417in;" /></a></p></td>
 <td><p><a class="reference internal" href="_images/image23.png"><img alt="image22" src="_images/image23.png" style="width: 1.61559in; height: 2.81250in;" /></a></p></td>
@@ -372,10 +351,6 @@ begin by creating new requests and broadcasts per sections 4.2.2 and
 typedefs</p>
 <p>Create the Request and Broadcast vis:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="_images/image24.png"><img alt="image23" src="_images/image24.png" style="width: 2.90972in; height: 1.34736in;" /></a></p></td>
 <td><p><a class="reference internal" href="_images/image25.png"><img alt="image24" src="_images/image25.png" style="width: 2.69444in; height: 1.30930in;" /></a></p></td>
@@ -440,7 +415,7 @@ file, and overrides for the base plugin methods:</p>
 <p>Now when you run the TestCloneAPI, Add a Clone, select the Sample
 Plugin, load the Plugin, then Get the Plugin Output, the ModuleOutput
 indicator will show the string that came from the Sample Plugin method.</p>
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -470,7 +445,7 @@ indicator will show the string that came from the Sample Plugin method.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -490,7 +465,7 @@ indicator will show the string that came from the Sample Plugin method.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Allen Goldstein.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.2.3.
     </div>
   </body>
 </html>

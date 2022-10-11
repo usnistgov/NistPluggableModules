@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>SpecAn Module &#8212; NistPluggableModules 0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
@@ -12,7 +13,9 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -33,18 +36,18 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="specan-module">
-<h1>SpecAn Module<a class="headerlink" href="#specan-module" title="Permalink to this headline">¶</a></h1>
+  <section id="specan-module">
+<h1>SpecAn Module<a class="headerlink" href="#specan-module" title="Permalink to this heading">¶</a></h1>
 <p>The SpecAn Module is an IVI compliant module.  The properties and methods used for this instrument may be generalized at a later date.</p>
-<div class="section" id="class-specification">
-<h2>Class Specification<a class="headerlink" href="#class-specification" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="specanbaseclass">
-<h3>SpecAnBaseClass<a class="headerlink" href="#specanbaseclass" title="Permalink to this headline">¶</a></h3>
+<section id="class-specification">
+<h2>Class Specification<a class="headerlink" href="#class-specification" title="Permalink to this heading">¶</a></h2>
+<section id="specanbaseclass">
+<h3>SpecAnBaseClass<a class="headerlink" href="#specanbaseclass" title="Permalink to this heading">¶</a></h3>
 <p>All other Spectrum Analyzers classes inherit from the SpecAnBase class.</p>
 <p><a class="reference internal" href="_images/image01.png"><img alt="image0" src="_images/image01.png" style="width: 3in;" /></a></p>
 <p>Figure : SpecAnBaseClass Properties UML Specification</p>
-<div class="section" id="properties">
-<h4>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h4>
+<section id="properties">
+<h4>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">¶</a></h4>
 <dl>
 <dt>Acquisition : Struct</dt><dd><p>A structure containing the properties of each module which pertain to the acquisition.</p>
 <blockquote>
@@ -146,9 +149,9 @@
 </dl>
 <p><a class="reference internal" href="_images/image19.png"><img alt="image1" src="_images/image19.png" style="width: 3in;" /></a></p>
 <p>Figure : SpecAnBaseClass Methods UML Specification</p>
-</div>
-<div class="section" id="methods">
-<h4>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="methods">
+<h4>Methods<a class="headerlink" href="#methods" title="Permalink to this heading">¶</a></h4>
 <dl>
 <dt>Abort()</dt><dd><p>This function stops a previously initiated measurement and returns the spectrum analyzer to the idle state. This function does not check instrument status.</p>
 </dd>
@@ -183,14 +186,14 @@
 <dt>SelfTest()</dt><dd><p>This VI runs the instrument’s self test routine and returns the test result(s).</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="trigger-extension-group">
-<h4>Trigger Extension Group<a class="headerlink" href="#trigger-extension-group" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="trigger-extension-group">
+<h4>Trigger Extension Group<a class="headerlink" href="#trigger-extension-group" title="Permalink to this heading">¶</a></h4>
 <p><a class="reference internal" href="_images/image21.png"><img alt="image2" src="_images/image21.png" style="width: 3in;" /></a></p>
 <p>Figure : SpecAnBaseClass Trigger Properties UML Specification</p>
-</div>
-<div class="section" id="id1">
-<h4>Properties<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="id1">
+<h4>Properties<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
 <dl>
 <dt>Trigger : Struct</dt><dd><p>A structure containing the properties of each module’s trigger.</p>
 <blockquote>
@@ -205,23 +208,23 @@
 </div></blockquote>
 </dd>
 </dl>
-</div>
-<div class="section" id="id2">
-<h4>Methods<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="id2">
+<h4>Methods<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h4>
 <dl class="simple">
 <dt>ConfigureTrigger ()</dt><dd><p>This function allows the user to configure the Spectrum Analyser to acquire measurements based on a software, external, video or etc signal and the associated paramater such as level and slope.</p>
 </dd>
 <dt>SendSoftwareTrigger ()</dt><dd><p>This function sends a software trigger to the Spectrum Analyzer in order to begin acquisition.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="utility-extension-group">
-<h4>Utility Extension Group<a class="headerlink" href="#utility-extension-group" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="utility-extension-group">
+<h4>Utility Extension Group<a class="headerlink" href="#utility-extension-group" title="Permalink to this heading">¶</a></h4>
 <p><a class="reference internal" href="_images/image41.png"><img alt="image4" src="_images/image41.png" style="width: 3in;" /></a></p>
 <p>Figure : SpecAnBaseClass Utility Methods UML Specification</p>
-</div>
-<div class="section" id="id3">
-<h4>Methods<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="id3">
+<h4>Methods<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
 <dl class="simple">
 <dt>Reset ()</dt><dd><p>This VI resets the instrument to a known state and sends initialization commands to the instrument.  The initialization commands set instrument settings such as Headers Off, Short Command form, and Data Transfer Binary to the state necessary for the operation of the instrument driver.</p>
 </dd>
@@ -230,14 +233,14 @@
 <dt>Selftest ()</dt><dd><p>This VI runs the instrument’s self test routine and returns the test result(s).</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="marker-extension-group">
-<h4>Marker Extension Group<a class="headerlink" href="#marker-extension-group" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="marker-extension-group">
+<h4>Marker Extension Group<a class="headerlink" href="#marker-extension-group" title="Permalink to this heading">¶</a></h4>
 <p><a class="reference internal" href="_images/image51.png"><img alt="image5" src="_images/image51.png" style="width: 3in;" /></a></p>
 <p>Figure : SpecAnBaseClass Properties and Methods UML Specification</p>
-</div>
-<div class="section" id="id4">
-<h4>Properties<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="id4">
+<h4>Properties<a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h4>
 <dl>
 <dt>Marker : Struct</dt><dd><p>A structure containing the properties of each module’s markers.</p>
 <blockquote>
@@ -262,9 +265,9 @@ Specifies the lower limit of the search domain vertical range for the Marker Sea
 </div></blockquote>
 </dd>
 </dl>
-</div>
-<div class="section" id="id5">
-<h4>Methods<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="id5">
+<h4>Methods<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h4>
 <dl class="simple">
 <dt>ConfigureMarkerEnabled ()</dt><dd><p>This function enables the active marker on the specified Trace.</p>
 </dd>
@@ -289,15 +292,15 @@ Specifies the lower limit of the search domain vertical range for the Marker Sea
 <dt>SetInstrumentFromMarker()</dt><dd><p>This function uses the Marker Position or Marker Amplitude attributes to configure the spectrum analyzer setting specified by the InstrumentSetting parameter. This function may set the Frequency Start, Frequency Stop, or Reference Level attributes. If the Marker Enabled attribute is set to False, this function returns the Marker Not Enabled error. If the Marker Type attribute is not Delta and the InstrumentSetting parameter is Frequency Span, the function returns the Delta Marker Not Enabled error.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="keysight44xxclass">
-<h3>Keysight44xxClass<a class="headerlink" href="#keysight44xxclass" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="keysight44xxclass">
+<h3>Keysight44xxClass<a class="headerlink" href="#keysight44xxclass" title="Permalink to this heading">¶</a></h3>
 <p>The Keysight44xx inherits the all the properties and methods from the SpecAnBase class and includes additional trigger properties.</p>
 <p><a class="reference internal" href="_images/image31.png"><img alt="image3" src="_images/image31.png" style="width: 3in;" /></a></p>
 <p>Figure : Keysight44xxClass Properties UML Specification</p>
-<div class="section" id="id6">
-<h4>Properties<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<section id="id6">
+<h4>Properties<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h4>
 <dl>
 <dt>RFBurst : Struct</dt><dd><p>A structure containing the properties of an RFBurst Trigger.</p>
 <blockquote>
@@ -327,10 +330,10 @@ If set to True , the active marker is enabled. When False, the active marker is 
 </dd>
 </dl>
 <p>No new methods were added to this plugin at this time.</p>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -384,7 +387,7 @@ If set to True , the active marker is enabled. When False, the active marker is 
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -401,7 +404,7 @@ If set to True , the active marker is enabled. When False, the active marker is 
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Allen Goldstein.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.2.3.
     </div>
   </body>
 </html>
